@@ -1318,11 +1318,8 @@ function renderPage(model) {
     ${renderCoreTicketSection()}
     ${renderSystemSection(model)}
     <section class="panel" id="sources"><h2>周度来源</h2><p class="section-note">来源周不只做入口：所有来源周的票都已进入下方排行、成交流水和买卖点地图。5月自然月账户结果仍只取05.08-05.29，前后两周用于共性对照。</p><div class="source-row">${sourceCards}</div></section>
-    <span id="ranks" class="anchor"></span>
-    <section class="grid-2">
-      <article class="panel"><h2>盈利排行</h2><p class="section-note">扩展样本口径；有期末持仓的来源周按期末持仓浮盈浮亏展示，并标出是否值得复制。</p><div class="table-wrap"><table><thead><tr><th>标的</th><th>贡献</th><th>来源</th><th>标签</th><th>类型/模式</th><th>可复制性</th><th>月度判断</th></tr></thead><tbody>${positiveRows}</tbody></table></div></article>
-      <article class="panel"><h2>亏损排行</h2><p class="section-note">亏损根源集中在后排替代核心、止损后回补、非唯一中高位左侧和亏损后加单，并标出是否可避免。</p><div class="table-wrap"><table><thead><tr><th>标的</th><th>贡献</th><th>来源</th><th>标签</th><th>类型/模式</th><th>可避免性</th><th>月度判断</th></tr></thead><tbody>${negativeRows}</tbody></table></div></article>
-    </section>
+    <section class="panel" id="ranks"><h2>盈利排行</h2><p class="section-note">扩展样本口径；有期末持仓的来源周按期末持仓浮盈浮亏展示，并标出是否值得复制。</p><div class="table-wrap"><table><thead><tr><th>标的</th><th>贡献</th><th>来源</th><th>标签</th><th>类型/模式</th><th>可复制性</th><th>月度判断</th></tr></thead><tbody>${positiveRows}</tbody></table></div></section>
+    <section class="panel" id="loss-ranks"><h2>亏损排行</h2><p class="section-note">亏损根源集中在后排替代核心、止损后回补、非唯一中高位左侧和亏损后加单，并标出是否可避免。</p><div class="table-wrap"><table><thead><tr><th>标的</th><th>贡献</th><th>来源</th><th>标签</th><th>类型/模式</th><th>可避免性</th><th>月度判断</th></tr></thead><tbody>${negativeRows}</tbody></table></div></section>
     ${renderUnknownRows(model.stocks)}
     ${renderModelsSection(model)}
     <section class="panel" id="patterns"><h2>月度共性问题</h2><div class="grid-4">
