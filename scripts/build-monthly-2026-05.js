@@ -585,6 +585,112 @@ function judgment(stock, value) {
   return "贡献待核算，先保留成交事实和买卖点。";
 }
 
+function stockAudit(stock) {
+  const presets = {
+    神剑股份: {
+      tags: ["核心龙头", "值得复制"],
+      verdict: "值得复制",
+      lessonType: "copy",
+      lesson: "定龙正确、围绕第一唯一性参与，是本月可复制的盈利样本。",
+    },
+    通鼎互联: {
+      tags: ["核心龙头", "值得复制"],
+      verdict: "值得复制",
+      lessonType: "copy",
+      lesson: "5月自然月内最清晰正贡献，说明主线核心嗅觉在线，应继续复制。",
+    },
+    大有能源: {
+      tags: ["核心龙头", "值得复制"],
+      verdict: "值得复制",
+      lessonType: "copy",
+      lesson: "第一性和唯一性确认后持仓放大利润，是月后参考周的正样本。",
+    },
+    达实智能: {
+      tags: ["核心处理", "可复制"],
+      verdict: "值得复制",
+      lessonType: "copy",
+      lesson: "围绕阶段核心做条件单和留仓，修复了部分回撤，但仍需控制非核心扩散。",
+    },
+    华电辽能: {
+      tags: ["后排替代", "止损后回补"],
+      verdict: "可避免",
+      lessonType: "error",
+      lesson: "最大错误样本：后排替代核心，止损后又快速买回同等仓位，风险切断失败。",
+    },
+    华能蒙电: {
+      tags: ["亏损后加单", "非唯一中高位"],
+      verdict: "可避免",
+      lessonType: "error",
+      lesson: "弱票当核心且亏损后加单，是5月后段必须停止的动作。",
+    },
+    大唐电信: {
+      tags: ["后排替代", "非第一"],
+      verdict: "可避免",
+      lessonType: "error",
+      lesson: "大唐主线里没有做唯一高辨识度核心，转去后排替代，确定性不足。",
+    },
+    大连热电: {
+      tags: ["后排末端", "低确定性"],
+      verdict: "可避免",
+      lessonType: "error",
+      lesson: "大唐方向后排末端，容错低，不能当核心预期处理。",
+    },
+    华电能源: {
+      tags: ["后排替代", "跟风票"],
+      verdict: "可避免",
+      lessonType: "error",
+      lesson: "华能/电力线里的跟风票，不能给核心预期。",
+    },
+    粤电力A: {
+      tags: ["非唯一中高位", "弱转强误判"],
+      verdict: "可避免",
+      lessonType: "error",
+      lesson: "有身位不等于唯一辨识度，中高位没有唯一性时不能左侧硬做。",
+    },
+    中京电子: {
+      tags: ["非第一趋势", "非模式"],
+      verdict: "可避免",
+      lessonType: "error",
+      lesson: "趋势题材里非第一名，不能按核心龙头模式处理。",
+    },
+    圣阳股份: {
+      tags: ["非模式", "尾盘试错"],
+      verdict: "可避免",
+      lessonType: "error",
+      lesson: "非模式标的和尾盘试错不应进入月度主战场。",
+    },
+    京能电力: {
+      tags: ["买点过急", "非唯一"],
+      verdict: "可避免",
+      lessonType: "error",
+      lesson: "开盘快速成交、买点太急，标的地位也不够唯一。",
+    },
+  };
+  const preset = presets[stock.name];
+  if (preset) return preset;
+  if (!stock.pnlKnown) {
+    return { tags: ["待核算"], verdict: "不确定", lessonType: "neutral", lesson: "贡献待核算，先保留买卖点和完整流水。" };
+  }
+  if (stock.pnl > 0) {
+    return {
+      tags: stock.pnl > 500 ? ["正贡献", "需验证核心地位"] : ["轻仓套利", "小额正贡献"],
+      verdict: stock.pnl > 500 ? "不确定" : "不确定",
+      lessonType: "copy",
+      lesson: stock.pnl > 500 ? "正贡献较明显，但仍需确认是否来自核心地位。" : "小额盈利只可作为轻仓套利样本，不能升级为主线。",
+    };
+  }
+  return {
+    tags: stock.pnl < -500 ? ["负贡献", "需查第一性"] : ["小亏闭环", "买点复盘"],
+    verdict: stock.pnl < -500 ? "可避免" : "不确定",
+    lessonType: "error",
+    lesson: stock.pnl < -500 ? "负贡献较大，优先检查是否偏离第一性、唯一性或出现亏损后加仓。" : "小亏闭环，重点检查买点是否过急、标的地位是否不够。",
+  };
+}
+
+function renderChips(items, extraClass = "") {
+  return items.map((item) => `<span class="mini-chip ${extraClass}">${escapeHtml(item)}</span>`).join("");
+}
+
 function buildModel() {
   const sources = sourceDefs.map(buildSource);
   const sourceMap = new Map(sources.map((source) => [source.id, source]));
@@ -631,13 +737,20 @@ function buildModel() {
     const pnlKnown = stock.contributionEntries.length > 0;
     const pnl = pnlKnown ? stock.contributionEntries.reduce((sum, entry) => sum + Number(entry.value || 0), 0) : null;
     const chartSources = sources.filter((source) => stock.trades.some((trade) => trade.sourceIds.includes(source.id)));
-    return {
+    const built = {
       ...stock,
       pnlKnown,
       pnl,
       sourceLabels: [...stock.sources],
       chartSources,
       note: [...new Set(stock.notes)].filter(Boolean).slice(0, 3).join("；") || judgment(stock, pnl || 0),
+    };
+    return {
+      ...built,
+      audit: stockAudit(built),
+      firstTradeTime: stock.trades
+        .map((trade) => `${trade.date} ${trade.time}`)
+        .sort()[0] || "",
     };
   });
 
@@ -665,6 +778,8 @@ function renderRankRows(stocks, positive) {
     <td><strong>${escapeHtml(stock.name)}</strong><br><small>${escapeHtml(stock.code)}</small></td>
     <td class="${stock.pnl >= 0 ? "pos" : "neg"}"><strong>${moneySigned(stock.pnl)}</strong></td>
     <td>${escapeHtml(stock.sourceLabels.join(" / "))}</td>
+    <td><div class="tag-row">${renderChips(stock.audit.tags)}</div></td>
+    <td><span class="chip ${stock.audit.verdict === "值得复制" ? "pos" : stock.audit.verdict === "可避免" ? "neg" : "warn"}">${escapeHtml(positive ? `可复制性：${stock.audit.verdict}` : `可避免性：${stock.audit.verdict}`)}</span></td>
     <td>${escapeHtml(judgment(stock, stock.pnl))}</td>
   </tr>`).join("");
 }
@@ -675,7 +790,7 @@ function renderUnknownRows(stocks) {
   return `<section class="panel"><h2>待核算标的</h2><p class="section-note">这些票有成交事实和买卖点，但源周未给出可确认成本或闭环贡献，先不硬塞进盈亏排行。</p><div class="mini-grid">${rows.map((stock) => `<span><b>${escapeHtml(stock.name)} ${escapeHtml(stock.code)}</b>${escapeHtml(stock.sourceLabels.join(" / "))}</span>`).join("")}</div></section>`;
 }
 
-function renderStockGroup(stock, model) {
+function renderStockGroup(stock, model, openSet) {
   const flow = stock.trades.map((trade) => `<div class="flow-item"><b class="${trade.side === "买入" ? "neg" : "blue"}">${trade.side}</b> ${trade.date} ${trade.time}<br>${fmt3(trade.price)} / ${fmt0(trade.qty)} 股 · ${escapeHtml(trade.sources.join(" / "))}</div>`).join("");
   const chartStack = stock.chartSources.map((source) => {
     const trades = stock.trades.filter((trade) => trade.sourceIds.includes(source.id));
@@ -683,10 +798,18 @@ function renderStockGroup(stock, model) {
     const chart = staticMap || renderTradeMap(trades, source.series?.[stock.code] || [], stock, source);
     return `<article class="chart-card"><div class="card-head"><span class="chip">${escapeHtml(source.label)}</span><a class="blue" href="${source.href}">来源周复盘</a></div>${chart}</article>`;
   }).join("");
+  const lessonClass = stock.audit.lessonType === "copy" ? "pos" : stock.audit.lessonType === "error" ? "neg" : "warn";
+  const lessonTitle = stock.audit.lessonType === "copy" ? "关键复制点" : stock.audit.lessonType === "error" ? "关键错误点" : "关键观察点";
+  const openAttr = openSet.has(stock.code) ? " open" : "";
   return `<section class="stock-group" id="stock-${escapeHtml(stock.code)}">
-    <div class="stock-group-head"><div><h3>${escapeHtml(stock.name)} <small>${escapeHtml(stock.code)}</small></h3><p>${escapeHtml(stock.note)}</p></div><span class="chip ${stock.pnl == null ? "" : stock.pnl >= 0 ? "pos" : "neg"}">${stock.pnlKnown ? moneySigned(stock.pnl) : "待核算"}</span></div>
-    <div><h4>完整成交流水</h4><div class="flow-list">${flow}</div></div>
-    <div class="chart-stack">${chartStack}</div>
+    <details class="stock-detail"${openAttr}>
+      <summary><div class="stock-group-head"><div><h3>${escapeHtml(stock.name)} <small>${escapeHtml(stock.code)}</small></h3><p>${escapeHtml(stock.note)}</p><div class="tag-row">${renderChips(stock.audit.tags)}</div></div><span class="chip ${stock.pnl == null ? "" : stock.pnl >= 0 ? "pos" : "neg"}">${stock.pnlKnown ? moneySigned(stock.pnl) : "待核算"}</span></div></summary>
+      <div class="stock-detail-body">
+        <div class="lesson-box ${lessonClass}"><b>${lessonTitle}</b><p>${escapeHtml(stock.audit.lesson)}</p></div>
+        <div><h4>完整成交流水</h4><div class="flow-list">${flow}</div></div>
+        <div class="chart-stack">${chartStack}</div>
+      </div>
+    </details>
   </section>`;
 }
 
@@ -699,12 +822,64 @@ function renderTradesTable(trades) {
   </tr>`).join("");
 }
 
-function renderStockNavLinks(stocks) {
-  return stocks.map((stock) => {
+function renderStockNavLinks(stocks, title) {
+  return `<div class="stock-nav-mode">${escapeHtml(title)}</div>${stocks.map((stock) => {
     const pnlClass = stock.pnlKnown ? (stock.pnl >= 0 ? "pos" : "neg") : "warn";
     const pnlText = stock.pnlKnown ? moneySigned(stock.pnl) : "待核算";
     return `<a href="#stock-${escapeHtml(stock.code)}"><span>${escapeHtml(stock.name)} <small>${escapeHtml(stock.code)}</small></span><b class="${pnlClass}">${pnlText}</b></a>`;
-  }).join("");
+  }).join("")}`;
+}
+
+function renderVerdictSection() {
+  return `<section class="panel verdict-panel" id="verdict">
+    <div class="card-head"><div><h2>本月最大错误</h2><p class="section-note">审判结论先行：5月亏损不是买卖点单点问题，而是交易对象偏离第一唯一性。</p></div><span class="chip neg">主罪</span></div>
+    <div class="verdict-grid">
+      <article class="verdict-card danger"><h3>放弃第一龙头，转做后排替代</h3><p>华电辽能、大唐电信、大连热电、华能蒙电等亏损共同指向同一件事：题材热不等于个股有地位，非第一没有核心预期。</p></article>
+      <article class="verdict-card danger"><h3>止损没有真正切断风险</h3><p>华电辽能止损后快速回补，华能蒙电亏损后加单，说明卖出动作没有完成风险切断，反而把错误延长。</p></article>
+      <article class="verdict-card"><h3>正确样本已经很清楚</h3><p>神剑股份、通鼎互联、大有能源、达实智能显示：利润来自唯一性、第一性和围绕核心处理，而不是扩散撒网。</p></article>
+    </div>
+  </section>`;
+}
+
+function renderScoresSection() {
+  const scores = [
+    ["定龙质量", "2/5", "有通鼎互联、达实智能、大有能源等正确样本，但最大亏损来自放弃第一、转做后排。", "neg"],
+    ["执行纪律", "1/5", "止损后回补、亏损后加单、临盘扩散仍出现，是本月最需要审判的执行问题。", "neg"],
+    ["仓位集中度", "2/5", "扩展样本 34 只、159 笔，标的数量明显偏多，注意力被后排和非模式标的稀释。", "warn"],
+    ["风控质量", "1/5", "多笔亏损属于可避免亏损，风险没有在第一次卖出时结束。", "neg"],
+    ["买卖点质量", "2/5", "部分核心票处理有效，但京能电力、华能蒙电等买点过急，买卖点质量被选股错误拖垮。", "warn"],
+  ];
+  return `<section class="panel" id="scores"><h2>五项评分</h2><p class="section-note">评分服务于审判，不做安慰分；分低的地方就是下月最先修的地方。</p><div class="score-grid">${scores.map(([name, score, note, cls]) => `<article class="score-card ${cls}"><div><h3>${name}</h3><strong>${score}</strong></div><p>${note}</p></article>`).join("")}</div></section>`;
+}
+
+function renderCoreTicketSection() {
+  const rows = [
+    ["月前参考：神剑股份", "神剑股份", "神剑股份", "是", "定龙正确，贡献突出，可复制。"],
+    ["5月主正样本：通鼎互联", "通鼎互联", "通鼎互联", "是", "唯一明确大幅正贡献，说明主线核心嗅觉在线。"],
+    ["大唐方向", "大唐发电", "大唐电信 / 大连热电", "否", "做了后排替代，题材热被误当成个股地位。"],
+    ["华能/电力方向", "阶段第一辨识度核心", "华电辽能 / 华能蒙电 / 华电能源", "否", "跟风与非唯一中高位反复亏损，且出现回补和加单。"],
+    ["5月后段修复：达实智能", "达实智能", "达实智能", "是", "核心处理较有效，但仍要避免扩散到弱票。"],
+    ["月后参考：大有能源", "大有能源", "大有能源", "是", "第一性和唯一性验证后，持仓浮盈放大利润。"],
+  ];
+  return `<section class="panel" id="core"><h2>本月真正应该做的核心票</h2><p class="section-note">轻量定龙判断只判“是否围绕第一唯一性”，不展开五维打分。</p><div class="table-wrap"><table class="audit-table"><thead><tr><th>阶段</th><th>真正应该盯的核心</th><th>实际交易</th><th>定龙是否正确</th><th>审判</th></tr></thead><tbody>${rows.map(([phase, core, actual, ok, note]) => `<tr><td>${phase}</td><td><strong>${core}</strong></td><td>${actual}</td><td><span class="chip ${ok === "是" ? "pos" : "neg"}">${ok}</span></td><td>${note}</td></tr>`).join("")}</tbody></table></div></section>`;
+}
+
+function renderChecklistSection() {
+  const checklist = [
+    "只做市场第一辨识度和唯一性最强标的；第一名无机会才看第二名。",
+    "无明确核心龙头时，只允许轻仓套利，不做中高位非唯一左侧。",
+    "止损后当天不回补同一错误仓位；亏损后不加单。",
+    "观察与操作总标的不超过 8 只，日常聚焦 5-6 只核心。",
+    "每笔交易先写清：它是核心龙头、轻仓套利，还是必须放弃的后排。",
+  ];
+  const redLines = [
+    "非第一不做",
+    "后排替代不做",
+    "非模式不做",
+    "亏损后不加单",
+    "止损后不立刻买回",
+  ];
+  return `<section class="panel" id="checklist"><h2>下月执行清单与红线</h2><p class="section-note">6月复盘必须逐条回看：做到就是规则，没做到就是继续审判。</p><div class="grid-2"><article class="card"><h3>下月只执行</h3><ol class="check-list">${checklist.map((item) => `<li>${item}</li>`).join("")}</ol></article><article class="card"><h3>红线清单</h3><div class="redline-list">${redLines.map((item) => `<span>${item}</span>`).join("")}</div><p>本月没有上一份月度红线可回查；从这页开始，下一月必须对照执行结果。</p></article></div></section>`;
 }
 
 function renderPage(model) {
@@ -715,17 +890,22 @@ function renderPage(model) {
     const bv = b.pnlKnown ? Math.abs(b.pnl) : -1;
     return bv - av || a.name.localeCompare(b.name, "zh-CN");
   });
+  const timeStocks = [...model.stocks].sort((a, b) => a.firstTradeTime.localeCompare(b.firstTradeTime) || a.name.localeCompare(b.name, "zh-CN"));
+  const openSet = new Set([
+    ...model.stocks.filter((stock) => stock.pnlKnown && stock.pnl > 0).sort((a, b) => b.pnl - a.pnl).slice(0, 3).map((stock) => stock.code),
+    ...model.stocks.filter((stock) => stock.pnlKnown && stock.pnl < 0).sort((a, b) => a.pnl - b.pnl).slice(0, 5).map((stock) => stock.code),
+  ]);
   const css = `
     :root{--bg:#f5f7f9;--panel:#fff;--ink:#1c2530;--muted:#667085;--line:#dfe4ea;--soft:#eef2f5;--accent:#c2412d;--accent-soft:#fff1ed;--up:#14845f;--down:#b4232f;--warn:#b76305;--blue:#1d4ed8;--shadow:0 18px 44px rgba(28,37,48,.08);--radius:10px}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:linear-gradient(180deg,#f8fafc 0%,#eef2f5 100%);font-family:"Avenir Next","PingFang SC","Noto Sans SC","Microsoft YaHei",Arial,sans-serif}a{color:inherit}.shell{width:min(1480px,calc(100vw - 24px));margin:0 auto;padding:18px 0 52px;display:grid;gap:18px}.hero,.panel,.source-item,.stock-group,.chart-card,.card{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);min-width:0}.hero{padding:30px;display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:stretch}.label{display:inline-flex;width:max-content;color:var(--accent);background:var(--accent-soft);padding:7px 10px;border-radius:999px;font-size:12px;font-weight:700}.nav{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.button{min-height:44px;display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:8px;text-decoration:none;background:var(--ink);color:#fff;font-weight:700}.button.secondary{background:#fff;color:var(--ink);border:1px solid var(--line)}h1,h2,h3,h4,p{margin-top:0;letter-spacing:0}h1{margin:14px 0 12px;font-size:clamp(34px,4vw,56px);line-height:1.06}h2{font-size:24px;margin-bottom:8px}h3{font-size:20px;margin-bottom:6px}h4{font-size:15px;margin-bottom:8px}p,li{color:var(--muted);line-height:1.72}.hero p{font-size:16px;max-width:850px}.metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.metric{padding:16px;border:1px solid var(--line);border-radius:8px;background:#f8fafc;display:grid;align-content:space-between;min-height:120px}.metric span,.metric small{color:var(--muted);font-size:12px}.metric strong{font-size:25px}.panel,.stock-group{padding:22px}.source-row{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}.source-item{padding:16px;display:grid;gap:8px}.source-item strong{font-size:18px}.source-item a,.blue{color:var(--blue);font-weight:700}.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}.grid-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.card{box-shadow:none;padding:16px;background:#f8fafc}.card-head,.stock-group-head,.trade-map-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}.section-note{margin:0 0 16px;color:var(--muted)}.table-wrap{width:100%;overflow:auto;border:1px solid var(--line);border-radius:8px}table{width:100%;border-collapse:collapse;min-width:1040px;font-size:13px}th,td{padding:12px 11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;line-height:1.55}th{color:var(--muted);background:#f8fafc;position:sticky;top:0}small{color:var(--muted)}.pos{color:var(--up)}.neg{color:var(--down)}.warn{color:var(--warn)}.blue{color:var(--blue)}.chip{display:inline-flex;align-items:center;width:max-content;min-height:32px;padding:7px 10px;border-radius:999px;background:#eef2ff;color:#344054;font-size:12px;font-weight:700;white-space:nowrap}.chip.pos{background:#ecfdf3;color:#067647}.chip.neg{background:#fef2f2;color:#991b1b}.chip.warn{background:#fff7ed;color:#9a3412}.flow-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px}.flow-item{min-height:58px;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:#f8fafc;color:var(--muted);font-size:12px;line-height:1.55}.chart-stack{display:grid;gap:14px;margin-top:14px}.chart-card{padding:14px;box-shadow:none;background:#fff}.trade-map{margin-top:12px;padding:14px;border:1px solid var(--line);border-radius:8px;background:#f8fafc;display:grid;gap:12px;min-width:0}.trade-legend{display:flex;flex-wrap:wrap;gap:8px;color:var(--muted);font-size:12px}.legend-item{display:inline-flex;align-items:center;gap:5px}.legend-shape{width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent}.legend-shape.buy{border-bottom:11px solid var(--down)}.legend-shape.sell{border-top:11px solid var(--blue)}.trade-chart-wrap{width:100%;overflow:hidden}.trade-chart{width:100%;min-height:220px;display:block}.axis-label{fill:var(--muted);font-size:11px}.point-label{fill:var(--ink);font-size:11px;font-weight:700;paint-order:stroke;stroke:#fff;stroke-width:3px}.market-line{fill:none;stroke:#14956f;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.trade-context{display:grid;gap:6px;margin:0;padding-left:18px}.trade-context li{font-size:13px;line-height:1.55;color:var(--muted)}.trade-point-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.trade-point-item{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:40px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:#fff;font-size:12px;color:var(--muted);min-width:0}.trade-point-item span{min-width:0;overflow-wrap:anywhere}.trade-point-item strong{color:var(--ink);white-space:nowrap}.trade-point-item .buy{color:var(--down);font-weight:700}.trade-point-item .sell{color:var(--blue);font-weight:700}details{border:1px solid var(--line);border-radius:var(--radius);background:#fff;overflow:hidden;min-width:0}summary{cursor:pointer;padding:16px 18px;font-weight:700;min-height:48px}.side-tag.buy{color:var(--down);font-weight:700}.side-tag.sell{color:var(--blue);font-weight:700}.mini-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}.mini-grid span{background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:10px;color:var(--muted);font-size:13px;min-width:0}.mini-grid b{display:block;color:var(--ink);margin-bottom:4px;overflow-wrap:anywhere}@media(max-width:1120px){.hero,.grid-2,.grid-4,.source-row{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:720px){.shell{width:min(100vw - 16px,1480px);padding-top:12px}.hero,.panel,.stock-group{padding:18px}.nav{display:grid;grid-template-columns:1fr 1fr}.button{width:100%;padding-left:10px;padding-right:10px}.metrics,.trade-point-list{grid-template-columns:1fr}h1{font-size:34px}.stock-group-head,.card-head,.trade-map-head{flex-wrap:wrap}.trade-chart-wrap{overflow-x:auto}.trade-chart{width:760px;max-width:none;min-height:0}table{font-size:12px}.flow-list{grid-template-columns:1fr}}`;
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:linear-gradient(180deg,#f8fafc 0%,#eef2f5 100%);font-family:"Avenir Next","PingFang SC","Noto Sans SC","Microsoft YaHei",Arial,sans-serif}a{color:inherit}.shell{width:min(1480px,calc(100vw - 24px));margin:0 auto;padding:18px 0 52px;display:grid;gap:18px}.hero,.panel,.source-item,.stock-group,.chart-card,.card{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);min-width:0}.hero{padding:30px;display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:stretch}.label{display:inline-flex;width:max-content;color:var(--accent);background:var(--accent-soft);padding:7px 10px;border-radius:999px;font-size:12px;font-weight:700}.nav{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.button{min-height:44px;display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:8px;text-decoration:none;background:var(--ink);color:#fff;font-weight:700}.button.secondary{background:#fff;color:var(--ink);border:1px solid var(--line)}h1,h2,h3,h4,p{margin-top:0;letter-spacing:0}h1{margin:14px 0 12px;font-size:clamp(34px,4vw,56px);line-height:1.06}h2{font-size:24px;margin-bottom:8px}h3{font-size:20px;margin-bottom:6px}h4{font-size:15px;margin-bottom:8px}p,li{color:var(--muted);line-height:1.72}.hero p{font-size:16px;max-width:850px}.metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.metric{padding:16px;border:1px solid var(--line);border-radius:8px;background:#f8fafc;display:grid;align-content:space-between;min-height:120px}.metric span,.metric small{color:var(--muted);font-size:12px}.metric strong{font-size:25px}.panel,.stock-group{padding:22px}.source-row{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}.source-item{padding:16px;display:grid;gap:8px}.source-item strong{font-size:18px}.source-item a,.blue{color:var(--blue);font-weight:700}.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}.grid-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.card{box-shadow:none;padding:16px;background:#f8fafc}.card-head,.stock-group-head,.trade-map-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}.section-note{margin:0 0 16px;color:var(--muted)}.table-wrap{width:100%;overflow:auto;border:1px solid var(--line);border-radius:8px}table{width:100%;border-collapse:collapse;min-width:1180px;font-size:13px}th,td{padding:12px 11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;line-height:1.55}th{color:var(--muted);background:#f8fafc;position:sticky;top:0}small{color:var(--muted)}.pos{color:var(--up)}.neg{color:var(--down)}.warn{color:var(--warn)}.blue{color:var(--blue)}.chip{display:inline-flex;align-items:center;width:max-content;min-height:32px;padding:7px 10px;border-radius:999px;background:#eef2ff;color:#344054;font-size:12px;font-weight:700;white-space:nowrap}.chip.pos{background:#ecfdf3;color:#067647}.chip.neg{background:#fef2f2;color:#991b1b}.chip.warn{background:#fff7ed;color:#9a3412}.flow-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px}.flow-item{min-height:58px;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:#f8fafc;color:var(--muted);font-size:12px;line-height:1.55}.chart-stack{display:grid;gap:14px;margin-top:14px}.chart-card{padding:14px;box-shadow:none;background:#fff}.trade-map{margin-top:12px;padding:14px;border:1px solid var(--line);border-radius:8px;background:#f8fafc;display:grid;gap:12px;min-width:0}.trade-legend{display:flex;flex-wrap:wrap;gap:8px;color:var(--muted);font-size:12px}.legend-item{display:inline-flex;align-items:center;gap:5px}.legend-shape{width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent}.legend-shape.buy{border-bottom:11px solid var(--down)}.legend-shape.sell{border-top:11px solid var(--blue)}.trade-chart-wrap{width:100%;overflow:hidden}.trade-chart{width:100%;min-height:220px;display:block}.axis-label{fill:var(--muted);font-size:11px}.point-label{fill:var(--ink);font-size:11px;font-weight:700;paint-order:stroke;stroke:#fff;stroke-width:3px}.market-line{fill:none;stroke:#14956f;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.trade-context{display:grid;gap:6px;margin:0;padding-left:18px}.trade-context li{font-size:13px;line-height:1.55;color:var(--muted)}.trade-point-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.trade-point-item{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:40px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:#fff;font-size:12px;color:var(--muted);min-width:0}.trade-point-item span{min-width:0;overflow-wrap:anywhere}.trade-point-item strong{color:var(--ink);white-space:nowrap}.trade-point-item .buy{color:var(--down);font-weight:700}.trade-point-item .sell{color:var(--blue);font-weight:700}details{border:1px solid var(--line);border-radius:var(--radius);background:#fff;overflow:hidden;min-width:0}summary{cursor:pointer;padding:16px 18px;font-weight:700;min-height:48px}.side-tag.buy{color:var(--down);font-weight:700}.side-tag.sell{color:var(--blue);font-weight:700}.mini-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}.mini-grid span{background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:10px;color:var(--muted);font-size:13px;min-width:0}.mini-grid b{display:block;color:var(--ink);margin-bottom:4px;overflow-wrap:anywhere}.tag-row{display:flex;flex-wrap:wrap;gap:6px}.mini-chip{display:inline-flex;align-items:center;min-height:26px;padding:5px 8px;border-radius:999px;background:#eef2ff;color:#344054;font-size:12px;font-weight:700}.verdict-grid,.score-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.score-grid{grid-template-columns:repeat(5,minmax(0,1fr))}.verdict-card,.score-card{border:1px solid var(--line);border-radius:8px;background:#f8fafc;padding:16px;min-width:0}.verdict-card.danger,.score-card.neg{background:#fff7f7;border-color:#f3c8cd}.score-card.warn{background:#fffaf0;border-color:#f2d39c}.score-card div{display:flex;justify-content:space-between;gap:10px}.score-card strong{font-size:24px}.lesson-box{border:1px solid var(--line);border-radius:8px;padding:12px 14px;background:#f8fafc;margin:12px 0}.lesson-box p{margin:4px 0 0}.lesson-box.pos{background:#f0fdf4;border-color:#bbf7d0}.lesson-box.neg{background:#fff7f7;border-color:#f3c8cd}.stock-detail summary{padding:0}.stock-detail-body{display:grid;gap:14px;padding-top:12px}.check-list{margin:0;padding-left:20px}.redline-list{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}.redline-list span{display:inline-flex;padding:7px 10px;border-radius:999px;background:#fef2f2;color:#991b1b;font-weight:800;font-size:12px}.audit-table{min-width:980px}@media(max-width:1120px){.hero,.grid-2,.grid-4,.source-row,.verdict-grid,.score-grid{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:720px){.shell{width:min(100vw - 16px,1480px);padding-top:12px}.hero,.panel,.stock-group{padding:18px}.nav{display:grid;grid-template-columns:1fr 1fr}.button{width:100%;padding-left:10px;padding-right:10px}.metrics,.trade-point-list{grid-template-columns:1fr}h1{font-size:34px}.stock-group-head,.card-head,.trade-map-head{flex-wrap:wrap}.trade-chart-wrap{overflow-x:auto}.trade-chart{width:760px;max-width:none;min-height:0}table{font-size:12px}.flow-list{grid-template-columns:1fr}}`;
   const sidebarCss = `
-    .page-layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:18px;align-items:start}.content{display:grid;gap:18px;min-width:0}.sidebar{position:sticky;top:18px;align-self:start;min-width:0}.sidebar-inner{background:rgba(255,255,255,.97);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px;display:grid;gap:14px}.sidebar-brand{display:grid;gap:3px;padding:10px 10px 12px;text-decoration:none;border-bottom:1px solid var(--line)}.sidebar-brand span{color:var(--muted);font-size:12px;font-weight:700}.sidebar-brand strong{font-size:20px;line-height:1.2}.side-nav{display:grid;gap:6px}.side-nav a{min-height:40px;display:flex;align-items:center;padding:9px 10px;border-radius:8px;color:var(--muted);font-size:14px;font-weight:700;text-decoration:none}.side-nav a:hover,.side-nav a:focus-visible{background:#f8fafc;color:var(--ink);outline:2px solid transparent}.side-nav a.primary{background:var(--ink);color:#fff}.stock-nav{border:1px solid var(--line);border-radius:8px;background:#f8fafc;overflow:hidden;min-width:0}.stock-nav summary{min-height:40px;padding:9px 10px;display:flex;align-items:center;justify-content:space-between;gap:8px;color:var(--ink);font-size:14px;font-weight:800;list-style:none}.stock-nav summary::-webkit-details-marker{display:none}.stock-nav summary::after{content:"展开";color:var(--muted);font-size:12px;font-weight:700}.stock-nav[open] summary::after{content:"收起"}.stock-nav-list{max-height:360px;overflow:auto;padding:0 8px 8px;display:grid;gap:4px}.stock-nav-list a{min-height:34px;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:7px 8px;border-radius:7px;color:var(--muted);font-size:12px;font-weight:700;text-decoration:none}.stock-nav-list a:hover,.stock-nav-list a:focus-visible{background:#fff;color:var(--ink);outline:2px solid transparent}.stock-nav-list span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.stock-nav-list small{font-size:11px}.stock-nav-list b{font-size:11px;white-space:nowrap}.side-nav.external{padding-top:12px;border-top:1px solid var(--line)}.sidebar-meta{padding:10px;border:1px solid var(--line);border-radius:8px;background:#f8fafc;display:grid;gap:4px}.sidebar-meta b{font-size:15px}.sidebar-meta span{color:var(--muted);font-size:12px}.hero .nav{display:none}.anchor{display:block;height:0;scroll-margin-top:18px;visibility:hidden}.stock-group{scroll-margin-top:18px}@media(max-width:1120px){.page-layout{grid-template-columns:1fr}.sidebar{position:static}.side-nav{grid-template-columns:repeat(4,minmax(0,1fr))}.stock-nav-list{max-height:260px}.side-nav.external{grid-template-columns:repeat(3,minmax(0,1fr));padding-top:0;border-top:0}.sidebar-meta{display:none}}@media(max-width:720px){.side-nav{grid-template-columns:repeat(2,minmax(0,1fr))}.side-nav.external{grid-template-columns:repeat(3,minmax(0,1fr))}.side-nav a{justify-content:center;text-align:center}.stock-nav summary{justify-content:center}.stock-nav-list{grid-template-columns:1fr;max-height:240px}.sidebar-inner{padding:12px}.sidebar-brand{display:none}}`;
+    .page-layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:18px;align-items:start}.content{display:grid;gap:18px;min-width:0}.sidebar{position:sticky;top:18px;align-self:start;min-width:0}.sidebar-inner{background:rgba(255,255,255,.97);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px;display:grid;gap:14px}.sidebar-brand{display:grid;gap:3px;padding:10px 10px 12px;text-decoration:none;border-bottom:1px solid var(--line)}.sidebar-brand span{color:var(--muted);font-size:12px;font-weight:700}.sidebar-brand strong{font-size:20px;line-height:1.2}.side-nav{display:grid;gap:6px}.side-nav a{min-height:40px;display:flex;align-items:center;padding:9px 10px;border-radius:8px;color:var(--muted);font-size:14px;font-weight:700;text-decoration:none}.side-nav a:hover,.side-nav a:focus-visible{background:#f8fafc;color:var(--ink);outline:2px solid transparent}.side-nav a.primary{background:var(--ink);color:#fff}.stock-nav{border:1px solid var(--line);border-radius:8px;background:#f8fafc;overflow:hidden;min-width:0}.stock-nav summary{min-height:40px;padding:9px 10px;display:flex;align-items:center;justify-content:space-between;gap:8px;color:var(--ink);font-size:14px;font-weight:800;list-style:none}.stock-nav summary::-webkit-details-marker{display:none}.stock-nav summary::after{content:"展开";color:var(--muted);font-size:12px;font-weight:700}.stock-nav[open] summary::after{content:"收起"}.stock-nav-list{max-height:360px;overflow:auto;padding:0 8px 8px;display:grid;gap:4px}.stock-nav-mode{padding:8px 8px 2px;color:var(--ink);font-size:12px;font-weight:900}.stock-nav-list a{min-height:34px;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:7px 8px;border-radius:7px;color:var(--muted);font-size:12px;font-weight:700;text-decoration:none}.stock-nav-list a:hover,.stock-nav-list a:focus-visible{background:#fff;color:var(--ink);outline:2px solid transparent}.stock-nav-list span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.stock-nav-list small{font-size:11px}.stock-nav-list b{font-size:11px;white-space:nowrap}.side-nav.external{padding-top:12px;border-top:1px solid var(--line)}.sidebar-meta{padding:10px;border:1px solid var(--line);border-radius:8px;background:#f8fafc;display:grid;gap:4px}.sidebar-meta b{font-size:15px}.sidebar-meta span{color:var(--muted);font-size:12px}.hero .nav{display:none}.anchor{display:block;height:0;scroll-margin-top:18px;visibility:hidden}.stock-group{scroll-margin-top:18px}@media(max-width:1120px){.page-layout{grid-template-columns:1fr}.sidebar{position:static}.side-nav{grid-template-columns:repeat(4,minmax(0,1fr))}.stock-nav-list{max-height:260px}.side-nav.external{grid-template-columns:repeat(3,minmax(0,1fr));padding-top:0;border-top:0}.sidebar-meta{display:none}}@media(max-width:720px){.side-nav{grid-template-columns:repeat(2,minmax(0,1fr))}.side-nav.external{grid-template-columns:repeat(3,minmax(0,1fr))}.side-nav a{justify-content:center;text-align:center}.stock-nav summary{justify-content:center}.stock-nav-list{grid-template-columns:1fr;max-height:240px}.sidebar-inner{padding:12px}.sidebar-brand{display:none}}`;
   const sourceCards = model.sources.map((source) => `<article class="source-item">
     <strong>${source.label}</strong><b class="${source.accountPnl >= 0 ? "pos" : "neg"}">${moneySigned(source.accountPnl)}</b>
     <span class="chip ${source.includedInMay ? "pos" : "warn"}">${source.role}</span>
     <p>${escapeHtml(source.note)}</p><a href="${source.href}">周复盘</a>
   </article>`).join("");
-  const stockNavLinks = renderStockNavLinks(detailStocks);
+  const stockNavLinks = `${renderStockNavLinks(detailStocks, "按盈亏/重要性")}${renderStockNavLinks(timeStocks, "按成交时间")}`;
   return `<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -742,10 +922,14 @@ function renderPage(model) {
           <a class="sidebar-brand" href="#top"><span>2026年5月</span><strong>月度复盘</strong></a>
           <nav class="side-nav" aria-label="本页导航">
             <a class="primary" href="#top">本月概览</a>
+            <a href="#verdict">最大错误</a>
+            <a href="#scores">五项评分</a>
+            <a href="#core">核心票对照</a>
             <a href="#sources">周度来源</a>
             <a href="#ranks">盈亏排行</a>
             <a href="#patterns">共性问题</a>
             <a href="#rules">落地铁律</a>
+            <a href="#checklist">下月清单</a>
             <a href="#stocks">买卖点地图</a>
             <a href="#trades">成交明细</a>
           </nav>
@@ -766,6 +950,7 @@ function renderPage(model) {
       <div>
         <span class="label">2026年5月 · 自然月结果 + 前后参考周扩展样本</span>
         <h1>5月月度交易复盘</h1>
+        <p><strong class="neg">本月最大错误：</strong>放弃市场第一唯一性，转去做后排替代，并在亏损后回补/加单。</p>
         <p>5月账户结果仍按自然月周复盘 05.08-05.29 统计；同时把 04.20-04.24、05.08-05.16、06.01-06.05 的对应标的、成交时间、盈亏贡献和分时买卖点全部纳入下方扩展样本，用来抓出“定龙正确赚钱、后排替代亏钱”的共性。</p>
         <div class="nav"><a class="button" href="../">月/季导航</a><a class="button secondary" href="../../weekly-trading-review/">周度主页</a><a class="button secondary" href="../../index.html">总首页</a><a class="button secondary" href="#stocks">买卖点地图</a></div>
       </div>
@@ -776,26 +961,31 @@ function renderPage(model) {
         <article class="metric"><span>买卖点地图</span><strong>${model.sourceStockPairs} 张</strong><small>每个来源周股票独立保留分时图</small></article>
       </div>
     </section>
-    <section class="panel"><h2>周度来源</h2><p class="section-note">来源周不只做入口：所有来源周的票都已进入下方排行、成交流水和买卖点地图。5月自然月账户结果仍只取05.08-05.29，前后两周用于共性对照。</p><div class="source-row">${sourceCards}</div></section>
+    ${renderVerdictSection()}
+    ${renderScoresSection()}
+    ${renderCoreTicketSection()}
+    <section class="panel" id="sources"><h2>周度来源</h2><p class="section-note">来源周不只做入口：所有来源周的票都已进入下方排行、成交流水和买卖点地图。5月自然月账户结果仍只取05.08-05.29，前后两周用于共性对照。</p><div class="source-row">${sourceCards}</div></section>
+    <span id="ranks" class="anchor"></span>
     <section class="grid-2">
-      <article class="panel"><h2>盈利排行</h2><p class="section-note">扩展样本口径；有期末持仓的来源周按期末持仓浮盈浮亏展示。</p><div class="table-wrap"><table><thead><tr><th>标的</th><th>贡献</th><th>来源</th><th>月度判断</th></tr></thead><tbody>${positiveRows}</tbody></table></div></article>
-      <article class="panel"><h2>亏损排行</h2><p class="section-note">亏损根源集中在后排替代核心、止损后回补、非唯一中高位左侧和亏损后加单。</p><div class="table-wrap"><table><thead><tr><th>标的</th><th>贡献</th><th>来源</th><th>月度判断</th></tr></thead><tbody>${negativeRows}</tbody></table></div></article>
+      <article class="panel"><h2>盈利排行</h2><p class="section-note">扩展样本口径；有期末持仓的来源周按期末持仓浮盈浮亏展示，并标出是否值得复制。</p><div class="table-wrap"><table><thead><tr><th>标的</th><th>贡献</th><th>来源</th><th>标签</th><th>可复制性</th><th>月度判断</th></tr></thead><tbody>${positiveRows}</tbody></table></div></article>
+      <article class="panel"><h2>亏损排行</h2><p class="section-note">亏损根源集中在后排替代核心、止损后回补、非唯一中高位左侧和亏损后加单，并标出是否可避免。</p><div class="table-wrap"><table><thead><tr><th>标的</th><th>贡献</th><th>来源</th><th>标签</th><th>可避免性</th><th>月度判断</th></tr></thead><tbody>${negativeRows}</tbody></table></div></article>
     </section>
     ${renderUnknownRows(model.stocks)}
-    <section class="panel"><h2>月度共性问题</h2><div class="grid-4">
+    <section class="panel" id="patterns"><h2>月度共性问题</h2><div class="grid-4">
       <article class="card"><div class="card-head"><h3>盈利只来自第一</h3><span class="chip pos">持续</span></div><p>神剑股份、通鼎互联、大有能源、达实智能都说明，利润集中在辨识度最高、最接近核心龙头的标的。</p></article>
       <article class="card"><div class="card-head"><h3>后排替代核心</h3><span class="chip neg">停止</span></div><p>华电辽能、大唐电信、大连热电、华电能源、华能蒙电反复证明：题材热不等于个股有地位。</p></article>
       <article class="card"><div class="card-head"><h3>止损必须切断风险</h3><span class="chip neg">红线</span></div><p>华电辽能止损后快速买回同等仓位，说明卖出动作没有真正完成风险切断。</p></article>
       <article class="card"><div class="card-head"><h3>无龙只轻仓套利</h3><span class="chip warn">执行</span></div><p>没有唯一龙头时，只能轻仓试错；中高位非唯一、亏损后加单和临盘扩散都要压掉。</p></article>
     </div></section>
-    <section class="panel"><h2>落地铁律</h2><div class="grid-4">
+    <section class="panel" id="rules"><h2>落地铁律</h2><div class="grid-4">
       <article class="card"><h3>唯龙头</h3><p>非模式、非核心、非第一标的坚决不做，先定龙再谈买卖点。</p></article>
       <article class="card"><h3>唯唯一性</h3><p>题材内唯一、跨题材唯一、市场高度唯一同时验证；第一名无机会才看第二名。</p></article>
       <article class="card"><h3>精简标的</h3><p>观察与操作总量控制在 8 只以内，日常聚焦 5-6 只核心标的。</p></article>
       <article class="card"><h3>亏损不加单</h3><p>亏损后先降风险，不用回补、补涨、后排幻想修复账户曲线。</p></article>
     </div></section>
+    ${renderChecklistSection()}
     <section class="panel" id="stocks"><h2>每只票的买卖点地图</h2><p class="section-note">每只票先列完整成交时间，再按来源周放真实分钟线买卖点图。重复出现在多个来源周的票，分周保留图，方便对照节奏变化。</p></section>
-    ${detailStocks.map((stock) => renderStockGroup(stock, model)).join("\n")}
+    ${detailStocks.map((stock) => renderStockGroup(stock, model, openSet)).join("\n")}
     <section class="panel" id="trades"><h2>全部成交明细</h2><details open><summary>展开 / 收起合并后的去重成交流水</summary><div class="table-wrap"><table><thead><tr><th>日期</th><th>时间</th><th>代码</th><th>名称</th><th>操作</th><th>数量</th><th>均价</th><th>成交金额</th><th>费用税费</th><th>发生金额</th><th>来源</th></tr></thead><tbody>${renderTradesTable(model.trades)}</tbody></table></div></details></section>
       </div>
     </div>
@@ -816,11 +1006,7 @@ function replaceNth(haystack, needle, replacement, nth = 1) {
 }
 
 function addPageAnchors(html) {
-  let output = replaceNth(html, '<section class="panel"><h2>', '<section class="panel" id="sources"><h2>');
-  output = replaceNth(output, '<section class="grid-2">', '<span id="ranks" class="anchor"></span>\n    <section class="grid-2">');
-  output = replaceNth(output, '<section class="panel"><h2>', '<span id="patterns" class="anchor"></span>\n    <section class="panel"><h2>', 2);
-  output = replaceNth(output, '<section class="panel"><h2>', '<span id="rules" class="anchor"></span>\n    <section class="panel"><h2>', 3);
-  return output;
+  return html;
 }
 
 const model = buildModel();
