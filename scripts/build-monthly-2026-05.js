@@ -710,6 +710,8 @@ function renderPage(model) {
   const css = `
     :root{--bg:#f5f7f9;--panel:#fff;--ink:#1c2530;--muted:#667085;--line:#dfe4ea;--soft:#eef2f5;--accent:#c2412d;--accent-soft:#fff1ed;--up:#14845f;--down:#b4232f;--warn:#b76305;--blue:#1d4ed8;--shadow:0 18px 44px rgba(28,37,48,.08);--radius:10px}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:linear-gradient(180deg,#f8fafc 0%,#eef2f5 100%);font-family:"Avenir Next","PingFang SC","Noto Sans SC","Microsoft YaHei",Arial,sans-serif}a{color:inherit}.shell{width:min(1480px,calc(100vw - 24px));margin:0 auto;padding:18px 0 52px;display:grid;gap:18px}.hero,.panel,.source-item,.stock-group,.chart-card,.card{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);min-width:0}.hero{padding:30px;display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:stretch}.label{display:inline-flex;width:max-content;color:var(--accent);background:var(--accent-soft);padding:7px 10px;border-radius:999px;font-size:12px;font-weight:700}.nav{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.button{min-height:44px;display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:8px;text-decoration:none;background:var(--ink);color:#fff;font-weight:700}.button.secondary{background:#fff;color:var(--ink);border:1px solid var(--line)}h1,h2,h3,h4,p{margin-top:0;letter-spacing:0}h1{margin:14px 0 12px;font-size:clamp(34px,4vw,56px);line-height:1.06}h2{font-size:24px;margin-bottom:8px}h3{font-size:20px;margin-bottom:6px}h4{font-size:15px;margin-bottom:8px}p,li{color:var(--muted);line-height:1.72}.hero p{font-size:16px;max-width:850px}.metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.metric{padding:16px;border:1px solid var(--line);border-radius:8px;background:#f8fafc;display:grid;align-content:space-between;min-height:120px}.metric span,.metric small{color:var(--muted);font-size:12px}.metric strong{font-size:25px}.panel,.stock-group{padding:22px}.source-row{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}.source-item{padding:16px;display:grid;gap:8px}.source-item strong{font-size:18px}.source-item a,.blue{color:var(--blue);font-weight:700}.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}.grid-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.card{box-shadow:none;padding:16px;background:#f8fafc}.card-head,.stock-group-head,.trade-map-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}.section-note{margin:0 0 16px;color:var(--muted)}.table-wrap{width:100%;overflow:auto;border:1px solid var(--line);border-radius:8px}table{width:100%;border-collapse:collapse;min-width:1040px;font-size:13px}th,td{padding:12px 11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;line-height:1.55}th{color:var(--muted);background:#f8fafc;position:sticky;top:0}small{color:var(--muted)}.pos{color:var(--up)}.neg{color:var(--down)}.warn{color:var(--warn)}.blue{color:var(--blue)}.chip{display:inline-flex;align-items:center;width:max-content;min-height:32px;padding:7px 10px;border-radius:999px;background:#eef2ff;color:#344054;font-size:12px;font-weight:700;white-space:nowrap}.chip.pos{background:#ecfdf3;color:#067647}.chip.neg{background:#fef2f2;color:#991b1b}.chip.warn{background:#fff7ed;color:#9a3412}.flow-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px}.flow-item{min-height:58px;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:#f8fafc;color:var(--muted);font-size:12px;line-height:1.55}.chart-stack{display:grid;gap:14px;margin-top:14px}.chart-card{padding:14px;box-shadow:none;background:#fff}.trade-map{margin-top:12px;padding:14px;border:1px solid var(--line);border-radius:8px;background:#f8fafc;display:grid;gap:12px;min-width:0}.trade-legend{display:flex;flex-wrap:wrap;gap:8px;color:var(--muted);font-size:12px}.legend-item{display:inline-flex;align-items:center;gap:5px}.legend-shape{width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent}.legend-shape.buy{border-bottom:11px solid var(--down)}.legend-shape.sell{border-top:11px solid var(--blue)}.trade-chart-wrap{width:100%;overflow:hidden}.trade-chart{width:100%;min-height:220px;display:block}.axis-label{fill:var(--muted);font-size:11px}.point-label{fill:var(--ink);font-size:11px;font-weight:700;paint-order:stroke;stroke:#fff;stroke-width:3px}.market-line{fill:none;stroke:#14956f;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.trade-context{display:grid;gap:6px;margin:0;padding-left:18px}.trade-context li{font-size:13px;line-height:1.55;color:var(--muted)}.trade-point-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.trade-point-item{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:40px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:#fff;font-size:12px;color:var(--muted);min-width:0}.trade-point-item span{min-width:0;overflow-wrap:anywhere}.trade-point-item strong{color:var(--ink);white-space:nowrap}.trade-point-item .buy{color:var(--down);font-weight:700}.trade-point-item .sell{color:var(--blue);font-weight:700}details{border:1px solid var(--line);border-radius:var(--radius);background:#fff;overflow:hidden;min-width:0}summary{cursor:pointer;padding:16px 18px;font-weight:700;min-height:48px}.side-tag.buy{color:var(--down);font-weight:700}.side-tag.sell{color:var(--blue);font-weight:700}.mini-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}.mini-grid span{background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:10px;color:var(--muted);font-size:13px;min-width:0}.mini-grid b{display:block;color:var(--ink);margin-bottom:4px;overflow-wrap:anywhere}@media(max-width:1120px){.hero,.grid-2,.grid-4,.source-row{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:720px){.shell{width:min(100vw - 16px,1480px);padding-top:12px}.hero,.panel,.stock-group{padding:18px}.nav{display:grid;grid-template-columns:1fr 1fr}.button{width:100%;padding-left:10px;padding-right:10px}.metrics,.trade-point-list{grid-template-columns:1fr}h1{font-size:34px}.stock-group-head,.card-head,.trade-map-head{flex-wrap:wrap}.trade-chart-wrap{overflow-x:auto}.trade-chart{width:760px;max-width:none;min-height:0}table{font-size:12px}.flow-list{grid-template-columns:1fr}}`;
+  const sidebarCss = `
+    .page-layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:18px;align-items:start}.content{display:grid;gap:18px;min-width:0}.sidebar{position:sticky;top:18px;align-self:start;min-width:0}.sidebar-inner{background:rgba(255,255,255,.97);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px;display:grid;gap:14px}.sidebar-brand{display:grid;gap:3px;padding:10px 10px 12px;text-decoration:none;border-bottom:1px solid var(--line)}.sidebar-brand span{color:var(--muted);font-size:12px;font-weight:700}.sidebar-brand strong{font-size:20px;line-height:1.2}.side-nav{display:grid;gap:6px}.side-nav a{min-height:40px;display:flex;align-items:center;padding:9px 10px;border-radius:8px;color:var(--muted);font-size:14px;font-weight:700;text-decoration:none}.side-nav a:hover,.side-nav a:focus-visible{background:#f8fafc;color:var(--ink);outline:2px solid transparent}.side-nav a.primary{background:var(--ink);color:#fff}.side-nav.external{padding-top:12px;border-top:1px solid var(--line)}.sidebar-meta{padding:10px;border:1px solid var(--line);border-radius:8px;background:#f8fafc;display:grid;gap:4px}.sidebar-meta b{font-size:15px}.sidebar-meta span{color:var(--muted);font-size:12px}.hero .nav{display:none}.anchor{display:block;height:0;scroll-margin-top:18px;visibility:hidden}@media(max-width:1120px){.page-layout{grid-template-columns:1fr}.sidebar{position:static}.side-nav{grid-template-columns:repeat(4,minmax(0,1fr))}.side-nav.external{grid-template-columns:repeat(3,minmax(0,1fr));padding-top:0;border-top:0}.sidebar-meta{display:none}}@media(max-width:720px){.side-nav{grid-template-columns:repeat(2,minmax(0,1fr))}.side-nav.external{grid-template-columns:repeat(3,minmax(0,1fr))}.side-nav a{justify-content:center;text-align:center}.sidebar-inner{padding:12px}.sidebar-brand{display:none}}`;
   const sourceCards = model.sources.map((source) => `<article class="source-item">
     <strong>${source.label}</strong><b class="${source.accountPnl >= 0 ? "pos" : "neg"}">${moneySigned(source.accountPnl)}</b>
     <span class="chip ${source.includedInMay ? "pos" : "warn"}">${source.role}</span>
@@ -721,10 +723,32 @@ function renderPage(model) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>2026年5月月度交易复盘</title>
-  <style>${css}</style>
+  <style>${css}${sidebarCss}</style>
 </head>
 <body>
   <main class="shell">
+    <div class="page-layout">
+      <aside class="sidebar" aria-label="月度复盘导航">
+        <div class="sidebar-inner">
+          <a class="sidebar-brand" href="#top"><span>2026年5月</span><strong>月度复盘</strong></a>
+          <nav class="side-nav" aria-label="本页导航">
+            <a class="primary" href="#top">本月概览</a>
+            <a href="#sources">周度来源</a>
+            <a href="#ranks">盈亏排行</a>
+            <a href="#patterns">共性问题</a>
+            <a href="#rules">落地铁律</a>
+            <a href="#stocks">买卖点地图</a>
+            <a href="#trades">成交明细</a>
+          </nav>
+          <nav class="side-nav external" aria-label="站点导航">
+            <a href="../">月/季导航</a>
+            <a href="../../weekly-trading-review/">周度主页</a>
+            <a href="../../index.html">总首页</a>
+          </nav>
+          <div class="sidebar-meta"><b>${model.trades.length} 笔 / ${model.stocks.length} 只</b><span>${model.sourceStockPairs} 张买卖点图</span></div>
+        </div>
+      </aside>
+      <div class="content">
     <section class="hero" id="top">
       <div>
         <span class="label">2026年5月 · 自然月结果 + 前后参考周扩展样本</span>
@@ -760,13 +784,34 @@ function renderPage(model) {
     <section class="panel" id="stocks"><h2>每只票的买卖点地图</h2><p class="section-note">每只票先列完整成交时间，再按来源周放真实分钟线买卖点图。重复出现在多个来源周的票，分周保留图，方便对照节奏变化。</p></section>
     ${detailStocks.map((stock) => renderStockGroup(stock, model)).join("\n")}
     <section class="panel" id="trades"><h2>全部成交明细</h2><details open><summary>展开 / 收起合并后的去重成交流水</summary><div class="table-wrap"><table><thead><tr><th>日期</th><th>时间</th><th>代码</th><th>名称</th><th>操作</th><th>数量</th><th>均价</th><th>成交金额</th><th>费用税费</th><th>发生金额</th><th>来源</th></tr></thead><tbody>${renderTradesTable(model.trades)}</tbody></table></div></details></section>
+      </div>
+    </div>
   </main>
 </body>
 </html>`;
 }
 
+function replaceNth(haystack, needle, replacement, nth = 1) {
+  let index = -1;
+  let offset = 0;
+  for (let i = 0; i < nth; i += 1) {
+    index = haystack.indexOf(needle, offset);
+    if (index === -1) return haystack;
+    offset = index + needle.length;
+  }
+  return `${haystack.slice(0, index)}${replacement}${haystack.slice(index + needle.length)}`;
+}
+
+function addPageAnchors(html) {
+  let output = replaceNth(html, '<section class="panel"><h2>', '<section class="panel" id="sources"><h2>');
+  output = replaceNth(output, '<section class="grid-2">', '<span id="ranks" class="anchor"></span>\n    <section class="grid-2">');
+  output = replaceNth(output, '<section class="panel"><h2>', '<span id="patterns" class="anchor"></span>\n    <section class="panel"><h2>', 2);
+  output = replaceNth(output, '<section class="panel"><h2>', '<span id="rules" class="anchor"></span>\n    <section class="panel"><h2>', 3);
+  return output;
+}
+
 const model = buildModel();
-fs.writeFileSync(OUT, renderPage(model), "utf8");
+fs.writeFileSync(OUT, addPageAnchors(renderPage(model)), "utf8");
 console.log(JSON.stringify({
   output: path.relative(ROOT, OUT),
   sources: model.sources.length,
