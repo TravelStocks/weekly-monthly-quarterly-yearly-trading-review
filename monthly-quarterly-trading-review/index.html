@@ -3,121 +3,494 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>月度 / 季度交易复盘</title>
+  <title>2026年5月月度交易复盘</title>
   <style>
-    :root{--panel:#fff;--ink:#1c2530;--muted:#667085;--line:#dfe4ea;--accent:#c2412d;--accent-soft:#fff1ed;--up:#14845f;--down:#b4232f;--warn:#b76305;--shadow:0 18px 44px rgba(28,37,48,.08);--radius:12px}
-    *{box-sizing:border-box}body{margin:0;color:var(--ink);background:linear-gradient(180deg,#f7f8fa 0%,#eef2f5 100%);font-family:"Avenir Next","PingFang SC","Noto Sans SC","Microsoft YaHei",Arial,sans-serif}
-    a{color:inherit}.shell{width:min(1180px,calc(100vw - 28px));margin:0 auto;padding:34px 0 52px;display:grid;gap:20px}.hero,.panel,.metric,.card{background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
-    .hero{padding:30px;display:grid;grid-template-columns:1.1fr .9fr;gap:26px;align-items:end}.label{display:inline-flex;width:max-content;color:var(--accent);background:var(--accent-soft);padding:7px 10px;border-radius:999px;font-size:12px;font-weight:700}
-    h1,h2,h3,p{margin-top:0;letter-spacing:0}h1{margin:14px 0 12px;font-size:clamp(36px,5vw,62px);line-height:1.05}h2{font-size:24px}p,li{color:var(--muted);line-height:1.72}
-    .metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.metric{padding:16px;min-height:104px;display:grid;align-content:space-between}.metric span,.metric small{color:var(--muted);font-size:12px}.metric strong{font-size:23px}
-    .button-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}.button{display:inline-flex;justify-content:center;align-items:center;min-height:44px;padding:0 16px;border-radius:8px;background:var(--ink);color:#fff;text-decoration:none;font-weight:700}.button.secondary{background:#fff;color:var(--ink);border:1px solid var(--line)}
-    .panel{padding:24px}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}.grid-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-    .card{padding:18px;min-width:0}.card h3{margin-bottom:8px}.card p{margin-bottom:0}.chip{display:inline-flex;padding:7px 10px;border-radius:999px;background:#eef2ff;color:#344054;font-size:12px;font-weight:700;white-space:nowrap}
-    .card-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.mini{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:14px}.mini span{background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:9px;color:var(--muted);font-size:12px}.mini b{display:block;color:var(--ink);font-size:14px;margin-top:4px;overflow-wrap:anywhere}.muted{color:var(--muted)}.warn{color:var(--warn)}
-    .timeline{display:grid;gap:10px}.timeline li{padding:12px 14px;background:#f8fafc;border:1px solid var(--line);border-radius:8px;list-style:none}.timeline ul{margin:0;padding:0}
-    @media(max-width:920px){.hero,.two-col,.grid-4,.grid-3{grid-template-columns:1fr}.metrics,.mini{grid-template-columns:1fr}.shell{width:min(100vw - 16px,1180px);padding-top:22px}.hero,.panel{padding:18px}}
+    :root {
+      --bg: #f5f7f8;
+      --panel: #ffffff;
+      --ink: #1c2530;
+      --muted: #667085;
+      --line: #dfe4ea;
+      --soft: #f0f3f5;
+      --accent: #c2412d;
+      --accent-soft: #fff1ed;
+      --up: #14845f;
+      --down: #b4232f;
+      --warn: #b76305;
+      --blue: #1d4ed8;
+      --shadow: 0 16px 42px rgba(28, 37, 48, .08);
+      --radius: 10px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: linear-gradient(180deg, #f8fafb 0%, #eef2f5 100%);
+      font-family: "Avenir Next", "PingFang SC", "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif;
+      overflow-x: hidden;
+    }
+    a { color: inherit; }
+    h1, h2, h3, h4, p { margin-top: 0; letter-spacing: 0; }
+    h1 { margin: 12px 0; font-size: clamp(32px, 4vw, 52px); line-height: 1.08; }
+    h2 { margin-bottom: 8px; font-size: 24px; }
+    h3 { margin-bottom: 8px; font-size: 18px; }
+    p, li, td { color: var(--muted); line-height: 1.68; }
+
+    .shell {
+      width: min(1460px, calc(100vw - 24px));
+      margin: 0 auto;
+      padding: 18px 0 48px;
+      display: grid;
+      grid-template-columns: 238px minmax(0, 1fr);
+      gap: 18px;
+    }
+    .side, .hero, .panel, .metric, .card, .note-box {
+      background: rgba(255, 255, 255, .95);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .side {
+      position: sticky;
+      top: 14px;
+      align-self: start;
+      padding: 16px;
+      display: grid;
+      gap: 8px;
+    }
+    .side h2 { margin: 0 0 4px; font-size: 20px; }
+    .side a {
+      min-height: 42px;
+      padding: 9px 12px;
+      display: flex;
+      align-items: center;
+      color: var(--muted);
+      text-decoration: none;
+      border: 1px solid transparent;
+      border-radius: 8px;
+    }
+    .side a:hover { color: var(--ink); background: var(--soft); border-color: var(--line); }
+    .page { display: grid; gap: 18px; min-width: 0; }
+    .hero {
+      padding: 28px;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+    .label {
+      display: inline-flex;
+      width: max-content;
+      max-width: 100%;
+      padding: 7px 10px;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      overflow-wrap: anywhere;
+    }
+    .button-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+    .button {
+      min-height: 44px;
+      padding: 0 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      background: var(--ink);
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 800;
+    }
+    .button.secondary { color: var(--ink); background: #fff; border: 1px solid var(--line); }
+    .metrics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .metric { min-height: 116px; padding: 16px; display: grid; align-content: space-between; }
+    .metric span, .metric small { color: var(--muted); font-size: 12px; line-height: 1.45; }
+    .metric strong { font-size: 24px; overflow-wrap: anywhere; }
+    .pos { color: var(--up); }
+    .neg { color: var(--down); }
+    .warn { color: var(--warn); }
+    .blue { color: var(--blue); }
+    .panel { padding: 22px; overflow: hidden; }
+    .section-note { margin-bottom: 16px; color: var(--muted); }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+    .card { min-width: 0; padding: 18px; }
+    .card p:last-child { margin-bottom: 0; }
+    .card-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+    .chip {
+      display: inline-flex;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: #eef2ff;
+      color: #344054;
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .chip.pos { color: #067647; background: #ecfdf3; }
+    .chip.neg { color: #991b1b; background: #fef2f2; }
+    .chip.warn { color: #9a3412; background: #fff7ed; }
+    .note-box {
+      padding: 16px;
+      color: var(--ink);
+      background: linear-gradient(135deg, #fff8f6 0%, #fff 68%);
+      border-color: rgba(194, 65, 45, .24);
+      font-weight: 800;
+    }
+    .table-wrap {
+      width: 100%;
+      overflow: auto;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+    }
+    table { width: 100%; border-collapse: collapse; min-width: 900px; font-size: 14px; }
+    th, td { padding: 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { color: var(--muted); background: #f8fafc; font-size: 13px; }
+    tr:last-child td { border-bottom: 0; }
+    td strong { color: var(--ink); }
+    td, th { overflow-wrap: anywhere; }
+    .rank-table td:nth-child(2), .rank-table th:nth-child(2) { white-space: nowrap; }
+    .week-grid { display: grid; gap: 10px; }
+    .week-row {
+      display: grid;
+      grid-template-columns: 120px 112px 90px minmax(0, 1fr) 96px;
+      gap: 12px;
+      align-items: center;
+      padding: 14px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+    }
+    .week-row a { color: var(--blue); font-weight: 800; text-decoration: none; }
+    .week-row b { font-size: 18px; }
+    details {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+      overflow: hidden;
+    }
+    summary {
+      min-height: 48px;
+      padding: 14px 16px;
+      cursor: pointer;
+      color: var(--ink);
+      font-weight: 900;
+      background: #f8fafc;
+    }
+    .details-body { padding: 16px; }
+    .rule-list { display: grid; gap: 10px; padding: 0; margin: 0; }
+    .rule-list li {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 34px minmax(0, 1fr);
+      gap: 10px;
+      padding: 12px;
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+    }
+    .rule-list b {
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: var(--accent);
+      border-radius: 8px;
+      font-size: 13px;
+    }
+    .source-link { color: var(--blue); font-weight: 800; text-decoration: none; }
+
+    @media (max-width: 1120px) {
+      .shell { grid-template-columns: 1fr; }
+      .side { position: static; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .side h2 { grid-column: 1 / -1; }
+      .hero, .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+      .week-row { grid-template-columns: 112px 96px 80px minmax(0, 1fr); }
+      .week-row a { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 720px) {
+      .shell { width: min(100vw - 16px, 1460px); }
+      .hero, .panel { padding: 18px; }
+      .metrics { grid-template-columns: 1fr; }
+      .side {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        padding: 8px;
+        box-shadow: 0 10px 28px rgba(28, 37, 48, .08);
+      }
+      .side h2 { display: none; }
+      .side a { min-height: 40px; flex: 0 0 auto; padding: 8px 10px; white-space: nowrap; }
+      h1 { font-size: 34px; }
+      .week-row { grid-template-columns: 1fr; align-items: start; }
+      table { min-width: 760px; font-size: 13px; }
+      .card-head { flex-wrap: wrap; }
+    }
   </style>
 </head>
 <body>
   <main class="shell">
-    <section class="hero">
-      <div>
-        <span class="label">Monthly / Quarterly Trading Review</span>
-        <h1>月度 / 季度交易复盘</h1>
-        <p>月度负责把每周复盘压缩成账户节奏、交易问题和规则变化；季度负责判断模式、仓位、风控是否真的推动账户曲线变好。</p>
-        <div class="button-row">
-          <a class="button" href="../weekly-trading-review/">周度主页</a>
-          <a class="button secondary" href="../yearly-trading-review/">年度主页</a>
-          <a class="button secondary" href="../index.html">总首页</a>
+    <nav class="side" aria-label="月度复盘导航">
+      <h2>月度导航</h2>
+      <a href="../index.html">总首页</a>
+      <a href="../weekly-trading-review/">周度主页</a>
+      <a href="../yearly-trading-review/">年度主页</a>
+      <a href="#top">5月总览</a>
+      <a href="#boundary">数据边界</a>
+      <a href="#rank">盈亏排行</a>
+      <a href="#tickets">买卖点地图</a>
+      <a href="#problems">共性问题</a>
+      <a href="#rules">下月纪律</a>
+      <a href="#questions">待确认问题</a>
+    </nav>
+
+    <div class="page">
+      <section class="hero" id="top">
+        <div>
+          <span class="label">2026年5月月度交易复盘 · 数据窗口 2026.04.20-2026.06.05</span>
+          <h1>只要离开第一性，盈利就会被后排吞回去</h1>
+          <p>这版不再停留在心得模板，而是把 2026-04-20 到 2026-06-05 的五篇周度交割复盘合并成 5月月度复盘。核心结论很清楚：神剑股份、通鼎互联、大有能源这类盈利来自“锁定唯一龙头”；华电辽能、华能蒙电、大唐电信、粤电力A这类亏损来自“后排替代、非唯一、回补过快、亏损后加单”。</p>
+          <div class="button-row">
+            <a class="button" href="../weekly-trading-review/">周度主页</a>
+            <a class="button secondary" href="../index.html">总首页</a>
+            <a class="button secondary" href="../yearly-trading-review/">年度主页</a>
+          </div>
         </div>
-      </div>
-      <div class="metrics">
-        <article class="metric"><span>月度结构</span><strong>12 个月</strong><small>每月汇总周复盘</small></article>
-        <article class="metric"><span>季度结构</span><strong>Q1-Q4</strong><small>检查体系进化</small></article>
-        <article class="metric"><span>当前状态</span><strong>框架版</strong><small>等月度数据后填充</small></article>
-        <article class="metric"><span>核心输出</span><strong>规则迭代</strong><small>把经验变成下月纪律</small></article>
-      </div>
-    </section>
+        <div class="metrics">
+          <article class="metric"><span>纳入周复盘</span><strong>5 篇</strong><small>04.20-06.05，按你的 5月样板口径</small></article>
+          <article class="metric"><span>实盘口径合计</span><strong class="neg">-5,812.36</strong><small>五篇周复盘账户结果相加</small></article>
+          <article class="metric"><span>成交与标的</span><strong>171 笔 / 34 只</strong><small>买入 128 笔，卖出 43 笔</small></article>
+          <article class="metric"><span>月度铁律</span><strong class="warn">非第一不做</strong><small>风控第一，定龙第二，买卖点第三</small></article>
+        </div>
+      </section>
 
-    <section class="two-col">
-      <article class="panel">
-        <h2>月度复盘要回答什么</h2>
-        <ul>
-          <li>本月账户曲线是主升、震荡、回撤，还是修复。</li>
-          <li>盈利主要来自哪些模式，亏损主要来自哪些错误。</li>
-          <li>仓位是否和市场周期匹配，是否有超配退潮期的问题。</li>
-          <li>本月新增的交易规则，是否已经能落到下月盘前清单。</li>
-        </ul>
-      </article>
-      <article class="panel">
-        <h2>季度复盘要回答什么</h2>
-        <ul>
-          <li>三个月后，龙头识别、买卖点、仓位分配是否变稳定。</li>
-          <li>季度最大回撤由什么触发，是否属于可预防错误。</li>
-          <li>赚钱阶段能否放大，亏钱阶段能否缩短。</li>
-          <li>下一季度要保留、停止、开始执行哪些固定动作。</li>
-        </ul>
-      </article>
-    </section>
+      <section class="panel" id="boundary">
+        <h2>数据边界</h2>
+        <p class="section-note">以后按你定的规则：每个月的 5号到10号完成上月月度复盘。遇到跨周留仓或成本缺失，月度页只引用周度复盘已经确认的口径，并在表格里标注“成本待补”或“留仓回溯”。</p>
+        <div class="week-grid" id="weekGrid"></div>
+      </section>
 
-    <section class="panel">
-      <h2>月度复盘框架</h2>
-      <div class="grid-4">
-        <article class="card"><div class="card-head"><h3>1 月</h3><span class="chip">待补</span></div><p>年度开局，建立收益基准与初始规则。</p><div class="mini"><span>收益率 <b>待填</b></span><span>最大回撤 <b>待填</b></span></div></article>
-        <article class="card"><div class="card-head"><h3>2 月</h3><span class="chip">待补</span></div><p>春节前后流动性与情绪节奏复盘。</p><div class="mini"><span>主线 <b>待填</b></span><span>核心错误 <b>待填</b></span></div></article>
-        <article class="card"><div class="card-head"><h3>3 月</h3><span class="chip">待补</span></div><p>一季度收官，检查模式稳定性。</p><div class="mini"><span>最佳交易 <b>待填</b></span><span>新规则 <b>待填</b></span></div></article>
-        <article class="card"><div class="card-head"><h3>4 月</h3><span class="chip">待补</span></div><p>衔接已有周度复盘，整理龙头与仓位规则。</p><div class="mini"><span>周报 <b>1 篇</b></span><span>状态 <b>可补</b></span></div></article>
-        <article class="card"><div class="card-head"><h3>5 月</h3><span class="chip">进行中</span></div><p>当前已有三篇 5 月周度复盘，可优先汇总成首个月度样板。</p><div class="mini"><span>周报 <b>3 篇</b></span><span>重点 <b>达实 / 华能</b></span></div></article>
-        <article class="card"><div class="card-head"><h3>6 月</h3><span class="chip">待补</span></div><p>观察新规则在下一阶段的执行质量。</p><div class="mini"><span>收益率 <b>待填</b></span><span>纪律 <b>待填</b></span></div></article>
-        <article class="card"><div class="card-head"><h3>7 月</h3><span class="chip">待补</span></div><p>半年度后的仓位和模式修正。</p><div class="mini"><span>主线 <b>待填</b></span><span>回撤 <b>待填</b></span></div></article>
-        <article class="card"><div class="card-head"><h3>8 月</h3><span class="chip">待补</span></div><p>检查高温淡季或缩量环境下的交易频率。</p><div class="mini"><span>交易次数 <b>待填</b></span><span>胜率 <b>待填</b></span></div></article>
-        <article class="card"><div class="card-head"><h3>9 月</h3><span class="chip">待补</span></div><p>三季度收官，复盘主线持续性。</p><div class="mini"><span>最佳模式 <b>待填</b></span><span>最差模式 <b>待填</b></span></div></article>
-        <article class="card"><div class="card-head"><h3>10 月</h3><span class="chip">待补</span></div><p>长假后情绪重启，检查追高和踏空焦虑。</p><div class="mini"><span>规则执行 <b>待填</b></span><span>情绪问题 <b>待填</b></span></div></article>
-        <article class="card"><div class="card-head"><h3>11 月</h3><span class="chip">待补</span></div><p>年末资金风格切换下的防守质量。</p><div class="mini"><span>防守 <b>待填</b></span><span>仓位 <b>待填</b></span></div></article>
-        <article class="card"><div class="card-head"><h3>12 月</h3><span class="chip">待补</span></div><p>全年收官，向年度复盘输送最终结论。</p><div class="mini"><span>全年结果 <b>待填</b></span><span>年度问题 <b>待填</b></span></div></article>
-      </div>
-    </section>
+      <section class="grid-2" id="rank">
+        <article class="panel">
+          <h2>盈利标的排行</h2>
+          <p class="section-note">盈利样本共同点：先定对“第一性/唯一性”，再围绕核心做持有、兑现或做 T。</p>
+          <div class="table-wrap">
+            <table class="rank-table">
+              <thead><tr><th>标的</th><th>贡献</th><th>来源</th><th>月度判断</th></tr></thead>
+              <tbody id="profitRows"></tbody>
+            </table>
+          </div>
+        </article>
+        <article class="panel">
+          <h2>亏损标的排行</h2>
+          <p class="section-note">亏损样本共同点：放弃最强、回补过快、后排幻想、不是第一却给了核心仓位。</p>
+          <div class="table-wrap">
+            <table class="rank-table">
+              <thead><tr><th>标的</th><th>贡献</th><th>来源</th><th>月度判断</th></tr></thead>
+              <tbody id="lossRows"></tbody>
+            </table>
+          </div>
+        </article>
+      </section>
 
-    <section class="panel">
-      <h2>季度复盘框架</h2>
-      <div class="grid-4">
-        <article class="card"><div class="card-head"><h3>Q1</h3><span class="chip">待补</span></div><p>建立年度起点，确认最适合自己的交易模式。</p><div class="mini"><span>收益率 <b>待填</b></span><span>核心规则 <b>待填</b></span></div></article>
-        <article class="card"><div class="card-head"><h3>Q2</h3><span class="chip">进行中</span></div><p>重点沉淀龙头辨识度、弱转强下杀、竞价加单、小题材三日游和分歧接面规则。</p><div class="mini"><span>已有周报 <b>4 篇</b></span><span>重点月份 <b>4-6 月</b></span></div></article>
-        <article class="card"><div class="card-head"><h3>Q3</h3><span class="chip">待补</span></div><p>验证上半年修正是否转化为更平滑的账户曲线。</p><div class="mini"><span>最大回撤 <b>待填</b></span><span>执行质量 <b>待填</b></span></div></article>
-        <article class="card"><div class="card-head"><h3>Q4</h3><span class="chip">待补</span></div><p>年末收敛交易体系，为年度复盘准备最终样本。</p><div class="mini"><span>模式稳定度 <b>待填</b></span><span>来年准则 <b>待填</b></span></div></article>
-      </div>
-    </section>
+      <section class="panel" id="tickets">
+        <h2>每只票的买卖点地图</h2>
+        <p class="section-note">这里不是重画周度分时图，而是把周复盘里已经确认的买入、卖出、留仓和成本口径压缩到月度层，便于一眼看出哪些买卖点可以继续，哪些必须停止。</p>
+        <details open>
+          <summary>展开 / 收起全部 34 只标的</summary>
+          <div class="details-body">
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>标的</th><th>周度来源</th><th>贡献口径</th><th>买点</th><th>卖点 / 留仓</th><th>月度归因</th></tr></thead>
+                <tbody id="stockRows"></tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+      </section>
 
-    <section class="grid-3">
-      <article class="card">
-        <h3>数据清单</h3>
-        <ul>
-          <li>月初 / 月末总资产</li>
-          <li>月度收益率与收益金额</li>
-          <li>最大单日盈利和亏损</li>
-          <li>最大回撤与触发原因</li>
+      <section class="panel" id="problems">
+        <h2>本月抓出来的共性问题</h2>
+        <div class="grid-4">
+          <article class="card">
+            <div class="card-head"><h3>后排替代核心</h3><span class="chip neg">红线</span></div>
+            <p>大唐电信、华电能源、大连热电、华能蒙电反复证明：题材热不等于个股有地位。第一名可交易时，二三排没有主攻资格。</p>
+          </article>
+          <article class="card">
+            <div class="card-head"><h3>止损后快速回补</h3><span class="chip neg">红线</span></div>
+            <p>华电辽能 5/15 先卖 900 股又买回 900 股，是月度最典型的纪律冲突。卖出必须完成风险切断，不能马上同仓位打回去。</p>
+          </article>
+          <article class="card">
+            <div class="card-head"><h3>仓位先于确定性</h3><span class="chip warn">降级</span></div>
+            <p>5/13 仓位 96.1%、5/20-5/21 仓位 78.5%、5/26-5/28 高仓位波动都说明：没有唯一龙头时，仓位越高，错误放大越快。</p>
+          </article>
+          <article class="card">
+            <div class="card-head"><h3>亏损后加单</h3><span class="chip neg">停止</span></div>
+            <p>华能蒙电 5/28 分批买入 3,300 股后 5/29 低位卖出，亏损根源不是单点买错，而是分歧中继续扩大暴露。</p>
+          </article>
+        </div>
+        <div class="note-box" style="margin-top:14px">月度核心判断：赚钱靠“第一唯一性”，亏钱靠“把非第一当核心”。下个月不是提高交易频率，而是把后排、补涨、非模式、非唯一全部从主攻名单里清掉。</div>
+      </section>
+
+      <section class="panel" id="rules">
+        <h2>6月执行纪律</h2>
+        <ul class="rule-list">
+          <li><b>1</b><span><strong>有龙只做龙头。</strong>明确核心龙头出现时，只围绕市场第一辨识度做持有、做 T、兑现和保护利润，不用第二第三名替代。</span></li>
+          <li><b>2</b><span><strong>无龙只轻仓套利。</strong>没有明确唯一龙头时，仓位降级为试错，盈利次日止盈，走弱立刻清仓，不格局。</span></li>
+          <li><b>3</b><span><strong>观察池永久小于 8 只。</strong>日常只保留 5-6 只核心标的，超过就先删票，不再用“都看看”稀释判断。</span></li>
+          <li><b>4</b><span><strong>刚止损不得同仓回补。</strong>回补必须同时满足板块回流、个股转强、仓位上限三个条件，否则卖出就是卖出。</span></li>
+          <li><b>5</b><span><strong>中高位非唯一不做左侧。</strong>粤电力A、中京电子、鑫科材料都在提醒：不是第一、不是唯一，就不能给趋势幻想和核心仓位。</span></li>
         </ul>
-      </article>
-      <article class="card">
-        <h3>交易清单</h3>
-        <ul>
-          <li>本月贡献最大的三笔交易</li>
-          <li>本月亏损最大的三笔交易</li>
-          <li>重复犯错次数</li>
-          <li>新增有效规则</li>
+      </section>
+
+      <section class="panel" id="quarter">
+        <h2>季度层记录</h2>
+        <div class="grid-3">
+          <article class="card"><div class="card-head"><h3>Q2 进行中</h3><span class="chip warn">04-06月</span></div><p>4/20-6/5 已形成一个清晰样本：盈利来自定龙，亏损来自后排与非模式。6月后半段要验证规则是否真的收敛到行动。</p></article>
+          <article class="card"><div class="card-head"><h3>季度判断项</h3><span class="chip">待连续跟踪</span></div><p>龙头识别是否更快、非核心交易是否减少、利润阶段是否放大、亏损阶段是否缩短、仓位是否跟随市场周期。</p></article>
+          <article class="card"><div class="card-head"><h3>下次月复盘</h3><span class="chip">07.05-07.10</span></div><p>下次做 2026年6月复盘时，按 7月5日到7月10日作为整理窗口，继续从周复盘自动抽取排行与买卖点。</p></article>
+        </div>
+      </section>
+
+      <section class="panel" id="questions">
+        <h2>下一轮要确认的问题</h2>
+        <ul class="rule-list">
+          <li><b>1</b><span>5月复盘是否固定采用“4/20-6/5”这个样板窗口，还是以后严格按自然月交易日，只在 5-10号整理？</span></li>
+          <li><b>2</b><span>盈亏排行要不要把“期末持仓浮盈浮亏”和“已闭环盈亏”拆成两列？大有能源这类票会因此排名不同。</span></li>
+          <li><b>3</b><span>每只票的月度买卖点，是保留全部成交时间，还是只保留周度复盘已经归并后的关键买卖点？</span></li>
+          <li><b>4</b><span>“龙头判定五维”请你补充具体五项，我会把它做成固定评分表，之后每月每只核心票都可以打分。</span></li>
         </ul>
-      </article>
-      <article class="card">
-        <h3>待你补充</h3>
-        <ul>
-          <li>每月账户汇总表</li>
-          <li>月度操作&情绪总结</li>
-          <li>季度核心题材与代表交易</li>
-          <li>你最想固化的下月规则</li>
-        </ul>
-      </article>
-    </section>
+      </section>
+    </div>
   </main>
+
+  <script>
+    const weekRows = [
+      { range: '04.20-04.24', href: '../2026-04-20_2026-04-24/', pnl: 1616.89, trades: 63, stocks: 12, note: '神剑股份贡献 +3,159.07，账户周内实际 +1,616.89；周五 -2,413 暴露利润保护问题。' },
+      { range: '05.08-05.16', href: '../2026-05-08_2026-05-16/', pnl: -4482.26, trades: 37, stocks: 9, note: '通鼎互联 +1,600.89 被华电辽能、大唐电信吞回；5/14 单日 -2,043 是回撤拐点。' },
+      { range: '05.18-05.22', href: '../2026-05-15_2026-05-22/', pnl: -1553.76, trades: 35, stocks: 8, note: '达实智能有核心处理，但华电辽能新增闭环 -1,813.71；5/21 是本周最大回撤日。' },
+      { range: '05.25-05.29', href: '../2026-05-25_2026-05-29/', pnl: -1362.23, trades: 25, stocks: 5, note: '达实留仓兑现 +1,166.23，华能蒙电 -2,060.24；亏损后加单是本周主错。' },
+      { range: '06.01-06.05', href: '../2026-06-01_2026-06-05/', pnl: -31.00, trades: 11, stocks: 4, note: '大有能源闭环 +1,433.94、持仓 +1,428.74；粤电力A和中京电子验证非唯一风险。' }
+    ];
+
+    const profitRows = [
+      { name: '神剑股份', code: '002361', pnl: 3159.07, source: '04.20-04.24', verdict: '最大正贡献，核心在于定龙正确；但高位回撤提示止盈保护要更硬。' },
+      { name: '大有能源', code: '600403', pnl: 2862.68, source: '06.01-06.05', verdict: '闭环 +1,433.94，期末持仓 +1,428.74；煤炭方向第一性明确，适合围绕核心做 T。' },
+      { name: '通鼎互联', code: '002491', pnl: 1600.89, source: '05.08-05.16', verdict: '本周唯一明确大幅正贡献，说明主线和核心嗅觉仍在。' },
+      { name: '达实智能', code: '002421', pnl: 1331.70, source: '05.18-05.29', verdict: '新增闭环 +165.47，留仓兑现 +1,166.23；核心票处理有效，但回补节奏要更稳。' },
+      { name: '金螳螂', code: '002081', pnl: 236.87, source: '04.20-04.24', verdict: '小正贡献，属于可控套利，不构成本月主线。' },
+      { name: '再升科技', code: '603601', pnl: 52.15, source: '04.20-04.24', verdict: '短线闭环小赚，不能替代核心龙头。' },
+      { name: '合肥城建', code: '002208', pnl: 44.72, source: '05.18-05.22', verdict: '小闭环盈利，适合作为低仓套利样本。' },
+      { name: '合力泰', code: '002217', pnl: 1.08, source: '04.20-04.24', verdict: '几乎打平，说明非核心小票没有月度价值。' }
+    ];
+
+    const lossRows = [
+      { name: '华电辽能', code: '600396', pnl: -3081.52, source: '05.08-05.22', verdict: '两段亏损合计最大，核心问题是止损后快速回补和把跟风票当核心。' },
+      { name: '华能蒙电', code: '600863', pnl: -2060.24, source: '05.25-05.29', verdict: '5/28 分批买入 3,300 股，5/29 低位卖出；亏损后加单、退潮追涨。' },
+      { name: '大唐电信', code: '600198', pnl: -1139.29, source: '05.08-05.16', verdict: '买入 1,600 股后 5/14 全部卖出，典型后排替代大唐发电核心。' },
+      { name: '粤电力A', code: '000539', pnl: -902.36, source: '06.01-06.05', verdict: '中高位、非唯一、爆量弱转强左侧买点，本来就不该做。' },
+      { name: '大胜达', code: '603687', pnl: -698.74, source: '04.20-04.24', verdict: '低位离场，非核心亏损样本。' },
+      { name: '大连热电', code: '600719', pnl: -449.60, source: '05.08-05.16', verdict: '大唐发电行情里的后排末端，确定性不足。' },
+      { name: '武汉凡谷', code: '002194', pnl: -362.76, source: '04.20-04.24', verdict: '高位追价后低位离场，买点和地位都不舒服。' },
+      { name: '新朋股份', code: '002328', pnl: -351.81, source: '04.20-04.24', verdict: '低位承接失败，非核心票容错太低。' },
+      { name: '京能电力', code: '600578', pnl: -342.61, source: '05.25-05.29', verdict: '5/26 开盘 7 分钟内快速成仓，买点太急。' },
+      { name: '苏州高新', code: '600736', pnl: -334.17, source: '04.20-04.24', verdict: '周末留仓浮亏，观察池分散后的持仓质量问题。' },
+      { name: '中京电子', code: '002579', pnl: -324.96, source: '06.01-06.05', verdict: '不是趋势第一，也不是情绪核心，用“可能也能涨”替代了唯一性。' },
+      { name: '顺灏股份', code: '002565', pnl: -299.90, source: '04.20-04.24', verdict: '冲高后弱化，卖点被动。' },
+      { name: '鑫科材料', code: '600255', pnl: -277.04, source: '06.01-06.05', verdict: '期末持仓浮亏，不是第一性也不是唯一性，只能降级观察。' },
+      { name: '真视通', code: '002771', pnl: -273.89, source: '04.20-04.24', verdict: '高位兑现仍亏，说明周前成本和介入位置不理想。' },
+      { name: '华电能源', code: '600726', pnl: -207.03, source: '05.08-05.16', verdict: '华能辽电行情里的跟风票，不应给核心预期。' },
+      { name: '圣阳股份', code: '002580', pnl: -196.33, source: '05.25-05.29', verdict: '尾盘试错失败，亏损主要来自价差和费用。' },
+      { name: '沃格光电', code: '603773', pnl: -169.13, source: '04.20-04.24', verdict: '高位追价后低位离场。' },
+      { name: '大唐发电', code: '601991', pnl: -167.77, source: '05.08-05.16', verdict: '本身是更应聚焦的核心方向，但本段操作仍是亏损闭环。' },
+      { name: '大业股份', code: '603278', pnl: -161.63, source: '05.08-05.16', verdict: '买入后次日离场，非核心中位票。' },
+      { name: '圣龙股份', code: '603178', pnl: -113.95, source: '04.20-04.24', verdict: '高位追价失败。' },
+      { name: '川润股份', code: '002272', pnl: -53.23, source: '05.18-05.22', verdict: '小闭环亏损，下单稳定性和退出节奏要改。' },
+      { name: '顺景科技', code: '603007', pnl: -38.30, source: '05.08-05.16', verdict: '小亏闭环，另有 5/15 跨周卖出成本待补。' },
+      { name: '京东方A', code: '000725', pnl: -12.11, source: '05.25-05.29', verdict: '买卖价相同，亏在费用；趋势类不会做就不硬做。' },
+      { name: '滨化股份', code: '601678', pnl: -5.18, source: '05.18-05.22', verdict: '基本打平，低位一进二逻辑可复盘但不应扩大仓位。' }
+    ];
+
+    const stockRows = [
+      { name: '神剑股份', code: '002361', source: '04.20-04.24', pnl: '+3,159.07', buy: '04-20 至 04-24 分三段：19.746 中位跟随、23.024 中位跟随、22.584 周末留仓。', sell: '04-22 09:41 均价 23.198；04-24 09:37 均价 23.147；期末留仓 900 股。', read: '盈利核心样本，定龙正确；后续重点是利润保护。' },
+      { name: '金螳螂', code: '002081', source: '04.20-04.24', pnl: '+236.87', buy: '04-22 09:33 均价 4.940；04-23 09:30 均价 5.430。', sell: '04-23 09:30 均价 5.350；04-24 09:50 均价 5.150。', read: '小额正贡献，不是月度主线。' },
+      { name: '再升科技', code: '603601', source: '04.20-04.24', pnl: '+52.15', buy: '04-20 09:58 均价 15.570。', sell: '04-21 09:33 均价 16.200。', read: '短线闭环，仓位意义有限。' },
+      { name: '合力泰', code: '002217', source: '04.20-04.24', pnl: '+1.08', buy: '04-20 11:21 均价 2.950。', sell: '04-21 09:34 均价 2.960。', read: '几乎打平，非核心票不值得消耗精力。' },
+      { name: '圣龙股份', code: '603178', source: '04.20-04.24', pnl: '-113.95', buy: '04-20 09:31 均价 19.160，高位追价。', sell: '04-21 09:31 均价 18.650，低位离场。', read: '高位追价失败。' },
+      { name: '沃格光电', code: '603773', source: '04.20-04.24', pnl: '-169.13', buy: '04-21 09:45 均价 61.740。', sell: '04-22 09:30 均价 60.180。', read: '高位追价后低位离场。' },
+      { name: '真视通', code: '002771', source: '04.20-04.24', pnl: '-273.89', buy: '04-17 09:32 周前成本 20.210。', sell: '04-20 09:31 均价 18.900。', read: '周前高位追价留下亏损。' },
+      { name: '顺灏股份', code: '002565', source: '04.20-04.24', pnl: '-299.90', buy: '04-23 10:26 均价 20.420。', sell: '04-24 09:30 均价 18.980。', read: '低位承接失败。' },
+      { name: '苏州高新', code: '600736', source: '04.20-04.24', pnl: '-334.17', buy: '04-22 09:31 均价 8.674。', sell: '期末留仓 1,800 股，成本 8.69，按 04-24 收盘浮亏。', read: '分散持仓后的浮亏样本。' },
+      { name: '新朋股份', code: '002328', source: '04.20-04.24', pnl: '-351.81', buy: '04-22 13:23 均价 11.900。', sell: '04-23 09:38 均价 11.252。', read: '非核心承接失败。' },
+      { name: '武汉凡谷', code: '002194', source: '04.20-04.24', pnl: '-362.76', buy: '04-23 09:37 均价 12.877。', sell: '04-24 09:30 均价 11.740。', read: '高位追价、次日被动离场。' },
+      { name: '大胜达', code: '603687', source: '04.20-04.24', pnl: '-698.74', buy: '04-17 09:36 周前成本 19.349。', sell: '04-20 09:55 均价 18.810。', read: '周前仓位低位离场，非核心亏损。' },
+      { name: '通鼎互联', code: '002491', source: '05.08-05.16', pnl: '+1,600.89', buy: '05-08 10:09 20.660 / 500 股；05-11 09:36 22.610 / 100 股。', sell: '05-12 09:30 23.690 / 600 股。', read: '本周唯一大幅正贡献，核心票执行有效。' },
+      { name: '大唐电信', code: '600198', source: '05.08-05.16', pnl: '-1,139.29', buy: '05-12 09:34-10:32 分五笔买入 1,600 股，均价 10.638。', sell: '05-14 09:50 9.950 / 1,600 股。', read: '后排替代核心，亏损较大。' },
+      { name: '宝光股份', code: '600379', source: '05.08-05.16', pnl: '成本未知', buy: '周前持仓，本周无买入。', sell: '05-08 09:25 17.600 / 1,200 股。', read: '周前成本不在交割单内，月度只记录卖点。' },
+      { name: '华电辽能', code: '600396', source: '05.08-05.22', pnl: '-3,081.52', buy: '05-14 09:49-09:54 买入 900 股；05-15 11:12 后又买回 900 股。', sell: '05-15 10:43 16.640 / 900 股；后续 05-18 区间继续卖出。', read: '止损后快速回补，是本月最大纪律问题。' },
+      { name: '大连热电', code: '600719', source: '05.08-05.16', pnl: '-449.60', buy: '05-13 09:37 11.680 / 300 股。', sell: '05-14 09:49 10.220 / 300 股。', read: '后排末端，确定性不足。' },
+      { name: '华电能源', code: '600726', source: '05.08-05.16', pnl: '-207.03', buy: '05-08 09:43 8.180 / 500 股。', sell: '05-11 14:56 7.790 / 500 股。', read: '跟风票不能当核心。' },
+      { name: '大唐发电', code: '601991', source: '05.08-05.22', pnl: '-167.77 / 部分成本待补', buy: '05-14 10:10 8.110 / 200 股；05-18 15:00 7.930 / 300 股。', sell: '05-15 10:43、10:55 各 100 股；05-19 09:35 8.120 / 300 股。', read: '方向更核心，但买卖点和跨周成本需要继续拆。' },
+      { name: '顺景科技', code: '603007', source: '05.08-05.22', pnl: '-38.30 / 跨周成本待补', buy: '05-13 11:26 8.420 / 300 股。', sell: '05-15 09:32 8.330 / 300 股；另有跨周卖出记录。', read: '小亏闭环，跨周卖出只做口径备注。' },
+      { name: '大业股份', code: '603278', source: '05.08-05.16', pnl: '-161.63', buy: '05-11 09:52 16.400 / 200 股。', sell: '05-12 13:48 15.650 / 200 股。', read: '中位非核心。' },
+      { name: '达实智能', code: '002421', source: '05.18-05.29', pnl: '+1,331.70', buy: '05-20 分批买入；05-21 09:30-09:37 多笔回补，合计买入 8,200 股。', sell: '05-21 09:34 卖出 4,000 股；05-25 09:36 卖出留仓 4,200 股。', read: '核心票处理有效，但回补和止盈模型还要固定。' },
+      { name: '合肥城建', code: '002208', source: '05.18-05.22', pnl: '+44.72', buy: '05-19 09:37 25.120 / 100 股。', sell: '05-20 09:40 25.680 / 100 股。', read: '低仓套利小赚。' },
+      { name: '川润股份', code: '002272', source: '05.18-05.22', pnl: '-53.23', buy: '05-20 09:50 24.930 / 100 股。', sell: '05-21 09:42 24.510 / 100 股。', read: '小亏，暴露下单稳定性和退出节奏。' },
+      { name: '滨化股份', code: '601678', source: '05.18-05.22', pnl: '-5.18', buy: '05-18 09:25 6.000 / 700 股。', sell: '05-19 09:30 6.010 / 700 股。', read: '低位一进二逻辑可保留，但只能小仓。' },
+      { name: 'ST万邦', code: '002082', source: '05.18-05.22', pnl: '成本待补', buy: '周前持仓，本区间缺买入成本。', sell: '05-18 09:25 17.960 / 300 股。', read: '只记录卖点，不硬算盈亏。' },
+      { name: '圣阳股份', code: '002580', source: '05.25-05.29', pnl: '-196.33', buy: '05-25 14:55、14:56 分两笔 24.180 / 24.210，各 100 股。', sell: '05-28 09:39 23.300 / 200 股。', read: '尾盘试错失败。' },
+      { name: '京东方A', code: '000725', source: '05.25-05.29', pnl: '-12.11', buy: '05-25 15:00 5.270 / 800 股。', sell: '05-26 09:36 5.270 / 800 股。', read: '买卖同价，亏在费用；趋势票不会做就不硬做。' },
+      { name: '京能电力', code: '600578', source: '05.25-05.29', pnl: '-342.61', buy: '05-26 09:30-09:37 开盘 7 分钟内分九笔买入 2,200 股。', sell: '05-28 09:30 9.260 / 2,200 股。', read: '早盘快速成仓太急。' },
+      { name: '华能蒙电', code: '600863', source: '05.25-05.29', pnl: '-2,060.24', buy: '05-28 09:34-14:05 分八笔买入 3,300 股，均价 7.147。', sell: '05-29 09:30 6.540 / 3,300 股。', read: '本月最大单段拖累之一，亏损后加单必须停止。' },
+      { name: '粤电力A', code: '000539', source: '06.01-06.05', pnl: '-902.36', buy: '06-01 09:30 9.730 / 500 股；06-02 14:56 9.130 / 300 股。', sell: '06-03 09:31 8.400 / 800 股。', read: '非唯一中高位左侧买点，不该做。' },
+      { name: '中京电子', code: '002579', source: '06.01-06.05', pnl: '-324.96', buy: '06-02 09:39 20.690 / 200 股；09:48 20.400 / 200 股。', sell: '06-04 09:32 19.780 / 400 股。', read: '不是趋势第一，也不是情绪核心。' },
+      { name: '大有能源', code: '600403', source: '06.01-06.05', pnl: '+2,862.68', buy: '06-03 09:25 6.730 / 1,100 股；06-04 09:30 7.400 / 900 股；06-05 13:34 8.140 / 2,400 股。', sell: '06-05 09:55 7.760 / 2,000 股；期末持仓 2,400 股。', read: '第一性/唯一性正确，围绕核心做 T 是本月最该保留的动作。' },
+      { name: '鑫科材料', code: '600255', source: '06.01-06.05', pnl: '-277.04', buy: '06-04 10:14 4.830 / 800 股。', sell: '期末持仓 800 股，6/5 持仓浮亏 -277.04。', read: '不是第一，不是唯一，只能观察或小仓套利。' }
+    ];
+
+    const fmt = value => `${value >= 0 ? '+' : ''}${value.toLocaleString('zh-CN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    const cls = value => value >= 0 ? 'pos' : 'neg';
+    const stockName = item => `<strong>${item.name}</strong><br><small>${item.code}</small>`;
+
+    document.getElementById('weekGrid').innerHTML = weekRows.map(item => `
+      <article class="week-row">
+        <div><strong>${item.range}</strong></div>
+        <div><b class="${cls(item.pnl)}">${fmt(item.pnl)}</b></div>
+        <div>${item.trades} 笔<br><small>${item.stocks} 只</small></div>
+        <p>${item.note}</p>
+        <a href="${item.href}">周复盘</a>
+      </article>
+    `).join('');
+
+    document.getElementById('profitRows').innerHTML = profitRows.map(item => `
+      <tr><td>${stockName(item)}</td><td class="${cls(item.pnl)}"><strong>${fmt(item.pnl)}</strong></td><td>${item.source}</td><td>${item.verdict}</td></tr>
+    `).join('');
+
+    document.getElementById('lossRows').innerHTML = lossRows.map(item => `
+      <tr><td>${stockName(item)}</td><td class="${cls(item.pnl)}"><strong>${fmt(item.pnl)}</strong></td><td>${item.source}</td><td>${item.verdict}</td></tr>
+    `).join('');
+
+    document.getElementById('stockRows').innerHTML = stockRows.map(item => `
+      <tr>
+        <td>${stockName(item)}</td>
+        <td>${item.source}</td>
+        <td>${item.pnl}</td>
+        <td>${item.buy}</td>
+        <td>${item.sell}</td>
+        <td>${item.read}</td>
+      </tr>
+    `).join('');
+  </script>
 </body>
 </html>
