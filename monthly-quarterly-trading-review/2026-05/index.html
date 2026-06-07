@@ -7,7 +7,8 @@
   <style>
     :root{--bg:#f5f7f9;--panel:#fff;--ink:#1c2530;--muted:#667085;--line:#dfe4ea;--soft:#eef2f5;--accent:#c2412d;--accent-soft:#fff1ed;--up:#14845f;--down:#b4232f;--warn:#b76305;--blue:#1d4ed8;--shadow:0 18px 44px rgba(28,37,48,.08);--radius:10px}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:linear-gradient(180deg,#f8fafc 0%,#eef2f5 100%);font-family:"Avenir Next","PingFang SC","Noto Sans SC","Microsoft YaHei",Arial,sans-serif}a{color:inherit}.shell{width:min(1480px,calc(100vw - 24px));margin:0 auto;padding:18px 0 52px;display:grid;gap:18px}.hero,.panel,.source-item,.stock-group,.chart-card,.card{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);min-width:0}.hero{padding:30px;display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:stretch}.label{display:inline-flex;width:max-content;color:var(--accent);background:var(--accent-soft);padding:7px 10px;border-radius:999px;font-size:12px;font-weight:700}.nav{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.button{min-height:44px;display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:8px;text-decoration:none;background:var(--ink);color:#fff;font-weight:700}.button.secondary{background:#fff;color:var(--ink);border:1px solid var(--line)}h1,h2,h3,h4,p{margin-top:0;letter-spacing:0}h1{margin:14px 0 12px;font-size:clamp(34px,4vw,56px);line-height:1.06}h2{font-size:24px;margin-bottom:8px}h3{font-size:20px;margin-bottom:6px}h4{font-size:15px;margin-bottom:8px}p,li{color:var(--muted);line-height:1.72}.hero p{font-size:16px;max-width:850px}.metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.metric{padding:16px;border:1px solid var(--line);border-radius:8px;background:#f8fafc;display:grid;align-content:space-between;min-height:120px}.metric span,.metric small{color:var(--muted);font-size:12px}.metric strong{font-size:25px}.panel,.stock-group{padding:22px}.source-row{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}.source-item{padding:16px;display:grid;gap:8px}.source-item strong{font-size:18px}.source-item a,.blue{color:var(--blue);font-weight:700}.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}.grid-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.card{box-shadow:none;padding:16px;background:#f8fafc}.card-head,.stock-group-head,.trade-map-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}.section-note{margin:0 0 16px;color:var(--muted)}.table-wrap{width:100%;overflow:auto;border:1px solid var(--line);border-radius:8px}table{width:100%;border-collapse:collapse;min-width:1180px;font-size:13px}th,td{padding:12px 11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;line-height:1.55}th{color:var(--muted);background:#f8fafc;position:sticky;top:0}small{color:var(--muted)}.pos{color:var(--up)}.neg{color:var(--down)}.warn{color:var(--warn)}.blue{color:var(--blue)}.chip{display:inline-flex;align-items:center;width:max-content;min-height:32px;padding:7px 10px;border-radius:999px;background:#eef2ff;color:#344054;font-size:12px;font-weight:700;white-space:nowrap}.chip.pos{background:#ecfdf3;color:#067647}.chip.neg{background:#fef2f2;color:#991b1b}.chip.warn{background:#fff7ed;color:#9a3412}.flow-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px}.flow-item{min-height:58px;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:#f8fafc;color:var(--muted);font-size:12px;line-height:1.55}.chart-stack{display:grid;gap:14px;margin-top:14px}.chart-card{padding:14px;box-shadow:none;background:#fff}.trade-map{margin-top:12px;padding:14px;border:1px solid var(--line);border-radius:8px;background:#f8fafc;display:grid;gap:12px;min-width:0}.trade-legend{display:flex;flex-wrap:wrap;gap:8px;color:var(--muted);font-size:12px}.legend-item{display:inline-flex;align-items:center;gap:5px}.legend-shape{width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent}.legend-shape.buy{border-bottom:11px solid var(--down)}.legend-shape.sell{border-top:11px solid var(--blue)}.trade-chart-wrap{width:100%;overflow:hidden}.trade-chart{width:100%;min-height:220px;display:block}.axis-label{fill:var(--muted);font-size:11px}.point-label{fill:var(--ink);font-size:11px;font-weight:700;paint-order:stroke;stroke:#fff;stroke-width:3px}.market-line{fill:none;stroke:#14956f;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.trade-context{display:grid;gap:6px;margin:0;padding-left:18px}.trade-context li{font-size:13px;line-height:1.55;color:var(--muted)}.trade-point-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.trade-point-item{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:40px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:#fff;font-size:12px;color:var(--muted);min-width:0}.trade-point-item span{min-width:0;overflow-wrap:anywhere}.trade-point-item strong{color:var(--ink);white-space:nowrap}.trade-point-item .buy{color:var(--down);font-weight:700}.trade-point-item .sell{color:var(--blue);font-weight:700}details{border:1px solid var(--line);border-radius:var(--radius);background:#fff;overflow:hidden;min-width:0}summary{cursor:pointer;padding:16px 18px;font-weight:700;min-height:48px}.side-tag.buy{color:var(--down);font-weight:700}.side-tag.sell{color:var(--blue);font-weight:700}.mini-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}.mini-grid span{background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:10px;color:var(--muted);font-size:13px;min-width:0}.mini-grid b{display:block;color:var(--ink);margin-bottom:4px;overflow-wrap:anywhere}.tag-row{display:flex;flex-wrap:wrap;gap:6px}.mini-chip{display:inline-flex;align-items:center;min-height:26px;padding:5px 8px;border-radius:999px;background:#eef2ff;color:#344054;font-size:12px;font-weight:700}.verdict-grid,.score-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.score-grid{grid-template-columns:repeat(5,minmax(0,1fr))}.verdict-card,.score-card{border:1px solid var(--line);border-radius:8px;background:#f8fafc;padding:16px;min-width:0}.verdict-card.danger,.score-card.neg{background:#fff7f7;border-color:#f3c8cd}.verdict-card.warn,.score-card.warn{background:#fffaf0;border-color:#f2d39c}.score-card div{display:flex;justify-content:space-between;gap:10px}.score-card strong{font-size:24px}.lesson-box{border:1px solid var(--line);border-radius:8px;padding:12px 14px;background:#f8fafc;margin:12px 0}.lesson-box p{margin:4px 0 0}.lesson-box.pos{background:#f0fdf4;border-color:#bbf7d0}.lesson-box.neg{background:#fff7f7;border-color:#f3c8cd}.stock-detail summary{padding:0}.stock-detail-body{display:grid;gap:14px;padding-top:12px}.goal-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:0 0 14px}.goal-list span{min-height:70px;display:grid;align-content:center;gap:3px;padding:10px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);font-weight:800}.goal-list b{color:var(--accent);font-size:18px}.check-list{margin:0;padding-left:20px}.redline-list{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}.redline-list span{display:inline-flex;padding:7px 10px;border-radius:999px;background:#fef2f2;color:#991b1b;font-weight:800;font-size:12px}.audit-table{min-width:1120px}@media(max-width:1120px){.hero,.grid-2,.grid-4,.source-row,.verdict-grid,.score-grid{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:720px){.shell{width:min(100vw - 16px,1480px);padding-top:12px}.hero,.panel,.stock-group{padding:18px}.nav{display:grid;grid-template-columns:1fr 1fr}.button{width:100%;padding-left:10px;padding-right:10px}.metrics,.trade-point-list,.goal-list{grid-template-columns:1fr}h1{font-size:34px}.stock-group-head,.card-head,.trade-map-head{flex-wrap:wrap}.trade-chart-wrap{overflow-x:auto}.trade-chart{width:760px;max-width:none;min-height:0}table{font-size:12px}.flow-list{grid-template-columns:1fr}}
-    .page-layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:18px;align-items:start}.content{display:grid;gap:18px;min-width:0}.sidebar{position:sticky;top:18px;align-self:start;min-width:0}.sidebar-inner{background:rgba(255,255,255,.97);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px;display:grid;gap:14px}.sidebar-brand{display:grid;gap:3px;padding:10px 10px 12px;text-decoration:none;border-bottom:1px solid var(--line)}.sidebar-brand span{color:var(--muted);font-size:12px;font-weight:700}.sidebar-brand strong{font-size:20px;line-height:1.2}.side-nav{display:grid;gap:6px}.side-nav a{min-height:40px;display:flex;align-items:center;padding:9px 10px;border-radius:8px;color:var(--muted);font-size:14px;font-weight:700;text-decoration:none}.side-nav a:hover,.side-nav a:focus-visible{background:#f8fafc;color:var(--ink);outline:2px solid transparent}.side-nav a.primary{background:var(--ink);color:#fff}.stock-nav{border:1px solid var(--line);border-radius:8px;background:#f8fafc;overflow:hidden;min-width:0}.stock-nav summary{min-height:40px;padding:9px 10px;display:flex;align-items:center;justify-content:space-between;gap:8px;color:var(--ink);font-size:14px;font-weight:800;list-style:none}.stock-nav summary::-webkit-details-marker{display:none}.stock-nav summary::after{content:"展开";color:var(--muted);font-size:12px;font-weight:700}.stock-nav[open] summary::after{content:"收起"}.stock-nav-list{max-height:360px;overflow:auto;padding:0 8px 8px;display:grid;gap:4px}.stock-nav-mode{padding:8px 8px 2px;color:var(--ink);font-size:12px;font-weight:900}.stock-nav-list a{min-height:34px;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:7px 8px;border-radius:7px;color:var(--muted);font-size:12px;font-weight:700;text-decoration:none}.stock-nav-list a:hover,.stock-nav-list a:focus-visible{background:#fff;color:var(--ink);outline:2px solid transparent}.stock-nav-list span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.stock-nav-list small{font-size:11px}.stock-nav-list b{font-size:11px;white-space:nowrap}.side-nav.external{padding-top:12px;border-top:1px solid var(--line)}.sidebar-meta{padding:10px;border:1px solid var(--line);border-radius:8px;background:#f8fafc;display:grid;gap:4px}.sidebar-meta b{font-size:15px}.sidebar-meta span{color:var(--muted);font-size:12px}.hero .nav{display:none}.anchor{display:block;height:0;scroll-margin-top:18px;visibility:hidden}.stock-group{scroll-margin-top:18px}@media(max-width:1120px){.page-layout{grid-template-columns:1fr}.sidebar{position:static}.side-nav{grid-template-columns:repeat(4,minmax(0,1fr))}.stock-nav-list{max-height:260px}.side-nav.external{grid-template-columns:repeat(3,minmax(0,1fr));padding-top:0;border-top:0}.sidebar-meta{display:none}}@media(max-width:720px){.side-nav{grid-template-columns:repeat(2,minmax(0,1fr))}.side-nav.external{grid-template-columns:repeat(3,minmax(0,1fr))}.side-nav a{justify-content:center;text-align:center}.stock-nav summary{justify-content:center}.stock-nav-list{grid-template-columns:1fr;max-height:240px}.sidebar-inner{padding:12px}.sidebar-brand{display:none}}</style>
+    .damage-bar{display:grid;grid-template-columns:auto auto minmax(0,1fr);gap:10px;align-items:center;margin:0 0 14px;padding:12px 14px;border:1px solid #f3c8cd;border-radius:8px;background:#fff7f7}.damage-bar span{color:var(--muted);line-height:1.6}.rubric-list{display:grid;gap:4px;margin:8px 0 0;padding-left:18px}.rubric-list li{font-size:12px;line-height:1.45}.audit-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.audit-strip span{display:grid;gap:4px;align-content:start;min-height:74px;padding:10px;border:1px solid var(--line);border-radius:8px;background:#f8fafc;color:var(--muted);font-size:12px;line-height:1.5}.audit-strip b{color:var(--ink)}.audit-strip em{font-style:normal}.mini-chip.danger{background:#fef2f2;color:#991b1b}.copy-model{display:grid;gap:10px;padding:12px;border:1px solid #bbf7d0;border-radius:8px;background:#f0fdf4}.copy-model h4{margin:0}.model-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.system-subgrid{margin-top:14px}.tag-dictionary{margin-top:14px}.tag-dictionary .tag-row{max-height:150px;overflow:auto}.oath{margin-top:14px;padding:14px;border:1px solid var(--line);border-radius:8px;background:#fff}.oath p{margin:4px 0 0;font-weight:800;color:var(--ink)}
+    .page-layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:18px;align-items:start}.content{display:grid;gap:18px;min-width:0}.sidebar{position:sticky;top:18px;align-self:start;min-width:0}.sidebar-inner{background:rgba(255,255,255,.97);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px;display:grid;gap:14px}.sidebar-brand{display:grid;gap:3px;padding:10px 10px 12px;text-decoration:none;border-bottom:1px solid var(--line)}.sidebar-brand span{color:var(--muted);font-size:12px;font-weight:700}.sidebar-brand strong{font-size:20px;line-height:1.2}.side-nav{display:grid;gap:6px}.side-nav a{min-height:40px;display:flex;align-items:center;padding:9px 10px;border-radius:8px;color:var(--muted);font-size:14px;font-weight:700;text-decoration:none}.side-nav a:hover,.side-nav a:focus-visible{background:#f8fafc;color:var(--ink);outline:2px solid transparent}.side-nav a.primary{background:var(--ink);color:#fff}.stock-nav{border:1px solid var(--line);border-radius:8px;background:#f8fafc;overflow:hidden;min-width:0}.stock-nav summary{min-height:40px;padding:9px 10px;display:flex;align-items:center;justify-content:space-between;gap:8px;color:var(--ink);font-size:14px;font-weight:800;list-style:none}.stock-nav summary::-webkit-details-marker{display:none}.stock-nav summary::after{content:"展开";color:var(--muted);font-size:12px;font-weight:700}.stock-nav[open] summary::after{content:"收起"}.stock-nav-list{max-height:360px;overflow:auto;padding:0 8px 8px;display:grid;gap:4px}.stock-nav-mode{padding:8px 8px 2px;color:var(--ink);font-size:12px;font-weight:900}.stock-nav-list a{min-height:34px;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:7px 8px;border-radius:7px;color:var(--muted);font-size:12px;font-weight:700;text-decoration:none}.stock-nav-list a:hover,.stock-nav-list a:focus-visible{background:#fff;color:var(--ink);outline:2px solid transparent}.stock-nav-list span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.stock-nav-list small{font-size:11px}.stock-nav-list b{font-size:11px;white-space:nowrap}.side-nav.external{padding-top:12px;border-top:1px solid var(--line)}.sidebar-meta{padding:10px;border:1px solid var(--line);border-radius:8px;background:#f8fafc;display:grid;gap:4px}.sidebar-meta b{font-size:15px}.sidebar-meta span{color:var(--muted);font-size:12px}.hero .nav{display:none}.anchor{display:block;height:0;scroll-margin-top:18px;visibility:hidden}.stock-group{scroll-margin-top:18px}@media(max-width:1120px){.page-layout{grid-template-columns:1fr}.sidebar{position:static}.side-nav{grid-template-columns:repeat(4,minmax(0,1fr))}.stock-nav-list{max-height:260px}.side-nav.external{grid-template-columns:repeat(3,minmax(0,1fr));padding-top:0;border-top:0}.sidebar-meta{display:none}.model-grid,.audit-strip{grid-template-columns:1fr}}@media(max-width:720px){.side-nav{grid-template-columns:repeat(2,minmax(0,1fr))}.side-nav.external{grid-template-columns:repeat(3,minmax(0,1fr))}.side-nav a{justify-content:center;text-align:center}.stock-nav summary{justify-content:center}.stock-nav-list{grid-template-columns:1fr;max-height:240px}.sidebar-inner{padding:12px}.sidebar-brand{display:none}.damage-bar{grid-template-columns:1fr}}</style>
 </head>
 <body>
   <main class="shell">
@@ -20,9 +21,12 @@
             <a href="#verdict">最大错误</a>
             <a href="#scores">五项评分</a>
             <a href="#core">核心票对照</a>
+            <a href="#system">系统统计</a>
             <a href="#sources">周度来源</a>
             <a href="#ranks">盈亏排行</a>
+            <a href="#models">可复制模型</a>
             <a href="#patterns">共性问题</a>
+            <a href="#psychology">心理偏差</a>
             <a href="#rules">落地铁律</a>
             <a href="#checklist">下月清单</a>
             <a href="#stocks">买卖点地图</a>
@@ -58,14 +62,26 @@
     </section>
     <section class="panel verdict-panel" id="verdict">
     <div class="card-head"><div><h2>本月最大错误</h2><p class="section-note">审判结论先行：按系统伤害排序，5月不是买卖点单点问题，而是交易对象偏离第一唯一性。</p></div><span class="chip neg">审判书</span></div>
+    <div class="damage-bar"><b>系统伤害</b><strong class="neg">极高</strong><span>可见后果：5月自然月账户结果 -7,398.25；伤害本质是“核心盈利被后排与红线动作吞噬”，不是单票亏损大小。</span></div>
     <div class="verdict-grid">
       <article class="verdict-card danger"><div class="card-head"><h3>主罪：放弃第一龙头，转做后排替代</h3><span class="chip neg">系统伤害最大</span></div><p>华电辽能、大唐电信、大连热电、华能蒙电、华电能源共同指向同一件事：题材热不等于个股有地位，非第一没有核心预期。</p></article>
       <article class="verdict-card danger"><div class="card-head"><h3>次罪：止损后回补，亏损后加单</h3><span class="chip neg">红线</span></div><p>华电辽能止损后快速买回，华能蒙电亏损后继续加单，说明卖出动作没有真正切断风险，反而把错误延长。</p></article>
       <article class="verdict-card warn"><div class="card-head"><h3>隐患：标的扩散，弱化核心专注</h3><span class="chip warn">下月盯紧</span></div><p>扩展样本 34 只、159 笔，说明注意力仍会被后排、补涨、非模式标的稀释；正确样本其实已经很清楚：神剑股份、通鼎互联、大有能源、达实智能。</p></article>
     </div>
   </section>
-    <section class="panel" id="scores"><h2>五项评分</h2><p class="section-note">评分服务于审判，不做安慰分；优先级固定为：风控质量 > 定龙质量 > 执行纪律 > 买卖点质量 > 仓位集中度。即便账户赚钱，只要利润来自非系统标的，系统分也要低。</p><div class="score-grid"><article class="score-card neg"><div><h3>风控质量</h3><strong>1/5</strong></div><p>多笔亏损属于可避免亏损，风险没有在第一次卖出时结束。</p></article><article class="score-card neg"><div><h3>定龙质量</h3><strong>2/5</strong></div><p>有通鼎互联、达实智能、大有能源等正确样本，但最大亏损来自放弃第一、转做后排。</p></article><article class="score-card neg"><div><h3>执行纪律</h3><strong>1/5</strong></div><p>止损后回补、亏损后加单、临盘扩散仍出现，是本月最需要审判的执行问题。</p></article><article class="score-card warn"><div><h3>买卖点质量</h3><strong>2/5</strong></div><p>部分核心票处理有效，但京能电力、华能蒙电等买点过急，买卖点质量被选股错误拖垮。</p></article><article class="score-card warn"><div><h3>仓位集中度</h3><strong>2/5</strong></div><p>扩展样本 34 只、159 笔，标的数量明显偏多，注意力被后排和非模式标的稀释。</p></article></div></section>
-    <section class="panel" id="core"><h2>本月真正应该做的核心票</h2><p class="section-note">轻量定龙判断只判“是否围绕第一唯一性”，不展开五维打分；无明确核心的阶段只允许轻仓套利，不能硬造龙头。</p><div class="table-wrap"><table class="audit-table"><thead><tr><th>阶段</th><th>真正应该盯的核心</th><th>实际交易</th><th>定龙是否正确</th><th>错过/偏离原因</th><th>审判</th></tr></thead><tbody><tr><td>月前参考：神剑股份</td><td><strong>神剑股份</strong></td><td>神剑股份</td><td><span class="chip pos">是</span></td><td>已抓住第一唯一性</td><td>定龙正确，贡献突出，可复制。</td></tr><tr><td>5月主正样本：通鼎互联</td><td><strong>通鼎互联</strong></td><td>通鼎互联</td><td><span class="chip pos">是</span></td><td>已抓住，但后排亏损稀释利润</td><td>唯一明确大幅正贡献，说明主线核心嗅觉在线。</td></tr><tr><td>大唐方向</td><td><strong>大唐发电</strong></td><td>大唐电信 / 大连热电</td><td><span class="chip neg">否</span></td><td>被后排吸引，题材热被误当个股地位</td><td>做了后排替代，确定性不足。</td></tr><tr><td>华能/电力方向</td><td><strong>阶段第一辨识度核心</strong></td><td>华电辽能 / 华能蒙电 / 华电能源</td><td><span class="chip neg">否</span></td><td>非唯一中高位左侧，止损后回补/亏损后加单</td><td>跟风与非唯一中高位反复亏损，且出现红线动作。</td></tr><tr><td>5月后段修复：达实智能</td><td><strong>达实智能</strong></td><td>达实智能</td><td><span class="chip pos">是</span></td><td>回到核心处理，但仍需防扩散</td><td>核心处理较有效，但不能扩散到弱票。</td></tr><tr><td>月后参考：大有能源</td><td><strong>大有能源</strong></td><td>大有能源</td><td><span class="chip pos">是</span></td><td>第一性确认后持有</td><td>第一性和唯一性验证后，持仓浮盈放大利润。</td></tr></tbody></table></div></section>
+    <section class="panel" id="scores"><h2>五项评分</h2><p class="section-note">评分服务于审判，不做安慰分；优先级固定为：风控质量 > 定龙质量 > 执行纪律 > 买卖点质量 > 仓位集中度。即便账户赚钱，只要利润来自非系统标的，系统分也要低。</p><div class="score-grid"><article class="score-card neg"><div><h3>风控质量</h3><strong>1/5</strong></div><p>多笔亏损属于可避免亏损，风险没有在第一次卖出时结束。</p><ul class="rubric-list"><li>1分：止损后回补/亏损加单仍出现</li><li>3分：多数亏损能切断，但偶有拖延</li><li>5分：亏损当天切断风险，无红线复发</li></ul></article><article class="score-card neg"><div><h3>定龙质量</h3><strong>2/5</strong></div><p>有通鼎互联、达实智能、大有能源等正确样本，但最大亏损来自放弃第一、转做后排。</p><ul class="rubric-list"><li>1分：主亏来自后排/非第一</li><li>3分：能抓部分核心，但阶段性偏离</li><li>5分：主要仓位围绕第一唯一性</li></ul></article><article class="score-card neg"><div><h3>执行纪律</h3><strong>1/5</strong></div><p>止损后回补、亏损后加单、临盘扩散仍出现，是本月最需要审判的执行问题。</p><ul class="rubric-list"><li>1分：预案失效、临盘扩散明显</li><li>3分：能执行主规则，但红线偶发</li><li>5分：按预案交易，不用情绪修复亏损</li></ul></article><article class="score-card warn"><div><h3>买卖点质量</h3><strong>2/5</strong></div><p>部分核心票处理有效，但京能电力、华能蒙电等买点过急，买卖点质量被选股错误拖垮。</p><ul class="rubric-list"><li>1分：买点急、卖点被动</li><li>3分：核心票处理有效，杂票拖累</li><li>5分：买卖点服务于核心和风控</li></ul></article><article class="score-card warn"><div><h3>仓位集中度</h3><strong>2/5</strong></div><p>扩展样本 34 只、159 笔，标的数量明显偏多，注意力被后排和非模式标的稀释。</p><ul class="rubric-list"><li>1分：标的明显发散</li><li>3分：多数聚焦，少量扩散</li><li>5分：观察/操作始终不超过8只</li></ul></article></div></section>
+    <section class="panel" id="core"><h2>本月真正应该做的核心票</h2><p class="section-note">轻量定龙判断只判“是否围绕第一唯一性”，不展开五维打分；无明确核心的阶段只允许轻仓套利，不能硬造龙头。</p><div class="table-wrap"><table class="audit-table"><thead><tr><th>阶段</th><th>真正应该盯的核心</th><th>实际交易</th><th>定龙是否正确</th><th>定龙证据</th><th>错过/偏离原因</th><th>审判</th></tr></thead><tbody><tr><td>月前参考：神剑股份</td><td><strong>神剑股份</strong></td><td>神剑股份</td><td><span class="chip pos">是</span></td><td>辨识度高、贡献突出、走势弹性强</td><td>已抓住第一唯一性</td><td>定龙正确，贡献突出，可复制。</td></tr><tr><td>5月主正样本：通鼎互联</td><td><strong>通鼎互联</strong></td><td>通鼎互联</td><td><span class="chip pos">是</span></td><td>5月自然月唯一明确大幅正贡献</td><td>已抓住，但后排亏损稀释利润</td><td>唯一明确大幅正贡献，说明主线核心嗅觉在线。</td></tr><tr><td>大唐方向</td><td><strong>大唐发电</strong></td><td>大唐电信 / 大连热电</td><td><span class="chip neg">否</span></td><td>应盯题材第一辨识度，不用题材热替代个股地位</td><td>被后排吸引，题材热被误当个股地位</td><td>做了后排替代，确定性不足。</td></tr><tr><td>华能/电力方向</td><td><strong>阶段第一辨识度核心</strong></td><td>华电辽能 / 华能蒙电 / 华电能源</td><td><span class="chip neg">否</span></td><td>实际交易票未证明题材内/跨题材唯一性</td><td>非唯一中高位左侧，止损后回补/亏损后加单</td><td>跟风与非唯一中高位反复亏损，且出现红线动作。</td></tr><tr><td>5月后段修复：达实智能</td><td><strong>达实智能</strong></td><td>达实智能</td><td><span class="chip pos">是</span></td><td>阶段核心处理有效，条件单与留仓修复回撤</td><td>回到核心处理，但仍需防扩散</td><td>核心处理较有效，但不能扩散到弱票。</td></tr><tr><td>月后参考：大有能源</td><td><strong>大有能源</strong></td><td>大有能源</td><td><span class="chip pos">是</span></td><td>第一性与唯一性确认后，持仓浮盈验证</td><td>第一性确认后持有</td><td>第一性和唯一性验证后，持仓浮盈放大利润。</td></tr></tbody></table></div></section>
+    <section class="panel" id="system"><h2>系统统计</h2><p class="section-note">这里统计的是“交易系统质量”，不是账户盈亏安慰分；小额赚钱但不可复制的票不自动算模式内。</p>
+    <div class="grid-4">
+      <article class="card"><h3>模式内</h3><strong>4 只 / 12%</strong><p>核心龙头或核心处理样本。</p></article><article class="card"><h3>非模式</h3><strong>9 只 / 26%</strong><p>后排、非第一、非唯一或红线样本。</p></article><article class="card"><h3>需复核</h3><strong>21 只 / 62%</strong><p>缺少足够证据，先不升级为系统机会。</p></article>
+      <article class="card"><h3>自动红线</h3><strong>止损后回补</strong><p>同票卖出后当日或次交易日买回，且该票为亏损样本时自动标记。</p></article>
+    </div>
+    <div class="grid-2 system-subgrid">
+      <article class="card"><h3>红线触发与再犯基线</h3><div class="redline-list"><span>后排替代：4只 / 累计1次</span><span>非第一：3只 / 累计3次</span><span>非模式：2只 / 累计1次</span><span>非唯一中高位：2只 / 累计2次</span><span>止损后回补：2只 / 累计1次</span><span>亏损后加单：1只 / 累计1次</span><span>买点过急：1只 / 累计1次</span></div><p>6月开始逐月累计，重复违反直接标为 <strong class="neg">红线再犯</strong>。</p></article>
+      <article class="card"><h3>操作类型分布</h3><div class="tag-row"><span class="mini-chip">套利：23只</span><span class="mini-chip">低吸：4只</span><span class="mini-chip">做T：3只</span><span class="mini-chip">半路：2只</span><span class="mini-chip">尾盘试错：1只</span><span class="mini-chip">趋势：1只</span></div><p>每只票详情里都保留操作类型，用来复盘到底是在做核心，还是在用套利/趋势/尾盘试错稀释系统。</p></article>
+    </div>
+    <article class="card tag-dictionary"><h3>固定标签字典</h3><div class="tag-row"><span class="mini-chip">核心龙头</span><span class="mini-chip">核心处理</span><span class="mini-chip">值得复制</span><span class="mini-chip">赚钱但不可复制</span><span class="mini-chip">后排替代</span><span class="mini-chip">后排末端</span><span class="mini-chip">非第一</span><span class="mini-chip">非唯一</span><span class="mini-chip">非唯一中高位</span><span class="mini-chip">跟风票</span><span class="mini-chip">非模式</span><span class="mini-chip">补涨乱做</span><span class="mini-chip">止损后回补</span><span class="mini-chip">轻仓套利</span><span class="mini-chip">亏损后加单</span><span class="mini-chip">卖飞核心</span><span class="mini-chip">买点过急</span><span class="mini-chip">尾盘试错</span><span class="mini-chip">低确定性</span><span class="mini-chip">正贡献</span><span class="mini-chip">小额正贡献</span><span class="mini-chip">负贡献</span><span class="mini-chip">小亏闭环</span><span class="mini-chip">买点复盘</span><span class="mini-chip">待核算</span><span class="mini-chip">需验证核心地位</span><span class="mini-chip">需查第一性</span></div></article>
+  </section>
     <section class="panel" id="sources"><h2>周度来源</h2><p class="section-note">来源周不只做入口：所有来源周的票都已进入下方排行、成交流水和买卖点地图。5月自然月账户结果仍只取05.08-05.29，前后两周用于共性对照。</p><div class="source-row"><article class="source-item">
     <strong>04.20-04.24</strong><b class="pos">+1,616.89</b>
     <span class="chip warn">月前参考周</span>
@@ -89,11 +105,12 @@
   </article></div></section>
     <span id="ranks" class="anchor"></span>
     <section class="grid-2">
-      <article class="panel"><h2>盈利排行</h2><p class="section-note">扩展样本口径；有期末持仓的来源周按期末持仓浮盈浮亏展示，并标出是否值得复制。</p><div class="table-wrap"><table><thead><tr><th>标的</th><th>贡献</th><th>来源</th><th>标签</th><th>可复制性</th><th>月度判断</th></tr></thead><tbody><tr>
+      <article class="panel"><h2>盈利排行</h2><p class="section-note">扩展样本口径；有期末持仓的来源周按期末持仓浮盈浮亏展示，并标出是否值得复制。</p><div class="table-wrap"><table><thead><tr><th>标的</th><th>贡献</th><th>来源</th><th>标签</th><th>类型/模式</th><th>可复制性</th><th>月度判断</th></tr></thead><tbody><tr>
     <td><strong>神剑股份</strong><br><small>002361</small></td>
     <td class="pos"><strong>+3,159.07</strong></td>
     <td>04.20-04.24</td>
     <td><div class="tag-row"><span class="mini-chip ">核心龙头</span><span class="mini-chip ">值得复制</span></div></td>
+    <td>做T<br><small>模式内</small></td>
     <td><span class="chip pos">可复制性：值得复制</span></td>
     <td>月前参考周的核心正样本：定龙正确、辨识度最高，说明围绕第一唯一性做时利润弹性最大。</td>
   </tr><tr>
@@ -101,6 +118,7 @@
     <td class="pos"><strong>+1,600.89</strong></td>
     <td>05.08-05.16</td>
     <td><div class="tag-row"><span class="mini-chip ">核心龙头</span><span class="mini-chip ">值得复制</span></div></td>
+    <td>做T<br><small>模式内</small></td>
     <td><span class="chip pos">可复制性：值得复制</span></td>
     <td>5月自然月内唯一明确大幅正贡献，说明主线与核心嗅觉在线。</td>
   </tr><tr>
@@ -108,13 +126,15 @@
     <td class="pos"><strong>+1,428.74</strong></td>
     <td>06.01-06.05</td>
     <td><div class="tag-row"><span class="mini-chip ">核心龙头</span><span class="mini-chip ">值得复制</span></div></td>
+    <td>低吸<br><small>模式内</small></td>
     <td><span class="chip pos">可复制性：值得复制</span></td>
     <td>月后参考周的正样本：第一性、唯一性确认后，期末持仓浮盈能够放大利润。</td>
   </tr><tr>
     <td><strong>达实智能</strong><br><small>002421</small></td>
     <td class="pos"><strong>+1,331.70</strong></td>
     <td>05.18-05.22 / 05.25-05.29</td>
-    <td><div class="tag-row"><span class="mini-chip ">核心处理</span><span class="mini-chip ">可复制</span></div></td>
+    <td><div class="tag-row"><span class="mini-chip ">核心处理</span><span class="mini-chip ">值得复制</span></div></td>
+    <td>做T<br><small>模式内</small></td>
     <td><span class="chip pos">可复制性：值得复制</span></td>
     <td>5月后段核心处理较有效，条件单兑现和留仓利润修复了部分回撤。</td>
   </tr><tr>
@@ -122,6 +142,7 @@
     <td class="pos"><strong>+236.87</strong></td>
     <td>04.20-04.24</td>
     <td><div class="tag-row"><span class="mini-chip ">轻仓套利</span><span class="mini-chip ">小额正贡献</span></div></td>
+    <td>套利<br><small>需复核</small></td>
     <td><span class="chip warn">可复制性：赚钱但不可复制</span></td>
     <td>小额正贡献，不构成月度主线，保留为低仓套利样本。</td>
   </tr><tr>
@@ -129,6 +150,7 @@
     <td class="pos"><strong>+52.15</strong></td>
     <td>04.20-04.24</td>
     <td><div class="tag-row"><span class="mini-chip ">轻仓套利</span><span class="mini-chip ">小额正贡献</span></div></td>
+    <td>套利<br><small>需复核</small></td>
     <td><span class="chip warn">可复制性：赚钱但不可复制</span></td>
     <td>小额正贡献，不构成月度主线，保留为低仓套利样本。</td>
   </tr><tr>
@@ -136,6 +158,7 @@
     <td class="pos"><strong>+44.72</strong></td>
     <td>05.18-05.22</td>
     <td><div class="tag-row"><span class="mini-chip ">轻仓套利</span><span class="mini-chip ">小额正贡献</span></div></td>
+    <td>套利<br><small>需复核</small></td>
     <td><span class="chip warn">可复制性：赚钱但不可复制</span></td>
     <td>小额正贡献，不构成月度主线，保留为低仓套利样本。</td>
   </tr><tr>
@@ -143,14 +166,16 @@
     <td class="pos"><strong>+1.08</strong></td>
     <td>04.20-04.24</td>
     <td><div class="tag-row"><span class="mini-chip ">轻仓套利</span><span class="mini-chip ">小额正贡献</span></div></td>
+    <td>套利<br><small>需复核</small></td>
     <td><span class="chip warn">可复制性：赚钱但不可复制</span></td>
     <td>小额正贡献，不构成月度主线，保留为低仓套利样本。</td>
   </tr></tbody></table></div></article>
-      <article class="panel"><h2>亏损排行</h2><p class="section-note">亏损根源集中在后排替代核心、止损后回补、非唯一中高位左侧和亏损后加单，并标出是否可避免。</p><div class="table-wrap"><table><thead><tr><th>标的</th><th>贡献</th><th>来源</th><th>标签</th><th>可避免性</th><th>月度判断</th></tr></thead><tbody><tr>
+      <article class="panel"><h2>亏损排行</h2><p class="section-note">亏损根源集中在后排替代核心、止损后回补、非唯一中高位左侧和亏损后加单，并标出是否可避免。</p><div class="table-wrap"><table><thead><tr><th>标的</th><th>贡献</th><th>来源</th><th>标签</th><th>类型/模式</th><th>可避免性</th><th>月度判断</th></tr></thead><tbody><tr>
     <td><strong>华电辽能</strong><br><small>600396</small></td>
     <td class="neg"><strong>-3,081.52</strong></td>
     <td>05.08-05.16 / 05.18-05.22</td>
     <td><div class="tag-row"><span class="mini-chip ">后排替代</span><span class="mini-chip ">止损后回补</span></div></td>
+    <td>低吸<br><small>非模式</small></td>
     <td><span class="chip neg">可避免性：可避免</span></td>
     <td>最大纪律样本：后排替代核心、止损后快速回补，风险切断没有真正完成。</td>
   </tr><tr>
@@ -158,6 +183,7 @@
     <td class="neg"><strong>-2,060.24</strong></td>
     <td>05.25-05.29</td>
     <td><div class="tag-row"><span class="mini-chip ">亏损后加单</span><span class="mini-chip ">非唯一中高位</span></div></td>
+    <td>低吸<br><small>非模式</small></td>
     <td><span class="chip neg">可避免性：可避免</span></td>
     <td>亏损后加单、弱票当核心，是5月后段必须停止的主要动作。</td>
   </tr><tr>
@@ -165,13 +191,15 @@
     <td class="neg"><strong>-1,139.29</strong></td>
     <td>05.08-05.16</td>
     <td><div class="tag-row"><span class="mini-chip ">后排替代</span><span class="mini-chip ">非第一</span></div></td>
+    <td>半路<br><small>非模式</small></td>
     <td><span class="chip neg">可避免性：可避免</span></td>
     <td>后排替代大唐发电核心，确定性不足，题材热不等于个股有地位。</td>
   </tr><tr>
     <td><strong>粤电力A</strong><br><small>000539</small></td>
     <td class="neg"><strong>-902.36</strong></td>
     <td>06.01-06.05</td>
-    <td><div class="tag-row"><span class="mini-chip ">非唯一中高位</span><span class="mini-chip ">弱转强误判</span></div></td>
+    <td><div class="tag-row"><span class="mini-chip ">非唯一中高位</span><span class="mini-chip ">买点复盘</span></div></td>
+    <td>低吸<br><small>非模式</small></td>
     <td><span class="chip neg">可避免性：可避免</span></td>
     <td>月后参考周的亏损样本：有身位不等于唯一辨识度，中高位弱转强没有唯一性不能做。</td>
   </tr><tr>
@@ -179,6 +207,7 @@
     <td class="neg"><strong>-698.74</strong></td>
     <td>04.20-04.24</td>
     <td><div class="tag-row"><span class="mini-chip ">负贡献</span><span class="mini-chip ">需查第一性</span></div></td>
+    <td>套利<br><small>需复核</small></td>
     <td><span class="chip neg">可避免性：可避免</span></td>
     <td>负贡献较大，优先检查是否偏离第一性、唯一性或出现亏损后加仓。</td>
   </tr><tr>
@@ -186,6 +215,7 @@
     <td class="neg"><strong>-449.60</strong></td>
     <td>05.08-05.16</td>
     <td><div class="tag-row"><span class="mini-chip ">后排末端</span><span class="mini-chip ">低确定性</span></div></td>
+    <td>套利<br><small>非模式</small></td>
     <td><span class="chip neg">可避免性：可避免</span></td>
     <td>小亏闭环，重点检查买点是否过急、标的地位是否不够。</td>
   </tr><tr>
@@ -193,6 +223,7 @@
     <td class="neg"><strong>-362.76</strong></td>
     <td>04.20-04.24</td>
     <td><div class="tag-row"><span class="mini-chip ">小亏闭环</span><span class="mini-chip ">买点复盘</span></div></td>
+    <td>套利<br><small>需复核</small></td>
     <td><span class="chip warn">可避免性：不确定</span></td>
     <td>小亏闭环，重点检查买点是否过急、标的地位是否不够。</td>
   </tr><tr>
@@ -200,6 +231,7 @@
     <td class="neg"><strong>-351.81</strong></td>
     <td>04.20-04.24</td>
     <td><div class="tag-row"><span class="mini-chip ">小亏闭环</span><span class="mini-chip ">买点复盘</span></div></td>
+    <td>套利<br><small>需复核</small></td>
     <td><span class="chip warn">可避免性：不确定</span></td>
     <td>小亏闭环，重点检查买点是否过急、标的地位是否不够。</td>
   </tr><tr>
@@ -207,6 +239,7 @@
     <td class="neg"><strong>-342.61</strong></td>
     <td>05.25-05.29</td>
     <td><div class="tag-row"><span class="mini-chip ">买点过急</span><span class="mini-chip ">非唯一</span></div></td>
+    <td>半路<br><small>非模式</small></td>
     <td><span class="chip neg">可避免性：可避免</span></td>
     <td>小亏闭环，重点检查买点是否过急、标的地位是否不够。</td>
   </tr><tr>
@@ -214,13 +247,15 @@
     <td class="neg"><strong>-334.17</strong></td>
     <td>04.20-04.24</td>
     <td><div class="tag-row"><span class="mini-chip ">小亏闭环</span><span class="mini-chip ">买点复盘</span></div></td>
+    <td>套利<br><small>需复核</small></td>
     <td><span class="chip warn">可避免性：不确定</span></td>
     <td>小亏闭环，重点检查买点是否过急、标的地位是否不够。</td>
   </tr><tr>
     <td><strong>中京电子</strong><br><small>002579</small></td>
     <td class="neg"><strong>-324.96</strong></td>
     <td>06.01-06.05</td>
-    <td><div class="tag-row"><span class="mini-chip ">非第一趋势</span><span class="mini-chip ">非模式</span></div></td>
+    <td><div class="tag-row"><span class="mini-chip ">非第一</span><span class="mini-chip ">非模式</span></div></td>
+    <td>趋势<br><small>非模式</small></td>
     <td><span class="chip neg">可避免性：可避免</span></td>
     <td>趋势题材里非第一名，不能按核心预期处理。</td>
   </tr><tr>
@@ -228,6 +263,7 @@
     <td class="neg"><strong>-299.90</strong></td>
     <td>04.20-04.24</td>
     <td><div class="tag-row"><span class="mini-chip ">小亏闭环</span><span class="mini-chip ">买点复盘</span></div></td>
+    <td>套利<br><small>需复核</small></td>
     <td><span class="chip warn">可避免性：不确定</span></td>
     <td>小亏闭环，重点检查买点是否过急、标的地位是否不够。</td>
   </tr><tr>
@@ -235,6 +271,7 @@
     <td class="neg"><strong>-277.04</strong></td>
     <td>06.01-06.05</td>
     <td><div class="tag-row"><span class="mini-chip ">小亏闭环</span><span class="mini-chip ">买点复盘</span></div></td>
+    <td>套利<br><small>需复核</small></td>
     <td><span class="chip warn">可避免性：不确定</span></td>
     <td>小亏闭环，重点检查买点是否过急、标的地位是否不够。</td>
   </tr><tr>
@@ -242,6 +279,7 @@
     <td class="neg"><strong>-273.89</strong></td>
     <td>04.20-04.24</td>
     <td><div class="tag-row"><span class="mini-chip ">小亏闭环</span><span class="mini-chip ">买点复盘</span></div></td>
+    <td>套利<br><small>需复核</small></td>
     <td><span class="chip warn">可避免性：不确定</span></td>
     <td>小亏闭环，重点检查买点是否过急、标的地位是否不够。</td>
   </tr><tr>
@@ -249,6 +287,7 @@
     <td class="neg"><strong>-207.03</strong></td>
     <td>05.08-05.16</td>
     <td><div class="tag-row"><span class="mini-chip ">后排替代</span><span class="mini-chip ">跟风票</span></div></td>
+    <td>套利<br><small>非模式</small></td>
     <td><span class="chip neg">可避免性：可避免</span></td>
     <td>小亏闭环，重点检查买点是否过急、标的地位是否不够。</td>
   </tr><tr>
@@ -256,6 +295,7 @@
     <td class="neg"><strong>-196.33</strong></td>
     <td>05.25-05.29</td>
     <td><div class="tag-row"><span class="mini-chip ">非模式</span><span class="mini-chip ">尾盘试错</span></div></td>
+    <td>尾盘试错<br><small>非模式</small></td>
     <td><span class="chip neg">可避免性：可避免</span></td>
     <td>小亏闭环，重点检查买点是否过急、标的地位是否不够。</td>
   </tr><tr>
@@ -263,13 +303,15 @@
     <td class="neg"><strong>-169.13</strong></td>
     <td>04.20-04.24</td>
     <td><div class="tag-row"><span class="mini-chip ">小亏闭环</span><span class="mini-chip ">买点复盘</span></div></td>
+    <td>套利<br><small>需复核</small></td>
     <td><span class="chip warn">可避免性：不确定</span></td>
     <td>小亏闭环，重点检查买点是否过急、标的地位是否不够。</td>
   </tr><tr>
     <td><strong>大唐发电</strong><br><small>601991</small></td>
     <td class="neg"><strong>-167.77</strong></td>
     <td>05.08-05.16 / 05.18-05.22</td>
-    <td><div class="tag-row"><span class="mini-chip ">小亏闭环</span><span class="mini-chip ">买点复盘</span></div></td>
+    <td><div class="tag-row"><span class="mini-chip ">止损后回补</span><span class="mini-chip ">小亏闭环</span><span class="mini-chip ">买点复盘</span></div></td>
+    <td>套利<br><small>需复核</small></td>
     <td><span class="chip warn">可避免性：不确定</span></td>
     <td>小亏闭环，重点检查买点是否过急、标的地位是否不够。</td>
   </tr><tr>
@@ -277,6 +319,7 @@
     <td class="neg"><strong>-161.63</strong></td>
     <td>05.08-05.16</td>
     <td><div class="tag-row"><span class="mini-chip ">小亏闭环</span><span class="mini-chip ">买点复盘</span></div></td>
+    <td>套利<br><small>需复核</small></td>
     <td><span class="chip warn">可避免性：不确定</span></td>
     <td>小亏闭环，重点检查买点是否过急、标的地位是否不够。</td>
   </tr><tr>
@@ -284,6 +327,7 @@
     <td class="neg"><strong>-113.95</strong></td>
     <td>04.20-04.24</td>
     <td><div class="tag-row"><span class="mini-chip ">小亏闭环</span><span class="mini-chip ">买点复盘</span></div></td>
+    <td>套利<br><small>需复核</small></td>
     <td><span class="chip warn">可避免性：不确定</span></td>
     <td>小亏闭环，重点检查买点是否过急、标的地位是否不够。</td>
   </tr><tr>
@@ -291,6 +335,7 @@
     <td class="neg"><strong>-53.23</strong></td>
     <td>05.18-05.22</td>
     <td><div class="tag-row"><span class="mini-chip ">小亏闭环</span><span class="mini-chip ">买点复盘</span></div></td>
+    <td>套利<br><small>需复核</small></td>
     <td><span class="chip warn">可避免性：不确定</span></td>
     <td>小亏闭环，重点检查买点是否过急、标的地位是否不够。</td>
   </tr><tr>
@@ -298,6 +343,7 @@
     <td class="neg"><strong>-38.30</strong></td>
     <td>05.08-05.16 / 05.18-05.22</td>
     <td><div class="tag-row"><span class="mini-chip ">小亏闭环</span><span class="mini-chip ">买点复盘</span></div></td>
+    <td>套利<br><small>需复核</small></td>
     <td><span class="chip warn">可避免性：不确定</span></td>
     <td>小亏闭环，重点检查买点是否过急、标的地位是否不够。</td>
   </tr><tr>
@@ -305,30 +351,67 @@
     <td class="neg"><strong>-12.11</strong></td>
     <td>05.25-05.29</td>
     <td><div class="tag-row"><span class="mini-chip ">小亏闭环</span><span class="mini-chip ">买点复盘</span></div></td>
+    <td>套利<br><small>需复核</small></td>
     <td><span class="chip warn">可避免性：不确定</span></td>
     <td>小亏闭环，重点检查买点是否过急、标的地位是否不够。</td>
   </tr></tbody></table></div></article>
     </section>
     <section class="panel"><h2>待核算标的</h2><p class="section-note">这些票有成交事实和买卖点，但源周未给出可确认成本或闭环贡献，先不硬塞进盈亏排行。</p><div class="mini-grid"><span><b>宝光股份 600379</b>05.08-05.16</span><span><b>滨化股份 601678</b>05.18-05.22</span><span><b>ST万邦 002082</b>05.18-05.22</span></div></section>
+    <section class="panel" id="models"><h2>可复制模型</h2><p class="section-note">只沉淀已经被月度结果证明、且符合第一唯一性或阶段核心处理的盈利样本；赚钱但不可复制的票不进入这里。</p><div class="model-grid"><article class="card"><div class="card-head"><h3>神剑股份</h3><span class="chip pos">+3,159.07</span></div><div class="copy-model"><h4>可复制模型</h4><div class="mini-grid">
+    <span><b>触发条件</b>第一唯一性确认，且市场辨识度集中</span>
+    <span><b>买点</b>只在核心确认后参与，不扩散到后排</span>
+    <span><b>卖点</b>利润兑现或强转弱时降风险</span>
+    <span><b>失效条件</b>失去唯一性、后排开始分流、封单/承接转弱</span>
+  </div></div></article><article class="card"><div class="card-head"><h3>通鼎互联</h3><span class="chip pos">+1,600.89</span></div><div class="copy-model"><h4>可复制模型</h4><div class="mini-grid">
+    <span><b>触发条件</b>主线强、个股辨识度唯一且贡献开始放大</span>
+    <span><b>买点</b>围绕核心分歧/确认点做，不用后排替代</span>
+    <span><b>卖点</b>核心走弱或利润达到预案时分批落袋</span>
+    <span><b>失效条件</b>不再是题材第一、成交承接明显弱化</span>
+  </div></div></article><article class="card"><div class="card-head"><h3>达实智能</h3><span class="chip pos">+1,331.70</span></div><div class="copy-model"><h4>可复制模型</h4><div class="mini-grid">
+    <span><b>触发条件</b>阶段核心走出，且有条件单/承接可执行</span>
+    <span><b>买点</b>围绕核心分歧做T，仓位不扩散</span>
+    <span><b>卖点</b>条件单兑现或弱化时保护利润</span>
+    <span><b>失效条件</b>核心地位不再明确或同阶段更强票出现</span>
+  </div></div></article><article class="card"><div class="card-head"><h3>大有能源</h3><span class="chip pos">+1,428.74</span></div><div class="copy-model"><h4>可复制模型</h4><div class="mini-grid">
+    <span><b>触发条件</b>阶段核心地位确认，走势与辨识度同步增强</span>
+    <span><b>买点</b>确认后低吸或回踩承接点参与</span>
+    <span><b>卖点</b>保留核心利润，跌破核心地位即减仓</span>
+    <span><b>失效条件</b>题材退潮、同题材更强票夺位</span>
+  </div></div></article></div></section>
     <section class="panel" id="patterns"><h2>月度共性问题</h2><div class="grid-4">
       <article class="card"><div class="card-head"><h3>盈利只来自第一</h3><span class="chip pos">持续</span></div><p>神剑股份、通鼎互联、大有能源、达实智能都说明，利润集中在辨识度最高、最接近核心龙头的标的。</p></article>
       <article class="card"><div class="card-head"><h3>后排替代核心</h3><span class="chip neg">停止</span></div><p>华电辽能、大唐电信、大连热电、华电能源、华能蒙电反复证明：题材热不等于个股有地位。</p></article>
       <article class="card"><div class="card-head"><h3>止损必须切断风险</h3><span class="chip neg">红线</span></div><p>华电辽能止损后快速买回同等仓位，说明卖出动作没有真正完成风险切断。</p></article>
       <article class="card"><div class="card-head"><h3>无龙只轻仓套利</h3><span class="chip warn">执行</span></div><p>没有唯一龙头时，只能轻仓试错；中高位非唯一、亏损后加单和临盘扩散都要压掉。</p></article>
     </div></section>
+    <section class="panel" id="psychology"><h2>心理偏差</h2><p class="section-note">心理偏差只保留最影响系统的几条，方便下月开盘前快速自检。</p><div class="grid-4"><article class="card"><h3>后排幻想</h3><p>看到题材热，就把后排当成核心替代。</p><p><strong>纠偏：</strong>用“是否市场第一唯一性”一票否决。</p></article><article class="card"><h3>亏损修复冲动</h3><p>止损后想快速赚回来，导致回补或加单。</p><p><strong>纠偏：</strong>亏损后先降风险，当天不做同一错误修复。</p></article><article class="card"><h3>急躁</h3><p>开盘过快成交、未等地位确认。</p><p><strong>纠偏：</strong>先确认地位，再谈买点。</p></article><article class="card"><h3>题材兴奋</h3><p>题材有强度时忽略个股排名。</p><p><strong>纠偏：</strong>题材强只说明可观察，不说明可买后排。</p></article></div></section>
     <section class="panel" id="rules"><h2>落地铁律</h2><div class="grid-4">
       <article class="card"><h3>唯龙头</h3><p>非模式、非核心、非第一标的坚决不做，先定龙再谈买卖点。</p></article>
       <article class="card"><h3>唯唯一性</h3><p>题材内唯一、跨题材唯一、市场高度唯一同时验证；第一名无机会才看第二名。</p></article>
       <article class="card"><h3>精简标的</h3><p>观察与操作总量控制在 8 只以内，日常聚焦 5-6 只核心标的。</p></article>
       <article class="card"><h3>亏损不加单</h3><p>亏损后先降风险，不用回补、补涨、后排幻想修复账户曲线。</p></article>
     </div></section>
-    <section class="panel" id="checklist"><h2>下月执行清单、红线与三个目标</h2><p class="section-note">6月复盘必须逐条回看：做到就是规则，没做到就是继续审判；重复违反直接标为“红线再犯”。</p><div class="grid-2"><article class="card"><h3>下月三个目标</h3><div class="goal-list"><span><b>1</b>把风控质量从 1/5 拉到 3/5</span><span><b>2</b>只围绕第一唯一性龙头出手</span><span><b>3</b>观察/操作标的压到 8 只以内</span></div><h3>下月只执行</h3><ol class="check-list"><li>只做市场第一辨识度和唯一性最强标的；第一名无机会才看第二名。</li><li>无明确核心龙头时，只允许轻仓套利，不做中高位非唯一左侧。</li><li>止损后当天不回补同一错误仓位；亏损后不加单。</li><li>观察与操作总标的不超过 8 只，日常聚焦 5-6 只核心。</li><li>每笔交易先写清：它是核心龙头、轻仓套利，还是必须放弃的后排。</li></ol></article><article class="card"><h3>红线清单</h3><div class="redline-list"><span>非第一不做</span><span>后排替代不做</span><span>非模式不做</span><span>亏损后不加单</span><span>止损后不立刻买回</span></div><p>本月没有上一份月度红线可回查；从这页开始，下一月必须对照执行结果，重复违反标记为 <strong class="neg">红线再犯</strong>。</p></article></div></section>
+    <section class="panel" id="checklist"><h2>下月执行清单、红线与三个目标</h2><p class="section-note">6月复盘必须逐条回看：做到就是规则，没做到就是继续审判；重复违反直接标为“红线再犯”。</p><div class="grid-2"><article class="card"><h3>下月三个目标</h3><div class="goal-list"><span><b>1</b>风控质量达到 3/5：无止损后回补、无亏损后加单</span><span><b>2</b>模式内交易占比高于 60%：只围绕第一唯一性或明确轻仓套利</span><span><b>3</b>观察/操作标的始终不超过 8 只</span></div><h3>下月只执行</h3><ol class="check-list"><li>只做市场第一辨识度和唯一性最强标的；第一名无机会才看第二名。</li><li>无明确核心龙头时，只允许轻仓套利，不做中高位非唯一左侧。</li><li>止损后当天不回补同一错误仓位；亏损后不加单。</li><li>观察与操作总标的不超过 8 只，日常聚焦 5-6 只核心。</li><li>每笔交易先写清：它是核心龙头、轻仓套利，还是必须放弃的后排。</li></ol></article><article class="card"><h3>红线清单</h3><div class="redline-list"><span>非第一不做</span><span>后排替代不做</span><span>非模式不做</span><span>亏损后不加单</span><span>止损后不立刻买回</span></div><p>本月没有上一份月度红线可回查；从这页开始，下一月必须对照执行结果，重复违反标记为 <strong class="neg">红线再犯</strong>。</p><div class="oath"><b>下月交易誓约</b><p>我只为第一唯一性付出仓位；看不懂不做，非第一不做，亏损后先切断风险。</p></div></article></div></section>
     <section class="panel" id="stocks"><h2>每只票的买卖点地图</h2><p class="section-note">每只票先列完整成交时间，再按来源周放真实分钟线买卖点图。重复出现在多个来源周的票，分周保留图，方便对照节奏变化。</p></section>
     <section class="stock-group" id="stock-002361">
     <details class="stock-detail" open>
       <summary><div class="stock-group-head"><div><h3>神剑股份 <small>002361</small></h3><p>04.20-04.24 周度单票贡献 +3,159.07。；周度走势从 18.85 到 21.46，区间 +13.85%，周内振幅 27.73% 。</p><div class="tag-row"><span class="mini-chip ">核心龙头</span><span class="mini-chip ">值得复制</span></div></div><span class="chip pos">+3,159.07</span></div></summary>
       <div class="stock-detail-body">
         <div class="lesson-box pos"><b>关键复制点</b><p>定龙正确、围绕第一唯一性参与，是本月可复制的盈利样本。</p></div>
+        <div class="audit-strip">
+    <span><b>操作类型</b>做T</span>
+    <span><b>模式归属</b>模式内</span>
+    <span><b>交易前预案</b>暂无预案记录；按月度规则，应围绕第一唯一性核心处理。</span>
+    <span><b>实际执行</b>实际围绕核心辨识度标的参与，并形成大额正贡献。</span>
+    <span><b>当时最正确动作</b>继续只围绕第一唯一性做，盈利后保护利润。</span>
+    <span><b>红线标记</b><em><span class="mini-chip">无红线标记</span></em></span>
+  </div>
+<div class="copy-model"><h4>可复制模型</h4><div class="mini-grid">
+    <span><b>触发条件</b>第一唯一性确认，且市场辨识度集中</span>
+    <span><b>买点</b>只在核心确认后参与，不扩散到后排</span>
+    <span><b>卖点</b>利润兑现或强转弱时降风险</span>
+    <span><b>失效条件</b>失去唯一性、后排开始分流、封单/承接转弱</span>
+  </div></div>
         <div><h4>完整成交流水</h4><div class="flow-list"><div class="flow-item"><b class="neg">买入</b> 2026-04-20 09:59:35<br>19.540 / 200 股 · 04.20-04.24</div><div class="flow-item"><b class="neg">买入</b> 2026-04-20 10:00:26<br>19.660 / 100 股 · 04.20-04.24</div><div class="flow-item"><b class="neg">买入</b> 2026-04-20 10:00:35<br>19.640 / 100 股 · 04.20-04.24</div><div class="flow-item"><b class="neg">买入</b> 2026-04-20 10:02:14<br>19.705 / 200 股 · 04.20-04.24</div><div class="flow-item"><b class="neg">买入</b> 2026-04-20 10:02:28<br>19.780 / 200 股 · 04.20-04.24</div><div class="flow-item"><b class="neg">买入</b> 2026-04-20 10:02:53<br>19.880 / 200 股 · 04.20-04.24</div><div class="flow-item"><b class="neg">买入</b> 2026-04-20 10:03:44<br>19.920 / 200 股 · 04.20-04.24</div><div class="flow-item"><b class="blue">卖出</b> 2026-04-22 09:41:44<br>23.198 / 1,200 股 · 04.20-04.24</div><div class="flow-item"><b class="neg">买入</b> 2026-04-22 09:55:14<br>23.400 / 100 股 · 04.20-04.24</div><div class="flow-item"><b class="neg">买入</b> 2026-04-22 09:56:43<br>23.380 / 100 股 · 04.20-04.24</div><div class="flow-item"><b class="neg">买入</b> 2026-04-22 10:06:08<br>23.530 / 100 股 · 04.20-04.24</div><div class="flow-item"><b class="neg">买入</b> 2026-04-22 10:07:42<br>23.390 / 100 股 · 04.20-04.24</div><div class="flow-item"><b class="neg">买入</b> 2026-04-22 10:08:09<br>23.380 / 100 股 · 04.20-04.24</div><div class="flow-item"><b class="neg">买入</b> 2026-04-22 10:12:32<br>23.360 / 100 股 · 04.20-04.24</div><div class="flow-item"><b class="neg">买入</b> 2026-04-22 10:16:24<br>23.140 / 200 股 · 04.20-04.24</div><div class="flow-item"><b class="neg">买入</b> 2026-04-22 10:52:06<br>23.190 / 200 股 · 04.20-04.24</div><div class="flow-item"><b class="neg">买入</b> 2026-04-23 09:52:54<br>22.530 / 200 股 · 04.20-04.24</div><div class="flow-item"><b class="blue">卖出</b> 2026-04-23 10:20:07<br>23.550 / 1,000 股 · 04.20-04.24</div><div class="flow-item"><b class="neg">买入</b> 2026-04-23 10:23:26<br>22.870 / 100 股 · 04.20-04.24</div><div class="flow-item"><b class="neg">买入</b> 2026-04-23 10:25:02<br>23.000 / 200 股 · 04.20-04.24</div><div class="flow-item"><b class="neg">买入</b> 2026-04-23 10:26:03<br>22.810 / 100 股 · 04.20-04.24</div><div class="flow-item"><b class="neg">买入</b> 2026-04-23 10:35:28<br>22.710 / 100 股 · 04.20-04.24</div><div class="flow-item"><b class="neg">买入</b> 2026-04-23 10:46:53<br>22.520 / 100 股 · 04.20-04.24</div><div class="flow-item"><b class="neg">买入</b> 2026-04-23 13:02:06<br>22.380 / 100 股 · 04.20-04.24</div><div class="flow-item"><b class="blue">卖出</b> 2026-04-24 09:37:03<br>22.700 / 900 股 · 04.20-04.24</div><div class="flow-item"><b class="neg">买入</b> 2026-04-24 09:41:54<br>23.370 / 100 股 · 04.20-04.24</div><div class="flow-item"><b class="neg">买入</b> 2026-04-24 09:44:26<br>23.050 / 100 股 · 04.20-04.24</div><div class="flow-item"><b class="neg">买入</b> 2026-04-24 09:59:09<br>22.400 / 100 股 · 04.20-04.24</div><div class="flow-item"><b class="neg">买入</b> 2026-04-24 09:59:23<br>22.540 / 100 股 · 04.20-04.24</div><div class="flow-item"><b class="neg">买入</b> 2026-04-24 09:59:45<br>22.540 / 100 股 · 04.20-04.24</div><div class="flow-item"><b class="neg">买入</b> 2026-04-24 10:00:21<br>22.410 / 100 股 · 04.20-04.24</div><div class="flow-item"><b class="neg">买入</b> 2026-04-24 10:00:37<br>22.380 / 100 股 · 04.20-04.24</div><div class="flow-item"><b class="neg">买入</b> 2026-04-24 10:01:34<br>22.340 / 100 股 · 04.20-04.24</div><div class="flow-item"><b class="neg">买入</b> 2026-04-24 10:02:53<br>22.230 / 100 股 · 04.20-04.24</div></div></div>
         <div class="chart-stack"><article class="chart-card"><div class="card-head"><span class="chip">04.20-04.24</span><a class="blue" href="../../2026-04-20_2026-04-24/">来源周复盘</a></div><div class="trade-map" aria-label="神剑股份 04.20-04.24 买卖点地图">
     <div class="trade-map-head"><h4>04.20-04.24 真实分钟线与买卖点</h4><div class="trade-legend"><span class="legend-item"><i class="legend-shape buy"></i>买入</span><span class="legend-item"><i class="legend-shape sell"></i>卖出</span></div></div>
@@ -344,6 +427,15 @@
       <summary><div class="stock-group-head"><div><h3>华电辽能 <small>600396</small></h3><p>05.08-05.16 周复盘贡献 -1,267.81。；5/14 建仓 900 股后 5/15 止损，同日又买回 900 股，纪律冲突最明显。；05.18-05.22 周复盘贡献 -1,813.71。</p><div class="tag-row"><span class="mini-chip ">后排替代</span><span class="mini-chip ">止损后回补</span></div></div><span class="chip neg">-3,081.52</span></div></summary>
       <div class="stock-detail-body">
         <div class="lesson-box neg"><b>关键错误点</b><p>最大错误样本：后排替代核心，止损后又快速买回同等仓位，风险切断失败。</p></div>
+        <div class="audit-strip">
+    <span><b>操作类型</b>低吸</span>
+    <span><b>模式归属</b>非模式</span>
+    <span><b>交易前预案</b>暂无预案记录；按月度规则，非第一后排应放弃。</span>
+    <span><b>实际执行</b>做了后排替代，止损后又快速买回，风险切断失败。</span>
+    <span><b>当时最正确动作</b>卖出后当天不回补；只回到阶段第一辨识度核心。</span>
+    <span><b>红线标记</b><em><span class="mini-chip danger">后排替代</span><span class="mini-chip danger">止损后回补</span></em></span>
+  </div>
+
         <div><h4>完整成交流水</h4><div class="flow-list"><div class="flow-item"><b class="neg">买入</b> 2026-05-14 09:49:38<br>18.060 / 200 股 · 05.08-05.16</div><div class="flow-item"><b class="neg">买入</b> 2026-05-14 09:51:27<br>18.010 / 100 股 · 05.08-05.16</div><div class="flow-item"><b class="neg">买入</b> 2026-05-14 09:51:30<br>18.000 / 100 股 · 05.08-05.16</div><div class="flow-item"><b class="neg">买入</b> 2026-05-14 09:51:44<br>18.000 / 100 股 · 05.08-05.16</div><div class="flow-item"><b class="neg">买入</b> 2026-05-14 09:51:52<br>18.020 / 100 股 · 05.08-05.16</div><div class="flow-item"><b class="neg">买入</b> 2026-05-14 09:52:00<br>17.970 / 100 股 · 05.08-05.16</div><div class="flow-item"><b class="neg">买入</b> 2026-05-14 09:54:59<br>17.920 / 200 股 · 05.08-05.16</div><div class="flow-item"><b class="blue">卖出</b> 2026-05-15 10:43:45<br>16.640 / 900 股 · 05.08-05.16 / 05.18-05.22</div><div class="flow-item"><b class="neg">买入</b> 2026-05-15 11:12:13<br>17.680 / 100 股 · 05.08-05.16 / 05.18-05.22</div><div class="flow-item"><b class="neg">买入</b> 2026-05-15 11:12:15<br>17.680 / 100 股 · 05.08-05.16 / 05.18-05.22</div><div class="flow-item"><b class="neg">买入</b> 2026-05-15 11:12:24<br>17.790 / 100 股 · 05.08-05.16 / 05.18-05.22</div><div class="flow-item"><b class="neg">买入</b> 2026-05-15 11:12:30<br>17.830 / 100 股 · 05.08-05.16 / 05.18-05.22</div><div class="flow-item"><b class="neg">买入</b> 2026-05-15 11:12:33<br>17.850 / 100 股 · 05.08-05.16 / 05.18-05.22</div><div class="flow-item"><b class="neg">买入</b> 2026-05-15 11:12:35<br>17.880 / 100 股 · 05.08-05.16 / 05.18-05.22</div><div class="flow-item"><b class="neg">买入</b> 2026-05-15 11:12:42<br>17.900 / 100 股 · 05.08-05.16 / 05.18-05.22</div><div class="flow-item"><b class="neg">买入</b> 2026-05-15 11:12:54<br>17.920 / 200 股 · 05.08-05.16 / 05.18-05.22</div><div class="flow-item"><b class="blue">卖出</b> 2026-05-18 13:18:44<br>15.820 / 900 股 · 05.18-05.22</div></div></div>
         <div class="chart-stack"><article class="chart-card"><div class="card-head"><span class="chip">05.08-05.16</span><a class="blue" href="../../2026-05-08_2026-05-16/">来源周复盘</a></div><div class="trade-map" aria-label="华电辽能 05.08-05.16 买卖点地图">
     <div class="trade-map-head"><h4>05.08-05.16 真实分钟线与买卖点</h4><div class="trade-legend"><span class="legend-item"><i class="legend-shape buy"></i>买入</span><span class="legend-item"><i class="legend-shape sell"></i>卖出</span></div></div>
@@ -359,6 +451,15 @@
       <summary><div class="stock-group-head"><div><h3>华能蒙电 <small>600863</small></h3><p>本周最大拖累：5/28 分批买入 3,300 股，5/29 早盘低位卖出。</p><div class="tag-row"><span class="mini-chip ">亏损后加单</span><span class="mini-chip ">非唯一中高位</span></div></div><span class="chip neg">-2,060.24</span></div></summary>
       <div class="stock-detail-body">
         <div class="lesson-box neg"><b>关键错误点</b><p>弱票当核心且亏损后加单，是5月后段必须停止的动作。</p></div>
+        <div class="audit-strip">
+    <span><b>操作类型</b>低吸</span>
+    <span><b>模式归属</b>非模式</span>
+    <span><b>交易前预案</b>暂无预案记录；弱票和非唯一中高位不应当核心做。</span>
+    <span><b>实际执行</b>弱票当核心，且亏损后继续加单。</span>
+    <span><b>当时最正确动作</b>亏损后先降风险，不加单；没有唯一性就放弃。</span>
+    <span><b>红线标记</b><em><span class="mini-chip danger">亏损后加单</span><span class="mini-chip danger">非唯一中高位</span></em></span>
+  </div>
+
         <div><h4>完整成交流水</h4><div class="flow-list"><div class="flow-item"><b class="neg">买入</b> 2026-05-28 09:34:22<br>7.180 / 1,400 股 · 05.25-05.29</div><div class="flow-item"><b class="neg">买入</b> 2026-05-28 09:34:24<br>7.190 / 700 股 · 05.25-05.29</div><div class="flow-item"><b class="neg">买入</b> 2026-05-28 09:34:33<br>7.230 / 300 股 · 05.25-05.29</div><div class="flow-item"><b class="neg">买入</b> 2026-05-28 09:34:40<br>7.240 / 200 股 · 05.25-05.29</div><div class="flow-item"><b class="neg">买入</b> 2026-05-28 13:13:22<br>7.000 / 100 股 · 05.25-05.29</div><div class="flow-item"><b class="neg">买入</b> 2026-05-28 13:13:27<br>7.000 / 100 股 · 05.25-05.29</div><div class="flow-item"><b class="neg">买入</b> 2026-05-28 13:13:44<br>7.000 / 300 股 · 05.25-05.29</div><div class="flow-item"><b class="neg">买入</b> 2026-05-28 14:05:19<br>6.920 / 200 股 · 05.25-05.29</div><div class="flow-item"><b class="blue">卖出</b> 2026-05-29 09:30:39<br>6.540 / 3,300 股 · 05.25-05.29</div></div></div>
         <div class="chart-stack"><article class="chart-card"><div class="card-head"><span class="chip">05.25-05.29</span><a class="blue" href="../../2026-05-25_2026-05-29/">来源周复盘</a></div><div class="trade-map" aria-label="华能蒙电 05.25-05.29 买卖点地图">
     <div class="trade-map-head"><h4>05.25-05.29 真实分钟线与买卖点</h4><div class="trade-legend"><span class="legend-item"><i class="legend-shape buy"></i>买入</span><span class="legend-item"><i class="legend-shape sell"></i>卖出</span></div></div>
@@ -374,6 +475,20 @@
       <summary><div class="stock-group-head"><div><h3>通鼎互联 <small>002491</small></h3><p>05.08-05.16 周复盘贡献 +1,600.89。；本周唯一明确大幅正贡献，来自 5/8 + 5/11 建仓、5/12 卖出。</p><div class="tag-row"><span class="mini-chip ">核心龙头</span><span class="mini-chip ">值得复制</span></div></div><span class="chip pos">+1,600.89</span></div></summary>
       <div class="stock-detail-body">
         <div class="lesson-box pos"><b>关键复制点</b><p>5月自然月内最清晰正贡献，说明主线核心嗅觉在线，应继续复制。</p></div>
+        <div class="audit-strip">
+    <span><b>操作类型</b>做T</span>
+    <span><b>模式归属</b>模式内</span>
+    <span><b>交易前预案</b>暂无预案记录；应围绕5月自然月内最明确核心处理。</span>
+    <span><b>实际执行</b>抓住5月最清晰正贡献，但后排交易稀释利润。</span>
+    <span><b>当时最正确动作</b>主仓留在通鼎互联这类第一辨识度，其他后排不分仓。</span>
+    <span><b>红线标记</b><em><span class="mini-chip">无红线标记</span></em></span>
+  </div>
+<div class="copy-model"><h4>可复制模型</h4><div class="mini-grid">
+    <span><b>触发条件</b>主线强、个股辨识度唯一且贡献开始放大</span>
+    <span><b>买点</b>围绕核心分歧/确认点做，不用后排替代</span>
+    <span><b>卖点</b>核心走弱或利润达到预案时分批落袋</span>
+    <span><b>失效条件</b>不再是题材第一、成交承接明显弱化</span>
+  </div></div>
         <div><h4>完整成交流水</h4><div class="flow-list"><div class="flow-item"><b class="neg">买入</b> 2026-05-08 10:09:24<br>20.660 / 500 股 · 05.08-05.16</div><div class="flow-item"><b class="neg">买入</b> 2026-05-11 09:36:00<br>22.610 / 100 股 · 05.08-05.16</div><div class="flow-item"><b class="blue">卖出</b> 2026-05-12 09:30:21<br>23.690 / 600 股 · 05.08-05.16</div></div></div>
         <div class="chart-stack"><article class="chart-card"><div class="card-head"><span class="chip">05.08-05.16</span><a class="blue" href="../../2026-05-08_2026-05-16/">来源周复盘</a></div><div class="trade-map" aria-label="通鼎互联 05.08-05.16 买卖点地图">
     <div class="trade-map-head"><h4>05.08-05.16 真实分钟线与买卖点</h4><div class="trade-legend"><span class="legend-item"><i class="legend-shape buy"></i>买入</span><span class="legend-item"><i class="legend-shape sell"></i>卖出</span></div></div>
@@ -389,6 +504,20 @@
       <summary><div class="stock-group-head"><div><h3>大有能源 <small>600403</small></h3><p>期末持仓口径：持有 2,400 股，持仓盈亏 +1,428.74，仓位 83.64%。</p><div class="tag-row"><span class="mini-chip ">核心龙头</span><span class="mini-chip ">值得复制</span></div></div><span class="chip pos">+1,428.74</span></div></summary>
       <div class="stock-detail-body">
         <div class="lesson-box pos"><b>关键复制点</b><p>第一性和唯一性确认后持仓放大利润，是月后参考周的正样本。</p></div>
+        <div class="audit-strip">
+    <span><b>操作类型</b>低吸</span>
+    <span><b>模式归属</b>模式内</span>
+    <span><b>交易前预案</b>暂无预案记录；确认第一性和唯一性后才允许持有。</span>
+    <span><b>实际执行</b>第一性确认后持仓，期末浮盈放大利润。</span>
+    <span><b>当时最正确动作</b>只在第一性确认后继续持有，避免扩散到同题材后排。</span>
+    <span><b>红线标记</b><em><span class="mini-chip">无红线标记</span></em></span>
+  </div>
+<div class="copy-model"><h4>可复制模型</h4><div class="mini-grid">
+    <span><b>触发条件</b>阶段核心地位确认，走势与辨识度同步增强</span>
+    <span><b>买点</b>确认后低吸或回踩承接点参与</span>
+    <span><b>卖点</b>保留核心利润，跌破核心地位即减仓</span>
+    <span><b>失效条件</b>题材退潮、同题材更强票夺位</span>
+  </div></div>
         <div><h4>完整成交流水</h4><div class="flow-list"><div class="flow-item"><b class="neg">买入</b> 2026-06-03 09:25:00<br>6.730 / 1,100 股 · 06.01-06.05</div><div class="flow-item"><b class="neg">买入</b> 2026-06-04 09:30:43<br>7.400 / 900 股 · 06.01-06.05</div><div class="flow-item"><b class="blue">卖出</b> 2026-06-05 09:55:57<br>7.760 / 2,000 股 · 06.01-06.05</div><div class="flow-item"><b class="neg">买入</b> 2026-06-05 13:34:20<br>8.140 / 2,400 股 · 06.01-06.05</div></div></div>
         <div class="chart-stack"><article class="chart-card"><div class="card-head"><span class="chip">06.01-06.05</span><a class="blue" href="../../2026-06-01_2026-06-05/">来源周复盘</a></div><div class="trade-map" aria-label="大有能源 06.01-06.05 买卖点地图">
     <div class="trade-map-head"><h4>06.01-06.05 真实分钟线与买卖点</h4><div class="trade-legend"><span class="legend-item"><i class="legend-shape buy"></i>买入</span><span class="legend-item"><i class="legend-shape sell"></i>卖出</span></div></div>
@@ -401,9 +530,23 @@
   </section>
 <section class="stock-group" id="stock-002421">
     <details class="stock-detail">
-      <summary><div class="stock-group-head"><div><h3>达实智能 <small>002421</small></h3><p>05.18-05.22 周复盘贡献 +165.47。；达实智能是本周成交最集中的标的：5/20 分批买入，5/21 先卖出 4,000 股后又分批买回，周末留仓 4,200 股。；上周留仓兑现：成本按 5/21 留仓 4,200 股回溯，周一早盘全部卖出。</p><div class="tag-row"><span class="mini-chip ">核心处理</span><span class="mini-chip ">可复制</span></div></div><span class="chip pos">+1,331.70</span></div></summary>
+      <summary><div class="stock-group-head"><div><h3>达实智能 <small>002421</small></h3><p>05.18-05.22 周复盘贡献 +165.47。；达实智能是本周成交最集中的标的：5/20 分批买入，5/21 先卖出 4,000 股后又分批买回，周末留仓 4,200 股。；上周留仓兑现：成本按 5/21 留仓 4,200 股回溯，周一早盘全部卖出。</p><div class="tag-row"><span class="mini-chip ">核心处理</span><span class="mini-chip ">值得复制</span></div></div><span class="chip pos">+1,331.70</span></div></summary>
       <div class="stock-detail-body">
         <div class="lesson-box pos"><b>关键复制点</b><p>围绕阶段核心做条件单和留仓，修复了部分回撤，但仍需控制非核心扩散。</p></div>
+        <div class="audit-strip">
+    <span><b>操作类型</b>做T</span>
+    <span><b>模式归属</b>模式内</span>
+    <span><b>交易前预案</b>暂无预案记录；阶段核心出现后围绕核心处理。</span>
+    <span><b>实际执行</b>条件单兑现与留仓修复了部分回撤。</span>
+    <span><b>当时最正确动作</b>继续围绕阶段核心处理，但不能把利润扩散到弱票。</span>
+    <span><b>红线标记</b><em><span class="mini-chip">无红线标记</span></em></span>
+  </div>
+<div class="copy-model"><h4>可复制模型</h4><div class="mini-grid">
+    <span><b>触发条件</b>阶段核心走出，且有条件单/承接可执行</span>
+    <span><b>买点</b>围绕核心分歧做T，仓位不扩散</span>
+    <span><b>卖点</b>条件单兑现或弱化时保护利润</span>
+    <span><b>失效条件</b>核心地位不再明确或同阶段更强票出现</span>
+  </div></div>
         <div><h4>完整成交流水</h4><div class="flow-list"><div class="flow-item"><b class="neg">买入</b> 2026-05-20 09:31:44<br>4.150 / 1,000 股 · 05.18-05.22</div><div class="flow-item"><b class="neg">买入</b> 2026-05-20 09:31:47<br>4.210 / 800 股 · 05.18-05.22</div><div class="flow-item"><b class="neg">买入</b> 2026-05-20 09:31:49<br>4.210 / 600 股 · 05.18-05.22</div><div class="flow-item"><b class="neg">买入</b> 2026-05-20 09:32:05<br>4.270 / 500 股 · 05.18-05.22</div><div class="flow-item"><b class="neg">买入</b> 2026-05-20 09:32:05<br>4.270 / 1,100 股 · 05.18-05.22</div><div class="flow-item"><b class="neg">买入</b> 2026-05-21 09:30:28<br>4.570 / 500 股 · 05.18-05.22</div><div class="flow-item"><b class="blue">卖出</b> 2026-05-21 09:34:29<br>4.270 / 4,000 股 · 05.18-05.22</div><div class="flow-item"><b class="neg">买入</b> 2026-05-21 09:34:44<br>4.280 / 900 股 · 05.18-05.22</div><div class="flow-item"><b class="neg">买入</b> 2026-05-21 09:35:02<br>4.370 / 1,800 股 · 05.18-05.22</div><div class="flow-item"><b class="neg">买入</b> 2026-05-21 09:36:00<br>4.320 / 300 股 · 05.18-05.22</div><div class="flow-item"><b class="neg">买入</b> 2026-05-21 09:36:14<br>4.350 / 300 股 · 05.18-05.22</div><div class="flow-item"><b class="neg">买入</b> 2026-05-21 09:36:54<br>4.270 / 200 股 · 05.18-05.22</div><div class="flow-item"><b class="neg">买入</b> 2026-05-21 09:37:02<br>4.280 / 200 股 · 05.18-05.22</div><div class="flow-item"><b class="blue">卖出</b> 2026-05-25 09:36:57<br>4.650 / 4,200 股 · 05.25-05.29</div></div></div>
         <div class="chart-stack"><article class="chart-card"><div class="card-head"><span class="chip">05.18-05.22</span><a class="blue" href="../../2026-05-15_2026-05-22/">来源周复盘</a></div><div class="trade-map" aria-label="达实智能 002421 买卖点与分钟走势"><div class="trade-map-head"><h4>分钟走势与买卖点</h4><div class="trade-legend" aria-label="图例"><span class="legend-item"><i class="legend-shape buy"></i>买入</span><span class="legend-item"><i class="legend-shape sell"></i>卖出</span></div></div><ul class="trade-context"><li>分钟窗口 05-18 09:30 至 05-22 15:00，区间 +35.83%，高 4.60 / 低 3.20。</li><li>买入 12 笔，均价 4.291；首笔买入后约 30 分钟价格 4.27，相对成交价 +2.89%。</li><li>卖出 1 笔，均价 4.270；首笔卖出后约 30 分钟价格 4.10，相对成交价 -3.98%。</li></ul><div class="trade-chart-wrap"><svg class="trade-chart" viewBox="0 0 900 300" role="img" aria-label="达实智能真实分钟线买卖点图"><defs><linearGradient id="marketFill-002421" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="rgba(20,149,111,.22)"></stop><stop offset="100%" stop-color="rgba(20,149,111,.02)"></stop></linearGradient></defs><line x1="52" x2="52" y1="24" y2="252" stroke="rgba(28,37,48,.16)"></line><line x1="52" x2="876" y1="252" y2="252" stroke="rgba(28,37,48,.16)"></line><g><line x1="52" x2="876" y1="24.0" y2="24.0" stroke="rgba(28,37,48,.08)"></line><text x="42" y="28.0" text-anchor="end" class="axis-label">4.80</text></g><g><line x1="52" x2="876" y1="138.0" y2="138.0" stroke="rgba(28,37,48,.08)"></line><text x="42" y="142.0" text-anchor="end" class="axis-label">3.90</text></g><g><line x1="52" x2="876" y1="252.0" y2="252.0" stroke="rgba(28,37,48,.08)"></line><text x="42" y="256.0" text-anchor="end" class="axis-label">3.00</text></g><g><line x1="96.7" x2="96.7" y1="24" y2="252" stroke="rgba(28,37,48,.06)" stroke-dasharray="4 6"></line><text x="96.7" y="287" text-anchor="middle" class="axis-label">05-18</text></g><g><line x1="291.4" x2="291.4" y1="24" y2="252" stroke="rgba(28,37,48,.06)" stroke-dasharray="4 6"></line><text x="291.4" y="287" text-anchor="middle" class="axis-label">05-19</text></g><g><line x1="486.1" x2="486.1" y1="24" y2="252" stroke="rgba(28,37,48,.06)" stroke-dasharray="4 6"></line><text x="486.1" y="287" text-anchor="middle" class="axis-label">05-20</text></g><g><line x1="681.2" x2="681.2" y1="24" y2="252" stroke="rgba(28,37,48,.06)" stroke-dasharray="4 6"></line><text x="681.2" y="287" text-anchor="middle" class="axis-label">05-21</text></g><g><line x1="876.0" x2="876.0" y1="24" y2="252" stroke="rgba(28,37,48,.06)" stroke-dasharray="4 6"></line><text x="876.0" y="287" text-anchor="middle" class="axis-label">05-22</text></g><path d="M 52.0 225.8 L 52.4 227.1 L 52.8 227.1 L 53.2 222.0 L 53.6 215.6 L 54.0 215.6 L 54.4 220.7 L 54.8 220.7 L 55.2 219.4 L 55.7 220.7 L 56.1 220.7 L 56.5 220.7 L 56.9 220.7 L 57.3 215.6 L 57.7 197.8 L 58.1 197.8 L 58.5 200.3 L 58.9 191.4 L 59.3 185.1 L 59.7 185.1 L 60.1 185.1 L 60.5 185.1 L 60.9 185.1 L 61.3 185.1 L 61.7 185.1 L 62.1 185.1 L 62.6 185.1 L 63.0 185.1 L 63.4 185.1 L 63.8 185.1 L 64.2 185.1 L 64.6 185.1 L 65.0 185.1 L 65.4 185.1 L 65.8 185.1 L 66.2 185.1 L 66.6 185.1 L 67.0 185.1 L 67.4 185.1 L 67.8 185.1 L 68.2 185.1 L 80.8 185.1 L 81.2 185.1 L 81.6 185.1 L 82.0 185.1 L 82.4 185.1 L 82.8 185.1 L 83.3 185.1 L 83.7 185.1 L 84.1 185.1 L 84.5 185.1 L 84.9 185.1 L 85.3 185.1 L 85.7 185.1 L 86.1 185.1 L 86.5 185.1 L 86.9 185.1 L 87.3 185.1 L 87.7 185.1 L 88.1 185.1 L 88.5 185.1 L 88.9 185.1 L 89.3 185.1 L 89.7 185.1 L 90.2 185.1 L 90.6 185.1 L 91.0 185.1 L 91.4 185.1 L 91.8 185.1 L 92.2 185.1 L 92.6 185.1 L 93.0 185.1 L 93.4 185.1 L 93.8 185.1 L 94.2 185.1 L 94.6 185.1 L 95.0 185.1 L 95.4 185.1 L 95.8 185.1 L 96.2 185.1 L 96.7 185.1 L 247.1 140.5 L 247.5 140.5 L 247.9 140.5 L 248.3 140.5 L 248.7 140.5 L 249.1 140.5 L 249.5 140.5 L 249.9 140.5 L 250.4 140.5 L 250.8 140.5 L 251.2 140.5 L 251.6 140.5 L 252.0 140.5 L 252.4 140.5 L 252.8 140.5 L 253.2 140.5 L 253.6 140.5 L 254.0 140.5 L 254.4 140.5 L 254.8 140.5 L 255.2 140.5 L 255.6 140.5 L 256.0 140.5 L 256.4 140.5 L 256.8 140.5 L 257.3 140.5 L 257.7 140.5 L 258.1 140.5 L 258.5 140.5 L 258.9 140.5 L 259.3 140.5 L 259.7 140.5 L 260.1 140.5 L 260.5 140.5 L 260.9 140.5 L 261.3 140.5 L 261.7 140.5 L 262.1 140.5 L 262.5 140.5 L 262.9 140.5 L 275.5 140.5 L 275.9 140.5 L 276.3 140.5 L 276.7 140.5 L 277.1 140.5 L 277.6 140.5 L 278.0 140.5 L 278.4 140.5 L 278.8 140.5 L 279.2 140.5 L 279.6 140.5 L 280.0 140.5 L 280.4 140.5 L 280.8 140.5 L 281.2 140.5 L 281.6 140.5 L 282.0 140.5 L 282.4 140.5 L 282.8 140.5 L 283.2 140.5 L 283.6 140.5 L 284.0 140.5 L 284.5 140.5 L 284.9 140.5 L 285.3 140.5 L 285.7 140.5 L 286.1 140.5 L 286.5 140.5 L 286.9 140.5 L 287.3 140.5 L 287.7 140.5 L 288.1 140.5 L 288.5 140.5 L 288.9 140.5 L 289.3 140.5 L 289.7 140.5 L 290.1 140.5 L 290.5 140.5 L 290.9 140.5 L 291.4 140.5 L 441.8 90.9 L 442.2 90.9 L 442.6 90.9 L 443.0 90.9 L 443.4 90.9 L 443.8 90.9 L 444.2 90.9 L 444.7 90.9 L 445.1 90.9 L 445.5 92.2 L 445.9 90.9 L 446.3 90.9 L 446.7 90.9 L 447.1 90.9 L 447.5 90.9 L 447.9 90.9 L 448.3 90.9 L 448.7 90.9 L 449.1 90.9 L 449.5 90.9 L 449.9 90.9 L 450.3 90.9 L 450.7 90.9 L 451.1 90.9 L 451.6 90.9 L 452.0 90.9 L 452.4 90.9 L 452.8 90.9 L 453.2 90.9 L 453.6 90.9 L 454.0 90.9 L 454.4 90.9 L 454.8 90.9 L 455.2 90.9 L 455.6 90.9 L 456.0 90.9 L 456.4 90.9 L 456.8 90.9 L 457.2 90.9 L 457.6 90.9 L 470.2 90.9 L 470.6 90.9 L 471.0 90.9 L 471.4 90.9 L 471.8 90.9 L 472.3 90.9 L 472.7 90.9 L 473.1 90.9 L 473.5 90.9 L 473.9 90.9 L 474.3 90.9 L 474.7 90.9 L 475.1 90.9 L 475.5 90.9 L 475.9 90.9 L 476.3 90.9 L 476.7 90.9 L 477.1 90.9 L 477.5 90.9 L 477.9 90.9 L 478.3 90.9 L 478.7 90.9 L 479.2 90.9 L 479.6 90.9 L 480.0 90.9 L 480.4 90.9 L 480.8 90.9 L 481.2 90.9 L 481.6 90.9 L 482.0 90.9 L 482.4 90.9 L 482.8 90.9 L 483.2 90.9 L 483.6 90.9 L 484.0 90.9 L 484.4 90.9 L 484.8 90.9 L 485.2 90.9 L 485.6 90.9 L 486.1 90.9 L 636.5 76.9 L 636.9 48.9 L 637.3 87.1 L 637.7 97.3 L 638.1 99.8 L 638.5 98.6 L 638.9 104.9 L 639.4 107.5 L 639.8 112.6 L 640.2 116.4 L 640.6 112.6 L 641.0 112.6 L 641.4 112.6 L 641.8 115.1 L 642.2 116.4 L 642.6 117.6 L 643.0 130.4 L 643.4 126.5 L 643.8 127.8 L 644.2 131.6 L 644.6 132.9 L 645.0 138.0 L 645.4 140.5 L 645.8 138.0 L 646.3 122.7 L 646.7 113.8 L 647.1 115.1 L 647.5 117.6 L 647.9 126.5 L 648.3 125.3 L 648.7 125.3 L 649.1 127.8 L 649.5 127.8 L 649.9 118.9 L 650.3 124.0 L 650.7 121.5 L 651.1 125.3 L 651.5 126.5 L 651.9 126.5 L 652.3 121.5 L 652.7 120.2 L 665.3 127.8 L 665.7 130.4 L 666.1 135.5 L 666.5 130.4 L 667.0 131.6 L 667.4 132.9 L 667.8 131.6 L 668.2 131.6 L 668.6 131.6 L 669.0 107.5 L 669.4 112.6 L 669.8 120.2 L 670.2 118.9 L 670.6 117.6 L 671.0 118.9 L 671.4 99.8 L 671.8 88.4 L 672.2 84.6 L 672.6 78.2 L 673.0 84.6 L 673.5 92.2 L 673.9 88.4 L 674.3 92.2 L 674.7 101.1 L 675.1 103.6 L 675.5 97.3 L 675.9 101.1 L 676.3 101.1 L 676.7 102.4 L 677.1 106.2 L 677.5 124.0 L 677.9 110.0 L 678.3 111.3 L 678.7 117.6 L 679.1 117.6 L 679.5 122.7 L 679.9 122.7 L 680.4 113.8 L 680.8 127.8 L 681.2 130.4 L 831.6 120.2 L 832.0 117.6 L 832.4 118.9 L 832.8 94.7 L 833.2 85.8 L 833.6 85.8 L 834.1 92.2 L 834.5 97.3 L 834.9 99.8 L 835.3 103.6 L 835.7 97.3 L 836.1 101.1 L 836.5 102.4 L 836.9 102.4 L 837.3 93.5 L 837.7 93.5 L 838.1 99.8 L 838.5 98.6 L 838.9 99.8 L 839.3 99.8 L 839.7 102.4 L 840.1 99.8 L 840.6 99.8 L 841.0 102.4 L 841.4 94.7 L 841.8 96.0 L 842.2 96.0 L 842.6 79.5 L 843.0 79.5 L 843.4 79.5 L 843.8 79.5 L 844.2 79.5 L 844.6 79.5 L 845.0 79.5 L 845.4 79.5 L 845.8 79.5 L 846.2 79.5 L 846.6 79.5 L 847.0 79.5 L 847.5 79.5 L 860.0 79.5 L 860.4 79.5 L 860.8 79.5 L 861.3 79.5 L 861.7 79.5 L 862.1 79.5 L 862.5 79.5 L 862.9 79.5 L 863.3 79.5 L 863.7 79.5 L 864.1 79.5 L 864.5 79.5 L 864.9 79.5 L 865.3 79.5 L 865.7 79.5 L 866.1 79.5 L 866.5 79.5 L 866.9 79.5 L 867.3 79.5 L 867.7 79.5 L 868.2 79.5 L 868.6 79.5 L 869.0 79.5 L 869.4 79.5 L 869.8 79.5 L 870.2 79.5 L 870.6 79.5 L 871.0 79.5 L 871.4 79.5 L 871.8 79.5 L 872.2 79.5 L 872.6 79.5 L 873.0 79.5 L 873.4 79.5 L 873.8 79.5 L 874.2 79.5 L 874.6 79.5 L 875.1 79.5 L 875.5 79.5 L 875.9 79.5 L 876.0 79.5 L 876.0 252 L 52.0 252 Z" fill="url(#marketFill-002421)"></path><path class="market-line" d="M 52.0 225.8 L 52.4 227.1 L 52.8 227.1 L 53.2 222.0 L 53.6 215.6 L 54.0 215.6 L 54.4 220.7 L 54.8 220.7 L 55.2 219.4 L 55.7 220.7 L 56.1 220.7 L 56.5 220.7 L 56.9 220.7 L 57.3 215.6 L 57.7 197.8 L 58.1 197.8 L 58.5 200.3 L 58.9 191.4 L 59.3 185.1 L 59.7 185.1 L 60.1 185.1 L 60.5 185.1 L 60.9 185.1 L 61.3 185.1 L 61.7 185.1 L 62.1 185.1 L 62.6 185.1 L 63.0 185.1 L 63.4 185.1 L 63.8 185.1 L 64.2 185.1 L 64.6 185.1 L 65.0 185.1 L 65.4 185.1 L 65.8 185.1 L 66.2 185.1 L 66.6 185.1 L 67.0 185.1 L 67.4 185.1 L 67.8 185.1 L 68.2 185.1 L 80.8 185.1 L 81.2 185.1 L 81.6 185.1 L 82.0 185.1 L 82.4 185.1 L 82.8 185.1 L 83.3 185.1 L 83.7 185.1 L 84.1 185.1 L 84.5 185.1 L 84.9 185.1 L 85.3 185.1 L 85.7 185.1 L 86.1 185.1 L 86.5 185.1 L 86.9 185.1 L 87.3 185.1 L 87.7 185.1 L 88.1 185.1 L 88.5 185.1 L 88.9 185.1 L 89.3 185.1 L 89.7 185.1 L 90.2 185.1 L 90.6 185.1 L 91.0 185.1 L 91.4 185.1 L 91.8 185.1 L 92.2 185.1 L 92.6 185.1 L 93.0 185.1 L 93.4 185.1 L 93.8 185.1 L 94.2 185.1 L 94.6 185.1 L 95.0 185.1 L 95.4 185.1 L 95.8 185.1 L 96.2 185.1 L 96.7 185.1 L 247.1 140.5 L 247.5 140.5 L 247.9 140.5 L 248.3 140.5 L 248.7 140.5 L 249.1 140.5 L 249.5 140.5 L 249.9 140.5 L 250.4 140.5 L 250.8 140.5 L 251.2 140.5 L 251.6 140.5 L 252.0 140.5 L 252.4 140.5 L 252.8 140.5 L 253.2 140.5 L 253.6 140.5 L 254.0 140.5 L 254.4 140.5 L 254.8 140.5 L 255.2 140.5 L 255.6 140.5 L 256.0 140.5 L 256.4 140.5 L 256.8 140.5 L 257.3 140.5 L 257.7 140.5 L 258.1 140.5 L 258.5 140.5 L 258.9 140.5 L 259.3 140.5 L 259.7 140.5 L 260.1 140.5 L 260.5 140.5 L 260.9 140.5 L 261.3 140.5 L 261.7 140.5 L 262.1 140.5 L 262.5 140.5 L 262.9 140.5 L 275.5 140.5 L 275.9 140.5 L 276.3 140.5 L 276.7 140.5 L 277.1 140.5 L 277.6 140.5 L 278.0 140.5 L 278.4 140.5 L 278.8 140.5 L 279.2 140.5 L 279.6 140.5 L 280.0 140.5 L 280.4 140.5 L 280.8 140.5 L 281.2 140.5 L 281.6 140.5 L 282.0 140.5 L 282.4 140.5 L 282.8 140.5 L 283.2 140.5 L 283.6 140.5 L 284.0 140.5 L 284.5 140.5 L 284.9 140.5 L 285.3 140.5 L 285.7 140.5 L 286.1 140.5 L 286.5 140.5 L 286.9 140.5 L 287.3 140.5 L 287.7 140.5 L 288.1 140.5 L 288.5 140.5 L 288.9 140.5 L 289.3 140.5 L 289.7 140.5 L 290.1 140.5 L 290.5 140.5 L 290.9 140.5 L 291.4 140.5 L 441.8 90.9 L 442.2 90.9 L 442.6 90.9 L 443.0 90.9 L 443.4 90.9 L 443.8 90.9 L 444.2 90.9 L 444.7 90.9 L 445.1 90.9 L 445.5 92.2 L 445.9 90.9 L 446.3 90.9 L 446.7 90.9 L 447.1 90.9 L 447.5 90.9 L 447.9 90.9 L 448.3 90.9 L 448.7 90.9 L 449.1 90.9 L 449.5 90.9 L 449.9 90.9 L 450.3 90.9 L 450.7 90.9 L 451.1 90.9 L 451.6 90.9 L 452.0 90.9 L 452.4 90.9 L 452.8 90.9 L 453.2 90.9 L 453.6 90.9 L 454.0 90.9 L 454.4 90.9 L 454.8 90.9 L 455.2 90.9 L 455.6 90.9 L 456.0 90.9 L 456.4 90.9 L 456.8 90.9 L 457.2 90.9 L 457.6 90.9 L 470.2 90.9 L 470.6 90.9 L 471.0 90.9 L 471.4 90.9 L 471.8 90.9 L 472.3 90.9 L 472.7 90.9 L 473.1 90.9 L 473.5 90.9 L 473.9 90.9 L 474.3 90.9 L 474.7 90.9 L 475.1 90.9 L 475.5 90.9 L 475.9 90.9 L 476.3 90.9 L 476.7 90.9 L 477.1 90.9 L 477.5 90.9 L 477.9 90.9 L 478.3 90.9 L 478.7 90.9 L 479.2 90.9 L 479.6 90.9 L 480.0 90.9 L 480.4 90.9 L 480.8 90.9 L 481.2 90.9 L 481.6 90.9 L 482.0 90.9 L 482.4 90.9 L 482.8 90.9 L 483.2 90.9 L 483.6 90.9 L 484.0 90.9 L 484.4 90.9 L 484.8 90.9 L 485.2 90.9 L 485.6 90.9 L 486.1 90.9 L 636.5 76.9 L 636.9 48.9 L 637.3 87.1 L 637.7 97.3 L 638.1 99.8 L 638.5 98.6 L 638.9 104.9 L 639.4 107.5 L 639.8 112.6 L 640.2 116.4 L 640.6 112.6 L 641.0 112.6 L 641.4 112.6 L 641.8 115.1 L 642.2 116.4 L 642.6 117.6 L 643.0 130.4 L 643.4 126.5 L 643.8 127.8 L 644.2 131.6 L 644.6 132.9 L 645.0 138.0 L 645.4 140.5 L 645.8 138.0 L 646.3 122.7 L 646.7 113.8 L 647.1 115.1 L 647.5 117.6 L 647.9 126.5 L 648.3 125.3 L 648.7 125.3 L 649.1 127.8 L 649.5 127.8 L 649.9 118.9 L 650.3 124.0 L 650.7 121.5 L 651.1 125.3 L 651.5 126.5 L 651.9 126.5 L 652.3 121.5 L 652.7 120.2 L 665.3 127.8 L 665.7 130.4 L 666.1 135.5 L 666.5 130.4 L 667.0 131.6 L 667.4 132.9 L 667.8 131.6 L 668.2 131.6 L 668.6 131.6 L 669.0 107.5 L 669.4 112.6 L 669.8 120.2 L 670.2 118.9 L 670.6 117.6 L 671.0 118.9 L 671.4 99.8 L 671.8 88.4 L 672.2 84.6 L 672.6 78.2 L 673.0 84.6 L 673.5 92.2 L 673.9 88.4 L 674.3 92.2 L 674.7 101.1 L 675.1 103.6 L 675.5 97.3 L 675.9 101.1 L 676.3 101.1 L 676.7 102.4 L 677.1 106.2 L 677.5 124.0 L 677.9 110.0 L 678.3 111.3 L 678.7 117.6 L 679.1 117.6 L 679.5 122.7 L 679.9 122.7 L 680.4 113.8 L 680.8 127.8 L 681.2 130.4 L 831.6 120.2 L 832.0 117.6 L 832.4 118.9 L 832.8 94.7 L 833.2 85.8 L 833.6 85.8 L 834.1 92.2 L 834.5 97.3 L 834.9 99.8 L 835.3 103.6 L 835.7 97.3 L 836.1 101.1 L 836.5 102.4 L 836.9 102.4 L 837.3 93.5 L 837.7 93.5 L 838.1 99.8 L 838.5 98.6 L 838.9 99.8 L 839.3 99.8 L 839.7 102.4 L 840.1 99.8 L 840.6 99.8 L 841.0 102.4 L 841.4 94.7 L 841.8 96.0 L 842.2 96.0 L 842.6 79.5 L 843.0 79.5 L 843.4 79.5 L 843.8 79.5 L 844.2 79.5 L 844.6 79.5 L 845.0 79.5 L 845.4 79.5 L 845.8 79.5 L 846.2 79.5 L 846.6 79.5 L 847.0 79.5 L 847.5 79.5 L 860.0 79.5 L 860.4 79.5 L 860.8 79.5 L 861.3 79.5 L 861.7 79.5 L 862.1 79.5 L 862.5 79.5 L 862.9 79.5 L 863.3 79.5 L 863.7 79.5 L 864.1 79.5 L 864.5 79.5 L 864.9 79.5 L 865.3 79.5 L 865.7 79.5 L 866.1 79.5 L 866.5 79.5 L 866.9 79.5 L 867.3 79.5 L 867.7 79.5 L 868.2 79.5 L 868.6 79.5 L 869.0 79.5 L 869.4 79.5 L 869.8 79.5 L 870.2 79.5 L 870.6 79.5 L 871.0 79.5 L 871.4 79.5 L 871.8 79.5 L 872.2 79.5 L 872.6 79.5 L 873.0 79.5 L 873.4 79.5 L 873.8 79.5 L 874.2 79.5 L 874.6 79.5 L 875.1 79.5 L 875.5 79.5 L 875.9 79.5 L 876.0 79.5"></path><g class="trade-marker buy"><path d="M 441.9 98.2 L 433.9 113.2 L 449.9 113.2 Z" fill="#b4232f" stroke="#fff" stroke-width="2"></path><text x="441.9" y="94.2" text-anchor="middle" class="point-label">买</text><title>达实智能 002421｜买入 1000 股｜05-20 09:31｜4.150</title></g><g class="trade-marker buy"><path d="M 441.9 90.6 L 433.9 105.6 L 449.9 105.6 Z" fill="#b4232f" stroke="#fff" stroke-width="2"></path><text x="441.9" y="86.6" text-anchor="middle" class="point-label">买</text><title>达实智能 002421｜买入 800 股｜05-20 09:31｜4.210</title></g><g class="trade-marker buy"><path d="M 441.9 90.6 L 433.9 105.6 L 449.9 105.6 Z" fill="#b4232f" stroke="#fff" stroke-width="2"></path><text x="441.9" y="86.6" text-anchor="middle" class="point-label">买</text><title>达实智能 002421｜买入 600 股｜05-20 09:31｜4.210</title></g><g class="trade-marker buy"><path d="M 442.0 82.9 L 434.0 97.9 L 450.0 97.9 Z" fill="#b4232f" stroke="#fff" stroke-width="2"></path><text x="442.0" y="78.9" text-anchor="middle" class="point-label">买</text><title>达实智能 002421｜买入 500 股｜05-20 09:32｜4.270</title></g><g class="trade-marker buy"><path d="M 442.0 82.9 L 434.0 97.9 L 450.0 97.9 Z" fill="#b4232f" stroke="#fff" stroke-width="2"></path><text x="442.0" y="78.9" text-anchor="middle" class="point-label">买</text><title>达实智能 002421｜买入 1100 股｜05-20 09:32｜4.270</title></g><g class="trade-marker buy"><path d="M 636.6 44.8 L 628.6 59.8 L 644.6 59.8 Z" fill="#b4232f" stroke="#fff" stroke-width="2"></path><text x="636.6" y="40.8" text-anchor="middle" class="point-label">买</text><title>达实智能 002421｜买入 500 股｜05-21 09:30｜4.570</title></g><g class="trade-marker sell"><path d="M 637.1 98.9 L 629.1 83.9 L 645.1 83.9 Z" fill="#1d4ed8" stroke="#fff" stroke-width="2"></path><text x="637.1" y="112.9" text-anchor="middle" class="point-label">卖</text><title>达实智能 002421｜卖出 4000 股｜05-21 09:34｜4.270</title></g><g class="trade-marker buy"><path d="M 637.2 81.7 L 629.2 96.7 L 645.2 96.7 Z" fill="#b4232f" stroke="#fff" stroke-width="2"></path><text x="637.2" y="77.7" text-anchor="middle" class="point-label">买</text><title>达实智能 002421｜买入 900 股｜05-21 09:34｜4.280</title></g><g class="trade-marker buy"><path d="M 637.2 70.2 L 629.2 85.2 L 645.2 85.2 Z" fill="#b4232f" stroke="#fff" stroke-width="2"></path><text x="637.2" y="66.2" text-anchor="middle" class="point-label">买</text><title>达实智能 002421｜买入 1800 股｜05-21 09:35｜4.370</title></g><g class="trade-marker buy"><path d="M 637.3 76.6 L 629.3 91.6 L 645.3 91.6 Z" fill="#b4232f" stroke="#fff" stroke-width="2"></path><text x="637.3" y="72.6" text-anchor="middle" class="point-label">买</text><title>达实智能 002421｜买入 300 股｜05-21 09:36｜4.320</title></g><g class="trade-marker buy"><path d="M 637.4 72.7 L 629.4 87.7 L 645.4 87.7 Z" fill="#b4232f" stroke="#fff" stroke-width="2"></path><text x="637.4" y="68.7" text-anchor="middle" class="point-label">买</text><title>达实智能 002421｜买入 300 股｜05-21 09:36｜4.350</title></g><g class="trade-marker buy"><path d="M 637.4 82.9 L 629.4 97.9 L 645.4 97.9 Z" fill="#b4232f" stroke="#fff" stroke-width="2"></path><text x="637.4" y="78.9" text-anchor="middle" class="point-label">买</text><title>达实智能 002421｜买入 200 股｜05-21 09:36｜4.270</title></g><g class="trade-marker buy"><path d="M 637.5 81.7 L 629.5 96.7 L 645.5 96.7 Z" fill="#b4232f" stroke="#fff" stroke-width="2"></path><text x="637.5" y="77.7" text-anchor="middle" class="point-label">买</text><title>达实智能 002421｜买入 200 股｜05-21 09:37｜4.280</title></g><text x="52" y="296" text-anchor="start" class="axis-label">05-18 09:30</text><text x="876" y="296" text-anchor="end" class="axis-label">05-22 15:00</text></svg></div><div class="trade-point-list"><div class="trade-point-item"><span><b class="buy">买入</b> 05-20 09:31</span><strong>4.150 / 1,000 股</strong></div><div class="trade-point-item"><span><b class="buy">买入</b> 05-20 09:31</span><strong>4.210 / 800 股</strong></div><div class="trade-point-item"><span><b class="buy">买入</b> 05-20 09:31</span><strong>4.210 / 600 股</strong></div><div class="trade-point-item"><span><b class="buy">买入</b> 05-20 09:32</span><strong>4.270 / 500 股</strong></div><div class="trade-point-item"><span><b class="buy">买入</b> 05-20 09:32</span><strong>4.270 / 1,100 股</strong></div><div class="trade-point-item"><span><b class="buy">买入</b> 05-21 09:30</span><strong>4.570 / 500 股</strong></div><div class="trade-point-item"><span><b class="sell">卖出</b> 05-21 09:34</span><strong>4.270 / 4,000 股</strong></div><div class="trade-point-item"><span><b class="buy">买入</b> 05-21 09:34</span><strong>4.280 / 900 股</strong></div><div class="trade-point-item"><span><b class="buy">买入</b> 05-21 09:35</span><strong>4.370 / 1,800 股</strong></div><div class="trade-point-item"><span><b class="buy">买入</b> 05-21 09:36</span><strong>4.320 / 300 股</strong></div><div class="trade-point-item"><span><b class="buy">买入</b> 05-21 09:36</span><strong>4.350 / 300 股</strong></div><div class="trade-point-item"><span><b class="buy">买入</b> 05-21 09:36</span><strong>4.270 / 200 股</strong></div><div class="trade-point-item"><span><b class="buy">买入</b> 05-21 09:37</span><strong>4.280 / 200 股</strong></div></div></div></article><article class="chart-card"><div class="card-head"><span class="chip">05.25-05.29</span><a class="blue" href="../../2026-05-25_2026-05-29/">来源周复盘</a></div><div class="trade-map" aria-label="达实智能 05.25-05.29 买卖点地图">
     <div class="trade-map-head"><h4>05.25-05.29 真实分钟线与买卖点</h4><div class="trade-legend"><span class="legend-item"><i class="legend-shape buy"></i>买入</span><span class="legend-item"><i class="legend-shape sell"></i>卖出</span></div></div>
@@ -419,6 +562,15 @@
       <summary><div class="stock-group-head"><div><h3>大唐电信 <small>600198</small></h3><p>05.08-05.16 周复盘贡献 -1,139.29。；大唐电信买入 1600 股后 5/14 全部卖出，闭环亏损较大。</p><div class="tag-row"><span class="mini-chip ">后排替代</span><span class="mini-chip ">非第一</span></div></div><span class="chip neg">-1,139.29</span></div></summary>
       <div class="stock-detail-body">
         <div class="lesson-box neg"><b>关键错误点</b><p>大唐主线里没有做唯一高辨识度核心，转去后排替代，确定性不足。</p></div>
+        <div class="audit-strip">
+    <span><b>操作类型</b>半路</span>
+    <span><b>模式归属</b>非模式</span>
+    <span><b>交易前预案</b>暂无预案记录；大唐方向应盯大唐发电这类第一辨识度。</span>
+    <span><b>实际执行</b>用后排替代大唐方向核心。</span>
+    <span><b>当时最正确动作</b>只看第一核心；后排没有地位就不做。</span>
+    <span><b>红线标记</b><em><span class="mini-chip danger">后排替代</span><span class="mini-chip danger">非第一</span></em></span>
+  </div>
+
         <div><h4>完整成交流水</h4><div class="flow-list"><div class="flow-item"><b class="neg">买入</b> 2026-05-12 09:34:39<br>10.690 / 900 股 · 05.08-05.16</div><div class="flow-item"><b class="neg">买入</b> 2026-05-12 09:49:10<br>10.650 / 300 股 · 05.08-05.16</div><div class="flow-item"><b class="neg">买入</b> 2026-05-12 09:49:57<br>10.610 / 100 股 · 05.08-05.16</div><div class="flow-item"><b class="neg">买入</b> 2026-05-12 09:52:35<br>10.440 / 100 股 · 05.08-05.16</div><div class="flow-item"><b class="neg">买入</b> 2026-05-12 10:32:05<br>10.500 / 200 股 · 05.08-05.16</div><div class="flow-item"><b class="blue">卖出</b> 2026-05-14 09:50:26<br>9.950 / 1,600 股 · 05.08-05.16</div></div></div>
         <div class="chart-stack"><article class="chart-card"><div class="card-head"><span class="chip">05.08-05.16</span><a class="blue" href="../../2026-05-08_2026-05-16/">来源周复盘</a></div><div class="trade-map" aria-label="大唐电信 05.08-05.16 买卖点地图">
     <div class="trade-map-head"><h4>05.08-05.16 真实分钟线与买卖点</h4><div class="trade-legend"><span class="legend-item"><i class="legend-shape buy"></i>买入</span><span class="legend-item"><i class="legend-shape sell"></i>卖出</span></div></div>
@@ -431,9 +583,18 @@
   </section>
 <section class="stock-group" id="stock-000539">
     <details class="stock-detail" open>
-      <summary><div class="stock-group-head"><div><h3>粤电力A <small>000539</small></h3><p>已闭环：周一、周二建仓，周三卖出，闭环亏损较大，属于本周主要负贡献。</p><div class="tag-row"><span class="mini-chip ">非唯一中高位</span><span class="mini-chip ">弱转强误判</span></div></div><span class="chip neg">-902.36</span></div></summary>
+      <summary><div class="stock-group-head"><div><h3>粤电力A <small>000539</small></h3><p>已闭环：周一、周二建仓，周三卖出，闭环亏损较大，属于本周主要负贡献。</p><div class="tag-row"><span class="mini-chip ">非唯一中高位</span><span class="mini-chip ">买点复盘</span></div></div><span class="chip neg">-902.36</span></div></summary>
       <div class="stock-detail-body">
         <div class="lesson-box neg"><b>关键错误点</b><p>有身位不等于唯一辨识度，中高位没有唯一性时不能左侧硬做。</p></div>
+        <div class="audit-strip">
+    <span><b>操作类型</b>低吸</span>
+    <span><b>模式归属</b>非模式</span>
+    <span><b>交易前预案</b>暂无预案记录；非唯一中高位不做左侧硬参与。</span>
+    <span><b>实际执行</b>有身位但不唯一，中高位弱转强误判。</span>
+    <span><b>当时最正确动作</b>没有唯一性时只观察，不左侧买。</span>
+    <span><b>红线标记</b><em><span class="mini-chip danger">非唯一中高位</span></em></span>
+  </div>
+
         <div><h4>完整成交流水</h4><div class="flow-list"><div class="flow-item"><b class="neg">买入</b> 2026-06-01 11:03:29<br>9.730 / 500 股 · 06.01-06.05</div><div class="flow-item"><b class="neg">买入</b> 2026-06-02 15:00:00<br>9.130 / 300 股 · 06.01-06.05</div><div class="flow-item"><b class="blue">卖出</b> 2026-06-03 10:46:26<br>8.400 / 800 股 · 06.01-06.05</div></div></div>
         <div class="chart-stack"><article class="chart-card"><div class="card-head"><span class="chip">06.01-06.05</span><a class="blue" href="../../2026-06-01_2026-06-05/">来源周复盘</a></div><div class="trade-map" aria-label="粤电力A 06.01-06.05 买卖点地图">
     <div class="trade-map-head"><h4>06.01-06.05 真实分钟线与买卖点</h4><div class="trade-legend"><span class="legend-item"><i class="legend-shape buy"></i>买入</span><span class="legend-item"><i class="legend-shape sell"></i>卖出</span></div></div>
@@ -449,6 +610,15 @@
       <summary><div class="stock-group-head"><div><h3>大胜达 <small>603687</small></h3><p>04.20-04.24 周度单票贡献 -698.74。；周度走势从 19.20 到 16.70，区间 -13.02%，周内振幅 19.76% 。</p><div class="tag-row"><span class="mini-chip ">负贡献</span><span class="mini-chip ">需查第一性</span></div></div><span class="chip neg">-698.74</span></div></summary>
       <div class="stock-detail-body">
         <div class="lesson-box neg"><b>关键错误点</b><p>负贡献较大，优先检查是否偏离第一性、唯一性或出现亏损后加仓。</p></div>
+        <div class="audit-strip">
+    <span><b>操作类型</b>套利</span>
+    <span><b>模式归属</b>需复核</span>
+    <span><b>交易前预案</b>暂无预案记录。</span>
+    <span><b>实际执行</b>实际执行待从周度预案补齐。</span>
+    <span><b>当时最正确动作</b>亏损票先查第一性；不能证明核心地位就不做。</span>
+    <span><b>红线标记</b><em><span class="mini-chip">无红线标记</span></em></span>
+  </div>
+
         <div><h4>完整成交流水</h4><div class="flow-list"><div class="flow-item"><b class="blue">卖出</b> 2026-04-20 09:55:30<br>18.810 / 1,200 股 · 04.20-04.24</div></div></div>
         <div class="chart-stack"><article class="chart-card"><div class="card-head"><span class="chip">04.20-04.24</span><a class="blue" href="../../2026-04-20_2026-04-24/">来源周复盘</a></div><div class="trade-map" aria-label="大胜达 04.20-04.24 买卖点地图">
     <div class="trade-map-head"><h4>04.20-04.24 真实分钟线与买卖点</h4><div class="trade-legend"><span class="legend-item"><i class="legend-shape buy"></i>买入</span><span class="legend-item"><i class="legend-shape sell"></i>卖出</span></div></div>
@@ -464,6 +634,15 @@
       <summary><div class="stock-group-head"><div><h3>大连热电 <small>600719</small></h3><p>05.08-05.16 周复盘贡献 -449.60。；按本周可见成交做 FIFO 闭环复盘。</p><div class="tag-row"><span class="mini-chip ">后排末端</span><span class="mini-chip ">低确定性</span></div></div><span class="chip neg">-449.60</span></div></summary>
       <div class="stock-detail-body">
         <div class="lesson-box neg"><b>关键错误点</b><p>大唐方向后排末端，容错低，不能当核心预期处理。</p></div>
+        <div class="audit-strip">
+    <span><b>操作类型</b>套利</span>
+    <span><b>模式归属</b>非模式</span>
+    <span><b>交易前预案</b>暂无预案记录；后排末端不能按核心预期处理。</span>
+    <span><b>实际执行</b>大唐方向后排末端试错，容错低。</span>
+    <span><b>当时最正确动作</b>后排末端直接放弃。</span>
+    <span><b>红线标记</b><em><span class="mini-chip danger">后排替代</span></em></span>
+  </div>
+
         <div><h4>完整成交流水</h4><div class="flow-list"><div class="flow-item"><b class="neg">买入</b> 2026-05-13 09:37:18<br>11.680 / 300 股 · 05.08-05.16</div><div class="flow-item"><b class="blue">卖出</b> 2026-05-14 09:49:23<br>10.220 / 300 股 · 05.08-05.16</div></div></div>
         <div class="chart-stack"><article class="chart-card"><div class="card-head"><span class="chip">05.08-05.16</span><a class="blue" href="../../2026-05-08_2026-05-16/">来源周复盘</a></div><div class="trade-map" aria-label="大连热电 05.08-05.16 买卖点地图">
     <div class="trade-map-head"><h4>05.08-05.16 真实分钟线与买卖点</h4><div class="trade-legend"><span class="legend-item"><i class="legend-shape buy"></i>买入</span><span class="legend-item"><i class="legend-shape sell"></i>卖出</span></div></div>
@@ -479,6 +658,15 @@
       <summary><div class="stock-group-head"><div><h3>武汉凡谷 <small>002194</small></h3><p>04.20-04.24 周度单票贡献 -362.76。；周度走势从 10.79 到 11.27，区间 +4.45%，周内振幅 21.06% 。</p><div class="tag-row"><span class="mini-chip ">小亏闭环</span><span class="mini-chip ">买点复盘</span></div></div><span class="chip neg">-362.76</span></div></summary>
       <div class="stock-detail-body">
         <div class="lesson-box neg"><b>关键错误点</b><p>小亏闭环，重点检查买点是否过急、标的地位是否不够。</p></div>
+        <div class="audit-strip">
+    <span><b>操作类型</b>套利</span>
+    <span><b>模式归属</b>需复核</span>
+    <span><b>交易前预案</b>暂无预案记录。</span>
+    <span><b>实际执行</b>实际执行待从周度预案补齐。</span>
+    <span><b>当时最正确动作</b>亏损票先查第一性；不能证明核心地位就不做。</span>
+    <span><b>红线标记</b><em><span class="mini-chip">无红线标记</span></em></span>
+  </div>
+
         <div><h4>完整成交流水</h4><div class="flow-list"><div class="flow-item"><b class="neg">买入</b> 2026-04-23 09:37:21<br>12.950 / 100 股 · 04.20-04.24</div><div class="flow-item"><b class="neg">买入</b> 2026-04-23 09:37:46<br>12.970 / 100 股 · 04.20-04.24</div><div class="flow-item"><b class="neg">买入</b> 2026-04-23 09:38:43<br>12.710 / 100 股 · 04.20-04.24</div><div class="flow-item"><b class="blue">卖出</b> 2026-04-24 09:30:40<br>11.740 / 300 股 · 04.20-04.24</div></div></div>
         <div class="chart-stack"><article class="chart-card"><div class="card-head"><span class="chip">04.20-04.24</span><a class="blue" href="../../2026-04-20_2026-04-24/">来源周复盘</a></div><div class="trade-map" aria-label="武汉凡谷 04.20-04.24 买卖点地图">
     <div class="trade-map-head"><h4>04.20-04.24 真实分钟线与买卖点</h4><div class="trade-legend"><span class="legend-item"><i class="legend-shape buy"></i>买入</span><span class="legend-item"><i class="legend-shape sell"></i>卖出</span></div></div>
@@ -494,6 +682,15 @@
       <summary><div class="stock-group-head"><div><h3>新朋股份 <small>002328</small></h3><p>04.20-04.24 周度单票贡献 -351.81。；周度走势从 13.01 到 11.20，区间 -13.91%，周内振幅 18.60% 。</p><div class="tag-row"><span class="mini-chip ">小亏闭环</span><span class="mini-chip ">买点复盘</span></div></div><span class="chip neg">-351.81</span></div></summary>
       <div class="stock-detail-body">
         <div class="lesson-box neg"><b>关键错误点</b><p>小亏闭环，重点检查买点是否过急、标的地位是否不够。</p></div>
+        <div class="audit-strip">
+    <span><b>操作类型</b>套利</span>
+    <span><b>模式归属</b>需复核</span>
+    <span><b>交易前预案</b>暂无预案记录。</span>
+    <span><b>实际执行</b>实际执行待从周度预案补齐。</span>
+    <span><b>当时最正确动作</b>亏损票先查第一性；不能证明核心地位就不做。</span>
+    <span><b>红线标记</b><em><span class="mini-chip">无红线标记</span></em></span>
+  </div>
+
         <div><h4>完整成交流水</h4><div class="flow-list"><div class="flow-item"><b class="neg">买入</b> 2026-04-22 13:23:51<br>12.000 / 200 股 · 04.20-04.24</div><div class="flow-item"><b class="neg">买入</b> 2026-04-22 13:46:43<br>11.940 / 100 股 · 04.20-04.24</div><div class="flow-item"><b class="neg">买入</b> 2026-04-22 14:12:30<br>11.790 / 100 股 · 04.20-04.24</div><div class="flow-item"><b class="neg">买入</b> 2026-04-22 14:15:24<br>11.770 / 100 股 · 04.20-04.24</div><div class="flow-item"><b class="blue">卖出</b> 2026-04-23 09:38:08<br>11.252 / 500 股 · 04.20-04.24</div></div></div>
         <div class="chart-stack"><article class="chart-card"><div class="card-head"><span class="chip">04.20-04.24</span><a class="blue" href="../../2026-04-20_2026-04-24/">来源周复盘</a></div><div class="trade-map" aria-label="新朋股份 04.20-04.24 买卖点地图">
     <div class="trade-map-head"><h4>04.20-04.24 真实分钟线与买卖点</h4><div class="trade-legend"><span class="legend-item"><i class="legend-shape buy"></i>买入</span><span class="legend-item"><i class="legend-shape sell"></i>卖出</span></div></div>
@@ -509,6 +706,15 @@
       <summary><div class="stock-group-head"><div><h3>京能电力 <small>600578</small></h3><p>早盘快速成仓：5/26 开盘 7 分钟内买满 2,200 股，5/28 开盘离场。</p><div class="tag-row"><span class="mini-chip ">买点过急</span><span class="mini-chip ">非唯一</span></div></div><span class="chip neg">-342.61</span></div></summary>
       <div class="stock-detail-body">
         <div class="lesson-box neg"><b>关键错误点</b><p>开盘快速成交、买点太急，标的地位也不够唯一。</p></div>
+        <div class="audit-strip">
+    <span><b>操作类型</b>半路</span>
+    <span><b>模式归属</b>非模式</span>
+    <span><b>交易前预案</b>暂无预案记录；开盘急买前必须确认唯一性。</span>
+    <span><b>实际执行</b>开盘7分钟内快速成交，买点太急。</span>
+    <span><b>当时最正确动作</b>先等地位确认，买点不追急。</span>
+    <span><b>红线标记</b><em><span class="mini-chip danger">买点过急</span></em></span>
+  </div>
+
         <div><h4>完整成交流水</h4><div class="flow-list"><div class="flow-item"><b class="neg">买入</b> 2026-05-26 09:30:56<br>9.300 / 500 股 · 05.25-05.29</div><div class="flow-item"><b class="neg">买入</b> 2026-05-26 09:30:58<br>9.300 / 200 股 · 05.25-05.29</div><div class="flow-item"><b class="neg">买入</b> 2026-05-26 09:31:03<br>9.260 / 500 股 · 05.25-05.29</div><div class="flow-item"><b class="neg">买入</b> 2026-05-26 09:31:11<br>9.250 / 300 股 · 05.25-05.29</div><div class="flow-item"><b class="neg">买入</b> 2026-05-26 09:31:16<br>9.300 / 100 股 · 05.25-05.29</div><div class="flow-item"><b class="neg">买入</b> 2026-05-26 09:33:00<br>9.610 / 100 股 · 05.25-05.29</div><div class="flow-item"><b class="neg">买入</b> 2026-05-26 09:33:09<br>9.600 / 100 股 · 05.25-05.29</div><div class="flow-item"><b class="neg">买入</b> 2026-05-26 09:36:35<br>9.740 / 200 股 · 05.25-05.29</div><div class="flow-item"><b class="neg">买入</b> 2026-05-26 09:37:14<br>9.700 / 200 股 · 05.25-05.29</div><div class="flow-item"><b class="blue">卖出</b> 2026-05-28 09:30:44<br>9.260 / 2,200 股 · 05.25-05.29</div></div></div>
         <div class="chart-stack"><article class="chart-card"><div class="card-head"><span class="chip">05.25-05.29</span><a class="blue" href="../../2026-05-25_2026-05-29/">来源周复盘</a></div><div class="trade-map" aria-label="京能电力 05.25-05.29 买卖点地图">
     <div class="trade-map-head"><h4>05.25-05.29 真实分钟线与买卖点</h4><div class="trade-legend"><span class="legend-item"><i class="legend-shape buy"></i>买入</span><span class="legend-item"><i class="legend-shape sell"></i>卖出</span></div></div>
@@ -524,6 +730,15 @@
       <summary><div class="stock-group-head"><div><h3>苏州高新 <small>600736</small></h3><p>04.20-04.24 周度单票贡献 -334.17。；周度走势从 6.25 到 8.50，区间 +36.00%，周内振幅 49.76% 。</p><div class="tag-row"><span class="mini-chip ">小亏闭环</span><span class="mini-chip ">买点复盘</span></div></div><span class="chip neg">-334.17</span></div></summary>
       <div class="stock-detail-body">
         <div class="lesson-box neg"><b>关键错误点</b><p>小亏闭环，重点检查买点是否过急、标的地位是否不够。</p></div>
+        <div class="audit-strip">
+    <span><b>操作类型</b>套利</span>
+    <span><b>模式归属</b>需复核</span>
+    <span><b>交易前预案</b>暂无预案记录。</span>
+    <span><b>实际执行</b>实际执行待从周度预案补齐。</span>
+    <span><b>当时最正确动作</b>亏损票先查第一性；不能证明核心地位就不做。</span>
+    <span><b>红线标记</b><em><span class="mini-chip">无红线标记</span></em></span>
+  </div>
+
         <div><h4>完整成交流水</h4><div class="flow-list"><div class="flow-item"><b class="neg">买入</b> 2026-04-22 09:31:18<br>7.610 / 600 股 · 04.20-04.24</div><div class="flow-item"><b class="neg">买入</b> 2026-04-24 09:25:00<br>9.200 / 400 股 · 04.20-04.24</div><div class="flow-item"><b class="neg">买入</b> 2026-04-24 11:26:36<br>9.210 / 400 股 · 04.20-04.24</div><div class="flow-item"><b class="neg">买入</b> 2026-04-24 11:26:38<br>9.210 / 400 股 · 04.20-04.24</div></div></div>
         <div class="chart-stack"><article class="chart-card"><div class="card-head"><span class="chip">04.20-04.24</span><a class="blue" href="../../2026-04-20_2026-04-24/">来源周复盘</a></div><div class="trade-map" aria-label="苏州高新 04.20-04.24 买卖点地图">
     <div class="trade-map-head"><h4>04.20-04.24 真实分钟线与买卖点</h4><div class="trade-legend"><span class="legend-item"><i class="legend-shape buy"></i>买入</span><span class="legend-item"><i class="legend-shape sell"></i>卖出</span></div></div>
@@ -536,9 +751,18 @@
   </section>
 <section class="stock-group" id="stock-002579">
     <details class="stock-detail">
-      <summary><div class="stock-group-head"><div><h3>中京电子 <small>002579</small></h3><p>已闭环：周二买入、周四早盘卖出，闭环亏损主要来自买点偏高后隔日走弱。</p><div class="tag-row"><span class="mini-chip ">非第一趋势</span><span class="mini-chip ">非模式</span></div></div><span class="chip neg">-324.96</span></div></summary>
+      <summary><div class="stock-group-head"><div><h3>中京电子 <small>002579</small></h3><p>已闭环：周二买入、周四早盘卖出，闭环亏损主要来自买点偏高后隔日走弱。</p><div class="tag-row"><span class="mini-chip ">非第一</span><span class="mini-chip ">非模式</span></div></div><span class="chip neg">-324.96</span></div></summary>
       <div class="stock-detail-body">
         <div class="lesson-box neg"><b>关键错误点</b><p>趋势题材里非第一名，不能按核心龙头模式处理。</p></div>
+        <div class="audit-strip">
+    <span><b>操作类型</b>趋势</span>
+    <span><b>模式归属</b>非模式</span>
+    <span><b>交易前预案</b>暂无预案记录；趋势题材非第一不纳入龙头模式。</span>
+    <span><b>实际执行</b>把非第一趋势票按核心预期处理。</span>
+    <span><b>当时最正确动作</b>不熟悉趋势行情就不参与。</span>
+    <span><b>红线标记</b><em><span class="mini-chip danger">非模式</span><span class="mini-chip danger">非第一</span></em></span>
+  </div>
+
         <div><h4>完整成交流水</h4><div class="flow-list"><div class="flow-item"><b class="neg">买入</b> 2026-06-02 09:46:41<br>20.400 / 200 股 · 06.01-06.05</div><div class="flow-item"><b class="neg">买入</b> 2026-06-02 09:47:21<br>20.690 / 200 股 · 06.01-06.05</div><div class="flow-item"><b class="blue">卖出</b> 2026-06-04 09:32:20<br>19.780 / 400 股 · 06.01-06.05</div></div></div>
         <div class="chart-stack"><article class="chart-card"><div class="card-head"><span class="chip">06.01-06.05</span><a class="blue" href="../../2026-06-01_2026-06-05/">来源周复盘</a></div><div class="trade-map" aria-label="中京电子 06.01-06.05 买卖点地图">
     <div class="trade-map-head"><h4>06.01-06.05 真实分钟线与买卖点</h4><div class="trade-legend"><span class="legend-item"><i class="legend-shape buy"></i>买入</span><span class="legend-item"><i class="legend-shape sell"></i>卖出</span></div></div>
@@ -554,6 +778,15 @@
       <summary><div class="stock-group-head"><div><h3>顺灏股份 <small>002565</small></h3><p>04.20-04.24 周度单票贡献 -299.90。；周度走势从 18.95 到 19.80，区间 +4.49%，周内振幅 28.44% 。</p><div class="tag-row"><span class="mini-chip ">小亏闭环</span><span class="mini-chip ">买点复盘</span></div></div><span class="chip neg">-299.90</span></div></summary>
       <div class="stock-detail-body">
         <div class="lesson-box neg"><b>关键错误点</b><p>小亏闭环，重点检查买点是否过急、标的地位是否不够。</p></div>
+        <div class="audit-strip">
+    <span><b>操作类型</b>套利</span>
+    <span><b>模式归属</b>需复核</span>
+    <span><b>交易前预案</b>暂无预案记录。</span>
+    <span><b>实际执行</b>实际执行待从周度预案补齐。</span>
+    <span><b>当时最正确动作</b>亏损票先查第一性；不能证明核心地位就不做。</span>
+    <span><b>红线标记</b><em><span class="mini-chip">无红线标记</span></em></span>
+  </div>
+
         <div><h4>完整成交流水</h4><div class="flow-list"><div class="flow-item"><b class="neg">买入</b> 2026-04-23 10:26:46<br>20.420 / 200 股 · 04.20-04.24</div><div class="flow-item"><b class="blue">卖出</b> 2026-04-24 09:30:25<br>18.980 / 200 股 · 04.20-04.24</div></div></div>
         <div class="chart-stack"><article class="chart-card"><div class="card-head"><span class="chip">04.20-04.24</span><a class="blue" href="../../2026-04-20_2026-04-24/">来源周复盘</a></div><div class="trade-map" aria-label="顺灏股份 04.20-04.24 买卖点地图">
     <div class="trade-map-head"><h4>04.20-04.24 真实分钟线与买卖点</h4><div class="trade-legend"><span class="legend-item"><i class="legend-shape buy"></i>买入</span><span class="legend-item"><i class="legend-shape sell"></i>卖出</span></div></div>
@@ -569,6 +802,15 @@
       <summary><div class="stock-group-head"><div><h3>鑫科材料 <small>600255</small></h3><p>期末持仓口径：持有 800 股，持仓盈亏 -277.04，仓位 15.38%。</p><div class="tag-row"><span class="mini-chip ">小亏闭环</span><span class="mini-chip ">买点复盘</span></div></div><span class="chip neg">-277.04</span></div></summary>
       <div class="stock-detail-body">
         <div class="lesson-box neg"><b>关键错误点</b><p>小亏闭环，重点检查买点是否过急、标的地位是否不够。</p></div>
+        <div class="audit-strip">
+    <span><b>操作类型</b>套利</span>
+    <span><b>模式归属</b>需复核</span>
+    <span><b>交易前预案</b>暂无预案记录。</span>
+    <span><b>实际执行</b>实际执行待从周度预案补齐。</span>
+    <span><b>当时最正确动作</b>亏损票先查第一性；不能证明核心地位就不做。</span>
+    <span><b>红线标记</b><em><span class="mini-chip">无红线标记</span></em></span>
+  </div>
+
         <div><h4>完整成交流水</h4><div class="flow-list"><div class="flow-item"><b class="neg">买入</b> 2026-06-04 10:14:44<br>4.830 / 800 股 · 06.01-06.05</div></div></div>
         <div class="chart-stack"><article class="chart-card"><div class="card-head"><span class="chip">06.01-06.05</span><a class="blue" href="../../2026-06-01_2026-06-05/">来源周复盘</a></div><div class="trade-map" aria-label="鑫科材料 06.01-06.05 买卖点地图">
     <div class="trade-map-head"><h4>06.01-06.05 真实分钟线与买卖点</h4><div class="trade-legend"><span class="legend-item"><i class="legend-shape buy"></i>买入</span><span class="legend-item"><i class="legend-shape sell"></i>卖出</span></div></div>
@@ -584,6 +826,15 @@
       <summary><div class="stock-group-head"><div><h3>真视通 <small>002771</small></h3><p>04.20-04.24 周度单票贡献 -273.89。；周度走势从 18.78 到 15.15，区间 -19.33%，周内振幅 27.41% 。</p><div class="tag-row"><span class="mini-chip ">小亏闭环</span><span class="mini-chip ">买点复盘</span></div></div><span class="chip neg">-273.89</span></div></summary>
       <div class="stock-detail-body">
         <div class="lesson-box neg"><b>关键错误点</b><p>小亏闭环，重点检查买点是否过急、标的地位是否不够。</p></div>
+        <div class="audit-strip">
+    <span><b>操作类型</b>套利</span>
+    <span><b>模式归属</b>需复核</span>
+    <span><b>交易前预案</b>暂无预案记录。</span>
+    <span><b>实际执行</b>实际执行待从周度预案补齐。</span>
+    <span><b>当时最正确动作</b>亏损票先查第一性；不能证明核心地位就不做。</span>
+    <span><b>红线标记</b><em><span class="mini-chip">无红线标记</span></em></span>
+  </div>
+
         <div><h4>完整成交流水</h4><div class="flow-list"><div class="flow-item"><b class="blue">卖出</b> 2026-04-20 09:31:32<br>18.900 / 200 股 · 04.20-04.24</div></div></div>
         <div class="chart-stack"><article class="chart-card"><div class="card-head"><span class="chip">04.20-04.24</span><a class="blue" href="../../2026-04-20_2026-04-24/">来源周复盘</a></div><div class="trade-map" aria-label="真视通 04.20-04.24 买卖点地图">
     <div class="trade-map-head"><h4>04.20-04.24 真实分钟线与买卖点</h4><div class="trade-legend"><span class="legend-item"><i class="legend-shape buy"></i>买入</span><span class="legend-item"><i class="legend-shape sell"></i>卖出</span></div></div>
@@ -599,6 +850,15 @@
       <summary><div class="stock-group-head"><div><h3>金螳螂 <small>002081</small></h3><p>04.20-04.24 周度单票贡献 +236.87。；周度走势从 3.74 到 4.89，区间 +30.75%，周内振幅 48.37% 。</p><div class="tag-row"><span class="mini-chip ">轻仓套利</span><span class="mini-chip ">小额正贡献</span></div></div><span class="chip pos">+236.87</span></div></summary>
       <div class="stock-detail-body">
         <div class="lesson-box pos"><b>关键复制点</b><p>小额盈利只可作为轻仓套利样本，赚钱但不可复制，不能升级为主线。</p></div>
+        <div class="audit-strip">
+    <span><b>操作类型</b>套利</span>
+    <span><b>模式归属</b>需复核</span>
+    <span><b>交易前预案</b>暂无预案记录。</span>
+    <span><b>实际执行</b>形成小额正贡献，但不构成本月主线。</span>
+    <span><b>当时最正确动作</b>盈利也不能自动升级为核心；只保留轻仓套利定位。</span>
+    <span><b>红线标记</b><em><span class="mini-chip">无红线标记</span></em></span>
+  </div>
+
         <div><h4>完整成交流水</h4><div class="flow-list"><div class="flow-item"><b class="neg">买入</b> 2026-04-22 09:33:26<br>4.940 / 700 股 · 04.20-04.24</div><div class="flow-item"><b class="blue">卖出</b> 2026-04-23 09:30:01<br>5.350 / 700 股 · 04.20-04.24</div><div class="flow-item"><b class="neg">买入</b> 2026-04-23 09:30:46<br>5.430 / 100 股 · 04.20-04.24</div><div class="flow-item"><b class="blue">卖出</b> 2026-04-24 09:50:31<br>5.150 / 100 股 · 04.20-04.24</div></div></div>
         <div class="chart-stack"><article class="chart-card"><div class="card-head"><span class="chip">04.20-04.24</span><a class="blue" href="../../2026-04-20_2026-04-24/">来源周复盘</a></div><div class="trade-map" aria-label="金螳螂 04.20-04.24 买卖点地图">
     <div class="trade-map-head"><h4>04.20-04.24 真实分钟线与买卖点</h4><div class="trade-legend"><span class="legend-item"><i class="legend-shape buy"></i>买入</span><span class="legend-item"><i class="legend-shape sell"></i>卖出</span></div></div>
@@ -614,6 +874,15 @@
       <summary><div class="stock-group-head"><div><h3>华电能源 <small>600726</small></h3><p>05.08-05.16 周复盘贡献 -207.03。；按本周可见成交做 FIFO 闭环复盘。</p><div class="tag-row"><span class="mini-chip ">后排替代</span><span class="mini-chip ">跟风票</span></div></div><span class="chip neg">-207.03</span></div></summary>
       <div class="stock-detail-body">
         <div class="lesson-box neg"><b>关键错误点</b><p>华能/电力线里的跟风票，不能给核心预期。</p></div>
+        <div class="audit-strip">
+    <span><b>操作类型</b>套利</span>
+    <span><b>模式归属</b>非模式</span>
+    <span><b>交易前预案</b>暂无预案记录；华能/电力线应只看阶段第一辨识度。</span>
+    <span><b>实际执行</b>参与跟风票。</span>
+    <span><b>当时最正确动作</b>跟风票不做，只等真正第一核心。</span>
+    <span><b>红线标记</b><em><span class="mini-chip danger">后排替代</span><span class="mini-chip danger">非第一</span></em></span>
+  </div>
+
         <div><h4>完整成交流水</h4><div class="flow-list"><div class="flow-item"><b class="neg">买入</b> 2026-05-08 09:43:05<br>8.180 / 500 股 · 05.08-05.16</div><div class="flow-item"><b class="blue">卖出</b> 2026-05-11 14:56:59<br>7.790 / 500 股 · 05.08-05.16</div></div></div>
         <div class="chart-stack"><article class="chart-card"><div class="card-head"><span class="chip">05.08-05.16</span><a class="blue" href="../../2026-05-08_2026-05-16/">来源周复盘</a></div><div class="trade-map" aria-label="华电能源 05.08-05.16 买卖点地图">
     <div class="trade-map-head"><h4>05.08-05.16 真实分钟线与买卖点</h4><div class="trade-legend"><span class="legend-item"><i class="legend-shape buy"></i>买入</span><span class="legend-item"><i class="legend-shape sell"></i>卖出</span></div></div>
@@ -629,6 +898,15 @@
       <summary><div class="stock-group-head"><div><h3>圣阳股份 <small>002580</small></h3><p>尾盘试错失败：5/25 尾盘买入，5/28 早盘卖出，亏损主要来自价差和费用。</p><div class="tag-row"><span class="mini-chip ">非模式</span><span class="mini-chip ">尾盘试错</span></div></div><span class="chip neg">-196.33</span></div></summary>
       <div class="stock-detail-body">
         <div class="lesson-box neg"><b>关键错误点</b><p>非模式标的和尾盘试错不应进入月度主战场。</p></div>
+        <div class="audit-strip">
+    <span><b>操作类型</b>尾盘试错</span>
+    <span><b>模式归属</b>非模式</span>
+    <span><b>交易前预案</b>暂无预案记录；非模式标的不进入月度主战场。</span>
+    <span><b>实际执行</b>尾盘试错失败，亏损来自价差和费用。</span>
+    <span><b>当时最正确动作</b>非模式尾盘票直接放弃。</span>
+    <span><b>红线标记</b><em><span class="mini-chip danger">非模式</span></em></span>
+  </div>
+
         <div><h4>完整成交流水</h4><div class="flow-list"><div class="flow-item"><b class="neg">买入</b> 2026-05-25 14:55:49<br>24.180 / 100 股 · 05.25-05.29</div><div class="flow-item"><b class="neg">买入</b> 2026-05-25 14:56:08<br>24.210 / 100 股 · 05.25-05.29</div><div class="flow-item"><b class="blue">卖出</b> 2026-05-28 09:39:56<br>23.300 / 200 股 · 05.25-05.29</div></div></div>
         <div class="chart-stack"><article class="chart-card"><div class="card-head"><span class="chip">05.25-05.29</span><a class="blue" href="../../2026-05-25_2026-05-29/">来源周复盘</a></div><div class="trade-map" aria-label="圣阳股份 05.25-05.29 买卖点地图">
     <div class="trade-map-head"><h4>05.25-05.29 真实分钟线与买卖点</h4><div class="trade-legend"><span class="legend-item"><i class="legend-shape buy"></i>买入</span><span class="legend-item"><i class="legend-shape sell"></i>卖出</span></div></div>
@@ -644,6 +922,15 @@
       <summary><div class="stock-group-head"><div><h3>沃格光电 <small>603773</small></h3><p>04.20-04.24 周度单票贡献 -169.13。；周度走势从 56.60 到 58.30，区间 +3.00%，周内振幅 17.86% 。</p><div class="tag-row"><span class="mini-chip ">小亏闭环</span><span class="mini-chip ">买点复盘</span></div></div><span class="chip neg">-169.13</span></div></summary>
       <div class="stock-detail-body">
         <div class="lesson-box neg"><b>关键错误点</b><p>小亏闭环，重点检查买点是否过急、标的地位是否不够。</p></div>
+        <div class="audit-strip">
+    <span><b>操作类型</b>套利</span>
+    <span><b>模式归属</b>需复核</span>
+    <span><b>交易前预案</b>暂无预案记录。</span>
+    <span><b>实际执行</b>实际执行待从周度预案补齐。</span>
+    <span><b>当时最正确动作</b>亏损票先查第一性；不能证明核心地位就不做。</span>
+    <span><b>红线标记</b><em><span class="mini-chip">无红线标记</span></em></span>
+  </div>
+
         <div><h4>完整成交流水</h4><div class="flow-list"><div class="flow-item"><b class="neg">买入</b> 2026-04-21 09:45:54<br>61.740 / 100 股 · 04.20-04.24</div><div class="flow-item"><b class="blue">卖出</b> 2026-04-22 09:30:43<br>60.180 / 100 股 · 04.20-04.24</div></div></div>
         <div class="chart-stack"><article class="chart-card"><div class="card-head"><span class="chip">04.20-04.24</span><a class="blue" href="../../2026-04-20_2026-04-24/">来源周复盘</a></div><div class="trade-map" aria-label="沃格光电 04.20-04.24 买卖点地图">
     <div class="trade-map-head"><h4>04.20-04.24 真实分钟线与买卖点</h4><div class="trade-legend"><span class="legend-item"><i class="legend-shape buy"></i>买入</span><span class="legend-item"><i class="legend-shape sell"></i>卖出</span></div></div>
@@ -656,9 +943,18 @@
   </section>
 <section class="stock-group" id="stock-601991">
     <details class="stock-detail">
-      <summary><div class="stock-group-head"><div><h3>大唐发电 <small>601991</small></h3><p>05.08-05.16 周复盘贡献 -167.77。；按本周可见成交做 FIFO 闭环复盘。；大唐发电包含 5/15 周前卖出、5/18 买入、5/19 卖出；周前持仓成本待补。</p><div class="tag-row"><span class="mini-chip ">小亏闭环</span><span class="mini-chip ">买点复盘</span></div></div><span class="chip neg">-167.77</span></div></summary>
+      <summary><div class="stock-group-head"><div><h3>大唐发电 <small>601991</small></h3><p>05.08-05.16 周复盘贡献 -167.77。；按本周可见成交做 FIFO 闭环复盘。；大唐发电包含 5/15 周前卖出、5/18 买入、5/19 卖出；周前持仓成本待补。</p><div class="tag-row"><span class="mini-chip ">止损后回补</span><span class="mini-chip ">小亏闭环</span><span class="mini-chip ">买点复盘</span></div></div><span class="chip neg">-167.77</span></div></summary>
       <div class="stock-detail-body">
         <div class="lesson-box neg"><b>关键错误点</b><p>小亏闭环，重点检查买点是否过急、标的地位是否不够。</p></div>
+        <div class="audit-strip">
+    <span><b>操作类型</b>套利</span>
+    <span><b>模式归属</b>需复核</span>
+    <span><b>交易前预案</b>暂无预案记录。</span>
+    <span><b>实际执行</b>实际执行待从周度预案补齐。</span>
+    <span><b>当时最正确动作</b>亏损票先查第一性；不能证明核心地位就不做。</span>
+    <span><b>红线标记</b><em><span class="mini-chip danger">止损后回补</span></em></span>
+  </div>
+
         <div><h4>完整成交流水</h4><div class="flow-list"><div class="flow-item"><b class="neg">买入</b> 2026-05-14 10:10:00<br>8.110 / 200 股 · 05.08-05.16</div><div class="flow-item"><b class="blue">卖出</b> 2026-05-15 10:43:29<br>7.250 / 100 股 · 05.08-05.16 / 05.18-05.22</div><div class="flow-item"><b class="blue">卖出</b> 2026-05-15 10:55:10<br>7.450 / 100 股 · 05.08-05.16 / 05.18-05.22</div><div class="flow-item"><b class="neg">买入</b> 2026-05-18 15:00:00<br>7.930 / 300 股 · 05.18-05.22</div><div class="flow-item"><b class="blue">卖出</b> 2026-05-19 09:35:22<br>8.120 / 300 股 · 05.18-05.22</div></div></div>
         <div class="chart-stack"><article class="chart-card"><div class="card-head"><span class="chip">05.08-05.16</span><a class="blue" href="../../2026-05-08_2026-05-16/">来源周复盘</a></div><div class="trade-map" aria-label="大唐发电 05.08-05.16 买卖点地图">
     <div class="trade-map-head"><h4>05.08-05.16 真实分钟线与买卖点</h4><div class="trade-legend"><span class="legend-item"><i class="legend-shape buy"></i>买入</span><span class="legend-item"><i class="legend-shape sell"></i>卖出</span></div></div>
@@ -674,6 +970,15 @@
       <summary><div class="stock-group-head"><div><h3>大业股份 <small>603278</small></h3><p>05.08-05.16 周复盘贡献 -161.63。；按本周可见成交做 FIFO 闭环复盘。</p><div class="tag-row"><span class="mini-chip ">小亏闭环</span><span class="mini-chip ">买点复盘</span></div></div><span class="chip neg">-161.63</span></div></summary>
       <div class="stock-detail-body">
         <div class="lesson-box neg"><b>关键错误点</b><p>小亏闭环，重点检查买点是否过急、标的地位是否不够。</p></div>
+        <div class="audit-strip">
+    <span><b>操作类型</b>套利</span>
+    <span><b>模式归属</b>需复核</span>
+    <span><b>交易前预案</b>暂无预案记录。</span>
+    <span><b>实际执行</b>实际执行待从周度预案补齐。</span>
+    <span><b>当时最正确动作</b>亏损票先查第一性；不能证明核心地位就不做。</span>
+    <span><b>红线标记</b><em><span class="mini-chip">无红线标记</span></em></span>
+  </div>
+
         <div><h4>完整成交流水</h4><div class="flow-list"><div class="flow-item"><b class="neg">买入</b> 2026-05-11 09:52:10<br>16.400 / 200 股 · 05.08-05.16</div><div class="flow-item"><b class="blue">卖出</b> 2026-05-12 13:48:10<br>15.650 / 200 股 · 05.08-05.16</div></div></div>
         <div class="chart-stack"><article class="chart-card"><div class="card-head"><span class="chip">05.08-05.16</span><a class="blue" href="../../2026-05-08_2026-05-16/">来源周复盘</a></div><div class="trade-map" aria-label="大业股份 05.08-05.16 买卖点地图">
     <div class="trade-map-head"><h4>05.08-05.16 真实分钟线与买卖点</h4><div class="trade-legend"><span class="legend-item"><i class="legend-shape buy"></i>买入</span><span class="legend-item"><i class="legend-shape sell"></i>卖出</span></div></div>
@@ -689,6 +994,15 @@
       <summary><div class="stock-group-head"><div><h3>圣龙股份 <small>603178</small></h3><p>04.20-04.24 周度单票贡献 -113.95。；周度走势从 18.23 到 17.17，区间 -5.81%，周内振幅 35.06% 。</p><div class="tag-row"><span class="mini-chip ">小亏闭环</span><span class="mini-chip ">买点复盘</span></div></div><span class="chip neg">-113.95</span></div></summary>
       <div class="stock-detail-body">
         <div class="lesson-box neg"><b>关键错误点</b><p>小亏闭环，重点检查买点是否过急、标的地位是否不够。</p></div>
+        <div class="audit-strip">
+    <span><b>操作类型</b>套利</span>
+    <span><b>模式归属</b>需复核</span>
+    <span><b>交易前预案</b>暂无预案记录。</span>
+    <span><b>实际执行</b>实际执行待从周度预案补齐。</span>
+    <span><b>当时最正确动作</b>亏损票先查第一性；不能证明核心地位就不做。</span>
+    <span><b>红线标记</b><em><span class="mini-chip">无红线标记</span></em></span>
+  </div>
+
         <div><h4>完整成交流水</h4><div class="flow-list"><div class="flow-item"><b class="neg">买入</b> 2026-04-20 09:31:55<br>19.160 / 200 股 · 04.20-04.24</div><div class="flow-item"><b class="blue">卖出</b> 2026-04-21 09:31:41<br>18.650 / 200 股 · 04.20-04.24</div></div></div>
         <div class="chart-stack"><article class="chart-card"><div class="card-head"><span class="chip">04.20-04.24</span><a class="blue" href="../../2026-04-20_2026-04-24/">来源周复盘</a></div><div class="trade-map" aria-label="圣龙股份 04.20-04.24 买卖点地图">
     <div class="trade-map-head"><h4>04.20-04.24 真实分钟线与买卖点</h4><div class="trade-legend"><span class="legend-item"><i class="legend-shape buy"></i>买入</span><span class="legend-item"><i class="legend-shape sell"></i>卖出</span></div></div>
@@ -704,6 +1018,15 @@
       <summary><div class="stock-group-head"><div><h3>川润股份 <small>002272</small></h3><p>05.18-05.22 周复盘贡献 -53.23。；川润股份 5/20 买入 100 股，5/21 卖出 100 股，形成一笔可核算闭环。</p><div class="tag-row"><span class="mini-chip ">小亏闭环</span><span class="mini-chip ">买点复盘</span></div></div><span class="chip neg">-53.23</span></div></summary>
       <div class="stock-detail-body">
         <div class="lesson-box neg"><b>关键错误点</b><p>小亏闭环，重点检查买点是否过急、标的地位是否不够。</p></div>
+        <div class="audit-strip">
+    <span><b>操作类型</b>套利</span>
+    <span><b>模式归属</b>需复核</span>
+    <span><b>交易前预案</b>暂无预案记录。</span>
+    <span><b>实际执行</b>实际执行待从周度预案补齐。</span>
+    <span><b>当时最正确动作</b>亏损票先查第一性；不能证明核心地位就不做。</span>
+    <span><b>红线标记</b><em><span class="mini-chip">无红线标记</span></em></span>
+  </div>
+
         <div><h4>完整成交流水</h4><div class="flow-list"><div class="flow-item"><b class="neg">买入</b> 2026-05-20 09:50:50<br>24.930 / 100 股 · 05.18-05.22</div><div class="flow-item"><b class="blue">卖出</b> 2026-05-21 09:42:52<br>24.510 / 100 股 · 05.18-05.22</div></div></div>
         <div class="chart-stack"><article class="chart-card"><div class="card-head"><span class="chip">05.18-05.22</span><a class="blue" href="../../2026-05-15_2026-05-22/">来源周复盘</a></div><div class="trade-map" aria-label="川润股份 002272 买卖点与分钟走势"><div class="trade-map-head"><h4>分钟走势与买卖点</h4><div class="trade-legend" aria-label="图例"><span class="legend-item"><i class="legend-shape buy"></i>买入</span><span class="legend-item"><i class="legend-shape sell"></i>卖出</span></div></div><ul class="trade-context"><li>分钟窗口 05-18 09:30 至 05-22 15:00，区间 +24.75%，高 24.94 / 低 19.80。</li><li>买入 1 笔，均价 24.930；首笔买入后约 30 分钟价格 24.94，相对成交价 +0.04%。</li><li>卖出 1 笔，均价 24.510；首笔卖出后约 30 分钟价格 23.95，相对成交价 -2.28%。</li></ul><div class="trade-chart-wrap"><svg class="trade-chart" viewBox="0 0 900 300" role="img" aria-label="川润股份真实分钟线买卖点图"><defs><linearGradient id="marketFill-002272" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="rgba(20,149,111,.22)"></stop><stop offset="100%" stop-color="rgba(20,149,111,.02)"></stop></linearGradient></defs><line x1="52" x2="52" y1="24" y2="252" stroke="rgba(28,37,48,.16)"></line><line x1="52" x2="876" y1="252" y2="252" stroke="rgba(28,37,48,.16)"></line><g><line x1="52" x2="876" y1="24.0" y2="24.0" stroke="rgba(28,37,48,.08)"></line><text x="42" y="28.0" text-anchor="end" class="axis-label">25.66</text></g><g><line x1="52" x2="876" y1="138.0" y2="138.0" stroke="rgba(28,37,48,.08)"></line><text x="42" y="142.0" text-anchor="end" class="axis-label">22.37</text></g><g><line x1="52" x2="876" y1="252.0" y2="252.0" stroke="rgba(28,37,48,.08)"></line><text x="42" y="256.0" text-anchor="end" class="axis-label">19.08</text></g><g><line x1="96.7" x2="96.7" y1="24" y2="252" stroke="rgba(28,37,48,.06)" stroke-dasharray="4 6"></line><text x="96.7" y="287" text-anchor="middle" class="axis-label">05-18</text></g><g><line x1="291.4" x2="291.4" y1="24" y2="252" stroke="rgba(28,37,48,.06)" stroke-dasharray="4 6"></line><text x="291.4" y="287" text-anchor="middle" class="axis-label">05-19</text></g><g><line x1="486.1" x2="486.1" y1="24" y2="252" stroke="rgba(28,37,48,.06)" stroke-dasharray="4 6"></line><text x="486.1" y="287" text-anchor="middle" class="axis-label">05-20</text></g><g><line x1="681.2" x2="681.2" y1="24" y2="252" stroke="rgba(28,37,48,.06)" stroke-dasharray="4 6"></line><text x="681.2" y="287" text-anchor="middle" class="axis-label">05-21</text></g><g><line x1="876.0" x2="876.0" y1="24" y2="252" stroke="rgba(28,37,48,.06)" stroke-dasharray="4 6"></line><text x="876.0" y="287" text-anchor="middle" class="axis-label">05-22</text></g><path d="M 52.0 227.1 L 52.4 222.9 L 52.8 199.0 L 53.2 199.0 L 53.6 199.0 L 54.0 199.0 L 54.4 199.0 L 54.8 199.0 L 55.2 199.0 L 55.7 199.0 L 56.1 199.0 L 56.5 199.0 L 56.9 199.0 L 57.3 199.0 L 57.7 199.0 L 58.1 199.0 L 58.5 199.0 L 58.9 199.0 L 59.3 199.0 L 59.7 199.0 L 60.1 199.0 L 60.5 199.0 L 60.9 199.0 L 61.3 199.0 L 61.7 199.0 L 62.1 199.0 L 62.6 199.0 L 63.0 199.0 L 63.4 199.0 L 63.8 199.0 L 64.2 199.0 L 64.6 199.0 L 65.0 199.0 L 65.4 199.0 L 65.8 199.0 L 66.2 199.0 L 66.6 199.0 L 67.0 199.0 L 67.4 199.0 L 67.8 199.0 L 68.2 199.0 L 80.8 199.0 L 81.2 199.0 L 81.6 199.0 L 82.0 199.0 L 82.4 199.0 L 82.8 199.0 L 83.3 199.0 L 83.7 199.0 L 84.1 199.0 L 84.5 199.0 L 84.9 199.0 L 85.3 199.0 L 85.7 199.0 L 86.1 199.0 L 86.5 199.0 L 86.9 199.0 L 87.3 199.0 L 87.7 199.0 L 88.1 199.0 L 88.5 199.0 L 88.9 199.0 L 89.3 199.0 L 89.7 199.0 L 90.2 199.0 L 90.6 199.0 L 91.0 199.0 L 91.4 199.0 L 91.8 199.0 L 92.2 199.0 L 92.6 199.0 L 93.0 199.0 L 93.4 199.0 L 93.8 199.0 L 94.2 199.0 L 94.6 199.0 L 95.0 199.0 L 95.4 199.0 L 95.8 199.0 L 96.2 199.0 L 96.7 199.0 L 247.1 168.1 L 247.5 136.3 L 247.9 127.6 L 248.3 127.6 L 248.7 127.6 L 249.1 127.6 L 249.5 127.6 L 249.9 127.6 L 250.4 127.6 L 250.8 127.6 L 251.2 127.6 L 251.6 127.6 L 252.0 127.6 L 252.4 127.6 L 252.8 127.6 L 253.2 127.6 L 253.6 127.6 L 254.0 127.6 L 254.4 127.6 L 254.8 127.6 L 255.2 127.6 L 255.6 127.6 L 256.0 127.6 L 256.4 127.6 L 256.8 127.6 L 257.3 127.6 L 257.7 127.6 L 258.1 127.6 L 258.5 127.6 L 258.9 127.6 L 259.3 127.6 L 259.7 127.6 L 260.1 127.6 L 260.5 127.6 L 260.9 127.6 L 261.3 127.6 L 261.7 127.6 L 262.1 127.6 L 262.5 127.6 L 262.9 127.6 L 275.5 127.6 L 275.9 127.6 L 276.3 127.6 L 276.7 127.6 L 277.1 127.6 L 277.6 127.6 L 278.0 127.6 L 278.4 127.6 L 278.8 127.6 L 279.2 127.6 L 279.6 127.6 L 280.0 127.6 L 280.4 127.6 L 280.8 127.6 L 281.2 127.6 L 281.6 127.6 L 282.0 127.6 L 282.4 127.6 L 282.8 127.6 L 283.2 127.6 L 283.6 127.6 L 284.0 127.6 L 284.5 127.6 L 284.9 127.6 L 285.3 127.6 L 285.7 127.6 L 286.1 127.6 L 286.5 127.6 L 286.9 127.6 L 287.3 127.6 L 287.7 127.6 L 288.1 127.6 L 288.5 127.6 L 288.9 127.6 L 289.3 127.6 L 289.7 127.6 L 290.1 127.6 L 290.5 127.6 L 290.9 127.6 L 291.4 127.6 L 441.8 48.9 L 442.2 48.9 L 442.6 48.9 L 443.0 48.9 L 443.4 48.9 L 443.8 48.9 L 444.2 48.9 L 444.7 48.9 L 445.1 48.9 L 445.5 48.9 L 445.9 48.9 L 446.3 48.9 L 446.7 48.9 L 447.1 48.9 L 447.5 48.9 L 447.9 48.9 L 448.3 48.9 L 448.7 48.9 L 449.1 48.9 L 449.5 48.9 L 449.9 48.9 L 450.3 48.9 L 450.7 48.9 L 451.1 48.9 L 451.6 48.9 L 452.0 48.9 L 452.4 48.9 L 452.8 48.9 L 453.2 48.9 L 453.6 48.9 L 454.0 48.9 L 454.4 48.9 L 454.8 48.9 L 455.2 48.9 L 455.6 48.9 L 456.0 48.9 L 456.4 48.9 L 456.8 48.9 L 457.2 48.9 L 457.6 48.9 L 470.2 48.9 L 470.6 48.9 L 471.0 48.9 L 471.4 48.9 L 471.8 48.9 L 472.3 48.9 L 472.7 48.9 L 473.1 48.9 L 473.5 48.9 L 473.9 48.9 L 474.3 48.9 L 474.7 48.9 L 475.1 48.9 L 475.5 48.9 L 475.9 48.9 L 476.3 48.9 L 476.7 48.9 L 477.1 48.9 L 477.5 48.9 L 477.9 48.9 L 478.3 48.9 L 478.7 48.9 L 479.2 48.9 L 479.6 48.9 L 480.0 48.9 L 480.4 48.9 L 480.8 48.9 L 481.2 48.9 L 481.6 48.9 L 482.0 48.9 L 482.4 48.9 L 482.8 48.9 L 483.2 48.9 L 483.6 48.9 L 484.0 48.9 L 484.4 48.9 L 484.8 48.9 L 485.2 48.9 L 485.6 48.9 L 486.1 48.9 L 636.5 62.1 L 636.9 63.1 L 637.3 79.4 L 637.7 76.7 L 638.1 54.8 L 638.5 71.5 L 638.9 70.8 L 639.4 80.8 L 639.8 71.1 L 640.2 77.0 L 640.6 78.7 L 641.0 81.9 L 641.4 82.2 L 641.8 78.0 L 642.2 82.2 L 642.6 83.2 L 643.0 78.4 L 643.4 80.1 L 643.8 87.1 L 644.2 79.8 L 644.6 82.2 L 645.0 82.9 L 645.4 88.8 L 645.8 87.8 L 646.3 92.9 L 646.7 97.1 L 647.1 99.2 L 647.5 103.0 L 647.9 103.0 L 648.3 105.1 L 648.7 102.7 L 649.1 104.4 L 649.5 98.5 L 649.9 98.5 L 650.3 95.0 L 650.7 88.8 L 651.1 87.4 L 651.5 92.6 L 651.9 87.4 L 652.3 92.3 L 652.7 90.5 L 665.3 95.4 L 665.7 97.5 L 666.1 98.5 L 666.5 100.2 L 667.0 98.8 L 667.4 98.1 L 667.8 98.1 L 668.2 100.9 L 668.6 102.7 L 669.0 103.0 L 669.4 104.7 L 669.8 105.4 L 670.2 105.1 L 670.6 105.8 L 671.0 105.8 L 671.4 106.5 L 671.8 107.5 L 672.2 109.2 L 672.6 108.9 L 673.0 109.9 L 673.5 111.3 L 673.9 112.7 L 674.3 113.7 L 674.7 117.2 L 675.1 117.9 L 675.5 116.2 L 675.9 120.3 L 676.3 122.1 L 676.7 123.4 L 677.1 125.5 L 677.5 129.0 L 677.9 132.1 L 678.3 123.4 L 678.7 128.3 L 679.1 131.8 L 679.5 129.7 L 679.9 134.5 L 680.4 135.2 L 680.8 135.2 L 681.2 135.2 L 831.6 131.4 L 832.0 129.3 L 832.4 123.4 L 832.8 134.9 L 833.2 121.7 L 833.6 125.5 L 834.1 125.5 L 834.5 121.4 L 834.9 121.4 L 835.3 130.7 L 835.7 129.0 L 836.1 103.3 L 836.5 102.3 L 836.9 110.6 L 837.3 93.3 L 837.7 106.5 L 838.1 109.9 L 838.5 112.7 L 838.9 108.9 L 839.3 104.0 L 839.7 105.1 L 840.1 97.5 L 840.6 100.6 L 841.0 95.4 L 841.4 88.4 L 841.8 88.8 L 842.2 96.4 L 842.6 96.1 L 843.0 102.3 L 843.4 100.9 L 843.8 100.9 L 844.2 92.6 L 844.6 97.5 L 845.0 85.7 L 845.4 86.4 L 845.8 87.1 L 846.2 91.6 L 846.6 94.7 L 847.0 93.3 L 847.5 93.3 L 860.0 75.6 L 860.4 69.7 L 860.8 70.4 L 861.3 66.6 L 861.7 61.4 L 862.1 57.3 L 862.5 61.4 L 862.9 69.0 L 863.3 73.9 L 863.7 69.0 L 864.1 73.9 L 864.5 73.9 L 864.9 69.7 L 865.3 69.4 L 865.7 64.2 L 866.1 68.7 L 866.5 67.0 L 866.9 64.2 L 867.3 67.7 L 867.7 70.1 L 868.2 68.7 L 868.6 70.4 L 869.0 70.4 L 869.4 67.3 L 869.8 68.3 L 870.2 62.5 L 870.6 62.8 L 871.0 57.6 L 871.4 63.1 L 871.8 57.3 L 872.2 57.3 L 872.6 57.3 L 873.0 57.3 L 873.4 57.3 L 873.8 57.3 L 874.2 57.3 L 874.6 57.3 L 875.1 57.3 L 875.5 57.3 L 875.9 57.3 L 876.0 57.3 L 876.0 252 L 52.0 252 Z" fill="url(#marketFill-002272)"></path><path class="market-line" d="M 52.0 227.1 L 52.4 222.9 L 52.8 199.0 L 53.2 199.0 L 53.6 199.0 L 54.0 199.0 L 54.4 199.0 L 54.8 199.0 L 55.2 199.0 L 55.7 199.0 L 56.1 199.0 L 56.5 199.0 L 56.9 199.0 L 57.3 199.0 L 57.7 199.0 L 58.1 199.0 L 58.5 199.0 L 58.9 199.0 L 59.3 199.0 L 59.7 199.0 L 60.1 199.0 L 60.5 199.0 L 60.9 199.0 L 61.3 199.0 L 61.7 199.0 L 62.1 199.0 L 62.6 199.0 L 63.0 199.0 L 63.4 199.0 L 63.8 199.0 L 64.2 199.0 L 64.6 199.0 L 65.0 199.0 L 65.4 199.0 L 65.8 199.0 L 66.2 199.0 L 66.6 199.0 L 67.0 199.0 L 67.4 199.0 L 67.8 199.0 L 68.2 199.0 L 80.8 199.0 L 81.2 199.0 L 81.6 199.0 L 82.0 199.0 L 82.4 199.0 L 82.8 199.0 L 83.3 199.0 L 83.7 199.0 L 84.1 199.0 L 84.5 199.0 L 84.9 199.0 L 85.3 199.0 L 85.7 199.0 L 86.1 199.0 L 86.5 199.0 L 86.9 199.0 L 87.3 199.0 L 87.7 199.0 L 88.1 199.0 L 88.5 199.0 L 88.9 199.0 L 89.3 199.0 L 89.7 199.0 L 90.2 199.0 L 90.6 199.0 L 91.0 199.0 L 91.4 199.0 L 91.8 199.0 L 92.2 199.0 L 92.6 199.0 L 93.0 199.0 L 93.4 199.0 L 93.8 199.0 L 94.2 199.0 L 94.6 199.0 L 95.0 199.0 L 95.4 199.0 L 95.8 199.0 L 96.2 199.0 L 96.7 199.0 L 247.1 168.1 L 247.5 136.3 L 247.9 127.6 L 248.3 127.6 L 248.7 127.6 L 249.1 127.6 L 249.5 127.6 L 249.9 127.6 L 250.4 127.6 L 250.8 127.6 L 251.2 127.6 L 251.6 127.6 L 252.0 127.6 L 252.4 127.6 L 252.8 127.6 L 253.2 127.6 L 253.6 127.6 L 254.0 127.6 L 254.4 127.6 L 254.8 127.6 L 255.2 127.6 L 255.6 127.6 L 256.0 127.6 L 256.4 127.6 L 256.8 127.6 L 257.3 127.6 L 257.7 127.6 L 258.1 127.6 L 258.5 127.6 L 258.9 127.6 L 259.3 127.6 L 259.7 127.6 L 260.1 127.6 L 260.5 127.6 L 260.9 127.6 L 261.3 127.6 L 261.7 127.6 L 262.1 127.6 L 262.5 127.6 L 262.9 127.6 L 275.5 127.6 L 275.9 127.6 L 276.3 127.6 L 276.7 127.6 L 277.1 127.6 L 277.6 127.6 L 278.0 127.6 L 278.4 127.6 L 278.8 127.6 L 279.2 127.6 L 279.6 127.6 L 280.0 127.6 L 280.4 127.6 L 280.8 127.6 L 281.2 127.6 L 281.6 127.6 L 282.0 127.6 L 282.4 127.6 L 282.8 127.6 L 283.2 127.6 L 283.6 127.6 L 284.0 127.6 L 284.5 127.6 L 284.9 127.6 L 285.3 127.6 L 285.7 127.6 L 286.1 127.6 L 286.5 127.6 L 286.9 127.6 L 287.3 127.6 L 287.7 127.6 L 288.1 127.6 L 288.5 127.6 L 288.9 127.6 L 289.3 127.6 L 289.7 127.6 L 290.1 127.6 L 290.5 127.6 L 290.9 127.6 L 291.4 127.6 L 441.8 48.9 L 442.2 48.9 L 442.6 48.9 L 443.0 48.9 L 443.4 48.9 L 443.8 48.9 L 444.2 48.9 L 444.7 48.9 L 445.1 48.9 L 445.5 48.9 L 445.9 48.9 L 446.3 48.9 L 446.7 48.9 L 447.1 48.9 L 447.5 48.9 L 447.9 48.9 L 448.3 48.9 L 448.7 48.9 L 449.1 48.9 L 449.5 48.9 L 449.9 48.9 L 450.3 48.9 L 450.7 48.9 L 451.1 48.9 L 451.6 48.9 L 452.0 48.9 L 452.4 48.9 L 452.8 48.9 L 453.2 48.9 L 453.6 48.9 L 454.0 48.9 L 454.4 48.9 L 454.8 48.9 L 455.2 48.9 L 455.6 48.9 L 456.0 48.9 L 456.4 48.9 L 456.8 48.9 L 457.2 48.9 L 457.6 48.9 L 470.2 48.9 L 470.6 48.9 L 471.0 48.9 L 471.4 48.9 L 471.8 48.9 L 472.3 48.9 L 472.7 48.9 L 473.1 48.9 L 473.5 48.9 L 473.9 48.9 L 474.3 48.9 L 474.7 48.9 L 475.1 48.9 L 475.5 48.9 L 475.9 48.9 L 476.3 48.9 L 476.7 48.9 L 477.1 48.9 L 477.5 48.9 L 477.9 48.9 L 478.3 48.9 L 478.7 48.9 L 479.2 48.9 L 479.6 48.9 L 480.0 48.9 L 480.4 48.9 L 480.8 48.9 L 481.2 48.9 L 481.6 48.9 L 482.0 48.9 L 482.4 48.9 L 482.8 48.9 L 483.2 48.9 L 483.6 48.9 L 484.0 48.9 L 484.4 48.9 L 484.8 48.9 L 485.2 48.9 L 485.6 48.9 L 486.1 48.9 L 636.5 62.1 L 636.9 63.1 L 637.3 79.4 L 637.7 76.7 L 638.1 54.8 L 638.5 71.5 L 638.9 70.8 L 639.4 80.8 L 639.8 71.1 L 640.2 77.0 L 640.6 78.7 L 641.0 81.9 L 641.4 82.2 L 641.8 78.0 L 642.2 82.2 L 642.6 83.2 L 643.0 78.4 L 643.4 80.1 L 643.8 87.1 L 644.2 79.8 L 644.6 82.2 L 645.0 82.9 L 645.4 88.8 L 645.8 87.8 L 646.3 92.9 L 646.7 97.1 L 647.1 99.2 L 647.5 103.0 L 647.9 103.0 L 648.3 105.1 L 648.7 102.7 L 649.1 104.4 L 649.5 98.5 L 649.9 98.5 L 650.3 95.0 L 650.7 88.8 L 651.1 87.4 L 651.5 92.6 L 651.9 87.4 L 652.3 92.3 L 652.7 90.5 L 665.3 95.4 L 665.7 97.5 L 666.1 98.5 L 666.5 100.2 L 667.0 98.8 L 667.4 98.1 L 667.8 98.1 L 668.2 100.9 L 668.6 102.7 L 669.0 103.0 L 669.4 104.7 L 669.8 105.4 L 670.2 105.1 L 670.6 105.8 L 671.0 105.8 L 671.4 106.5 L 671.8 107.5 L 672.2 109.2 L 672.6 108.9 L 673.0 109.9 L 673.5 111.3 L 673.9 112.7 L 674.3 113.7 L 674.7 117.2 L 675.1 117.9 L 675.5 116.2 L 675.9 120.3 L 676.3 122.1 L 676.7 123.4 L 677.1 125.5 L 677.5 129.0 L 677.9 132.1 L 678.3 123.4 L 678.7 128.3 L 679.1 131.8 L 679.5 129.7 L 679.9 134.5 L 680.4 135.2 L 680.8 135.2 L 681.2 135.2 L 831.6 131.4 L 832.0 129.3 L 832.4 123.4 L 832.8 134.9 L 833.2 121.7 L 833.6 125.5 L 834.1 125.5 L 834.5 121.4 L 834.9 121.4 L 835.3 130.7 L 835.7 129.0 L 836.1 103.3 L 836.5 102.3 L 836.9 110.6 L 837.3 93.3 L 837.7 106.5 L 838.1 109.9 L 838.5 112.7 L 838.9 108.9 L 839.3 104.0 L 839.7 105.1 L 840.1 97.5 L 840.6 100.6 L 841.0 95.4 L 841.4 88.4 L 841.8 88.8 L 842.2 96.4 L 842.6 96.1 L 843.0 102.3 L 843.4 100.9 L 843.8 100.9 L 844.2 92.6 L 844.6 97.5 L 845.0 85.7 L 845.4 86.4 L 845.8 87.1 L 846.2 91.6 L 846.6 94.7 L 847.0 93.3 L 847.5 93.3 L 860.0 75.6 L 860.4 69.7 L 860.8 70.4 L 861.3 66.6 L 861.7 61.4 L 862.1 57.3 L 862.5 61.4 L 862.9 69.0 L 863.3 73.9 L 863.7 69.0 L 864.1 73.9 L 864.5 73.9 L 864.9 69.7 L 865.3 69.4 L 865.7 64.2 L 866.1 68.7 L 866.5 67.0 L 866.9 64.2 L 867.3 67.7 L 867.7 70.1 L 868.2 68.7 L 868.6 70.4 L 869.0 70.4 L 869.4 67.3 L 869.8 68.3 L 870.2 62.5 L 870.6 62.8 L 871.0 57.6 L 871.4 63.1 L 871.8 57.3 L 872.2 57.3 L 872.6 57.3 L 873.0 57.3 L 873.4 57.3 L 873.8 57.3 L 874.2 57.3 L 874.6 57.3 L 875.1 57.3 L 875.5 57.3 L 875.9 57.3 L 876.0 57.3"></path><g class="trade-marker buy"><path d="M 444.5 41.3 L 436.5 56.3 L 452.5 56.3 Z" fill="#b4232f" stroke="#fff" stroke-width="2"></path><text x="444.5" y="37.3" text-anchor="middle" class="point-label">买</text><title>川润股份 002272｜买入 100 股｜05-20 09:50｜24.930</title></g><g class="trade-marker sell"><path d="M 638.3 71.8 L 630.3 56.8 L 646.3 56.8 Z" fill="#1d4ed8" stroke="#fff" stroke-width="2"></path><text x="638.3" y="85.8" text-anchor="middle" class="point-label">卖</text><title>川润股份 002272｜卖出 100 股｜05-21 09:42｜24.510</title></g><text x="52" y="296" text-anchor="start" class="axis-label">05-18 09:30</text><text x="876" y="296" text-anchor="end" class="axis-label">05-22 15:00</text></svg></div><div class="trade-point-list"><div class="trade-point-item"><span><b class="buy">买入</b> 05-20 09:50</span><strong>24.930 / 100 股</strong></div><div class="trade-point-item"><span><b class="sell">卖出</b> 05-21 09:42</span><strong>24.510 / 100 股</strong></div></div></div></article></div>
       </div>
@@ -714,6 +1037,15 @@
       <summary><div class="stock-group-head"><div><h3>再升科技 <small>603601</small></h3><p>04.20-04.24 周度单票贡献 +52.15。；周度走势从 14.89 到 14.18，区间 -4.77%，周内振幅 18.93% 。</p><div class="tag-row"><span class="mini-chip ">轻仓套利</span><span class="mini-chip ">小额正贡献</span></div></div><span class="chip pos">+52.15</span></div></summary>
       <div class="stock-detail-body">
         <div class="lesson-box pos"><b>关键复制点</b><p>小额盈利只可作为轻仓套利样本，赚钱但不可复制，不能升级为主线。</p></div>
+        <div class="audit-strip">
+    <span><b>操作类型</b>套利</span>
+    <span><b>模式归属</b>需复核</span>
+    <span><b>交易前预案</b>暂无预案记录。</span>
+    <span><b>实际执行</b>形成小额正贡献，但不构成本月主线。</span>
+    <span><b>当时最正确动作</b>盈利也不能自动升级为核心；只保留轻仓套利定位。</span>
+    <span><b>红线标记</b><em><span class="mini-chip">无红线标记</span></em></span>
+  </div>
+
         <div><h4>完整成交流水</h4><div class="flow-list"><div class="flow-item"><b class="neg">买入</b> 2026-04-20 09:58:23<br>15.570 / 100 股 · 04.20-04.24</div><div class="flow-item"><b class="blue">卖出</b> 2026-04-21 09:33:35<br>16.200 / 100 股 · 04.20-04.24</div></div></div>
         <div class="chart-stack"><article class="chart-card"><div class="card-head"><span class="chip">04.20-04.24</span><a class="blue" href="../../2026-04-20_2026-04-24/">来源周复盘</a></div><div class="trade-map" aria-label="再升科技 04.20-04.24 买卖点地图">
     <div class="trade-map-head"><h4>04.20-04.24 真实分钟线与买卖点</h4><div class="trade-legend"><span class="legend-item"><i class="legend-shape buy"></i>买入</span><span class="legend-item"><i class="legend-shape sell"></i>卖出</span></div></div>
@@ -729,6 +1061,15 @@
       <summary><div class="stock-group-head"><div><h3>合肥城建 <small>002208</small></h3><p>05.18-05.22 周复盘贡献 +44.72。；合肥城建 5/19 买入 100 股，5/20 卖出 100 股，形成一笔可核算闭环。</p><div class="tag-row"><span class="mini-chip ">轻仓套利</span><span class="mini-chip ">小额正贡献</span></div></div><span class="chip pos">+44.72</span></div></summary>
       <div class="stock-detail-body">
         <div class="lesson-box pos"><b>关键复制点</b><p>小额盈利只可作为轻仓套利样本，赚钱但不可复制，不能升级为主线。</p></div>
+        <div class="audit-strip">
+    <span><b>操作类型</b>套利</span>
+    <span><b>模式归属</b>需复核</span>
+    <span><b>交易前预案</b>暂无预案记录。</span>
+    <span><b>实际执行</b>形成小额正贡献，但不构成本月主线。</span>
+    <span><b>当时最正确动作</b>盈利也不能自动升级为核心；只保留轻仓套利定位。</span>
+    <span><b>红线标记</b><em><span class="mini-chip">无红线标记</span></em></span>
+  </div>
+
         <div><h4>完整成交流水</h4><div class="flow-list"><div class="flow-item"><b class="neg">买入</b> 2026-05-19 09:37:19<br>25.120 / 100 股 · 05.18-05.22</div><div class="flow-item"><b class="blue">卖出</b> 2026-05-20 09:40:22<br>25.680 / 100 股 · 05.18-05.22</div></div></div>
         <div class="chart-stack"><article class="chart-card"><div class="card-head"><span class="chip">05.18-05.22</span><a class="blue" href="../../2026-05-15_2026-05-22/">来源周复盘</a></div><div class="trade-map" aria-label="合肥城建 002208 买卖点与分钟走势"><div class="trade-map-head"><h4>分钟走势与买卖点</h4><div class="trade-legend" aria-label="图例"><span class="legend-item"><i class="legend-shape buy"></i>买入</span><span class="legend-item"><i class="legend-shape sell"></i>卖出</span></div></div><ul class="trade-context"><li>分钟窗口 05-18 09:30 至 05-22 15:00，区间 -5.12%，高 26.27 / 低 21.06。</li><li>买入 1 笔，均价 25.120；首笔买入后约 30 分钟价格 24.44，相对成交价 -2.71%。</li><li>卖出 1 笔，均价 25.680；首笔卖出后约 30 分钟价格 24.72，相对成交价 -3.74%。</li></ul><div class="trade-chart-wrap"><svg class="trade-chart" viewBox="0 0 900 300" role="img" aria-label="合肥城建真实分钟线买卖点图"><defs><linearGradient id="marketFill-002208" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="rgba(20,149,111,.22)"></stop><stop offset="100%" stop-color="rgba(20,149,111,.02)"></stop></linearGradient></defs><line x1="52" x2="52" y1="24" y2="252" stroke="rgba(28,37,48,.16)"></line><line x1="52" x2="876" y1="252" y2="252" stroke="rgba(28,37,48,.16)"></line><g><line x1="52" x2="876" y1="24.0" y2="24.0" stroke="rgba(28,37,48,.08)"></line><text x="42" y="28.0" text-anchor="end" class="axis-label">27.00</text></g><g><line x1="52" x2="876" y1="138.0" y2="138.0" stroke="rgba(28,37,48,.08)"></line><text x="42" y="142.0" text-anchor="end" class="axis-label">23.66</text></g><g><line x1="52" x2="876" y1="252.0" y2="252.0" stroke="rgba(28,37,48,.08)"></line><text x="42" y="256.0" text-anchor="end" class="axis-label">20.33</text></g><g><line x1="96.7" x2="96.7" y1="24" y2="252" stroke="rgba(28,37,48,.06)" stroke-dasharray="4 6"></line><text x="96.7" y="287" text-anchor="middle" class="axis-label">05-18</text></g><g><line x1="291.4" x2="291.4" y1="24" y2="252" stroke="rgba(28,37,48,.06)" stroke-dasharray="4 6"></line><text x="291.4" y="287" text-anchor="middle" class="axis-label">05-19</text></g><g><line x1="486.1" x2="486.1" y1="24" y2="252" stroke="rgba(28,37,48,.06)" stroke-dasharray="4 6"></line><text x="486.1" y="287" text-anchor="middle" class="axis-label">05-20</text></g><g><line x1="681.2" x2="681.2" y1="24" y2="252" stroke="rgba(28,37,48,.06)" stroke-dasharray="4 6"></line><text x="681.2" y="287" text-anchor="middle" class="axis-label">05-21</text></g><g><line x1="876.0" x2="876.0" y1="24" y2="252" stroke="rgba(28,37,48,.06)" stroke-dasharray="4 6"></line><text x="876.0" y="287" text-anchor="middle" class="axis-label">05-22</text></g><path d="M 52.0 166.2 L 52.4 166.2 L 52.8 166.2 L 53.2 166.2 L 53.6 166.2 L 54.0 166.2 L 54.4 166.2 L 54.8 166.2 L 55.2 166.2 L 55.7 166.2 L 56.1 166.2 L 56.5 166.2 L 56.9 166.2 L 57.3 166.2 L 57.7 166.2 L 58.1 166.2 L 58.5 166.2 L 58.9 166.2 L 59.3 166.2 L 59.7 166.2 L 60.1 166.2 L 60.5 166.2 L 60.9 166.2 L 61.3 166.2 L 61.7 166.2 L 62.1 166.2 L 62.6 166.2 L 63.0 166.2 L 63.4 166.2 L 63.8 166.2 L 64.2 166.2 L 64.6 166.2 L 65.0 166.2 L 65.4 166.2 L 65.8 166.2 L 66.2 166.2 L 66.6 166.2 L 67.0 166.2 L 67.4 166.2 L 67.8 166.2 L 68.2 166.2 L 80.8 166.2 L 81.2 166.2 L 81.6 166.2 L 82.0 166.2 L 82.4 166.2 L 82.8 166.2 L 83.3 166.2 L 83.7 166.2 L 84.1 166.2 L 84.5 166.2 L 84.9 166.2 L 85.3 166.2 L 85.7 166.2 L 86.1 166.2 L 86.5 166.2 L 86.9 166.2 L 87.3 166.2 L 87.7 166.2 L 88.1 166.2 L 88.5 166.2 L 88.9 166.2 L 89.3 166.2 L 89.7 166.2 L 90.2 166.2 L 90.6 166.2 L 91.0 166.2 L 91.4 166.2 L 91.8 166.2 L 92.2 166.2 L 92.6 166.2 L 93.0 166.2 L 93.4 166.2 L 93.8 166.2 L 94.2 166.2 L 94.6 166.2 L 95.0 166.2 L 95.4 166.2 L 95.8 166.2 L 96.2 166.2 L 96.7 166.2 L 247.1 94.1 L 247.5 99.5 L 247.9 88.3 L 248.3 88.3 L 248.7 91.7 L 249.1 96.1 L 249.5 98.9 L 249.9 106.0 L 250.4 118.0 L 250.8 119.4 L 251.2 126.5 L 251.6 114.6 L 252.0 111.5 L 252.4 116.3 L 252.8 106.0 L 253.2 108.4 L 253.6 112.9 L 254.0 106.0 L 254.4 113.6 L 254.8 110.1 L 255.2 109.1 L 255.6 106.7 L 256.0 99.5 L 256.4 107.7 L 256.8 112.9 L 257.3 112.9 L 257.7 118.7 L 258.1 123.8 L 258.5 113.2 L 258.9 114.6 L 259.3 105.3 L 259.7 100.6 L 260.1 96.5 L 260.5 101.2 L 260.9 96.5 L 261.3 104.0 L 261.7 103.0 L 262.1 106.0 L 262.5 94.8 L 262.9 95.8 L 275.5 100.2 L 275.9 93.4 L 276.3 96.8 L 276.7 96.8 L 277.1 103.6 L 277.6 98.9 L 278.0 100.2 L 278.4 99.9 L 278.8 94.4 L 279.2 98.5 L 279.6 98.2 L 280.0 97.8 L 280.4 101.2 L 280.8 99.9 L 281.2 99.5 L 281.6 94.8 L 282.0 95.1 L 282.4 93.0 L 282.8 88.9 L 283.2 88.6 L 283.6 88.3 L 284.0 88.3 L 284.5 88.3 L 284.9 88.3 L 285.3 88.3 L 285.7 88.3 L 286.1 88.3 L 286.5 88.3 L 286.9 88.3 L 287.3 88.3 L 287.7 88.3 L 288.1 88.3 L 288.5 88.3 L 288.9 88.3 L 289.3 88.3 L 289.7 88.3 L 290.1 88.3 L 290.5 88.3 L 290.9 88.3 L 291.4 88.3 L 441.8 111.2 L 442.2 90.0 L 442.6 87.9 L 443.0 48.9 L 443.4 81.1 L 443.8 86.9 L 444.2 83.1 L 444.7 85.9 L 445.1 94.8 L 445.5 108.1 L 445.9 118.0 L 446.3 113.9 L 446.7 110.5 L 447.1 103.3 L 447.5 101.9 L 447.9 98.2 L 448.3 111.8 L 448.7 105.0 L 449.1 107.7 L 449.5 108.4 L 449.9 107.4 L 450.3 104.7 L 450.7 112.9 L 451.1 107.7 L 451.6 102.3 L 452.0 100.2 L 452.4 105.0 L 452.8 101.6 L 453.2 106.4 L 453.6 106.4 L 454.0 107.7 L 454.4 104.0 L 454.8 106.0 L 455.2 100.6 L 455.6 100.2 L 456.0 102.6 L 456.4 109.1 L 456.8 105.3 L 457.2 94.1 L 457.6 95.4 L 470.2 91.3 L 470.6 78.7 L 471.0 82.8 L 471.4 95.8 L 471.8 90.3 L 472.3 95.8 L 472.7 103.3 L 473.1 104.0 L 473.5 106.4 L 473.9 109.5 L 474.3 106.0 L 474.7 107.7 L 475.1 108.1 L 475.5 103.6 L 475.9 104.7 L 476.3 106.0 L 476.7 80.7 L 477.1 88.6 L 477.5 88.9 L 477.9 80.4 L 478.3 81.1 L 478.7 77.7 L 479.2 85.5 L 479.6 88.6 L 480.0 84.5 L 480.4 78.7 L 480.8 81.4 L 481.2 83.8 L 481.6 87.9 L 482.0 87.9 L 482.4 85.2 L 482.8 76.3 L 483.2 72.9 L 483.6 63.6 L 484.0 58.9 L 484.4 62.3 L 484.8 70.1 L 485.2 64.0 L 485.6 64.0 L 486.1 63.0 L 636.5 75.3 L 636.9 80.4 L 637.3 96.1 L 637.7 114.2 L 638.1 143.6 L 638.5 135.1 L 638.9 124.5 L 639.4 128.9 L 639.8 133.0 L 640.2 141.6 L 640.6 125.9 L 641.0 127.2 L 641.4 136.1 L 641.8 129.3 L 642.2 127.6 L 642.6 123.1 L 643.0 122.1 L 643.4 121.8 L 643.8 128.3 L 644.2 129.6 L 644.6 128.9 L 645.0 132.4 L 645.4 126.5 L 645.8 133.0 L 646.3 130.6 L 646.7 129.6 L 647.1 132.7 L 647.5 134.4 L 647.9 131.0 L 648.3 128.6 L 648.7 128.6 L 649.1 130.0 L 649.5 131.3 L 649.9 128.9 L 650.3 121.4 L 650.7 121.8 L 651.1 128.3 L 651.5 130.6 L 651.9 134.8 L 652.3 136.8 L 652.7 141.6 L 665.3 141.6 L 665.7 140.6 L 666.1 143.6 L 666.5 150.5 L 667.0 147.4 L 667.4 147.7 L 667.8 146.7 L 668.2 148.1 L 668.6 150.8 L 669.0 150.8 L 669.4 150.8 L 669.8 150.8 L 670.2 150.8 L 670.6 150.8 L 671.0 150.8 L 671.4 150.8 L 671.8 150.8 L 672.2 150.8 L 672.6 150.8 L 673.0 150.8 L 673.5 150.8 L 673.9 150.8 L 674.3 150.8 L 674.7 150.8 L 675.1 150.8 L 675.5 150.8 L 675.9 150.8 L 676.3 150.8 L 676.7 150.8 L 677.1 150.8 L 677.5 150.8 L 677.9 150.8 L 678.3 150.8 L 678.7 150.8 L 679.1 150.8 L 679.5 150.8 L 679.9 150.8 L 680.4 150.8 L 680.8 150.8 L 681.2 150.8 L 831.6 186.4 L 832.0 158.3 L 832.4 152.9 L 832.8 147.1 L 833.2 157.3 L 833.6 166.2 L 834.1 176.5 L 834.5 178.9 L 834.9 183.6 L 835.3 187.1 L 835.7 190.1 L 836.1 187.7 L 836.5 187.4 L 836.9 197.0 L 837.3 196.3 L 837.7 204.5 L 838.1 206.5 L 838.5 207.6 L 838.9 206.5 L 839.3 203.1 L 839.7 211.7 L 840.1 202.4 L 840.6 204.5 L 841.0 211.7 L 841.4 216.1 L 841.8 214.8 L 842.2 213.7 L 842.6 219.5 L 843.0 218.2 L 843.4 213.0 L 843.8 213.7 L 844.2 216.1 L 844.6 218.2 L 845.0 219.5 L 845.4 219.9 L 845.8 219.2 L 846.2 221.3 L 846.6 223.0 L 847.0 218.9 L 847.5 217.1 L 860.0 215.1 L 860.4 213.7 L 860.8 212.4 L 861.3 215.4 L 861.7 212.0 L 862.1 212.0 L 862.5 215.4 L 862.9 216.1 L 863.3 217.5 L 863.7 215.8 L 864.1 216.8 L 864.5 218.2 L 864.9 216.8 L 865.3 215.1 L 865.7 218.2 L 866.1 218.9 L 866.5 219.9 L 866.9 220.2 L 867.3 220.2 L 867.7 227.1 L 868.2 216.8 L 868.6 219.5 L 869.0 217.1 L 869.4 214.1 L 869.8 214.4 L 870.2 218.9 L 870.6 219.5 L 871.0 216.8 L 871.4 216.5 L 871.8 206.5 L 872.2 197.3 L 872.6 196.6 L 873.0 197.3 L 873.4 200.4 L 873.8 205.9 L 874.2 204.5 L 874.6 205.5 L 875.1 205.9 L 875.5 207.6 L 875.9 206.2 L 876.0 206.2 L 876.0 252 L 52.0 252 Z" fill="url(#marketFill-002208)"></path><path class="market-line" d="M 52.0 166.2 L 52.4 166.2 L 52.8 166.2 L 53.2 166.2 L 53.6 166.2 L 54.0 166.2 L 54.4 166.2 L 54.8 166.2 L 55.2 166.2 L 55.7 166.2 L 56.1 166.2 L 56.5 166.2 L 56.9 166.2 L 57.3 166.2 L 57.7 166.2 L 58.1 166.2 L 58.5 166.2 L 58.9 166.2 L 59.3 166.2 L 59.7 166.2 L 60.1 166.2 L 60.5 166.2 L 60.9 166.2 L 61.3 166.2 L 61.7 166.2 L 62.1 166.2 L 62.6 166.2 L 63.0 166.2 L 63.4 166.2 L 63.8 166.2 L 64.2 166.2 L 64.6 166.2 L 65.0 166.2 L 65.4 166.2 L 65.8 166.2 L 66.2 166.2 L 66.6 166.2 L 67.0 166.2 L 67.4 166.2 L 67.8 166.2 L 68.2 166.2 L 80.8 166.2 L 81.2 166.2 L 81.6 166.2 L 82.0 166.2 L 82.4 166.2 L 82.8 166.2 L 83.3 166.2 L 83.7 166.2 L 84.1 166.2 L 84.5 166.2 L 84.9 166.2 L 85.3 166.2 L 85.7 166.2 L 86.1 166.2 L 86.5 166.2 L 86.9 166.2 L 87.3 166.2 L 87.7 166.2 L 88.1 166.2 L 88.5 166.2 L 88.9 166.2 L 89.3 166.2 L 89.7 166.2 L 90.2 166.2 L 90.6 166.2 L 91.0 166.2 L 91.4 166.2 L 91.8 166.2 L 92.2 166.2 L 92.6 166.2 L 93.0 166.2 L 93.4 166.2 L 93.8 166.2 L 94.2 166.2 L 94.6 166.2 L 95.0 166.2 L 95.4 166.2 L 95.8 166.2 L 96.2 166.2 L 96.7 166.2 L 247.1 94.1 L 247.5 99.5 L 247.9 88.3 L 248.3 88.3 L 248.7 91.7 L 249.1 96.1 L 249.5 98.9 L 249.9 106.0 L 250.4 118.0 L 250.8 119.4 L 251.2 126.5 L 251.6 114.6 L 252.0 111.5 L 252.4 116.3 L 252.8 106.0 L 253.2 108.4 L 253.6 112.9 L 254.0 106.0 L 254.4 113.6 L 254.8 110.1 L 255.2 109.1 L 255.6 106.7 L 256.0 99.5 L 256.4 107.7 L 256.8 112.9 L 257.3 112.9 L 257.7 118.7 L 258.1 123.8 L 258.5 113.2 L 258.9 114.6 L 259.3 105.3 L 259.7 100.6 L 260.1 96.5 L 260.5 101.2 L 260.9 96.5 L 261.3 104.0 L 261.7 103.0 L 262.1 106.0 L 262.5 94.8 L 262.9 95.8 L 275.5 100.2 L 275.9 93.4 L 276.3 96.8 L 276.7 96.8 L 277.1 103.6 L 277.6 98.9 L 278.0 100.2 L 278.4 99.9 L 278.8 94.4 L 279.2 98.5 L 279.6 98.2 L 280.0 97.8 L 280.4 101.2 L 280.8 99.9 L 281.2 99.5 L 281.6 94.8 L 282.0 95.1 L 282.4 93.0 L 282.8 88.9 L 283.2 88.6 L 283.6 88.3 L 284.0 88.3 L 284.5 88.3 L 284.9 88.3 L 285.3 88.3 L 285.7 88.3 L 286.1 88.3 L 286.5 88.3 L 286.9 88.3 L 287.3 88.3 L 287.7 88.3 L 288.1 88.3 L 288.5 88.3 L 288.9 88.3 L 289.3 88.3 L 289.7 88.3 L 290.1 88.3 L 290.5 88.3 L 290.9 88.3 L 291.4 88.3 L 441.8 111.2 L 442.2 90.0 L 442.6 87.9 L 443.0 48.9 L 443.4 81.1 L 443.8 86.9 L 444.2 83.1 L 444.7 85.9 L 445.1 94.8 L 445.5 108.1 L 445.9 118.0 L 446.3 113.9 L 446.7 110.5 L 447.1 103.3 L 447.5 101.9 L 447.9 98.2 L 448.3 111.8 L 448.7 105.0 L 449.1 107.7 L 449.5 108.4 L 449.9 107.4 L 450.3 104.7 L 450.7 112.9 L 451.1 107.7 L 451.6 102.3 L 452.0 100.2 L 452.4 105.0 L 452.8 101.6 L 453.2 106.4 L 453.6 106.4 L 454.0 107.7 L 454.4 104.0 L 454.8 106.0 L 455.2 100.6 L 455.6 100.2 L 456.0 102.6 L 456.4 109.1 L 456.8 105.3 L 457.2 94.1 L 457.6 95.4 L 470.2 91.3 L 470.6 78.7 L 471.0 82.8 L 471.4 95.8 L 471.8 90.3 L 472.3 95.8 L 472.7 103.3 L 473.1 104.0 L 473.5 106.4 L 473.9 109.5 L 474.3 106.0 L 474.7 107.7 L 475.1 108.1 L 475.5 103.6 L 475.9 104.7 L 476.3 106.0 L 476.7 80.7 L 477.1 88.6 L 477.5 88.9 L 477.9 80.4 L 478.3 81.1 L 478.7 77.7 L 479.2 85.5 L 479.6 88.6 L 480.0 84.5 L 480.4 78.7 L 480.8 81.4 L 481.2 83.8 L 481.6 87.9 L 482.0 87.9 L 482.4 85.2 L 482.8 76.3 L 483.2 72.9 L 483.6 63.6 L 484.0 58.9 L 484.4 62.3 L 484.8 70.1 L 485.2 64.0 L 485.6 64.0 L 486.1 63.0 L 636.5 75.3 L 636.9 80.4 L 637.3 96.1 L 637.7 114.2 L 638.1 143.6 L 638.5 135.1 L 638.9 124.5 L 639.4 128.9 L 639.8 133.0 L 640.2 141.6 L 640.6 125.9 L 641.0 127.2 L 641.4 136.1 L 641.8 129.3 L 642.2 127.6 L 642.6 123.1 L 643.0 122.1 L 643.4 121.8 L 643.8 128.3 L 644.2 129.6 L 644.6 128.9 L 645.0 132.4 L 645.4 126.5 L 645.8 133.0 L 646.3 130.6 L 646.7 129.6 L 647.1 132.7 L 647.5 134.4 L 647.9 131.0 L 648.3 128.6 L 648.7 128.6 L 649.1 130.0 L 649.5 131.3 L 649.9 128.9 L 650.3 121.4 L 650.7 121.8 L 651.1 128.3 L 651.5 130.6 L 651.9 134.8 L 652.3 136.8 L 652.7 141.6 L 665.3 141.6 L 665.7 140.6 L 666.1 143.6 L 666.5 150.5 L 667.0 147.4 L 667.4 147.7 L 667.8 146.7 L 668.2 148.1 L 668.6 150.8 L 669.0 150.8 L 669.4 150.8 L 669.8 150.8 L 670.2 150.8 L 670.6 150.8 L 671.0 150.8 L 671.4 150.8 L 671.8 150.8 L 672.2 150.8 L 672.6 150.8 L 673.0 150.8 L 673.5 150.8 L 673.9 150.8 L 674.3 150.8 L 674.7 150.8 L 675.1 150.8 L 675.5 150.8 L 675.9 150.8 L 676.3 150.8 L 676.7 150.8 L 677.1 150.8 L 677.5 150.8 L 677.9 150.8 L 678.3 150.8 L 678.7 150.8 L 679.1 150.8 L 679.5 150.8 L 679.9 150.8 L 680.4 150.8 L 680.8 150.8 L 681.2 150.8 L 831.6 186.4 L 832.0 158.3 L 832.4 152.9 L 832.8 147.1 L 833.2 157.3 L 833.6 166.2 L 834.1 176.5 L 834.5 178.9 L 834.9 183.6 L 835.3 187.1 L 835.7 190.1 L 836.1 187.7 L 836.5 187.4 L 836.9 197.0 L 837.3 196.3 L 837.7 204.5 L 838.1 206.5 L 838.5 207.6 L 838.9 206.5 L 839.3 203.1 L 839.7 211.7 L 840.1 202.4 L 840.6 204.5 L 841.0 211.7 L 841.4 216.1 L 841.8 214.8 L 842.2 213.7 L 842.6 219.5 L 843.0 218.2 L 843.4 213.0 L 843.8 213.7 L 844.2 216.1 L 844.6 218.2 L 845.0 219.5 L 845.4 219.9 L 845.8 219.2 L 846.2 221.3 L 846.6 223.0 L 847.0 218.9 L 847.5 217.1 L 860.0 215.1 L 860.4 213.7 L 860.8 212.4 L 861.3 215.4 L 861.7 212.0 L 862.1 212.0 L 862.5 215.4 L 862.9 216.1 L 863.3 217.5 L 863.7 215.8 L 864.1 216.8 L 864.5 218.2 L 864.9 216.8 L 865.3 215.1 L 865.7 218.2 L 866.1 218.9 L 866.5 219.9 L 866.9 220.2 L 867.3 220.2 L 867.7 227.1 L 868.2 216.8 L 868.6 219.5 L 869.0 217.1 L 869.4 214.1 L 869.8 214.4 L 870.2 218.9 L 870.6 219.5 L 871.0 216.8 L 871.4 216.5 L 871.8 206.5 L 872.2 197.3 L 872.6 196.6 L 873.0 197.3 L 873.4 200.4 L 873.8 205.9 L 874.2 204.5 L 874.6 205.5 L 875.1 205.9 L 875.5 207.6 L 875.9 206.2 L 876.0 206.2"></path><g class="trade-marker buy"><path d="M 247.8 80.3 L 239.8 95.3 L 255.8 95.3 Z" fill="#b4232f" stroke="#fff" stroke-width="2"></path><text x="247.8" y="76.3" text-anchor="middle" class="point-label">买</text><title>合肥城建 002208｜买入 100 股｜05-19 09:37｜25.120</title></g><g class="trade-marker sell"><path d="M 443.1 77.1 L 435.1 62.1 L 451.1 62.1 Z" fill="#1d4ed8" stroke="#fff" stroke-width="2"></path><text x="443.1" y="91.1" text-anchor="middle" class="point-label">卖</text><title>合肥城建 002208｜卖出 100 股｜05-20 09:40｜25.680</title></g><text x="52" y="296" text-anchor="start" class="axis-label">05-18 09:30</text><text x="876" y="296" text-anchor="end" class="axis-label">05-22 15:00</text></svg></div><div class="trade-point-list"><div class="trade-point-item"><span><b class="buy">买入</b> 05-19 09:37</span><strong>25.120 / 100 股</strong></div><div class="trade-point-item"><span><b class="sell">卖出</b> 05-20 09:40</span><strong>25.680 / 100 股</strong></div></div></div></article></div>
       </div>
@@ -739,6 +1080,15 @@
       <summary><div class="stock-group-head"><div><h3>顺景科技 <small>603007</small></h3><p>05.08-05.16 周复盘贡献 -38.30。；按本周可见成交做 FIFO 闭环复盘。；顺景科技是 5/15 与上一周重叠的卖出记录，成本来自上一周。</p><div class="tag-row"><span class="mini-chip ">小亏闭环</span><span class="mini-chip ">买点复盘</span></div></div><span class="chip neg">-38.30</span></div></summary>
       <div class="stock-detail-body">
         <div class="lesson-box neg"><b>关键错误点</b><p>小亏闭环，重点检查买点是否过急、标的地位是否不够。</p></div>
+        <div class="audit-strip">
+    <span><b>操作类型</b>套利</span>
+    <span><b>模式归属</b>需复核</span>
+    <span><b>交易前预案</b>暂无预案记录。</span>
+    <span><b>实际执行</b>实际执行待从周度预案补齐。</span>
+    <span><b>当时最正确动作</b>亏损票先查第一性；不能证明核心地位就不做。</span>
+    <span><b>红线标记</b><em><span class="mini-chip">无红线标记</span></em></span>
+  </div>
+
         <div><h4>完整成交流水</h4><div class="flow-list"><div class="flow-item"><b class="neg">买入</b> 2026-05-13 11:26:21<br>8.420 / 300 股 · 05.08-05.16</div><div class="flow-item"><b class="blue">卖出</b> 2026-05-15 09:32:15<br>8.330 / 300 股 · 05.08-05.16 / 05.18-05.22</div></div></div>
         <div class="chart-stack"><article class="chart-card"><div class="card-head"><span class="chip">05.08-05.16</span><a class="blue" href="../../2026-05-08_2026-05-16/">来源周复盘</a></div><div class="trade-map" aria-label="顺景科技 05.08-05.16 买卖点地图">
     <div class="trade-map-head"><h4>05.08-05.16 真实分钟线与买卖点</h4><div class="trade-legend"><span class="legend-item"><i class="legend-shape buy"></i>买入</span><span class="legend-item"><i class="legend-shape sell"></i>卖出</span></div></div>
@@ -754,6 +1104,15 @@
       <summary><div class="stock-group-head"><div><h3>京东方A <small>000725</small></h3><p>手续费损耗：买卖价相同，最终亏在手续费和税费。</p><div class="tag-row"><span class="mini-chip ">小亏闭环</span><span class="mini-chip ">买点复盘</span></div></div><span class="chip neg">-12.11</span></div></summary>
       <div class="stock-detail-body">
         <div class="lesson-box neg"><b>关键错误点</b><p>小亏闭环，重点检查买点是否过急、标的地位是否不够。</p></div>
+        <div class="audit-strip">
+    <span><b>操作类型</b>套利</span>
+    <span><b>模式归属</b>需复核</span>
+    <span><b>交易前预案</b>暂无预案记录。</span>
+    <span><b>实际执行</b>实际执行待从周度预案补齐。</span>
+    <span><b>当时最正确动作</b>亏损票先查第一性；不能证明核心地位就不做。</span>
+    <span><b>红线标记</b><em><span class="mini-chip">无红线标记</span></em></span>
+  </div>
+
         <div><h4>完整成交流水</h4><div class="flow-list"><div class="flow-item"><b class="neg">买入</b> 2026-05-25 15:00:00<br>5.270 / 800 股 · 05.25-05.29</div><div class="flow-item"><b class="blue">卖出</b> 2026-05-26 09:36:00<br>5.270 / 800 股 · 05.25-05.29</div></div></div>
         <div class="chart-stack"><article class="chart-card"><div class="card-head"><span class="chip">05.25-05.29</span><a class="blue" href="../../2026-05-25_2026-05-29/">来源周复盘</a></div><div class="trade-map" aria-label="京东方A 05.25-05.29 买卖点地图">
     <div class="trade-map-head"><h4>05.25-05.29 真实分钟线与买卖点</h4><div class="trade-legend"><span class="legend-item"><i class="legend-shape buy"></i>买入</span><span class="legend-item"><i class="legend-shape sell"></i>卖出</span></div></div>
@@ -769,6 +1128,15 @@
       <summary><div class="stock-group-head"><div><h3>合力泰 <small>002217</small></h3><p>04.20-04.24 周度单票贡献 +1.08。；周度走势从 2.91 到 2.69，区间 -7.56%，周内振幅 17.47% 。</p><div class="tag-row"><span class="mini-chip ">轻仓套利</span><span class="mini-chip ">小额正贡献</span></div></div><span class="chip pos">+1.08</span></div></summary>
       <div class="stock-detail-body">
         <div class="lesson-box pos"><b>关键复制点</b><p>小额盈利只可作为轻仓套利样本，赚钱但不可复制，不能升级为主线。</p></div>
+        <div class="audit-strip">
+    <span><b>操作类型</b>套利</span>
+    <span><b>模式归属</b>需复核</span>
+    <span><b>交易前预案</b>暂无预案记录。</span>
+    <span><b>实际执行</b>形成小额正贡献，但不构成本月主线。</span>
+    <span><b>当时最正确动作</b>盈利也不能自动升级为核心；只保留轻仓套利定位。</span>
+    <span><b>红线标记</b><em><span class="mini-chip">无红线标记</span></em></span>
+  </div>
+
         <div><h4>完整成交流水</h4><div class="flow-list"><div class="flow-item"><b class="neg">买入</b> 2026-04-20 11:21:20<br>2.950 / 1,300 股 · 04.20-04.24</div><div class="flow-item"><b class="blue">卖出</b> 2026-04-21 09:34:18<br>2.960 / 1,300 股 · 04.20-04.24</div></div></div>
         <div class="chart-stack"><article class="chart-card"><div class="card-head"><span class="chip">04.20-04.24</span><a class="blue" href="../../2026-04-20_2026-04-24/">来源周复盘</a></div><div class="trade-map" aria-label="合力泰 04.20-04.24 买卖点地图">
     <div class="trade-map-head"><h4>04.20-04.24 真实分钟线与买卖点</h4><div class="trade-legend"><span class="legend-item"><i class="legend-shape buy"></i>买入</span><span class="legend-item"><i class="legend-shape sell"></i>卖出</span></div></div>
@@ -784,6 +1152,15 @@
       <summary><div class="stock-group-head"><div><h3>宝光股份 <small>600379</small></h3><p>宝光股份 5/8 卖出 1200 股，但周前成本不在本周交割单内，未纳入闭环盈亏。</p><div class="tag-row"><span class="mini-chip ">待核算</span></div></div><span class="chip ">待核算</span></div></summary>
       <div class="stock-detail-body">
         <div class="lesson-box warn"><b>关键观察点</b><p>贡献待核算，先保留买卖点和完整流水。</p></div>
+        <div class="audit-strip">
+    <span><b>操作类型</b>套利</span>
+    <span><b>模式归属</b>需复核</span>
+    <span><b>交易前预案</b>暂无预案记录。</span>
+    <span><b>实际执行</b>实际执行待从周度预案补齐。</span>
+    <span><b>当时最正确动作</b>先确认是否第一唯一性；不确定则轻仓或放弃。</span>
+    <span><b>红线标记</b><em><span class="mini-chip">无红线标记</span></em></span>
+  </div>
+
         <div><h4>完整成交流水</h4><div class="flow-list"><div class="flow-item"><b class="blue">卖出</b> 2026-05-08 09:25:00<br>17.600 / 1,200 股 · 05.08-05.16</div></div></div>
         <div class="chart-stack"><article class="chart-card"><div class="card-head"><span class="chip">05.08-05.16</span><a class="blue" href="../../2026-05-08_2026-05-16/">来源周复盘</a></div><div class="trade-map" aria-label="宝光股份 05.08-05.16 买卖点地图">
     <div class="trade-map-head"><h4>05.08-05.16 真实分钟线与买卖点</h4><div class="trade-legend"><span class="legend-item"><i class="legend-shape buy"></i>买入</span><span class="legend-item"><i class="legend-shape sell"></i>卖出</span></div></div>
@@ -799,6 +1176,15 @@
       <summary><div class="stock-group-head"><div><h3>滨化股份 <small>601678</small></h3><p>滨化股份 5/18 买入 700 股，5/19 卖出 700 股，形成一笔可核算闭环。</p><div class="tag-row"><span class="mini-chip ">待核算</span></div></div><span class="chip ">待核算</span></div></summary>
       <div class="stock-detail-body">
         <div class="lesson-box warn"><b>关键观察点</b><p>贡献待核算，先保留买卖点和完整流水。</p></div>
+        <div class="audit-strip">
+    <span><b>操作类型</b>套利</span>
+    <span><b>模式归属</b>需复核</span>
+    <span><b>交易前预案</b>暂无预案记录。</span>
+    <span><b>实际执行</b>实际执行待从周度预案补齐。</span>
+    <span><b>当时最正确动作</b>先确认是否第一唯一性；不确定则轻仓或放弃。</span>
+    <span><b>红线标记</b><em><span class="mini-chip">无红线标记</span></em></span>
+  </div>
+
         <div><h4>完整成交流水</h4><div class="flow-list"><div class="flow-item"><b class="neg">买入</b> 2026-05-18 09:25:00<br>6.000 / 700 股 · 05.18-05.22</div><div class="flow-item"><b class="blue">卖出</b> 2026-05-19 09:30:37<br>6.010 / 700 股 · 05.18-05.22</div></div></div>
         <div class="chart-stack"><article class="chart-card"><div class="card-head"><span class="chip">05.18-05.22</span><a class="blue" href="../../2026-05-15_2026-05-22/">来源周复盘</a></div><div class="trade-map" aria-label="滨化股份 601678 买卖点与分钟走势"><div class="trade-map-head"><h4>分钟走势与买卖点</h4><div class="trade-legend" aria-label="图例"><span class="legend-item"><i class="legend-shape buy"></i>买入</span><span class="legend-item"><i class="legend-shape sell"></i>卖出</span></div></div><ul class="trade-context"><li>分钟窗口 05-18 09:30 至 05-22 15:00，区间 +2.00%，高 6.71 / 低 5.96。</li><li>买入 1 笔，均价 6.000；首笔买入发生在分钟线窗口外，无法对齐真实分钟走势。</li><li>卖出 1 笔，均价 6.010；首笔卖出后约 30 分钟价格 6.16，相对成交价 +2.50%。</li><li>1 笔成交早于公开 5 日分钟线窗口，图中压在左侧边界，成交流水完整保留。</li></ul><div class="trade-chart-wrap"><svg class="trade-chart" viewBox="0 0 900 300" role="img" aria-label="滨化股份真实分钟线买卖点图"><defs><linearGradient id="marketFill-601678" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="rgba(20,149,111,.22)"></stop><stop offset="100%" stop-color="rgba(20,149,111,.02)"></stop></linearGradient></defs><line x1="52" x2="52" y1="24" y2="252" stroke="rgba(28,37,48,.16)"></line><line x1="52" x2="876" y1="252" y2="252" stroke="rgba(28,37,48,.16)"></line><g><line x1="52" x2="876" y1="24.0" y2="24.0" stroke="rgba(28,37,48,.08)"></line><text x="42" y="28.0" text-anchor="end" class="axis-label">6.82</text></g><g><line x1="52" x2="876" y1="138.0" y2="138.0" stroke="rgba(28,37,48,.08)"></line><text x="42" y="142.0" text-anchor="end" class="axis-label">6.33</text></g><g><line x1="52" x2="876" y1="252.0" y2="252.0" stroke="rgba(28,37,48,.08)"></line><text x="42" y="256.0" text-anchor="end" class="axis-label">5.85</text></g><g><line x1="96.7" x2="96.7" y1="24" y2="252" stroke="rgba(28,37,48,.06)" stroke-dasharray="4 6"></line><text x="96.7" y="287" text-anchor="middle" class="axis-label">05-18</text></g><g><line x1="291.4" x2="291.4" y1="24" y2="252" stroke="rgba(28,37,48,.06)" stroke-dasharray="4 6"></line><text x="291.4" y="287" text-anchor="middle" class="axis-label">05-19</text></g><g><line x1="486.1" x2="486.1" y1="24" y2="252" stroke="rgba(28,37,48,.06)" stroke-dasharray="4 6"></line><text x="486.1" y="287" text-anchor="middle" class="axis-label">05-20</text></g><g><line x1="681.2" x2="681.2" y1="24" y2="252" stroke="rgba(28,37,48,.06)" stroke-dasharray="4 6"></line><text x="681.2" y="287" text-anchor="middle" class="axis-label">05-21</text></g><g><line x1="876.0" x2="876.0" y1="24" y2="252" stroke="rgba(28,37,48,.06)" stroke-dasharray="4 6"></line><text x="876.0" y="287" text-anchor="middle" class="axis-label">05-22</text></g><path d="M 52.0 217.6 L 52.4 167.7 L 52.8 198.6 L 53.2 186.7 L 53.6 124.9 L 54.0 124.9 L 54.4 124.9 L 54.8 124.9 L 55.2 124.9 L 55.7 124.9 L 56.1 124.9 L 56.5 124.9 L 56.9 124.9 L 57.3 124.9 L 57.7 124.9 L 58.1 124.9 L 58.5 124.9 L 58.9 124.9 L 59.3 124.9 L 59.7 124.9 L 60.1 124.9 L 60.5 124.9 L 60.9 124.9 L 61.3 124.9 L 61.7 124.9 L 62.1 124.9 L 62.6 124.9 L 63.0 124.9 L 63.4 124.9 L 63.8 124.9 L 64.2 124.9 L 64.6 124.9 L 65.0 124.9 L 65.4 124.9 L 65.8 124.9 L 66.2 124.9 L 66.6 124.9 L 67.0 124.9 L 67.4 124.9 L 67.8 124.9 L 68.2 124.9 L 80.8 124.9 L 81.2 124.9 L 81.6 124.9 L 82.0 124.9 L 82.4 124.9 L 82.8 124.9 L 83.3 124.9 L 83.7 124.9 L 84.1 124.9 L 84.5 124.9 L 84.9 124.9 L 85.3 124.9 L 85.7 124.9 L 86.1 124.9 L 86.5 124.9 L 86.9 124.9 L 87.3 124.9 L 87.7 124.9 L 88.1 124.9 L 88.5 124.9 L 88.9 124.9 L 89.3 124.9 L 89.7 124.9 L 90.2 124.9 L 90.6 124.9 L 91.0 124.9 L 91.4 124.9 L 91.8 124.9 L 92.2 124.9 L 92.6 124.9 L 93.0 124.9 L 93.4 124.9 L 93.8 124.9 L 94.2 124.9 L 94.6 124.9 L 95.0 124.9 L 95.4 124.9 L 95.8 124.9 L 96.2 124.9 L 96.7 124.9 L 247.1 193.8 L 247.5 203.3 L 247.9 172.4 L 248.3 189.1 L 248.7 184.3 L 249.1 162.9 L 249.5 172.4 L 249.9 167.7 L 250.4 172.4 L 250.8 172.4 L 251.2 179.6 L 251.6 177.2 L 252.0 165.3 L 252.4 172.4 L 252.8 174.8 L 253.2 151.1 L 253.6 160.6 L 254.0 158.2 L 254.4 155.8 L 254.8 153.4 L 255.2 162.9 L 255.6 170.1 L 256.0 162.9 L 256.4 167.7 L 256.8 165.3 L 257.3 160.6 L 257.7 170.1 L 258.1 172.4 L 258.5 184.3 L 258.9 179.6 L 259.3 179.6 L 259.7 179.6 L 260.1 177.2 L 260.5 179.6 L 260.9 179.6 L 261.3 177.2 L 261.7 181.9 L 262.1 186.7 L 262.5 186.7 L 262.9 181.9 L 275.5 179.6 L 275.9 181.9 L 276.3 179.6 L 276.7 186.7 L 277.1 184.3 L 277.6 179.6 L 278.0 179.6 L 278.4 179.6 L 278.8 174.8 L 279.2 170.1 L 279.6 165.3 L 280.0 167.7 L 280.4 170.1 L 280.8 170.1 L 281.2 174.8 L 281.6 177.2 L 282.0 170.1 L 282.4 174.8 L 282.8 167.7 L 283.2 167.7 L 283.6 170.1 L 284.0 172.4 L 284.5 172.4 L 284.9 174.8 L 285.3 177.2 L 285.7 174.8 L 286.1 170.1 L 286.5 172.4 L 286.9 170.1 L 287.3 172.4 L 287.7 174.8 L 288.1 174.8 L 288.5 172.4 L 288.9 172.4 L 289.3 174.8 L 289.7 172.4 L 290.1 172.4 L 290.5 172.4 L 290.9 172.4 L 291.4 172.4 L 441.8 148.7 L 442.2 158.2 L 442.6 86.9 L 443.0 103.6 L 443.4 115.4 L 443.8 79.8 L 444.2 48.9 L 444.7 89.3 L 445.1 94.1 L 445.5 115.4 L 445.9 108.3 L 446.3 117.8 L 446.7 115.4 L 447.1 127.3 L 447.5 129.7 L 447.9 124.9 L 448.3 124.9 L 448.7 136.8 L 449.1 136.8 L 449.5 122.6 L 449.9 136.8 L 450.3 127.3 L 450.7 127.3 L 451.1 134.4 L 451.6 129.7 L 452.0 132.1 L 452.4 134.4 L 452.8 127.3 L 453.2 132.1 L 453.6 117.8 L 454.0 124.9 L 454.4 127.3 L 454.8 124.9 L 455.2 127.3 L 455.6 132.1 L 456.0 124.9 L 456.4 129.7 L 456.8 124.9 L 457.2 120.2 L 457.6 115.4 L 470.2 105.9 L 470.6 115.4 L 471.0 94.1 L 471.4 91.7 L 471.8 98.8 L 472.3 96.4 L 472.7 91.7 L 473.1 77.4 L 473.5 75.1 L 473.9 91.7 L 474.3 94.1 L 474.7 94.1 L 475.1 98.8 L 475.5 94.1 L 475.9 103.6 L 476.3 113.1 L 476.7 113.1 L 477.1 110.7 L 477.5 110.7 L 477.9 113.1 L 478.3 110.7 L 478.7 110.7 L 479.2 117.8 L 479.6 115.4 L 480.0 115.4 L 480.4 120.2 L 480.8 120.2 L 481.2 120.2 L 481.6 122.6 L 482.0 120.2 L 482.4 120.2 L 482.8 120.2 L 483.2 115.4 L 483.6 122.6 L 484.0 117.8 L 484.4 120.2 L 484.8 115.4 L 485.2 117.8 L 485.6 120.2 L 486.1 122.6 L 636.5 170.1 L 636.9 143.9 L 637.3 172.4 L 637.7 117.8 L 638.1 153.4 L 638.5 170.1 L 638.9 172.4 L 639.4 179.6 L 639.8 193.8 L 640.2 205.7 L 640.6 191.4 L 641.0 181.9 L 641.4 196.2 L 641.8 198.6 L 642.2 189.1 L 642.6 189.1 L 643.0 179.6 L 643.4 189.1 L 643.8 196.2 L 644.2 189.1 L 644.6 189.1 L 645.0 181.9 L 645.4 191.4 L 645.8 186.7 L 646.3 184.3 L 646.7 189.1 L 647.1 189.1 L 647.5 186.7 L 647.9 191.4 L 648.3 191.4 L 648.7 181.9 L 649.1 177.2 L 649.5 184.3 L 649.9 184.3 L 650.3 179.6 L 650.7 184.3 L 651.1 186.7 L 651.5 181.9 L 651.9 170.1 L 652.3 179.6 L 652.7 172.4 L 665.3 181.9 L 665.7 172.4 L 666.1 179.6 L 666.5 184.3 L 667.0 179.6 L 667.4 172.4 L 667.8 179.6 L 668.2 184.3 L 668.6 184.3 L 669.0 186.7 L 669.4 186.7 L 669.8 189.1 L 670.2 189.1 L 670.6 193.8 L 671.0 191.4 L 671.4 191.4 L 671.8 193.8 L 672.2 196.2 L 672.6 191.4 L 673.0 191.4 L 673.5 193.8 L 673.9 193.8 L 674.3 196.2 L 674.7 198.6 L 675.1 200.9 L 675.5 200.9 L 675.9 205.7 L 676.3 203.3 L 676.7 205.7 L 677.1 210.4 L 677.5 208.1 L 677.9 217.6 L 678.3 198.6 L 678.7 208.1 L 679.1 215.2 L 679.5 219.9 L 679.9 222.3 L 680.4 227.1 L 680.8 219.9 L 681.2 227.1 L 831.6 205.7 L 832.0 193.8 L 832.4 203.3 L 832.8 196.2 L 833.2 203.3 L 833.6 203.3 L 834.1 208.1 L 834.5 212.8 L 834.9 212.8 L 835.3 215.2 L 835.7 217.6 L 836.1 215.2 L 836.5 217.6 L 836.9 203.3 L 837.3 196.2 L 837.7 212.8 L 838.1 212.8 L 838.5 208.1 L 838.9 217.6 L 839.3 219.9 L 839.7 198.6 L 840.1 174.8 L 840.6 174.8 L 841.0 179.6 L 841.4 181.9 L 841.8 184.3 L 842.2 181.9 L 842.6 181.9 L 843.0 186.7 L 843.4 184.3 L 843.8 191.4 L 844.2 186.7 L 844.6 189.1 L 845.0 186.7 L 845.4 184.3 L 845.8 189.1 L 846.2 191.4 L 846.6 191.4 L 847.0 191.4 L 847.5 189.1 L 860.0 193.8 L 860.4 193.8 L 860.8 193.8 L 861.3 193.8 L 861.7 191.4 L 862.1 189.1 L 862.5 186.7 L 862.9 191.4 L 863.3 193.8 L 863.7 193.8 L 864.1 189.1 L 864.5 191.4 L 864.9 191.4 L 865.3 191.4 L 865.7 191.4 L 866.1 193.8 L 866.5 189.1 L 866.9 189.1 L 867.3 191.4 L 867.7 193.8 L 868.2 191.4 L 868.6 191.4 L 869.0 184.3 L 869.4 189.1 L 869.8 193.8 L 870.2 193.8 L 870.6 193.8 L 871.0 189.1 L 871.4 189.1 L 871.8 193.8 L 872.2 191.4 L 872.6 189.1 L 873.0 186.7 L 873.4 191.4 L 873.8 186.7 L 874.2 189.1 L 874.6 191.4 L 875.1 189.1 L 875.5 186.7 L 875.9 184.3 L 876.0 189.1 L 876.0 252 L 52.0 252 Z" fill="url(#marketFill-601678)"></path><path class="market-line" d="M 52.0 217.6 L 52.4 167.7 L 52.8 198.6 L 53.2 186.7 L 53.6 124.9 L 54.0 124.9 L 54.4 124.9 L 54.8 124.9 L 55.2 124.9 L 55.7 124.9 L 56.1 124.9 L 56.5 124.9 L 56.9 124.9 L 57.3 124.9 L 57.7 124.9 L 58.1 124.9 L 58.5 124.9 L 58.9 124.9 L 59.3 124.9 L 59.7 124.9 L 60.1 124.9 L 60.5 124.9 L 60.9 124.9 L 61.3 124.9 L 61.7 124.9 L 62.1 124.9 L 62.6 124.9 L 63.0 124.9 L 63.4 124.9 L 63.8 124.9 L 64.2 124.9 L 64.6 124.9 L 65.0 124.9 L 65.4 124.9 L 65.8 124.9 L 66.2 124.9 L 66.6 124.9 L 67.0 124.9 L 67.4 124.9 L 67.8 124.9 L 68.2 124.9 L 80.8 124.9 L 81.2 124.9 L 81.6 124.9 L 82.0 124.9 L 82.4 124.9 L 82.8 124.9 L 83.3 124.9 L 83.7 124.9 L 84.1 124.9 L 84.5 124.9 L 84.9 124.9 L 85.3 124.9 L 85.7 124.9 L 86.1 124.9 L 86.5 124.9 L 86.9 124.9 L 87.3 124.9 L 87.7 124.9 L 88.1 124.9 L 88.5 124.9 L 88.9 124.9 L 89.3 124.9 L 89.7 124.9 L 90.2 124.9 L 90.6 124.9 L 91.0 124.9 L 91.4 124.9 L 91.8 124.9 L 92.2 124.9 L 92.6 124.9 L 93.0 124.9 L 93.4 124.9 L 93.8 124.9 L 94.2 124.9 L 94.6 124.9 L 95.0 124.9 L 95.4 124.9 L 95.8 124.9 L 96.2 124.9 L 96.7 124.9 L 247.1 193.8 L 247.5 203.3 L 247.9 172.4 L 248.3 189.1 L 248.7 184.3 L 249.1 162.9 L 249.5 172.4 L 249.9 167.7 L 250.4 172.4 L 250.8 172.4 L 251.2 179.6 L 251.6 177.2 L 252.0 165.3 L 252.4 172.4 L 252.8 174.8 L 253.2 151.1 L 253.6 160.6 L 254.0 158.2 L 254.4 155.8 L 254.8 153.4 L 255.2 162.9 L 255.6 170.1 L 256.0 162.9 L 256.4 167.7 L 256.8 165.3 L 257.3 160.6 L 257.7 170.1 L 258.1 172.4 L 258.5 184.3 L 258.9 179.6 L 259.3 179.6 L 259.7 179.6 L 260.1 177.2 L 260.5 179.6 L 260.9 179.6 L 261.3 177.2 L 261.7 181.9 L 262.1 186.7 L 262.5 186.7 L 262.9 181.9 L 275.5 179.6 L 275.9 181.9 L 276.3 179.6 L 276.7 186.7 L 277.1 184.3 L 277.6 179.6 L 278.0 179.6 L 278.4 179.6 L 278.8 174.8 L 279.2 170.1 L 279.6 165.3 L 280.0 167.7 L 280.4 170.1 L 280.8 170.1 L 281.2 174.8 L 281.6 177.2 L 282.0 170.1 L 282.4 174.8 L 282.8 167.7 L 283.2 167.7 L 283.6 170.1 L 284.0 172.4 L 284.5 172.4 L 284.9 174.8 L 285.3 177.2 L 285.7 174.8 L 286.1 170.1 L 286.5 172.4 L 286.9 170.1 L 287.3 172.4 L 287.7 174.8 L 288.1 174.8 L 288.5 172.4 L 288.9 172.4 L 289.3 174.8 L 289.7 172.4 L 290.1 172.4 L 290.5 172.4 L 290.9 172.4 L 291.4 172.4 L 441.8 148.7 L 442.2 158.2 L 442.6 86.9 L 443.0 103.6 L 443.4 115.4 L 443.8 79.8 L 444.2 48.9 L 444.7 89.3 L 445.1 94.1 L 445.5 115.4 L 445.9 108.3 L 446.3 117.8 L 446.7 115.4 L 447.1 127.3 L 447.5 129.7 L 447.9 124.9 L 448.3 124.9 L 448.7 136.8 L 449.1 136.8 L 449.5 122.6 L 449.9 136.8 L 450.3 127.3 L 450.7 127.3 L 451.1 134.4 L 451.6 129.7 L 452.0 132.1 L 452.4 134.4 L 452.8 127.3 L 453.2 132.1 L 453.6 117.8 L 454.0 124.9 L 454.4 127.3 L 454.8 124.9 L 455.2 127.3 L 455.6 132.1 L 456.0 124.9 L 456.4 129.7 L 456.8 124.9 L 457.2 120.2 L 457.6 115.4 L 470.2 105.9 L 470.6 115.4 L 471.0 94.1 L 471.4 91.7 L 471.8 98.8 L 472.3 96.4 L 472.7 91.7 L 473.1 77.4 L 473.5 75.1 L 473.9 91.7 L 474.3 94.1 L 474.7 94.1 L 475.1 98.8 L 475.5 94.1 L 475.9 103.6 L 476.3 113.1 L 476.7 113.1 L 477.1 110.7 L 477.5 110.7 L 477.9 113.1 L 478.3 110.7 L 478.7 110.7 L 479.2 117.8 L 479.6 115.4 L 480.0 115.4 L 480.4 120.2 L 480.8 120.2 L 481.2 120.2 L 481.6 122.6 L 482.0 120.2 L 482.4 120.2 L 482.8 120.2 L 483.2 115.4 L 483.6 122.6 L 484.0 117.8 L 484.4 120.2 L 484.8 115.4 L 485.2 117.8 L 485.6 120.2 L 486.1 122.6 L 636.5 170.1 L 636.9 143.9 L 637.3 172.4 L 637.7 117.8 L 638.1 153.4 L 638.5 170.1 L 638.9 172.4 L 639.4 179.6 L 639.8 193.8 L 640.2 205.7 L 640.6 191.4 L 641.0 181.9 L 641.4 196.2 L 641.8 198.6 L 642.2 189.1 L 642.6 189.1 L 643.0 179.6 L 643.4 189.1 L 643.8 196.2 L 644.2 189.1 L 644.6 189.1 L 645.0 181.9 L 645.4 191.4 L 645.8 186.7 L 646.3 184.3 L 646.7 189.1 L 647.1 189.1 L 647.5 186.7 L 647.9 191.4 L 648.3 191.4 L 648.7 181.9 L 649.1 177.2 L 649.5 184.3 L 649.9 184.3 L 650.3 179.6 L 650.7 184.3 L 651.1 186.7 L 651.5 181.9 L 651.9 170.1 L 652.3 179.6 L 652.7 172.4 L 665.3 181.9 L 665.7 172.4 L 666.1 179.6 L 666.5 184.3 L 667.0 179.6 L 667.4 172.4 L 667.8 179.6 L 668.2 184.3 L 668.6 184.3 L 669.0 186.7 L 669.4 186.7 L 669.8 189.1 L 670.2 189.1 L 670.6 193.8 L 671.0 191.4 L 671.4 191.4 L 671.8 193.8 L 672.2 196.2 L 672.6 191.4 L 673.0 191.4 L 673.5 193.8 L 673.9 193.8 L 674.3 196.2 L 674.7 198.6 L 675.1 200.9 L 675.5 200.9 L 675.9 205.7 L 676.3 203.3 L 676.7 205.7 L 677.1 210.4 L 677.5 208.1 L 677.9 217.6 L 678.3 198.6 L 678.7 208.1 L 679.1 215.2 L 679.5 219.9 L 679.9 222.3 L 680.4 227.1 L 680.8 219.9 L 681.2 227.1 L 831.6 205.7 L 832.0 193.8 L 832.4 203.3 L 832.8 196.2 L 833.2 203.3 L 833.6 203.3 L 834.1 208.1 L 834.5 212.8 L 834.9 212.8 L 835.3 215.2 L 835.7 217.6 L 836.1 215.2 L 836.5 217.6 L 836.9 203.3 L 837.3 196.2 L 837.7 212.8 L 838.1 212.8 L 838.5 208.1 L 838.9 217.6 L 839.3 219.9 L 839.7 198.6 L 840.1 174.8 L 840.6 174.8 L 841.0 179.6 L 841.4 181.9 L 841.8 184.3 L 842.2 181.9 L 842.6 181.9 L 843.0 186.7 L 843.4 184.3 L 843.8 191.4 L 844.2 186.7 L 844.6 189.1 L 845.0 186.7 L 845.4 184.3 L 845.8 189.1 L 846.2 191.4 L 846.6 191.4 L 847.0 191.4 L 847.5 189.1 L 860.0 193.8 L 860.4 193.8 L 860.8 193.8 L 861.3 193.8 L 861.7 191.4 L 862.1 189.1 L 862.5 186.7 L 862.9 191.4 L 863.3 193.8 L 863.7 193.8 L 864.1 189.1 L 864.5 191.4 L 864.9 191.4 L 865.3 191.4 L 865.7 191.4 L 866.1 193.8 L 866.5 189.1 L 866.9 189.1 L 867.3 191.4 L 867.7 193.8 L 868.2 191.4 L 868.6 191.4 L 869.0 184.3 L 869.4 189.1 L 869.8 193.8 L 870.2 193.8 L 870.6 193.8 L 871.0 189.1 L 871.4 189.1 L 871.8 193.8 L 872.2 191.4 L 872.6 189.1 L 873.0 186.7 L 873.4 191.4 L 873.8 186.7 L 874.2 189.1 L 874.6 191.4 L 875.1 189.1 L 875.5 186.7 L 875.9 184.3 L 876.0 189.1"></path><g class="trade-marker buy"><path d="M 52.0 209.6 L 44.0 224.6 L 60.0 224.6 Z" fill="#b4232f" stroke="#fff" stroke-width="2"></path><text x="52.0" y="205.6" text-anchor="middle" class="point-label">买</text><title>滨化股份 601678｜买入 700 股｜05-18 09:25｜6.000｜分钟窗口前成交</title></g><g class="trade-marker sell"><path d="M 246.9 223.2 L 238.9 208.2 L 254.9 208.2 Z" fill="#1d4ed8" stroke="#fff" stroke-width="2"></path><text x="246.9" y="237.2" text-anchor="middle" class="point-label">卖</text><title>滨化股份 601678｜卖出 700 股｜05-19 09:30｜6.010</title></g><text x="52" y="296" text-anchor="start" class="axis-label">05-18 09:30</text><text x="876" y="296" text-anchor="end" class="axis-label">05-22 15:00</text></svg></div><div class="trade-point-list"><div class="trade-point-item"><span><b class="buy">买入</b> 窗前 · 05-18 09:25</span><strong>6.000 / 700 股</strong></div><div class="trade-point-item"><span><b class="sell">卖出</b> 05-19 09:30</span><strong>6.010 / 700 股</strong></div></div></div></article></div>
       </div>
@@ -809,6 +1195,15 @@
       <summary><div class="stock-group-head"><div><h3>ST万邦 <small>002082</small></h3><p>ST万邦只有卖出记录，本区间缺少买入成本，不能硬算收益。</p><div class="tag-row"><span class="mini-chip ">待核算</span></div></div><span class="chip ">待核算</span></div></summary>
       <div class="stock-detail-body">
         <div class="lesson-box warn"><b>关键观察点</b><p>贡献待核算，先保留买卖点和完整流水。</p></div>
+        <div class="audit-strip">
+    <span><b>操作类型</b>套利</span>
+    <span><b>模式归属</b>需复核</span>
+    <span><b>交易前预案</b>暂无预案记录。</span>
+    <span><b>实际执行</b>实际执行待从周度预案补齐。</span>
+    <span><b>当时最正确动作</b>先确认是否第一唯一性；不确定则轻仓或放弃。</span>
+    <span><b>红线标记</b><em><span class="mini-chip">无红线标记</span></em></span>
+  </div>
+
         <div><h4>完整成交流水</h4><div class="flow-list"><div class="flow-item"><b class="blue">卖出</b> 2026-05-18 09:25:00<br>17.960 / 300 股 · 05.18-05.22</div></div></div>
         <div class="chart-stack"><article class="chart-card"><div class="card-head"><span class="chip">05.18-05.22</span><a class="blue" href="../../2026-05-15_2026-05-22/">来源周复盘</a></div><div class="trade-map" aria-label="ST万邦 002082 买卖点与分钟走势"><div class="trade-map-head"><h4>分钟走势与买卖点</h4><div class="trade-legend" aria-label="图例"><span class="legend-item"><i class="legend-shape buy"></i>买入</span><span class="legend-item"><i class="legend-shape sell"></i>卖出</span></div></div><ul class="trade-context"><li>分钟窗口 05-18 09:30 至 05-22 15:00，区间 -18.54%，高 17.96 / 低 14.63。</li><li>卖出 1 笔，均价 17.960；首笔卖出发生在分钟线窗口外，无法对齐真实分钟走势。</li><li>1 笔成交早于公开 5 日分钟线窗口，图中压在左侧边界，成交流水完整保留。</li></ul><div class="trade-chart-wrap"><svg class="trade-chart" viewBox="0 0 900 300" role="img" aria-label="ST万邦真实分钟线买卖点图"><defs><linearGradient id="marketFill-002082" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="rgba(20,149,111,.22)"></stop><stop offset="100%" stop-color="rgba(20,149,111,.02)"></stop></linearGradient></defs><line x1="52" x2="52" y1="24" y2="252" stroke="rgba(28,37,48,.16)"></line><line x1="52" x2="876" y1="252" y2="252" stroke="rgba(28,37,48,.16)"></line><g><line x1="52" x2="876" y1="24.0" y2="24.0" stroke="rgba(28,37,48,.08)"></line><text x="42" y="28.0" text-anchor="end" class="axis-label">18.43</text></g><g><line x1="52" x2="876" y1="138.0" y2="138.0" stroke="rgba(28,37,48,.08)"></line><text x="42" y="142.0" text-anchor="end" class="axis-label">16.30</text></g><g><line x1="52" x2="876" y1="252.0" y2="252.0" stroke="rgba(28,37,48,.08)"></line><text x="42" y="256.0" text-anchor="end" class="axis-label">14.16</text></g><g><line x1="96.7" x2="96.7" y1="24" y2="252" stroke="rgba(28,37,48,.06)" stroke-dasharray="4 6"></line><text x="96.7" y="287" text-anchor="middle" class="axis-label">05-18</text></g><g><line x1="291.4" x2="291.4" y1="24" y2="252" stroke="rgba(28,37,48,.06)" stroke-dasharray="4 6"></line><text x="291.4" y="287" text-anchor="middle" class="axis-label">05-19</text></g><g><line x1="486.1" x2="486.1" y1="24" y2="252" stroke="rgba(28,37,48,.06)" stroke-dasharray="4 6"></line><text x="486.1" y="287" text-anchor="middle" class="axis-label">05-20</text></g><g><line x1="681.2" x2="681.2" y1="24" y2="252" stroke="rgba(28,37,48,.06)" stroke-dasharray="4 6"></line><text x="681.2" y="287" text-anchor="middle" class="axis-label">05-21</text></g><g><line x1="876.0" x2="876.0" y1="24" y2="252" stroke="rgba(28,37,48,.06)" stroke-dasharray="4 6"></line><text x="876.0" y="287" text-anchor="middle" class="axis-label">05-22</text></g><path d="M 52.0 48.9 L 52.4 48.9 L 52.8 48.9 L 53.2 48.9 L 53.6 48.9 L 54.0 48.9 L 54.4 48.9 L 54.8 48.9 L 55.2 48.9 L 55.7 48.9 L 56.1 48.9 L 56.5 48.9 L 56.9 48.9 L 57.3 48.9 L 57.7 48.9 L 58.1 48.9 L 58.5 48.9 L 58.9 48.9 L 59.3 48.9 L 59.7 48.9 L 60.1 48.9 L 60.5 48.9 L 60.9 48.9 L 61.3 48.9 L 61.7 48.9 L 62.1 48.9 L 62.6 48.9 L 63.0 48.9 L 63.4 48.9 L 63.8 48.9 L 64.2 48.9 L 64.6 48.9 L 65.0 48.9 L 65.4 48.9 L 65.8 48.9 L 66.2 48.9 L 66.6 48.9 L 67.0 48.9 L 67.4 48.9 L 67.8 48.9 L 68.2 48.9 L 80.8 48.9 L 81.2 48.9 L 81.6 48.9 L 82.0 48.9 L 82.4 48.9 L 82.8 48.9 L 83.3 48.9 L 83.7 48.9 L 84.1 48.9 L 84.5 48.9 L 84.9 48.9 L 85.3 48.9 L 85.7 48.9 L 86.1 48.9 L 86.5 48.9 L 86.9 48.9 L 87.3 48.9 L 87.7 48.9 L 88.1 48.9 L 88.5 48.9 L 88.9 48.9 L 89.3 48.9 L 89.7 48.9 L 90.2 48.9 L 90.6 48.9 L 91.0 48.9 L 91.4 48.9 L 91.8 48.9 L 92.2 48.9 L 92.6 48.9 L 93.0 48.9 L 93.4 48.9 L 93.8 48.9 L 94.2 48.9 L 94.6 48.9 L 95.0 48.9 L 95.4 48.9 L 95.8 48.9 L 96.2 48.9 L 96.7 48.9 L 247.1 97.1 L 247.5 97.1 L 247.9 97.1 L 248.3 97.1 L 248.7 97.1 L 249.1 97.1 L 249.5 97.1 L 249.9 97.1 L 250.4 97.1 L 250.8 97.1 L 251.2 97.1 L 251.6 97.1 L 252.0 97.1 L 252.4 97.1 L 252.8 97.1 L 253.2 97.1 L 253.6 97.1 L 254.0 97.1 L 254.4 97.1 L 254.8 97.1 L 255.2 97.1 L 255.6 97.1 L 256.0 97.1 L 256.4 97.1 L 256.8 97.1 L 257.3 97.1 L 257.7 97.1 L 258.1 97.1 L 258.5 97.1 L 258.9 97.1 L 259.3 97.1 L 259.7 97.1 L 260.1 97.1 L 260.5 97.1 L 260.9 97.1 L 261.3 97.1 L 261.7 97.1 L 262.1 97.1 L 262.5 97.1 L 262.9 97.1 L 275.5 97.1 L 275.9 97.1 L 276.3 97.1 L 276.7 97.1 L 277.1 97.1 L 277.6 97.1 L 278.0 97.1 L 278.4 97.1 L 278.8 97.1 L 279.2 97.1 L 279.6 97.1 L 280.0 97.1 L 280.4 97.1 L 280.8 97.1 L 281.2 97.1 L 281.6 97.1 L 282.0 97.1 L 282.4 97.1 L 282.8 97.1 L 283.2 97.1 L 283.6 97.1 L 284.0 97.1 L 284.5 97.1 L 284.9 97.1 L 285.3 97.1 L 285.7 97.1 L 286.1 97.1 L 286.5 97.1 L 286.9 97.1 L 287.3 97.1 L 287.7 97.1 L 288.1 97.1 L 288.5 97.1 L 288.9 97.1 L 289.3 97.1 L 289.7 97.1 L 290.1 97.1 L 290.5 97.1 L 290.9 97.1 L 291.4 97.1 L 441.8 142.5 L 442.2 142.5 L 442.6 142.5 L 443.0 142.5 L 443.4 142.5 L 443.8 142.5 L 444.2 142.5 L 444.7 142.5 L 445.1 142.5 L 445.5 142.5 L 445.9 142.5 L 446.3 142.5 L 446.7 142.5 L 447.1 142.5 L 447.5 142.5 L 447.9 142.5 L 448.3 142.5 L 448.7 142.5 L 449.1 142.5 L 449.5 142.5 L 449.9 142.5 L 450.3 142.5 L 450.7 142.5 L 451.1 142.5 L 451.6 142.5 L 452.0 142.5 L 452.4 142.5 L 452.8 142.5 L 453.2 142.5 L 453.6 142.5 L 454.0 142.5 L 454.4 142.5 L 454.8 142.5 L 455.2 142.5 L 455.6 142.5 L 456.0 142.5 L 456.4 142.5 L 456.8 142.5 L 457.2 142.5 L 457.6 142.5 L 470.2 142.5 L 470.6 142.5 L 471.0 142.5 L 471.4 142.5 L 471.8 142.5 L 472.3 142.5 L 472.7 142.5 L 473.1 142.5 L 473.5 142.5 L 473.9 142.5 L 474.3 142.5 L 474.7 142.5 L 475.1 142.5 L 475.5 142.5 L 475.9 142.5 L 476.3 142.5 L 476.7 142.5 L 477.1 142.5 L 477.5 142.5 L 477.9 142.5 L 478.3 142.5 L 478.7 142.5 L 479.2 142.5 L 479.6 142.5 L 480.0 142.5 L 480.4 142.5 L 480.8 142.5 L 481.2 142.5 L 481.6 142.5 L 482.0 142.5 L 482.4 142.5 L 482.8 142.5 L 483.2 142.5 L 483.6 142.5 L 484.0 142.5 L 484.4 142.5 L 484.8 142.5 L 485.2 142.5 L 485.6 142.5 L 486.1 142.5 L 636.5 185.9 L 636.9 185.9 L 637.3 185.9 L 637.7 185.9 L 638.1 185.9 L 638.5 185.3 L 638.9 185.9 L 639.4 184.8 L 639.8 181.1 L 640.2 162.9 L 640.6 155.4 L 641.0 149.5 L 641.4 155.9 L 641.8 169.8 L 642.2 169.8 L 642.6 181.6 L 643.0 176.8 L 643.4 182.1 L 643.8 184.3 L 644.2 185.9 L 644.6 185.9 L 645.0 185.9 L 645.4 185.9 L 645.8 185.9 L 646.3 185.9 L 646.7 185.9 L 647.1 185.9 L 647.5 185.9 L 647.9 185.9 L 648.3 185.9 L 648.7 185.9 L 649.1 185.9 L 649.5 185.9 L 649.9 185.9 L 650.3 185.9 L 650.7 185.9 L 651.1 185.9 L 651.5 185.9 L 651.9 185.9 L 652.3 185.9 L 652.7 185.9 L 665.3 185.9 L 665.7 185.9 L 666.1 185.9 L 666.5 185.9 L 667.0 185.9 L 667.4 185.3 L 667.8 182.7 L 668.2 185.9 L 668.6 185.9 L 669.0 185.9 L 669.4 185.9 L 669.8 185.9 L 670.2 185.9 L 670.6 185.9 L 671.0 185.9 L 671.4 185.9 L 671.8 185.9 L 672.2 185.9 L 672.6 185.9 L 673.0 185.9 L 673.5 185.9 L 673.9 185.9 L 674.3 185.9 L 674.7 185.9 L 675.1 185.9 L 675.5 185.9 L 675.9 185.9 L 676.3 185.9 L 676.7 185.9 L 677.1 185.9 L 677.5 185.9 L 677.9 185.9 L 678.3 185.9 L 678.7 185.9 L 679.1 185.9 L 679.5 185.9 L 679.9 185.9 L 680.4 185.9 L 680.8 185.9 L 681.2 185.9 L 831.6 209.9 L 832.0 226.0 L 832.4 221.2 L 832.8 226.0 L 833.2 227.1 L 833.6 227.1 L 834.1 227.1 L 834.5 227.1 L 834.9 227.1 L 835.3 227.1 L 835.7 227.1 L 836.1 227.1 L 836.5 227.1 L 836.9 227.1 L 837.3 227.1 L 837.7 227.1 L 838.1 227.1 L 838.5 227.1 L 838.9 227.1 L 839.3 227.1 L 839.7 227.1 L 840.1 227.1 L 840.6 227.1 L 841.0 227.1 L 841.4 227.1 L 841.8 227.1 L 842.2 227.1 L 842.6 227.1 L 843.0 227.1 L 843.4 227.1 L 843.8 227.1 L 844.2 227.1 L 844.6 227.1 L 845.0 227.1 L 845.4 227.1 L 845.8 227.1 L 846.2 227.1 L 846.6 227.1 L 847.0 227.1 L 847.5 227.1 L 860.0 227.1 L 860.4 227.1 L 860.8 227.1 L 861.3 227.1 L 861.7 227.1 L 862.1 227.1 L 862.5 227.1 L 862.9 227.1 L 863.3 227.1 L 863.7 227.1 L 864.1 227.1 L 864.5 227.1 L 864.9 227.1 L 865.3 227.1 L 865.7 227.1 L 866.1 227.1 L 866.5 227.1 L 866.9 227.1 L 867.3 227.1 L 867.7 227.1 L 868.2 227.1 L 868.6 227.1 L 869.0 227.1 L 869.4 227.1 L 869.8 227.1 L 870.2 227.1 L 870.6 227.1 L 871.0 227.1 L 871.4 227.1 L 871.8 227.1 L 872.2 227.1 L 872.6 227.1 L 873.0 227.1 L 873.4 227.1 L 873.8 227.1 L 874.2 227.1 L 874.6 227.1 L 875.1 227.1 L 875.5 227.1 L 875.9 227.1 L 876.0 227.1 L 876.0 252 L 52.0 252 Z" fill="url(#marketFill-002082)"></path><path class="market-line" d="M 52.0 48.9 L 52.4 48.9 L 52.8 48.9 L 53.2 48.9 L 53.6 48.9 L 54.0 48.9 L 54.4 48.9 L 54.8 48.9 L 55.2 48.9 L 55.7 48.9 L 56.1 48.9 L 56.5 48.9 L 56.9 48.9 L 57.3 48.9 L 57.7 48.9 L 58.1 48.9 L 58.5 48.9 L 58.9 48.9 L 59.3 48.9 L 59.7 48.9 L 60.1 48.9 L 60.5 48.9 L 60.9 48.9 L 61.3 48.9 L 61.7 48.9 L 62.1 48.9 L 62.6 48.9 L 63.0 48.9 L 63.4 48.9 L 63.8 48.9 L 64.2 48.9 L 64.6 48.9 L 65.0 48.9 L 65.4 48.9 L 65.8 48.9 L 66.2 48.9 L 66.6 48.9 L 67.0 48.9 L 67.4 48.9 L 67.8 48.9 L 68.2 48.9 L 80.8 48.9 L 81.2 48.9 L 81.6 48.9 L 82.0 48.9 L 82.4 48.9 L 82.8 48.9 L 83.3 48.9 L 83.7 48.9 L 84.1 48.9 L 84.5 48.9 L 84.9 48.9 L 85.3 48.9 L 85.7 48.9 L 86.1 48.9 L 86.5 48.9 L 86.9 48.9 L 87.3 48.9 L 87.7 48.9 L 88.1 48.9 L 88.5 48.9 L 88.9 48.9 L 89.3 48.9 L 89.7 48.9 L 90.2 48.9 L 90.6 48.9 L 91.0 48.9 L 91.4 48.9 L 91.8 48.9 L 92.2 48.9 L 92.6 48.9 L 93.0 48.9 L 93.4 48.9 L 93.8 48.9 L 94.2 48.9 L 94.6 48.9 L 95.0 48.9 L 95.4 48.9 L 95.8 48.9 L 96.2 48.9 L 96.7 48.9 L 247.1 97.1 L 247.5 97.1 L 247.9 97.1 L 248.3 97.1 L 248.7 97.1 L 249.1 97.1 L 249.5 97.1 L 249.9 97.1 L 250.4 97.1 L 250.8 97.1 L 251.2 97.1 L 251.6 97.1 L 252.0 97.1 L 252.4 97.1 L 252.8 97.1 L 253.2 97.1 L 253.6 97.1 L 254.0 97.1 L 254.4 97.1 L 254.8 97.1 L 255.2 97.1 L 255.6 97.1 L 256.0 97.1 L 256.4 97.1 L 256.8 97.1 L 257.3 97.1 L 257.7 97.1 L 258.1 97.1 L 258.5 97.1 L 258.9 97.1 L 259.3 97.1 L 259.7 97.1 L 260.1 97.1 L 260.5 97.1 L 260.9 97.1 L 261.3 97.1 L 261.7 97.1 L 262.1 97.1 L 262.5 97.1 L 262.9 97.1 L 275.5 97.1 L 275.9 97.1 L 276.3 97.1 L 276.7 97.1 L 277.1 97.1 L 277.6 97.1 L 278.0 97.1 L 278.4 97.1 L 278.8 97.1 L 279.2 97.1 L 279.6 97.1 L 280.0 97.1 L 280.4 97.1 L 280.8 97.1 L 281.2 97.1 L 281.6 97.1 L 282.0 97.1 L 282.4 97.1 L 282.8 97.1 L 283.2 97.1 L 283.6 97.1 L 284.0 97.1 L 284.5 97.1 L 284.9 97.1 L 285.3 97.1 L 285.7 97.1 L 286.1 97.1 L 286.5 97.1 L 286.9 97.1 L 287.3 97.1 L 287.7 97.1 L 288.1 97.1 L 288.5 97.1 L 288.9 97.1 L 289.3 97.1 L 289.7 97.1 L 290.1 97.1 L 290.5 97.1 L 290.9 97.1 L 291.4 97.1 L 441.8 142.5 L 442.2 142.5 L 442.6 142.5 L 443.0 142.5 L 443.4 142.5 L 443.8 142.5 L 444.2 142.5 L 444.7 142.5 L 445.1 142.5 L 445.5 142.5 L 445.9 142.5 L 446.3 142.5 L 446.7 142.5 L 447.1 142.5 L 447.5 142.5 L 447.9 142.5 L 448.3 142.5 L 448.7 142.5 L 449.1 142.5 L 449.5 142.5 L 449.9 142.5 L 450.3 142.5 L 450.7 142.5 L 451.1 142.5 L 451.6 142.5 L 452.0 142.5 L 452.4 142.5 L 452.8 142.5 L 453.2 142.5 L 453.6 142.5 L 454.0 142.5 L 454.4 142.5 L 454.8 142.5 L 455.2 142.5 L 455.6 142.5 L 456.0 142.5 L 456.4 142.5 L 456.8 142.5 L 457.2 142.5 L 457.6 142.5 L 470.2 142.5 L 470.6 142.5 L 471.0 142.5 L 471.4 142.5 L 471.8 142.5 L 472.3 142.5 L 472.7 142.5 L 473.1 142.5 L 473.5 142.5 L 473.9 142.5 L 474.3 142.5 L 474.7 142.5 L 475.1 142.5 L 475.5 142.5 L 475.9 142.5 L 476.3 142.5 L 476.7 142.5 L 477.1 142.5 L 477.5 142.5 L 477.9 142.5 L 478.3 142.5 L 478.7 142.5 L 479.2 142.5 L 479.6 142.5 L 480.0 142.5 L 480.4 142.5 L 480.8 142.5 L 481.2 142.5 L 481.6 142.5 L 482.0 142.5 L 482.4 142.5 L 482.8 142.5 L 483.2 142.5 L 483.6 142.5 L 484.0 142.5 L 484.4 142.5 L 484.8 142.5 L 485.2 142.5 L 485.6 142.5 L 486.1 142.5 L 636.5 185.9 L 636.9 185.9 L 637.3 185.9 L 637.7 185.9 L 638.1 185.9 L 638.5 185.3 L 638.9 185.9 L 639.4 184.8 L 639.8 181.1 L 640.2 162.9 L 640.6 155.4 L 641.0 149.5 L 641.4 155.9 L 641.8 169.8 L 642.2 169.8 L 642.6 181.6 L 643.0 176.8 L 643.4 182.1 L 643.8 184.3 L 644.2 185.9 L 644.6 185.9 L 645.0 185.9 L 645.4 185.9 L 645.8 185.9 L 646.3 185.9 L 646.7 185.9 L 647.1 185.9 L 647.5 185.9 L 647.9 185.9 L 648.3 185.9 L 648.7 185.9 L 649.1 185.9 L 649.5 185.9 L 649.9 185.9 L 650.3 185.9 L 650.7 185.9 L 651.1 185.9 L 651.5 185.9 L 651.9 185.9 L 652.3 185.9 L 652.7 185.9 L 665.3 185.9 L 665.7 185.9 L 666.1 185.9 L 666.5 185.9 L 667.0 185.9 L 667.4 185.3 L 667.8 182.7 L 668.2 185.9 L 668.6 185.9 L 669.0 185.9 L 669.4 185.9 L 669.8 185.9 L 670.2 185.9 L 670.6 185.9 L 671.0 185.9 L 671.4 185.9 L 671.8 185.9 L 672.2 185.9 L 672.6 185.9 L 673.0 185.9 L 673.5 185.9 L 673.9 185.9 L 674.3 185.9 L 674.7 185.9 L 675.1 185.9 L 675.5 185.9 L 675.9 185.9 L 676.3 185.9 L 676.7 185.9 L 677.1 185.9 L 677.5 185.9 L 677.9 185.9 L 678.3 185.9 L 678.7 185.9 L 679.1 185.9 L 679.5 185.9 L 679.9 185.9 L 680.4 185.9 L 680.8 185.9 L 681.2 185.9 L 831.6 209.9 L 832.0 226.0 L 832.4 221.2 L 832.8 226.0 L 833.2 227.1 L 833.6 227.1 L 834.1 227.1 L 834.5 227.1 L 834.9 227.1 L 835.3 227.1 L 835.7 227.1 L 836.1 227.1 L 836.5 227.1 L 836.9 227.1 L 837.3 227.1 L 837.7 227.1 L 838.1 227.1 L 838.5 227.1 L 838.9 227.1 L 839.3 227.1 L 839.7 227.1 L 840.1 227.1 L 840.6 227.1 L 841.0 227.1 L 841.4 227.1 L 841.8 227.1 L 842.2 227.1 L 842.6 227.1 L 843.0 227.1 L 843.4 227.1 L 843.8 227.1 L 844.2 227.1 L 844.6 227.1 L 845.0 227.1 L 845.4 227.1 L 845.8 227.1 L 846.2 227.1 L 846.6 227.1 L 847.0 227.1 L 847.5 227.1 L 860.0 227.1 L 860.4 227.1 L 860.8 227.1 L 861.3 227.1 L 861.7 227.1 L 862.1 227.1 L 862.5 227.1 L 862.9 227.1 L 863.3 227.1 L 863.7 227.1 L 864.1 227.1 L 864.5 227.1 L 864.9 227.1 L 865.3 227.1 L 865.7 227.1 L 866.1 227.1 L 866.5 227.1 L 866.9 227.1 L 867.3 227.1 L 867.7 227.1 L 868.2 227.1 L 868.6 227.1 L 869.0 227.1 L 869.4 227.1 L 869.8 227.1 L 870.2 227.1 L 870.6 227.1 L 871.0 227.1 L 871.4 227.1 L 871.8 227.1 L 872.2 227.1 L 872.6 227.1 L 873.0 227.1 L 873.4 227.1 L 873.8 227.1 L 874.2 227.1 L 874.6 227.1 L 875.1 227.1 L 875.5 227.1 L 875.9 227.1 L 876.0 227.1"></path><g class="trade-marker sell"><path d="M 52.0 56.9 L 44.0 41.9 L 60.0 41.9 Z" fill="#1d4ed8" stroke="#fff" stroke-width="2"></path><text x="52.0" y="70.9" text-anchor="middle" class="point-label">卖</text><title>ST万邦 002082｜卖出 300 股｜05-18 09:25｜17.960｜分钟窗口前成交</title></g><text x="52" y="296" text-anchor="start" class="axis-label">05-18 09:30</text><text x="876" y="296" text-anchor="end" class="axis-label">05-22 15:00</text></svg></div><div class="trade-point-list"><div class="trade-point-item"><span><b class="sell">卖出</b> 窗前 · 05-18 09:25</span><strong>17.960 / 300 股</strong></div></div></div></article></div>
       </div>
