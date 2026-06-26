@@ -12,6 +12,7 @@ const weeks = [
   { label: "06.01-06.05", pnl: -31, equity: 23598.74, avgPosition: 67.16, bestDay: "周四 06-04 +863.00", worstDay: "周三 06-03 -1,113.00", href: "../2026-06-01_2026-06-05/" },
   { label: "06.08-06.12", pnl: -466, equity: 22879, avgPosition: 49.19, bestDay: "周一 06-08 +1,996.00", worstDay: "周二 06-09 -2,492.00", href: "../2026-06-08_2026-06-12/" },
   { label: "06.15-06.20", pnl: -299, equity: 22567, avgPosition: 44.68, bestDay: "周四 06-18 +409.00", worstDay: "周一 06-15 -627.00", href: "../2026-06-15_2026-06-20/" },
+  { label: "06.22-06.26*", pnl: -3225.24, equity: 19285.4, equityLabel: "待补 / 成本19,285.40", avgPosition: 98.59, bestDay: "周四 06-25 +1.84", worstDay: "周三 06-24 -2,948.55", href: "../2026-06-22_2026-06-26/" },
 ];
 
 let peak = -Infinity;
@@ -52,7 +53,7 @@ function renderChart() {
   const plotH = height - top - bottom;
   const amountMin = -5000;
   const amountMax = 2000;
-  const ddMin = -30;
+  const ddMin = -40;
   const ddMax = 10;
   const x = (i) => left + (i / (weeks.length - 1)) * plotW;
   const yAmount = (value) => top + ((amountMax - value) / (amountMax - amountMin)) * plotH;
@@ -61,7 +62,7 @@ function renderChart() {
   const ddPoints = weeks.map((week, i) => ({ x: x(i), y: yDrawdown(week.drawdown), week }));
   const weekPctPoints = weeks.map((week, i) => ({ x: x(i), y: yDrawdown(week.weekPct), week }));
   const amountTicks = [2000, 0, -2500, -5000];
-  const ddTicks = [10, 0, -10, -20, -30];
+  const ddTicks = [10, 0, -10, -20, -30, -40];
   const grid = amountTicks.map((tick) => {
     const y = yAmount(tick);
     return `<g><line x1="${left}" x2="${width - right}" y1="${y.toFixed(1)}" y2="${y.toFixed(1)}" stroke="rgba(28,37,48,.10)" stroke-dasharray="4 7"></line><text x="${left - 12}" y="${(y + 4).toFixed(1)}" text-anchor="end" class="axis-label">${money(tick)}</text></g>`;
@@ -104,8 +105,8 @@ function renderPanel() {
   const worst = weeks.reduce((a, b) => (b.pnl < a.pnl ? b : a), weeks[0]);
   const latest = weeks[weeks.length - 1];
   const maxDrawdown = weeks.reduce((min, week) => Math.min(min, week.drawdown), 0);
-  const rows = weeks.map((week) => `<tr><td><a href="${week.href}">${week.label}</a></td><td class="${trendClass(week.pnl)}">${money(week.pnl)}</td><td class="${trendClass(week.weekPct)}">${pct(week.weekPct)}</td><td>${week.avgPosition.toFixed(2)}%</td><td>${week.equity.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td><td class="${week.drawdown < 0 ? "trade-down" : "trade-up"}">${pct(week.drawdown)}</td><td class="trade-up">${week.bestDay}</td><td class="trade-down">${week.worstDay}</td></tr>`).join("");
-  return `<section class="panel overview-panel"><div class="chart-head"><div><h2>每周资金曲线</h2><p>左轴看每周账户金额变化；右轴同时看累计回撤和当周涨跌/回撤。当周百分比按上一归档期末权益推算，第一周按周初权益推算；平均周仓位按已提供交易日仓位简单平均。</p></div><div class="legend-row"><span><i class="legend-line amount"></i>金额变化</span><span><i class="legend-line drawdown"></i>累计回撤</span><span><i class="legend-line weekly"></i>当周涨跌/回撤</span></div></div>${renderChart()}<div class="weekly-data-wrap"><table class="weekly-data-table"><thead><tr><th>周区间</th><th>金额变化</th><th>当周涨跌/回撤</th><th>平均周仓位</th><th>期末权益</th><th>累计回撤</th><th>最赚日</th><th>最亏日</th></tr></thead><tbody>${rows}</tbody></table></div><div class="mini-grid chart-summary"><span>累计变化 <b class="${cumulative >= 0 ? "pos" : "neg"}">${money(cumulative)}</b></span><span>最大单周盈利 <b class="pos">${best.label} ${money(best.pnl)}</b></span><span>最大单周亏损 <b class="neg">${worst.label} ${money(worst.pnl)}</b></span><span>最新当周 <b class="${latest.weekPct >= 0 ? "pos" : "neg"}">${pct(latest.weekPct)}</b></span><span>最新累计回撤 <b class="neg">${pct(latest.drawdown)}</b></span><span>最大累计回撤 <b class="neg">${pct(maxDrawdown)}</b></span><span>最新权益 <b>${latest.equity.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</b></span></div></section>`;
+  const rows = weeks.map((week) => `<tr><td><a href="${week.href}">${week.label}</a></td><td class="${trendClass(week.pnl)}">${money(week.pnl)}</td><td class="${trendClass(week.weekPct)}">${pct(week.weekPct)}</td><td>${week.avgPosition.toFixed(2)}%</td><td>${week.equityLabel || week.equity.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td><td class="${week.drawdown < 0 ? "trade-down" : "trade-up"}">${pct(week.drawdown)}</td><td class="trade-up">${week.bestDay}</td><td class="trade-down">${week.worstDay}</td></tr>`).join("");
+  return `<section class="panel overview-panel"><div class="chart-head"><div><h2>每周资金曲线</h2><p>左轴看每周账户金额变化；右轴同时看累计回撤和当周涨跌/回撤。当周百分比按上一归档期末权益推算，第一周按周初权益推算；平均周仓位按已提供交易日仓位简单平均。带 * 的最新草稿周暂用闭环/成本口径占位，等账户截图补齐后再替换正式权益。</p></div><div class="legend-row"><span><i class="legend-line amount"></i>金额变化</span><span><i class="legend-line drawdown"></i>累计回撤</span><span><i class="legend-line weekly"></i>当周涨跌/回撤</span></div></div>${renderChart()}<div class="weekly-data-wrap"><table class="weekly-data-table"><thead><tr><th>周区间</th><th>金额变化</th><th>当周涨跌/回撤</th><th>平均周仓位</th><th>期末权益</th><th>累计回撤</th><th>最赚日</th><th>最亏日</th></tr></thead><tbody>${rows}</tbody></table></div><div class="mini-grid chart-summary"><span>累计变化 <b class="${cumulative >= 0 ? "pos" : "neg"}">${money(cumulative)}</b></span><span>最大单周盈利 <b class="pos">${best.label} ${money(best.pnl)}</b></span><span>最大单周亏损 <b class="neg">${worst.label} ${money(worst.pnl)}</b></span><span>最新当周 <b class="${latest.weekPct >= 0 ? "pos" : "neg"}">${pct(latest.weekPct)}</b></span><span>最新累计回撤 <b class="neg">${pct(latest.drawdown)}</b></span><span>最大累计回撤 <b class="neg">${pct(maxDrawdown)}</b></span><span>最新权益 <b>${latest.equityLabel || latest.equity.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</b></span></div></section>`;
 }
 
 function renderMotto() {
