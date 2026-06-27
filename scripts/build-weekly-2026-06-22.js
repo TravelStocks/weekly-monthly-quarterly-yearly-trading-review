@@ -98,12 +98,17 @@ const dailyCards = [
 ];
 
 const accountDays = [
-  { date: "2026/6/22", weekday: "周一", note: "无交割记录，承接诺德", loss: "0.00", position: "85.60%", total: "22,510.64" },
-  { date: "2026/6/23", weekday: "周二", note: "无交割记录，冰点观察", loss: "0.00", position: "85.60%", total: "22,510.64" },
-  { date: "2026/6/24", weekday: "周三", note: "诺德止损，切入海欣/大唐", loss: "-2,948.55", position: "96.50%", total: "19,562.09" },
-  { date: "2026/6/25", weekday: "周四", note: "卖海欣/大唐，买亨通系", loss: "-3,225.24", position: "98.59%", total: "19,285.40" },
-  { date: "2026/6/26", weekday: "周五", note: "交割单/账户截图待补", loss: "待补", position: "待补", total: "待补" },
+  { date: "2026/6/22", weekday: "周一", note: "诺德未卖，按收盘 17.15 暂估", tempLoss: "-405.22", position: "85.34%", total: "22,105.42" },
+  { date: "2026/6/23", weekday: "周二", note: "诺德未卖，按收盘 15.44 暂估", tempLoss: "-2,286.22", position: "83.98%", total: "20,224.42" },
+  { date: "2026/6/24", weekday: "周三", note: "海欣/大唐未卖，按收盘暂估", tempLoss: "-3,158.74", position: "96.46%", total: "19,351.90" },
+  { date: "2026/6/25", weekday: "周四", note: "亨通系未卖，按收盘暂估", tempLoss: "-3,218.42", position: "98.59%", total: "19,292.22" },
+  { date: "2026/6/26", weekday: "周五", note: "若未卖出，按收盘暂估", tempLoss: "-4,839.42", position: "98.46%", total: "17,671.22" },
 ];
+
+const closePrices = {
+  "2026-06-25": { "600487": 123.00, "600226": 11.20 },
+  "2026-06-26": { "600487": 110.81, "600226": 10.53 },
+};
 
 const stockNotes = {
   "600110": {
@@ -154,6 +159,10 @@ function pct(n) {
 
 function ratioPct(n) {
   return `${n.toFixed(2)}%`;
+}
+
+function signedMoney(n) {
+  return `${n > 0 ? "+" : ""}${money(n)}`;
 }
 
 function cnDate(date) {
@@ -301,7 +310,7 @@ function replaceOnce(text, pattern, replacement, label) {
 }
 
 function updateIndexes() {
-  const newRootLatest = `<article class="metric"><span>周度归档</span><strong>8</strong><small>已发布周复盘</small></article><article class="metric"><span>最新区间</span><strong>06.22</strong><small>至 06.26</small></article><article class="metric"><span>最新账户</span><strong class="neg">闭环 -3,225</strong><small>账户截图待补</small></article><article class="metric"><span>长期结构</span><strong>3 个主页</strong><small>周度 / 月季 / 年度</small></article>`;
+  const newRootLatest = `<article class="metric"><span>周度归档</span><strong>8</strong><small>已发布周复盘</small></article><article class="metric"><span>最新区间</span><strong>06.22</strong><small>至 06.26</small></article><article class="metric"><span>最新账户</span><strong class="neg">暂估 -4,839</strong><small>6/26 市值口径</small></article><article class="metric"><span>长期结构</span><strong>3 个主页</strong><small>周度 / 月季 / 年度</small></article>`;
   const rootPath = path.join(root, "index.html");
   let rootHtml = fs.readFileSync(rootPath, "utf8");
   rootHtml = replaceOnce(rootHtml, /<article class="metric"><span>周度归档<\/span>[\s\S]*?<span>长期结构<\/span><strong>3 个主页<\/strong><small>周度 \/ 月季 \/ 年度<\/small><\/article>/, newRootLatest, "root metrics");
@@ -311,11 +320,13 @@ function updateIndexes() {
   const hubPath = path.join(root, "weekly-trading-review", "index.html");
   let hub = fs.readFileSync(hubPath, "utf8");
   hub = replaceOnce(hub, /href="\.\.\/2026-06-15_2026-06-20\/">进入最新周复盘/, `href="../2026-06-22_2026-06-26/">进入最新周复盘`, "hub latest button");
-  hub = replaceOnce(hub, /<article class="metric"><span>周报数量<\/span>[\s\S]*?<span>最新规则<\/span><strong>.*?<\/strong><small>.*?<\/small><\/article>/, `<article class="metric"><span>周报数量</span><strong>8</strong><small>已归档周数</small></article><article class="metric"><span>最新区间</span><strong>06.22</strong><small>至 06.26</small></article><article class="metric"><span>最新账户</span><strong class="neg">闭环 -3,225</strong><small>账户截图待补</small></article><article class="metric"><span>最新规则</span><strong>切仓纪律</strong><small>核心亏损后不混预期</small></article>`, "hub metrics");
-  const latestPanel = `<section class="panel"><h2>最新周复盘</h2><a class="week-card" href="../2026-06-22_2026-06-26/"><div class="week-head"><h3>2026.06.22 - 2026.06.26</h3><span class="chip">草稿版</span></div><p>本周先按 6/24-6/25 交割单与 6/23、6/25 市场数据做第一版：诺德为主要亏损源，海欣止损，大唐打平，期末切到亨通光电与亨通股份。</p><div class="mini-grid"><span>成交 <b>8 笔</b></span><span>闭环 <b>约 -3,225</b></span><span>资料 <b>6/26/账户待补</b></span></div></a></section>`;
+  hub = replaceOnce(hub, /<article class="metric"><span>周报数量<\/span>[\s\S]*?<span>最新规则<\/span><strong>.*?<\/strong><small>.*?<\/small><\/article>/, `<article class="metric"><span>周报数量</span><strong>8</strong><small>已归档周数</small></article><article class="metric"><span>最新区间</span><strong>06.22</strong><small>至 06.26</small></article><article class="metric"><span>最新账户</span><strong class="neg">暂估 -4,839</strong><small>6/26 市值口径</small></article><article class="metric"><span>最新规则</span><strong>切仓纪律</strong><small>核心亏损后不混预期</small></article>`, "hub metrics");
+  const latestPanel = `<section class="panel"><h2>最新周复盘</h2><a class="week-card" href="../2026-06-22_2026-06-26/"><div class="week-head"><h3>2026.06.22 - 2026.06.26</h3><span class="chip">草稿版</span></div><p>本周按交割单和未卖持仓收盘市值做第一版：诺德为主要已实现亏损源，期末亨通光电与亨通股份按 6/26 收盘暂估浮亏。</p><div class="mini-grid"><span>成交 <b>8 笔</b></span><span>暂估 <b>约 -4,839</b></span><span>口径 <b>6/26 市值</b></span></div></a></section>`;
   hub = replaceOnce(hub, /<section class="panel"><h2>最新周复盘<\/h2>[\s\S]*?<\/section><section class="panel"><h2>周度归档<\/h2>/, `${latestPanel}<section class="panel"><h2>周度归档</h2>`, "hub latest panel");
-  const newArchiveCard = `<a class="week-card" href="../2026-06-22_2026-06-26/"><div class="week-head"><h3>2026.06.22 - 2026.06.26</h3><span class="chip">草稿版</span></div><p>诺德止损后切入海欣/大唐，再回到芯片通信强线，期末持有亨通光电与亨通股份。</p><div class="mini-grid"><span>成交 <b>8 笔</b></span><span>闭环 <b>约 -3,225</b></span><span>状态 <b>账户待补</b></span></div></a>`;
-  if (!hub.includes(`<div class="archive">${newArchiveCard}`)) {
+  const newArchiveCard = `<a class="week-card" href="../2026-06-22_2026-06-26/"><div class="week-head"><h3>2026.06.22 - 2026.06.26</h3><span class="chip">草稿版</span></div><p>诺德止损后切入海欣/大唐，再回到芯片通信强线，期末持有亨通光电与亨通股份并按收盘价暂估浮亏。</p><div class="mini-grid"><span>成交 <b>8 笔</b></span><span>暂估 <b>约 -4,839</b></span><span>状态 <b>账户待补</b></span></div></a>`;
+  const archiveStart = hub.indexOf(`<div class="archive">`);
+  const archiveHtml = archiveStart >= 0 ? hub.slice(archiveStart) : "";
+  if (!archiveHtml.includes(`href="../2026-06-22_2026-06-26/"`)) {
     hub = replaceOnce(hub, /<div class="archive">/, `<div class="archive">${newArchiveCard}`, "hub archive insert");
   }
   hub = hub.replace(/(<a class="week-card" href="\.\.\/2026-06-15_2026-06-20\/"[\s\S]*?<span class="chip">)草稿版(<\/span>)/, "$1已发布$2");
@@ -345,6 +356,32 @@ async function main() {
   const costBasisEquity = finalCash + openCost;
   const finalPositionRate = (openCost / costBasisEquity) * 100;
   const finalCashRate = (finalCash / costBasisEquity) * 100;
+  const openHoldingMarks = openStats.map((s) => {
+    const close625 = closePrices["2026-06-25"][s.code];
+    const close626 = closePrices["2026-06-26"][s.code];
+    const market625 = s.openQty * close625;
+    const market626 = s.openQty * close626;
+    return {
+      ...s,
+      close625,
+      close626,
+      market625,
+      market626,
+      pnl625: market625 - s.openCost,
+      pnl626: market626 - s.openCost,
+    };
+  });
+  const marketValue625 = openHoldingMarks.reduce((sum, s) => sum + s.market625, 0);
+  const marketValue626 = openHoldingMarks.reduce((sum, s) => sum + s.market626, 0);
+  const unrealized625 = marketValue625 - openCost;
+  const unrealized626 = marketValue626 - openCost;
+  const marketEquity625 = finalCash + marketValue625;
+  const marketEquity626 = finalCash + marketValue626;
+  const tempLoss625 = marketEquity625 - priorCostBasisEquity;
+  const tempLoss626 = marketEquity626 - priorCostBasisEquity;
+  const tempLossRate626 = (tempLoss626 / priorCostBasisEquity) * 100;
+  const marketPosition625 = (marketValue625 / marketEquity625) * 100;
+  const marketPosition626 = (marketValue626 / marketEquity626) * 100;
   const maxClosedAbs = Math.max(1, ...closedStats.map((s) => Math.abs(s.realized)));
   const trends = {};
   for (const code of Object.keys(secids)) {
@@ -354,20 +391,20 @@ async function main() {
   const html = `<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>2026.06.22 - 2026.06.26 每周交割复盘</title>${style}${extraStyle}</head>
 <body><main class="shell"><nav class="side" aria-label="周复盘导航"><h2>本周导航</h2><a href="../weekly-trading-review/">周度主页</a><a href="../index.html">总首页</a><a href="#top">本周总览</a><a href="#source">数据口径</a><a href="#account">账户口径</a><a href="#ticket-analysis">盈亏票</a><a href="#daily">逐日复盘</a><a href="#stocks">买卖点图</a><a href="#rules">沉淀规则</a><a href="#trades">成交明细</a><a href="#todo">缺口清单</a></nav>
 <div class="page">
-<section class="hero" id="top"><div><span class="label">2026.06.22 - 2026.06.26 · 草稿版</span><h1>止损旧核心，重新切回通信科技线</h1><p>本页先按你这张 6/18-6/25 交割单截图、6/23 与 6/25 市场数据做第一版。当前只锁定 6/24-6/25 的 8 笔成交；6/26 收盘、账户总额、持仓浮盈和你的二次反思都先留成待补项。</p></div><div class="hero-side"><article class="metric"><span>交割单亏损</span><strong class="neg">${money(totals.realized)}</strong><small>成本口径，约 ${pct(closedRate)}</small></article><article class="metric"><span>期末仓位</span><strong>${ratioPct(finalPositionRate)}</strong><small>持仓成本 ${money(openCost)}</small></article><article class="metric"><span>资料状态</span><strong>先版</strong><small>6/26 与账户截图待补</small></article></div></section>
-<section class="metric-grid"><article class="metric"><span>本周成交</span><strong>${totals.trades} 笔</strong><small>买入 ${totals.buys} / 卖出 ${totals.sells}</small></article><article class="metric"><span>涉及标的</span><strong>${totals.stocks} 只</strong><small>诺德、海欣、大唐、亨通光电、亨通股份</small></article><article class="metric"><span>成交额</span><strong>${money(totals.buyGross + totals.sellGross)}</strong><small>买入 ${money(totals.buyGross)} / 卖出 ${money(totals.sellGross)}</small></article><article class="metric"><span>总亏损额</span><strong class="${totals.realized >= 0 ? "pos" : "neg"}">${totals.realized >= 0 ? "+" : ""}${money(totals.realized)}</strong><small>交割单成本口径</small></article></section>
-<section class="panel source-lock" id="source"><h2>数据口径先锁住</h2><p><strong>本周有效区间：</strong>2026/6/22 - 2026/6/26；当前已录入 6/24 - 6/25 交割单。你给的截图里 6/18 的诺德买入属于上一周，本页只用它的期末成本衔接 6/24 卖出，不重复计入本周成交。</p><p class="section-note">成交明细隐藏合同号、成交编号等敏感字段；市场数据来自本地 6/23、6/25 三表审计 JSON；分钟走势来自东方财富 5 日分钟接口，仅用于定位买卖点，成交价格仍以交割单为准。</p></section>
-<section class="two-col"><article class="panel" id="account"><h2>交割单口径核算</h2><p>通过交割单能先算出成本口径：期初承接上一周现金 ${money(priorCash)} 与诺德股份成本 ${money(priorCost["600110"].cost)}，合计 ${money(priorCostBasisEquity)}；6/25 截图期末现金 ${money(finalCash)}，期末持仓成本 ${money(openCost)}，成本口径总额 ${money(costBasisEquity)}。因此本周交割单口径总亏损为 ${totals.realized >= 0 ? "+" : ""}${money(totals.realized)}，期末仓位为 ${ratioPct(finalPositionRate)}。上一周页面期末权益 ${money(previousWeekEquity)} 属于市值口径参考，正式账户收益率仍以后续 6/26 账户截图为准。</p><div class="mini-grid"><span>期初成本总额 <b>${money(priorCostBasisEquity)}</b></span><span>总亏损额 <b class="${totals.realized >= 0 ? "pos" : "neg"}">${totals.realized >= 0 ? "+" : ""}${money(totals.realized)}</b></span><span>亏损比例 <b class="${closedRate >= 0 ? "pos" : "neg"}">${pct(closedRate)}</b></span><span>期末现金 <b>${money(finalCash)}</b></span><span>持仓成本 <b>${money(openCost)}</b></span><span>期末仓位 <b>${ratioPct(finalPositionRate)}</b></span><span>现金占比 <b>${ratioPct(finalCashRate)}</b></span><span>成本口径总额 <b>${money(costBasisEquity)}</b></span></div><div class="account-days">${accountDays.map((day) => `<div class="account-day"><strong>${esc(day.date)} ${esc(day.weekday)}</strong><span>状态 <b>${esc(day.note)}</b></span><span>累计亏损 <b class="${day.loss.startsWith("-") ? "neg" : ""}">${esc(day.loss)}</b></span><span>仓位 <b>${esc(day.position)}</b></span><span>成本总额 <b>${esc(day.total)}</b></span></div>`).join("")}</div></article><article class="panel"><h2>先版结论</h2><ul class="takeaways"><li>本周最大问题不是交易频率，而是诺德股份从上一周浮盈/核心预期转成大额止损，单票闭环约 -2,948.55。</li><li>海欣股份隔日止损约 -278.53，大唐发电基本打平，说明 6/24 的切仓方向还没有形成稳定赚钱贡献。</li><li>6/25 市场强度重新聚焦芯片、通信、元器件、算力，买入亨通光电和亨通股份，方向回到更强主线。</li><li>下一版最需要补：6/26 亨通系持仓去留、最终账户总额，以及你对“止损旧核心后是否应该立刻重开仓”的二次反思。</li></ul></article></section>
-<section class="two-col"><article class="panel"><h2>闭环贡献</h2><p class="section-note">只统计已平仓且能由交割单/上一周期末成本推算的部分；亨通光电与亨通股份未平仓，暂不计入闭环。</p><div class="bar-list">${closedStats.map((s) => {
+<section class="hero" id="top"><div><span class="label">2026.06.22 - 2026.06.26 · 草稿版</span><h1>止损旧核心，重新切回通信科技线</h1><p>本页先按你这张 6/18-6/25 交割单截图、6/23 与 6/25 市场数据做第一版。未卖出的持仓不再只写成本，而是按当天收盘价计算市值和暂时盈亏；6/26 暂按亨通系没有卖出、继续持有到收盘处理。</p></div><div class="hero-side"><article class="metric"><span>暂估总亏损</span><strong class="neg">${money(tempLoss626)}</strong><small>6/26 市值口径，约 ${pct(tempLossRate626)}</small></article><article class="metric"><span>期末仓位</span><strong>${ratioPct(marketPosition626)}</strong><small>6/26 持仓市值 ${money(marketValue626)}</small></article><article class="metric"><span>资料状态</span><strong>先版</strong><small>正式账户截图待补</small></article></div></section>
+<section class="metric-grid"><article class="metric"><span>本周成交</span><strong>${totals.trades} 笔</strong><small>买入 ${totals.buys} / 卖出 ${totals.sells}</small></article><article class="metric"><span>涉及标的</span><strong>${totals.stocks} 只</strong><small>诺德、海欣、大唐、亨通光电、亨通股份</small></article><article class="metric"><span>已实现亏损</span><strong class="${totals.realized >= 0 ? "pos" : "neg"}">${signedMoney(totals.realized)}</strong><small>已平仓交割单口径</small></article><article class="metric"><span>未实现浮亏</span><strong class="${unrealized626 >= 0 ? "pos" : "neg"}">${signedMoney(unrealized626)}</strong><small>6/26 未卖持仓市值</small></article></section>
+<section class="panel source-lock" id="source"><h2>数据口径先锁住</h2><p><strong>本周有效区间：</strong>2026/6/22 - 2026/6/26；当前已录入 6/24 - 6/25 交割单。你给的截图里 6/18 的诺德买入属于上一周，本页只用它的期末成本衔接 6/24 卖出，不重复计入本周成交。</p><p class="section-note">成交明细隐藏合同号、成交编号等敏感字段；市场数据来自本地 6/23、6/25 三表审计 JSON；未卖持仓市值使用东方财富日 K 收盘价暂估，分钟走势来自东方财富 5 日分钟接口，仅用于定位买卖点，成交价格仍以交割单为准。</p></section>
+<section class="two-col"><article class="panel" id="account"><h2>交割单 + 市值口径核算</h2><p>通过交割单先确定期初：现金 ${money(priorCash)} 与诺德股份成本 ${money(priorCost["600110"].cost)}，合计 ${money(priorCostBasisEquity)}。已卖出的票按交割单锁定盈亏，未卖出的持仓按当天收盘价计算市值：6/25 亨通系市值 ${money(marketValue625)}、浮盈亏 ${signedMoney(unrealized625)}，当日暂时亏损 ${signedMoney(tempLoss625)}；6/26 若未卖出，亨通系市值 ${money(marketValue626)}、浮盈亏 ${signedMoney(unrealized626)}，本周暂估总亏损 ${signedMoney(tempLoss626)}。正式账户收益率仍以后续账户截图为准。</p><div class="mini-grid"><span>期初成本总额 <b>${money(priorCostBasisEquity)}</b></span><span>已实现亏损 <b class="${totals.realized >= 0 ? "pos" : "neg"}">${signedMoney(totals.realized)}</b></span><span>6/25 暂时亏损 <b class="${tempLoss625 >= 0 ? "pos" : "neg"}">${signedMoney(tempLoss625)}</b></span><span>6/26 暂估亏损 <b class="${tempLoss626 >= 0 ? "pos" : "neg"}">${signedMoney(tempLoss626)}</b></span><span>6/26 市值总额 <b>${money(marketEquity626)}</b></span><span>6/26 持仓市值 <b>${money(marketValue626)}</b></span><span>6/26 仓位 <b>${ratioPct(marketPosition626)}</b></span><span>现金占比 <b>${ratioPct(finalCash / marketEquity626 * 100)}</b></span></div><div class="account-days">${accountDays.map((day) => `<div class="account-day"><strong>${esc(day.date)} ${esc(day.weekday)}</strong><span>状态 <b>${esc(day.note)}</b></span><span>暂时亏损 <b class="${day.tempLoss.startsWith("-") ? "neg" : ""}">${esc(day.tempLoss)}</b></span><span>仓位 <b>${esc(day.position)}</b></span><span>市值总额 <b>${esc(day.total)}</b></span></div>`).join("")}</div></article><article class="panel"><h2>先版结论</h2><ul class="takeaways"><li>本周最大问题不是交易频率，而是诺德股份从上一周浮盈/核心预期转成大额止损，单票闭环约 -2,948.55。</li><li>海欣股份隔日止损约 -278.53，大唐发电基本打平，说明 6/24 的切仓方向还没有形成稳定赚钱贡献。</li><li>6/25 市场强度重新聚焦芯片、通信、元器件、算力，买入亨通光电和亨通股份，方向回到更强主线。</li><li>按 6/26 收盘价暂估，亨通光电与亨通股份的未实现浮亏合计约 -1,614.18，本周总亏损暂扩大到 -4,839.42。</li></ul></article></section>
+<section class="two-col"><article class="panel"><h2>闭环贡献</h2><p class="section-note">这里先统计已平仓且能由交割单/上一周期末成本推算的部分；未平仓的亨通光电与亨通股份在右侧按收盘市值计入暂时盈亏。</p><div class="bar-list">${closedStats.map((s) => {
     const width = Math.max(12, Math.min(100, Math.abs(s.realized) / maxClosedAbs * 100));
     return `<div class="bar-row"><div class="bar-meta"><span>${esc(s.name)} ${s.code}</span><strong class="${s.realized >= 0 ? "pos" : "neg"}">${s.realized >= 0 ? "+" : ""}${money(s.realized)}</strong></div><div class="bar-track"><span class="${s.realized < 0 ? "neg" : ""}" style="width:${width.toFixed(1)}%"></span></div><p>${esc(stockNotes[s.code]?.headline || "")}</p></div>`;
-  }).join("")}</div></article><article class="panel"><h2>期末持仓推算</h2><p class="section-note">截至 6/25 截图，期末持仓为亨通光电 100 股、亨通股份 600 股。这里先用成交含费成本展示，不推断浮动盈亏；6/26 收盘后再用账户截图或持仓截图覆盖正式市值。</p><div class="mini-grid"><span>亨通光电 <b>100 股</b></span><span>亨通光电成本 <b>${money((stats.find((s) => s.code === "600487") || {}).openCost || 0)}</b></span><span>亨通股份 <b>600 股</b></span><span>亨通股份成本 <b>${money((stats.find((s) => s.code === "600226") || {}).openCost || 0)}</b></span><span>持仓成本合计 <b>${money(openCost)}</b></span><span>现金余额 <b>${money(finalCash)}</b></span><span>成本仓位 <b>${ratioPct(finalPositionRate)}</b></span><span>现金占比 <b>${ratioPct(finalCashRate)}</b></span><span>浮动盈亏 <b>待补</b></span><span>正式市值仓位 <b>待补</b></span></div></article></section>
+  }).join("")}</div></article><article class="panel"><h2>未卖持仓市值推算</h2><p class="section-note">截至 6/25 截图，期末持仓为亨通光电 100 股、亨通股份 600 股。按你的口径，未卖出的持仓直接用当天收盘价计算市值和暂时盈亏；6/26 暂按没有卖出、继续持有到收盘处理。</p><div class="mini-grid">${openHoldingMarks.map((s) => `<span>${esc(s.name)} 持仓 <b>${s.openQty.toLocaleString("en-US")} 股</b></span><span>${esc(s.name)} 成本 <b>${money(s.openCost)}</b></span><span>${esc(s.name)} 6/25 <b>收 ${s.close625.toFixed(2)} / ${money(s.market625)} / <em class="${s.pnl625 >= 0 ? "pos" : "neg"}">${signedMoney(s.pnl625)}</em></b></span><span>${esc(s.name)} 6/26 <b>收 ${s.close626.toFixed(2)} / ${money(s.market626)} / <em class="${s.pnl626 >= 0 ? "pos" : "neg"}">${signedMoney(s.pnl626)}</em></b></span>`).join("")}<span>6/25 持仓浮盈亏 <b class="${unrealized625 >= 0 ? "pos" : "neg"}">${signedMoney(unrealized625)}</b></span><span>6/26 持仓浮盈亏 <b class="${unrealized626 >= 0 ? "pos" : "neg"}">${signedMoney(unrealized626)}</b></span><span>6/25 市值总额 <b>${money(marketEquity625)}</b></span><span>6/26 市值总额 <b>${money(marketEquity626)}</b></span><span>6/25 仓位 <b>${ratioPct(marketPosition625)}</b></span><span>6/26 仓位 <b>${ratioPct(marketPosition626)}</b></span></div></article></section>
 <section class="panel" id="ticket-analysis"><h2>本周赚钱/亏损主要票及其分析</h2><p class="section-note">这是缺少二次反思前的第一版归因，后续会用你的正式复盘覆盖。</p><div class="rule-grid"><article class="rule-card"><h3>诺德股份 600110</h3><p><strong class="neg">最大亏损源：</strong>承接上周 1100 股持仓，6/24 卖出后闭环约 -2,948.55。</p><p>这笔要重点反思的是“核心预期变弱后是否及时降级”。如果 6/18 的买点本来就是过急，那么本周不该再让它继续占用判断空间。</p></article><article class="rule-card"><h3>海欣股份 600851</h3><p><strong class="neg">隔日亏损：</strong>买入 300 股、卖出 300 股，闭环约 -278.53。</p><p>亏损幅度可控，但说明切仓后的新方向不够硬，不能把轮动票当成确定性主线。</p></article><article class="rule-card"><h3>大唐发电 601991</h3><p><strong class="pos">基本打平：</strong>买入 2000 股、卖出 2000 股，闭环约 +1.84。</p><p>执行上没有扩大风险，但收益贡献几乎为零。后续要确认它是电力容量核心，还是只是人气榜轮动对象。</p></article><article class="rule-card"><h3>亨通光电 600487</h3><p><strong class="warn">期末持仓：</strong>6/25 买入 100 股，含费成本约 12,148.12。</p><p>这笔贴合 6/25 通信强度和热榜位置，更像趋势核心仓。下一版重点补 6/26 去留和浮盈。</p></article><article class="rule-card"><h3>亨通股份 600226</h3><p><strong class="warn">期末持仓：</strong>6/25 买入 600 股，含费成本约 6,865.06。</p><p>它与亨通光电同名但不是同一类预期，后续要拆清楚：是低价补涨弹性，还是可持续主线核心。</p></article></div></section>
 <section class="panel" id="daily"><h2>逐日操作&情绪复盘</h2><p class="section-note">以下每日内容来自你的个人每日复盘站，Codex 只做周度归纳，不把它包装成你已经确认的二次反思。</p><div class="day-list">${renderDailyCards()}</div></section>
 <section class="panel" id="stocks"><h2>重点走势图</h2><p class="section-note">用分钟线标出本周所有实际买卖过的股票。图是为了直观看买卖点和前后走势，不替代成交单。</p><div class="stock-grid">${renderStockCards(trends)}</div></section>
-<section class="panel" id="rules"><h2>本周先沉淀规则</h2><p class="section-note">这些是从已有成交和市场数据里先提取出的临时规则，等你补二次反思后再合并。</p><div class="rule-grid"><article class="rule-card"><h3>旧核心及时降级</h3><p>上一周的核心票，一旦新周不能继续证明强度，先降级处理，不能靠原有预期硬扛。</p></article><article class="rule-card"><h3>切仓后先小仓验证</h3><p>刚止损大亏票后，情绪最容易急着找回损失，新方向没有主线级别前不要立刻重仓。</p></article><article class="rule-card"><h3>同名不等于同预期</h3><p>亨通光电与亨通股份必须拆开看：趋势容量核心和低价弹性票的持仓逻辑不同。</p></article><article class="rule-card"><h3>强线优先于轮动</h3><p>6/25 数据显示芯片、通信、元器件更强，后续仓位优先围绕强线核心，不在弱轮动里找安全感。</p></article><article class="rule-card"><h3>已实现亏损要当天复盘</h3><p>诺德这种大额亏损不能只记成交，要当天拆买点、预期、止损线和仓位错配。</p></article><article class="rule-card"><h3>浮盈浮亏不脑补</h3><p>没有账户截图时，只写闭环和成本口径，持仓市值等你补截图后再定稿。</p></article></div></section>
+<section class="panel" id="rules"><h2>本周先沉淀规则</h2><p class="section-note">这些是从已有成交和市场数据里先提取出的临时规则，等你补二次反思后再合并。</p><div class="rule-grid"><article class="rule-card"><h3>旧核心及时降级</h3><p>上一周的核心票，一旦新周不能继续证明强度，先降级处理，不能靠原有预期硬扛。</p></article><article class="rule-card"><h3>切仓后先小仓验证</h3><p>刚止损大亏票后，情绪最容易急着找回损失，新方向没有主线级别前不要立刻重仓。</p></article><article class="rule-card"><h3>同名不等于同预期</h3><p>亨通光电与亨通股份必须拆开看：趋势容量核心和低价弹性票的持仓逻辑不同。</p></article><article class="rule-card"><h3>强线优先于轮动</h3><p>6/25 数据显示芯片、通信、元器件更强，后续仓位优先围绕强线核心，不在弱轮动里找安全感。</p></article><article class="rule-card"><h3>已实现亏损要当天复盘</h3><p>诺德这种大额亏损不能只记成交，要当天拆买点、预期、止损线和仓位错配。</p></article><article class="rule-card"><h3>浮盈浮亏当天标记</h3><p>没有账户截图时，已卖出的票按交割单锁定，未卖出的持仓先按当天收盘市值暂估，后续再用券商截图校准。</p></article></div></section>
 <section class="panel" id="trades"><h2>成交明细</h2>${renderTradeTable()}</section>
-<section class="panel" id="todo"><h2>缺口清单</h2><div class="todo-grid"><article class="todo-card"><h3>还需要你补</h3><ul><li>6/22、6/26 是否有成交或个人复盘。</li><li>6/26 收盘账户截图、持仓截图和最终权益。</li><li>本周二次反思：诺德为何拖到 6/24、海欣/大唐为何切入、亨通系的持仓预期。</li></ul></article><article class="todo-card"><h3>已完成</h3><ul><li>截图中 6/24-6/25 的 8 笔成交已录入。</li><li>诺德、海欣、大唐三个已闭环标的已先核算。</li><li>交割单口径总亏损、期末仓位与逐日成本总额已补齐。</li><li>亨通光电、亨通股份期末成本口径已记录。</li><li>6/23 与 6/25 市场/板块/热榜数据已纳入逐日复盘。</li><li>成交明细已隐藏合同号、成交编号。</li></ul></article><article class="todo-card"><h3>下版优先更新</h3><ul><li>用正式账户截图替换市值口径收益率。</li><li>补 6/26 持仓去留和浮动盈亏。</li><li>把临时规则改成你的最终交易纪律。</li></ul></article></div></section>
+<section class="panel" id="todo"><h2>缺口清单</h2><div class="todo-grid"><article class="todo-card"><h3>还需要你补</h3><ul><li>确认 6/26 是否有额外成交；若没有，本页 6/26 市值暂估即可沿用。</li><li>6/26 收盘账户截图、持仓截图和券商最终权益。</li><li>本周二次反思：诺德为何拖到 6/24、海欣/大唐为何切入、亨通系的持仓预期。</li></ul></article><article class="todo-card"><h3>已完成</h3><ul><li>截图中 6/24-6/25 的 8 笔成交已录入。</li><li>诺德、海欣、大唐三个已闭环标的已先核算。</li><li>未卖持仓已按当日收盘价计算市值和暂时盈亏。</li><li>6/25 与 6/26 的亨通系市值、浮盈亏和仓位已补齐。</li><li>6/23 与 6/25 市场/板块/热榜数据已纳入逐日复盘。</li><li>成交明细已隐藏合同号、成交编号。</li></ul></article><article class="todo-card"><h3>下版优先更新</h3><ul><li>用正式账户截图校准券商权益。</li><li>若 6/26 有卖出或新买入，替换当前“未卖出继续持有”假设。</li><li>把临时规则改成你的最终交易纪律。</li></ul></article></div></section>
 </div></main></body></html>`;
 
   fs.mkdirSync(outDir, { recursive: true });
