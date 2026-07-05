@@ -271,8 +271,79 @@ const missingItems = [
   "7/3 或 7/4 期末持仓截图：科创新材ETF博时的市价、盈亏、仓位占比、总资产。",
   "亨通光电、亨通股份的上周买入成本或持仓成本，用于计算真实盈亏。",
   "本周二次反思总结：主要赚钱/亏损票、错误根源、情绪偏差和下周执行规则。",
-  "如果要画真实分时买卖点图，需要提供分钟线数据或允许后续接入行情数据源。",
+  "如需校验分钟线口径，可补券商/同花顺分时截图；当前页面已用行情接口生成 5 日分钟线买卖点。",
 ];
+
+const secids = {
+  "600487": "1.600487",
+  "600226": "1.600226",
+  "512760": "1.512760",
+  "588170": "1.588170",
+  "588710": "1.588710",
+  "588890": "1.588890",
+  "589260": "1.589260",
+  "600667": "1.600667",
+  "000566": "0.000566",
+  "588010": "1.588010",
+};
+
+const stockDisplayNames = {
+  "600487": "亨通光电",
+  "600226": "亨通股份",
+  "512760": "芯片ETF国泰",
+  "588170": "科创半导体ETF华夏",
+  "588710": "科创半导体设备ETF华泰柏瑞",
+  "588890": "科创芯片ETF南方",
+  "589260": "科创芯片设计ETF国泰",
+  "600667": "太极实业",
+  "000566": "海南海药",
+  "588010": "科创新材ETF博时",
+};
+
+const stockCardOrder = ["512760", "588170", "588710", "588890", "589260", "600667", "000566", "588010", "600487", "600226"];
+
+const stockNotes = {
+  "512760": {
+    headline: `芯片ETF国泰是本周半导体篮子的一部分，闭环约 ${money(closedPnL["512760"])}。`,
+    bullets: ["6/30 建仓，7/1 小幅加仓，7/2 早盘随科技高位破位一起撤退。", "问题不在单只 ETF，而是同主题多 ETF 同时铺开，本质是一笔主题仓位。"],
+  },
+  "588170": {
+    headline: `科创半导体ETF华夏是篮子中买入金额最大的 ETF，闭环约 ${money(closedPnL["588170"])}。`,
+    bullets: ["6/30 分两笔买入 1300 股，7/2 早盘卖出。", "趋势普涨时 ETF 可以提高仓位效率，但三高以后必须有条件单和撤退线。"],
+  },
+  "588710": {
+    headline: `科创半导体设备ETF华泰柏瑞闭环约 ${money(closedPnL["588710"])}。`,
+    bullets: ["6/30 尾盘买入，7/2 早盘卖出。", "进场偏晚且没有等到主线延续确认，容易吃到高位分歧后的回撤。"],
+  },
+  "588890": {
+    headline: `科创芯片ETF南方闭环约 ${money(closedPnL["588890"])}。`,
+    bullets: ["7/1 早盘买入，7/2 早盘撤退。", "这笔体现的是三高后继续加仓的问题：知道分歧，却没有把判断转成减仓动作。"],
+  },
+  "589260": {
+    headline: `科创芯片设计ETF国泰闭环约 ${money(closedPnL["589260"])}。`,
+    bullets: ["6/30 尾盘买入，7/2 早盘卖出。", "同主题 ETF 篮子不能当作多笔独立机会，后续要先定义主题强弱再决定是否铺开。"],
+  },
+  "600667": {
+    headline: `太极实业 7/1 试错、7/2 早盘撤退，闭环约 ${money(closedPnL["600667"])}。`,
+    bullets: ["它不是当时最明确的唯一核心，买前需要先确认题材第一性和唯一性。", "试错失败后及时撤退是对的，但买入前的角色定义还要更硬。"],
+  },
+  "000566": {
+    headline: `海南海药 7/2 买入、7/3 卖出，闭环约 ${money(closedPnL["000566"])}。`,
+    bullets: ["这笔基本小幅保本，说明隔日不强时有及时处理。", "后续要补清它是计划内接力、穿越观察，还是临盘试错。"],
+  },
+  "588010": {
+    headline: `科创新材ETF博时 7/3 尾盘买入 2800 股，含费成本约 ${rawMoney(openPositionCost)}。`,
+    bullets: ["当前只有买点，缺期末持仓市价和浮盈亏截图。", "下周一必须先写强弱验证、止损线、是否加仓和退出条件。"],
+  },
+  "600487": {
+    headline: `亨通光电 6/29 卖出跨周持仓，回笼现金 ${rawMoney(trades.find((row) => row.code === "600487")?.net || 0)}。`,
+    bullets: ["缺上周买入成本，暂不计算真实盈亏。", "跨周卖出必须补历史成本，否则现金流会误导周度贡献判断。"],
+  },
+  "600226": {
+    headline: `亨通股份 6/29 卖出跨周持仓，回笼现金 ${rawMoney(trades.find((row) => row.code === "600226")?.net || 0)}。`,
+    bullets: ["缺上周买入成本，暂不计算真实盈亏。", "它属于跨周持仓处理，后续需要和 6/22 那周成本接上。"],
+  },
+};
 
 const hubWeeks = [
   { label: "04.20-04.24", title: "2026.04.20 - 2026.04.24", pnl: 1616.89, equity: 31027.99, avgPosition: 94.7, bestDay: "周二 04-21 +2,117.00", worstDay: "周五 04-24 -2,413.00", href: "../2026-04-20_2026-04-24/", trades: "63 笔", status: "已发布" },
@@ -306,6 +377,103 @@ function escapeHtml(value) {
 
 function renderMetric(label, value, sub, cls = "") {
   return `<article class="metric"><span>${label}</span><strong class="${cls}">${value}</strong><small>${sub}</small></article>`;
+}
+
+function cnDate(date) {
+  return `${date.slice(0, 4)}-${date.slice(4, 6)}-${date.slice(6, 8)}`;
+}
+
+function trendTime(date, time) {
+  return `${cnDate(date)} ${time.slice(0, 5)}`;
+}
+
+async function fetchTrend(code) {
+  const secid = secids[code];
+  if (!secid) return [];
+  const url = `https://push2his.eastmoney.com/api/qt/stock/trends2/get?secid=${secid}&fields1=f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12,f13&fields2=f51,f53&iscr=0&iscca=0&ut=fa5fd1943c7b386f172d6893dbfba10b&ndays=5`;
+  try {
+    const response = await fetch(url, { headers: { "user-agent": "Mozilla/5.0" } });
+    const json = await response.json();
+    return (json?.data?.trends || [])
+      .map((row) => {
+        const [time, price] = row.split(",");
+        return { time, price: Number(price) };
+      })
+      .filter((item) => Number.isFinite(item.price));
+  } catch (error) {
+    console.warn(`trend fetch failed for ${code}: ${error.message}`);
+    return [];
+  }
+}
+
+function nearestIndex(data, time) {
+  if (!data.length) return -1;
+  const exact = data.findIndex((item) => item.time === time);
+  if (exact >= 0) return exact;
+  const target = new Date(time.replace(" ", "T")).getTime();
+  let best = 0;
+  let bestDelta = Infinity;
+  data.forEach((item, index) => {
+    const delta = Math.abs(new Date(item.time.replace(" ", "T")).getTime() - target);
+    if (delta < bestDelta) {
+      best = index;
+      bestDelta = delta;
+    }
+  });
+  return best;
+}
+
+function renderMinuteChart(stock, trend) {
+  const stockTrades = trades
+    .filter((trade) => trade.code === stock.code)
+    .slice()
+    .sort((a, b) => `${a.date}${a.time}`.localeCompare(`${b.date}${b.time}`));
+  const fallbackList = stockTrades.map((trade) => `<div class="trade-point-item"><span><b class="${trade.sideType === "buy" ? "buy" : "sell"}">${escapeHtml(trade.side)}</b> ${cnDate(trade.date).slice(5)} ${trade.time}</span><strong>${trade.price.toFixed(3)} / ${trade.qty.toLocaleString("en-US")} 股</strong></div>`).join("");
+  if (!trend.length) {
+    return `<div class="trade-map"><div class="trade-map-head"><h4>5 日分钟线买卖点</h4><div class="trade-legend"><span class="legend-item"><i class="legend-shape buy"></i>买入</span><span class="legend-item"><i class="legend-shape sell"></i>卖出</span></div></div><p class="caption">分钟线暂未拉取成功，先保留真实成交点列表。</p><div class="trade-point-list">${fallbackList}</div></div>`;
+  }
+
+  const width = 876;
+  const height = 290;
+  const left = 52;
+  const right = 24;
+  const top = 24;
+  const bottom = 38;
+  const plotW = width - left - right;
+  const plotH = height - top - bottom;
+  const prices = trend.map((item) => item.price);
+  const markerPrices = stockTrades.map((trade) => trade.price);
+  let min = Math.min(...prices, ...markerPrices);
+  let max = Math.max(...prices, ...markerPrices);
+  const pad = Math.max((max - min) * 0.12, max * 0.006, 0.01);
+  min -= pad;
+  max += pad;
+  const x = (index) => left + (index / Math.max(1, trend.length - 1)) * plotW;
+  const y = (price) => top + ((max - price) / Math.max(0.0001, max - min)) * plotH;
+  const markerIndexes = new Set(stockTrades.map((trade) => nearestIndex(trend, trendTime(trade.date, trade.time))).filter((index) => index >= 0));
+  const points = trend
+    .map((item, index) => ({ item, index }))
+    .filter(({ index }) => index % 3 === 0 || markerIndexes.has(index) || index === trend.length - 1)
+    .map(({ item, index }) => `${x(index).toFixed(1)},${y(item.price).toFixed(1)}`)
+    .join(" ");
+  const markers = stockTrades.map((trade, index) => {
+    const trendIndex = nearestIndex(trend, trendTime(trade.date, trade.time));
+    if (trendIndex < 0) return "";
+    const mx = x(trendIndex);
+    const my = y(trade.price);
+    const isBuy = trade.sideType === "buy";
+    const labelY = Math.max(14, my - 12 - (index % 4) * 10);
+    const labelX = Math.min(width - 30, Math.max(30, mx + ((index % 3) - 1) * 16));
+    const shape = isBuy
+      ? `<path d="M ${mx.toFixed(1)} ${(my - 8).toFixed(1)} L ${(mx - 7).toFixed(1)} ${(my + 6).toFixed(1)} L ${(mx + 7).toFixed(1)} ${(my + 6).toFixed(1)} Z" fill="#c2412d" stroke="#fff" stroke-width="2"></path>`
+      : `<path d="M ${mx.toFixed(1)} ${(my + 8).toFixed(1)} L ${(mx - 7).toFixed(1)} ${(my - 6).toFixed(1)} L ${(mx + 7).toFixed(1)} ${(my - 6).toFixed(1)} Z" fill="#1d4ed8" stroke="#fff" stroke-width="2"></path>`;
+    return `<g><title>${escapeHtml(stock.name)} ${escapeHtml(trade.side)} ${cnDate(trade.date)} ${trade.time} ${trade.price.toFixed(3)} / ${trade.qty}股</title><line x1="${mx.toFixed(1)}" x2="${mx.toFixed(1)}" y1="${my.toFixed(1)}" y2="${height - bottom}" stroke="rgba(28,37,48,.18)" stroke-dasharray="3 5"></line>${shape}<text x="${labelX.toFixed(1)}" y="${labelY.toFixed(1)}" text-anchor="middle" class="point-label">${isBuy ? "B" : "S"}</text></g>`;
+  }).join("");
+  const dateStart = trend[0].time.slice(5, 16);
+  const dateEnd = trend[trend.length - 1].time.slice(5, 16);
+  const pointList = stockTrades.map((trade) => `<div class="trade-point-item"><span><b class="${trade.sideType === "buy" ? "buy" : "sell"}">${escapeHtml(trade.side)}</b> ${cnDate(trade.date).slice(5)} ${trade.time}</span><strong>${trade.price.toFixed(3)} / ${trade.qty.toLocaleString("en-US")} 股</strong></div>`).join("");
+
+  return `<div class="trade-map"><div class="trade-map-head"><h4>5 日分钟线买卖点</h4><div class="trade-legend"><span class="legend-item"><i class="legend-shape buy"></i>买入</span><span class="legend-item"><i class="legend-shape sell"></i>卖出</span></div></div><div class="trade-chart-wrap"><svg class="trade-chart" viewBox="0 0 ${width} ${height}" role="img" aria-label="${escapeHtml(stock.name)}分钟走势与买卖点"><rect x="0" y="0" width="${width}" height="${height}" rx="10" fill="#fff"></rect><line x1="${left}" x2="${width - right}" y1="${height - bottom}" y2="${height - bottom}" stroke="#e5e7eb"></line><line x1="${left}" x2="${width - right}" y1="${top}" y2="${top}" stroke="#edf0f3"></line><text x="${left}" y="17" class="axis-label">高 ${max.toFixed(2)}</text><text x="${width - right}" y="17" text-anchor="end" class="axis-label">低 ${min.toFixed(2)}</text><polyline points="${points}" class="market-line"></polyline>${markers}<text x="${left}" y="${height - 10}" text-anchor="start" class="axis-label">${escapeHtml(dateStart)}</text><text x="${width - right}" y="${height - 10}" text-anchor="end" class="axis-label">${escapeHtml(dateEnd)}</text></svg></div><div class="trade-point-list">${pointList}</div></div>`;
 }
 
 function timelineX(row) {
@@ -569,7 +737,94 @@ function renderMissingItems() {
   return missingItems.map((item) => `<li>${item}</li>`).join("");
 }
 
-function renderWeekPage() {
+function renderStockCards(trends) {
+  return stockCardOrder.map((code) => {
+    const item = grouped.find((row) => row.code === code) || {
+      code,
+      name: stockDisplayNames[code] || code,
+      buyQty: 0,
+      sellQty: 0,
+      buyCash: 0,
+      sellCash: 0,
+    };
+    const name = stockDisplayNames[code] || item.name;
+    const openQty = Math.max(0, item.buyQty - item.sellQty);
+    const pnl = Object.prototype.hasOwnProperty.call(closedPnL, code) ? closedPnL[code] : null;
+    const chipText = pnl != null ? money(pnl) : code === "588010" ? "持仓待确认" : "历史成本待补";
+    const chipClass = pnl == null ? "warn" : classByValue(pnl);
+    const note = stockNotes[code] || { headline: "该票待补分析。", bullets: ["后续补充对应操作与情绪分析。"] };
+    return `<article class="stock-card">
+      <div class="stock-top">
+        <div><h3>${escapeHtml(name)}</h3><p>${code} · 买入 ${item.buyQty.toLocaleString("en-US")} 股 / 卖出 ${item.sellQty.toLocaleString("en-US")} 股${openQty ? ` / 未平 ${openQty.toLocaleString("en-US")} 股` : ""}</p></div>
+        <span class="chip ${chipClass}">${escapeHtml(chipText)}</span>
+      </div>
+      <p><strong>${escapeHtml(note.headline)}</strong></p>
+      <ul class="trade-context">${note.bullets.map((line) => `<li>${escapeHtml(line)}</li>`).join("")}</ul>
+      ${renderMinuteChart({ code, name }, trends[code] || [])}
+    </article>`;
+  }).join("");
+}
+
+function renderLegacyOverviewSections() {
+  const contributionRows = [
+    { name: "半导体 / 芯片 ETF 篮子", code: "512760 / 588170 / 588710 / 588890 / 589260", pnl: chipBasketPnl, note: "同主题多 ETF 同时铺开，本质是一笔半导体方向仓位，是本周最明确的闭环亏损来源。" },
+    { name: "太极实业", code: "600667", pnl: closedPnL["600667"], note: "不是当时最明确的唯一核心，7/1 试错、7/2 早盘撤退。" },
+    { name: "海南海药", code: "000566", pnl: closedPnL["000566"], note: "隔日小幅保本离场，风险没有扩大。" },
+  ];
+  const maxAbs = Math.max(...contributionRows.map((row) => Math.abs(row.pnl)), 1);
+  return `<section class="two-col">
+    <article class="panel" id="legacy-account">
+      <h2>交割单 + 账户口径核算</h2>
+      <p>本周交割单覆盖 2026/6/29 至 2026/7/3。账户口径按你补充的每日收益表入账：本周账户盈亏 ${money(accountPnl)}，日收益率合计 ${pct(accountReturnSum)}，平均周仓位 ${avgPosition.toFixed(2)}%。现金流不直接等于收益，6/29 跨周卖出的亨通光电和亨通股份仍缺历史成本，7/3 新开的科创新材ETF仍缺期末持仓市价。</p>
+      <div class="mini-grid">
+        <span>账户周盈亏 <b class="${classByValue(accountPnl)}">${money(accountPnl)}</b></span>
+        <span>收益率合计 <b class="${classByValue(accountReturnSum)}">${pct(accountReturnSum)}</b></span>
+        <span>平均周仓位 <b>${avgPosition.toFixed(2)}%</b></span>
+        <span>期末权益 <b>${rawMoney(endingEquity)}</b></span>
+        <span>期末现金 <b>${rawMoney(finalCash)}</b></span>
+        <span>推算持仓市值 <b>${rawMoney(inferredStockValue)}</b></span>
+        <span>期末仓位 <b>${endingPosition.toFixed(2)}%</b></span>
+        <span>费用税费 <b>${rawMoney(totalCost)}</b></span>
+      </div>
+      <div class="account-days">${accountDays.map((day) => `<div class="account-day"><strong>${escapeHtml(day.date)} ${escapeHtml(day.weekday)}</strong><span>当日盈亏 <b class="${classByValue(day.pnl)}">${money(day.pnl)}</b></span><span>收益率 <b class="${classByValue(day.returnRate)}">${pct(day.returnRate)}</b></span><span>仓位 <b>${day.position.toFixed(2)}%</b></span><span>总金额 <b>${rawMoney(day.equity)}</b></span></div>`).join("")}</div>
+    </article>
+    <article class="panel">
+      <h2>先版结论</h2>
+      <ul class="takeaways">
+        <li>本周最大问题不是交易次数，而是半导体/芯片 ETF 篮子在同一主题上形成集中暴露，7/2 早盘撤退后闭环约 ${money(chipBasketPnl)}。</li>
+        <li>太极实业试错亏损约 ${money(closedPnL["600667"])}，核心是买前没有把“题材第一性”和“唯一性”确认到位。</li>
+        <li>海南海药基本保本，说明隔日不强时能处理；但它不是本周主要收益来源。</li>
+        <li>7/3 尾盘转入科创新材ETF，当前只能按持仓待确认处理，下周一必须先写强弱验证和止损预案。</li>
+      </ul>
+    </article>
+  </section>
+  <section class="two-col">
+    <article class="panel">
+      <h2>闭环贡献</h2>
+      <p class="section-note">这里统计已平仓且能由本周交割单直接锁定的部分；跨周卖出的亨通系因缺历史成本暂不纳入真实盈亏。</p>
+      <div class="bar-list">${contributionRows.map((row) => {
+        const width = Math.max(12, Math.min(100, Math.abs(row.pnl) / maxAbs * 100));
+        return `<div class="bar-row"><div class="bar-meta"><span>${escapeHtml(row.name)} ${escapeHtml(row.code)}</span><strong class="${classByValue(row.pnl)}">${money(row.pnl)}</strong></div><div class="bar-track"><span class="${row.pnl < 0 ? "is-loss" : "is-profit"}" style="width:${width.toFixed(1)}%"></span></div><p>${escapeHtml(row.note)}</p></div>`;
+      }).join("")}</div>
+    </article>
+    <article class="panel">
+      <h2>未卖持仓市值推算</h2>
+      <p class="section-note">7/3 尾盘买入科创新材ETF博时 2800 股，含费成本约 ${rawMoney(openPositionCost)}。当前缺期末持仓截图，所以这里只按账户期末权益和现金余额反推持仓市值，后续以券商截图校准。</p>
+      <div class="mini-grid">
+        <span>科创新材ETF 持仓 <b>2,800 股</b></span>
+        <span>含费成本 <b>${rawMoney(openPositionCost)}</b></span>
+        <span>期末现金 <b>${rawMoney(finalCash)}</b></span>
+        <span>期末权益 <b>${rawMoney(endingEquity)}</b></span>
+        <span>推算持仓市值 <b>${rawMoney(inferredStockValue)}</b></span>
+        <span>推算浮盈亏 <b class="${classByValue(inferredStockValue - openPositionCost)}">${money(inferredStockValue - openPositionCost)}</b></span>
+        <span>期末仓位 <b>${endingPosition.toFixed(2)}%</b></span>
+        <span>状态 <b>待截图确认</b></span>
+      </div>
+    </article>
+  </section>`;
+}
+
+function renderWeekPage(trends = {}) {
   const chipRows = trades.filter((row) => ["512760", "588170", "588710", "588890", "589260"].includes(row.code));
   const hainanRows = trades.filter((row) => row.code === "000566");
   const taijiRows = trades.filter((row) => row.code === "600667");
@@ -586,11 +841,11 @@ function renderWeekPage() {
     :root{--bg:#f6f7f8;--panel:#fff;--ink:#1c2530;--muted:#667085;--line:#dfe4ea;--soft:#f2f5f8;--accent:#c2412d;--accent-soft:#fff1ed;--red:#c2412d;--green:#14845f;--blue:#1d4ed8;--amber:#b76305;--shadow:0 18px 44px rgba(28,37,48,.08);--radius:12px}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(180deg,#f7f8fa 0%,#eef2f5 100%);color:var(--ink);font-family:"Avenir Next","PingFang SC","Noto Sans SC","Microsoft YaHei",Arial,sans-serif}
     a{color:inherit}.shell{width:min(1480px,calc(100vw - 24px));margin:0 auto;padding:18px 0 48px;display:grid;grid-template-columns:176px 1fr;gap:18px}.side{position:sticky;top:16px;align-self:start;background:rgba(255,255,255,.95);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px;display:grid;gap:8px}.side h2{font-size:13px;margin:0 0 4px;color:var(--muted)}.side a{min-height:34px;display:flex;align-items:center;padding:7px 9px;border-radius:8px;text-decoration:none;font-size:13px;color:var(--muted)}.side a:hover{background:var(--soft);color:var(--ink)}
-    .page{display:grid;gap:18px}.hero,.panel,.metric,.ticket-card,.daily-card,.trade-map{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.hero{padding:26px;display:grid;grid-template-columns:1.15fr .85fr;gap:22px;align-items:end}.label{display:inline-flex;width:max-content;max-width:100%;padding:7px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:800}.hero h1{margin:14px 0 12px;font-size:clamp(34px,5vw,66px);line-height:1.04;letter-spacing:0}.hero p,.panel p,.daily-card p,.ticket-card p,.caption,li{color:var(--muted);line-height:1.72}.hero-side,.metric-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.metric{padding:16px;display:grid;gap:8px;min-height:104px}.metric span,.metric small{color:var(--muted);font-size:12px}.metric strong{font-size:24px}.panel{padding:24px}.panel h2{margin:0 0 12px;font-size:24px}.section-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:16px}.section-head p{margin:6px 0 0}.chip{display:inline-flex;align-items:center;white-space:nowrap;border:1px solid var(--line);border-radius:999px;padding:7px 10px;background:#f8fafc;color:var(--muted);font-size:12px;font-weight:800}.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.info-card{border:1px solid var(--line);border-radius:10px;background:#fff;padding:16px}.info-card h3{margin:0 0 8px;font-size:18px}.is-profit,.buy-text{color:var(--red)}.is-loss,.sell-text{color:var(--green)}.warn{color:var(--amber)}
-    .source-strip{display:grid;grid-template-columns:1.1fr .9fr;gap:14px}.quote{border-left:4px solid var(--accent);padding:12px 14px;background:#fff7ed;border-radius:0 10px 10px 0;color:var(--ink);font-weight:700}.ticket-list,.daily-grid,.day-list,.trade-map-grid{display:grid;gap:14px}.ticket-head,.trade-map-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}.ticket-head h3,.trade-map h3{font-size:21px;margin:8px 0 4px}.ticket-head strong{font-size:24px}.note-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.note-grid p{background:#f8fafc;border:1px solid var(--line);border-radius:10px;margin:0;padding:12px}.note-grid b{display:block;color:var(--ink);margin-bottom:4px}.daily-grid{grid-template-columns:repeat(5,minmax(0,1fr))}.daily-card{padding:16px}.daily-card span{font-size:12px;color:var(--muted);font-weight:800}.daily-card h3{font-size:17px;margin:8px 0}.day-card{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}.day-card.good{border-color:rgba(20,132,95,.28)}.day-card.warn{border-color:rgba(183,99,5,.28)}.day-card>span,.day-head span{font-size:12px;color:var(--muted);font-weight:800}.day-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}.day-head h3{font-size:21px;margin:8px 0 6px}.day-head p{margin:0}.chip-good{background:#ecfdf3;color:#067647;border-color:rgba(20,132,95,.26)}.chip-warn{background:#fff7ed;color:#b76305;border-color:rgba(183,99,5,.26)}.daily-account{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}.daily-account b,.daily-account span{display:inline-flex;align-items:center;min-height:26px;padding:4px 8px;border-radius:999px;background:#f8fafc;border:1px solid var(--line);font-size:12px}.raw-note-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:12px}.raw-note-grid section{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:12px;min-width:0}.raw-note-grid h4{margin:0 0 6px;font-size:14px;color:var(--ink)}.raw-note-grid p{margin:0;font-size:13px}.source-link{display:inline-flex;margin-top:8px;color:var(--blue);font-size:12px;font-weight:800;text-decoration:none}.source-link:hover{text-decoration:underline}.account-chart-wrap{margin-top:14px;overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:#fff}.account-chart{display:block;width:100%;min-width:780px;height:auto}.daily-chart-label,.position-label,.daily-money-label,.trade-price-label,.trade-lane-label{font-size:11px;font-weight:900;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}.position-label{fill:var(--blue)}.daily-money-label{fill:var(--ink);font-size:10px}.trade-price-label{fill:var(--ink)}.trade-lane-label{fill:var(--ink)}.account-table{margin-top:14px}.daily-card.good{border-color:rgba(20,132,95,.28)}.daily-card.warn{border-color:rgba(183,99,5,.28)}.trade-map{padding:16px}.trade-chart-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:#fff}.trade-chart{display:block;width:100%;min-width:780px;height:auto}.axis{font-size:12px;fill:var(--muted)}.buy-dot{color:var(--red);fill:var(--red)}.sell-dot{color:var(--blue);fill:var(--blue)}.buy-dot text,.sell-dot text{fill:#fff;font-size:10px;font-weight:900}.marker-label{fill:var(--ink)!important;stroke:#fff;stroke-width:4px;paint-order:stroke;font-size:10px;font-weight:800}.caption{font-size:13px;margin:10px 0 0}
+    .page{display:grid;gap:18px}.hero,.panel,.metric,.ticket-card,.daily-card,.trade-map,.stock-card{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.hero{padding:26px;display:grid;grid-template-columns:1.15fr .85fr;gap:22px;align-items:end}.label{display:inline-flex;width:max-content;max-width:100%;padding:7px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:800}.hero h1{margin:14px 0 12px;font-size:clamp(34px,5vw,66px);line-height:1.04;letter-spacing:0}.hero p,.panel p,.daily-card p,.ticket-card p,.caption,li{color:var(--muted);line-height:1.72}.hero-side,.metric-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.metric{padding:16px;display:grid;gap:8px;min-height:104px}.metric span,.metric small{color:var(--muted);font-size:12px}.metric strong{font-size:24px}.panel{padding:24px}.panel h2{margin:0 0 12px;font-size:24px}.section-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:16px}.section-head p{margin:6px 0 0}.chip{display:inline-flex;align-items:center;white-space:nowrap;border:1px solid var(--line);border-radius:999px;padding:7px 10px;background:#f8fafc;color:var(--muted);font-size:12px;font-weight:800}.chip.is-profit{background:#fef2f2;color:#991b1b}.chip.is-loss{background:#ecfdf3;color:#067647}.chip.warn{background:#fff7ed;color:#b76305}.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.two-col{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.info-card{border:1px solid var(--line);border-radius:10px;background:#fff;padding:16px}.info-card h3{margin:0 0 8px;font-size:18px}.is-profit,.buy-text{color:var(--red)}.is-loss,.sell-text{color:var(--green)}.warn{color:var(--amber)}.old-trade-section{display:none!important}
+    .source-strip{display:grid;grid-template-columns:1.1fr .9fr;gap:14px}.quote{border-left:4px solid var(--accent);padding:12px 14px;background:#fff7ed;border-radius:0 10px 10px 0;color:var(--ink);font-weight:700}.mini-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.mini-grid span{background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:10px;color:var(--muted);font-size:13px;min-width:0}.mini-grid b{display:block;color:var(--ink);margin-top:4px;overflow-wrap:anywhere}.mini-grid b.is-profit{color:var(--red)}.mini-grid b.is-loss{color:var(--green)}.account-days{display:grid;gap:8px;margin-top:14px}.account-day{display:grid;grid-template-columns:138px repeat(4,minmax(0,1fr));gap:8px;align-items:center;background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:10px;min-width:0}.account-day strong{font-size:13px}.account-day span{color:var(--muted);font-size:12px;line-height:1.45;min-width:0}.account-day b{display:block;color:var(--ink);margin-top:2px}.account-day b.is-profit{color:var(--red)}.account-day b.is-loss{color:var(--green)}.takeaways{padding-left:20px}.bar-list{display:grid;gap:12px}.bar-meta{display:flex;justify-content:space-between;gap:12px;align-items:baseline}.bar-track{height:10px;background:var(--soft);border-radius:999px;overflow:hidden}.bar-track span{display:block;height:100%;border-radius:inherit;background:var(--red)}.bar-track span.is-loss{background:var(--green)}.bar-row p{margin:6px 0 0;font-size:12px}.ticket-list,.daily-grid,.day-list,.trade-map-grid,.stock-grid{display:grid;gap:14px}.stock-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stock-card{padding:18px}.stock-top{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}.stock-top h3{font-size:21px;margin:0 0 8px}.stock-top p{margin:0}.trade-context{display:grid;gap:6px;margin:0 0 12px;padding-left:18px}.trade-context li{font-size:13px;line-height:1.55;color:var(--muted)}.ticket-head,.trade-map-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}.ticket-head h3,.trade-map h3{font-size:21px;margin:8px 0 4px}.ticket-head strong{font-size:24px}.note-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.note-grid p{background:#f8fafc;border:1px solid var(--line);border-radius:10px;margin:0;padding:12px}.note-grid b{display:block;color:var(--ink);margin-bottom:4px}.daily-grid{grid-template-columns:repeat(5,minmax(0,1fr))}.daily-card{padding:16px}.daily-card span{font-size:12px;color:var(--muted);font-weight:800}.daily-card h3{font-size:17px;margin:8px 0}.day-card{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}.day-card.good{border-color:rgba(20,132,95,.28)}.day-card.warn{border-color:rgba(183,99,5,.28)}.day-card>span,.day-head span{font-size:12px;color:var(--muted);font-weight:800}.day-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}.day-head h3{font-size:21px;margin:8px 0 6px}.day-head p{margin:0}.chip-good{background:#ecfdf3;color:#067647;border-color:rgba(20,132,95,.26)}.chip-warn{background:#fff7ed;color:#b76305;border-color:rgba(183,99,5,.26)}.daily-account{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}.daily-account b,.daily-account span{display:inline-flex;align-items:center;min-height:26px;padding:4px 8px;border-radius:999px;background:#f8fafc;border:1px solid var(--line);font-size:12px}.raw-note-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:12px}.raw-note-grid section{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:12px;min-width:0}.raw-note-grid h4{margin:0 0 6px;font-size:14px;color:var(--ink)}.raw-note-grid p{margin:0;font-size:13px}.source-link{display:inline-flex;margin-top:8px;color:var(--blue);font-size:12px;font-weight:800;text-decoration:none}.source-link:hover{text-decoration:underline}.account-chart-wrap{margin-top:14px;overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:#fff}.account-chart{display:block;width:100%;min-width:780px;height:auto}.daily-chart-label,.position-label,.daily-money-label,.trade-price-label,.trade-lane-label{font-size:11px;font-weight:900;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}.position-label{fill:var(--blue)}.daily-money-label{fill:var(--ink);font-size:10px}.trade-price-label{fill:var(--ink)}.trade-lane-label{fill:var(--ink)}.account-table{margin-top:14px}.daily-card.good{border-color:rgba(20,132,95,.28)}.daily-card.warn{border-color:rgba(183,99,5,.28)}.trade-map{padding:16px;margin-top:14px;background:#f8fafc}.trade-map-head h4{margin:0;font-size:15px}.trade-legend{display:flex;gap:8px;color:var(--muted);font-size:12px}.legend-item{display:inline-flex;align-items:center;gap:5px}.legend-shape{width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent}.legend-shape.buy{border-bottom:11px solid var(--red)}.legend-shape.sell{border-top:11px solid var(--blue)}.trade-chart-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:#fff}.trade-chart{display:block;width:100%;min-width:780px;height:auto}.axis,.axis-label{font-size:12px;fill:var(--muted)}.market-line{fill:none;stroke:#14956f;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.point-label{fill:var(--ink);font-size:11px;font-weight:800;paint-order:stroke;stroke:#fff;stroke-width:3px}.buy-dot{color:var(--red);fill:var(--red)}.sell-dot{color:var(--blue);fill:var(--blue)}.buy-dot text,.sell-dot text{fill:#fff;font-size:10px;font-weight:900}.marker-label{fill:var(--ink)!important;stroke:#fff;stroke-width:4px;paint-order:stroke;font-size:10px;font-weight:800}.trade-point-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.trade-point-item{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:40px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:#fff;font-size:12px;color:var(--muted);min-width:0}.trade-point-item span{min-width:0;overflow-wrap:anywhere}.trade-point-item strong{color:var(--ink);white-space:nowrap}.trade-point-item .buy{color:var(--red);font-weight:800}.trade-point-item .sell{color:var(--blue);font-weight:800}.caption{font-size:13px;margin:10px 0 0}
     .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:10px;background:#fff}table{width:100%;border-collapse:collapse;min-width:980px;font-size:13px}th,td{padding:10px 12px;border-bottom:1px solid var(--line);white-space:nowrap;text-align:right}th:first-child,td:first-child,th:nth-child(2),td:nth-child(2),th:nth-child(3),td:nth-child(3),th:nth-child(4),td:nth-child(4){text-align:left}th{background:#f8fafc;color:var(--muted);font-weight:800}tr:last-child td{border-bottom:0}.rules{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.rule{border:1px solid var(--line);border-radius:10px;background:#fff;padding:16px}.rule h3{margin:0 0 8px}.missing{border:2px solid rgba(183,99,5,.24);background:linear-gradient(135deg,#fff7ed 0%,#fff 65%)}.missing ul{margin:8px 0 0;padding-left:20px}
-    @media(max-width:1100px){.shell{grid-template-columns:minmax(0,1fr);overflow-x:hidden}.page,.hero,.panel,.metric,.ticket-card,.daily-card,.day-card,.trade-map,.source-strip,.grid-2,.grid-3,.daily-grid,.day-list,.rules,.note-grid,.raw-note-grid{min-width:0;max-width:100%}.page{width:100%;overflow-x:hidden}.panel{overflow-x:hidden}.side{position:sticky;top:0;z-index:10;width:100%;max-width:100%;min-width:0;display:flex;overflow-x:auto;border-radius:0 0 var(--radius) var(--radius)}.side h2{display:none}.side a{flex:0 0 auto}.hero,.source-strip,.grid-2{grid-template-columns:minmax(0,1fr)}.daily-grid,.rules,.grid-3,.raw-note-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.note-grid{grid-template-columns:minmax(0,1fr)}}
-    @media(max-width:720px){html,body{overflow-x:hidden}.shell{width:min(100vw - 14px,1480px);padding-top:0}.hero,.panel{padding:18px}.hero-side,.metric-grid,.daily-grid,.rules,.grid-3,.raw-note-grid{grid-template-columns:minmax(0,1fr)}.hero h1{font-size:32px}.section-head,.ticket-head,.trade-map-head,.day-head{display:grid}}
+    @media(max-width:1100px){.shell{grid-template-columns:minmax(0,1fr);overflow-x:hidden}.page,.hero,.panel,.metric,.ticket-card,.daily-card,.day-card,.trade-map,.stock-card,.source-strip,.grid-2,.grid-3,.daily-grid,.day-list,.rules,.note-grid,.raw-note-grid,.two-col,.stock-grid{min-width:0;max-width:100%}.page{width:100%;overflow-x:hidden}.panel{overflow-x:hidden}.side{position:sticky;top:0;z-index:10;width:100%;max-width:100%;min-width:0;display:flex;overflow-x:auto;border-radius:0 0 var(--radius) var(--radius)}.side h2{display:none}.side a{flex:0 0 auto}.hero,.source-strip,.grid-2,.two-col{grid-template-columns:minmax(0,1fr)}.daily-grid,.rules,.grid-3,.raw-note-grid,.stock-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.note-grid{grid-template-columns:minmax(0,1fr)}}
+    @media(max-width:720px){html,body{overflow-x:hidden}.shell{width:min(100vw - 14px,1480px);padding-top:0}.hero,.panel{padding:18px}.hero-side,.metric-grid,.daily-grid,.rules,.grid-3,.raw-note-grid,.mini-grid,.stock-grid,.trade-point-list{grid-template-columns:minmax(0,1fr)}.account-day{grid-template-columns:1fr 1fr}.account-day strong{grid-column:1/-1}.hero h1{font-size:32px}.section-head,.ticket-head,.trade-map-head,.day-head,.stock-top{display:grid}.trade-chart{width:760px;max-width:none;min-width:0}}
   </style>
 </head>
 <body>
@@ -636,6 +891,8 @@ function renderWeekPage() {
         </div>
       </section>
 
+      ${renderLegacyOverviewSections()}
+
       <section class="panel" id="account">
         <div class="section-head"><div><h2>账户与持仓口径</h2><p>已按你补充的每日账户表更新，本周账户结果为 ${money(accountPnl)}，平均周仓位 ${avgPosition.toFixed(2)}%。</p></div><span class="chip">账户已补 · 持仓待补</span></div>
         <div class="grid-3">
@@ -668,14 +925,9 @@ function renderWeekPage() {
       </section>
 
       <section class="panel" id="stocks">
-        <div class="section-head"><div><h2>重点买卖点图</h2><p>单票按成交价画出真实 B/S 点，多 ETF 篮子按代码分行展示成交分布。当前不伪造完整分钟行情，后续拿到分时数据后再升级为真实价格曲线。</p></div><span class="chip">真实成交点 · 分时待补</span></div>
-        <div class="trade-map-grid">
-          ${renderTradeTimeline("半导体/芯片 ETF 篮子", "6/30-7/1 建仓，7/2 早盘集中撤退。", chipRows, `可见闭环合计 ${money(chipBasketPnl)}，是本周最明确的亏损来源。`, money(chipBasketPnl))}
-          ${renderTradeTimeline("海南海药", "7/2 买入 1800 股，7/3 竞价后卖出。", hainanRows, `闭环约 ${money(closedPnL["000566"])}，本质是小幅保本。`, money(closedPnL["000566"]))}
-          ${renderTradeTimeline("太极实业", "7/1 试错，7/2 早盘撤退。", taijiRows, `闭环约 ${money(closedPnL["600667"])}，需要复盘买入时是否具备题材第一性。`, money(closedPnL["600667"]))}
-          ${renderTradeTimeline("科创新材ETF博时", "7/3 尾盘买入，作为期末新持仓。", openRows, "只有买点，没有卖点和期末市价；下周必须补处理预案。", "持仓待补")}
-          ${renderTradeTimeline("亨通光电 / 亨通股份", "6/29 卖出跨周持仓。", priorRows, "缺上周买入成本，暂不计算盈亏。", "历史成本待补")}
-        </div>
+        <h2>重点走势图</h2>
+        <p class="section-note">用 5 日分钟线标出本周所有实际买卖过的股票。图是为了直观看买卖点和前后走势，不替代成交单。</p>
+        <div class="stock-grid">${renderStockCards(trends)}</div>
       </section>
 
       <section class="panel" id="rules">
@@ -858,11 +1110,23 @@ function renderRootHome() {
 </main></body></html>`;
 }
 
-fs.mkdirSync(weekDir, { recursive: true });
-fs.writeFileSync(path.join(weekDir, "index.html"), renderWeekPage(), "utf8");
-fs.writeFileSync(path.join(repo, "weekly-trading-review", "index.html"), renderWeeklyHub(), "utf8");
-fs.writeFileSync(path.join(repo, "index.html"), renderRootHome(), "utf8");
+async function main() {
+  const trends = {};
+  for (const code of Object.keys(secids)) {
+    trends[code] = await fetchTrend(code);
+  }
 
-console.log(`Wrote ${path.relative(repo, path.join(weekDir, "index.html"))}`);
-console.log(`Wrote weekly-trading-review/index.html`);
-console.log(`Wrote index.html`);
+  fs.mkdirSync(weekDir, { recursive: true });
+  fs.writeFileSync(path.join(weekDir, "index.html"), renderWeekPage(trends), "utf8");
+  fs.writeFileSync(path.join(repo, "weekly-trading-review", "index.html"), renderWeeklyHub(), "utf8");
+  fs.writeFileSync(path.join(repo, "index.html"), renderRootHome(), "utf8");
+
+  console.log(`Wrote ${path.relative(repo, path.join(weekDir, "index.html"))}`);
+  console.log(`Wrote weekly-trading-review/index.html`);
+  console.log(`Wrote index.html`);
+}
+
+main().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});
