@@ -766,9 +766,9 @@ function renderStockCards(trends) {
 
 function renderLegacyOverviewSections() {
   const contributionRows = [
-    { name: "半导体 / 芯片 ETF 篮子", code: "512760 / 588170 / 588710 / 588890 / 589260", pnl: chipBasketPnl, note: "同主题多 ETF 同时铺开，本质是一笔半导体方向仓位，是本周最明确的闭环亏损来源。" },
-    { name: "太极实业", code: "600667", pnl: closedPnL["600667"], note: "不是当时最明确的唯一核心，7/1 试错、7/2 早盘撤退。" },
-    { name: "海南海药", code: "000566", pnl: closedPnL["000566"], note: "隔日小幅保本离场，风险没有扩大。" },
+    { name: "半导体 / 芯片 ETF 篮子", code: "512760 / 588170 / 588710 / 588890 / 589260", pnl: chipBasketPnl, note: "ETF 方向本身可做，亏在科技连续高潮后没有三高砸盘，浮盈没有转成防守。" },
+    { name: "太极实业", code: "600667", pnl: closedPnL["600667"], note: "趋势个股试错失败，不是当时最明确的唯一核心，不能承担主仓位预期。" },
+    { name: "海南海药", code: "000566", pnl: closedPnL["000566"], note: "隔日小幅保本离场，风险没有扩大，说明处理弱修复票时纪律还在。" },
   ];
   const maxAbs = Math.max(...contributionRows.map((row) => Math.abs(row.pnl)), 1);
   return `<section class="two-col">
@@ -790,10 +790,10 @@ function renderLegacyOverviewSections() {
     <article class="panel">
       <h2>先版结论</h2>
       <ul class="takeaways">
-        <li>本周最大问题不是交易次数，而是半导体/芯片 ETF 篮子在同一主题上形成集中暴露，7/2 早盘撤退后闭环约 ${money(chipBasketPnl)}。</li>
-        <li>太极实业试错亏损约 ${money(closedPnL["600667"])}，核心是买前没有把“题材第一性”和“唯一性”确认到位。</li>
-        <li>海南海药基本保本，说明隔日不强时能处理；但它不是本周主要收益来源。</li>
-        <li>7/3 尾盘转入科创新材ETF，当前只能按持仓待确认处理，下周一必须先写强弱验证和止损预案。</li>
+        <li>本周最大问题不是交易次数，而是科技趋势退潮节奏没有处理好：三高阶段没有砸，浮盈没有先保护住。</li>
+        <li>趋势行情里 ETF 是更适合当前体系的工具；中屁股和趋势个股可以小仓试错，但不能在看不准时承担主仓位。</li>
+        <li>6/29 亨通光电、亨通股份的亏损根源，是科技趋势尾段还去做个股；7/2 的亏损根源，是科技退潮时 ETF 没有高位撤退。</li>
+        <li>7/3 尾盘转入科创新材ETF，方向上更贴近趋势 ETF 打法，但下周一仍必须先写强弱验证、止损线和是否加仓条件。</li>
       </ul>
     </article>
   </section>
@@ -869,7 +869,7 @@ function renderWeekPage(trends = {}) {
         <div>
           <span class="label">${week.rangeText} · ${week.status}</span>
           <h1>${week.title}</h1>
-          <p>本页已把交割单、你补充的每日账户数据和个人每日复盘摘要合并成第一版；期末持仓市价、跨周成本和二次反思等你后面补齐后再升级成正式版。</p>
+          <p>本页已把交割单、每日账户数据、个人每日复盘摘要和本周二次反思合并成一版；期末持仓市价与跨周成本后续补齐后，再校准持仓盈亏和历史持仓贡献。</p>
         </div>
         <div class="hero-side">
           ${renderMetric("可见闭环盈亏", money(visibleClosedLoopPnl), "不含跨周持仓卖出，不含期末浮动", classByValue(visibleClosedLoopPnl))}
