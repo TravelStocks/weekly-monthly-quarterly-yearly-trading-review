@@ -127,12 +127,36 @@ const chipBasketPnl = closedPnL["588890"] + closedPnL["589260"] + closedPnL["588
 const priorSellCash = trades.filter((row) => ["600487", "600226"].includes(row.code)).reduce((total, row) => total + row.net, 0);
 const openPositionCost = trades.filter((row) => row.code === "588010").reduce((total, row) => total + -row.net, 0);
 
+const accountDays = [
+  { weekday: "周一", date: "2026/06/29", returnRate: -3.67, pnl: -647, position: 0, equity: 17006 },
+  { weekday: "周二", date: "2026/06/30", returnRate: 1.51, pnl: 257, position: 67.4, equity: 17258 },
+  { weekday: "周三", date: "2026/07/01", returnRate: -0.62, pnl: -107, position: 99.9, equity: 17145 },
+  { weekday: "周四", date: "2026/07/02", returnRate: -7.5, pnl: -1284, position: 99.9, equity: 15829 },
+  { weekday: "周五", date: "2026/07/03", returnRate: 0.25, pnl: 40, position: 25, equity: 15858 },
+];
+const accountPnl = accountDays.reduce((total, day) => total + day.pnl, 0);
+const accountReturnSum = accountDays.reduce((total, day) => total + day.returnRate, 0);
+const avgPosition = accountDays.reduce((total, day) => total + day.position, 0) / accountDays.length;
+const endingEquity = accountDays.at(-1).equity;
+const endingPosition = accountDays.at(-1).position;
+const bestAccountDay = accountDays.reduce((best, day) => day.pnl > best.pnl ? day : best, accountDays[0]);
+const worstAccountDay = accountDays.reduce((worst, day) => day.pnl < worst.pnl ? day : worst, accountDays[0]);
+const inferredStockValue = Math.max(0, endingEquity - finalCash);
+
+const dailySources = {
+  d0629: "https://travelstocks.github.io/daily-trading-review/pages/%E7%AB%A0%E7%9B%9F%E4%B8%BB%E5%BC%8F%E8%B6%85%E7%9F%AD%E5%85%A8%E6%99%AF%E5%A4%8D%E7%9B%98%EF%BC%882026.6.29%20%E5%91%A8%E4%B8%80%EF%BC%89%2B%206.30%E4%B8%AA%E8%82%A1%E6%9D%BF%E5%9D%97%E9%A2%84%E6%A1%88%20-%20AI%E6%96%87%E6%A1%A3.html",
+  d0630: "https://travelstocks.github.io/daily-trading-review/pages/%E7%AB%A0%E7%9B%9F%E4%B8%BB%E5%BC%8F%E8%B6%85%E7%9F%AD%E5%85%A8%E6%99%AF%E5%A4%8D%E7%9B%98%EF%BC%882026.6.30%20%E5%91%A8%E4%BA%8C%EF%BC%89%2B%207.1%E4%B8%AA%E8%82%A1%E6%9D%BF%E5%9D%97%E9%A2%84%E6%A1%88%20-%20AI%E6%96%87%E6%A1%A3.html",
+  d0701: "https://travelstocks.github.io/daily-trading-review/pages/%E7%AB%A0%E7%9B%9F%E4%B8%BB%E5%BC%8F%E8%B6%85%E7%9F%AD%E5%85%A8%E6%99%AF%E5%A4%8D%E7%9B%98%EF%BC%882026.7.1%20%E5%91%A8%E4%B8%89%EF%BC%89%2B%207.2%E4%B8%AA%E8%82%A1%E6%9D%BF%E5%9D%97%E9%A2%84%E6%A1%88%20-%20AI%E5%85%A8%E9%87%8F%E6%96%87%E6%A1%A3.html",
+  d0702: "https://travelstocks.github.io/daily-trading-review/pages/%E7%AB%A0%E7%9B%9F%E4%B8%BB%E5%BC%8F%E8%B6%85%E7%9F%AD%E5%85%A8%E6%99%AF%E5%A4%8D%E7%9B%98%EF%BC%882026.7.2%20%E5%91%A8%E5%9B%9B%EF%BC%89%2B%207.3%E4%B8%AA%E8%82%A1%E6%9D%BF%E5%9D%97%E9%A2%84%E6%A1%88%20-%20AI%E6%96%87%E6%A1%A3.html",
+  d0703: "https://travelstocks.github.io/daily-trading-review/pages/%E7%AB%A0%E7%9B%9F%E4%B8%BB%E5%BC%8F%E8%B6%85%E7%9F%AD%E5%85%A8%E6%99%AF%E5%A4%8D%E7%9B%98%EF%BC%882026.7.3%20%E5%91%A8%E4%BA%94%EF%BC%89%2B%207.6%E4%B8%AA%E8%82%A1%E6%9D%BF%E5%9D%97%E9%A2%84%E6%A1%88%20-%20AI%E6%96%87%E6%A1%A3%EF%BC%88%E5%85%A8%E9%87%8F%E7%89%88%EF%BC%89.html",
+};
+
 const dailyCards = [
-  { day: "周一", date: "2026/06/29", title: "历史持仓先卖出，释放现金", text: "交割单显示卖出亨通光电、亨通股份，合计回笼现金 16,706.46 元。由于缺少上周买入成本，本页不把这两笔计入本周已确认盈亏，只记录为历史持仓处理。", tone: "neutral" },
-  { day: "周二", date: "2026/06/30", title: "半导体/芯片 ETF 篮子建仓", text: "买入芯片ETF国泰、科创半导体ETF华夏、科创半导体设备ETF华泰柏瑞、科创芯片设计ETF国泰，明显是在做半导体方向的主题试错。这里要注意：多个同主题 ETF 不是分散，实质是同一主题仓位集中。", tone: "warn" },
-  { day: "周三", date: "2026/07/01", title: "继续补 ETF，同时试错太极实业", text: "继续买入科创芯片ETF南方和芯片ETF国泰，并买入太极实业。后续 7/2 集中卖出说明这条线没有走出预期延续。", tone: "warn" },
-  { day: "周四", date: "2026/07/02", title: "半导体篮子撤退，转向海南海药", text: "早盘 09:31-09:32 附近集中卖出太极实业和多只半导体/芯片 ETF，能看出撤退比较统一；随后 10:15 买入海南海药 1800 股。", tone: "neutral" },
-  { day: "周五", date: "2026/07/03", title: "海南海药小幅闭环，尾盘转入科创新材ETF", text: "海南海药次日 09:30 卖出，按可见现金口径小赚 10.55 元；14:56 买入科创新材ETF博时 2800 股，成为本周可见的期末新持仓，后续需要补持仓截图和下周处理预案。", tone: "good" },
+  { day: "周一", date: "2026/06/29", title: "退潮期清仓，先把高位科技风险切掉", text: "账户亏损 -647，最终空仓。个人每日复盘的重点是：科技高位破位后止损果断，清掉亨通光电、亨通股份并等待新主线；问题是趋势启动早期介入慢，后续要么做核心中盘股，要么直接用 ETF 承接趋势。", tone: "neutral", sourceUrl: dailySources.d0629 },
+  { day: "周二", date: "2026/06/30", title: "方向判断对，ETF主仓执行还可更快", text: "账户修复 +257，仓位推到 67.40%。每日复盘认为科技、芯片、半导体仍是唯一主线，用 ETF 代替看不清的中盘核心是正确进化；改进点是早盘强分歧时上仓偏慢，ETF内部也要优先选择最强指数承载品种。", tone: "good", sourceUrl: dailySources.d0630 },
+  { day: "周三", date: "2026/07/01", title: "看出三高分歧，但没有把观察变成动作", text: "账户小亏 -107，仓位升到 99.90%。个人复盘确认已看到科技连续高潮、防守板块启动和一致转分歧，但 ETF 没设条件单、没在高胜率卖点兑现；核心规则是 ETF 也必须有止盈止损，三高不能幻想继续加速。", tone: "warn", sourceUrl: dailySources.d0701 },
+  { day: "周四", date: "2026/07/02", title: "最亏日：趋势后手叠加三高未砸", text: "账户亏损 -1,284，仓位仍接近满仓。每日复盘把问题说得很清楚：科技不是普通分歧，而是高位补跌和趋势破位；早盘自救不能当强修复，趋势票晚进没有利润垫，三高之后必须先砸、条件单必须提前。", tone: "warn", sourceUrl: dailySources.d0702 },
+  { day: "周五", date: "2026/07/03", title: "条件单保住回撤，小仓位转入科创新材试错", text: "账户小幅 +40，仓位降到 25.00%。海南海药不亏出局是正确动作，说明条件单纪律有效；尾盘科创新材ETF是两成多小仓位双冰/双兵试错，不是主线确认，下周必须按冲高兑现和弱修复不恋战处理。", tone: "good", sourceUrl: dailySources.d0703 },
 ];
 
 const ticketCards = [
@@ -184,11 +208,9 @@ const ticketCards = [
 ];
 
 const missingItems = [
-  "06/29-07/03 每日收益率、收益金额、仓位、当前总金额。",
   "7/3 或 7/4 期末持仓截图：科创新材ETF博时的市价、盈亏、仓位占比、总资产。",
   "亨通光电、亨通股份的上周买入成本或持仓成本，用于计算真实盈亏。",
-  "每日操作&情绪复盘 KISS 内容，以及本周二次反思总结。",
-  "本周你主观认定的主要赚钱票、亏损票、错误根源和下周执行规则。",
+  "本周二次反思总结：主要赚钱/亏损票、错误根源、情绪偏差和下周执行规则。",
   "如果要画真实分时买卖点图，需要提供分钟线数据或允许后续接入行情数据源。",
 ];
 
@@ -201,6 +223,7 @@ const hubWeeks = [
   { label: "06.08-06.12", title: "2026.06.08 - 2026.06.12", pnl: -466, equity: 22879, avgPosition: 49.19, bestDay: "周一 06-08 +1,996.00", worstDay: "周二 06-09 -2,492.00", href: "../2026-06-08_2026-06-12/", trades: "14 笔", status: "已发布" },
   { label: "06.15-06.20", title: "2026.06.15 - 2026.06.20", pnl: -299, equity: 22567, avgPosition: 44.68, bestDay: "周四 06-18 +409.00", worstDay: "周一 06-15 -627.00", href: "../2026-06-15_2026-06-20/", trades: "16 笔", status: "草稿版" },
   { label: "06.22-06.26*", title: "2026.06.22 - 2026.06.26", pnl: -4839.42, equity: 17671.22, displayEquity: "暂估 / 市值17,671.22", avgPosition: 92.57, bestDay: "周一 06-22 -405.22", worstDay: "周五 06-26 -4,839.42", href: "../2026-06-22_2026-06-26/", trades: "8 笔", status: "草稿版" },
+  { label: "06.29-07.04", title: "2026.06.29 - 2026.07.04", pnl: accountPnl, equity: endingEquity, avgPosition, bestDay: `${bestAccountDay.weekday} ${bestAccountDay.date.slice(5).replace("/", "-")} ${money(bestAccountDay.pnl)}`, worstDay: `${worstAccountDay.weekday} ${worstAccountDay.date.slice(5).replace("/", "-")} ${money(worstAccountDay.pnl)}`, href: "../2026-06-29_2026-07-04/", trades: "21 笔", status: "草稿版" },
 ];
 
 let peak = -Infinity;
@@ -314,12 +337,28 @@ function renderTicketCards() {
   </article>`).join("");
 }
 
+function renderAccountRows() {
+  return accountDays.map((day) => `<tr>
+    <td>${day.date}</td>
+    <td>${day.weekday}</td>
+    <td class="${classByValue(day.returnRate)}">${pct(day.returnRate)}</td>
+    <td class="${classByValue(day.pnl)}">${money(day.pnl)}</td>
+    <td>${day.position.toFixed(2)}%</td>
+    <td>${rawMoney(day.equity)}</td>
+  </tr>`).join("");
+}
+
 function renderDailyCards() {
-  return dailyCards.map((card) => `<article class="daily-card ${card.tone}">
+  return dailyCards.map((card) => {
+    const account = accountDays.find((day) => day.date === card.date);
+    return `<article class="daily-card ${card.tone}">
     <span>${card.day} · ${card.date}</span>
     <h3>${card.title}</h3>
+    ${account ? `<div class="daily-account"><b class="${classByValue(account.pnl)}">${money(account.pnl)}</b><span class="${classByValue(account.returnRate)}">${pct(account.returnRate)}</span><span>仓位 ${account.position.toFixed(2)}%</span></div>` : ""}
     <p>${card.text}</p>
-  </article>`).join("");
+    <a class="source-link" href="${card.sourceUrl}" target="_blank" rel="noreferrer">个人每日复盘来源</a>
+  </article>`;
+  }).join("");
 }
 
 function renderMissingItems() {
@@ -344,7 +383,7 @@ function renderWeekPage() {
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(180deg,#f7f8fa 0%,#eef2f5 100%);color:var(--ink);font-family:"Avenir Next","PingFang SC","Noto Sans SC","Microsoft YaHei",Arial,sans-serif}
     a{color:inherit}.shell{width:min(1480px,calc(100vw - 24px));margin:0 auto;padding:18px 0 48px;display:grid;grid-template-columns:176px 1fr;gap:18px}.side{position:sticky;top:16px;align-self:start;background:rgba(255,255,255,.95);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px;display:grid;gap:8px}.side h2{font-size:13px;margin:0 0 4px;color:var(--muted)}.side a{min-height:34px;display:flex;align-items:center;padding:7px 9px;border-radius:8px;text-decoration:none;font-size:13px;color:var(--muted)}.side a:hover{background:var(--soft);color:var(--ink)}
     .page{display:grid;gap:18px}.hero,.panel,.metric,.ticket-card,.daily-card,.trade-map{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.hero{padding:26px;display:grid;grid-template-columns:1.15fr .85fr;gap:22px;align-items:end}.label{display:inline-flex;width:max-content;max-width:100%;padding:7px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:800}.hero h1{margin:14px 0 12px;font-size:clamp(34px,5vw,66px);line-height:1.04;letter-spacing:0}.hero p,.panel p,.daily-card p,.ticket-card p,.caption,li{color:var(--muted);line-height:1.72}.hero-side,.metric-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.metric{padding:16px;display:grid;gap:8px;min-height:104px}.metric span,.metric small{color:var(--muted);font-size:12px}.metric strong{font-size:24px}.panel{padding:24px}.panel h2{margin:0 0 12px;font-size:24px}.section-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:16px}.section-head p{margin:6px 0 0}.chip{display:inline-flex;align-items:center;white-space:nowrap;border:1px solid var(--line);border-radius:999px;padding:7px 10px;background:#f8fafc;color:var(--muted);font-size:12px;font-weight:800}.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.info-card{border:1px solid var(--line);border-radius:10px;background:#fff;padding:16px}.info-card h3{margin:0 0 8px;font-size:18px}.is-profit,.buy-text{color:var(--red)}.is-loss,.sell-text{color:var(--green)}.warn{color:var(--amber)}
-    .source-strip{display:grid;grid-template-columns:1.1fr .9fr;gap:14px}.quote{border-left:4px solid var(--accent);padding:12px 14px;background:#fff7ed;border-radius:0 10px 10px 0;color:var(--ink);font-weight:700}.ticket-list,.daily-grid,.trade-map-grid{display:grid;gap:14px}.ticket-head,.trade-map-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}.ticket-head h3,.trade-map h3{font-size:21px;margin:8px 0 4px}.ticket-head strong{font-size:24px}.note-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.note-grid p{background:#f8fafc;border:1px solid var(--line);border-radius:10px;margin:0;padding:12px}.note-grid b{display:block;color:var(--ink);margin-bottom:4px}.daily-grid{grid-template-columns:repeat(5,minmax(0,1fr))}.daily-card{padding:16px}.daily-card span{font-size:12px;color:var(--muted);font-weight:800}.daily-card h3{font-size:17px;margin:8px 0}.daily-card.good{border-color:rgba(20,132,95,.28)}.daily-card.warn{border-color:rgba(183,99,5,.28)}.trade-map{padding:16px}.trade-chart-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:#fff}.trade-chart{display:block;width:100%;min-width:780px;height:auto}.axis{font-size:12px;fill:var(--muted)}.buy-dot{color:var(--red);fill:var(--red)}.sell-dot{color:var(--blue);fill:var(--blue)}.buy-dot text,.sell-dot text{fill:#fff;font-size:10px;font-weight:900}.marker-label{fill:var(--ink)!important;stroke:#fff;stroke-width:4px;paint-order:stroke;font-size:10px;font-weight:800}.caption{font-size:13px;margin:10px 0 0}
+    .source-strip{display:grid;grid-template-columns:1.1fr .9fr;gap:14px}.quote{border-left:4px solid var(--accent);padding:12px 14px;background:#fff7ed;border-radius:0 10px 10px 0;color:var(--ink);font-weight:700}.ticket-list,.daily-grid,.trade-map-grid{display:grid;gap:14px}.ticket-head,.trade-map-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}.ticket-head h3,.trade-map h3{font-size:21px;margin:8px 0 4px}.ticket-head strong{font-size:24px}.note-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.note-grid p{background:#f8fafc;border:1px solid var(--line);border-radius:10px;margin:0;padding:12px}.note-grid b{display:block;color:var(--ink);margin-bottom:4px}.daily-grid{grid-template-columns:repeat(5,minmax(0,1fr))}.daily-card{padding:16px}.daily-card span{font-size:12px;color:var(--muted);font-weight:800}.daily-card h3{font-size:17px;margin:8px 0}.daily-account{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}.daily-account b,.daily-account span{display:inline-flex;align-items:center;min-height:26px;padding:4px 8px;border-radius:999px;background:#f8fafc;border:1px solid var(--line);font-size:12px}.source-link{display:inline-flex;margin-top:8px;color:var(--blue);font-size:12px;font-weight:800;text-decoration:none}.source-link:hover{text-decoration:underline}.account-table{margin-top:14px}.daily-card.good{border-color:rgba(20,132,95,.28)}.daily-card.warn{border-color:rgba(183,99,5,.28)}.trade-map{padding:16px}.trade-chart-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:#fff}.trade-chart{display:block;width:100%;min-width:780px;height:auto}.axis{font-size:12px;fill:var(--muted)}.buy-dot{color:var(--red);fill:var(--red)}.sell-dot{color:var(--blue);fill:var(--blue)}.buy-dot text,.sell-dot text{fill:#fff;font-size:10px;font-weight:900}.marker-label{fill:var(--ink)!important;stroke:#fff;stroke-width:4px;paint-order:stroke;font-size:10px;font-weight:800}.caption{font-size:13px;margin:10px 0 0}
     .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:10px;background:#fff}table{width:100%;border-collapse:collapse;min-width:980px;font-size:13px}th,td{padding:10px 12px;border-bottom:1px solid var(--line);white-space:nowrap;text-align:right}th:first-child,td:first-child,th:nth-child(2),td:nth-child(2),th:nth-child(3),td:nth-child(3),th:nth-child(4),td:nth-child(4){text-align:left}th{background:#f8fafc;color:var(--muted);font-weight:800}tr:last-child td{border-bottom:0}.rules{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.rule{border:1px solid var(--line);border-radius:10px;background:#fff;padding:16px}.rule h3{margin:0 0 8px}.missing{border:2px solid rgba(183,99,5,.24);background:linear-gradient(135deg,#fff7ed 0%,#fff 65%)}.missing ul{margin:8px 0 0;padding-left:20px}
     @media(max-width:1100px){.shell{grid-template-columns:minmax(0,1fr);overflow-x:hidden}.page,.hero,.panel,.metric,.ticket-card,.daily-card,.trade-map,.source-strip,.grid-2,.grid-3,.daily-grid,.rules,.note-grid{min-width:0;max-width:100%}.page{width:100%;overflow-x:hidden}.panel{overflow-x:hidden}.side{position:sticky;top:0;z-index:10;width:100%;max-width:100%;min-width:0;display:flex;overflow-x:auto;border-radius:0 0 var(--radius) var(--radius)}.side h2{display:none}.side a{flex:0 0 auto}.hero,.source-strip,.grid-2{grid-template-columns:minmax(0,1fr)}.daily-grid,.rules,.grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}.note-grid{grid-template-columns:minmax(0,1fr)}}
     @media(max-width:720px){html,body{overflow-x:hidden}.shell{width:min(100vw - 14px,1480px);padding-top:0}.hero,.panel{padding:18px}.hero-side,.metric-grid,.daily-grid,.rules,.grid-3{grid-template-columns:minmax(0,1fr)}.hero h1{font-size:32px}.section-head,.ticket-head,.trade-map-head{display:grid}}
@@ -371,13 +410,13 @@ function renderWeekPage() {
         <div>
           <span class="label">${week.rangeText} · ${week.status}</span>
           <h1>${week.title}</h1>
-          <p>本页先根据你上传的交割单截图做第一版：能确认成交结构、闭环盈亏、期末新开持仓和待补材料；账户收益、期末总资产、每日情绪复盘和二次反思等你后面补齐后再覆盖成正式版。</p>
+          <p>本页已把交割单、你补充的每日账户数据和个人每日复盘摘要合并成第一版；期末持仓市价、跨周成本和二次反思等你后面补齐后再升级成正式版。</p>
         </div>
         <div class="hero-side">
           ${renderMetric("可见闭环盈亏", money(visibleClosedLoopPnl), "不含跨周持仓卖出，不含期末浮动", classByValue(visibleClosedLoopPnl))}
           ${renderMetric("成交笔数", `${trades.length} 笔`, `${buyRows.length} 买 / ${sellRows.length} 卖`)}
           ${renderMetric("期末可见持仓", "科创新材ETF", "588010 · 2800 股，市价待补")}
-          ${renderMetric("账户口径", "待补", "缺每日收益、仓位、总资产")}
+          ${renderMetric("账户口径", money(accountPnl), `日收益率合计 ${pct(accountReturnSum)}`, classByValue(accountPnl))}
         </div>
       </section>
 
@@ -389,17 +428,18 @@ function renderWeekPage() {
             ${renderMetric("费用税费", rawMoney(totalCost), `手续费 ${rawMoney(fees)} / 印花税 ${rawMoney(tax)}`)}
             ${renderMetric("可见现金变动", money(netCash), `期末截图现金余额 ${rawMoney(finalCash)}`, classByValue(netCash))}
           </div>
-          <div class="quote">注意：现金流不是收益。6/29 卖出的亨通光电、亨通股份缺少历史成本；7/3 新开的科创新材ETF缺少期末市价，所以账户层收益必须等你补材料。</div>
+          <div class="quote">注意：现金流不是收益。本周账户收益已按你补充的每日账户表入账；6/29 跨周卖出的亨通票仍缺历史成本，7/3 新开的科创新材ETF仍缺期末持仓市价。</div>
         </div>
       </section>
 
       <section class="panel" id="account">
-        <div class="section-head"><div><h2>账户与持仓口径</h2><p>当前只能确认交易行为和现金余额，不能确认本周账户真实收益率。</p></div><span class="chip">账户待补</span></div>
+        <div class="section-head"><div><h2>账户与持仓口径</h2><p>已按你补充的每日账户表更新，本周账户结果为 ${money(accountPnl)}，平均周仓位 ${avgPosition.toFixed(2)}%。</p></div><span class="chip">账户已补 · 持仓待补</span></div>
         <div class="grid-3">
-          <article class="info-card"><h3>可见期末现金</h3><p><b>${rawMoney(finalCash)} 元</b></p><p>来自 7/3 买入科创新材ETF后的资金余额。</p></article>
-          <article class="info-card"><h3>期末新持仓</h3><p><b>588010 科创新材ETF博时 · 2800 股</b></p><p>含费用成本约 ${rawMoney(openPositionCost)} 元，缺持仓市价和浮盈浮亏。</p></article>
-          <article class="info-card"><h3>可见闭环</h3><p><b class="${classByValue(visibleClosedLoopPnl)}">${money(visibleClosedLoopPnl)} 元</b></p><p>只统计本周内买卖闭环且数量匹配的标的。</p></article>
+          <article class="info-card"><h3>周账户结果</h3><p><b class="${classByValue(accountPnl)}">${money(accountPnl)} 元</b></p><p>日收益率合计 ${pct(accountReturnSum)}；最赚日 ${bestAccountDay.weekday} ${bestAccountDay.date.slice(5).replace("/", "-")} ${money(bestAccountDay.pnl)}，最亏日 ${worstAccountDay.weekday} ${worstAccountDay.date.slice(5).replace("/", "-")} ${money(worstAccountDay.pnl)}。</p></article>
+          <article class="info-card"><h3>期末权益与仓位</h3><p><b>${rawMoney(endingEquity)} 元</b></p><p>期末仓位 ${endingPosition.toFixed(2)}%，平均周仓位 ${avgPosition.toFixed(2)}%。</p></article>
+          <article class="info-card"><h3>资金结构</h3><p><b>现金 ${rawMoney(finalCash)} / 推算市值 ${rawMoney(inferredStockValue)}</b></p><p>期末新持仓为 588010 科创新材ETF博时 2800 股，市价和浮盈浮亏仍待截图确认。</p></article>
         </div>
+        <div class="table-wrap account-table"><table><thead><tr><th>日期</th><th>星期</th><th>收益率</th><th>收益金额</th><th>仓位</th><th>当前总金额</th></tr></thead><tbody>${renderAccountRows()}</tbody></table></div>
       </section>
 
       <section class="panel" id="ticket-analysis">
@@ -412,13 +452,13 @@ function renderWeekPage() {
         <div class="grid-2">
           <article class="info-card"><h3>做对的地方</h3><p>7/2 对半导体/芯片 ETF 篮子和太极实业做了集中撤退，说明当主题没有延续时，风险没有继续扩大；海南海药隔日小幅保本离场，也没有让小试错演变成大亏损。</p></article>
           <article class="info-card"><h3>需要追问的地方</h3><p>半导体 ETF 篮子铺得比较散，但方向高度同质，实际不是分散风险。后续要确认：当时买入是预案内主题试错，还是临盘看到板块异动后的分散追入。</p></article>
-          <article class="info-card"><h3>账户层不能下结论</h3><p>由于缺每日账户收益、期末持仓市值和跨周成本，本页暂不判断本周账户涨跌、最大回撤、最赚日和最亏日。</p></article>
+          <article class="info-card"><h3>账户层结论</h3><p>本周账户口径亏损 ${money(accountPnl)}，最大压力集中在 ${worstAccountDay.weekday} ${worstAccountDay.date.slice(5).replace("/", "-")}：${money(worstAccountDay.pnl)}。这一天对应科技趋势高位破位、ETF篮子撤退和满仓压力。</p></article>
           <article class="info-card"><h3>下周重点</h3><p>围绕科创新材ETF制定明确处理预案：若主题不能继续强化，按 ETF 试错处理；若主题走强，再看是否允许加仓或只做持有确认。</p></article>
         </div>
       </section>
 
       <section class="panel" id="daily">
-        <div class="section-head"><div><h2>逐日操作复盘</h2><p>当前用交割单还原每日交易路径；每日 KISS 情绪内容等你补，或后续再从个人每日复盘归档中逐条抽取。</p></div><span class="chip">每日情绪待补</span></div>
+        <div class="section-head"><div><h2>逐日操作复盘</h2><p>已从你的个人每日复盘站点摘取并压缩成周报口径；这里只保留操作与情绪重点，详细内容可点每张卡片的来源链接。</p></div><span class="chip">来源摘取版</span></div>
         <div class="daily-grid">${renderDailyCards()}</div>
       </section>
 
@@ -532,11 +572,11 @@ function renderArchiveCards() {
   const latest = {
     title: "2026.06.29 - 2026.07.04",
     href: "../2026-06-29_2026-07-04/",
-    text: "半导体/芯片 ETF 篮子试错后撤退，海南海药小幅闭环，周五转入科创新材ETF。账户收益与期末持仓等待补充。",
-    tags: ["21 笔", "10 标的", "账户待补"],
+    text: "半导体/芯片 ETF 篮子试错后撤退，海南海药小幅闭环，周五转入科创新材ETF。账户口径 -1,741，二次反思和期末持仓待补。",
+    tags: ["21 笔", money(accountPnl), "账户已补"],
     status: "草稿版",
   };
-  const previous = [...hubWeeks].reverse().map((item) => ({
+  const previous = [...hubWeeks].reverse().filter((item) => item.label !== "06.29-07.04").map((item) => ({
     title: item.title,
     href: item.href,
     text: item.label === "06.22-06.26*" ? "诺德止损后切入海欣/大唐，再回到芯片通信强线，期末持有亨通光电与亨通股份并按收盘价暂估浮亏。" : item.label === "06.15-06.20" ? "连板高度切到机构趋势核心，诺德股份为期末持仓。" : "历史周度交割复盘归档。",
@@ -555,11 +595,11 @@ function renderWeeklyHub() {
   return `<!DOCTYPE html>
 <html lang="zh-CN"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>周度交割复盘</title>${hubStyle()}</head>
 <body><main class="hub-shell">
-  <section class="hero"><div><span class="label">Weekly Trading Review</span><h1>周度交割复盘</h1><p>这里专门承载每周交割复盘：每一周一个独立页面，记录交割单、账户收益、买卖点图、逐日复盘和当周新增交易纪律。</p><div class="button-row"><a class="button" href="../2026-06-29_2026-07-04/">进入最新周复盘</a><a class="button secondary" href="../index.html">返回总首页</a></div></div><div class="metrics">${renderMetric("周报数量", "9", "已归档周数")}${renderMetric("最新区间", "06.29", "至 07.04")}${renderMetric("最新账户", "待补", "等待本周账户表")}${renderMetric("最新规则", "ETF篮子控险", "同主题 ETF 算一笔仓位")}</div></section>
+  <section class="hero"><div><span class="label">Weekly Trading Review</span><h1>周度交割复盘</h1><p>这里专门承载每周交割复盘：每一周一个独立页面，记录交割单、账户收益、买卖点图、逐日复盘和当周新增交易纪律。</p><div class="button-row"><a class="button" href="../2026-06-29_2026-07-04/">进入最新周复盘</a><a class="button secondary" href="../index.html">返回总首页</a></div></div><div class="metrics">${renderMetric("周报数量", "9", "已归档周数")}${renderMetric("最新区间", "06.29", "至 07.04")}${renderMetric("最新账户", money(accountPnl), `期末 ${rawMoney(endingEquity)} / 仓位 ${endingPosition.toFixed(2)}%`, classByValue(accountPnl))}${renderMetric("最新规则", "ETF篮子控险", "同主题 ETF 算一笔仓位")}</div></section>
   <section class="loss-banner"><h2>亏损源头</h2><div class="loss-grid"><article><b>1. 分歧接面</b><p>刚分歧不要那么快进去，先等承接和方向确认。</p></article><article><b>2. 主升空仓</b><p>主升期要贪婪重仓，核心龙头出现时不能缩在场外。</p></article><article><b>3. 冰点割肉</b><p>冰点还割肉，次日修复没先手，直接亏上加亏。</p></article><article><b>4. 退潮追涨</b><p>退潮期追涨，没等进入混沌就大出手，这就容易死。</p></article></div></section>
   <section class="panel cycle-motto"><span class="label">Cycle Motto</span><h2>周期格言</h2><div class="motto-grid"><article><h3>冰点割肉</h3><p>冰点是连续的大分歧：二冰反核，三冰反核（70%），四冰反核（100%）。</p></article><article><h3>高潮追高</h3><p>高潮是连续的强回流：二高砸盘，三高砸盘（成功率70%），四高砸盘（接近100%）。</p></article></div></section>
-  <section class="panel overview-panel"><div class="chart-head"><div><h2>每周资金曲线</h2><p>左轴看每周账户金额变化；右轴同时看累计回撤和当周涨跌/回撤。06.22-06.26 带 * 为暂估市值口径；本周 06.29-07.04 账户数据待补，暂不进入曲线。</p></div><div class="legend-row"><span><i class="legend amount"></i>金额变化</span><span><i class="legend drawdown"></i>累计回撤</span><span><i class="legend weekly"></i>当周涨跌/回撤</span></div></div>${renderHubChart()}<div class="table-wrap"><table><thead><tr><th>周区间</th><th>金额变化</th><th>当周涨跌/回撤</th><th>平均周仓位</th><th>期末权益</th><th>累计回撤</th><th>最赚日</th><th>最亏日</th></tr></thead><tbody>${renderHubRows()}</tbody></table></div><div class="summary-grid"><span>累计变化 <b class="${classByValue(cumulative)}">${money(cumulative)}</b></span><span>最大单周盈利 <b>${best.label} ${money(best.pnl)}</b></span><span>最大单周亏损 <b>${worst.label} ${money(worst.pnl)}</b></span><span>最新已入曲线 <b>${pct(latest.weekPct)}</b></span><span>最新累计回撤 <b>${pct(latest.drawdown)}</b></span><span>最大累计回撤 <b>${pct(maxDrawdown)}</b></span></div></section>
-  <section class="panel"><h2>最新周复盘</h2><a class="week-card" href="../2026-06-29_2026-07-04/"><div class="week-head"><div><h3>2026.06.29 - 2026.07.04</h3><p>半导体/芯片 ETF 篮子试错后撤退，海南海药小幅闭环，周五转入科创新材ETF。账户收益与期末持仓等待补充。</p></div><span class="chip">草稿版</span></div><div class="mini-grid"><span>成交 <b>21 笔</b></span><span>标的 <b>10 个</b></span><span>账户 <b>待补</b></span></div></a></section>
+  <section class="panel overview-panel"><div class="chart-head"><div><h2>每周资金曲线</h2><p>左轴看每周账户金额变化；右轴同时看累计回撤和当周涨跌/回撤。06.22-06.26 带 * 为暂估市值口径；06.29-07.04 已按账户表入曲线，期末持仓截图待补。</p></div><div class="legend-row"><span><i class="legend amount"></i>金额变化</span><span><i class="legend drawdown"></i>累计回撤</span><span><i class="legend weekly"></i>当周涨跌/回撤</span></div></div>${renderHubChart()}<div class="table-wrap"><table><thead><tr><th>周区间</th><th>金额变化</th><th>当周涨跌/回撤</th><th>平均周仓位</th><th>期末权益</th><th>累计回撤</th><th>最赚日</th><th>最亏日</th></tr></thead><tbody>${renderHubRows()}</tbody></table></div><div class="summary-grid"><span>累计变化 <b class="${classByValue(cumulative)}">${money(cumulative)}</b></span><span>最大单周盈利 <b>${best.label} ${money(best.pnl)}</b></span><span>最大单周亏损 <b>${worst.label} ${money(worst.pnl)}</b></span><span>最新已入曲线 <b>${pct(latest.weekPct)}</b></span><span>最新累计回撤 <b>${pct(latest.drawdown)}</b></span><span>最大累计回撤 <b>${pct(maxDrawdown)}</b></span></div></section>
+  <section class="panel"><h2>最新周复盘</h2><a class="week-card" href="../2026-06-29_2026-07-04/"><div class="week-head"><div><h3>2026.06.29 - 2026.07.04</h3><p>半导体/芯片 ETF 篮子试错后撤退，海南海药小幅闭环，周五转入科创新材ETF。账户 ${money(accountPnl)}，期末权益 ${rawMoney(endingEquity)}。</p></div><span class="chip">草稿版</span></div><div class="mini-grid"><span>成交 <b>21 笔</b></span><span>标的 <b>10 个</b></span><span>账户 <b class="${classByValue(accountPnl)}">${money(accountPnl)}</b></span></div></a></section>
   <section class="panel"><h2>周度归档</h2><div class="archive">${renderArchiveCards()}</div></section>
   <section class="panel"><h2>周度高频规则</h2><div class="rules"><article><h3>只做最强</h3><p>有最强做最强，无最强再选次强；后排杂毛和非主线左侧试错要从源头放弃。</p></article><article><h3>三板强弱纪律</h3><p>第三板若是弱板就减半仓；若是强势板或一字板就不用机械减半，总是见机行事。</p></article><article><h3>中高位唯一性</h3><p>连板如果不是唯一最高辨识度，中高位/爆量都容易死掉。</p></article><article><h3>ETF主题仓位</h3><p>同一主题多个 ETF 同时买，本质是一笔主题仓位，不是分散仓位。</p></article></div></section>
 </main></body></html>`;
@@ -578,7 +618,7 @@ function renderRootHome() {
 <html lang="zh-CN"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>周度 / 月度 / 季度 / 年度交易复盘总览</title>${hubStyle()}</head>
 <body><main class="hub-shell">
   <section class="loss-banner"><h1>亏损源头</h1><div class="loss-grid"><article><b>1. 分歧接面</b><p>刚分歧不要那么快进去。</p></article><article><b>2. 主升空仓</b><p>主升期要贪婪重仓。</p></article><article><b>3. 冰点割肉</b><p>冰点还割肉，次日修复没先手，直接亏上加亏。</p></article><article><b>4. 退潮追涨</b><p>退潮期追涨，没等进入混沌就大出手，这就容易死。</p></article></div></section>
-  <section class="hero"><div><span class="label">weekly-monthly-quarterly-yearly-trading-review</span><h1>周度 / 月度 / 季度 / 年度交易复盘</h1><p>这里是总入口：周度单独成页；月度和季度放在同一个复盘主页；年度复盘单独沉淀交易体系。</p><div class="button-row"><a class="button" href="./weekly-trading-review/">周度主页</a><a class="button secondary" href="./monthly-quarterly-trading-review/">月度 / 季度主页</a><a class="button secondary" href="./yearly-trading-review/">年度主页</a></div></div><div class="metrics">${renderMetric("周度归档", "9", "已发布/草稿周复盘")}${renderMetric("最新区间", "06.29", "至 07.04")}${renderMetric("最新账户", "待补", "等待本周账户表")}${renderMetric("长期结构", "3 个主页", "周度 / 月季 / 年度")}</div></section>
+  <section class="hero"><div><span class="label">weekly-monthly-quarterly-yearly-trading-review</span><h1>周度 / 月度 / 季度 / 年度交易复盘</h1><p>这里是总入口：周度单独成页；月度和季度放在同一个复盘主页；年度复盘单独沉淀交易体系。</p><div class="button-row"><a class="button" href="./weekly-trading-review/">周度主页</a><a class="button secondary" href="./monthly-quarterly-trading-review/">月度 / 季度主页</a><a class="button secondary" href="./yearly-trading-review/">年度主页</a></div></div><div class="metrics">${renderMetric("周度归档", "9", "已发布/草稿周复盘")}${renderMetric("最新区间", "06.29", "至 07.04")}${renderMetric("最新账户", money(accountPnl), `期末 ${rawMoney(endingEquity)}`, classByValue(accountPnl))}${renderMetric("长期结构", "3 个主页", "周度 / 月季 / 年度")}</div></section>
   <section class="panel"><h2>复盘主页</h2><div class="loss-grid"><a class="week-card" href="./weekly-trading-review/"><div class="week-head"><h3>周度交割复盘</h3><span class="chip">主页 1</span></div><p>每周一个独立复盘页面，记录交割单、买卖点、账户变化、KISS 复盘和周度规则。</p><div class="mini-grid"><span>周报 <b>9 篇</b></span><span>最新 <b>06.29-07.04</b></span><span>状态 <b>草稿版</b></span></div></a><a class="week-card" href="./monthly-quarterly-trading-review/"><div class="week-head"><h3>月度 / 季度复盘</h3><span class="chip">主页 2</span></div><p>月度承接周度结果，季度检查模式和仓位是否真正改善账户曲线。</p><div class="mini-grid"><span>月度 <b>1-12 月</b></span><span>季度 <b>Q1-Q4</b></span><span>状态 <b>框架版</b></span></div></a><a class="week-card" href="./yearly-trading-review/"><div class="week-head"><h3>年度交易复盘</h3><span class="chip">主页 3</span></div><p>年度层面聚焦账户画像、模式进化、仓位风控、心理纪律和下一年执行准则。</p><div class="mini-grid"><span>年度 <b>自然年</b></span><span>核心 <b>体系沉淀</b></span><span>状态 <b>框架版</b></span></div></a></div></section>
 </main></body></html>`;
 }
