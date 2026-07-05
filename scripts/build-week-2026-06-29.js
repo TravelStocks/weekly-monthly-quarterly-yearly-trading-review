@@ -261,34 +261,168 @@ function timelineX(row) {
 
 function renderTradeTimeline(title, subtitle, rows, note, summary) {
   const sorted = [...rows].sort((a, b) => `${a.date}${a.time}`.localeCompare(`${b.date}${b.time}`));
-  const days = ["06-29", "06-30", "07-01", "07-02", "07-03"];
+  const width = 900;
+  const height = 286;
+  const left = 92;
+  const right = 42;
+  const top = 44;
+  const bottom = 58;
+  const plotW = width - left - right;
+  const plotH = height - top - bottom;
+  const days = [
+    { raw: "20260629", label: "06-29" },
+    { raw: "20260630", label: "06-30" },
+    { raw: "20260701", label: "07-01" },
+    { raw: "20260702", label: "07-02" },
+    { raw: "20260703", label: "07-03" },
+  ];
+  const codes = [...new Set(sorted.map((row) => row.code))];
+  const xFor = (row) => {
+    const dayIndex = Math.max(0, days.findIndex((day) => day.raw === row.date));
+    const [hh, mm] = row.time.split(":").map(Number);
+    const start = 9 * 60 + 30;
+    const end = 15 * 60;
+    const minute = Math.max(start, Math.min(end, hh * 60 + mm));
+    const intraday = (minute - start) / (end - start);
+    return left + ((dayIndex + intraday) / days.length) * plotW;
+  };
   const ticks = days.map((day, i) => {
-    const x = 60 + (i / (days.length - 1)) * 780;
-    return `<g><line x1="${x}" x2="${x}" y1="34" y2="168" stroke="rgba(28,37,48,.10)" stroke-dasharray="4 8"></line><text x="${x}" y="198" text-anchor="middle" class="axis">${day}</text></g>`;
+    const x = left + (i / (days.length - 1)) * plotW;
+    return `<g><line x1="${x}" x2="${x}" y1="${top}" y2="${height - bottom}" stroke="rgba(28,37,48,.10)" stroke-dasharray="4 8"></line><text x="${x}" y="${height - 28}" text-anchor="middle" class="axis">${day.label}</text></g>`;
   }).join("");
-  const markers = sorted.map((row, index) => {
-    const x = timelineX(row);
-    const y = 64 + (index % 4) * 24;
-    const cls = row.sideType === "buy" ? "buy-dot" : "sell-dot";
-    const label = row.sideType === "buy" ? "B" : "S";
-    return `<g class="${cls}">
-      <title>${row.name} ${row.side} ${row.qty}股 @ ${row.price} · ${formatDate(row.date)} ${row.time}</title>
-      <line x1="${x}" x2="${x}" y1="${y + 8}" y2="166" stroke="currentColor" stroke-width="1" stroke-opacity=".35"></line>
-      <circle cx="${x}" cy="${y}" r="8"></circle>
-      <text x="${x}" y="${y + 4}" text-anchor="middle">${label}</text>
-      <text x="${x}" y="${Math.max(18, y - 12)}" text-anchor="middle" class="marker-label">${row.code}</text>
-    </g>`;
-  }).join("");
+  const markerTitle = (row) => `${row.name} ${row.side} ${row.qty}股 @ ${row.price} · ${formatDate(row.date)} ${row.time}`;
+  let chartBody = "";
+  if (codes.length <= 1) {
+    const prices = sorted.map((row) => row.price);
+    const rawMin = Math.min(...prices);
+    const rawMax = Math.max(...prices);
+    const pad = Math.max((rawMax - rawMin) * 0.18, rawMax * 0.006, 0.02);
+    const minPrice = rawMin - pad;
+    const maxPrice = rawMax + pad;
+    const yFor = (price) => top + ((maxPrice - price) / (maxPrice - minPrice)) * plotH;
+    const pricePath = sorted.map((row, i) => `${i ? "L" : "M"} ${xFor(row).toFixed(1)},${yFor(row.price).toFixed(1)}`).join(" ");
+    const axisTicks = [maxPrice, (maxPrice + minPrice) / 2, minPrice].map((price) => {
+      const y = yFor(price);
+      return `<g><line x1="${left}" x2="${width - right}" y1="${y.toFixed(1)}" y2="${y.toFixed(1)}" stroke="rgba(28,37,48,.08)"></line><text x="${left - 10}" y="${(y + 4).toFixed(1)}" text-anchor="end" class="axis">${price.toFixed(3)}</text></g>`;
+    }).join("");
+    const seen = new Map();
+    const markers = sorted.map((row) => {
+      const key = `${row.date}${row.time}${row.price}`;
+      const count = seen.get(key) || 0;
+      seen.set(key, count + 1);
+      const x = xFor(row) + (count - 0.5) * 12;
+      const y = yFor(row.price);
+      const cls = row.sideType === "buy" ? "buy-dot" : "sell-dot";
+      const label = row.sideType === "buy" ? "B" : "S";
+      const labelY = row.sideType === "buy" ? y + 26 + count * 12 : y - 17 - count * 12;
+      return `<g class="${cls}">
+        <title>${markerTitle(row)}</title>
+        <line x1="${x.toFixed(1)}" x2="${x.toFixed(1)}" y1="${y.toFixed(1)}" y2="${height - bottom}" stroke="currentColor" stroke-width="1" stroke-opacity=".28"></line>
+        <circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="9"></circle>
+        <text x="${x.toFixed(1)}" y="${(y + 4).toFixed(1)}" text-anchor="middle">${label}</text>
+        <text x="${x.toFixed(1)}" y="${Math.max(top + 12, Math.min(height - bottom - 6, labelY)).toFixed(1)}" text-anchor="middle" class="trade-price-label">${row.price.toFixed(3)}</text>
+      </g>`;
+    }).join("");
+    chartBody = `${axisTicks}<path d="${pricePath}" fill="none" stroke="#15a477" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path>${markers}<text x="${left}" y="24" class="axis">成交价分时点图：仅连接真实成交价，不伪造分钟行情</text>`;
+  } else {
+    const laneH = plotH / codes.length;
+    const codeMeta = new Map(codes.map((code) => {
+      const first = sorted.find((row) => row.code === code);
+      return [code, first ? first.name : code];
+    }));
+    const lanes = codes.map((code, index) => {
+      const y = top + laneH * index + laneH / 2;
+      return `<g><line x1="${left}" x2="${width - right}" y1="${y.toFixed(1)}" y2="${y.toFixed(1)}" stroke="rgba(28,37,48,.12)"></line><text x="${left - 10}" y="${(y + 4).toFixed(1)}" text-anchor="end" class="trade-lane-label">${code}</text><text x="${left + 4}" y="${(y - laneH / 2 + 13).toFixed(1)}" class="axis">${escapeHtml(codeMeta.get(code))}</text></g>`;
+    }).join("");
+    const seen = new Map();
+    const markers = sorted.map((row) => {
+      const laneIndex = codes.indexOf(row.code);
+      const key = `${row.date}${row.time}${row.code}`;
+      const count = seen.get(key) || 0;
+      seen.set(key, count + 1);
+      const x = xFor(row) + (count - 0.5) * 10;
+      const y = top + laneH * laneIndex + laneH / 2;
+      const cls = row.sideType === "buy" ? "buy-dot" : "sell-dot";
+      const label = row.sideType === "buy" ? "B" : "S";
+      return `<g class="${cls}">
+        <title>${markerTitle(row)}</title>
+        <line x1="${x.toFixed(1)}" x2="${x.toFixed(1)}" y1="${y.toFixed(1)}" y2="${height - bottom}" stroke="currentColor" stroke-width="1" stroke-opacity=".24"></line>
+        <circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="8.5"></circle>
+        <text x="${x.toFixed(1)}" y="${(y + 4).toFixed(1)}" text-anchor="middle">${label}</text>
+        <text x="${x.toFixed(1)}" y="${(y - 13).toFixed(1)}" text-anchor="middle" class="trade-price-label">${row.price.toFixed(3)}</text>
+      </g>`;
+    }).join("");
+    chartBody = `${lanes}${markers}<text x="${left}" y="24" class="axis">多标的成交分布：按代码分行展示真实 B/S 点与成交价</text>`;
+  }
   return `<article class="trade-map">
     <div class="trade-map-head"><div><h3>${title}</h3><p>${subtitle}</p></div><span class="chip">${summary}</span></div>
-    <div class="trade-chart-wrap"><svg class="trade-chart" viewBox="0 0 900 220" role="img" aria-label="${title} 买卖点时间轴">
-      <rect x="0" y="0" width="900" height="220" rx="12" fill="#fff"></rect>
-      <line x1="60" x2="840" y1="166" y2="166" stroke="rgba(28,37,48,.20)"></line>
-      ${ticks}${markers}
-      <text x="60" y="24" class="axis">成交时间轴：红 B 买入 / 蓝 S 卖出</text>
+    <div class="trade-chart-wrap"><svg class="trade-chart" viewBox="0 0 ${width} ${height}" role="img" aria-label="${title} 买卖点图">
+      <rect x="0" y="0" width="${width}" height="${height}" rx="12" fill="#fff"></rect>
+      <line x1="${left}" x2="${width - right}" y1="${height - bottom}" y2="${height - bottom}" stroke="rgba(28,37,48,.20)"></line>
+      ${ticks}${chartBody}
+      <text x="${left}" y="${height - 10}" class="axis">红 B 买入 / 蓝 S 卖出；完整分钟曲线待行情数据补齐</text>
     </svg></div>
     <p class="caption">${note}</p>
   </article>`;
+}
+
+function renderDailyAccountChart() {
+  const width = 900;
+  const height = 328;
+  const left = 76;
+  const right = 86;
+  const top = 42;
+  const bottom = 82;
+  const plotW = width - left - right;
+  const plotH = height - top - bottom;
+  const returnMin = -10;
+  const returnMax = 10;
+  const positionMin = 0;
+  const positionMax = 100;
+  const xFor = (index) => left + (index / (accountDays.length - 1)) * plotW;
+  const yReturn = (value) => top + ((returnMax - value) / (returnMax - returnMin)) * plotH;
+  const yPosition = (value) => top + ((positionMax - value) / (positionMax - positionMin)) * plotH;
+  const grid = [-10, -5, 0, 5, 10].map((tick) => {
+    const y = yReturn(tick);
+    return `<g><line x1="${left}" x2="${width - right}" y1="${y.toFixed(1)}" y2="${y.toFixed(1)}" stroke="rgba(28,37,48,.09)" stroke-dasharray="4 7"></line><text x="${left - 10}" y="${(y + 4).toFixed(1)}" text-anchor="end" class="axis">${pct(tick)}</text></g>`;
+  }).join("");
+  const rightTicks = [0, 25, 50, 75, 100].map((tick) => {
+    const y = yPosition(tick);
+    return `<text x="${width - right + 12}" y="${(y + 4).toFixed(1)}" class="axis">${tick}%</text>`;
+  }).join("");
+  const zeroY = yReturn(0);
+  const barW = 52;
+  const bars = accountDays.map((day, index) => {
+    const x = xFor(index);
+    const y = yReturn(day.returnRate);
+    const barY = Math.min(y, zeroY);
+    const barH = Math.max(2, Math.abs(zeroY - y));
+    const fill = day.returnRate >= 0 ? "#c2412d" : "#14845f";
+    const labelY = day.returnRate >= 0 ? barY - 9 : barY + barH + 16;
+    return `<g>
+      <rect x="${(x - barW / 2).toFixed(1)}" y="${barY.toFixed(1)}" width="${barW}" height="${barH.toFixed(1)}" rx="6" fill="${fill}" opacity=".9"></rect>
+      <text x="${x.toFixed(1)}" y="${labelY.toFixed(1)}" text-anchor="middle" class="daily-chart-label" fill="${fill}">${pct(day.returnRate)}</text>
+      <text x="${x.toFixed(1)}" y="${(height - 42).toFixed(1)}" text-anchor="middle" class="axis">${day.weekday}</text>
+      <text x="${x.toFixed(1)}" y="${(height - 24).toFixed(1)}" text-anchor="middle" class="axis">${day.date.slice(5).replace("/", "-")}</text>
+      <text x="${x.toFixed(1)}" y="${(height - 6).toFixed(1)}" text-anchor="middle" class="daily-money-label">${money(day.pnl)}</text>
+    </g>`;
+  }).join("");
+  const positionPoints = accountDays.map((day, index) => ({ x: xFor(index), y: yPosition(day.position), day }));
+  const positionPath = positionPoints.map((point, index) => `${index ? "L" : "M"} ${point.x.toFixed(1)},${point.y.toFixed(1)}`).join(" ");
+  const positionDots = positionPoints.map((point) => `<g>
+    <circle cx="${point.x.toFixed(1)}" cy="${point.y.toFixed(1)}" r="5.5" fill="#1d4ed8" stroke="#fff" stroke-width="2"></circle>
+    <text x="${point.x.toFixed(1)}" y="${Math.max(top + 12, point.y - 12).toFixed(1)}" text-anchor="middle" class="position-label">${point.day.position.toFixed(1)}%</text>
+  </g>`).join("");
+  return `<div class="account-chart-wrap"><svg class="account-chart" viewBox="0 0 ${width} ${height}" role="img" aria-label="每日收益率与仓位比例">
+    <rect x="0" y="0" width="${width}" height="${height}" rx="12" fill="#fff"></rect>
+    ${grid}${rightTicks}
+    <line x1="${left}" x2="${width - right}" y1="${zeroY.toFixed(1)}" y2="${zeroY.toFixed(1)}" stroke="rgba(28,37,48,.30)"></line>
+    ${bars}
+    <path d="${positionPath}" fill="none" stroke="#1d4ed8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 7"></path>
+    ${positionDots}
+    <text x="${left}" y="24" class="axis">左轴：每日盈亏百分比 / 柱状图</text>
+    <text x="${width - right}" y="24" text-anchor="end" class="axis">右轴：每日持仓比例 / 蓝色虚线</text>
+  </svg></div>`;
 }
 
 function renderTradeTable() {
@@ -383,7 +517,7 @@ function renderWeekPage() {
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(180deg,#f7f8fa 0%,#eef2f5 100%);color:var(--ink);font-family:"Avenir Next","PingFang SC","Noto Sans SC","Microsoft YaHei",Arial,sans-serif}
     a{color:inherit}.shell{width:min(1480px,calc(100vw - 24px));margin:0 auto;padding:18px 0 48px;display:grid;grid-template-columns:176px 1fr;gap:18px}.side{position:sticky;top:16px;align-self:start;background:rgba(255,255,255,.95);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px;display:grid;gap:8px}.side h2{font-size:13px;margin:0 0 4px;color:var(--muted)}.side a{min-height:34px;display:flex;align-items:center;padding:7px 9px;border-radius:8px;text-decoration:none;font-size:13px;color:var(--muted)}.side a:hover{background:var(--soft);color:var(--ink)}
     .page{display:grid;gap:18px}.hero,.panel,.metric,.ticket-card,.daily-card,.trade-map{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.hero{padding:26px;display:grid;grid-template-columns:1.15fr .85fr;gap:22px;align-items:end}.label{display:inline-flex;width:max-content;max-width:100%;padding:7px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:800}.hero h1{margin:14px 0 12px;font-size:clamp(34px,5vw,66px);line-height:1.04;letter-spacing:0}.hero p,.panel p,.daily-card p,.ticket-card p,.caption,li{color:var(--muted);line-height:1.72}.hero-side,.metric-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.metric{padding:16px;display:grid;gap:8px;min-height:104px}.metric span,.metric small{color:var(--muted);font-size:12px}.metric strong{font-size:24px}.panel{padding:24px}.panel h2{margin:0 0 12px;font-size:24px}.section-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:16px}.section-head p{margin:6px 0 0}.chip{display:inline-flex;align-items:center;white-space:nowrap;border:1px solid var(--line);border-radius:999px;padding:7px 10px;background:#f8fafc;color:var(--muted);font-size:12px;font-weight:800}.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.info-card{border:1px solid var(--line);border-radius:10px;background:#fff;padding:16px}.info-card h3{margin:0 0 8px;font-size:18px}.is-profit,.buy-text{color:var(--red)}.is-loss,.sell-text{color:var(--green)}.warn{color:var(--amber)}
-    .source-strip{display:grid;grid-template-columns:1.1fr .9fr;gap:14px}.quote{border-left:4px solid var(--accent);padding:12px 14px;background:#fff7ed;border-radius:0 10px 10px 0;color:var(--ink);font-weight:700}.ticket-list,.daily-grid,.trade-map-grid{display:grid;gap:14px}.ticket-head,.trade-map-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}.ticket-head h3,.trade-map h3{font-size:21px;margin:8px 0 4px}.ticket-head strong{font-size:24px}.note-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.note-grid p{background:#f8fafc;border:1px solid var(--line);border-radius:10px;margin:0;padding:12px}.note-grid b{display:block;color:var(--ink);margin-bottom:4px}.daily-grid{grid-template-columns:repeat(5,minmax(0,1fr))}.daily-card{padding:16px}.daily-card span{font-size:12px;color:var(--muted);font-weight:800}.daily-card h3{font-size:17px;margin:8px 0}.daily-account{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}.daily-account b,.daily-account span{display:inline-flex;align-items:center;min-height:26px;padding:4px 8px;border-radius:999px;background:#f8fafc;border:1px solid var(--line);font-size:12px}.source-link{display:inline-flex;margin-top:8px;color:var(--blue);font-size:12px;font-weight:800;text-decoration:none}.source-link:hover{text-decoration:underline}.account-table{margin-top:14px}.daily-card.good{border-color:rgba(20,132,95,.28)}.daily-card.warn{border-color:rgba(183,99,5,.28)}.trade-map{padding:16px}.trade-chart-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:#fff}.trade-chart{display:block;width:100%;min-width:780px;height:auto}.axis{font-size:12px;fill:var(--muted)}.buy-dot{color:var(--red);fill:var(--red)}.sell-dot{color:var(--blue);fill:var(--blue)}.buy-dot text,.sell-dot text{fill:#fff;font-size:10px;font-weight:900}.marker-label{fill:var(--ink)!important;stroke:#fff;stroke-width:4px;paint-order:stroke;font-size:10px;font-weight:800}.caption{font-size:13px;margin:10px 0 0}
+    .source-strip{display:grid;grid-template-columns:1.1fr .9fr;gap:14px}.quote{border-left:4px solid var(--accent);padding:12px 14px;background:#fff7ed;border-radius:0 10px 10px 0;color:var(--ink);font-weight:700}.ticket-list,.daily-grid,.trade-map-grid{display:grid;gap:14px}.ticket-head,.trade-map-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}.ticket-head h3,.trade-map h3{font-size:21px;margin:8px 0 4px}.ticket-head strong{font-size:24px}.note-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.note-grid p{background:#f8fafc;border:1px solid var(--line);border-radius:10px;margin:0;padding:12px}.note-grid b{display:block;color:var(--ink);margin-bottom:4px}.daily-grid{grid-template-columns:repeat(5,minmax(0,1fr))}.daily-card{padding:16px}.daily-card span{font-size:12px;color:var(--muted);font-weight:800}.daily-card h3{font-size:17px;margin:8px 0}.daily-account{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}.daily-account b,.daily-account span{display:inline-flex;align-items:center;min-height:26px;padding:4px 8px;border-radius:999px;background:#f8fafc;border:1px solid var(--line);font-size:12px}.source-link{display:inline-flex;margin-top:8px;color:var(--blue);font-size:12px;font-weight:800;text-decoration:none}.source-link:hover{text-decoration:underline}.account-chart-wrap{margin-top:14px;overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:#fff}.account-chart{display:block;width:100%;min-width:780px;height:auto}.daily-chart-label,.position-label,.daily-money-label,.trade-price-label,.trade-lane-label{font-size:11px;font-weight:900;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}.position-label{fill:var(--blue)}.daily-money-label{fill:var(--ink);font-size:10px}.trade-price-label{fill:var(--ink)}.trade-lane-label{fill:var(--ink)}.account-table{margin-top:14px}.daily-card.good{border-color:rgba(20,132,95,.28)}.daily-card.warn{border-color:rgba(183,99,5,.28)}.trade-map{padding:16px}.trade-chart-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:#fff}.trade-chart{display:block;width:100%;min-width:780px;height:auto}.axis{font-size:12px;fill:var(--muted)}.buy-dot{color:var(--red);fill:var(--red)}.sell-dot{color:var(--blue);fill:var(--blue)}.buy-dot text,.sell-dot text{fill:#fff;font-size:10px;font-weight:900}.marker-label{fill:var(--ink)!important;stroke:#fff;stroke-width:4px;paint-order:stroke;font-size:10px;font-weight:800}.caption{font-size:13px;margin:10px 0 0}
     .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:10px;background:#fff}table{width:100%;border-collapse:collapse;min-width:980px;font-size:13px}th,td{padding:10px 12px;border-bottom:1px solid var(--line);white-space:nowrap;text-align:right}th:first-child,td:first-child,th:nth-child(2),td:nth-child(2),th:nth-child(3),td:nth-child(3),th:nth-child(4),td:nth-child(4){text-align:left}th{background:#f8fafc;color:var(--muted);font-weight:800}tr:last-child td{border-bottom:0}.rules{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.rule{border:1px solid var(--line);border-radius:10px;background:#fff;padding:16px}.rule h3{margin:0 0 8px}.missing{border:2px solid rgba(183,99,5,.24);background:linear-gradient(135deg,#fff7ed 0%,#fff 65%)}.missing ul{margin:8px 0 0;padding-left:20px}
     @media(max-width:1100px){.shell{grid-template-columns:minmax(0,1fr);overflow-x:hidden}.page,.hero,.panel,.metric,.ticket-card,.daily-card,.trade-map,.source-strip,.grid-2,.grid-3,.daily-grid,.rules,.note-grid{min-width:0;max-width:100%}.page{width:100%;overflow-x:hidden}.panel{overflow-x:hidden}.side{position:sticky;top:0;z-index:10;width:100%;max-width:100%;min-width:0;display:flex;overflow-x:auto;border-radius:0 0 var(--radius) var(--radius)}.side h2{display:none}.side a{flex:0 0 auto}.hero,.source-strip,.grid-2{grid-template-columns:minmax(0,1fr)}.daily-grid,.rules,.grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}.note-grid{grid-template-columns:minmax(0,1fr)}}
     @media(max-width:720px){html,body{overflow-x:hidden}.shell{width:min(100vw - 14px,1480px);padding-top:0}.hero,.panel{padding:18px}.hero-side,.metric-grid,.daily-grid,.rules,.grid-3{grid-template-columns:minmax(0,1fr)}.hero h1{font-size:32px}.section-head,.ticket-head,.trade-map-head{display:grid}}
@@ -439,6 +573,7 @@ function renderWeekPage() {
           <article class="info-card"><h3>期末权益与仓位</h3><p><b>${rawMoney(endingEquity)} 元</b></p><p>期末仓位 ${endingPosition.toFixed(2)}%，平均周仓位 ${avgPosition.toFixed(2)}%。</p></article>
           <article class="info-card"><h3>资金结构</h3><p><b>现金 ${rawMoney(finalCash)} / 推算市值 ${rawMoney(inferredStockValue)}</b></p><p>期末新持仓为 588010 科创新材ETF博时 2800 股，市价和浮盈浮亏仍待截图确认。</p></article>
         </div>
+        ${renderDailyAccountChart()}
         <div class="table-wrap account-table"><table><thead><tr><th>日期</th><th>星期</th><th>收益率</th><th>收益金额</th><th>仓位</th><th>当前总金额</th></tr></thead><tbody>${renderAccountRows()}</tbody></table></div>
       </section>
 
@@ -463,7 +598,7 @@ function renderWeekPage() {
       </section>
 
       <section class="panel" id="stocks">
-        <div class="section-head"><div><h2>重点买卖点图</h2><p>这里先画真实成交点的时间轴。缺少分钟行情数据时，不伪造价格曲线；后续拿到分时数据后再升级为“价格曲线 + B/S 点”。</p></div><span class="chip">成交点真实 · 行情待补</span></div>
+        <div class="section-head"><div><h2>重点买卖点图</h2><p>单票按成交价画出真实 B/S 点，多 ETF 篮子按代码分行展示成交分布。当前不伪造完整分钟行情，后续拿到分时数据后再升级为真实价格曲线。</p></div><span class="chip">真实成交点 · 分时待补</span></div>
         <div class="trade-map-grid">
           ${renderTradeTimeline("半导体/芯片 ETF 篮子", "6/30-7/1 建仓，7/2 早盘集中撤退。", chipRows, `可见闭环合计 ${money(chipBasketPnl)}，是本周最明确的亏损来源。`, money(chipBasketPnl))}
           ${renderTradeTimeline("海南海药", "7/2 买入 1800 股，7/3 竞价后卖出。", hainanRows, `闭环约 ${money(closedPnL["000566"])}，本质是小幅保本。`, money(closedPnL["000566"]))}
