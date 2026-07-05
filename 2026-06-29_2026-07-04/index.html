@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2026.06.29 - 2026.07.04 每周交割复盘</title>
+  <style>
+    :root{--bg:#f6f7f8;--panel:#fff;--ink:#1c2530;--muted:#667085;--line:#dfe4ea;--soft:#f2f5f8;--accent:#c2412d;--accent-soft:#fff1ed;--red:#c2412d;--green:#14845f;--blue:#1d4ed8;--amber:#b76305;--shadow:0 18px 44px rgba(28,37,48,.08);--radius:12px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(180deg,#f7f8fa 0%,#eef2f5 100%);color:var(--ink);font-family:"Avenir Next","PingFang SC","Noto Sans SC","Microsoft YaHei",Arial,sans-serif}
+    a{color:inherit}.shell{width:min(1480px,calc(100vw - 24px));margin:0 auto;padding:18px 0 48px;display:grid;grid-template-columns:176px 1fr;gap:18px}.side{position:sticky;top:16px;align-self:start;background:rgba(255,255,255,.95);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px;display:grid;gap:8px}.side h2{font-size:13px;margin:0 0 4px;color:var(--muted)}.side a{min-height:34px;display:flex;align-items:center;padding:7px 9px;border-radius:8px;text-decoration:none;font-size:13px;color:var(--muted)}.side a:hover{background:var(--soft);color:var(--ink)}
+    .page{display:grid;gap:18px}.hero,.panel,.metric,.ticket-card,.daily-card,.trade-map{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.hero{padding:26px;display:grid;grid-template-columns:1.15fr .85fr;gap:22px;align-items:end}.label{display:inline-flex;width:max-content;max-width:100%;padding:7px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:800}.hero h1{margin:14px 0 12px;font-size:clamp(34px,5vw,66px);line-height:1.04;letter-spacing:0}.hero p,.panel p,.daily-card p,.ticket-card p,.caption,li{color:var(--muted);line-height:1.72}.hero-side,.metric-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.metric{padding:16px;display:grid;gap:8px;min-height:104px}.metric span,.metric small{color:var(--muted);font-size:12px}.metric strong{font-size:24px}.panel{padding:24px}.panel h2{margin:0 0 12px;font-size:24px}.section-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:16px}.section-head p{margin:6px 0 0}.chip{display:inline-flex;align-items:center;white-space:nowrap;border:1px solid var(--line);border-radius:999px;padding:7px 10px;background:#f8fafc;color:var(--muted);font-size:12px;font-weight:800}.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.info-card{border:1px solid var(--line);border-radius:10px;background:#fff;padding:16px}.info-card h3{margin:0 0 8px;font-size:18px}.is-profit,.buy-text{color:var(--red)}.is-loss,.sell-text{color:var(--green)}.warn{color:var(--amber)}
+    .source-strip{display:grid;grid-template-columns:1.1fr .9fr;gap:14px}.quote{border-left:4px solid var(--accent);padding:12px 14px;background:#fff7ed;border-radius:0 10px 10px 0;color:var(--ink);font-weight:700}.ticket-list,.daily-grid,.trade-map-grid{display:grid;gap:14px}.ticket-head,.trade-map-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}.ticket-head h3,.trade-map h3{font-size:21px;margin:8px 0 4px}.ticket-head strong{font-size:24px}.note-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.note-grid p{background:#f8fafc;border:1px solid var(--line);border-radius:10px;margin:0;padding:12px}.note-grid b{display:block;color:var(--ink);margin-bottom:4px}.daily-grid{grid-template-columns:repeat(5,minmax(0,1fr))}.daily-card{padding:16px}.daily-card span{font-size:12px;color:var(--muted);font-weight:800}.daily-card h3{font-size:17px;margin:8px 0}.daily-card.good{border-color:rgba(20,132,95,.28)}.daily-card.warn{border-color:rgba(183,99,5,.28)}.trade-map{padding:16px}.trade-chart-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:#fff}.trade-chart{display:block;width:100%;min-width:780px;height:auto}.axis{font-size:12px;fill:var(--muted)}.buy-dot{color:var(--red);fill:var(--red)}.sell-dot{color:var(--blue);fill:var(--blue)}.buy-dot text,.sell-dot text{fill:#fff;font-size:10px;font-weight:900}.marker-label{fill:var(--ink)!important;stroke:#fff;stroke-width:4px;paint-order:stroke;font-size:10px;font-weight:800}.caption{font-size:13px;margin:10px 0 0}
+    .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:10px;background:#fff}table{width:100%;border-collapse:collapse;min-width:980px;font-size:13px}th,td{padding:10px 12px;border-bottom:1px solid var(--line);white-space:nowrap;text-align:right}th:first-child,td:first-child,th:nth-child(2),td:nth-child(2),th:nth-child(3),td:nth-child(3),th:nth-child(4),td:nth-child(4){text-align:left}th{background:#f8fafc;color:var(--muted);font-weight:800}tr:last-child td{border-bottom:0}.rules{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.rule{border:1px solid var(--line);border-radius:10px;background:#fff;padding:16px}.rule h3{margin:0 0 8px}.missing{border:2px solid rgba(183,99,5,.24);background:linear-gradient(135deg,#fff7ed 0%,#fff 65%)}.missing ul{margin:8px 0 0;padding-left:20px}
+    @media(max-width:1100px){.shell{grid-template-columns:minmax(0,1fr);overflow-x:hidden}.page,.hero,.panel,.metric,.ticket-card,.daily-card,.trade-map,.source-strip,.grid-2,.grid-3,.daily-grid,.rules,.note-grid{min-width:0;max-width:100%}.page{width:100%;overflow-x:hidden}.panel{overflow-x:hidden}.side{position:sticky;top:0;z-index:10;width:100%;max-width:100%;min-width:0;display:flex;overflow-x:auto;border-radius:0 0 var(--radius) var(--radius)}.side h2{display:none}.side a{flex:0 0 auto}.hero,.source-strip,.grid-2{grid-template-columns:minmax(0,1fr)}.daily-grid,.rules,.grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}.note-grid{grid-template-columns:minmax(0,1fr)}}
+    @media(max-width:720px){html,body{overflow-x:hidden}.shell{width:min(100vw - 14px,1480px);padding-top:0}.hero,.panel{padding:18px}.hero-side,.metric-grid,.daily-grid,.rules,.grid-3{grid-template-columns:minmax(0,1fr)}.hero h1{font-size:32px}.section-head,.ticket-head,.trade-map-head{display:grid}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <nav class="side" aria-label="周复盘导航">
+      <h2>本周导航</h2>
+      <a href="../weekly-trading-review/">周度主页</a>
+      <a href="../index.html">总首页</a>
+      <a href="#top">本周总览</a>
+      <a href="#source">数据口径</a>
+      <a href="#account">账户口径</a>
+      <a href="#ticket-analysis">盈亏票</a>
+      <a href="#daily">逐日复盘</a>
+      <a href="#stocks">买卖点图</a>
+      <a href="#rules">沉淀规则</a>
+      <a href="#trades">成交明细</a>
+      <a href="#todo">缺口清单</a>
+    </nav>
+    <div class="page">
+      <section class="hero" id="top">
+        <div>
+          <span class="label">2026.06.29 - 2026.07.04 · 草稿版</span>
+          <h1>半导体ETF试错回撤，周五转入科创新材</h1>
+          <p>本页先根据你上传的交割单截图做第一版：能确认成交结构、闭环盈亏、期末新开持仓和待补材料；账户收益、期末总资产、每日情绪复盘和二次反思等你后面补齐后再覆盖成正式版。</p>
+        </div>
+        <div class="hero-side">
+          <article class="metric"><span>可见闭环盈亏</span><strong class="is-loss">-1,145.46</strong><small>不含跨周持仓卖出，不含期末浮动</small></article>
+          <article class="metric"><span>成交笔数</span><strong class="">21 笔</strong><small>12 买 / 9 卖</small></article>
+          <article class="metric"><span>期末可见持仓</span><strong class="">科创新材ETF</strong><small>588010 · 2800 股，市价待补</small></article>
+          <article class="metric"><span>账户口径</span><strong class="">待补</strong><small>缺每日收益、仓位、总资产</small></article>
+        </div>
+      </section>
+
+      <section class="panel" id="source">
+        <div class="section-head"><div><h2>数据口径</h2><p>本周交割单范围为 2026/6/29 - 2026/7/3，截图筛选结束日为 2026/7/4。合同号、成交编号等隐私字段已隐藏，不进入网页。</p></div><span class="chip">截图转录 · 待复核</span></div>
+        <div class="source-strip">
+          <div class="grid-3">
+            <article class="metric"><span>总成交额</span><strong class="">75,223.30</strong><small>成交金额合计</small></article>
+            <article class="metric"><span>费用税费</span><strong class="">120.27</strong><small>手续费 105.00 / 印花税 15.27</small></article>
+            <article class="metric"><span>可见现金变动</span><strong class="is-profit">+11,638.80</strong><small>期末截图现金余额 11,933.02</small></article>
+          </div>
+          <div class="quote">注意：现金流不是收益。6/29 卖出的亨通光电、亨通股份缺少历史成本；7/3 新开的科创新材ETF缺少期末市价，所以账户层收益必须等你补材料。</div>
+        </div>
+      </section>
+
+      <section class="panel" id="account">
+        <div class="section-head"><div><h2>账户与持仓口径</h2><p>当前只能确认交易行为和现金余额，不能确认本周账户真实收益率。</p></div><span class="chip">账户待补</span></div>
+        <div class="grid-3">
+          <article class="info-card"><h3>可见期末现金</h3><p><b>11,933.02 元</b></p><p>来自 7/3 买入科创新材ETF后的资金余额。</p></article>
+          <article class="info-card"><h3>期末新持仓</h3><p><b>588010 科创新材ETF博时 · 2800 股</b></p><p>含费用成本约 3,922.20 元，缺持仓市价和浮盈浮亏。</p></article>
+          <article class="info-card"><h3>可见闭环</h3><p><b class="is-loss">-1,145.46 元</b></p><p>只统计本周内买卖闭环且数量匹配的标的。</p></article>
+        </div>
+      </section>
+
+      <section class="panel" id="ticket-analysis">
+        <div class="section-head"><div><h2>本周持有/闭环票：赚钱与亏损主因</h2><p>先按交割单可支持的事实写 Codex 草稿分析；你的二次反思补充后，我再把这里改成你的最终口径。</p></div><span class="chip">主因草稿</span></div>
+        <div class="ticket-list"><article class="ticket-card">
+    <div class="ticket-head"><div><span class="label">主要亏损线</span><h3>半导体 / 芯片 ETF 篮子</h3><p>512760 / 588170 / 588710 / 588890 / 589260</p></div><strong class="is-loss">-864.50</strong></div>
+    <div class="note-grid">
+      <p><b>盈亏依据</b>这一组是本周最清晰的可见亏损来源，合计约 -864.50。问题不在于单只 ETF 的盘口，而在于同一主题同时铺开后，本质上形成了半导体方向的集中暴露；如果板块没有走成主线，多个 ETF 会一起回撤。</p>
+      <p><b>操作&情绪</b>交易情绪上更像是主题左侧试错：看到板块可能启动，就先铺篮子。但 ETF 篮子如果没有明确退出条件，容易把“分散买”误读成“风险低”。</p>
+      <p><b>下次规则</b>ETF 篮子必须先定义主题强弱确认和撤退条件；同主题多 ETF 只能算一笔主题仓位，不能当作分散仓位。</p>
+    </div>
+  </article><article class="ticket-card">
+    <div class="ticket-head"><div><span class="label">主要亏损票</span><h3>太极实业</h3><p>600667</p></div><strong class="is-loss">-291.51</strong></div>
+    <div class="note-grid">
+      <p><b>盈亏依据</b>7/1 买入 100 股，7/2 早盘卖出，可见闭环约 -291.51。它和 ETF 篮子一起在 7/2 早盘撤退，说明这笔试错没有得到盘面确认。</p>
+      <p><b>操作&情绪</b>这类单票如果不是当时板块唯一核心，就不能给太多主观期待。试错失败后能够撤退是对的，但买入前需要更明确它在题材里的第一性和唯一性。</p>
+      <p><b>下次规则</b>单票试错前先问：它是不是主题第一名，或者至少是不是唯一可交易核心；不是，就降低仓位与预期。</p>
+    </div>
+  </article><article class="ticket-card">
+    <div class="ticket-head"><div><span class="label">小幅盈利闭环</span><h3>海南海药</h3><p>000566</p></div><strong class="is-profit">+10.55</strong></div>
+    <div class="note-grid">
+      <p><b>盈亏依据</b>7/2 买入 1800 股，7/3 早盘卖出，可见闭环约 +10.55，基本是小幅保本离场。它不是本周主要利润来源，但体现出隔日不强时及时处理。</p>
+      <p><b>操作&情绪</b>这一笔没有扩大风险，说明卖点纪律还在。后续需要结合你的每日复盘确认：它到底是计划内接力，还是临盘试错。</p>
+      <p><b>下次规则</b>小赚保本不是问题，关键是把买入前的角色写清楚：接力套利、观察试错，还是龙头预备。</p>
+    </div>
+  </article><article class="ticket-card">
+    <div class="ticket-head"><div><span class="label">期末浮动持仓</span><h3>科创新材ETF博时</h3><p>588010</p></div><strong class="">待补</strong></div>
+    <div class="note-grid">
+      <p><b>盈亏依据</b>周五尾盘买入 2800 股，含费用成本约 3,922.20 元。缺少期末持仓截图和当前价，暂时不能判断浮盈浮亏。</p>
+      <p><b>操作&情绪</b>尾盘转入新 ETF 需要下周一处理预案：如果只是主题试错，不能用龙头格局的方式持有。</p>
+      <p><b>下次规则</b>新开 ETF 持仓必须补：次日强弱验证、最大亏损线、是否允许加仓、何时直接退出。</p>
+    </div>
+  </article><article class="ticket-card">
+    <div class="ticket-head"><div><span class="label">历史持仓卖出</span><h3>亨通光电 / 亨通股份</h3><p>600487 / 600226</p></div><strong class="">待补</strong></div>
+    <div class="note-grid">
+      <p><b>盈亏依据</b>6/29 两笔卖出合计回笼现金 16,706.46 元。由于缺少买入成本，本页只记录现金回笼，不计算盈亏贡献。</p>
+      <p><b>操作&情绪</b>这两笔属于跨周持仓处理，需要上周成本才能判断卖得是否正确。</p>
+      <p><b>下次规则</b>跨周卖出必须补历史成本，否则周度盈亏票分析会被现金流误导。</p>
+    </div>
+  </article></div>
+      </section>
+
+      <section class="panel">
+        <div class="section-head"><div><h2>本周整体复盘草稿</h2><p>这周的交易主线不是连板龙头，而是半导体/芯片主题 ETF 试错、单票太极实业试错、海南海药短闭环，以及周五切到科创新材ETF。</p></div><span class="chip">待二次反思覆盖</span></div>
+        <div class="grid-2">
+          <article class="info-card"><h3>做对的地方</h3><p>7/2 对半导体/芯片 ETF 篮子和太极实业做了集中撤退，说明当主题没有延续时，风险没有继续扩大；海南海药隔日小幅保本离场，也没有让小试错演变成大亏损。</p></article>
+          <article class="info-card"><h3>需要追问的地方</h3><p>半导体 ETF 篮子铺得比较散，但方向高度同质，实际不是分散风险。后续要确认：当时买入是预案内主题试错，还是临盘看到板块异动后的分散追入。</p></article>
+          <article class="info-card"><h3>账户层不能下结论</h3><p>由于缺每日账户收益、期末持仓市值和跨周成本，本页暂不判断本周账户涨跌、最大回撤、最赚日和最亏日。</p></article>
+          <article class="info-card"><h3>下周重点</h3><p>围绕科创新材ETF制定明确处理预案：若主题不能继续强化，按 ETF 试错处理；若主题走强，再看是否允许加仓或只做持有确认。</p></article>
+        </div>
+      </section>
+
+      <section class="panel" id="daily">
+        <div class="section-head"><div><h2>逐日操作复盘</h2><p>当前用交割单还原每日交易路径；每日 KISS 情绪内容等你补，或后续再从个人每日复盘归档中逐条抽取。</p></div><span class="chip">每日情绪待补</span></div>
+        <div class="daily-grid"><article class="daily-card neutral">
+    <span>周一 · 2026/06/29</span>
+    <h3>历史持仓先卖出，释放现金</h3>
+    <p>交割单显示卖出亨通光电、亨通股份，合计回笼现金 16,706.46 元。由于缺少上周买入成本，本页不把这两笔计入本周已确认盈亏，只记录为历史持仓处理。</p>
+  </article><article class="daily-card warn">
+    <span>周二 · 2026/06/30</span>
+    <h3>半导体/芯片 ETF 篮子建仓</h3>
+    <p>买入芯片ETF国泰、科创半导体ETF华夏、科创半导体设备ETF华泰柏瑞、科创芯片设计ETF国泰，明显是在做半导体方向的主题试错。这里要注意：多个同主题 ETF 不是分散，实质是同一主题仓位集中。</p>
+  </article><article class="daily-card warn">
+    <span>周三 · 2026/07/01</span>
+    <h3>继续补 ETF，同时试错太极实业</h3>
+    <p>继续买入科创芯片ETF南方和芯片ETF国泰，并买入太极实业。后续 7/2 集中卖出说明这条线没有走出预期延续。</p>
+  </article><article class="daily-card neutral">
+    <span>周四 · 2026/07/02</span>
+    <h3>半导体篮子撤退，转向海南海药</h3>
+    <p>早盘 09:31-09:32 附近集中卖出太极实业和多只半导体/芯片 ETF，能看出撤退比较统一；随后 10:15 买入海南海药 1800 股。</p>
+  </article><article class="daily-card good">
+    <span>周五 · 2026/07/03</span>
+    <h3>海南海药小幅闭环，尾盘转入科创新材ETF</h3>
+    <p>海南海药次日 09:30 卖出，按可见现金口径小赚 10.55 元；14:56 买入科创新材ETF博时 2800 股，成为本周可见的期末新持仓，后续需要补持仓截图和下周处理预案。</p>
+  </article></div>
+      </section>
+
+      <section class="panel" id="stocks">
+        <div class="section-head"><div><h2>重点买卖点图</h2><p>这里先画真实成交点的时间轴。缺少分钟行情数据时，不伪造价格曲线；后续拿到分时数据后再升级为“价格曲线 + B/S 点”。</p></div><span class="chip">成交点真实 · 行情待补</span></div>
+        <div class="trade-map-grid">
+          <article class="trade-map">
+    <div class="trade-map-head"><div><h3>半导体/芯片 ETF 篮子</h3><p>6/30-7/1 建仓，7/2 早盘集中撤退。</p></div><span class="chip">-864.50</span></div>
+    <div class="trade-chart-wrap"><svg class="trade-chart" viewBox="0 0 900 220" role="img" aria-label="半导体/芯片 ETF 篮子 买卖点时间轴">
+      <rect x="0" y="0" width="900" height="220" rx="12" fill="#fff"></rect>
+      <line x1="60" x2="840" y1="166" y2="166" stroke="rgba(28,37,48,.20)"></line>
+      <g><line x1="60" x2="60" y1="34" y2="168" stroke="rgba(28,37,48,.10)" stroke-dasharray="4 8"></line><text x="60" y="198" text-anchor="middle" class="axis">06-29</text></g><g><line x1="255" x2="255" y1="34" y2="168" stroke="rgba(28,37,48,.10)" stroke-dasharray="4 8"></line><text x="255" y="198" text-anchor="middle" class="axis">06-30</text></g><g><line x1="450" x2="450" y1="34" y2="168" stroke="rgba(28,37,48,.10)" stroke-dasharray="4 8"></line><text x="450" y="198" text-anchor="middle" class="axis">07-01</text></g><g><line x1="645" x2="645" y1="34" y2="168" stroke="rgba(28,37,48,.10)" stroke-dasharray="4 8"></line><text x="645" y="198" text-anchor="middle" class="axis">07-02</text></g><g><line x1="840" x2="840" y1="34" y2="168" stroke="rgba(28,37,48,.10)" stroke-dasharray="4 8"></line><text x="840" y="198" text-anchor="middle" class="axis">07-03</text></g><g class="buy-dot">
+      <title>芯片ETF国泰 买入 1100股 @ 1.528 · 2026/06/30 09:42:13</title>
+      <line x1="221.6727272727273" x2="221.6727272727273" y1="72" y2="166" stroke="currentColor" stroke-width="1" stroke-opacity=".35"></line>
+      <circle cx="221.6727272727273" cy="64" r="8"></circle>
+      <text x="221.6727272727273" y="68" text-anchor="middle">B</text>
+      <text x="221.6727272727273" y="52" text-anchor="middle" class="marker-label">512760</text>
+    </g><g class="buy-dot">
+      <title>科创半导体ETF华夏 买入 900股 @ 3.99 · 2026/06/30 10:26:03</title>
+      <line x1="242.47272727272727" x2="242.47272727272727" y1="96" y2="166" stroke="currentColor" stroke-width="1" stroke-opacity=".35"></line>
+      <circle cx="242.47272727272727" cy="88" r="8"></circle>
+      <text x="242.47272727272727" y="92" text-anchor="middle">B</text>
+      <text x="242.47272727272727" y="76" text-anchor="middle" class="marker-label">588170</text>
+    </g><g class="buy-dot">
+      <title>科创半导体ETF华夏 买入 400股 @ 3.977 · 2026/06/30 11:20:13</title>
+      <line x1="268" x2="268" y1="120" y2="166" stroke="currentColor" stroke-width="1" stroke-opacity=".35"></line>
+      <circle cx="268" cy="112" r="8"></circle>
+      <text x="268" y="116" text-anchor="middle">B</text>
+      <text x="268" y="100" text-anchor="middle" class="marker-label">588170</text>
+    </g><g class="buy-dot">
+      <title>科创半导体设备ETF华泰柏瑞 买入 600股 @ 4.209 · 2026/06/30 14:16:48</title>
+      <line x1="351.2" x2="351.2" y1="144" y2="166" stroke="currentColor" stroke-width="1" stroke-opacity=".35"></line>
+      <circle cx="351.2" cy="136" r="8"></circle>
+      <text x="351.2" y="140" text-anchor="middle">B</text>
+      <text x="351.2" y="124" text-anchor="middle" class="marker-label">588710</text>
+    </g><g class="buy-dot">
+      <title>科创芯片设计ETF国泰 买入 1100股 @ 1.791 · 2026/06/30 14:59:05</title>
+      <line x1="371.52727272727276" x2="371.52727272727276" y1="72" y2="166" stroke="currentColor" stroke-width="1" stroke-opacity=".35"></line>
+      <circle cx="371.52727272727276" cy="64" r="8"></circle>
+      <text x="371.52727272727276" y="68" text-anchor="middle">B</text>
+      <text x="371.52727272727276" y="52" text-anchor="middle" class="marker-label">589260</text>
+    </g><g class="buy-dot">
+      <title>科创芯片ETF南方 买入 400股 @ 5.593 · 2026/07/01 09:36:45</title>
+      <line x1="374.8363636363636" x2="374.8363636363636" y1="96" y2="166" stroke="currentColor" stroke-width="1" stroke-opacity=".35"></line>
+      <circle cx="374.8363636363636" cy="88" r="8"></circle>
+      <text x="374.8363636363636" y="92" text-anchor="middle">B</text>
+      <text x="374.8363636363636" y="76" text-anchor="middle" class="marker-label">588890</text>
+    </g><g class="buy-dot">
+      <title>芯片ETF国泰 买入 100股 @ 1.595 · 2026/07/01 10:46:24</title>
+      <line x1="407.92727272727274" x2="407.92727272727274" y1="120" y2="166" stroke="currentColor" stroke-width="1" stroke-opacity=".35"></line>
+      <circle cx="407.92727272727274" cy="112" r="8"></circle>
+      <text x="407.92727272727274" y="116" text-anchor="middle">B</text>
+      <text x="407.92727272727274" y="100" text-anchor="middle" class="marker-label">512760</text>
+    </g><g class="sell-dot">
+      <title>科创半导体ETF华夏 对方卖出 1300股 @ 3.842 · 2026/07/02 09:32:07</title>
+      <line x1="528.9454545454546" x2="528.9454545454546" y1="144" y2="166" stroke="currentColor" stroke-width="1" stroke-opacity=".35"></line>
+      <circle cx="528.9454545454546" cy="136" r="8"></circle>
+      <text x="528.9454545454546" y="140" text-anchor="middle">S</text>
+      <text x="528.9454545454546" y="124" text-anchor="middle" class="marker-label">588170</text>
+    </g><g class="sell-dot">
+      <title>芯片ETF国泰 对方卖出 1200股 @ 1.447 · 2026/07/02 09:32:13</title>
+      <line x1="528.9454545454546" x2="528.9454545454546" y1="72" y2="166" stroke="currentColor" stroke-width="1" stroke-opacity=".35"></line>
+      <circle cx="528.9454545454546" cy="64" r="8"></circle>
+      <text x="528.9454545454546" y="68" text-anchor="middle">S</text>
+      <text x="528.9454545454546" y="52" text-anchor="middle" class="marker-label">512760</text>
+    </g><g class="sell-dot">
+      <title>科创芯片设计ETF国泰 对方卖出 1100股 @ 1.639 · 2026/07/02 09:32:18</title>
+      <line x1="528.9454545454546" x2="528.9454545454546" y1="96" y2="166" stroke="currentColor" stroke-width="1" stroke-opacity=".35"></line>
+      <circle cx="528.9454545454546" cy="88" r="8"></circle>
+      <text x="528.9454545454546" y="92" text-anchor="middle">S</text>
+      <text x="528.9454545454546" y="76" text-anchor="middle" class="marker-label">589260</text>
+    </g><g class="sell-dot">
+      <title>科创芯片ETF南方 对方卖出 400股 @ 5.056 · 2026/07/02 09:32:24</title>
+      <line x1="528.9454545454546" x2="528.9454545454546" y1="120" y2="166" stroke="currentColor" stroke-width="1" stroke-opacity=".35"></line>
+      <circle cx="528.9454545454546" cy="112" r="8"></circle>
+      <text x="528.9454545454546" y="116" text-anchor="middle">S</text>
+      <text x="528.9454545454546" y="100" text-anchor="middle" class="marker-label">588890</text>
+    </g><g class="sell-dot">
+      <title>科创半导体设备ETF华泰柏瑞 对方卖出 600股 @ 3.99 · 2026/07/02 09:32:29</title>
+      <line x1="528.9454545454546" x2="528.9454545454546" y1="144" y2="166" stroke="currentColor" stroke-width="1" stroke-opacity=".35"></line>
+      <circle cx="528.9454545454546" cy="136" r="8"></circle>
+      <text x="528.9454545454546" y="140" text-anchor="middle">S</text>
+      <text x="528.9454545454546" y="124" text-anchor="middle" class="marker-label">588710</text>
+    </g>
+      <text x="60" y="24" class="axis">成交时间轴：红 B 买入 / 蓝 S 卖出</text>
+    </svg></div>
+    <p class="caption">可见闭环合计 -864.50，是本周最明确的亏损来源。</p>
+  </article>
+          <article class="trade-map">
+    <div class="trade-map-head"><div><h3>海南海药</h3><p>7/2 买入 1800 股，7/3 竞价后卖出。</p></div><span class="chip">+10.55</span></div>
+    <div class="trade-chart-wrap"><svg class="trade-chart" viewBox="0 0 900 220" role="img" aria-label="海南海药 买卖点时间轴">
+      <rect x="0" y="0" width="900" height="220" rx="12" fill="#fff"></rect>
+      <line x1="60" x2="840" y1="166" y2="166" stroke="rgba(28,37,48,.20)"></line>
+      <g><line x1="60" x2="60" y1="34" y2="168" stroke="rgba(28,37,48,.10)" stroke-dasharray="4 8"></line><text x="60" y="198" text-anchor="middle" class="axis">06-29</text></g><g><line x1="255" x2="255" y1="34" y2="168" stroke="rgba(28,37,48,.10)" stroke-dasharray="4 8"></line><text x="255" y="198" text-anchor="middle" class="axis">06-30</text></g><g><line x1="450" x2="450" y1="34" y2="168" stroke="rgba(28,37,48,.10)" stroke-dasharray="4 8"></line><text x="450" y="198" text-anchor="middle" class="axis">07-01</text></g><g><line x1="645" x2="645" y1="34" y2="168" stroke="rgba(28,37,48,.10)" stroke-dasharray="4 8"></line><text x="645" y="198" text-anchor="middle" class="axis">07-02</text></g><g><line x1="840" x2="840" y1="34" y2="168" stroke="rgba(28,37,48,.10)" stroke-dasharray="4 8"></line><text x="840" y="198" text-anchor="middle" class="axis">07-03</text></g><g class="buy-dot">
+      <title>海南海药 买入 1000股 @ 6.04 · 2026/07/02 10:15:45</title>
+      <line x1="549.2727272727273" x2="549.2727272727273" y1="72" y2="166" stroke="currentColor" stroke-width="1" stroke-opacity=".35"></line>
+      <circle cx="549.2727272727273" cy="64" r="8"></circle>
+      <text x="549.2727272727273" y="68" text-anchor="middle">B</text>
+      <text x="549.2727272727273" y="52" text-anchor="middle" class="marker-label">000566</text>
+    </g><g class="buy-dot">
+      <title>海南海药 买入 500股 @ 6.04 · 2026/07/02 10:15:46</title>
+      <line x1="549.2727272727273" x2="549.2727272727273" y1="96" y2="166" stroke="currentColor" stroke-width="1" stroke-opacity=".35"></line>
+      <circle cx="549.2727272727273" cy="88" r="8"></circle>
+      <text x="549.2727272727273" y="92" text-anchor="middle">B</text>
+      <text x="549.2727272727273" y="76" text-anchor="middle" class="marker-label">000566</text>
+    </g><g class="buy-dot">
+      <title>海南海药 买入 300股 @ 6.04 · 2026/07/02 10:15:46</title>
+      <line x1="549.2727272727273" x2="549.2727272727273" y1="120" y2="166" stroke="currentColor" stroke-width="1" stroke-opacity=".35"></line>
+      <circle cx="549.2727272727273" cy="112" r="8"></circle>
+      <text x="549.2727272727273" y="116" text-anchor="middle">B</text>
+      <text x="549.2727272727273" y="100" text-anchor="middle" class="marker-label">000566</text>
+    </g><g class="sell-dot">
+      <title>海南海药 卖出 1800股 @ 6.06 · 2026/07/03 09:30:44</title>
+      <line x1="684" x2="684" y1="144" y2="166" stroke="currentColor" stroke-width="1" stroke-opacity=".35"></line>
+      <circle cx="684" cy="136" r="8"></circle>
+      <text x="684" y="140" text-anchor="middle">S</text>
+      <text x="684" y="124" text-anchor="middle" class="marker-label">000566</text>
+    </g>
+      <text x="60" y="24" class="axis">成交时间轴：红 B 买入 / 蓝 S 卖出</text>
+    </svg></div>
+    <p class="caption">闭环约 +10.55，本质是小幅保本。</p>
+  </article>
+          <article class="trade-map">
+    <div class="trade-map-head"><div><h3>太极实业</h3><p>7/1 试错，7/2 早盘撤退。</p></div><span class="chip">-291.51</span></div>
+    <div class="trade-chart-wrap"><svg class="trade-chart" viewBox="0 0 900 220" role="img" aria-label="太极实业 买卖点时间轴">
+      <rect x="0" y="0" width="900" height="220" rx="12" fill="#fff"></rect>
+      <line x1="60" x2="840" y1="166" y2="166" stroke="rgba(28,37,48,.20)"></line>
+      <g><line x1="60" x2="60" y1="34" y2="168" stroke="rgba(28,37,48,.10)" stroke-dasharray="4 8"></line><text x="60" y="198" text-anchor="middle" class="axis">06-29</text></g><g><line x1="255" x2="255" y1="34" y2="168" stroke="rgba(28,37,48,.10)" stroke-dasharray="4 8"></line><text x="255" y="198" text-anchor="middle" class="axis">06-30</text></g><g><line x1="450" x2="450" y1="34" y2="168" stroke="rgba(28,37,48,.10)" stroke-dasharray="4 8"></line><text x="450" y="198" text-anchor="middle" class="axis">07-01</text></g><g><line x1="645" x2="645" y1="34" y2="168" stroke="rgba(28,37,48,.10)" stroke-dasharray="4 8"></line><text x="645" y="198" text-anchor="middle" class="axis">07-02</text></g><g><line x1="840" x2="840" y1="34" y2="168" stroke="rgba(28,37,48,.10)" stroke-dasharray="4 8"></line><text x="840" y="198" text-anchor="middle" class="axis">07-03</text></g><g class="buy-dot">
+      <title>太极实业 买入 100股 @ 31.88 · 2026/07/01 09:43:35</title>
+      <line x1="378.1454545454546" x2="378.1454545454546" y1="72" y2="166" stroke="currentColor" stroke-width="1" stroke-opacity=".35"></line>
+      <circle cx="378.1454545454546" cy="64" r="8"></circle>
+      <text x="378.1454545454546" y="68" text-anchor="middle">B</text>
+      <text x="378.1454545454546" y="52" text-anchor="middle" class="marker-label">600667</text>
+    </g><g class="sell-dot">
+      <title>太极实业 对方卖出 100股 @ 29.08 · 2026/07/02 09:31:15</title>
+      <line x1="528.4727272727273" x2="528.4727272727273" y1="96" y2="166" stroke="currentColor" stroke-width="1" stroke-opacity=".35"></line>
+      <circle cx="528.4727272727273" cy="88" r="8"></circle>
+      <text x="528.4727272727273" y="92" text-anchor="middle">S</text>
+      <text x="528.4727272727273" y="76" text-anchor="middle" class="marker-label">600667</text>
+    </g>
+      <text x="60" y="24" class="axis">成交时间轴：红 B 买入 / 蓝 S 卖出</text>
+    </svg></div>
+    <p class="caption">闭环约 -291.51，需要复盘买入时是否具备题材第一性。</p>
+  </article>
+          <article class="trade-map">
+    <div class="trade-map-head"><div><h3>科创新材ETF博时</h3><p>7/3 尾盘买入，作为期末新持仓。</p></div><span class="chip">持仓待补</span></div>
+    <div class="trade-chart-wrap"><svg class="trade-chart" viewBox="0 0 900 220" role="img" aria-label="科创新材ETF博时 买卖点时间轴">
+      <rect x="0" y="0" width="900" height="220" rx="12" fill="#fff"></rect>
+      <line x1="60" x2="840" y1="166" y2="166" stroke="rgba(28,37,48,.20)"></line>
+      <g><line x1="60" x2="60" y1="34" y2="168" stroke="rgba(28,37,48,.10)" stroke-dasharray="4 8"></line><text x="60" y="198" text-anchor="middle" class="axis">06-29</text></g><g><line x1="255" x2="255" y1="34" y2="168" stroke="rgba(28,37,48,.10)" stroke-dasharray="4 8"></line><text x="255" y="198" text-anchor="middle" class="axis">06-30</text></g><g><line x1="450" x2="450" y1="34" y2="168" stroke="rgba(28,37,48,.10)" stroke-dasharray="4 8"></line><text x="450" y="198" text-anchor="middle" class="axis">07-01</text></g><g><line x1="645" x2="645" y1="34" y2="168" stroke="rgba(28,37,48,.10)" stroke-dasharray="4 8"></line><text x="645" y="198" text-anchor="middle" class="axis">07-02</text></g><g><line x1="840" x2="840" y1="34" y2="168" stroke="rgba(28,37,48,.10)" stroke-dasharray="4 8"></line><text x="840" y="198" text-anchor="middle" class="axis">07-03</text></g><g class="buy-dot">
+      <title>科创新材ETF博时 买入 2800股 @ 1.399 · 2026/07/03 14:56:35</title>
+      <line x1="838.109090909091" x2="838.109090909091" y1="72" y2="166" stroke="currentColor" stroke-width="1" stroke-opacity=".35"></line>
+      <circle cx="838.109090909091" cy="64" r="8"></circle>
+      <text x="838.109090909091" y="68" text-anchor="middle">B</text>
+      <text x="838.109090909091" y="52" text-anchor="middle" class="marker-label">588010</text>
+    </g>
+      <text x="60" y="24" class="axis">成交时间轴：红 B 买入 / 蓝 S 卖出</text>
+    </svg></div>
+    <p class="caption">只有买点，没有卖点和期末市价；下周必须补处理预案。</p>
+  </article>
+          <article class="trade-map">
+    <div class="trade-map-head"><div><h3>亨通光电 / 亨通股份</h3><p>6/29 卖出跨周持仓。</p></div><span class="chip">历史成本待补</span></div>
+    <div class="trade-chart-wrap"><svg class="trade-chart" viewBox="0 0 900 220" role="img" aria-label="亨通光电 / 亨通股份 买卖点时间轴">
+      <rect x="0" y="0" width="900" height="220" rx="12" fill="#fff"></rect>
+      <line x1="60" x2="840" y1="166" y2="166" stroke="rgba(28,37,48,.20)"></line>
+      <g><line x1="60" x2="60" y1="34" y2="168" stroke="rgba(28,37,48,.10)" stroke-dasharray="4 8"></line><text x="60" y="198" text-anchor="middle" class="axis">06-29</text></g><g><line x1="255" x2="255" y1="34" y2="168" stroke="rgba(28,37,48,.10)" stroke-dasharray="4 8"></line><text x="255" y="198" text-anchor="middle" class="axis">06-30</text></g><g><line x1="450" x2="450" y1="34" y2="168" stroke="rgba(28,37,48,.10)" stroke-dasharray="4 8"></line><text x="450" y="198" text-anchor="middle" class="axis">07-01</text></g><g><line x1="645" x2="645" y1="34" y2="168" stroke="rgba(28,37,48,.10)" stroke-dasharray="4 8"></line><text x="645" y="198" text-anchor="middle" class="axis">07-02</text></g><g><line x1="840" x2="840" y1="34" y2="168" stroke="rgba(28,37,48,.10)" stroke-dasharray="4 8"></line><text x="840" y="198" text-anchor="middle" class="axis">07-03</text></g><g class="sell-dot">
+      <title>亨通股份 卖出 600股 @ 10.09 · 2026/06/29 09:52:18</title>
+      <line x1="70.4" x2="70.4" y1="72" y2="166" stroke="currentColor" stroke-width="1" stroke-opacity=".35"></line>
+      <circle cx="70.4" cy="64" r="8"></circle>
+      <text x="70.4" y="68" text-anchor="middle">S</text>
+      <text x="70.4" y="52" text-anchor="middle" class="marker-label">600226</text>
+    </g><g class="sell-dot">
+      <title>亨通光电 卖出 100股 @ 106.71 · 2026/06/29 09:59:54</title>
+      <line x1="73.7090909090909" x2="73.7090909090909" y1="96" y2="166" stroke="currentColor" stroke-width="1" stroke-opacity=".35"></line>
+      <circle cx="73.7090909090909" cy="88" r="8"></circle>
+      <text x="73.7090909090909" y="92" text-anchor="middle">S</text>
+      <text x="73.7090909090909" y="76" text-anchor="middle" class="marker-label">600487</text>
+    </g>
+      <text x="60" y="24" class="axis">成交时间轴：红 B 买入 / 蓝 S 卖出</text>
+    </svg></div>
+    <p class="caption">缺上周买入成本，暂不计算盈亏。</p>
+  </article>
+        </div>
+      </section>
+
+      <section class="panel" id="rules">
+        <div class="section-head"><div><h2>本周先沉淀的规则</h2><p>这是基于交割单的临时规则，等你补二次反思后再精修。</p></div></div>
+        <div class="rules">
+          <article class="rule"><h3>同主题 ETF 算一笔仓位</h3><p>多个半导体/芯片 ETF 同时买，不是分散风险，而是放大同一主题暴露。</p></article>
+          <article class="rule"><h3>左侧试错必须有撤退线</h3><p>主题没有走出强度确认时，不能靠“再等等”消化回撤。</p></article>
+          <article class="rule"><h3>跨周票要补成本</h3><p>没有历史成本，卖出现金流不能当作盈利贡献。</p></article>
+          <article class="rule"><h3>新持仓要写隔日预案</h3><p>科创新材ETF下周一必须先定强弱验证、止损点和是否加仓。</p></article>
+        </div>
+      </section>
+
+      <section class="panel" id="summary-table">
+        <div class="section-head"><div><h2>标的闭环汇总</h2><p>只在买卖数量匹配且都发生于本周的情况下计算可见闭环盈亏。</p></div></div>
+        <div class="table-wrap"><table><thead><tr><th>代码</th><th>名称</th><th>角色</th><th>买入数量</th><th>卖出数量</th><th>买入现金</th><th>卖出现金</th><th>可见盈亏</th></tr></thead><tbody><tr>
+      <td>588010</td>
+      <td>科创新材ETF博时</td>
+      <td>期末持仓/待补市价</td>
+      <td>2800</td>
+      <td>0</td>
+      <td>3,922.20</td>
+      <td>-</td>
+      <td class="">待补</td>
+    </tr><tr>
+      <td>000566</td>
+      <td>海南海药</td>
+      <td>本周闭环</td>
+      <td>1800</td>
+      <td>1800</td>
+      <td>10,887.00</td>
+      <td>10,897.55</td>
+      <td class="is-profit">+10.55</td>
+    </tr><tr>
+      <td>588710</td>
+      <td>科创半导体设备ETF华泰柏瑞</td>
+      <td>本周闭环</td>
+      <td>600</td>
+      <td>600</td>
+      <td>2,530.40</td>
+      <td>2,389.00</td>
+      <td class="is-loss">-141.40</td>
+    </tr><tr>
+      <td>588890</td>
+      <td>科创芯片ETF南方</td>
+      <td>本周闭环</td>
+      <td>400</td>
+      <td>400</td>
+      <td>2,242.20</td>
+      <td>2,017.40</td>
+      <td class="is-loss">-224.80</td>
+    </tr><tr>
+      <td>589260</td>
+      <td>科创芯片设计ETF国泰</td>
+      <td>本周闭环</td>
+      <td>1100</td>
+      <td>1100</td>
+      <td>1,975.10</td>
+      <td>1,797.90</td>
+      <td class="is-loss">-177.20</td>
+    </tr><tr>
+      <td>512760</td>
+      <td>芯片ETF国泰</td>
+      <td>本周闭环</td>
+      <td>1200</td>
+      <td>1200</td>
+      <td>1,850.30</td>
+      <td>1,731.40</td>
+      <td class="is-loss">-118.90</td>
+    </tr><tr>
+      <td>588170</td>
+      <td>科创半导体ETF华夏</td>
+      <td>本周闭环</td>
+      <td>1300</td>
+      <td>1300</td>
+      <td>5,191.80</td>
+      <td>4,989.60</td>
+      <td class="is-loss">-202.20</td>
+    </tr><tr>
+      <td>600667</td>
+      <td>太极实业</td>
+      <td>本周闭环</td>
+      <td>100</td>
+      <td>100</td>
+      <td>3,193.03</td>
+      <td>2,901.52</td>
+      <td class="is-loss">-291.51</td>
+    </tr><tr>
+      <td>600487</td>
+      <td>亨通光电</td>
+      <td>历史持仓卖出/待补成本</td>
+      <td>0</td>
+      <td>100</td>
+      <td>-</td>
+      <td>10,660.55</td>
+      <td class="">待补</td>
+    </tr><tr>
+      <td>600226</td>
+      <td>亨通股份</td>
+      <td>历史持仓卖出/待补成本</td>
+      <td>0</td>
+      <td>600</td>
+      <td>-</td>
+      <td>6,045.91</td>
+      <td class="">待补</td>
+    </tr></tbody></table></div>
+      </section>
+
+      <section class="panel" id="trades">
+        <div class="section-head"><div><h2>逐笔交割明细</h2><p>已去掉合同编号、成交编号等隐私字段，只保留复盘需要的交易信息。</p></div></div>
+        <div class="table-wrap"><table><thead><tr><th>成交日期</th><th>成交时间</th><th>代码</th><th>名称</th><th>操作</th><th>数量</th><th>均价</th><th>金额</th><th>手续费</th><th>印花税</th><th>发生金额</th><th>资金余额</th></tr></thead><tbody><tr>
+    <td>2026/06/29</td>
+    <td>09:52:18</td>
+    <td>600226</td>
+    <td>亨通股份</td>
+    <td class="sell-text">卖出</td>
+    <td>600</td>
+    <td>10.090</td>
+    <td>6,054.00</td>
+    <td>5.00</td>
+    <td>3.03</td>
+    <td class="is-profit">+6,045.91</td>
+    <td>6,345.63</td>
+  </tr><tr>
+    <td>2026/06/29</td>
+    <td>09:59:54</td>
+    <td>600487</td>
+    <td>亨通光电</td>
+    <td class="sell-text">卖出</td>
+    <td>100</td>
+    <td>106.710</td>
+    <td>10,671.00</td>
+    <td>5.00</td>
+    <td>5.34</td>
+    <td class="is-profit">+10,660.55</td>
+    <td>17,006.18</td>
+  </tr><tr>
+    <td>2026/06/30</td>
+    <td>09:42:13</td>
+    <td>512760</td>
+    <td>芯片ETF国泰</td>
+    <td class="buy-text">买入</td>
+    <td>1100</td>
+    <td>1.528</td>
+    <td>1,680.80</td>
+    <td>5.00</td>
+    <td>0.00</td>
+    <td class="is-loss">-1,685.80</td>
+    <td>15,314.88</td>
+  </tr><tr>
+    <td>2026/06/30</td>
+    <td>10:26:03</td>
+    <td>588170</td>
+    <td>科创半导体ETF华夏</td>
+    <td class="buy-text">买入</td>
+    <td>900</td>
+    <td>3.990</td>
+    <td>3,591.00</td>
+    <td>5.00</td>
+    <td>0.00</td>
+    <td class="is-loss">-3,596.00</td>
+    <td>11,718.88</td>
+  </tr><tr>
+    <td>2026/06/30</td>
+    <td>11:20:13</td>
+    <td>588170</td>
+    <td>科创半导体ETF华夏</td>
+    <td class="buy-text">买入</td>
+    <td>400</td>
+    <td>3.977</td>
+    <td>1,590.80</td>
+    <td>5.00</td>
+    <td>0.00</td>
+    <td class="is-loss">-1,595.80</td>
+    <td>10,123.08</td>
+  </tr><tr>
+    <td>2026/06/30</td>
+    <td>14:16:48</td>
+    <td>588710</td>
+    <td>科创半导体设备ETF华泰柏瑞</td>
+    <td class="buy-text">买入</td>
+    <td>600</td>
+    <td>4.209</td>
+    <td>2,525.40</td>
+    <td>5.00</td>
+    <td>0.00</td>
+    <td class="is-loss">-2,530.40</td>
+    <td>7,592.68</td>
+  </tr><tr>
+    <td>2026/06/30</td>
+    <td>14:59:05</td>
+    <td>589260</td>
+    <td>科创芯片设计ETF国泰</td>
+    <td class="buy-text">买入</td>
+    <td>1100</td>
+    <td>1.791</td>
+    <td>1,970.10</td>
+    <td>5.00</td>
+    <td>0.00</td>
+    <td class="is-loss">-1,975.10</td>
+    <td>5,617.58</td>
+  </tr><tr>
+    <td>2026/07/01</td>
+    <td>09:36:45</td>
+    <td>588890</td>
+    <td>科创芯片ETF南方</td>
+    <td class="buy-text">买入</td>
+    <td>400</td>
+    <td>5.593</td>
+    <td>2,237.20</td>
+    <td>5.00</td>
+    <td>0.00</td>
+    <td class="is-loss">-2,242.20</td>
+    <td>3,375.38</td>
+  </tr><tr>
+    <td>2026/07/01</td>
+    <td>09:43:35</td>
+    <td>600667</td>
+    <td>太极实业</td>
+    <td class="buy-text">买入</td>
+    <td>100</td>
+    <td>31.880</td>
+    <td>3,188.00</td>
+    <td>5.00</td>
+    <td>0.00</td>
+    <td class="is-loss">-3,193.03</td>
+    <td>182.35</td>
+  </tr><tr>
+    <td>2026/07/01</td>
+    <td>10:46:24</td>
+    <td>512760</td>
+    <td>芯片ETF国泰</td>
+    <td class="buy-text">买入</td>
+    <td>100</td>
+    <td>1.595</td>
+    <td>159.50</td>
+    <td>5.00</td>
+    <td>0.00</td>
+    <td class="is-loss">-164.50</td>
+    <td>17.85</td>
+  </tr><tr>
+    <td>2026/07/02</td>
+    <td>09:31:15</td>
+    <td>600667</td>
+    <td>太极实业</td>
+    <td class="sell-text">对方卖出</td>
+    <td>100</td>
+    <td>29.080</td>
+    <td>2,908.00</td>
+    <td>5.00</td>
+    <td>1.45</td>
+    <td class="is-profit">+2,901.52</td>
+    <td>2,919.37</td>
+  </tr><tr>
+    <td>2026/07/02</td>
+    <td>09:32:07</td>
+    <td>588170</td>
+    <td>科创半导体ETF华夏</td>
+    <td class="sell-text">对方卖出</td>
+    <td>1300</td>
+    <td>3.842</td>
+    <td>4,994.60</td>
+    <td>5.00</td>
+    <td>0.00</td>
+    <td class="is-profit">+4,989.60</td>
+    <td>7,908.97</td>
+  </tr><tr>
+    <td>2026/07/02</td>
+    <td>09:32:13</td>
+    <td>512760</td>
+    <td>芯片ETF国泰</td>
+    <td class="sell-text">对方卖出</td>
+    <td>1200</td>
+    <td>1.447</td>
+    <td>1,736.40</td>
+    <td>5.00</td>
+    <td>0.00</td>
+    <td class="is-profit">+1,731.40</td>
+    <td>9,640.37</td>
+  </tr><tr>
+    <td>2026/07/02</td>
+    <td>09:32:18</td>
+    <td>589260</td>
+    <td>科创芯片设计ETF国泰</td>
+    <td class="sell-text">对方卖出</td>
+    <td>1100</td>
+    <td>1.639</td>
+    <td>1,802.90</td>
+    <td>5.00</td>
+    <td>0.00</td>
+    <td class="is-profit">+1,797.90</td>
+    <td>11,438.27</td>
+  </tr><tr>
+    <td>2026/07/02</td>
+    <td>09:32:24</td>
+    <td>588890</td>
+    <td>科创芯片ETF南方</td>
+    <td class="sell-text">对方卖出</td>
+    <td>400</td>
+    <td>5.056</td>
+    <td>2,022.40</td>
+    <td>5.00</td>
+    <td>0.00</td>
+    <td class="is-profit">+2,017.40</td>
+    <td>13,455.67</td>
+  </tr><tr>
+    <td>2026/07/02</td>
+    <td>09:32:29</td>
+    <td>588710</td>
+    <td>科创半导体设备ETF华泰柏瑞</td>
+    <td class="sell-text">对方卖出</td>
+    <td>600</td>
+    <td>3.990</td>
+    <td>2,394.00</td>
+    <td>5.00</td>
+    <td>0.00</td>
+    <td class="is-profit">+2,389.00</td>
+    <td>15,844.67</td>
+  </tr><tr>
+    <td>2026/07/02</td>
+    <td>10:15:45</td>
+    <td>000566</td>
+    <td>海南海药</td>
+    <td class="buy-text">买入</td>
+    <td>1000</td>
+    <td>6.040</td>
+    <td>6,040.00</td>
+    <td>5.00</td>
+    <td>0.00</td>
+    <td class="is-loss">-6,045.00</td>
+    <td>9,799.67</td>
+  </tr><tr>
+    <td>2026/07/02</td>
+    <td>10:15:46</td>
+    <td>000566</td>
+    <td>海南海药</td>
+    <td class="buy-text">买入</td>
+    <td>500</td>
+    <td>6.040</td>
+    <td>3,020.00</td>
+    <td>5.00</td>
+    <td>0.00</td>
+    <td class="is-loss">-3,025.00</td>
+    <td>6,774.67</td>
+  </tr><tr>
+    <td>2026/07/02</td>
+    <td>10:15:46</td>
+    <td>000566</td>
+    <td>海南海药</td>
+    <td class="buy-text">买入</td>
+    <td>300</td>
+    <td>6.040</td>
+    <td>1,812.00</td>
+    <td>5.00</td>
+    <td>0.00</td>
+    <td class="is-loss">-1,817.00</td>
+    <td>4,957.67</td>
+  </tr><tr>
+    <td>2026/07/03</td>
+    <td>09:30:44</td>
+    <td>000566</td>
+    <td>海南海药</td>
+    <td class="sell-text">卖出</td>
+    <td>1800</td>
+    <td>6.060</td>
+    <td>10,908.00</td>
+    <td>5.00</td>
+    <td>5.45</td>
+    <td class="is-profit">+10,897.55</td>
+    <td>15,855.22</td>
+  </tr><tr>
+    <td>2026/07/03</td>
+    <td>14:56:35</td>
+    <td>588010</td>
+    <td>科创新材ETF博时</td>
+    <td class="buy-text">买入</td>
+    <td>2800</td>
+    <td>1.399</td>
+    <td>3,917.20</td>
+    <td>5.00</td>
+    <td>0.00</td>
+    <td class="is-loss">-3,922.20</td>
+    <td>11,933.02</td>
+  </tr></tbody></table></div>
+      </section>
+
+      <section class="panel missing" id="todo">
+        <div class="section-head"><div><h2>后续待补材料</h2><p>你后面补这些，我就能把草稿版升级成正式版。</p></div><span class="chip">待补 6 项</span></div>
+        <ul><li>06/29-07/03 每日收益率、收益金额、仓位、当前总金额。</li><li>7/3 或 7/4 期末持仓截图：科创新材ETF博时的市价、盈亏、仓位占比、总资产。</li><li>亨通光电、亨通股份的上周买入成本或持仓成本，用于计算真实盈亏。</li><li>每日操作&情绪复盘 KISS 内容，以及本周二次反思总结。</li><li>本周你主观认定的主要赚钱票、亏损票、错误根源和下周执行规则。</li><li>如果要画真实分时买卖点图，需要提供分钟线数据或允许后续接入行情数据源。</li></ul>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
