@@ -182,7 +182,7 @@ const dailySources = {
 };
 
 const dailyCards = [
-  { day: "周一", date: "2026/07/06", title: "大分歧进早，机器人ETF仓位偏重", tag: "分歧进早", tone: "warn", action: "买入机器人ETF广发，处理科创新材ETF跨周仓；账户表收益率 -2.02%，仓位 61.10%。", market: "每日复盘把这一天定义为高潮次日分歧：机器人开盘已经兑现，板块没有一致回流，也没有核心一字顶住。", operation: "做对的是选择 ETF 而不是接力个股，降低了退潮期个股波动；做错的是看到位置到达就进，忽略板块一致性和核心强度确认，随后阴跌中继续补仓。", reflection: "机器人ETF不是自动确认主线延续的龙头载体。退潮期用 ETF 试错可以，但仓位应该更像 20%-40%，不能用补仓去解决节奏错误。", next: "强回流才继续看 2-3 天；不强回流、跌破 5 日线、资金被医药或防御抢走就离场。", sourceUrl: dailySources.d0706 },
+  { day: "周一", date: "2026/07/06", title: "大分歧进早，机器人ETF仓位偏重", tag: "分歧进早", tone: "warn", action: "买入机器人ETF广发，处理科创新材ETF跨周仓；账户表收益率 -2.02%，仓位 61.10%。", market: "每日复盘把这一天定义为高潮次日分歧：机器人开盘已经兑现，板块没有一致回流，也没有核心一字顶住。", operation: "做对的是选择 ETF 而不是接力个股，降低了退潮期个股波动；做错的是看到位置到达就进，忽略板块一致性和核心强度确认，随后阴跌中继续补仓。", reflection: "机器人ETF不是自动确认主线延续的龙头载体。退潮期用 ETF 试错可以，但要等有量回升和企稳确认；跌到 -5%、-6% 才止跌，已经不是普通分歧，而是破位信号。", next: "强回流才继续看 2-3 天；不强回流、跌破 5 日线、资金被医药或防御抢走就离场。", sourceUrl: dailySources.d0706 },
   { day: "周二", date: "2026/07/07", title: "条件单清掉机器人ETF，大冰日空仓防守", tag: "退潮空仓", tone: "good", action: "卖出机器人ETF广发，期末空仓；账户 +80，仓位 0%。", market: "每日复盘认为这是二冰大冰日，退潮没有完整度过前要保持防守，不能因为跌多就提前抄底。", operation: "机器人ETF处理很好：提前设置条件单，冲高不急跑，第一次下杀不慌，跌破开盘价和第一波下杀拐点后清仓，避开后面大亏。", reflection: "不亏就是大赚。冰点不是买点本身，只有冰点、企稳信号、核心题材持续性同时出现，才是试错条件。", next: "明天即使有三冰反核，也只围绕机器人核心、芯片/光模块高位优质票反弹，小仓试错，不扩散到杂毛。", sourceUrl: dailySources.d0707 },
   { day: "周三", date: "2026/07/08", title: "空仓等到尾盘，只做退潮末期反核试错", tag: "尾盘试错", tone: "good", action: "买入半导体设备ETF、大名城、恒生医疗小仓；账户 -19，仓位 20.50%。", market: "每日复盘认为仍处退潮 2 末期，早盘不出手、盘中弱修复不追，尾盘才看抗跌核心的反核试错。", operation: "半导体设备ETF 159516 的试错理由是承接强、均线/零轴上方平台企稳、涨幅不算过分、尾盘反包。大名城和恒生医疗只用于感受水温，不影响账户。", reflection: "今天没有核心失误，最大风险是盘中追高但实际没有发生。退潮期空仓不是怂，小仓位试错是为了验证盘面。", next: "明天如果指数弱反抽失败、159516 跌破平台、核心票无法带队，就承认退潮 3 开始并立刻降风险。", sourceUrl: dailySources.d0708 },
   { day: "周四", date: "2026/07/09", title: "三冰反核兑现，ETF主仓进攻有效", tag: "三冰反核", tone: "good", action: "卖出大名城、恒生医疗、部分半导设备；买入半导设备ETF、科创半导体ETF、芯片ETF；账户 +605，仓位 80.30%。", market: "每日复盘将其视为科技主升三启动日：指数前低附近、主线消息发酵、科创综指/芯片/ETF共振企稳。", operation: "方向和仓位推进整体正确，用 ETF 表达主线，避免分仓大票或追连板杂毛。缺点是最便宜的 3929/3939 附近试探仓下得不够果断。", reflection: "三冰反核要果断；真正高手在启动日敢于在赔率最好的位置先上桌，后续确认再加，而不是等完全确认才追。", next: "二高潮次日按分化预期做T：有先手高开砸、低开吸；ETF 错了按约 2% 止损。", sourceUrl: dailySources.d0709 },
@@ -202,7 +202,6 @@ const missingItems = [
   "7/10 期末持仓截图：请补 159516、588170 的持股数、成本价、市价、市值、浮盈亏、总资产和仓位占比，用于校准期末持仓盈亏。",
   "159516 的历史持仓/复权口径：7/10 早盘卖出数量与本周可见前序买入、价格口径存在不匹配，需要持仓成本或券商持仓截图确认。",
   "7/6 收益金额口径：表格写 +320，但收益率 -2.02%、期末权益较上周下降；页面已按期末权益变化入周度曲线，待你确认是否应改成 -320 或其他口径。",
-  "本周二次反思和主要赚钱/亏损票最终口述：当前已先按每日复盘和交割单做 Codex 草稿分析。",
 ];
 
 const secids = {
@@ -783,7 +782,7 @@ function renderWeekPage(trends = {}) {
         <div>
           <span class="label">${week.rangeText} · ${week.status}</span>
           <h1>${week.title}</h1>
-          <p>本页已把本周交割单、每日账户数据和 daily-trading-review 对应日期的操作情绪复盘合并成一版；159516 的历史持仓/复权口径、7/10 期末持仓截图和本周二次反思后续补齐后再校准。</p>
+          <p>本页已把本周交割单、每日账户数据、daily-trading-review 对应日期复盘和本周二次复盘合并成一版；159516 的历史持仓/复权口径和 7/10 期末持仓截图后续再校准。</p>
         </div>
         <div class="hero-side">
           ${renderMetric("可见闭环盈亏", money(visibleClosedLoopPnl), "不含跨周持仓卖出，不含期末浮动", classByValue(visibleClosedLoopPnl))}
@@ -819,29 +818,31 @@ function renderWeekPage(trends = {}) {
       </section>
 
       <section class="panel" id="ticket-analysis">
-        <div class="section-head"><div><h2>本周持有/闭环票：赚钱与亏损主因</h2><p>先按交割单和每日复盘做草稿分析：本周核心是三冰反核做对、周五商业航天虹吸后没有及时承认科技低吸预案失效。</p></div><span class="chip">草稿分析口径</span></div>
+        <div class="section-head"><div><h2>本周持有/闭环票：赚钱与亏损主因</h2><p>按交割单、每日复盘和本周二次复盘口径合并：本周核心不是 ETF 工具错，而是进场择时早于企稳确认，破位后又继续接。</p></div><span class="chip">二次复盘口径</span></div>
         <div class="ticket-list">${renderTicketCards()}</div>
       </section>
 
       <section class="panel" id="weekly-reflection">
-        <div class="section-head"><div><h2>本周整体复盘</h2><p>这周的核心不是交易频率，而是周期节奏：周二防守、周三尾盘试错、周四三冰反核非常好；周五商业航天虹吸后，科技链从正常分歧变成承接塌陷，没有及时停手。</p></div><span class="chip">二次反思已入</span></div>
+        <div class="section-head"><div><h2>本周整体复盘</h2><p>本质上这周就一个问题：进场和离场的择时不对称。卖点整体不错，买点太急，机器人ETF和半导体ETF都在没有企稳时提前进场。</p></div><span class="chip">二次复盘已入</span></div>
         <div class="grid-2">
-          <article class="info-card"><h3>本周亏损主因</h3><p>周一亏在科技趋势个股尾段，周四亏在科技连续高潮后的退潮没有高位离场。本周账户口径亏损 ${money(accountPnl)}，最大压力集中在 ${worstAccountDay.weekday} ${worstAccountDay.date.slice(5).replace("/", "-")}：${money(worstAccountDay.pnl)}。</p></article>
-          <article class="info-card"><h3>做对的地方</h3><p>开始接受 ETF 作为趋势行情的主要工具，这是进步。没有连板高度、短线情绪弱的时候，ETF 吃的是板块整体趋势溢价，比硬抓某个趋势个股更稳。</p></article>
-          <article class="info-card"><h3>错在节奏</h3><p>科技主升一全面推进后，主升二会分歧缩容，前面涨过或逻辑证伪的方向开始退潮，资金会切到更硬或没涨过的方向。三高阶段还不砸，就容易从浮盈变大亏。</p></article>
-          <article class="info-card"><h3>下周重点</h3><p>围绕科创新材ETF制定明确处理预案：只在板块趋势继续强化时持有或加仓；若只是弱修复或反抽，按 ETF 试错仓处理，先守住回撤。</p></article>
+          <article class="info-card"><h3>本周亏损主因</h3><p>亏损主要来自买入时机太早：以为 ETF 跌到 -2%、-3% 就能进，实际一路杀到 -5%、-6% 才停止，这已经代表破位，不能再按普通分歧低吸继续干。</p></article>
+          <article class="info-card"><h3>做对的地方</h3><p>出场时机整体还行，机器人ETF和半导体ETF多次卖在高点附近；ETF 作为趋势行情工具也继续成立，问题不在工具，而在买入必须等企稳确认。</p></article>
+          <article class="info-card"><h3>错在价格阻力</h3><p>高位芯片向上阻力很大，前高附近容易做双头，抛压非常重。价格趋势线尚未形成就急于做T接回，本质上是在阻力最小方向没有判断清楚时抢跑。</p></article>
+          <article class="info-card"><h3>下周重点</h3><p>先判断市场牛熊、题材逻辑、个股基本/技术/情绪，再判断压力支撑强度和价格阻力最小方向。只在突破、回升、有量企稳后买，不急着买最低点。</p></article>
         </div>
       </section>
 
       <section class="panel" id="secondary-reflection">
-        <div class="section-head"><div><h2>本周二次反思总结</h2><p>这版先放本周临时二次反思，等你补完整口述后再替换成正式版。</p></div><span class="chip warn">待二次反思补全</span></div>
+        <div class="section-head"><div><h2>本周二次复盘总结</h2><p>正式二次复盘口径：卖出不是主要问题，真正要优化的是进场节点、价格阻力判断和做错后的停止机制。</p></div><span class="chip">正式二次复盘</span></div>
         <div class="grid-2">
-          <article class="info-card"><h3>1. 周一：分歧进早</h3><p>机器人高潮次日已经有兑现，板块没有一致回流，也没有核心一字顶住，却用 60%+ 仓位去做 ETF 低吸。ETF 本身不是错，错在退潮期试错仓过重。</p></article>
-          <article class="info-card"><h3>2. 周二/周三：防守和尾盘试错正确</h3><p>周二条件单清掉机器人ETF，空仓躲开大冰日；周三早盘继续空仓，只在尾盘用小仓位验证反核，这两天是本周纪律最好的部分。</p></article>
-          <article class="info-card"><h3>3. 周四：三冰反核是核心进步</h3><p>周四在指数下沿、科创综指/芯片/ETF 共振时敢于把仓位推到 80%，说明“二冰三冰反核”的周期节奏开始能转化成真实交易。</p></article>
-          <article class="info-card"><h3>4. 周五：预案失效后还摊平</h3><p>早盘高抛是对的，午后低吸第一次也可以接受；但 -3% 后继续下杀，说明承接失效，不能再按照正常分歧模板继续摊平。</p></article>
+          <article class="info-card"><h3>1. 核心问题：进场早于企稳</h3><p>本周只有一个核心问题：进场离场时机不对称。卖点基本在高点附近，买点却抢在企稳前，机器人ETF和半导体ETF都是没等回升确认就先进去。</p></article>
+          <article class="info-card"><h3>2. 下杀过深就是破位</h3><p>原本以为 -2%、-3% 低吸没问题，但本周多次一路杀到 -5%、-6% 才停。这个幅度本身就是破位表现，破位情况下不应该继续接，更不能靠补仓修正节奏错误。</p></article>
+          <article class="info-card"><h3>3. 买点要等回升企稳</h3><p>节点买入的好处不是买在最低点，而是等最低点回升、拉升之后有量企稳再买；卖在高点附近已经可以接受，后续利润要从“有量拉稳后的买点”里抠出来。</p></article>
+          <article class="info-card"><h3>4. 先判断阻力最小方向</h3><p>高位芯片在前高附近双头压力很大，向上阻力重、抛压重。不判断压力支撑强度和价格阻力最小方向，就急着做T接回，容易一口大面。</p></article>
+          <article class="info-card"><h3>5. 四层判断框架</h3><p>先看基本市场条件：现在是牛市还是熊市；再看当前题材和板块逻辑；再看个股的基本面、技术面和情绪面；最后判断前三者对应的压力、支撑和突破方向。</p></article>
+          <article class="info-card"><h3>6. 强回流次日强度</h3><p>无论是强回流启动，还是强回流后的二次启动，第二天分歧分化时必须有一字二板顶出来抗强度；没有这个强度确认，就不能把分歧当成无脑低吸点。</p></article>
         </div>
-        <div class="quote" style="margin-top:14px">核心结论：三冰反核可以进攻，但 ETF 低吸必须有失效线。金字塔加仓只能用于做对后扩大战果，不能用于做错后摊平成本。</div>
+        <div class="quote" style="margin-top:14px">核心结论：买的时候越买越高才买，买进之后有利润才继续买；卖的时候越卖越低才卖，卖出之后有下跌才继续卖。没有利润就不要再买，没有下跌就不要再卖。做错的唯一解法，就是停止继续犯错。</div>
       </section>
 
       <section class="panel" id="daily">
@@ -856,12 +857,14 @@ function renderWeekPage(trends = {}) {
       </section>
 
       <section class="panel" id="rules">
-        <div class="section-head"><div><h2>本周沉淀规则</h2><p>根据本周草稿反思先沉淀执行准则，重点约束分歧低吸、三冰反核、ETF失效线和做错后停手。</p></div><span class="chip">正式规则</span></div>
+        <div class="section-head"><div><h2>本周沉淀规则</h2><p>根据正式二次复盘沉淀执行准则，重点约束企稳买点、价格阻力方向、金字塔加减仓和强回流次日确认。</p></div><span class="chip">正式规则</span></div>
         <div class="rules">
-          <article class="rule"><h3>分歧低吸要等确认</h3><p>高潮次日默认分化/分歧，无先手不能只因 ETF 跌到位置就重仓低吸，必须等核心、封单和板块一致回流确认。</p></article>
-          <article class="rule"><h3>三冰反核要敢打</h3><p>二冰开始准备，三冰且指数/板块/核心共振企稳时要敢于试错；确认后可以推仓，但仍要有止损线。</p></article>
-          <article class="rule"><h3>ETF低吸失效线</h3><p>正常分歧可分批低吸；跌破 -3% 后继续走弱，且主线资金被新题材虹吸，就停止加仓，只能减仓或观望。</p></article>
-          <article class="rule"><h3>做错后先停手</h3><p>金字塔加仓只能用于做对之后扩大战果，不能用于做错后摊平成本。做错时唯一正确动作是停止继续犯错。</p></article>
+          <article class="rule"><h3>企稳后再买</h3><p>不要求买在最低点；只在最低点回升、拉升后有量企稳时买。没有企稳确认，ETF 跌到位置也不能重仓接。</p></article>
+          <article class="rule"><h3>破位不摊平</h3><p>-2%、-3% 还能视作正常分歧；若继续杀到 -5%、-6% 才停止，就按破位处理，停止低吸和补仓。</p></article>
+          <article class="rule"><h3>先判阻力方向</h3><p>每次交易前先判断压力、支撑和价格阻力最小方向。前高双头、抛压重、趋势线未形成时，不急着做T接回。</p></article>
+          <article class="rule"><h3>金字塔买卖</h3><p>买的时候越买越高才买，买进之后有利润才继续买；卖的时候越卖越低才卖，卖出之后有下跌才继续卖。</p></article>
+          <article class="rule"><h3>做错就停手</h3><p>没有利润就不要再买，没有下跌就不要再卖。做错的唯一解法不是加仓修正，而是停止继续犯错。</p></article>
+          <article class="rule"><h3>二板抗强度</h3><p>强回流启动或二次启动后的第二天分歧，必须有一字二板顶出来抗强度；没有强度确认，就不把分歧当买点。</p></article>
         </div>
       </section>
 
