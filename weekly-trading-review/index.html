@@ -1,151 +1,219 @@
 <!DOCTYPE html>
-<html lang="zh-CN"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>周度交割复盘</title><style>
-    :root{--ink:#1c2530;--muted:#667085;--line:#dfe4ea;--accent:#c2412d;--accent-soft:#fff1ed;--red:#c2412d;--green:#14845f;--blue:#1d4ed8;--amber:#d97706;--danger:#a11822;--shadow:0 18px 44px rgba(28,37,48,.08);--radius:12px}
-    *{box-sizing:border-box}body{margin:0;color:var(--ink);background:linear-gradient(180deg,#f7f8fa 0%,#eef2f5 100%);font-family:"Avenir Next","PingFang SC","Noto Sans SC","Microsoft YaHei",Arial,sans-serif}.hub-shell{width:min(1180px,calc(100vw - 28px));margin:0 auto;padding:34px 0 52px;display:grid;gap:20px}.hero,.panel,.metric,.week-card,.loss-banner{background:rgba(255,255,255,.95);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.hero{padding:30px;display:grid;grid-template-columns:1.12fr .88fr;gap:26px;align-items:end}.label{display:inline-flex;width:max-content;color:var(--accent);background:var(--accent-soft);padding:7px 10px;border-radius:999px;font-size:12px;font-weight:800}h1{margin:14px 0 12px;font-size:clamp(40px,5vw,70px);line-height:1.04}h2,h3,p{margin-top:0;letter-spacing:0}p,li{color:var(--muted);line-height:1.72}.metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.metric{padding:16px;min-height:104px;display:grid;align-content:space-between}.metric span,.metric small{color:var(--muted);font-size:12px}.metric strong{font-size:23px}.panel{padding:24px}.button-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}.button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;border-radius:8px;background:var(--ink);color:#fff;text-decoration:none;font-weight:800}.button.secondary{background:#fff;color:var(--ink);border:1px solid var(--line)}.loss-banner{padding:26px;border:2px solid rgba(161,24,34,.22);background:linear-gradient(135deg,#fff1f0 0%,#fff 62%)}.loss-grid,.motto-grid,.rules{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.loss-grid article,.motto-grid article,.rules article{background:#fff;border:1px solid rgba(161,24,34,.14);border-radius:10px;padding:16px}.motto-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.motto-grid p{font-size:18px;font-weight:800;color:var(--ink)}.overview-panel{display:grid;gap:18px}.chart-head{display:flex;justify-content:space-between;gap:18px}.legend-row{display:flex;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:13px}.legend{width:28px;height:0;border-top:3px solid var(--red);display:inline-block;margin-right:6px}.legend.drawdown{border-top-color:var(--blue);border-top-style:dashed}.legend.weekly{border-top-color:var(--amber);border-top-style:dotted}.chart-wrap,.table-wrap{width:100%;overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:#fff}.weekly-chart{display:block;width:100%;min-width:960px;height:auto}.axis-label{fill:var(--muted);font-size:12px}.value-label{font-size:11px;font-weight:900;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}.amount-label{fill:var(--red)}.drawdown-label{fill:var(--blue)}.pct-positive-label{fill:var(--red)}.pct-negative-label{fill:var(--green)}.amount-positive circle{fill:var(--red);stroke:#fff;stroke-width:2}.amount-negative circle{fill:var(--green);stroke:#fff;stroke-width:2}.drawdown circle{fill:var(--blue);stroke:#fff;stroke-width:2}.pct-positive circle{fill:var(--red);stroke:#fff;stroke-width:2}.pct-negative circle{fill:var(--green);stroke:#fff;stroke-width:2}table{width:100%;border-collapse:collapse;min-width:1060px;font-size:13px}th,td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}th:first-child,td:first-child{text-align:left}th{background:#f8fafc;color:var(--muted)}a{color:inherit}.is-profit,.pct-positive-text{color:var(--red)}.is-loss,.pct-negative-text{color:var(--green)}.summary-grid,.mini-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.summary-grid{grid-template-columns:repeat(6,minmax(0,1fr))}.summary-grid span,.mini-grid span{background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:10px;color:var(--muted);font-size:13px}.summary-grid b,.mini-grid b{display:block;color:var(--ink);margin-top:4px}.latest-panel{display:grid;gap:16px}.latest-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.latest-summary span{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:12px;color:var(--muted);font-size:13px}.latest-summary b{display:block;color:var(--ink);font-size:18px;margin-top:4px}.day-strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}.latest-day{border:1px solid var(--line);border-radius:10px;background:#fff;padding:14px;display:grid;gap:8px}.latest-day.loss{border-color:rgba(20,132,95,.26)}.latest-day.profit{border-color:rgba(194,65,45,.24)}.latest-day-head{display:flex;justify-content:space-between;gap:8px;color:var(--muted);font-size:12px;font-weight:800}.latest-day strong{font-size:26px;line-height:1;color:var(--ink)}.latest-day p{margin:0;font-weight:900}.latest-day small{color:var(--muted);font-size:12px;line-height:1.5}.pos-track{height:8px;border-radius:999px;background:#edf2f7;overflow:hidden}.pos-track i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#1d4ed8,#67a3ff)}.latest-link{box-shadow:none}.week-card{padding:20px;display:grid;gap:14px;text-decoration:none;color:inherit}.week-head{display:flex;justify-content:space-between;gap:14px}.chip{display:inline-flex;white-space:nowrap;border:1px solid var(--line);border-radius:999px;background:#f8fafc;padding:7px 10px;color:var(--muted);font-size:12px;font-weight:800}.archive{display:grid;gap:14px}.rules{grid-template-columns:repeat(4,minmax(0,1fr))}
-    @media(max-width:900px){.hero,.loss-grid,.motto-grid,.rules{grid-template-columns:1fr}.metrics,.summary-grid,.mini-grid,.latest-summary{grid-template-columns:1fr}.day-strip{grid-template-columns:repeat(2,minmax(0,1fr))}.hub-shell{width:min(100vw - 16px,1180px);padding-top:22px}.hero,.panel,.loss-banner{padding:20px}.chart-head,.week-head{display:grid}.weekly-chart{min-width:980px}}
-    @media(max-width:560px){.day-strip{grid-template-columns:1fr}.latest-day strong{font-size:24px}}
-  </style></head>
-<body><main class="hub-shell">
-  <section class="hero"><div><span class="label">Weekly Trading Review</span><h1>周度交割复盘</h1><p>这里专门承载每周交割复盘：每一周一个独立页面，记录交割单、账户收益、买卖点图、逐日复盘和当周新增交易纪律。</p><div class="button-row"><a class="button" href="../2026-07-06_2026-07-10/">进入最新周复盘</a><a class="button secondary" href="../index.html">返回总首页</a></div></div><div class="metrics"><article class="metric"><span>周报数量</span><strong class="">10</strong><small>已归档周数</small></article><article class="metric"><span>最新区间</span><strong class="">07.06</strong><small>至 07.10</small></article><article class="metric"><span>最新账户</span><strong class="is-loss">-262.00</strong><small>期末 15,596.00 / 仓位 88.50%</small></article><article class="metric"><span>最新规则</span><strong class="">三冰反核</strong><small>ETF低吸必须有失效线</small></article></div></section>
-  <section class="loss-banner"><h2>亏损源头</h2><div class="loss-grid"><article><b>1. 分歧接面</b><p>刚分歧不要那么快进去，先等承接和方向确认。</p></article><article><b>2. 主升空仓</b><p>主升期要贪婪重仓，核心龙头出现时不能缩在场外。</p></article><article><b>3. 冰点割肉</b><p>冰点还割肉，次日修复没先手，直接亏上加亏。</p></article><article><b>4. 退潮追涨</b><p>退潮期追涨，没等进入混沌就大出手，这就容易死。</p></article></div></section>
-  <section class="panel cycle-motto"><span class="label">Cycle Motto</span><h2>周期格言</h2><div class="motto-grid"><article><h3>冰点割肉</h3><p>冰点是连续的大分歧：二冰反核，三冰反核（70%），四冰反核（100%）。</p></article><article><h3>高潮追高</h3><p>高潮是连续的强回流：二高砸盘，三高砸盘（成功率70%），四高砸盘（接近100%）。</p></article></div></section>
-  <section class="panel overview-panel"><div class="chart-head"><div><h2>每周资金曲线</h2><p>左轴看每周账户金额变化；右轴同时看累计回撤和当周涨跌/回撤。06.22-06.26 带 * 为暂估市值口径；07.06-07.10 已按期末权益变化入曲线，7/6 日收益金额和期末持仓待补校准。</p></div><div class="legend-row"><span><i class="legend amount"></i>金额变化</span><span><i class="legend drawdown"></i>累计回撤</span><span><i class="legend weekly"></i>当周涨跌/回撤</span></div></div><div class="chart-wrap"><svg class="weekly-chart" viewBox="0 0 1080 430" role="img" aria-label="每周资金曲线"><g><line x1="90" x2="988" y1="56.0" y2="56.0" stroke="rgba(28,37,48,.10)" stroke-dasharray="4 7"></line><text x="78" y="60.0" text-anchor="end" class="axis-label">+2,000.00</text></g><g><line x1="90" x2="988" y1="136.6" y2="136.6" stroke="rgba(28,37,48,.10)" stroke-dasharray="4 7"></line><text x="78" y="140.6" text-anchor="end" class="axis-label">0.00</text></g><g><line x1="90" x2="988" y1="237.3" y2="237.3" stroke="rgba(28,37,48,.10)" stroke-dasharray="4 7"></line><text x="78" y="241.3" text-anchor="end" class="axis-label">-2,500.00</text></g><g><line x1="90" x2="988" y1="338.0" y2="338.0" stroke="rgba(28,37,48,.10)" stroke-dasharray="4 7"></line><text x="78" y="342.0" text-anchor="end" class="axis-label">-5,000.00</text></g><text x="1000" y="60.0" class="axis-label">+10.00%</text><text x="1000" y="107.0" class="axis-label">0.00%</text><text x="1000" y="154.0" class="axis-label">-10.00%</text><text x="1000" y="201.0" class="axis-label">-20.00%</text><text x="1000" y="248.0" class="axis-label">-30.00%</text><text x="1000" y="295.0" class="axis-label">-40.00%</text><text x="1000" y="342.0" class="axis-label">-50.00%</text><g><line x1="90.0" x2="90.0" y1="56" y2="338" stroke="rgba(28,37,48,.08)"></line><text x="90.0" y="396" text-anchor="middle" class="axis-label">04.20-04.24</text></g><g><line x1="189.8" x2="189.8" y1="56" y2="338" stroke="rgba(28,37,48,.08)"></line><text x="189.8" y="396" text-anchor="middle" class="axis-label">05.08-05.16</text></g><g><line x1="289.6" x2="289.6" y1="56" y2="338" stroke="rgba(28,37,48,.08)"></line><text x="289.6" y="396" text-anchor="middle" class="axis-label">05.18-05.22</text></g><g><line x1="389.3" x2="389.3" y1="56" y2="338" stroke="rgba(28,37,48,.08)"></line><text x="389.3" y="396" text-anchor="middle" class="axis-label">05.25-05.29</text></g><g><line x1="489.1" x2="489.1" y1="56" y2="338" stroke="rgba(28,37,48,.08)"></line><text x="489.1" y="396" text-anchor="middle" class="axis-label">06.01-06.05</text></g><g><line x1="588.9" x2="588.9" y1="56" y2="338" stroke="rgba(28,37,48,.08)"></line><text x="588.9" y="396" text-anchor="middle" class="axis-label">06.08-06.12</text></g><g><line x1="688.7" x2="688.7" y1="56" y2="338" stroke="rgba(28,37,48,.08)"></line><text x="688.7" y="396" text-anchor="middle" class="axis-label">06.15-06.20</text></g><g><line x1="788.4" x2="788.4" y1="56" y2="338" stroke="rgba(28,37,48,.08)"></line><text x="788.4" y="396" text-anchor="middle" class="axis-label">06.22-06.26*</text></g><g><line x1="888.2" x2="888.2" y1="56" y2="338" stroke="rgba(28,37,48,.08)"></line><text x="888.2" y="396" text-anchor="middle" class="axis-label">06.29-07.04</text></g><g><line x1="988.0" x2="988.0" y1="56" y2="338" stroke="rgba(28,37,48,.08)"></line><text x="988.0" y="396" text-anchor="middle" class="axis-label">07.06-07.10</text></g><line x1="90" x2="988" y1="136.6" y2="136.6" stroke="rgba(28,37,48,.28)"></line><path d="M 90.0,71.4 L 189.8,317.1 L 289.6,199.2 L 389.3,191.4 L 489.1,137.8 L 588.9,155.3 L 688.7,148.6 L 788.4,331.5 L 888.2,206.7 L 988.0,147.1" fill="none" stroke="#c2412d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path><path d="M 90.0,103.0 L 189.8,170.9 L 289.6,194.4 L 389.3,215.1 L 489.1,215.5 L 588.9,226.4 L 688.7,231.2 L 788.4,305.3 L 888.2,332.8 L 988.0,336.8" fill="none" stroke="#1d4ed8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 7"></path><path d="M 90.0,77.2 L 189.8,170.9 L 289.6,130.5 L 389.3,128.6 L 489.1,103.6 L 588.9,112.3 L 688.7,109.1 L 788.4,203.8 L 888.2,149.3 L 988.0,110.8" fill="none" stroke="#d97706" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2 7"></path><a href="../2026-04-20_2026-04-24/"><g class="amount-positive"><title>04.20-04.24 +1,616.89</title><circle cx="90.0" cy="71.4" r="5.5"></circle></g></a><a href="../2026-05-08_2026-05-16/"><g class="amount-negative"><title>05.08-05.16 -4,482.26</title><circle cx="189.8" cy="317.1" r="5.5"></circle></g></a><a href="../2026-05-15_2026-05-22/"><g class="amount-negative"><title>05.18-05.22 -1,553.76</title><circle cx="289.6" cy="199.2" r="5.5"></circle></g></a><a href="../2026-05-25_2026-05-29/"><g class="amount-negative"><title>05.25-05.29 -1,362.23</title><circle cx="389.3" cy="191.4" r="5.5"></circle></g></a><a href="../2026-06-01_2026-06-05/"><g class="amount-negative"><title>06.01-06.05 -31.00</title><circle cx="489.1" cy="137.8" r="5.5"></circle></g></a><a href="../2026-06-08_2026-06-12/"><g class="amount-negative"><title>06.08-06.12 -466.00</title><circle cx="588.9" cy="155.3" r="5.5"></circle></g></a><a href="../2026-06-15_2026-06-20/"><g class="amount-negative"><title>06.15-06.20 -299.00</title><circle cx="688.7" cy="148.6" r="5.5"></circle></g></a><a href="../2026-06-22_2026-06-26/"><g class="amount-negative"><title>06.22-06.26* -4,839.42</title><circle cx="788.4" cy="331.5" r="5.5"></circle></g></a><a href="../2026-06-29_2026-07-04/"><g class="amount-negative"><title>06.29-07.04 -1,741.00</title><circle cx="888.2" cy="206.7" r="5.5"></circle></g></a><a href="../2026-07-06_2026-07-10/"><g class="amount-negative"><title>07.06-07.10 -262.00</title><circle cx="988.0" cy="147.1" r="5.5"></circle></g></a><a href="../2026-04-20_2026-04-24/"><g class="drawdown"><title>04.20-04.24 0.00%</title><circle cx="90.0" cy="103.0" r="4.5"></circle></g></a><a href="../2026-05-08_2026-05-16/"><g class="drawdown"><title>05.08-05.16 -14.45%</title><circle cx="189.8" cy="170.9" r="4.5"></circle></g></a><a href="../2026-05-15_2026-05-22/"><g class="drawdown"><title>05.18-05.22 -19.45%</title><circle cx="289.6" cy="194.4" r="4.5"></circle></g></a><a href="../2026-05-25_2026-05-29/"><g class="drawdown"><title>05.25-05.29 -23.84%</title><circle cx="389.3" cy="215.1" r="4.5"></circle></g></a><a href="../2026-06-01_2026-06-05/"><g class="drawdown"><title>06.01-06.05 -23.94%</title><circle cx="489.1" cy="215.5" r="4.5"></circle></g></a><a href="../2026-06-08_2026-06-12/"><g class="drawdown"><title>06.08-06.12 -26.26%</title><circle cx="588.9" cy="226.4" r="4.5"></circle></g></a><a href="../2026-06-15_2026-06-20/"><g class="drawdown"><title>06.15-06.20 -27.27%</title><circle cx="688.7" cy="231.2" r="4.5"></circle></g></a><a href="../2026-06-22_2026-06-26/"><g class="drawdown"><title>06.22-06.26* -43.05%</title><circle cx="788.4" cy="305.3" r="4.5"></circle></g></a><a href="../2026-06-29_2026-07-04/"><g class="drawdown"><title>06.29-07.04 -48.89%</title><circle cx="888.2" cy="332.8" r="4.5"></circle></g></a><a href="../2026-07-06_2026-07-10/"><g class="drawdown"><title>07.06-07.10 -49.74%</title><circle cx="988.0" cy="336.8" r="4.5"></circle></g></a><a href="../2026-04-20_2026-04-24/"><g class="pct-positive"><title>04.20-04.24 +5.50%</title><circle cx="90.0" cy="77.2" r="4.5"></circle></g></a><a href="../2026-05-08_2026-05-16/"><g class="pct-negative"><title>05.08-05.16 -14.45%</title><circle cx="189.8" cy="170.9" r="4.5"></circle></g></a><a href="../2026-05-15_2026-05-22/"><g class="pct-negative"><title>05.18-05.22 -5.85%</title><circle cx="289.6" cy="130.5" r="4.5"></circle></g></a><a href="../2026-05-25_2026-05-29/"><g class="pct-negative"><title>05.25-05.29 -5.45%</title><circle cx="389.3" cy="128.6" r="4.5"></circle></g></a><a href="../2026-06-01_2026-06-05/"><g class="pct-negative"><title>06.01-06.05 -0.13%</title><circle cx="489.1" cy="103.6" r="4.5"></circle></g></a><a href="../2026-06-08_2026-06-12/"><g class="pct-negative"><title>06.08-06.12 -1.97%</title><circle cx="588.9" cy="112.3" r="4.5"></circle></g></a><a href="../2026-06-15_2026-06-20/"><g class="pct-negative"><title>06.15-06.20 -1.31%</title><circle cx="688.7" cy="109.1" r="4.5"></circle></g></a><a href="../2026-06-22_2026-06-26/"><g class="pct-negative"><title>06.22-06.26* -21.44%</title><circle cx="788.4" cy="203.8" r="4.5"></circle></g></a><a href="../2026-06-29_2026-07-04/"><g class="pct-negative"><title>06.29-07.04 -9.85%</title><circle cx="888.2" cy="149.3" r="4.5"></circle></g></a><a href="../2026-07-06_2026-07-10/"><g class="pct-negative"><title>07.06-07.10 -1.65%</title><circle cx="988.0" cy="110.8" r="4.5"></circle></g></a><text x="90.0" y="94.4" text-anchor="middle" class="value-label amount-label">+1,616.89</text><text x="189.8" y="303.1" text-anchor="middle" class="value-label amount-label">-4,482.26</text><text x="289.6" y="185.2" text-anchor="middle" class="value-label amount-label">-1,553.76</text><text x="389.3" y="177.4" text-anchor="middle" class="value-label amount-label">-1,362.23</text><text x="489.1" y="123.8" text-anchor="middle" class="value-label amount-label">-31.00</text><text x="588.9" y="141.3" text-anchor="middle" class="value-label amount-label">-466.00</text><text x="688.7" y="134.6" text-anchor="middle" class="value-label amount-label">-299.00</text><text x="788.4" y="317.5" text-anchor="middle" class="value-label amount-label">-4,839.42</text><text x="888.2" y="192.7" text-anchor="middle" class="value-label amount-label">-1,741.00</text><text x="988.0" y="133.1" text-anchor="middle" class="value-label amount-label">-262.00</text><text x="90.0" y="122.0" text-anchor="middle" class="value-label drawdown-label">累0.00%</text><text x="189.8" y="189.9" text-anchor="middle" class="value-label drawdown-label">累-14.45%</text><text x="289.6" y="213.4" text-anchor="middle" class="value-label drawdown-label">累-19.45%</text><text x="389.3" y="234.1" text-anchor="middle" class="value-label drawdown-label">累-23.84%</text><text x="489.1" y="234.5" text-anchor="middle" class="value-label drawdown-label">累-23.94%</text><text x="588.9" y="245.4" text-anchor="middle" class="value-label drawdown-label">累-26.26%</text><text x="688.7" y="250.2" text-anchor="middle" class="value-label drawdown-label">累-27.27%</text><text x="788.4" y="324.3" text-anchor="middle" class="value-label drawdown-label">累-43.05%</text><text x="888.2" y="330.0" text-anchor="middle" class="value-label drawdown-label">累-48.89%</text><text x="988.0" y="330.0" text-anchor="middle" class="value-label drawdown-label">累-49.74%</text><text x="90.0" y="68.0" text-anchor="middle" class="value-label pct-positive-label">+5.50%</text><text x="189.8" y="156.9" text-anchor="middle" class="value-label pct-negative-label">-14.45%</text><text x="289.6" y="116.5" text-anchor="middle" class="value-label pct-negative-label">-5.85%</text><text x="389.3" y="114.6" text-anchor="middle" class="value-label pct-negative-label">-5.45%</text><text x="489.1" y="89.6" text-anchor="middle" class="value-label pct-negative-label">-0.13%</text><text x="588.9" y="98.3" text-anchor="middle" class="value-label pct-negative-label">-1.97%</text><text x="688.7" y="95.1" text-anchor="middle" class="value-label pct-negative-label">-1.31%</text><text x="788.4" y="189.8" text-anchor="middle" class="value-label pct-negative-label">-21.44%</text><text x="888.2" y="135.3" text-anchor="middle" class="value-label pct-negative-label">-9.85%</text><text x="988.0" y="96.8" text-anchor="middle" class="value-label pct-negative-label">-1.65%</text><text x="90" y="32" class="axis-label">金额变化（元）</text><text x="988" y="32" text-anchor="end" class="axis-label">百分比轴：累计回撤 / 当周涨跌</text></svg></div><div class="table-wrap"><table><thead><tr><th>周区间</th><th>金额变化</th><th>当周涨跌/回撤</th><th>平均周仓位</th><th>期末权益</th><th>累计回撤</th><th>最赚日</th><th>最亏日</th></tr></thead><tbody><tr>
-    <td><a href="../2026-04-20_2026-04-24/">04.20-04.24</a></td>
-    <td class="is-profit">+1,616.89</td>
-    <td class="pct-positive-text">+5.50%</td>
-    <td>94.70%</td>
-    <td>31,027.99</td>
-    <td class="pct-positive-text">0.00%</td>
-    <td class="pct-positive-text">周二 04-21 +2,117.00</td>
-    <td class="pct-negative-text">周五 04-24 -2,413.00</td>
-  </tr><tr>
-    <td><a href="../2026-05-08_2026-05-16/">05.08-05.16</a></td>
-    <td class="is-loss">-4,482.26</td>
-    <td class="pct-negative-text">-14.45%</td>
-    <td>79.10%</td>
-    <td>26,545.73</td>
-    <td class="pct-negative-text">-14.45%</td>
-    <td class="pct-positive-text">周一 05-11 +593.98</td>
-    <td class="pct-negative-text">周四 05-14 -2,043.00</td>
-  </tr><tr>
-    <td><a href="../2026-05-15_2026-05-22/">05.18-05.22</a></td>
-    <td class="is-loss">-1,553.76</td>
-    <td class="pct-negative-text">-5.85%</td>
-    <td>53.64%</td>
-    <td>24,991.97</td>
-    <td class="pct-negative-text">-19.45%</td>
-    <td class="pct-positive-text">周五 05-22 +1,680.00</td>
-    <td class="pct-negative-text">周四 05-21 -1,779.76</td>
-  </tr><tr>
-    <td><a href="../2026-05-25_2026-05-29/">05.25-05.29</a></td>
-    <td class="is-loss">-1,362.23</td>
-    <td class="pct-negative-text">-5.45%</td>
-    <td>71.48%</td>
-    <td>23,629.74</td>
-    <td class="pct-negative-text">-23.84%</td>
-    <td class="pct-positive-text">周一 05-25 +1,187.00</td>
-    <td class="pct-negative-text">周四 05-28 -2,628.23</td>
-  </tr><tr>
-    <td><a href="../2026-06-01_2026-06-05/">06.01-06.05</a></td>
-    <td class="is-loss">-31.00</td>
-    <td class="pct-negative-text">-0.13%</td>
-    <td>67.16%</td>
-    <td>23,598.74</td>
-    <td class="pct-negative-text">-23.94%</td>
-    <td class="pct-positive-text">周四 06-04 +863.00</td>
-    <td class="pct-negative-text">周三 06-03 -1,113.00</td>
-  </tr><tr>
-    <td><a href="../2026-06-08_2026-06-12/">06.08-06.12</a></td>
-    <td class="is-loss">-466.00</td>
-    <td class="pct-negative-text">-1.97%</td>
-    <td>49.19%</td>
-    <td>22,879.00</td>
-    <td class="pct-negative-text">-26.26%</td>
-    <td class="pct-positive-text">周一 06-08 +1,996.00</td>
-    <td class="pct-negative-text">周二 06-09 -2,492.00</td>
-  </tr><tr>
-    <td><a href="../2026-06-15_2026-06-20/">06.15-06.20</a></td>
-    <td class="is-loss">-299.00</td>
-    <td class="pct-negative-text">-1.31%</td>
-    <td>44.68%</td>
-    <td>22,567.00</td>
-    <td class="pct-negative-text">-27.27%</td>
-    <td class="pct-positive-text">周四 06-18 +409.00</td>
-    <td class="pct-negative-text">周一 06-15 -627.00</td>
-  </tr><tr>
-    <td><a href="../2026-06-22_2026-06-26/">06.22-06.26*</a></td>
-    <td class="is-loss">-4,839.42</td>
-    <td class="pct-negative-text">-21.44%</td>
-    <td>92.57%</td>
-    <td>暂估 / 市值17,671.22</td>
-    <td class="pct-negative-text">-43.05%</td>
-    <td class="pct-positive-text">周一 06-22 -405.22</td>
-    <td class="pct-negative-text">周五 06-26 -4,839.42</td>
-  </tr><tr>
-    <td><a href="../2026-06-29_2026-07-04/">06.29-07.04</a></td>
-    <td class="is-loss">-1,741.00</td>
-    <td class="pct-negative-text">-9.85%</td>
-    <td>58.44%</td>
-    <td>15,858.00</td>
-    <td class="pct-negative-text">-48.89%</td>
-    <td class="pct-positive-text">周二 06-30 +257.00</td>
-    <td class="pct-negative-text">周四 07-02 -1,284.00</td>
-  </tr><tr>
-    <td><a href="../2026-07-06_2026-07-10/">07.06-07.10</a></td>
-    <td class="is-loss">-262.00</td>
-    <td class="pct-negative-text">-1.65%</td>
-    <td>50.08%</td>
-    <td>15,596.00</td>
-    <td class="pct-negative-text">-49.74%</td>
-    <td class="pct-positive-text">周四 07-09 +605.00</td>
-    <td class="pct-negative-text">周五 07-10 -514.40</td>
-  </tr></tbody></table></div><div class="summary-grid"><span>累计变化 <b class="is-loss">-13,419.78</b></span><span>最大单周盈利 <b>04.20-04.24 +1,616.89</b></span><span>最大单周亏损 <b>06.22-06.26* -4,839.42</b></span><span>最新已入曲线 <b>-1.65%</b></span><span>最新累计回撤 <b>-49.74%</b></span><span>最大累计回撤 <b>-49.74%</b></span></div></section>
-  <section class="panel latest-panel">
-    <div class="chart-head">
-      <div><h2>最新周日度面板</h2><p>直接看 07.06-07.10 每天的盈亏百分比、收益金额和持仓比例；本周节奏是周二空仓、周三试错、周四三冰反核、周五预案失效。</p></div>
-      <span class="chip">日度账户已补</span>
-    </div>
-    <div class="latest-summary">
-      <span>周账户 <b class="is-loss">-262.00</b></span>
-      <span>日收益率合计 <b class="is-loss">-0.44%</b></span>
-      <span>平均仓位 <b>50.08%</b></span>
-      <span>最亏日 <b class="is-loss">周五 -3.10%</b></span>
-    </div>
-    <div class="day-strip"><article class="latest-day profit">
-      <div class="latest-day-head"><span>周一</span><b>07-06</b></div>
-      <strong>-2.02%</strong>
-      <p class="is-profit">+320.00 元</p>
-      <div class="pos-track"><i style="width:61.10%"></i></div>
-      <small>仓位 61.10% · 权益 15,533.00</small>
-    </article><article class="latest-day profit">
-      <div class="latest-day-head"><span>周二</span><b>07-07</b></div>
-      <strong>+0.50%</strong>
-      <p class="is-profit">+80.00 元</p>
-      <div class="pos-track"><i style="width:0.00%"></i></div>
-      <small>仓位 0.00% · 权益 15,608.00</small>
-    </article><article class="latest-day loss">
-      <div class="latest-day-head"><span>周三</span><b>07-08</b></div>
-      <strong>-0.12%</strong>
-      <p class="is-loss">-19.00 元</p>
-      <div class="pos-track"><i style="width:20.50%"></i></div>
-      <small>仓位 20.50% · 权益 15,588.00</small>
-    </article><article class="latest-day profit">
-      <div class="latest-day-head"><span>周四</span><b>07-09</b></div>
-      <strong>+4.30%</strong>
-      <p class="is-profit">+605.00 元</p>
-      <div class="pos-track"><i style="width:80.30%"></i></div>
-      <small>仓位 80.30% · 权益 16,195.00</small>
-    </article><article class="latest-day loss">
-      <div class="latest-day-head"><span>周五</span><b>07-10</b></div>
-      <strong>-3.10%</strong>
-      <p class="is-loss">-514.40 元</p>
-      <div class="pos-track"><i style="width:88.50%"></i></div>
-      <small>仓位 88.50% · 权益 15,596.00</small>
-    </article></div>
-    <a class="week-card latest-link" href="../2026-07-06_2026-07-10/">
-      <div class="week-head"><div><h3>进入 2026.07.06 - 2026.07.10 复盘</h3><p>查看交割明细、每日复盘、买卖点图和本周待补材料。最新版本已加入日度收益/仓位图和 5 分钟线买卖点图。</p></div><span class="chip">草稿版</span></div>
-    </a>
-  </section>
-  <section class="panel"><h2>周度归档</h2><div class="archive"><a class="week-card" href="../2026-07-06_2026-07-10/"><div class="week-head"><div><h3>2026.07.06 - 2026.07.10</h3><p>三冰反核做对，周五商业航天虹吸后科技低吸预案失效；159516 和 588170 期末持仓待截图校准。</p></div><span class="chip">草稿版</span></div><div class="mini-grid"><span>45 笔</span><span>-262.00</span><span>草稿版</span></div></a><a class="week-card" href="../2026-06-29_2026-07-04/"><div class="week-head"><div><h3>2026.06.29 - 2026.07.04</h3><p>半导体/芯片 ETF 篮子试错后撤退，海南海药小幅闭环，周五转入科创新材ETF。</p></div><span class="chip">草稿版</span></div><div class="mini-grid"><span>21 笔</span><span>-1,741.00</span><span>草稿版</span></div></a><a class="week-card" href="../2026-06-22_2026-06-26/"><div class="week-head"><div><h3>2026.06.22 - 2026.06.26</h3><p>诺德止损后切入海欣/大唐，再回到芯片通信强线，期末持有亨通光电与亨通股份并按收盘价暂估浮亏。</p></div><span class="chip">草稿版</span></div><div class="mini-grid"><span>8 笔</span><span>-4,839.42</span><span>草稿版</span></div></a><a class="week-card" href="../2026-06-15_2026-06-20/"><div class="week-head"><div><h3>2026.06.15 - 2026.06.20</h3><p>连板高度切到机构趋势核心，诺德股份为期末持仓。</p></div><span class="chip">草稿版</span></div><div class="mini-grid"><span>16 笔</span><span>-299.00</span><span>草稿版</span></div></a><a class="week-card" href="../2026-06-08_2026-06-12/"><div class="week-head"><div><h3>2026.06.08 - 2026.06.12</h3><p>历史周度交割复盘归档。</p></div><span class="chip">已发布</span></div><div class="mini-grid"><span>14 笔</span><span>-466.00</span><span>已发布</span></div></a><a class="week-card" href="../2026-06-01_2026-06-05/"><div class="week-head"><div><h3>2026.06.01 - 2026.06.05</h3><p>历史周度交割复盘归档。</p></div><span class="chip">已发布</span></div><div class="mini-grid"><span>11 笔</span><span>-31.00</span><span>已发布</span></div></a><a class="week-card" href="../2026-05-25_2026-05-29/"><div class="week-head"><div><h3>2026.05.25 - 2026.05.29</h3><p>历史周度交割复盘归档。</p></div><span class="chip">已发布</span></div><div class="mini-grid"><span>25 笔</span><span>-1,362.23</span><span>已发布</span></div></a><a class="week-card" href="../2026-05-15_2026-05-22/"><div class="week-head"><div><h3>2026.05.18 - 2026.05.22</h3><p>历史周度交割复盘归档。</p></div><span class="chip">已发布</span></div><div class="mini-grid"><span>35 笔</span><span>-1,553.76</span><span>已发布</span></div></a><a class="week-card" href="../2026-05-08_2026-05-16/"><div class="week-head"><div><h3>2026.05.08 - 2026.05.16</h3><p>历史周度交割复盘归档。</p></div><span class="chip">已发布</span></div><div class="mini-grid"><span>37 笔</span><span>-4,482.26</span><span>已发布</span></div></a><a class="week-card" href="../2026-04-20_2026-04-24/"><div class="week-head"><div><h3>2026.04.20 - 2026.04.24</h3><p>历史周度交割复盘归档。</p></div><span class="chip">已发布</span></div><div class="mini-grid"><span>63 笔</span><span>+1,616.89</span><span>已发布</span></div></a></div></section>
-  <section class="panel"><h2>周度高频规则</h2><div class="rules"><article><h3>只做最强</h3><p>有最强做最强，无最强再选次强；后排杂毛和非主线左侧试错要从源头放弃。</p></article><article><h3>三板强弱纪律</h3><p>第三板若是弱板就减半仓；若是强势板或一字板就不用机械减半，总是见机行事。</p></article><article><h3>中高位唯一性</h3><p>连板如果不是唯一最高辨识度，中高位/爆量都容易死掉。</p></article><article><h3>ETF主题仓位</h3><p>同一主题多个 ETF 同时买，本质是一笔主题仓位，不是分散仓位。</p></article></div></section>
-</main></body></html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>周度交割复盘</title>
+  <style>
+    :root{--ink:#17202a;--muted:#667085;--line:#dfe4ea;--paper:#ffffff;--wash:#f5f7fa;--red:#c2412d;--green:#14845f;--blue:#1d4ed8;--amber:#b45309;--violet:#6d5bd0;--shadow:0 18px 44px rgba(23,32,42,.08);--radius:10px}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;color:var(--ink);background:linear-gradient(180deg,#f7f8fa 0%,#eef2f5 100%);font-family:"Avenir Next","PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif;overflow-x:hidden}
+    a{color:inherit}
+    p,li{color:var(--muted);line-height:1.72}
+    h1,h2,h3,p{margin-top:0;letter-spacing:0}
+    h1{margin:14px 0 14px;font-size:clamp(38px,5vw,68px);line-height:1.04}
+    .date-range{display:grid;gap:0}
+    h2{font-size:28px;margin-bottom:12px}
+    h3{font-size:18px;margin-bottom:8px}
+    .page-shell{width:min(1180px,calc(100vw - 28px));margin:0 auto;padding:34px 0 56px;display:grid;gap:20px}
+    .page-shell > *,.hero > *,.panel > *,.account-placeholder > *,.metric,.week-card,.stock-card,.day-card{min-width:0}
+    .rail{position:fixed;left:18px;top:18px;z-index:2;display:flex;flex-direction:column;gap:7px}
+    .rail a{width:78px;min-height:34px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.9);text-decoration:none;color:var(--muted);font-size:12px;font-weight:800;box-shadow:0 10px 28px rgba(23,32,42,.06)}
+    .hero,.panel,.metric,.week-card,.stock-card{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .hero{padding:30px;display:grid;grid-template-columns:1.08fr .92fr;gap:26px;align-items:end}
+    .panel{padding:24px}
+    .label{display:inline-flex;width:max-content;color:var(--red);background:#fff1ed;padding:7px 10px;border-radius:999px;font-size:12px;font-weight:800}
+    .button-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+    .button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;border-radius:8px;background:var(--ink);color:#fff;text-decoration:none;font-weight:800}
+    .button.secondary{background:#fff;color:var(--ink);border:1px solid var(--line)}
+    .metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .metric{padding:16px;min-height:106px;display:grid;align-content:space-between}
+    .metric span,.metric small{color:var(--muted);font-size:12px}
+    .metric strong{font-size:22px;line-height:1.18;word-break:break-word}
+    .lead{font-size:17px;color:#334155}
+    .thesis-grid,.summary-grid,.stock-metrics,.day-numbers,.missing-list,.entrance-grid{display:grid;gap:12px}
+    .thesis-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .thesis-grid article,.rules article,.missing-list article{background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px}
+    .thesis-grid b,.rules b,.missing-list b{display:block;margin-bottom:7px}
+    .data-panel{display:grid;grid-template-columns:.95fr 1.05fr;gap:22px;align-items:center}
+    .summary-grid,.latest-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+    .summary-grid span,.latest-summary span,.mini-grid span,.day-numbers span,.stock-metrics span,.mini-ledger span{background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:10px;color:var(--muted);font-size:13px}
+    .summary-grid b,.latest-summary b,.mini-grid b,.day-numbers b,.stock-metrics b,.mini-ledger b{display:block;color:var(--ink);font-size:17px;margin-top:4px}
+    .stock-metrics{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .stock-metrics em{display:block;font-style:normal;font-size:12px;color:var(--muted);margin-top:3px}
+    .table-wrap{width:100%;overflow-x:auto;border:1px solid var(--line);border-radius:9px;background:#fff;margin:14px 0}
+    table{width:100%;min-width:920px;border-collapse:collapse;font-size:13px}
+    th,td{padding:11px 12px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+    th:first-child,td:first-child{text-align:left}
+    th{background:#f8fafc;color:var(--muted)}
+    .compact-table table{min-width:760px}
+    .is-profit,.is-buy{color:var(--red)}
+    .is-loss{color:var(--green)}
+    .is-sell{color:var(--blue)}
+    .account-placeholder{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;align-items:center;border:1px dashed #b8c1cc;border-radius:10px;background:#f8fafc;padding:18px}
+    .account-placeholder strong{font-size:22px}
+    .mini-ledger,.mini-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+    .stock-grid{display:grid;gap:16px;margin-top:18px}
+    .stock-card{padding:18px;box-shadow:none}
+    .stock-card-head,.week-head,.day-card-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+    .code,.chip{display:inline-flex;white-space:nowrap;border:1px solid var(--line);border-radius:999px;background:#f8fafc;padding:7px 10px;color:var(--muted);font-size:12px;font-weight:800}
+    .chart-frame{margin-top:14px;border:1px solid var(--line);border-radius:10px;overflow-x:auto;background:#fff}
+    .stock-chart{display:block;width:100%;min-width:860px;height:auto}
+    .stock-chart rect{fill:#fff}
+    .stock-chart .axis line,.stock-chart .day-grid line{stroke:rgba(23,32,42,.10);stroke-dasharray:4 6}
+    .stock-chart .axis text,.stock-chart .day-grid text{fill:var(--muted);font-size:12px}
+    .stock-chart path{stroke:var(--ink);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+    .trade-marker.buy circle{fill:var(--red);stroke:#fff;stroke-width:2}
+    .trade-marker.sell circle{fill:var(--blue);stroke:#fff;stroke-width:2}
+    .trade-marker text{font-size:11px;font-weight:900;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+    .trade-marker.buy text{fill:var(--red)}
+    .trade-marker.sell text{fill:var(--blue)}
+    .chart-empty{padding:22px;display:grid;gap:6px;color:var(--muted)}
+    .chart-empty b{color:var(--ink)}
+    .day-grid-cards{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+    .day-card{border:1px solid var(--line);border-radius:8px;background:#fff;padding:15px;display:grid;gap:10px}
+    .day-card-head{display:grid;gap:8px}
+    .day-card-head span{display:block;color:var(--muted);font-size:12px;margin-top:3px}
+    .day-numbers{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .day-card p{margin-bottom:0}
+    .source-line{display:grid;gap:5px;border-top:1px solid var(--line);padding-top:10px;color:var(--blue);font-size:13px;font-weight:800}
+    .source-line small{color:var(--muted);font-weight:500;line-height:1.55}
+    .rules{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+    .rules article span{display:inline-flex;color:var(--blue);font-size:12px;font-weight:900;margin-bottom:8px}
+    .missing-list{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .archive{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+    .week-card{padding:20px;display:grid;gap:14px;text-decoration:none;color:inherit}
+    .latest-link{border-color:rgba(29,78,216,.28)}
+    .entrance-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    @media(max-width:1260px){.rail{position:static;width:min(1180px,calc(100vw - 28px));margin:18px auto 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}.rail a{width:auto}}
+    @media(max-width:920px){.hero,.data-panel,.account-placeholder{grid-template-columns:1fr}.metrics,.summary-grid,.latest-summary,.stock-metrics,.mini-ledger,.mini-grid,.thesis-grid,.rules,.missing-list,.archive,.entrance-grid{grid-template-columns:1fr}.day-grid-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.page-shell{width:min(calc(100vw - 16px),1180px);padding-top:22px}.hero,.panel{padding:20px}}
+    @media(max-width:560px){.page-shell,.rail{width:calc(100% - 16px);max-width:100%;margin-left:auto;margin-right:auto}.rail{grid-template-columns:repeat(2,minmax(0,1fr))}.day-grid-cards{grid-template-columns:1fr}h1{font-size:34px}.metric strong{font-size:19px}}
+  </style>
+</head>
+<body>
+  <main class="page-shell">
+    <section class="hero">
+      <div>
+        <span class="label">Weekly Trading Review</span>
+        <h1>周度交割复盘</h1>
+        <p>每周一个独立页面，记录成交单、买卖点、账户变化、逐日复盘和当周新增交易纪律。最新周为 2026.07.20-07.24，当前为成交回报草稿版。</p>
+        <div class="button-row">
+          <a class="button" href="../2026-07-20_2026-07-24/">进入最新周复盘</a>
+          <a class="button secondary" href="../index.html">返回总首页</a>
+        </div>
+      </div>
+      <div class="metrics">
+        <article class="metric"><span>周报数量</span><strong class="">11</strong><small>含本周草稿</small></article>
+        <article class="metric"><span>最新区间</span><strong class="">07.20</strong><small>至 07.24</small></article>
+        <article class="metric"><span>最新账户</span><strong class="">待补</strong><small>成交回报已录入，账户收益待校准</small></article>
+        <article class="metric"><span>最新规则</span><strong class="">强度确认</strong><small>主线/轮动/试错分层处理</small></article>
+      </div>
+    </section>
+    <section class="panel">
+      <span class="label">Latest Draft</span>
+      <h2>最新周：07.20-07.24</h2>
+      <div class="latest-summary">
+        <span>成交笔数 <b>22</b></span>
+        <span>成交额 <b>53,044.60</b></span>
+        <span>可见已实现 <b class="is-profit">+1,931.40</b></span>
+        <span>账户口径 <b>待补</b></span>
+      </div>
+      <p>本周核心是立新能源做T兑现，科创半导体ETF/美利云作为科技弱修复试错，周五切入哈药股份小仓观察。完整收益曲线等账户数据补齐后更新。</p>
+    </section>
+    <section class="panel">
+      <span class="label">Archive</span>
+      <h2>周报归档</h2>
+      <div class="archive"><a class="week-card " href="../2026-04-20_2026-04-24/">
+      <div class="week-head"><h3>04.20-04.24</h3><span class="chip">已归档</span></div>
+      <p>正收益样本，账户高点。</p>
+      <div class="mini-grid">
+        <span>金额变化 <b class="is-profit">+1,616.89</b></span>
+        <span>周收益 <b>+5.50%</b></span>
+        <span>期末权益 <b>31,027.99</b></span>
+      </div>
+    </a><a class="week-card " href="../2026-05-08_2026-05-16/">
+      <div class="week-head"><h3>05.08-05.16</h3><span class="chip">已归档</span></div>
+      <p>大回撤周。</p>
+      <div class="mini-grid">
+        <span>金额变化 <b class="is-loss">-4,482.26</b></span>
+        <span>周收益 <b>-14.45%</b></span>
+        <span>期末权益 <b>26,545.73</b></span>
+      </div>
+    </a><a class="week-card " href="../2026-05-15_2026-05-22/">
+      <div class="week-head"><h3>05.18-05.22</h3><span class="chip">已归档</span></div>
+      <p>亏损继续收敛中。</p>
+      <div class="mini-grid">
+        <span>金额变化 <b class="is-loss">-1,553.76</b></span>
+        <span>周收益 <b>-5.85%</b></span>
+        <span>期末权益 <b>24,991.97</b></span>
+      </div>
+    </a><a class="week-card " href="../2026-05-25_2026-05-29/">
+      <div class="week-head"><h3>05.25-05.29</h3><span class="chip">已归档</span></div>
+      <p>模式仍在修正。</p>
+      <div class="mini-grid">
+        <span>金额变化 <b class="is-loss">-1,362.23</b></span>
+        <span>周收益 <b>-5.45%</b></span>
+        <span>期末权益 <b>23,629.74</b></span>
+      </div>
+    </a><a class="week-card " href="../2026-06-01_2026-06-05/">
+      <div class="week-head"><h3>06.01-06.05</h3><span class="chip">已归档</span></div>
+      <p>接近持平。</p>
+      <div class="mini-grid">
+        <span>金额变化 <b class="is-loss">-31.00</b></span>
+        <span>周收益 <b>-0.13%</b></span>
+        <span>期末权益 <b>23,598.74</b></span>
+      </div>
+    </a><a class="week-card " href="../2026-06-08_2026-06-12/">
+      <div class="week-head"><h3>06.08-06.12</h3><span class="chip">已归档</span></div>
+      <p>轻亏周。</p>
+      <div class="mini-grid">
+        <span>金额变化 <b class="is-loss">-466.00</b></span>
+        <span>周收益 <b>-1.97%</b></span>
+        <span>期末权益 <b>22,879.00</b></span>
+      </div>
+    </a><a class="week-card " href="../2026-06-15_2026-06-20/">
+      <div class="week-head"><h3>06.15-06.20</h3><span class="chip">已归档</span></div>
+      <p>继续小亏。</p>
+      <div class="mini-grid">
+        <span>金额变化 <b class="is-loss">-299.00</b></span>
+        <span>周收益 <b>-1.31%</b></span>
+        <span>期末权益 <b>22,567.00</b></span>
+      </div>
+    </a><a class="week-card " href="../2026-06-22_2026-06-26/">
+      <div class="week-head"><h3>06.22-06.26*</h3><span class="chip">已归档</span></div>
+      <p>暂估口径周。</p>
+      <div class="mini-grid">
+        <span>金额变化 <b class="is-loss">-4,839.42</b></span>
+        <span>周收益 <b>-21.44%</b></span>
+        <span>期末权益 <b>暂估 / 市值17,671.22</b></span>
+      </div>
+    </a><a class="week-card " href="../2026-06-29_2026-07-04/">
+      <div class="week-head"><h3>06.29-07.04</h3><span class="chip">已归档</span></div>
+      <p>亏损收敛但仍未扭转。</p>
+      <div class="mini-grid">
+        <span>金额变化 <b class="is-loss">-1,741.00</b></span>
+        <span>周收益 <b>-9.85%</b></span>
+        <span>期末权益 <b>待校准</b></span>
+      </div>
+    </a><a class="week-card " href="../2026-07-06_2026-07-10/">
+      <div class="week-head"><h3>07.06-07.10</h3><span class="chip">已归档</span></div>
+      <p>三冰反核做对，科技ETF择时暴露问题。</p>
+      <div class="mini-grid">
+        <span>金额变化 <b class="is-loss">-262.00</b></span>
+        <span>周收益 <b>-1.65%</b></span>
+        <span>期末权益 <b>15,596.00</b></span>
+      </div>
+    </a><a class="week-card latest-link" href="../2026-07-20_2026-07-24/">
+      <div class="week-head"><h3>07.20-07.24</h3><span class="chip">最新草稿</span></div>
+      <p>本周先按成交回报生成草稿。</p>
+      <div class="mini-grid">
+        <span>金额变化 <b class="">待补</b></span>
+        <span>周收益 <b>待补</b></span>
+        <span>期末权益 <b>账户口径待补</b></span>
+      </div>
+    </a></div>
+    </section>
+  </main>
+</body>
+</html>

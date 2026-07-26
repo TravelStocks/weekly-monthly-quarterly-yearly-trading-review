@@ -1,12 +1,126 @@
 <!DOCTYPE html>
-<html lang="zh-CN"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>周度 / 月度 / 季度 / 年度交易复盘总览</title><style>
-    :root{--ink:#1c2530;--muted:#667085;--line:#dfe4ea;--accent:#c2412d;--accent-soft:#fff1ed;--red:#c2412d;--green:#14845f;--blue:#1d4ed8;--amber:#d97706;--danger:#a11822;--shadow:0 18px 44px rgba(28,37,48,.08);--radius:12px}
-    *{box-sizing:border-box}body{margin:0;color:var(--ink);background:linear-gradient(180deg,#f7f8fa 0%,#eef2f5 100%);font-family:"Avenir Next","PingFang SC","Noto Sans SC","Microsoft YaHei",Arial,sans-serif}.hub-shell{width:min(1180px,calc(100vw - 28px));margin:0 auto;padding:34px 0 52px;display:grid;gap:20px}.hero,.panel,.metric,.week-card,.loss-banner{background:rgba(255,255,255,.95);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.hero{padding:30px;display:grid;grid-template-columns:1.12fr .88fr;gap:26px;align-items:end}.label{display:inline-flex;width:max-content;color:var(--accent);background:var(--accent-soft);padding:7px 10px;border-radius:999px;font-size:12px;font-weight:800}h1{margin:14px 0 12px;font-size:clamp(40px,5vw,70px);line-height:1.04}h2,h3,p{margin-top:0;letter-spacing:0}p,li{color:var(--muted);line-height:1.72}.metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.metric{padding:16px;min-height:104px;display:grid;align-content:space-between}.metric span,.metric small{color:var(--muted);font-size:12px}.metric strong{font-size:23px}.panel{padding:24px}.button-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}.button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;border-radius:8px;background:var(--ink);color:#fff;text-decoration:none;font-weight:800}.button.secondary{background:#fff;color:var(--ink);border:1px solid var(--line)}.loss-banner{padding:26px;border:2px solid rgba(161,24,34,.22);background:linear-gradient(135deg,#fff1f0 0%,#fff 62%)}.loss-grid,.motto-grid,.rules{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.loss-grid article,.motto-grid article,.rules article{background:#fff;border:1px solid rgba(161,24,34,.14);border-radius:10px;padding:16px}.motto-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.motto-grid p{font-size:18px;font-weight:800;color:var(--ink)}.overview-panel{display:grid;gap:18px}.chart-head{display:flex;justify-content:space-between;gap:18px}.legend-row{display:flex;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:13px}.legend{width:28px;height:0;border-top:3px solid var(--red);display:inline-block;margin-right:6px}.legend.drawdown{border-top-color:var(--blue);border-top-style:dashed}.legend.weekly{border-top-color:var(--amber);border-top-style:dotted}.chart-wrap,.table-wrap{width:100%;overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:#fff}.weekly-chart{display:block;width:100%;min-width:960px;height:auto}.axis-label{fill:var(--muted);font-size:12px}.value-label{font-size:11px;font-weight:900;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}.amount-label{fill:var(--red)}.drawdown-label{fill:var(--blue)}.pct-positive-label{fill:var(--red)}.pct-negative-label{fill:var(--green)}.amount-positive circle{fill:var(--red);stroke:#fff;stroke-width:2}.amount-negative circle{fill:var(--green);stroke:#fff;stroke-width:2}.drawdown circle{fill:var(--blue);stroke:#fff;stroke-width:2}.pct-positive circle{fill:var(--red);stroke:#fff;stroke-width:2}.pct-negative circle{fill:var(--green);stroke:#fff;stroke-width:2}table{width:100%;border-collapse:collapse;min-width:1060px;font-size:13px}th,td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}th:first-child,td:first-child{text-align:left}th{background:#f8fafc;color:var(--muted)}a{color:inherit}.is-profit,.pct-positive-text{color:var(--red)}.is-loss,.pct-negative-text{color:var(--green)}.summary-grid,.mini-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.summary-grid{grid-template-columns:repeat(6,minmax(0,1fr))}.summary-grid span,.mini-grid span{background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:10px;color:var(--muted);font-size:13px}.summary-grid b,.mini-grid b{display:block;color:var(--ink);margin-top:4px}.latest-panel{display:grid;gap:16px}.latest-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.latest-summary span{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:12px;color:var(--muted);font-size:13px}.latest-summary b{display:block;color:var(--ink);font-size:18px;margin-top:4px}.day-strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}.latest-day{border:1px solid var(--line);border-radius:10px;background:#fff;padding:14px;display:grid;gap:8px}.latest-day.loss{border-color:rgba(20,132,95,.26)}.latest-day.profit{border-color:rgba(194,65,45,.24)}.latest-day-head{display:flex;justify-content:space-between;gap:8px;color:var(--muted);font-size:12px;font-weight:800}.latest-day strong{font-size:26px;line-height:1;color:var(--ink)}.latest-day p{margin:0;font-weight:900}.latest-day small{color:var(--muted);font-size:12px;line-height:1.5}.pos-track{height:8px;border-radius:999px;background:#edf2f7;overflow:hidden}.pos-track i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#1d4ed8,#67a3ff)}.latest-link{box-shadow:none}.week-card{padding:20px;display:grid;gap:14px;text-decoration:none;color:inherit}.week-head{display:flex;justify-content:space-between;gap:14px}.chip{display:inline-flex;white-space:nowrap;border:1px solid var(--line);border-radius:999px;background:#f8fafc;padding:7px 10px;color:var(--muted);font-size:12px;font-weight:800}.archive{display:grid;gap:14px}.rules{grid-template-columns:repeat(4,minmax(0,1fr))}
-    @media(max-width:900px){.hero,.loss-grid,.motto-grid,.rules{grid-template-columns:1fr}.metrics,.summary-grid,.mini-grid,.latest-summary{grid-template-columns:1fr}.day-strip{grid-template-columns:repeat(2,minmax(0,1fr))}.hub-shell{width:min(100vw - 16px,1180px);padding-top:22px}.hero,.panel,.loss-banner{padding:20px}.chart-head,.week-head{display:grid}.weekly-chart{min-width:980px}}
-    @media(max-width:560px){.day-strip{grid-template-columns:1fr}.latest-day strong{font-size:24px}}
-  </style></head>
-<body><main class="hub-shell">
-  <section class="loss-banner"><h1>亏损源头</h1><div class="loss-grid"><article><b>1. 分歧接面</b><p>刚分歧不要那么快进去。</p></article><article><b>2. 主升空仓</b><p>主升期要贪婪重仓。</p></article><article><b>3. 冰点割肉</b><p>冰点还割肉，次日修复没先手，直接亏上加亏。</p></article><article><b>4. 退潮追涨</b><p>退潮期追涨，没等进入混沌就大出手，这就容易死。</p></article></div></section>
-  <section class="hero"><div><span class="label">weekly-monthly-quarterly-yearly-trading-review</span><h1>周度 / 月度 / 季度 / 年度交易复盘</h1><p>这里是总入口：周度单独成页；月度和季度放在同一个复盘主页；年度复盘单独沉淀交易体系。</p><div class="button-row"><a class="button" href="./weekly-trading-review/">周度主页</a><a class="button secondary" href="./monthly-quarterly-trading-review/">月度 / 季度主页</a><a class="button secondary" href="./yearly-trading-review/">年度主页</a></div></div><div class="metrics"><article class="metric"><span>周度归档</span><strong class="">10</strong><small>已发布/草稿周复盘</small></article><article class="metric"><span>最新区间</span><strong class="">07.06</strong><small>至 07.10</small></article><article class="metric"><span>最新账户</span><strong class="is-loss">-262.00</strong><small>期末 15,596.00</small></article><article class="metric"><span>长期结构</span><strong class="">3 个主页</strong><small>周度 / 月季 / 年度</small></article></div></section>
-  <section class="panel"><h2>复盘主页</h2><div class="loss-grid"><a class="week-card" href="./weekly-trading-review/"><div class="week-head"><h3>周度交割复盘</h3><span class="chip">主页 1</span></div><p>每周一个独立复盘页面，记录交割单、买卖点、账户变化、KISS 复盘和周度规则。</p><div class="mini-grid"><span>周报 <b>10 篇</b></span><span>最新 <b>07.06-07.10</b></span><span>状态 <b>草稿版</b></span></div></a><a class="week-card" href="./monthly-quarterly-trading-review/"><div class="week-head"><h3>月度 / 季度复盘</h3><span class="chip">主页 2</span></div><p>月度承接周度结果，季度检查模式和仓位是否真正改善账户曲线。</p><div class="mini-grid"><span>月度 <b>1-12 月</b></span><span>季度 <b>Q1-Q4</b></span><span>状态 <b>框架版</b></span></div></a><a class="week-card" href="./yearly-trading-review/"><div class="week-head"><h3>年度交易复盘</h3><span class="chip">主页 3</span></div><p>年度层面聚焦账户画像、模式进化、仓位风控、心理纪律和下一年执行准则。</p><div class="mini-grid"><span>年度 <b>自然年</b></span><span>核心 <b>体系沉淀</b></span><span>状态 <b>框架版</b></span></div></a></div></section>
-</main></body></html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>周度 / 月度 / 季度 / 年度交易复盘总览</title>
+  <style>
+    :root{--ink:#17202a;--muted:#667085;--line:#dfe4ea;--paper:#ffffff;--wash:#f5f7fa;--red:#c2412d;--green:#14845f;--blue:#1d4ed8;--amber:#b45309;--violet:#6d5bd0;--shadow:0 18px 44px rgba(23,32,42,.08);--radius:10px}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;color:var(--ink);background:linear-gradient(180deg,#f7f8fa 0%,#eef2f5 100%);font-family:"Avenir Next","PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif;overflow-x:hidden}
+    a{color:inherit}
+    p,li{color:var(--muted);line-height:1.72}
+    h1,h2,h3,p{margin-top:0;letter-spacing:0}
+    h1{margin:14px 0 14px;font-size:clamp(38px,5vw,68px);line-height:1.04}
+    .date-range{display:grid;gap:0}
+    h2{font-size:28px;margin-bottom:12px}
+    h3{font-size:18px;margin-bottom:8px}
+    .page-shell{width:min(1180px,calc(100vw - 28px));margin:0 auto;padding:34px 0 56px;display:grid;gap:20px}
+    .page-shell > *,.hero > *,.panel > *,.account-placeholder > *,.metric,.week-card,.stock-card,.day-card{min-width:0}
+    .rail{position:fixed;left:18px;top:18px;z-index:2;display:flex;flex-direction:column;gap:7px}
+    .rail a{width:78px;min-height:34px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.9);text-decoration:none;color:var(--muted);font-size:12px;font-weight:800;box-shadow:0 10px 28px rgba(23,32,42,.06)}
+    .hero,.panel,.metric,.week-card,.stock-card{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .hero{padding:30px;display:grid;grid-template-columns:1.08fr .92fr;gap:26px;align-items:end}
+    .panel{padding:24px}
+    .label{display:inline-flex;width:max-content;color:var(--red);background:#fff1ed;padding:7px 10px;border-radius:999px;font-size:12px;font-weight:800}
+    .button-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+    .button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;border-radius:8px;background:var(--ink);color:#fff;text-decoration:none;font-weight:800}
+    .button.secondary{background:#fff;color:var(--ink);border:1px solid var(--line)}
+    .metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .metric{padding:16px;min-height:106px;display:grid;align-content:space-between}
+    .metric span,.metric small{color:var(--muted);font-size:12px}
+    .metric strong{font-size:22px;line-height:1.18;word-break:break-word}
+    .lead{font-size:17px;color:#334155}
+    .thesis-grid,.summary-grid,.stock-metrics,.day-numbers,.missing-list,.entrance-grid{display:grid;gap:12px}
+    .thesis-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .thesis-grid article,.rules article,.missing-list article{background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px}
+    .thesis-grid b,.rules b,.missing-list b{display:block;margin-bottom:7px}
+    .data-panel{display:grid;grid-template-columns:.95fr 1.05fr;gap:22px;align-items:center}
+    .summary-grid,.latest-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+    .summary-grid span,.latest-summary span,.mini-grid span,.day-numbers span,.stock-metrics span,.mini-ledger span{background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:10px;color:var(--muted);font-size:13px}
+    .summary-grid b,.latest-summary b,.mini-grid b,.day-numbers b,.stock-metrics b,.mini-ledger b{display:block;color:var(--ink);font-size:17px;margin-top:4px}
+    .stock-metrics{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .stock-metrics em{display:block;font-style:normal;font-size:12px;color:var(--muted);margin-top:3px}
+    .table-wrap{width:100%;overflow-x:auto;border:1px solid var(--line);border-radius:9px;background:#fff;margin:14px 0}
+    table{width:100%;min-width:920px;border-collapse:collapse;font-size:13px}
+    th,td{padding:11px 12px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+    th:first-child,td:first-child{text-align:left}
+    th{background:#f8fafc;color:var(--muted)}
+    .compact-table table{min-width:760px}
+    .is-profit,.is-buy{color:var(--red)}
+    .is-loss{color:var(--green)}
+    .is-sell{color:var(--blue)}
+    .account-placeholder{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;align-items:center;border:1px dashed #b8c1cc;border-radius:10px;background:#f8fafc;padding:18px}
+    .account-placeholder strong{font-size:22px}
+    .mini-ledger,.mini-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+    .stock-grid{display:grid;gap:16px;margin-top:18px}
+    .stock-card{padding:18px;box-shadow:none}
+    .stock-card-head,.week-head,.day-card-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+    .code,.chip{display:inline-flex;white-space:nowrap;border:1px solid var(--line);border-radius:999px;background:#f8fafc;padding:7px 10px;color:var(--muted);font-size:12px;font-weight:800}
+    .chart-frame{margin-top:14px;border:1px solid var(--line);border-radius:10px;overflow-x:auto;background:#fff}
+    .stock-chart{display:block;width:100%;min-width:860px;height:auto}
+    .stock-chart rect{fill:#fff}
+    .stock-chart .axis line,.stock-chart .day-grid line{stroke:rgba(23,32,42,.10);stroke-dasharray:4 6}
+    .stock-chart .axis text,.stock-chart .day-grid text{fill:var(--muted);font-size:12px}
+    .stock-chart path{stroke:var(--ink);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+    .trade-marker.buy circle{fill:var(--red);stroke:#fff;stroke-width:2}
+    .trade-marker.sell circle{fill:var(--blue);stroke:#fff;stroke-width:2}
+    .trade-marker text{font-size:11px;font-weight:900;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+    .trade-marker.buy text{fill:var(--red)}
+    .trade-marker.sell text{fill:var(--blue)}
+    .chart-empty{padding:22px;display:grid;gap:6px;color:var(--muted)}
+    .chart-empty b{color:var(--ink)}
+    .day-grid-cards{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+    .day-card{border:1px solid var(--line);border-radius:8px;background:#fff;padding:15px;display:grid;gap:10px}
+    .day-card-head{display:grid;gap:8px}
+    .day-card-head span{display:block;color:var(--muted);font-size:12px;margin-top:3px}
+    .day-numbers{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .day-card p{margin-bottom:0}
+    .source-line{display:grid;gap:5px;border-top:1px solid var(--line);padding-top:10px;color:var(--blue);font-size:13px;font-weight:800}
+    .source-line small{color:var(--muted);font-weight:500;line-height:1.55}
+    .rules{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+    .rules article span{display:inline-flex;color:var(--blue);font-size:12px;font-weight:900;margin-bottom:8px}
+    .missing-list{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .archive{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+    .week-card{padding:20px;display:grid;gap:14px;text-decoration:none;color:inherit}
+    .latest-link{border-color:rgba(29,78,216,.28)}
+    .entrance-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    @media(max-width:1260px){.rail{position:static;width:min(1180px,calc(100vw - 28px));margin:18px auto 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}.rail a{width:auto}}
+    @media(max-width:920px){.hero,.data-panel,.account-placeholder{grid-template-columns:1fr}.metrics,.summary-grid,.latest-summary,.stock-metrics,.mini-ledger,.mini-grid,.thesis-grid,.rules,.missing-list,.archive,.entrance-grid{grid-template-columns:1fr}.day-grid-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.page-shell{width:min(calc(100vw - 16px),1180px);padding-top:22px}.hero,.panel{padding:20px}}
+    @media(max-width:560px){.page-shell,.rail{width:calc(100% - 16px);max-width:100%;margin-left:auto;margin-right:auto}.rail{grid-template-columns:repeat(2,minmax(0,1fr))}.day-grid-cards{grid-template-columns:1fr}h1{font-size:34px}.metric strong{font-size:19px}}
+  </style>
+</head>
+<body>
+  <main class="page-shell">
+    <section class="hero">
+      <div>
+        <span class="label">weekly-monthly-quarterly-yearly-trading-review</span>
+        <h1>周度 / 月度 / 季度 / 年度交易复盘</h1>
+        <p>这里是总入口：周度独立成页；月度和季度放在同一个复盘主页；年度复盘单独沉淀交易体系。</p>
+        <div class="button-row">
+          <a class="button" href="./weekly-trading-review/">周度主页</a>
+          <a class="button secondary" href="./2026-07-20_2026-07-24/">最新周复盘</a>
+          <a class="button secondary" href="./monthly-quarterly-trading-review/">月度 / 季度主页</a>
+          <a class="button secondary" href="./yearly-trading-review/">年度主页</a>
+        </div>
+      </div>
+      <div class="metrics">
+        <article class="metric"><span>周度归档</span><strong class="">11</strong><small>已发布/草稿周复盘</small></article>
+        <article class="metric"><span>最新区间</span><strong class="">07.20</strong><small>至 07.24</small></article>
+        <article class="metric"><span>最新账户</span><strong class="">待补</strong><small>成交回报已录入</small></article>
+        <article class="metric"><span>长期结构</span><strong class="">3 个主页</strong><small>周度 / 月季 / 年度</small></article>
+      </div>
+    </section>
+    <section class="panel">
+      <span class="label">Review Entrances</span>
+      <h2>复盘主页</h2>
+      <div class="entrance-grid">
+        <a class="week-card" href="./weekly-trading-review/"><div class="week-head"><h3>周度交割复盘</h3><span class="chip">主页 1</span></div><p>每周一个独立复盘页面，记录交割、买卖点、账户变化、KISS复盘和周度规则。</p><div class="mini-grid"><span>周报 <b>11 篇</b></span><span>最新 <b>07.20-07.24</b></span><span>状态 <b>草稿版</b></span></div></a>
+        <a class="week-card" href="./monthly-quarterly-trading-review/"><div class="week-head"><h3>月度 / 季度复盘</h3><span class="chip">主页 2</span></div><p>月度承接周度结果，季度检查模式和仓位是否真正改善账户曲线。</p><div class="mini-grid"><span>月度 <b>1-12 月</b></span><span>季度 <b>Q1-Q4</b></span><span>状态 <b>框架版</b></span></div></a>
+        <a class="week-card" href="./yearly-trading-review/"><div class="week-head"><h3>年度交易复盘</h3><span class="chip">主页 3</span></div><p>年度层面聚焦账户画像、模式进化、仓位风控、心理纪律和下一年执行准则。</p><div class="mini-grid"><span>年度 <b>自然年</b></span><span>核心 <b>体系沉淀</b></span><span>状态 <b>框架版</b></span></div></a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
