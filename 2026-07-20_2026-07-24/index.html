@@ -37,9 +37,9 @@
     .thesis-grid article,.rules article,.missing-list article{background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px}
     .thesis-grid b,.rules b,.missing-list b{display:block;margin-bottom:7px}
     .data-panel{display:grid;grid-template-columns:.95fr 1.05fr;gap:22px;align-items:center}
-    .summary-grid,.latest-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-    .summary-grid span,.latest-summary span,.mini-grid span,.day-numbers span,.stock-metrics span,.mini-ledger span{background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:10px;color:var(--muted);font-size:13px}
-    .summary-grid b,.latest-summary b,.mini-grid b,.day-numbers b,.stock-metrics b,.mini-ledger b{display:block;color:var(--ink);font-size:17px;margin-top:4px}
+    .summary-grid,.latest-summary,.account-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+    .summary-grid span,.latest-summary span,.mini-grid span,.day-numbers span,.stock-metrics span,.mini-ledger span,.account-summary span,.account-strip span{background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:10px;color:var(--muted);font-size:13px}
+    .summary-grid b,.latest-summary b,.mini-grid b,.day-numbers b,.stock-metrics b,.mini-ledger b,.account-summary b,.account-strip b{display:block;color:var(--ink);font-size:17px;margin-top:4px}
     .stock-metrics{grid-template-columns:repeat(4,minmax(0,1fr))}
     .stock-metrics em{display:block;font-style:normal;font-size:12px;color:var(--muted);margin-top:3px}
     .table-wrap{width:100%;overflow-x:auto;border:1px solid var(--line);border-radius:9px;background:#fff;margin:14px 0}
@@ -47,12 +47,23 @@
     th,td{padding:11px 12px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
     th:first-child,td:first-child{text-align:left}
     th{background:#f8fafc;color:var(--muted)}
+    .reflection-cell{text-align:left;white-space:normal;min-width:260px;color:var(--ink)}
     .compact-table table{min-width:760px}
     .is-profit,.is-buy{color:var(--red)}
     .is-loss{color:var(--green)}
     .is-sell{color:var(--blue)}
     .account-placeholder{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;align-items:center;border:1px dashed #b8c1cc;border-radius:10px;background:#f8fafc;padding:18px}
     .account-placeholder strong{font-size:22px}
+    .account-bars{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin:18px 0}
+    .account-day{border:1px solid var(--line);border-radius:8px;background:#fff;padding:12px;display:grid;gap:8px;min-height:236px}
+    .account-day-head{display:flex;justify-content:space-between;gap:8px;color:var(--muted);font-size:12px}
+    .account-day-head b{color:var(--ink);font-size:15px}
+    .account-bar-track{height:92px;border-radius:7px;background:#f1f5f9;display:flex;align-items:end;overflow:hidden}
+    .account-bar-track i{display:block;width:100%;border-radius:7px 7px 0 0;background:linear-gradient(180deg,#c2412d,#e8917f)}
+    .account-day strong{font-size:19px}
+    .account-day small{color:var(--muted);line-height:1.45}
+    .position-meter{height:8px;border-radius:999px;background:#edf2f7;overflow:hidden}
+    .position-meter i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#1d4ed8,#7fb0ff)}
     .mini-ledger,.mini-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
     .stock-grid{display:grid;gap:16px;margin-top:18px}
     .stock-card{padding:18px;box-shadow:none}
@@ -76,6 +87,7 @@
     .day-card-head{display:grid;gap:8px}
     .day-card-head span{display:block;color:var(--muted);font-size:12px;margin-top:3px}
     .day-numbers{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .account-strip{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
     .day-card p{margin-bottom:0}
     .source-line{display:grid;gap:5px;border-top:1px solid var(--line);padding-top:10px;color:var(--blue);font-size:13px;font-weight:800}
     .source-line small{color:var(--muted);font-weight:500;line-height:1.55}
@@ -87,8 +99,8 @@
     .latest-link{border-color:rgba(29,78,216,.28)}
     .entrance-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
     @media(max-width:1260px){.rail{position:static;width:min(1180px,calc(100vw - 28px));margin:18px auto 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}.rail a{width:auto}}
-    @media(max-width:920px){.hero,.data-panel,.account-placeholder{grid-template-columns:1fr}.metrics,.summary-grid,.latest-summary,.stock-metrics,.mini-ledger,.mini-grid,.thesis-grid,.rules,.missing-list,.archive,.entrance-grid{grid-template-columns:1fr}.day-grid-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.page-shell{width:min(calc(100vw - 16px),1180px);padding-top:22px}.hero,.panel{padding:20px}}
-    @media(max-width:560px){.page-shell,.rail{width:calc(100% - 16px);max-width:100%;margin-left:auto;margin-right:auto}.rail{grid-template-columns:repeat(2,minmax(0,1fr))}.day-grid-cards{grid-template-columns:1fr}h1{font-size:34px}.metric strong{font-size:19px}}
+    @media(max-width:920px){.hero,.data-panel,.account-placeholder{grid-template-columns:1fr}.metrics,.summary-grid,.latest-summary,.account-summary,.stock-metrics,.mini-ledger,.mini-grid,.thesis-grid,.rules,.missing-list,.archive,.entrance-grid{grid-template-columns:1fr}.account-bars{grid-template-columns:repeat(2,minmax(0,1fr))}.day-grid-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.page-shell{width:min(calc(100vw - 16px),1180px);padding-top:22px}.hero,.panel{padding:20px}}
+    @media(max-width:560px){.page-shell,.rail{width:calc(100% - 16px);max-width:100%;margin-left:auto;margin-right:auto}.rail{grid-template-columns:repeat(2,minmax(0,1fr))}.day-grid-cards,.account-bars,.account-strip{grid-template-columns:1fr}h1{font-size:34px}.metric strong{font-size:19px}}
   </style>
 </head>
 <body>
@@ -107,7 +119,7 @@
       <div>
         <span class="label">草稿版 / 成交回报口径</span>
         <h1><span class="date-range"><span>2026.07.20 -</span><span>2026.07.24</span></span>周度交易复盘</h1>
-        <p>当前版本基于成交回报截图与本地日度复盘生成；账户收益、手续费、期末持仓待补后再校准。</p>
+        <p>当前版本基于成交回报截图、本地日度复盘与账户日收益生成；手续费、期末持仓继续待补后再校准。</p>
         <div class="button-row">
           <a class="button" href="../weekly-trading-review/">返回周度主页</a>
           <a class="button secondary" href="#missing">待补清单</a>
@@ -115,9 +127,9 @@
       </div>
       <div class="metrics">
         <article class="metric"><span>成交笔数</span><strong class="">22</strong><small>仅统计截图中“已成”记录</small></article>
-        <article class="metric"><span>本周成交额</span><strong class="">53,044.60</strong><small>买入 25,826.60 / 卖出 27,218.00</small></article>
-        <article class="metric"><span>可见已实现</span><strong class="is-profit">+1,931.40</strong><small>按FIFO推演，未计手续费/税费</small></article>
-        <article class="metric"><span>期末可见持仓</span><strong class="">哈药股份100</strong><small>成本约 540.00，待持仓截图校准</small></article>
+        <article class="metric"><span>账户日收益合计</span><strong class="is-profit">+1,816.40</strong><small>周五收益率 +7.10%</small></article>
+        <article class="metric"><span>当前总金额</span><strong class="">17,648.65</strong><small>周五仓位 3.70%</small></article>
+        <article class="metric"><span>可见已实现</span><strong class="is-profit">+1,931.40</strong><small>成交FIFO推演，未计手续费/税费</small></article>
       </div>
     </section>
 
@@ -148,20 +160,93 @@
       </div>
     </section>
 
-    <section class="panel" id="account">
-      <span class="label">Account Placeholder</span>
-      <h2>账户曲线先留白</h2>
-      <div class="account-placeholder">
-        <div>
-          <strong>账户收益待补</strong>
-          <p>需要 7/20-7/24 每日收益金额、收益率、总资产、仓位，以及7/24期末持仓截图。补齐后这里会更新为本周资金曲线、日收益条形图和最终周收益。</p>
-        </div>
-        <div class="mini-ledger">
-          <span>可见已实现 <b class="is-profit">+1,931.40</b></span>
-          <span>可见持仓成本 <b>540.00</b></span>
-          <span>账户口径收益 <b>待补</b></span>
-        </div>
+    <section class="panel account-panel" id="account">
+      <span class="label">Account Curve</span>
+      <h2>账户收益与仓位</h2>
+      <p class="lead">这部分按你补充的账户日数据记录，和成交回报/FIFO推演分开看。周一总金额为空，先保留为空仓日，不强行补数。</p>
+      <div class="account-summary">
+        <span>日收益合计 <b class="is-profit">+1,816.40</b></span>
+        <span>期末总金额 <b>17,648.65</b></span>
+        <span>周五收益率 <b class="is-profit">+7.10%</b></span>
+        <span>平均仓位 <b>41.12%</b></span>
+        <span>最高仓位 <b>100.00%</b></span>
+        <span>最佳单日 <b>周五 +1,170.00</b></span>
       </div>
+      <div class="account-bars"><article class="account-day">
+    <div class="account-day-head"><b>周一</b><span>07-20</span></div>
+    <div class="account-bar-track"><i style="height:6%"></i></div>
+    <strong class="is-profit">0.00</strong>
+    <small>0.00% / 仓位 0.00%</small>
+    <div class="position-meter" aria-label="周一 仓位 0.00%"><i style="width:0%"></i></div>
+  </article><article class="account-day">
+    <div class="account-day-head"><b>周二</b><span>07-21</span></div>
+    <div class="account-bar-track"><i style="height:6%"></i></div>
+    <strong class="is-profit">+24.00</strong>
+    <small>+0.15% / 仓位 37.50%</small>
+    <div class="position-meter" aria-label="周二 仓位 37.50%"><i style="width:37.5%"></i></div>
+  </article><article class="account-day">
+    <div class="account-day-head"><b>周三</b><span>07-22</span></div>
+    <div class="account-bar-track"><i style="height:25%"></i></div>
+    <strong class="is-profit">+293.40</strong>
+    <small>+1.85% / 仓位 64.40%</small>
+    <div class="position-meter" aria-label="周三 仓位 64.40%"><i style="width:64.4%"></i></div>
+  </article><article class="account-day">
+    <div class="account-day-head"><b>周四</b><span>07-23</span></div>
+    <div class="account-bar-track"><i style="height:28%"></i></div>
+    <strong class="is-profit">+329.00</strong>
+    <small>+2.04% / 仓位 100.00%</small>
+    <div class="position-meter" aria-label="周四 仓位 100.00%"><i style="width:100%"></i></div>
+  </article><article class="account-day">
+    <div class="account-day-head"><b>周五</b><span>07-24</span></div>
+    <div class="account-bar-track"><i style="height:100%"></i></div>
+    <strong class="is-profit">+1,170.00</strong>
+    <small>+7.10% / 仓位 3.70%</small>
+    <div class="position-meter" aria-label="周五 仓位 3.70%"><i style="width:3.7%"></i></div>
+  </article></div>
+      <div class="table-wrap compact-table"><table>
+        <thead><tr><th>日期</th><th>星期</th><th>收益率</th><th>收益金额</th><th>仓位</th><th>当前总金额</th><th>个人反思</th></tr></thead>
+        <tbody><tr>
+          <td>2026/07/20</td>
+          <td>周一</td>
+          <td class="is-profit">0.00%</td>
+          <td class="is-profit">0.00</td>
+          <td>0.00%</td>
+          <td>空仓 / 未填</td>
+          <td class="reflection-cell">熊市不敢多操作，直接空仓</td>
+        </tr><tr>
+          <td>2026/07/21</td>
+          <td>周二</td>
+          <td class="is-profit">+0.15%</td>
+          <td class="is-profit">+24.00</td>
+          <td>37.50%</td>
+          <td>15,596.00</td>
+          <td class="reflection-cell">空仓错过科技大反弹，小仓位继续试错龙头，应该追反弹的！</td>
+        </tr><tr>
+          <td>2026/07/22</td>
+          <td>周三</td>
+          <td class="is-profit">+1.85%</td>
+          <td class="is-profit">+293.40</td>
+          <td>64.40%</td>
+          <td>16,149.76</td>
+          <td class="reflection-cell">小仓位做对龙头</td>
+        </tr><tr>
+          <td>2026/07/23</td>
+          <td>周四</td>
+          <td class="is-profit">+2.04%</td>
+          <td class="is-profit">+329.00</td>
+          <td>100.00%</td>
+          <td>16,149.76</td>
+          <td class="reflection-cell">加仓龙头晚了一点，要不然更爽了；转强次日没有更早打上仓位！！！！！！！</td>
+        </tr><tr>
+          <td>2026/07/24</td>
+          <td>周五</td>
+          <td class="is-profit">+7.10%</td>
+          <td class="is-profit">+1,170.00</td>
+          <td>3.70%</td>
+          <td>17,648.65</td>
+          <td class="reflection-cell">稍微出去早了一点，利润少了两个点，但总体上来说是没问题的！</td>
+        </tr></tbody>
+      </table></div>
     </section>
 
     <section class="panel" id="stocks">
@@ -383,6 +468,12 @@
       </div>
       <p><b>操作：</b>无已成成交，立新能源买入已报未成交。</p>
       <p><b>复盘：</b>市场处在冰点期，日度复盘把电力列为次日唯一重点验证方向。这里的重点不是急着扫，而是等梯队完整、龙头承接确认。</p>
+      <div class="account-strip">
+        <span>收益率 <b class="is-profit">0.00%</b></span>
+        <span>收益 <b class="is-profit">0.00</b></span>
+        <span>仓位 <b>0.00%</b></span>
+        <span>总金额 <b>未填</b></span>
+      </div><p><b>个人反思：</b>熊市不敢多操作，直接空仓</p>
       <div class="source-line"><a href="https://travelstocks.github.io/daily-trading-review/pages/%E7%AB%A0%E7%9B%9F%E4%B8%BB%E5%BC%8F%E8%B6%85%E7%9F%AD%E5%85%A8%E6%99%AF%E5%A4%8D%E7%9B%98%EF%BC%882026.7.17%20%E5%91%A8%E4%BA%94%20%2B%202026.7.20%20%E5%91%A8%E4%B8%80%EF%BC%89%2B%207.21%E4%B8%AA%E8%82%A1%E6%9D%BF%E5%9D%97%E9%A2%84%E6%A1%88%20-%20AI%E6%96%87%E6%A1%A3%EF%BC%88%E6%AD%A3%E5%BC%8F%E7%89%88%EF%BC%89.html" target="_blank" rel="noreferrer">7/20 日度复盘</a><small>冰点期；电力为次日唯一重点验证方向，AI应用、机器人、光伏负反馈未收敛。</small></div>
     </article><article class="day-card">
       <div class="day-card-head"><div><b>周二</b><span>2026/07/21</span></div><strong>确认后试错立新能源</strong></div>
@@ -393,7 +484,13 @@
         <span>成交额 <b>5,962.00</b></span>
       </div>
       <p><b>操作：</b>立新能源分四笔买入600股，成交金额5,962.00。</p>
-      <p><b>复盘：</b>方向选择比较集中，核心在电力龙头。账户日收益、仓位和收盘持仓还缺，暂不归因到日级收益。</p>
+      <p><b>复盘：</b>方向选择比较集中，核心在电力龙头，但仓位仍偏保守。当天小赚，问题是空仓错过科技大反弹后没有更果断地追最强回流。</p>
+      <div class="account-strip">
+        <span>收益率 <b class="is-profit">+0.15%</b></span>
+        <span>收益 <b class="is-profit">+24.00</b></span>
+        <span>仓位 <b>37.50%</b></span>
+        <span>总金额 <b>15,596.00</b></span>
+      </div><p><b>个人反思：</b>空仓错过科技大反弹，小仓位继续试错龙头，应该追反弹的！</p>
       <div class="source-line"><span>日度复盘待补</span><small>后续补充日度复盘文本后再同步。</small></div>
     </article><article class="day-card">
       <div class="day-card-head"><div><b>周三</b><span>2026/07/22</span></div><strong>兑现一部分，切入科技轮动</strong></div>
@@ -405,6 +502,12 @@
       </div>
       <p><b>操作：</b>卖出立新能源300股；买入科创半导体ETF华夏3,800份与美利云200股。</p>
       <p><b>复盘：</b>日度复盘定义为退潮期，电力仍优先，科技只能看弱修复。ETF和美利云属于轮动试错，后面需要用强度确认，不能按主线仓位处理。</p>
+      <div class="account-strip">
+        <span>收益率 <b class="is-profit">+1.85%</b></span>
+        <span>收益 <b class="is-profit">+293.40</b></span>
+        <span>仓位 <b>64.40%</b></span>
+        <span>总金额 <b>16,149.76</b></span>
+      </div><p><b>个人反思：</b>小仓位做对龙头</p>
       <div class="source-line"><a href="https://travelstocks.github.io/daily-trading-review/pages/%E7%AB%A0%E7%9B%9F%E4%B8%BB%E5%BC%8F%E8%B6%85%E7%9F%AD%E5%85%A8%E6%99%AF%E5%A4%8D%E7%9B%98%EF%BC%882026.7.22%20%E5%91%A8%E4%B8%89%EF%BC%89%2B%207.23%E4%B8%AA%E8%82%A1%E6%9D%BF%E5%9D%97%E9%A2%84%E6%A1%88%20-%20AI%E6%96%87%E6%A1%A3.html" target="_blank" rel="noreferrer">7/22 日度复盘</a><small>退潮期；电力强度回流延续优先，重点看立新能源6板，科技线只看能否停止继续杀。</small></div>
     </article><article class="day-card">
       <div class="day-card-head"><div><b>周四</b><span>2026/07/23</span></div><strong>科技试错退出，回到电力龙头</strong></div>
@@ -416,6 +519,12 @@
       </div>
       <p><b>操作：</b>科创半导体ETF华夏全卖；美利云卖出；立新能源再买入1,000股。</p>
       <p><b>复盘：</b>科创半导体ETF按可见成交亏损152.60，美利云小赚34.00。核心动作是从弱修复轮动撤回，再集中到立新能源做T。</p>
+      <div class="account-strip">
+        <span>收益率 <b class="is-profit">+2.04%</b></span>
+        <span>收益 <b class="is-profit">+329.00</b></span>
+        <span>仓位 <b>100.00%</b></span>
+        <span>总金额 <b>16,149.76</b></span>
+      </div><p><b>个人反思：</b>加仓龙头晚了一点，要不然更爽了；转强次日没有更早打上仓位！！！！！！！</p>
       <div class="source-line"><span>日度复盘待补</span><small>后续补充日度复盘文本后再同步。</small></div>
     </article><article class="day-card">
       <div class="day-card-head"><div><b>周五</b><span>2026/07/24</span></div><strong>高位兑现与医药试错</strong></div>
@@ -427,6 +536,12 @@
       </div>
       <p><b>操作：</b>立新能源分五笔卖出1,300股；买入哈药股份100股。</p>
       <p><b>复盘：</b>立新能源卖点集中在早盘高位附近，兑现动作较果断。哈药股份属于医药方向重新试错，期末持仓成本和浮盈亏需要等账户截图补齐。</p>
+      <div class="account-strip">
+        <span>收益率 <b class="is-profit">+7.10%</b></span>
+        <span>收益 <b class="is-profit">+1,170.00</b></span>
+        <span>仓位 <b>3.70%</b></span>
+        <span>总金额 <b>17,648.65</b></span>
+      </div><p><b>个人反思：</b>稍微出去早了一点，利润少了两个点，但总体上来说是没问题的！</p>
       <div class="source-line"><span>日度复盘待补</span><small>后续补充日度复盘文本后再同步。</small></div>
     </article></div>
     </section>
@@ -723,10 +838,10 @@
       <span class="label">To Fill</span>
       <h2>后续待补内容</h2>
       <div class="missing-list">
-        <article><b>1. 账户数据</b><p>7/20-7/24 每日收益金额、收益率、总资产、仓位、期末权益。</p></article>
+        <article><b>1. 周一总金额</b><p>当前表格里周一总金额为空，先按空仓/未填处理，后续可补具体金额。</p></article>
         <article><b>2. 持仓截图</b><p>确认期末哈药股份100股的真实成本与浮盈亏，以及截图未覆盖的其他持仓。</p></article>
         <article><b>3. 完整交割单</b><p>补充手续费、印花税、资金余额后，校准本页FIFO推演值。</p></article>
-        <article><b>4. 主观复盘</b><p>补充7/21、7/23、7/24日度复盘或本周二次复盘原文。</p></article>
+        <article><b>4. 日度复盘</b><p>补充7/21、7/23、7/24日度复盘原文后，再把逐日复盘改成正式版。</p></article>
       </div>
     </section>
   </main>

@@ -10,7 +10,7 @@ const week = {
   label: "07.20-07.24",
   status: "草稿版",
   title: "电力龙头做T兑现，科技轮动试错后转向医药",
-  subtitle: "当前版本基于成交回报截图与本地日度复盘生成；账户收益、手续费、期末持仓待补后再校准。",
+  subtitle: "当前版本基于成交回报截图、本地日度复盘与账户日收益生成；手续费、期末持仓继续待补后再校准。",
 };
 
 const trades = [
@@ -66,10 +66,18 @@ const dailyReviews = {
 
 const dailyNotes = [
   { date: "20260720", day: "周一", theme: "电力方向预热", action: "无已成成交，立新能源买入已报未成交。", review: "市场处在冰点期，日度复盘把电力列为次日唯一重点验证方向。这里的重点不是急着扫，而是等梯队完整、龙头承接确认。" },
-  { date: "20260721", day: "周二", theme: "确认后试错立新能源", action: "立新能源分四笔买入600股，成交金额5,962.00。", review: "方向选择比较集中，核心在电力龙头。账户日收益、仓位和收盘持仓还缺，暂不归因到日级收益。" },
+  { date: "20260721", day: "周二", theme: "确认后试错立新能源", action: "立新能源分四笔买入600股，成交金额5,962.00。", review: "方向选择比较集中，核心在电力龙头，但仓位仍偏保守。当天小赚，问题是空仓错过科技大反弹后没有更果断地追最强回流。" },
   { date: "20260722", day: "周三", theme: "兑现一部分，切入科技轮动", action: "卖出立新能源300股；买入科创半导体ETF华夏3,800份与美利云200股。", review: "日度复盘定义为退潮期，电力仍优先，科技只能看弱修复。ETF和美利云属于轮动试错，后面需要用强度确认，不能按主线仓位处理。" },
   { date: "20260723", day: "周四", theme: "科技试错退出，回到电力龙头", action: "科创半导体ETF华夏全卖；美利云卖出；立新能源再买入1,000股。", review: "科创半导体ETF按可见成交亏损152.60，美利云小赚34.00。核心动作是从弱修复轮动撤回，再集中到立新能源做T。" },
   { date: "20260724", day: "周五", theme: "高位兑现与医药试错", action: "立新能源分五笔卖出1,300股；买入哈药股份100股。", review: "立新能源卖点集中在早盘高位附近，兑现动作较果断。哈药股份属于医药方向重新试错，期末持仓成本和浮盈亏需要等账户截图补齐。" },
+];
+
+const accountDays = [
+  { date: "20260720", day: "周一", returnRate: 0, pnl: 0, position: 0, equity: null, reflection: "熊市不敢多操作，直接空仓" },
+  { date: "20260721", day: "周二", returnRate: 0.15, pnl: 24, position: 37.5, equity: 15596, reflection: "空仓错过科技大反弹，小仓位继续试错龙头，应该追反弹的！" },
+  { date: "20260722", day: "周三", returnRate: 1.85, pnl: 293.4, position: 64.4, equity: 16149.76, reflection: "小仓位做对龙头" },
+  { date: "20260723", day: "周四", returnRate: 2.04, pnl: 329, position: 100, equity: 16149.76, reflection: "加仓龙头晚了一点，要不然更爽了；转强次日没有更早打上仓位！！！！！！！" },
+  { date: "20260724", day: "周五", returnRate: 7.1, pnl: 1170, position: 3.7, equity: 17648.65, reflection: "稍微出去早了一点，利润少了两个点，但总体上来说是没问题的！" },
 ];
 
 const archiveWeeks = [
@@ -83,7 +91,7 @@ const archiveWeeks = [
   { label: "06.22-06.26*", folder: "2026-06-22_2026-06-26", pnl: "-4,839.42", pct: "-21.44%", equity: "暂估 / 市值17,671.22", note: "暂估口径周。" },
   { label: "06.29-07.04", folder: "2026-06-29_2026-07-04", pnl: "-1,741.00", pct: "-9.85%", equity: "待校准", note: "亏损收敛但仍未扭转。" },
   { label: "07.06-07.10", folder: "2026-07-06_2026-07-10", pnl: "-262.00", pct: "-1.65%", equity: "15,596.00", note: "三冰反核做对，科技ETF择时暴露问题。" },
-  { label: "07.20-07.24", folder: week.folder, pnl: "待补", pct: "待补", equity: "账户口径待补", note: "本周先按成交回报生成草稿。" },
+  { label: "07.20-07.24", folder: week.folder, pnl: "+1,816.40", pct: "日度见表", equity: "17,648.65", note: "账户日收益已补；手续费与期末持仓继续待校准。" },
 ];
 
 const secids = {
@@ -243,6 +251,14 @@ const dailyStats = groupByDate(trades);
 const visibleRealized = byCode.reduce((total, item) => total + item.realized, 0);
 const openCost = byCode.reduce((total, item) => total + item.openCost, 0);
 const openPositions = byCode.filter((item) => item.openQty > 0);
+const accountByDate = new Map(accountDays.map((day) => [day.date, day]));
+const accountPnlTotal = sum(accountDays, "pnl");
+const finalAccountDay = [...accountDays].reverse().find((day) => typeof day.equity === "number");
+const finalEquity = finalAccountDay?.equity || 0;
+const finalPosition = finalAccountDay?.position || 0;
+const maxDailyPnl = Math.max(...accountDays.map((day) => Math.abs(day.pnl)), 1);
+const avgPosition = accountDays.reduce((total, day) => total + day.position, 0) / accountDays.length;
+const bestAccountDay = accountDays.reduce((best, day) => (day.pnl > best.pnl ? day : best), accountDays[0]);
 
 function classByValue(value) {
   return value >= 0 ? "is-profit" : "is-loss";
@@ -250,6 +266,10 @@ function classByValue(value) {
 
 function actionClass(sideType) {
   return sideType === "buy" ? "is-buy" : "is-sell";
+}
+
+function pct(value) {
+  return `${value > 0 ? "+" : ""}${value.toFixed(2)}%`;
 }
 
 async function fetchTrend(code) {
@@ -393,10 +413,51 @@ function stockNote(stock) {
   return notes[stock.code] || "成交回报口径已记录，等待补充账户和持仓数据后做最终归因。";
 }
 
+function renderAccountPanel() {
+  return `<section class="panel account-panel" id="account">
+      <span class="label">Account Curve</span>
+      <h2>账户收益与仓位</h2>
+      <p class="lead">这部分按你补充的账户日数据记录，和成交回报/FIFO推演分开看。周一总金额为空，先保留为空仓日，不强行补数。</p>
+      <div class="account-summary">
+        <span>日收益合计 <b class="${classByValue(accountPnlTotal)}">${money(accountPnlTotal, { sign: true })}</b></span>
+        <span>期末总金额 <b>${rawMoney(finalEquity)}</b></span>
+        <span>周五收益率 <b class="${classByValue(finalAccountDay.returnRate)}">${pct(finalAccountDay.returnRate)}</b></span>
+        <span>平均仓位 <b>${avgPosition.toFixed(2)}%</b></span>
+        <span>最高仓位 <b>100.00%</b></span>
+        <span>最佳单日 <b>${bestAccountDay.day} ${money(bestAccountDay.pnl, { sign: true })}</b></span>
+      </div>
+      <div class="account-bars">${accountDays.map(renderAccountBar).join("")}</div>
+      <div class="table-wrap compact-table"><table>
+        <thead><tr><th>日期</th><th>星期</th><th>收益率</th><th>收益金额</th><th>仓位</th><th>当前总金额</th><th>个人反思</th></tr></thead>
+        <tbody>${accountDays.map((day) => `<tr>
+          <td>${formatDate(day.date)}</td>
+          <td>${day.day}</td>
+          <td class="${classByValue(day.returnRate)}">${pct(day.returnRate)}</td>
+          <td class="${classByValue(day.pnl)}">${money(day.pnl, { sign: true })}</td>
+          <td>${day.position.toFixed(2)}%</td>
+          <td>${typeof day.equity === "number" ? rawMoney(day.equity) : "空仓 / 未填"}</td>
+          <td class="reflection-cell">${day.reflection}</td>
+        </tr>`).join("")}</tbody>
+      </table></div>
+    </section>`;
+}
+
+function renderAccountBar(day) {
+  const barHeight = Math.max(6, Math.round((Math.abs(day.pnl) / maxDailyPnl) * 100));
+  return `<article class="account-day">
+    <div class="account-day-head"><b>${day.day}</b><span>${shortDate(day.date)}</span></div>
+    <div class="account-bar-track"><i style="height:${barHeight}%"></i></div>
+    <strong class="${classByValue(day.pnl)}">${money(day.pnl, { sign: true })}</strong>
+    <small>${pct(day.returnRate)} / 仓位 ${day.position.toFixed(2)}%</small>
+    <div class="position-meter" aria-label="${day.day} 仓位 ${day.position.toFixed(2)}%"><i style="width:${Math.max(0, Math.min(100, day.position))}%"></i></div>
+  </article>`;
+}
+
 function renderDailyCards() {
   return dailyNotes.map((day) => {
     const stat = dailyStats.get(day.date) || { buyAmount: 0, sellAmount: 0, buyQty: 0, sellQty: 0, turnover: 0, rows: [] };
     const review = dailyReviews[day.date];
+    const account = accountByDate.get(day.date);
     const sourceLink = review ? `<a href="${review.href}" target="_blank" rel="noreferrer">${review.title}</a>` : `<span>日度复盘待补</span>`;
     return `<article class="day-card">
       <div class="day-card-head"><div><b>${day.day}</b><span>${formatDate(day.date)}</span></div><strong>${day.theme}</strong></div>
@@ -408,6 +469,12 @@ function renderDailyCards() {
       </div>
       <p><b>操作：</b>${day.action}</p>
       <p><b>复盘：</b>${day.review}</p>
+      ${account ? `<div class="account-strip">
+        <span>收益率 <b class="${classByValue(account.returnRate)}">${pct(account.returnRate)}</b></span>
+        <span>收益 <b class="${classByValue(account.pnl)}">${money(account.pnl, { sign: true })}</b></span>
+        <span>仓位 <b>${account.position.toFixed(2)}%</b></span>
+        <span>总金额 <b>${typeof account.equity === "number" ? rawMoney(account.equity) : "未填"}</b></span>
+      </div><p><b>个人反思：</b>${account.reflection}</p>` : ""}
       <div class="source-line">${sourceLink}${review ? `<small>${review.emotion}</small>` : "<small>后续补充日度复盘文本后再同步。</small>"}</div>
     </article>`;
   }).join("");
@@ -507,9 +574,9 @@ function renderWeekPage(charts) {
       </div>
       <div class="metrics">
         ${metricCard("成交笔数", `${trades.length}`, "仅统计截图中“已成”记录")}
-        ${metricCard("本周成交额", rawMoney(turnover), `买入 ${rawMoney(buyAmount)} / 卖出 ${rawMoney(sellAmount)}`)}
-        ${metricCard("可见已实现", money(visibleRealized, { sign: true }), "按FIFO推演，未计手续费/税费", classByValue(visibleRealized))}
-        ${metricCard("期末可见持仓", `${openPositions.map((item) => `${item.name}${qty(item.openQty)}`).join(" / ") || "无"}`, `成本约 ${rawMoney(openCost)}，待持仓截图校准`)}
+        ${metricCard("账户日收益合计", money(accountPnlTotal, { sign: true }), `周五收益率 ${pct(finalAccountDay.returnRate)}`, classByValue(accountPnlTotal))}
+        ${metricCard("当前总金额", rawMoney(finalEquity), `周五仓位 ${finalPosition.toFixed(2)}%`)}
+        ${metricCard("可见已实现", money(visibleRealized, { sign: true }), "成交FIFO推演，未计手续费/税费", classByValue(visibleRealized))}
       </div>
     </section>
 
@@ -540,21 +607,7 @@ function renderWeekPage(charts) {
       </div>
     </section>
 
-    <section class="panel" id="account">
-      <span class="label">Account Placeholder</span>
-      <h2>账户曲线先留白</h2>
-      <div class="account-placeholder">
-        <div>
-          <strong>账户收益待补</strong>
-          <p>需要 7/20-7/24 每日收益金额、收益率、总资产、仓位，以及7/24期末持仓截图。补齐后这里会更新为本周资金曲线、日收益条形图和最终周收益。</p>
-        </div>
-        <div class="mini-ledger">
-          <span>可见已实现 <b class="${classByValue(visibleRealized)}">${money(visibleRealized, { sign: true })}</b></span>
-          <span>可见持仓成本 <b>${rawMoney(openCost)}</b></span>
-          <span>账户口径收益 <b>待补</b></span>
-        </div>
-      </div>
-    </section>
+    ${renderAccountPanel()}
 
     <section class="panel" id="stocks">
       <span class="label">Stock Review</span>
@@ -596,10 +649,10 @@ function renderWeekPage(charts) {
       <span class="label">To Fill</span>
       <h2>后续待补内容</h2>
       <div class="missing-list">
-        <article><b>1. 账户数据</b><p>7/20-7/24 每日收益金额、收益率、总资产、仓位、期末权益。</p></article>
+        <article><b>1. 周一总金额</b><p>当前表格里周一总金额为空，先按空仓/未填处理，后续可补具体金额。</p></article>
         <article><b>2. 持仓截图</b><p>确认期末哈药股份100股的真实成本与浮盈亏，以及截图未覆盖的其他持仓。</p></article>
         <article><b>3. 完整交割单</b><p>补充手续费、印花税、资金余额后，校准本页FIFO推演值。</p></article>
-        <article><b>4. 主观复盘</b><p>补充7/21、7/23、7/24日度复盘或本周二次复盘原文。</p></article>
+        <article><b>4. 日度复盘</b><p>补充7/21、7/23、7/24日度复盘原文后，再把逐日复盘改成正式版。</p></article>
       </div>
     </section>
   </main>
@@ -631,7 +684,7 @@ function renderWeeklyHub() {
       <div class="metrics">
         ${metricCard("周报数量", `${archiveWeeks.length}`, "含本周草稿")}
         ${metricCard("最新区间", "07.20", "至 07.24")}
-        ${metricCard("最新账户", "待补", "成交回报已录入，账户收益待校准")}
+        ${metricCard("最新账户", money(accountPnlTotal, { sign: true }), `期末 ${rawMoney(finalEquity)} / 仓位 ${finalPosition.toFixed(2)}%`, classByValue(accountPnlTotal))}
         ${metricCard("最新规则", "强度确认", "主线/轮动/试错分层处理")}
       </div>
     </section>
@@ -642,9 +695,9 @@ function renderWeeklyHub() {
         <span>成交笔数 <b>${trades.length}</b></span>
         <span>成交额 <b>${rawMoney(turnover)}</b></span>
         <span>可见已实现 <b class="${classByValue(visibleRealized)}">${money(visibleRealized, { sign: true })}</b></span>
-        <span>账户口径 <b>待补</b></span>
+        <span>账户口径 <b class="${classByValue(accountPnlTotal)}">${money(accountPnlTotal, { sign: true })}</b></span>
       </div>
-      <p>本周核心是立新能源做T兑现，科创半导体ETF/美利云作为科技弱修复试错，周五切入哈药股份小仓观察。完整收益曲线等账户数据补齐后更新。</p>
+      <p>本周核心是立新能源做T兑现，科创半导体ETF/美利云作为科技弱修复试错，周五切入哈药股份小仓观察。账户日收益合计 ${money(accountPnlTotal, { sign: true })}，期末总金额 ${rawMoney(finalEquity)}。</p>
     </section>
     <section class="panel">
       <span class="label">Archive</span>
@@ -682,7 +735,7 @@ function renderRootIndex() {
       <div class="metrics">
         ${metricCard("周度归档", `${archiveWeeks.length}`, "已发布/草稿周复盘")}
         ${metricCard("最新区间", "07.20", "至 07.24")}
-        ${metricCard("最新账户", "待补", "成交回报已录入")}
+        ${metricCard("最新账户", money(accountPnlTotal, { sign: true }), `期末 ${rawMoney(finalEquity)}`, classByValue(accountPnlTotal))}
         ${metricCard("长期结构", "3 个主页", "周度 / 月季 / 年度")}
       </div>
     </section>
@@ -749,9 +802,9 @@ function sharedStyles() {
     .thesis-grid article,.rules article,.missing-list article{background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px}
     .thesis-grid b,.rules b,.missing-list b{display:block;margin-bottom:7px}
     .data-panel{display:grid;grid-template-columns:.95fr 1.05fr;gap:22px;align-items:center}
-    .summary-grid,.latest-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-    .summary-grid span,.latest-summary span,.mini-grid span,.day-numbers span,.stock-metrics span,.mini-ledger span{background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:10px;color:var(--muted);font-size:13px}
-    .summary-grid b,.latest-summary b,.mini-grid b,.day-numbers b,.stock-metrics b,.mini-ledger b{display:block;color:var(--ink);font-size:17px;margin-top:4px}
+    .summary-grid,.latest-summary,.account-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+    .summary-grid span,.latest-summary span,.mini-grid span,.day-numbers span,.stock-metrics span,.mini-ledger span,.account-summary span,.account-strip span{background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:10px;color:var(--muted);font-size:13px}
+    .summary-grid b,.latest-summary b,.mini-grid b,.day-numbers b,.stock-metrics b,.mini-ledger b,.account-summary b,.account-strip b{display:block;color:var(--ink);font-size:17px;margin-top:4px}
     .stock-metrics{grid-template-columns:repeat(4,minmax(0,1fr))}
     .stock-metrics em{display:block;font-style:normal;font-size:12px;color:var(--muted);margin-top:3px}
     .table-wrap{width:100%;overflow-x:auto;border:1px solid var(--line);border-radius:9px;background:#fff;margin:14px 0}
@@ -759,12 +812,23 @@ function sharedStyles() {
     th,td{padding:11px 12px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
     th:first-child,td:first-child{text-align:left}
     th{background:#f8fafc;color:var(--muted)}
+    .reflection-cell{text-align:left;white-space:normal;min-width:260px;color:var(--ink)}
     .compact-table table{min-width:760px}
     .is-profit,.is-buy{color:var(--red)}
     .is-loss{color:var(--green)}
     .is-sell{color:var(--blue)}
     .account-placeholder{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;align-items:center;border:1px dashed #b8c1cc;border-radius:10px;background:#f8fafc;padding:18px}
     .account-placeholder strong{font-size:22px}
+    .account-bars{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin:18px 0}
+    .account-day{border:1px solid var(--line);border-radius:8px;background:#fff;padding:12px;display:grid;gap:8px;min-height:236px}
+    .account-day-head{display:flex;justify-content:space-between;gap:8px;color:var(--muted);font-size:12px}
+    .account-day-head b{color:var(--ink);font-size:15px}
+    .account-bar-track{height:92px;border-radius:7px;background:#f1f5f9;display:flex;align-items:end;overflow:hidden}
+    .account-bar-track i{display:block;width:100%;border-radius:7px 7px 0 0;background:linear-gradient(180deg,#c2412d,#e8917f)}
+    .account-day strong{font-size:19px}
+    .account-day small{color:var(--muted);line-height:1.45}
+    .position-meter{height:8px;border-radius:999px;background:#edf2f7;overflow:hidden}
+    .position-meter i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#1d4ed8,#7fb0ff)}
     .mini-ledger,.mini-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
     .stock-grid{display:grid;gap:16px;margin-top:18px}
     .stock-card{padding:18px;box-shadow:none}
@@ -788,6 +852,7 @@ function sharedStyles() {
     .day-card-head{display:grid;gap:8px}
     .day-card-head span{display:block;color:var(--muted);font-size:12px;margin-top:3px}
     .day-numbers{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .account-strip{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
     .day-card p{margin-bottom:0}
     .source-line{display:grid;gap:5px;border-top:1px solid var(--line);padding-top:10px;color:var(--blue);font-size:13px;font-weight:800}
     .source-line small{color:var(--muted);font-weight:500;line-height:1.55}
@@ -799,8 +864,8 @@ function sharedStyles() {
     .latest-link{border-color:rgba(29,78,216,.28)}
     .entrance-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
     @media(max-width:1260px){.rail{position:static;width:min(1180px,calc(100vw - 28px));margin:18px auto 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}.rail a{width:auto}}
-    @media(max-width:920px){.hero,.data-panel,.account-placeholder{grid-template-columns:1fr}.metrics,.summary-grid,.latest-summary,.stock-metrics,.mini-ledger,.mini-grid,.thesis-grid,.rules,.missing-list,.archive,.entrance-grid{grid-template-columns:1fr}.day-grid-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.page-shell{width:min(calc(100vw - 16px),1180px);padding-top:22px}.hero,.panel{padding:20px}}
-    @media(max-width:560px){.page-shell,.rail{width:calc(100% - 16px);max-width:100%;margin-left:auto;margin-right:auto}.rail{grid-template-columns:repeat(2,minmax(0,1fr))}.day-grid-cards{grid-template-columns:1fr}h1{font-size:34px}.metric strong{font-size:19px}}
+    @media(max-width:920px){.hero,.data-panel,.account-placeholder{grid-template-columns:1fr}.metrics,.summary-grid,.latest-summary,.account-summary,.stock-metrics,.mini-ledger,.mini-grid,.thesis-grid,.rules,.missing-list,.archive,.entrance-grid{grid-template-columns:1fr}.account-bars{grid-template-columns:repeat(2,minmax(0,1fr))}.day-grid-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.page-shell{width:min(calc(100vw - 16px),1180px);padding-top:22px}.hero,.panel{padding:20px}}
+    @media(max-width:560px){.page-shell,.rail{width:calc(100% - 16px);max-width:100%;margin-left:auto;margin-right:auto}.rail{grid-template-columns:repeat(2,minmax(0,1fr))}.day-grid-cards,.account-bars,.account-strip{grid-template-columns:1fr}h1{font-size:34px}.metric strong{font-size:19px}}
   `;
 }
 
