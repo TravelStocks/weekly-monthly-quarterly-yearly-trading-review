@@ -670,7 +670,8 @@ function renderWeeklyHub() {
   <style>${sharedStyles()}</style>
 </head>
 <body>
-  <main class="page-shell">
+  <a class="skip-link" href="#main-content">跳到主要内容</a>
+  <main class="page-shell" id="main-content">
     <section class="hero">
       <div>
         <span class="label">Weekly Trading Review</span>
@@ -723,20 +724,21 @@ function renderRootIndex() {
     <section class="hero">
       <div>
         <span class="label">weekly-monthly-quarterly-yearly-trading-review</span>
-        <h1>周度 / 月度 / 季度 / 年度交易复盘</h1>
-        <p>这里是总入口：周度独立成页；月度和季度放在同一个复盘主页；年度复盘单独沉淀交易体系。</p>
+        <h1><span class="title-line">周度 / 月度 / 季度</span><span class="title-line">年度交易复盘</span></h1>
+        <p>这里是总入口：周度独立成页；月度和季度放在同一个复盘主页；年度复盘沉淀交易体系；成功与失败案例单独回看。</p>
         <div class="button-row">
           <a class="button" href="./weekly-trading-review/">周度主页</a>
           <a class="button secondary" href="./${week.folder}/">最新周复盘</a>
           <a class="button secondary" href="./monthly-quarterly-trading-review/">月度 / 季度主页</a>
           <a class="button secondary" href="./yearly-trading-review/">年度主页</a>
+          <a class="button secondary" href="./success-failure-trade-review/">成功与失败交割复盘</a>
         </div>
       </div>
       <div class="metrics">
         ${metricCard("周度归档", `${archiveWeeks.length}`, "已发布/草稿周复盘")}
         ${metricCard("最新区间", "07.20", "至 07.24")}
         ${metricCard("最新账户", money(accountPnlTotal, { sign: true }), `期末 ${rawMoney(finalEquity)}`, classByValue(accountPnlTotal))}
-        ${metricCard("长期结构", "3 个主页", "周度 / 月季 / 年度")}
+        ${metricCard("长期结构", "4 个主页", "周度 / 月季 / 年度 / 案例")}
       </div>
     </section>
     <section class="panel">
@@ -746,6 +748,7 @@ function renderRootIndex() {
         <a class="week-card" href="./weekly-trading-review/"><div class="week-head"><h3>周度交割复盘</h3><span class="chip">主页 1</span></div><p>每周一个独立复盘页面，记录交割、买卖点、账户变化、KISS复盘和周度规则。</p><div class="mini-grid"><span>周报 <b>${archiveWeeks.length} 篇</b></span><span>最新 <b>${week.label}</b></span><span>状态 <b>草稿版</b></span></div></a>
         <a class="week-card" href="./monthly-quarterly-trading-review/"><div class="week-head"><h3>月度 / 季度复盘</h3><span class="chip">主页 2</span></div><p>月度承接周度结果，季度检查模式和仓位是否真正改善账户曲线。</p><div class="mini-grid"><span>月度 <b>1-12 月</b></span><span>季度 <b>Q1-Q4</b></span><span>状态 <b>框架版</b></span></div></a>
         <a class="week-card" href="./yearly-trading-review/"><div class="week-head"><h3>年度交易复盘</h3><span class="chip">主页 3</span></div><p>年度层面聚焦账户画像、模式进化、仓位风控、心理纪律和下一年执行准则。</p><div class="mini-grid"><span>年度 <b>自然年</b></span><span>核心 <b>体系沉淀</b></span><span>状态 <b>框架版</b></span></div></a>
+        <a class="week-card" href="./success-failure-trade-review/"><div class="week-head"><h3>成功与失败交割复盘</h3><span class="chip">主页 4</span></div><p>专门收录大盈利和大回撤案例，把赚钱路径、亏损源头、仓位变化和下一次动作拆开复盘。</p><div class="mini-grid"><span>成功 <b>2 个候选</b></span><span>失败 <b>2 个候选</b></span><span>状态 <b>样本池</b></span></div></a>
       </div>
     </section>
   </main>
@@ -774,14 +777,17 @@ function sharedStyles() {
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{margin:0;color:var(--ink);background:linear-gradient(180deg,#f7f8fa 0%,#eef2f5 100%);font-family:"Avenir Next","PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif;overflow-x:hidden}
-    a{color:inherit}
+    a{color:inherit;-webkit-tap-highlight-color:rgba(194,65,45,.12);touch-action:manipulation}
+    a:focus-visible{outline:3px solid rgba(29,78,216,.38);outline-offset:3px}
     p,li{color:var(--muted);line-height:1.72}
     h1,h2,h3,p{margin-top:0;letter-spacing:0}
-    h1{margin:14px 0 14px;font-size:clamp(38px,5vw,68px);line-height:1.04}
-    .date-range{display:grid;gap:0}
+    h1{margin:14px 0 14px;font-size:clamp(38px,5vw,68px);line-height:1.04;text-wrap:balance}
+    .date-range,.title-line{display:grid;gap:0}
     h2{font-size:28px;margin-bottom:12px}
     h3{font-size:18px;margin-bottom:8px}
     .page-shell{width:min(1180px,calc(100vw - 28px));margin:0 auto;padding:34px 0 56px;display:grid;gap:20px}
+    .skip-link{position:absolute;left:16px;top:12px;z-index:5;transform:translateY(-140%);border-radius:8px;background:var(--ink);color:#fff;padding:10px 14px;text-decoration:none;font-weight:800}
+    .skip-link:focus-visible{transform:translateY(0)}
     .page-shell > *,.hero > *,.panel > *,.account-placeholder > *,.metric,.week-card,.stock-card,.day-card{min-width:0}
     .rail{position:fixed;left:18px;top:18px;z-index:2;display:flex;flex-direction:column;gap:7px}
     .rail a{width:78px;min-height:34px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.9);text-decoration:none;color:var(--muted);font-size:12px;font-weight:800;box-shadow:0 10px 28px rgba(23,32,42,.06)}
@@ -790,12 +796,14 @@ function sharedStyles() {
     .panel{padding:24px}
     .label{display:inline-flex;width:max-content;color:var(--red);background:#fff1ed;padding:7px 10px;border-radius:999px;font-size:12px;font-weight:800}
     .button-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
-    .button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;border-radius:8px;background:var(--ink);color:#fff;text-decoration:none;font-weight:800}
+    .button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;border-radius:8px;background:var(--ink);color:#fff;text-decoration:none;font-weight:800;transition:transform .16s ease,border-color .16s ease,background-color .16s ease}
+    .button:hover{transform:translateY(-1px);background:#0f1720}
     .button.secondary{background:#fff;color:var(--ink);border:1px solid var(--line)}
+    .button.secondary:hover{background:#f8fafc;border-color:#c6d0dc}
     .metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
     .metric{padding:16px;min-height:106px;display:grid;align-content:space-between}
     .metric span,.metric small{color:var(--muted);font-size:12px}
-    .metric strong{font-size:22px;line-height:1.18;word-break:break-word}
+    .metric strong{font-size:22px;line-height:1.18;word-break:break-word;font-variant-numeric:tabular-nums}
     .lead{font-size:17px;color:#334155}
     .thesis-grid,.summary-grid,.stock-metrics,.day-numbers,.missing-list,.entrance-grid{display:grid;gap:12px}
     .thesis-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
@@ -860,9 +868,12 @@ function sharedStyles() {
     .rules article span{display:inline-flex;color:var(--blue);font-size:12px;font-weight:900;margin-bottom:8px}
     .missing-list{grid-template-columns:repeat(4,minmax(0,1fr))}
     .archive{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-    .week-card{padding:20px;display:grid;gap:14px;text-decoration:none;color:inherit}
+    .week-card{padding:20px;display:grid;gap:14px;text-decoration:none;color:inherit;transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease}
+    .week-card:hover{border-color:#c6d0dc;box-shadow:0 20px 48px rgba(23,32,42,.1);transform:translateY(-1px)}
     .latest-link{border-color:rgba(29,78,216,.28)}
-    .entrance-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .entrance-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .entrance-grid .mini-grid{grid-template-columns:1fr}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button,.week-card{transition:none}.button:hover,.week-card:hover{transform:none}}
     @media(max-width:1260px){.rail{position:static;width:min(1180px,calc(100vw - 28px));margin:18px auto 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}.rail a{width:auto}}
     @media(max-width:920px){.hero,.data-panel,.account-placeholder{grid-template-columns:1fr}.metrics,.summary-grid,.latest-summary,.account-summary,.stock-metrics,.mini-ledger,.mini-grid,.thesis-grid,.rules,.missing-list,.archive,.entrance-grid{grid-template-columns:1fr}.account-bars{grid-template-columns:repeat(2,minmax(0,1fr))}.day-grid-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.page-shell{width:min(calc(100vw - 16px),1180px);padding-top:22px}.hero,.panel{padding:20px}}
     @media(max-width:560px){.page-shell,.rail{width:calc(100% - 16px);max-width:100%;margin-left:auto;margin-right:auto}.rail{grid-template-columns:repeat(2,minmax(0,1fr))}.day-grid-cards,.account-bars,.account-strip{grid-template-columns:1fr}h1{font-size:34px}.metric strong{font-size:19px}}
