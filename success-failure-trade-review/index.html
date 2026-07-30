@@ -21,7 +21,7 @@
     .skip-link{position:absolute;left:16px;top:12px;z-index:5;transform:translateY(-140%);border-radius:8px;background:var(--ink);color:#fff;padding:10px 14px;text-decoration:none;font-weight:800}
     .skip-link:focus-visible{transform:translateY(0)}
     .page-shell{width:min(1180px,calc(100vw - 28px));margin:0 auto;padding:34px 0 56px;display:grid;gap:20px}
-    section[id]{scroll-margin-top:18px}
+    section[id],.target-card[id]{scroll-margin-top:18px}
     .page-shell > *,.hero > *,.panel > *,.metric,.case-card,.target-card,.field-card,.rule-card{min-width:0}
     .hero,.panel,.metric,.case-card,.target-card,.field-card,.rule-card{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
     .hero{padding:30px;display:grid;grid-template-columns:1.08fr .92fr;gap:26px;align-items:end}
@@ -61,6 +61,7 @@
     .mini-grid span,.trade-step{background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:10px;color:var(--muted);font-size:13px}
     .mini-grid b,.trade-step b{display:block;color:var(--ink);font-size:17px;margin-top:4px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
     .target-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .target-card.featured{grid-column:1/-1}
     .trade-flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
     .trade-step{position:relative;min-height:92px}
     .trade-step em{display:block;font-style:normal;color:var(--muted);font-size:12px;line-height:1.5;margin-top:4px}
@@ -90,7 +91,7 @@
       <div>
         <span class="label">Success & Failure Trade Review</span>
         <h1>成功与失败交割复盘</h1>
-        <p class="lead">这里分成两本账：周维度看成功周和失败周，标的维度看个股或ETF的大利润、大回撤。周账本负责判断账户曲线，标的账本负责拆买卖点和当时交易思路。</p>
+        <p class="lead">这里分成两本账：周维度看成功周和失败周，标的维度看个股或ETF的大利润、大回撤。同一只标的可以同时进入成功和失败样本，关键是把当时的买卖点、情绪周期和执行错误拆清楚。</p>
         <div class="button-row">
           <a class="button" href="../index.html">返回总首页</a>
           <a class="button secondary" href="#week-dimension">周维度</a>
@@ -102,7 +103,7 @@
         <article class="metric"><span>成功周候选</span><strong>2 个</strong><small>按整周账户显著抬升收录</small></article>
         <article class="metric"><span>失败周候选</span><strong>2 个</strong><small>按整周大回撤收录</small></article>
         <article class="metric"><span>大利润标的</span><strong class="is-profit">1 个</strong><small>已拆买卖点：立新能源</small></article>
-        <article class="metric"><span>大回撤标的</span><strong class="is-loss">3 个</strong><small>诺德 / 亨通光电 / 亨通股份</small></article>
+        <article class="metric"><span>大回撤标的</span><strong class="is-loss">4 个</strong><small>立新 / 诺德 / 亨通光电 / 亨通股份</small></article>
       </div>
     </section>
 
@@ -156,6 +157,23 @@
             <div class="thought-card"><h4>当时思路</h4><p>电力是更清晰的强线，科技弱修复不能替代龙头主线。</p></div>
             <div class="thought-card"><h4>做对动作</h4><p>弱修复试错退出后，重新回到立新能源并在次日兑现。</p></div>
             <div class="thought-card"><h4>下次规则</h4><p>龙头转强次日要更早给仓位，但卖点仍要按高位承接分批兑现。</p></div>
+          </div>
+        </a>
+
+        <a class="target-card loss featured" id="stock-001258-failure" href="#stock-001258-failure">
+          <div class="target-head"><div><span class="chip">001258</span><h3>立新能源：主升3硬做失败</h3><p>7/28 在主升3分歧日未等回封确认，外出吃饭和手头忙时连续下随手单，7/29 10:06 被动卖出，闭环净亏约 -4,234.39。</p></div><span class="case-type failure">大回撤</span></div>
+          <div class="mini-grid"><span>买入规模 <b>1,100 股</b></span><span>买入成本 <b>16,994.00</b></span><span>卖出回收 <b>12,759.61</b></span><span>闭环亏损 <b class="is-loss">-4,234.39</b></span></div>
+          <div class="trade-flow">
+            <span class="trade-step">买入 1<b>07/28 09:30-09:35</b><em>开盘后从 15.64 买到 15.21，前 10 分钟越跌越买。</em></span>
+            <span class="trade-step">买入 2<b>07/28 09:41-11:15</b><em>继续补到 1,100 股，均价约 15.399，随手单越来越明显。</em></span>
+            <span class="trade-step">卖出<b>07/29 10:06:55</b><em>11.61 卖出 1,100 股，净回收 12,759.61。</em></span>
+            <span class="trade-step">闭环<b>主升3失败</b><em>价格回撤约 -24.6%，体感接近 25-27cm 大面。</em></span>
+          </div>
+          <div class="thought-grid">
+            <div class="thought-card"><h4>当时思路</h4><p>舒适区其实是主升2龙头、趋势龙、ETF和小仓一进二；主升3、补涨和切换不是优势区，监管红线压制下更难做。</p></div>
+            <div class="thought-card"><h4>错误动作</h4><p>分歧日没有等板上回封确认，板下硬买；外出吃饭和手头忙时不盯盘，导致随手单代替了量价和梯队分析。</p></div>
+            <div class="thought-card"><h4>加仓问题</h4><p>原则应该是越涨越买、确认后加仓，而不是越跌越买。买入后没有上涨时，唯一动作应是停止继续犯错。</p></div>
+            <div class="thought-card"><h4>下次规则</h4><p>龙头战法 10:30 前必须盯紧；主升3只允许回封瞬间确认参与，未分析大盘、板块、前后排和题材关系时禁止下单。</p></div>
           </div>
         </a>
 
