@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f7f8fa" />
+  <title>立新能源主升3失败案例 | 5分K买卖点复盘</title>
+  <style>
+    :root{--ink:#17202a;--muted:#667085;--line:#dfe4ea;--paper:#fff;--wash:#f5f7fa;--red:#c2412d;--green:#14845f;--blue:#1d4ed8;--amber:#b45309;--shadow:0 18px 44px rgba(23,32,42,.08);--radius:10px}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;color:var(--ink);background:linear-gradient(180deg,#f7f8fa 0%,#eef2f5 100%);font-family:"Avenir Next","PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif;overflow-x:hidden}
+    a{color:inherit;-webkit-tap-highlight-color:rgba(194,65,45,.12);touch-action:manipulation}
+    a:focus-visible{outline:3px solid rgba(29,78,216,.38);outline-offset:3px}
+    h1,h2,h3,h4,p{margin-top:0;letter-spacing:0}
+    h1{margin:14px 0;font-size:clamp(38px,5vw,66px);line-height:1.04;text-wrap:balance}
+    h2{font-size:28px;margin-bottom:12px;text-wrap:balance}
+    h3{font-size:19px;margin-bottom:8px}
+    h4{font-size:14px;margin-bottom:8px;color:#334155}
+    p,li,td{color:var(--muted);line-height:1.72}
+    .skip-link{position:absolute;left:16px;top:12px;z-index:5;transform:translateY(-140%);border-radius:8px;background:var(--ink);color:#fff;padding:10px 14px;text-decoration:none;font-weight:800}
+    .skip-link:focus-visible{transform:translateY(0)}
+    .page-shell{width:min(1180px,calc(100vw - 28px));margin:0 auto;padding:34px 0 56px;display:grid;gap:20px}
+    section[id]{scroll-margin-top:18px}
+    .page-shell > *,.hero > *,.panel > *,.metric,.summary-card,.k-card,.rule-card,.mode-card{min-width:0}
+    .hero,.panel,.metric,.summary-card,.k-card,.rule-card,.mode-card{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .hero{padding:30px;display:grid;grid-template-columns:1.08fr .92fr;gap:26px;align-items:end}
+    .panel{padding:24px}
+    .label,.chip,.tag{display:inline-flex;width:max-content;max-width:100%;white-space:nowrap;border-radius:999px;font-size:12px;font-weight:800}
+    .label{color:var(--red);background:#fff1ed;padding:7px 10px;overflow-wrap:anywhere}
+    .chip,.tag{border:1px solid var(--line);background:#f8fafc;padding:7px 10px;color:var(--muted)}
+    .tag.loss{color:var(--green);background:#ecfdf3;border-color:rgba(20,132,95,.22)}
+    .tag.warn{color:var(--amber);background:#fff7ed;border-color:rgba(180,83,9,.22)}
+    .lead{font-size:17px;color:#334155}
+    .button-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+    .button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;border-radius:8px;background:var(--ink);color:#fff;text-decoration:none;font-weight:800;transition:transform .16s ease,border-color .16s ease,background-color .16s ease}
+    .button:hover{transform:translateY(-1px);background:#0f1720}
+    .button.secondary{background:#fff;color:var(--ink);border:1px solid var(--line)}
+    .button.secondary:hover{background:#f8fafc;border-color:#c6d0dc}
+    .metrics,.summary-grid,.k-grid,.rule-grid,.mode-grid,.mini-grid,.check-grid{display:grid;gap:12px}
+    .metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .metric{padding:16px;min-height:106px;display:grid;align-content:space-between}
+    .metric span,.metric small{color:var(--muted);font-size:12px}
+    .metric strong{font-size:22px;line-height:1.18;word-break:break-word;font-variant-numeric:tabular-nums}
+    .is-loss{color:var(--green)}
+    .summary-grid{grid-template-columns:1.15fr .85fr}
+    .summary-card,.k-card,.rule-card,.mode-card{padding:18px;box-shadow:none}
+    .summary-card p,.rule-card p,.mode-card p{margin-bottom:0}
+    .summary-card strong{color:var(--ink)}
+    .mini-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .mini-grid span{background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:10px;color:var(--muted);font-size:13px}
+    .mini-grid b{display:block;color:var(--ink);font-size:17px;margin-top:4px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+    .k-grid{grid-template-columns:1fr}
+    .k-card{display:grid;grid-template-columns:150px 160px 1fr 1fr;gap:12px;align-items:stretch;border-left:4px solid rgba(20,132,95,.45)}
+    .k-card.sell{border-left-color:rgba(194,65,45,.48)}
+    .k-time{display:grid;gap:6px;align-content:start}
+    .k-time b{font-size:18px}
+    .k-candle{position:relative;min-height:112px;border:1px solid var(--line);border-radius:8px;background:#f8fafc;display:grid;place-items:center;padding:10px;text-align:center;overflow:hidden}
+    .k-candle:before{content:"";position:absolute;width:2px;height:74%;background:#97a4b4;left:50%;top:13%}
+    .k-candle:after{content:"";position:absolute;width:34px;height:52%;border-radius:5px;background:rgba(20,132,95,.18);border:1px solid rgba(20,132,95,.38);left:calc(50% - 17px);top:28%}
+    .k-card.sell .k-candle:after{background:rgba(194,65,45,.18);border-color:rgba(194,65,45,.38);top:18%}
+    .k-candle b{position:relative;z-index:1;font-variant-numeric:tabular-nums;background:rgba(255,255,255,.88);border:1px solid var(--line);border-radius:999px;padding:7px 10px}
+    .k-note,.k-action{border:1px solid var(--line);border-radius:8px;padding:12px;background:#fff}
+    .k-note p,.k-action p{margin-bottom:0;font-size:14px}
+    .k-action b{display:block;margin-bottom:6px;color:var(--ink)}
+    .mode-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .mode-card span,.rule-card span{display:inline-flex;color:var(--blue);font-size:12px;font-weight:900;margin-bottom:8px}
+    .rule-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .rule-card.danger{border-color:rgba(20,132,95,.28);background:#fbfffd}
+    .check-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .check-grid article{border:1px solid var(--line);border-radius:8px;background:#f8fafc;padding:14px}
+    .check-grid h3{margin-bottom:6px}
+    .note{background:#f8fafc;border:1px dashed #b8c1cc;border-radius:10px;padding:16px}
+    .note p{margin-bottom:0}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button{transition:none}.button:hover{transform:none}}
+    @media(max-width:980px){.hero,.summary-grid,.mode-grid,.rule-grid,.check-grid{grid-template-columns:1fr}.metrics,.mini-grid{grid-template-columns:1fr}.k-card{grid-template-columns:1fr}.page-shell{width:min(calc(100vw - 16px),1180px);padding-top:22px}.hero,.panel{padding:20px}}
+    @media(max-width:560px){h1{font-size:34px}.metric strong{font-size:19px}.k-candle{min-height:96px}}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">跳到主要内容</a>
+  <main class="page-shell" id="main-content">
+    <section class="hero">
+      <div>
+        <span class="label">001258 Failure Case</span>
+        <h1>立新能源主升3失败案例</h1>
+        <p class="lead">这不是单纯“跌得狠”的问题，而是把主升2舒适区的交易方式硬套到主升3分歧日：没有盯盘、没有等回封确认、没有做量价和梯队分析，最后用随手单把一次错误放大成连续错误。</p>
+        <div class="button-row">
+          <a class="button" href="../">返回成功与失败复盘</a>
+          <a class="button secondary" href="#five-minute-k">5分K买卖点</a>
+          <a class="button secondary" href="#reflection-summary">反思总结</a>
+          <a class="button secondary" href="../../index.html">返回总首页</a>
+        </div>
+      </div>
+      <div class="metrics">
+        <article class="metric"><span>买入规模</span><strong>1,100 股</strong><small>2026-07-28 分 11 笔买入</small></article>
+        <article class="metric"><span>买入成本</span><strong>16,994.00</strong><small>成交额 16,939.00 + 费用 55.00</small></article>
+        <article class="metric"><span>卖出回收</span><strong>12,759.61</strong><small>2026-07-29 10:06:55 卖出</small></article>
+        <article class="metric"><span>闭环亏损</span><strong class="is-loss">-4,234.39</strong><small>价格从均价约 15.399 到 11.61</small></article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <span class="label">Case Verdict</span>
+      <h2>一句话定性</h2>
+      <div class="summary-grid">
+        <article class="summary-card">
+          <h3>这笔亏损的本质</h3>
+          <p><strong>主升3不是你的舒适区，却用随手单去硬做。</strong>7/28 是高位分歧日，正确动作应该是等板上回封确认，或者在没有盯盘和分析的情况下直接放弃；实际动作变成了板下连续买、越跌越买、买后不涨仍继续买。</p>
+        </article>
+        <article class="summary-card">
+          <h3>最该记住的错误</h3>
+          <p>当你意识到第一笔可能错了，唯一正确动作是停止继续犯错。不是补、不是摊、不是想把亏损扳回来，而是退出交易状态，重新回到大盘、板块、梯队和个股地位的完整判断。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel" id="five-minute-k">
+      <span class="label">5-Minute K Map</span>
+      <h2>5分K买卖点复盘</h2>
+      <p>下面按 5 分钟K线窗口记录。价格区间来自成交明细，用来定位买卖点，不等同于完整OHLC。</p>
+      <div class="mini-grid">
+        <span>7/28 买入成交 <b>16,939.00</b></span>
+        <span>7/28 买入发生金额 <b>-16,994.00</b></span>
+        <span>7/29 卖出发生金额 <b>12,759.61</b></span>
+        <span>闭环亏损 <b class="is-loss">-4,234.39</b></span>
+      </div>
+      <div class="k-grid">
+        <article class="k-card">
+          <div class="k-time"><span class="tag loss">买点 1</span><b>07/28 09:30K</b><small>09:30:20-09:34:42</small></div>
+          <div class="k-candle"><b>15.64 -> 15.35</b></div>
+          <div class="k-note"><h3>成交事实</h3><p>连续买入 600 股，成交额 9,305.00。开盘前 5 分钟高位下杀，仍在板下连续接。</p></div>
+          <div class="k-action"><b>应该动作</b><p>主升3分歧日不在板下硬低吸。没有回封确认时，不买；最多等回封瞬间再评估。</p></div>
+        </article>
+        <article class="k-card">
+          <div class="k-time"><span class="tag loss">买点 2</span><b>07/28 09:35K</b><small>09:35:10-09:35:33</small></div>
+          <div class="k-candle"><b>15.21 / 15.38</b></div>
+          <div class="k-note"><h3>成交事实</h3><p>继续买入 200 股，成交额 3,059.00。第一波下杀后没有确认转强，又把下跌当成加仓理由。</p></div>
+          <div class="k-action"><b>应该动作</b><p>金字塔加仓应该是越涨越买、越确认越买。买入后没有上涨时，停止继续加。</p></div>
+        </article>
+        <article class="k-card">
+          <div class="k-time"><span class="tag loss">买点 3</span><b>07/28 09:40K</b><small>09:41:45-09:44:09</small></div>
+          <div class="k-candle"><b>15.40 / 15.29</b></div>
+          <div class="k-note"><h3>成交事实</h3><p>再买入 200 股，成交额 3,069.00。此时已经不是确认买点，而是随手单继续扩大仓位。</p></div>
+          <div class="k-action"><b>应该动作</b><p>如果前 10 分钟没有走出确认，龙头战法要回到观察状态，而不是用仓位替代判断。</p></div>
+        </article>
+        <article class="k-card">
+          <div class="k-time"><span class="tag loss">买点 4</span><b>07/28 11:15K</b><small>11:15:32</small></div>
+          <div class="k-candle"><b>15.06</b></div>
+          <div class="k-note"><h3>成交事实</h3><p>午前再买入 100 股，最终合计 1,100 股。关键盯盘窗口已经过去，仍在不清晰状态下补单。</p></div>
+          <div class="k-action"><b>应该动作</b><p>10:30 后没有清晰结构，不补主升3。外出吃饭、无法专注看盘时，禁止新开或加仓龙头单。</p></div>
+        </article>
+        <article class="k-card sell">
+          <div class="k-time"><span class="tag warn">卖点</span><b>07/29 10:05K</b><small>10:06:55</small></div>
+          <div class="k-candle"><b>11.61</b></div>
+          <div class="k-note"><h3>成交事实</h3><p>卖出 1,100 股，成交金额 12,771.00，扣费税后回收 12,759.61。闭环净亏约 -4,234.39。</p></div>
+          <div class="k-action"><b>应该动作</b><p>龙头战法 10:30 前必须盯紧。忙别的事时容易从主动卖点变成被动止损，亏损会被放大。</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel" id="reflection-summary">
+      <span class="label">Reflection Summary</span>
+      <h2>上面内容总结</h2>
+      <div class="check-grid">
+        <article>
+          <h3>模式边界</h3>
+          <p>你的舒适区是主升2阶段的龙头和趋势、ETF，以及小仓位一进二。主升1通常事后更清楚，主升3受监管红线和高位兑现压制，买点很苛刻，不是当前优势区。</p>
+        </article>
+        <article>
+          <h3>这波最大错位</h3>
+          <p>7/28 的立新能源已经进入主升3分歧，不是主升2弱转强确认。高开太多容易兑现，正确参与条件应是板上回封确认，而不是板下越跌越买。</p>
+        </article>
+        <article>
+          <h3>随手单触发器</h3>
+          <p>外出吃饭、手头忙、不专注看盘，会让交易从“分析量价和梯队”滑成“下个注试试”。这类场景以后直接视为禁单状态。</p>
+        </article>
+        <article>
+          <h3>分析缺口</h3>
+          <p>下单前没有完整分析大盘、板块、前后排、辨识度个股、题材关系、对流盘、防御盘、进攻盘、卡位盘、共生盘和吸血盘，导致无法判断这根5分K是否真有承接。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <span class="label">Mode Boundary</span>
+      <h2>情绪周期与模式边界</h2>
+      <div class="mode-grid">
+        <article class="mode-card"><span>01</span><h3>主升1</h3><p>首板、一进二、卡位晋级阶段，盘中很难稳定看清，更多是左侧博弈和小仓试错。</p></article>
+        <article class="mode-card"><span>02</span><h3>主升2</h3><p>舒适区。爆量弱转强、首次分歧吸核心、次日转强确认加仓，更适合龙头和趋势。</p></article>
+        <article class="mode-card"><span>03</span><h3>主升3</h3><p>非舒适区。监管红线、高位兑现和分歧加大，只能等回封确认，不做板下幻想。</p></article>
+        <article class="mode-card"><span>04</span><h3>退潮反弹</h3><p>退潮后的超跌反弹或双顶反抽，按反弹处理，不能继续套用主升加速仓位。</p></article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <span class="label">Next Rules</span>
+      <h2>下次执行禁令</h2>
+      <div class="rule-grid">
+        <article class="rule-card danger"><span>01</span><h3>不盯盘不下龙头单</h3><p>尤其 10:30 前，龙头战法必须盯紧盯牢。不能看盘时，不新开、不加仓。</p></article>
+        <article class="rule-card danger"><span>02</span><h3>主升3只看回封确认</h3><p>高开分歧日，板下买不是优势买点。没有回封确认，不参与。</p></article>
+        <article class="rule-card danger"><span>03</span><h3>买后不涨就停止</h3><p>第一笔错了，后面不要用连续补单证明自己。停止继续犯错就是当下最好的交易。</p></article>
+        <article class="rule-card danger"><span>04</span><h3>金字塔不能反着做</h3><p>越涨越买，越确认越买；越跌只能降低风险，不能把下跌当成加仓理由。</p></article>
+        <article class="rule-card danger"><span>05</span><h3>没有结构分析不下单</h3><p>大盘、板块、梯队、前后排、题材关系和辨识度没看清，只能观察，不能交易。</p></article>
+        <article class="rule-card danger"><span>06</span><h3>忙碌状态默认禁单</h3><p>吃饭、外出、处理别的事情时，账户只能管理已有风险，不能发起新风险。</p></article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>复盘结语</h2>
+      <div class="note">
+        <p>这笔交易最痛的地方，不是 7/29 卖在 11.61，而是 7/28 的每一根 5 分K都在提醒“还没有确认”，但动作却一路从试错变成补错。以后这类案例只记一个核心规则：看不清时不下注，已经错时不加码。</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
