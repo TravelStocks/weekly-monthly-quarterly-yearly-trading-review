@@ -52,11 +52,13 @@
     .case-card:hover,.target-card:hover{border-color:#c6d0dc;box-shadow:0 18px 42px rgba(23,32,42,.1);transform:translateY(-1px)}
     .case-card.success,.target-card.profit{border-color:rgba(194,65,45,.24)}
     .case-card.failure,.target-card.loss{border-color:rgba(20,132,95,.24)}
+    .target-card.missed{border-color:rgba(180,83,9,.28)}
     .case-head,.target-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
     .case-head p,.target-head p{margin-bottom:0}
     .case-type{border:1px solid var(--line);padding:7px 10px}
     .case-type.success{background:#fff1ed;border-color:rgba(194,65,45,.22)}
     .case-type.failure{background:#ecfdf3;border-color:rgba(20,132,95,.22)}
+    .case-type.missed{color:var(--amber);background:#fff7ed;border-color:rgba(180,83,9,.24)}
     .mini-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
     .mini-grid span,.trade-step{background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:10px;color:var(--muted);font-size:13px}
     .mini-grid b,.trade-step b{display:block;color:var(--ink);font-size:17px;margin-top:4px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
@@ -91,7 +93,7 @@
       <div>
         <span class="label">Success & Failure Trade Review</span>
         <h1>成功与失败交割复盘</h1>
-        <p class="lead">这里分成两本账：周维度看成功周和失败周，标的维度看个股或ETF的大利润、大回撤。同一只标的可以同时进入成功和失败样本，关键是把当时的买卖点、情绪周期和执行错误拆清楚。</p>
+        <p class="lead">这里分成两本账：周维度看成功周和失败周，标的维度看个股或ETF的大利润、大回撤、关键错过。同一只标的可以同时进入成功和失败样本，关键是把当时的买卖点、情绪周期和执行错误拆清楚。</p>
         <div class="button-row">
           <a class="button" href="../index.html">返回总首页</a>
           <a class="button secondary" href="#week-dimension">周维度</a>
@@ -104,6 +106,7 @@
         <article class="metric"><span>失败周候选</span><strong>2 个</strong><small>按整周大回撤收录</small></article>
         <article class="metric"><span>大利润标的</span><strong class="is-profit">1 个</strong><small>已拆买卖点：立新能源</small></article>
         <article class="metric"><span>大回撤标的</span><strong class="is-loss">4 个</strong><small>立新 / 诺德 / 亨通光电 / 亨通股份</small></article>
+        <article class="metric"><span>错过龙头</span><strong>1 个</strong><small>传智教育：4板发现晚，5板回风打慢</small></article>
       </div>
     </section>
 
@@ -141,9 +144,25 @@
     <section class="panel" id="target-dimension">
       <div class="dimension-head">
         <div><span class="dimension-mark">个股 / ETF维度</span><h2>大利润标的与大回撤标的</h2></div>
-        <p>标的维度更细：记录买入点、卖出点、当时盘面判断、仓位处理和下一次同类交易的执行规则。</p>
+        <p>标的维度更细：记录买入点、卖出点、错过点、当时盘面判断、仓位处理和下一次同类交易的执行规则。</p>
       </div>
       <div class="target-grid">
+        <a class="target-card missed featured" href="./stock-003032-missed/index.html">
+          <div class="target-head"><div><span class="chip">003032</span><h3>传智教育：错过 8 板龙头周期</h3><p>4板没有提前纳入龙头候选，5板爆量弱转强回封时打慢。核心教训：唯一高标 + 题材支撑 + 量能到位 + 低点不破 + 跳空大单回拉时，要提前板上打单。</p></div><span class="case-type missed">关键错过</span></div>
+          <div class="mini-grid"><span>关键节点 <b>4板 / 5板</b></span><span>回封低点 <b>8.02</b></span><span>错过动作 <b>打板排慢</b></span><span>沉淀规则 <b>回风提前打</b></span></div>
+          <div class="trade-flow">
+            <span class="trade-step">盘前筛选<b>3板以上候选池</b><em>所有有题材效应的 3 板以上票，都要做龙头气味分析。</em></span>
+            <span class="trade-step">4板买点<b>首次爆量弱转强</b><em>一字后高开拉板并放量，是主升2首次分歧转一致。</em></span>
+            <span class="trade-step">5板买点<b>低点不破回封</b><em>8.02 不破，跳空大单回拉，快封板前应提前打。</em></span>
+            <span class="trade-step">仓位规则<b>不唯一先分散</b><em>未确认唯一性时单票 3-4 成，确认市场总龙后再集中。</em></span>
+          </div>
+          <div class="thought-grid">
+            <div class="thought-card"><h4>盘前问题</h4><p>发现太晚，4板前没有把传智教育放进龙头候选池。</p></div>
+            <div class="thought-card"><h4>盘中问题</h4><p>5板回风时等封单变大后再排，慢一两秒就失去先手。</p></div>
+            <div class="thought-card"><h4>下一次规则</h4><p>量能接近前高、低点不破、上方压单薄、下方大单吃货时，提前挂涨停价。</p></div>
+          </div>
+        </a>
+
         <a class="target-card profit" href="./stock-001258-profit/index.html">
           <div class="target-head"><div><span class="chip">001258</span><h3>立新能源：大利润个股</h3><p>电力方向确认后围绕龙头做T，最终可见已实现 +2,050.00。点击进入完整案例档案。</p></div><span class="case-type success">大利润</span></div>
           <div class="mini-grid"><span>买入金额 <b>18,051.00</b></span><span>卖出金额 <b>20,101.00</b></span><span>可见已实现 <b class="is-profit">+2,050.00</b></span></div>

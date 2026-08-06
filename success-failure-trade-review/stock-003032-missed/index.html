@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f7f8fa" />
+  <title>传智教育错过龙头案例 | 爆量弱转强回封板复盘</title>
+  <style>
+    :root{--ink:#17202a;--muted:#667085;--line:#dfe4ea;--paper:#fff;--wash:#f5f7fa;--red:#c2412d;--green:#14845f;--blue:#1d4ed8;--amber:#b45309;--shadow:0 18px 44px rgba(23,32,42,.08);--radius:10px}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;color:var(--ink);background:linear-gradient(180deg,#f7f8fa 0%,#eef2f5 100%);font-family:"Avenir Next","PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif;overflow-x:hidden}
+    a{color:inherit;-webkit-tap-highlight-color:rgba(180,83,9,.12);touch-action:manipulation}
+    a:focus-visible,button:focus-visible{outline:3px solid rgba(29,78,216,.38);outline-offset:3px}
+    h1,h2,h3,h4,p{margin-top:0;letter-spacing:0}
+    h1{margin:14px 0;font-size:clamp(38px,5vw,66px);line-height:1.04;text-wrap:balance}
+    h2{font-size:28px;margin-bottom:12px;text-wrap:balance}
+    h3{font-size:19px;margin-bottom:8px}
+    h4{font-size:14px;margin-bottom:8px;color:#334155}
+    p,li,td{color:var(--muted);line-height:1.72}
+    img{display:block;max-width:100%;height:auto}
+    .skip-link{position:absolute;left:16px;top:12px;z-index:5;transform:translateY(-140%);border-radius:8px;background:var(--ink);color:#fff;padding:10px 14px;text-decoration:none;font-weight:800}
+    .skip-link:focus-visible{transform:translateY(0)}
+    .page-shell{width:min(1180px,calc(100vw - 28px));margin:0 auto;padding:34px 0 56px;display:grid;gap:20px}
+    section[id]{scroll-margin-top:18px}
+    .page-shell > *,.hero > *,.panel > *,.metric,.card,.rule-card,.image-card,.flow-step{min-width:0}
+    .hero,.panel,.metric,.card,.rule-card,.image-card,.flow-step{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .hero{padding:30px;display:grid;grid-template-columns:1.06fr .94fr;gap:26px;align-items:end}
+    .panel{padding:24px}
+    .label,.tag,.chip{display:inline-flex;width:max-content;max-width:100%;white-space:nowrap;border-radius:999px;font-size:12px;font-weight:800}
+    .label{color:var(--amber);background:#fff7ed;padding:7px 10px;overflow-wrap:anywhere}
+    .tag,.chip{border:1px solid var(--line);background:#f8fafc;padding:7px 10px;color:var(--muted)}
+    .tag.warn{color:var(--amber);background:#fff7ed;border-color:rgba(180,83,9,.22)}
+    .tag.hot{color:var(--red);background:#fff1ed;border-color:rgba(194,65,45,.22)}
+    .lead{font-size:17px;color:#334155}
+    .button-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+    .button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;border-radius:8px;background:var(--ink);color:#fff;text-decoration:none;font-weight:800;transition:transform .16s ease,border-color .16s ease,background-color .16s ease}
+    .button:hover{transform:translateY(-1px);background:#0f1720}
+    .button.secondary{background:#fff;color:var(--ink);border:1px solid var(--line)}
+    .button.secondary:hover{background:#f8fafc;border-color:#c6d0dc}
+    .metrics,.summary-grid,.rule-grid,.image-grid,.flow-grid,.compare-grid,.mini-grid{display:grid;gap:12px}
+    .metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .metric{padding:16px;min-height:106px;display:grid;align-content:space-between}
+    .metric span,.metric small{color:var(--muted);font-size:12px}
+    .metric strong{font-size:22px;line-height:1.18;word-break:break-word;font-variant-numeric:tabular-nums}
+    .is-hot{color:var(--red)}
+    .is-warn{color:var(--amber)}
+    .summary-grid{grid-template-columns:1.15fr .85fr}
+    .card,.rule-card{padding:18px;box-shadow:none}
+    .card p,.rule-card p{margin-bottom:0}
+    .mini-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .mini-grid span{background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:10px;color:var(--muted);font-size:13px}
+    .mini-grid b{display:block;color:var(--ink);font-size:17px;margin-top:4px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+    .flow-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .flow-step{position:relative;padding:18px;box-shadow:none;border-left:4px solid rgba(180,83,9,.38)}
+    .flow-step span,.rule-card span{display:inline-flex;color:var(--blue);font-size:12px;font-weight:900;margin-bottom:8px}
+    .flow-step b{display:block;margin-bottom:8px;color:var(--ink);font-size:18px}
+    .image-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .image-card{overflow:hidden;box-shadow:none}
+    .image-card.featured{grid-column:1/-1}
+    .image-card img{width:100%;aspect-ratio:16/9;object-fit:cover;background:#111827}
+    .image-card.featured img{aspect-ratio:2.15/1}
+    .image-card figcaption{padding:12px 14px;color:var(--muted);font-size:13px;line-height:1.6}
+    .compare-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .table-wrap{width:100%;overflow-x:auto;border:1px solid var(--line);border-radius:9px;background:#fff;margin-top:14px}
+    table{width:100%;min-width:860px;border-collapse:collapse;font-size:13px}
+    th,td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+    th{background:#f8fafc;color:var(--muted)}
+    td:first-child{font-weight:800;color:var(--ink);white-space:nowrap}
+    tr:last-child td{border-bottom:0}
+    .note{background:#f8fafc;border:1px dashed #b8c1cc;border-radius:10px;padding:16px}
+    .note p{margin-bottom:0}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button{transition:none}.button:hover{transform:none}}
+    @media(max-width:980px){.hero,.summary-grid,.flow-grid,.image-grid,.compare-grid{grid-template-columns:1fr}.metrics,.mini-grid{grid-template-columns:1fr}.page-shell{width:min(calc(100vw - 16px),1180px);padding-top:22px}.hero,.panel{padding:20px}.image-card.featured{grid-column:auto}.image-card.featured img,.image-card img{aspect-ratio:16/10}}
+    @media(max-width:560px){h1{font-size:34px}.metric strong{font-size:19px}}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">跳到主要内容</a>
+  <main class="page-shell" id="main-content">
+    <section class="hero">
+      <div>
+        <span class="label">003032 Missed Leader Case</span>
+        <h1>传智教育：错过 8 板龙头周期</h1>
+        <p class="lead">这不是简单的“没买到”，而是盘前没有在 4 板前把它放进龙头候选池，盘中 5 板爆量弱转强回封时又慢了一两秒。真正的错过点，是没有在“量能释放到位、低点不破、跳空大单回拉、上方压单很薄”的瞬间提前板上打单。</p>
+        <div class="button-row">
+          <a class="button" href="../">返回案例索引</a>
+          <a class="button secondary" href="#order-flow">盘口转折</a>
+          <a class="button secondary" href="#cycle-pick">龙头筛选</a>
+          <a class="button secondary" href="#position">仓位规则</a>
+          <a class="button secondary" href="../../index.html">返回总首页</a>
+        </div>
+      </div>
+      <div class="metrics">
+        <article class="metric"><span>核心标的</span><strong>003032 传智教育</strong><small>AI 应用 + 教育，叠加机器人概念</small></article>
+        <article class="metric"><span>关键买点</span><strong class="is-hot">4 板 / 5 板</strong><small>首次爆量弱转强与 5 板定龙</small></article>
+        <article class="metric"><span>回封低点</span><strong>8.02</strong><small>下杀后不破低点，是盘口反转底线</small></article>
+        <article class="metric"><span>错过原因</span><strong class="is-warn">发现晚 + 打慢</strong><small>盘前筛选不足，回风板排单滞后</small></article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <span class="label">Case Verdict</span>
+      <h2>一句话定性</h2>
+      <div class="summary-grid">
+        <article class="card">
+          <h3>错过的本质</h3>
+          <p><strong>4 板没有提前识别，5 板回风没有提前打。</strong>传智教育在 7 月 30 日已经完成一字后的首次爆量分歧转一致，7 月 31 日又在唯一高标竞争中用更强竞价、更快回封和更强带动性胜出。真正该做的是 4 板先手建仓，5 板回风确认再加仓。</p>
+        </article>
+        <article class="card">
+          <h3>最该记住的动作</h3>
+          <p>分歧往下杀后，先盯第一次最低点。只要后续跳单回拉不破最低点，上方压单又很薄，下面成交大单连续往上吃，就要把涨停价买单准备好，在快封板的一瞬间打进去，而不是等封单堆到 8000 万、1 亿后再排。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel" id="order-flow">
+      <span class="label">Order Flow</span>
+      <h2>盘口转折：大单压单、跳空回拉与回风板</h2>
+      <div class="mini-grid">
+        <span>分歧低点 <b>8.02</b></span>
+        <span>回拉序列 <b>8.04 -> 8.60</b></span>
+        <span>回封节点 <b>09:32 附近</b></span>
+        <span>回封确认 <b>千万级扫单</b></span>
+      </div>
+      <div class="image-grid">
+        <figure class="image-card">
+          <img src="../assets/stock-003032-missed/20260731-orderbook-drop.png" alt="传智教育 7 月 31 日开板下杀到 8.02 后的盘口明细" loading="lazy" />
+          <figcaption>一字高开后量能不足，开板下杀到 8.02 附近，先释放获利盘和分歧盘。</figcaption>
+        </figure>
+        <figure class="image-card">
+          <img src="../assets/stock-003032-missed/20260731-orderbook-rebound.jpg" alt="传智教育盘口从 8.02 向上跳空回拉的成交明细" loading="lazy" />
+          <figcaption>随后出现 8.04、8.20、8.35、8.43、8.50、8.60 的连续跳空回拉单，且回落不破 8.02。</figcaption>
+        </figure>
+        <figure class="image-card">
+          <img src="../assets/stock-003032-missed/20260731-limit-reseal.jpg" alt="传智教育 7 月 31 日 09:32 附近大单回封涨停" loading="lazy" />
+          <figcaption>09:32 附近 8.81 回封，买一出现千万级资金承接。盘子小，等封单堆大后再排已经偏晚。</figcaption>
+        </figure>
+        <figure class="image-card featured">
+          <img src="../assets/stock-003032-missed/thin-offer-reference.png" alt="同类回风板盘口参考：上方压单薄、下方成交单大的瞬间" loading="lazy" />
+          <figcaption>同类盘口参考：上方压单只有几百万、下方成交单明显更大，卖五档快速变薄，这种反差出现时要提前把涨停价买单挂好。</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="panel">
+      <span class="label">Execution Trigger</span>
+      <h2>回风板下单触发器</h2>
+      <div class="flow-grid">
+        <article class="flow-step"><span>01</span><b>量能到位</b><p>当天量能接近或超过前面连板最高量，或者达到低量板的 1.5-2 倍以上，说明分歧释放已经足够。</p></article>
+        <article class="flow-step"><span>02</span><b>低点不破</b><p>第一次下杀低点是风控线。传智教育是 8.02，只要后续脉冲回落不破 8.02，就不是溃败。</p></article>
+        <article class="flow-step"><span>03</span><b>跳空向上</b><p>成交明细出现连续跳空回拉单，百万级到千万级资金连续扫入，说明资金在主动维护成本区。</p></article>
+        <article class="flow-step"><span>04</span><b>上方压单薄</b><p>卖盘不是几千万、上亿压着，而是只有几百万压单；下方成交大单明显大于上方压单。</p></article>
+        <article class="flow-step"><span>05</span><b>卖五变薄</b><p>离涨停板很近时，卖五档快速被吃掉，甚至只剩最后一层薄压单，这是回封前最重要的一瞬。</p></article>
+        <article class="flow-step"><span>06</span><b>提前板上打</b><p>不是封住再点，而是单先挂涨停价，快封那一刻直接打。慢一两秒就容易打不进去。</p></article>
+      </div>
+    </section>
+
+    <section class="panel" id="cycle-pick">
+      <span class="label">Leader Selection</span>
+      <h2>为什么 5 板应当锁定传智教育</h2>
+      <div class="compare-grid">
+        <article class="card">
+          <h3>周期背景</h3>
+          <p>上一周期高标龙头爆量断板后，旧周期进入结束或退潮，新的核心容易在这个节点卡出来。传智教育 7 月 28 日二板附近已经展示主动性、带动性和抗跌性，后排有苏州科达、学大教育等跟随，题材偏 AI 应用并夹杂机器人。</p>
+        </article>
+        <article class="card">
+          <h3>5 板定龙</h3>
+          <p>7 月 31 日它高预期开一字，但量能和小弟助攻都不足，所以需要开板爆量释放分歧。回封后普联软件、泛微网络等在较短时间内跟随上板，说明它从候选龙头变成市场总龙。</p>
+        </article>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>候选</th><th>优势</th><th>问题</th><th>结论</th></tr></thead>
+          <tbody>
+            <tr><td>传智教育</td><td>竞价更强、回封更快、AI 应用题材更有容量，5 板后带动后排上板。</td><td>盘子偏小，一旦封单堆大很难买到。</td><td>最优选择，4 板先手、5 板回风加仓。</td></tr>
+            <tr><td>一鸣食品</td><td>1-3 板有带动性，大消费内部也有辨识度。</td><td>题材容量弱于 AI 应用，次日带动后排数量不足。</td><td>可做候选，但不是市场总龙。</td></tr>
+            <tr><td>明新旭腾</td><td>有主动性，机器人方向有一定辨识度。</td><td>4 板未充分爆量，带动性弱，后排上板时间间隔偏久。</td><td>PK 中被传智教育筛掉。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel" id="position">
+      <span class="label">Position Rule</span>
+      <h2>3-5 板先手建仓规则</h2>
+      <div class="flow-grid">
+        <article class="rule-card"><span>01</span><h3>盘前筛 2-3 个</h3><p>所有 3 板及以上、有题材效应的票，都要做龙头气味分析：主动性、带动性、领涨性、唯一性、抗跌性、市场性和题材容量。</p></article>
+        <article class="rule-card"><span>02</span><h3>不唯一就分散</h3><p>没有确认唯一性时，单票初期建仓不超过 3-4 成。当时一鸣食品和传智教育都可各给 4 成，总仓位约 8 成。</p></article>
+        <article class="rule-card"><span>03</span><h3>确认唯一再集中</h3><p>谁在次日真正走出来，谁再右侧加仓到 7-8 成。只有唯一高标、唯一主线、唯一市场总龙确认后，才允许重仓集中。</p></article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <span class="label">Market Effect</span>
+      <h2>情绪与赚钱效应判定</h2>
+      <div class="summary-grid">
+        <article class="card">
+          <h3>赚钱效应</h3>
+          <p>看当日涨停股次日反馈。如果涨停股次日普遍有溢价、没有明显负反馈，说明市场有赚钱效应，可以提高对核心龙头的参与积极性。</p>
+        </article>
+        <article class="card">
+          <h3>亏钱效应</h3>
+          <p>如果涨停股次日两极分化，低开、核按钮、炸板、冲高回落严重，说明市场有亏钱效应，回风板需要更严格地看量能、低点和题材带动。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>最终沉淀</h2>
+      <div class="note">
+        <p>传智教育这一波最大的教训是：三板以后必须盘前做龙头候选池，四板爆量弱转强要敢先手，五板回风确认要提前准备。核心口诀就是：唯一高标 + 题材支撑 + 爆量超过前高 + 低点不破 + 跳空大单回拉 + 上方压单很薄 = 快封板前直接打。</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
