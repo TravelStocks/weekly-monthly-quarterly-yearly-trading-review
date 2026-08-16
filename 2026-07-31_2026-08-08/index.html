@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2026.07.31 - 2026.08.08 周度交易复盘</title>
+  <style>
+    :root{--bg:#f5f7fa;--panel:#fff;--ink:#0f1b2a;--muted:#64748b;--line:#d9e1ea;--accent:#c2412d;--profit:#b91c1c;--loss:#047857;--blue:#1d4ed8;--soft:#f8fafc;--shadow:0 18px 45px rgba(15,27,42,.08)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,"Microsoft YaHei",sans-serif;line-height:1.7}a{color:inherit;text-decoration:none}
+    .page-shell{width:min(1180px,calc(100% - 32px));margin:0 auto;padding:28px 0 48px}.rail{position:sticky;top:0;z-index:10;display:flex;gap:8px;flex-wrap:wrap;width:min(1180px,calc(100% - 32px));margin:0 auto;padding:10px 0;background:rgba(245,247,250,.92);backdrop-filter:blur(10px)}.rail a,.button{border-radius:8px;background:var(--ink);color:#fff;padding:10px 14px;font-weight:700;font-size:14px}.rail a{background:#fff;color:var(--ink);border:1px solid var(--line)}.button.secondary{background:#fff;color:var(--ink);border:1px solid var(--line)}.button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+    .hero,.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);padding:28px;margin-bottom:18px}.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center}.label{display:inline-block;border-radius:999px;background:#fff0ec;color:var(--accent);font-weight:800;font-size:12px;padding:6px 10px;margin-bottom:10px}h1{font-size:48px;line-height:1.1;margin:0 0 14px;letter-spacing:0}h2{font-size:26px;margin:0 0 10px}h3{margin:0 0 8px}.date-range{display:grid}.lead,.hero p{color:#475569;font-size:16px}
+    .metrics,.summary-grid,.stock-metrics,.account-placeholder,.account-strip,.latest-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.metric,.summary-grid span,.stock-metrics span,.account-placeholder article,.account-strip span{border:1px solid var(--line);border-radius:8px;background:var(--soft);padding:12px}.metric span,.summary-grid span,.stock-metrics em,.account-strip span{color:var(--muted);font-style:normal}.metric strong{display:block;font-size:24px}.metric small,.stock-metrics em{display:block;font-size:12px;color:var(--muted)}
+    .is-profit{color:var(--profit)!important}.is-loss{color:var(--loss)!important}.is-buy{color:#dc2626;font-weight:800}.is-sell{color:#1d4ed8;font-weight:800}.thesis-grid,.stock-grid,.rules,.missing-list,.day-grid-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.thesis-grid article,.stock-card,.rules article,.missing-list article,.day-card{border:1px solid var(--line);border-radius:10px;background:#fff;padding:16px}.stock-grid.tight{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .stock-card-head,.day-card-head{display:flex;justify-content:space-between;gap:10px;align-items:start}.code,.chip{color:var(--muted);font-size:13px}.chip{border:1px solid var(--line);border-radius:999px;padding:4px 8px;background:var(--soft)}.chart-frame{border:1px solid var(--line);border-radius:9px;background:#f8fafc;padding:14px;margin-top:12px}.chart-empty{display:grid;gap:4px;color:var(--muted)}.chart-empty b{color:var(--ink)}.trade-points{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:12px}.trade-points span{border:1px solid var(--line);border-radius:8px;background:#fff;padding:8px;font-size:12px}
+    .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:10px}.compact-table{margin-bottom:16px}table{width:100%;border-collapse:collapse;min-width:920px;background:#fff}th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}th:first-child,td:first-child,th:nth-child(4),td:nth-child(4){text-align:left}thead th{background:#f8fafc;color:#475569;font-size:13px}tbody tr:hover{background:#fff7ed}
+    @media(max-width:920px){.hero,.metrics,.summary-grid,.stock-metrics,.account-placeholder,.account-strip,.thesis-grid,.stock-grid,.rules,.missing-list,.day-grid-cards,.stock-grid.tight{grid-template-columns:1fr}h1{font-size:36px}.panel,.hero{padding:20px}.page-shell,.rail{width:calc(100% - 16px)}}
+  </style>
+</head>
+<body>
+  <nav class="rail" aria-label="页面导航">
+    <a href="../weekly-trading-review/">周度主页</a>
+    <a href="../">总入口</a>
+    <a href="#overview">总览</a>
+    <a href="#profit-loss">盈亏票</a>
+    <a href="#account">账户</a>
+    <a href="#stocks">标的</a>
+    <a href="#daily">逐日</a>
+    <a href="#rules">规则</a>
+    <a href="#trades">成交</a>
+  </nav>
+  <main class="page-shell">
+    <section class="hero" id="overview">
+      <div>
+        <span class="label">补档草稿 / 截图成交口径</span>
+        <h1><span class="date-range"><span>2026.07.31 -</span><span>2026.08.08</span></span>周度交易复盘</h1>
+        <p>本页基于 2026/7/31-8/8 成交截图补档生成。截图含 7/31 一鸣食品成本行，账户日收益、期末持仓、日度KISS与二次反思待补后再校准。</p>
+        <div class="button-row">
+          <a class="button" href="../weekly-trading-review/">返回周度主页</a>
+          <a class="button secondary" href="#missing">待补清单</a>
+        </div>
+      </div>
+      <div class="metrics">
+        <article class="metric"><span>成交笔数</span><strong class="">16</strong><small>仅统计截图可见已成记录</small></article>
+        <article class="metric"><span>可见闭环盈亏</span><strong class="is-profit">+186.27</strong><small>FIFO / 只算截图内可配对买卖</small></article>
+        <article class="metric"><span>期末可见成本</span><strong class="">12,918.13</strong><small>1 个未闭环标的</small></article>
+        <article class="metric"><span>账户收益</span><strong class="">待补</strong><small>需每日账户收益表</small></article>
+      </div>
+    </section>
+
+    <section class="panel thesis-panel">
+      <span class="label">Week Thesis</span>
+      <h2>半导ETF小赚闭环，风范股份期末持仓待验证</h2>
+      <p class="lead">这一周更像是轻量试错和仓位切换：一鸣食品跨周小赚卖出，半导体ETF/科创半导形成小赚闭环，8/6 集中买入风范股份形成期末待验证仓。核心缺口是风范股份期末市值与浮盈亏。</p>
+      <div class="thesis-grid">
+        <article><b>成交口径</b><p>本页按截图中可见的成交日期、价格、数量、手续费、印花税、发生金额重建；不发布合同号、成交编号等敏感字段。</p></article>
+        <article><b>账户口径</b><p>账户日收益、收益率、仓位、期末权益暂缺；本页只计算截图可闭环的成交贡献。</p></article>
+        <article><b>跨周提醒</b><p>截图中存在跨周成本行，已在对应标的里单独说明；未配对的历史卖出不强行计算盈亏。</p></article>
+      </div>
+    </section>
+
+    <section class="panel data-panel">
+      <div>
+        <span class="label">Data Scope</span>
+        <h2>本版数据口径</h2>
+        <p>成交截图不含账户日收益、期末持仓市值与完整历史成本。本页先用于补齐交割动作、可闭环票、开放仓位和待补材料；后续你给账户表和二次反思后再校准账户结论。</p>
+      </div>
+      <div class="summary-grid">
+        <span>买入笔数 <b>9</b></span>
+        <span>卖出笔数 <b>7</b></span>
+        <span>成交额 <b>33,098.30</b></span>
+        <span>现金差额 <b class="is-loss">-12,731.86</b></span>
+        <span>费用合计 <b>81.95</b></span>
+        <span>未闭环成本 <b>12,918.13</b></span>
+      </div>
+    </section>
+
+    <section class="panel" id="profit-loss">
+    <span class="label">Profit / Loss Roots</span>
+    <h2>本周持有/闭环票：赚钱与亏损主因</h2>
+    <div class="stock-grid tight">
+      <article class="stock-card">
+        <div class="stock-card-head"><div><span class="code">159516</span><h3>半导体设备ETF国泰</h3></div><span class="chip">4 笔</span></div>
+        <div class="stock-metrics">
+          <span>可见已实现 <b class="is-profit">+105.40</b><em>截图内FIFO</em></span>
+          <span>期末可见 <b>已清仓</b><em>持仓截图待校准</em></span>
+        </div>
+        <p>半导体设备ETF国泰 8/3 买入5000份，8/4 分三笔卖出5000份，截图内小赚。ETF试错能够快进快出，是比追单一科技个股更稳的动作。</p>
+      </article>
+      <article class="stock-card">
+        <div class="stock-card-head"><div><span class="code">588170</span><h3>科创半导ETF华夏</h3></div><span class="chip">4 笔</span></div>
+        <div class="stock-metrics">
+          <span>可见已实现 <b class="is-profit">+64.90</b><em>截图内FIFO</em></span>
+          <span>期末可见 <b>已清仓</b><em>持仓截图待校准</em></span>
+        </div>
+        <p>科创半导ETF华夏 8/3 买入3600份，8/4 分三笔卖出3600份，截图内小赚。它和半导设备ETF一起验证科技线弹性，但不能在不确认主升时升级仓位。</p>
+      </article>
+      <article class="stock-card">
+        <div class="stock-card-head"><div><span class="code">601579</span><h3>一鸣食品</h3></div><span class="chip">2 笔</span></div>
+        <div class="stock-metrics">
+          <span>可见已实现 <b class="is-profit">+15.97</b><em>截图内FIFO</em></span>
+          <span>期末可见 <b>已清仓</b><em>持仓截图待校准</em></span>
+        </div>
+        <p>一鸣食品 7/31 买入200股，8/3 卖出200股，截图内小幅正贡献。它是跨周小闭环，不是本周主线。</p>
+      </article>
+      <article class="stock-card">
+        <div class="stock-card-head"><div><span class="code">601700</span><h3>风范股份</h3></div><span class="chip">6 笔</span></div>
+        <div class="stock-metrics">
+          <span>可见已实现 <b class="is-profit">0.00</b><em>截图内FIFO</em></span>
+          <span>期末可见 <b>1,800 / 12,918.13</b><em>持仓截图待校准</em></span>
+        </div>
+        <p>风范股份 8/6 分6笔买入1800股，期末是否盈利取决于后续持仓和卖出数据。当前只能按持仓待验证处理。</p>
+      </article>
+    </div>
+  </section>
+    <section class="panel" id="account">
+    <span class="label">Account Curve</span>
+    <h2>账户收益与仓位</h2>
+    <p class="lead">账户日收益、收益率、仓位、期末权益暂缺；本页只计算截图可闭环的成交贡献。</p>
+    <div class="account-placeholder">
+      <article><b>每日收益率</b><span>待补</span></article>
+      <article><b>每日收益金额</b><span>待补</span></article>
+      <article><b>每日仓位</b><span>待补</span></article>
+      <article><b>期末总金额</b><span>待补</span></article>
+    </div>
+  </section>
+    <section class="panel" id="stocks">
+    <span class="label">Stock Review</span>
+    <h2>标的复盘与买卖点</h2>
+    <div class="table-wrap compact-table">
+      <table>
+        <thead><tr><th>标的</th><th>买入数量</th><th>买入金额</th><th>卖出数量</th><th>卖出金额</th><th>可见已实现</th><th>期末可见</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><a href="#stock-159516">159516 半导体设备ETF国泰</a></td>
+            <td>5,000</td>
+            <td>3,070.00</td>
+            <td>5,000</td>
+            <td>3,195.40</td>
+            <td class="is-profit">+105.40</td>
+            <td>已清仓</td>
+          </tr>
+          <tr>
+            <td><a href="#stock-588170">588170 科创半导ETF华夏</a></td>
+            <td>3,600</td>
+            <td>3,042.00</td>
+            <td>3,600</td>
+            <td>3,126.90</td>
+            <td class="is-profit">+64.90</td>
+            <td>已清仓</td>
+          </tr>
+          <tr>
+            <td><a href="#stock-601579">601579 一鸣食品</a></td>
+            <td>200</td>
+            <td>3,874.00</td>
+            <td>200</td>
+            <td>3,902.00</td>
+            <td class="is-profit">+15.97</td>
+            <td>已清仓</td>
+          </tr>
+          <tr>
+            <td><a href="#stock-601700">601700 风范股份</a></td>
+            <td>1,800</td>
+            <td>12,888.00</td>
+            <td>0</td>
+            <td>0.00</td>
+            <td class="is-profit">0.00</td>
+            <td>1,800 / 12,918.13</td>
+          </tr></tbody>
+      </table>
+    </div>
+    <div class="stock-grid"><article class="stock-card" id="stock-159516">
+    <div class="stock-card-head">
+      <div><span class="code">159516</span><h3>半导体设备ETF国泰</h3></div>
+      <span class="chip">4 笔</span>
+    </div>
+    <div class="stock-metrics">
+      <span>买入 <b>5,000</b><em>3,070.00 / 现金3,075.00</em></span>
+      <span>卖出 <b>5,000</b><em>3,195.40 / 到账3,180.40</em></span>
+      <span>可见已实现 <b class="is-profit">+105.40</b><em>FIFO / 含截图费用</em></span>
+      <span>期末可见 <b>已清仓</b><em>持仓截图待校准</em></span>
+    </div>
+    <p>半导体设备ETF国泰 8/3 买入5000份，8/4 分三笔卖出5000份，截图内小赚。ETF试错能够快进快出，是比追单一科技个股更稳的动作。</p>
+    <div class="chart-frame">
+      <div class="chart-empty">
+        <b>真实5分钟走势待补</b>
+        <span>当前补档页只展示截图成交点，不伪造价格路径。补分时图或可用行情数据后再画完整买卖点走势。</span>
+      </div>
+      <div class="trade-points">
+        <span class="is-buy">B 08-03 13:36 0.61 / 5,000</span>
+        <span class="is-sell">S 08-04 13:12 0.63 / 1,600</span>
+        <span class="is-sell">S 08-04 13:24 0.64 / 1,100</span>
+        <span class="is-sell">S 08-04 13:36 0.65 / 2,300</span></div>
+    </div>
+  </article><article class="stock-card" id="stock-588170">
+    <div class="stock-card-head">
+      <div><span class="code">588170</span><h3>科创半导ETF华夏</h3></div>
+      <span class="chip">4 笔</span>
+    </div>
+    <div class="stock-metrics">
+      <span>买入 <b>3,600</b><em>3,042.00 / 现金3,047.00</em></span>
+      <span>卖出 <b>3,600</b><em>3,126.90 / 到账3,111.90</em></span>
+      <span>可见已实现 <b class="is-profit">+64.90</b><em>FIFO / 含截图费用</em></span>
+      <span>期末可见 <b>已清仓</b><em>持仓截图待校准</em></span>
+    </div>
+    <p>科创半导ETF华夏 8/3 买入3600份，8/4 分三笔卖出3600份，截图内小赚。它和半导设备ETF一起验证科技线弹性，但不能在不确认主升时升级仓位。</p>
+    <div class="chart-frame">
+      <div class="chart-empty">
+        <b>真实5分钟走势待补</b>
+        <span>当前补档页只展示截图成交点，不伪造价格路径。补分时图或可用行情数据后再画完整买卖点走势。</span>
+      </div>
+      <div class="trade-points">
+        <span class="is-buy">B 08-03 13:45 0.85 / 3,600</span>
+        <span class="is-sell">S 08-04 13:13 0.86 / 1,200</span>
+        <span class="is-sell">S 08-04 13:23 0.87 / 900</span>
+        <span class="is-sell">S 08-04 13:36 0.88 / 1,500</span></div>
+    </div>
+  </article><article class="stock-card" id="stock-601579">
+    <div class="stock-card-head">
+      <div><span class="code">601579</span><h3>一鸣食品</h3></div>
+      <span class="chip">2 笔</span>
+    </div>
+    <div class="stock-metrics">
+      <span>买入 <b>200</b><em>3,874.00 / 现金3,879.04</em></span>
+      <span>卖出 <b>200</b><em>3,902.00 / 到账3,895.01</em></span>
+      <span>可见已实现 <b class="is-profit">+15.97</b><em>FIFO / 含截图费用</em></span>
+      <span>期末可见 <b>已清仓</b><em>持仓截图待校准</em></span>
+    </div>
+    <p>一鸣食品 7/31 买入200股，8/3 卖出200股，截图内小幅正贡献。它是跨周小闭环，不是本周主线。</p>
+    <div class="chart-frame">
+      <div class="chart-empty">
+        <b>真实5分钟走势待补</b>
+        <span>当前补档页只展示截图成交点，不伪造价格路径。补分时图或可用行情数据后再画完整买卖点走势。</span>
+      </div>
+      <div class="trade-points">
+        <span class="is-buy">B 07-31 13:17 19.37 / 200</span>
+        <span class="is-sell">S 08-03 09:37 19.51 / 200</span></div>
+    </div>
+  </article><article class="stock-card" id="stock-601700">
+    <div class="stock-card-head">
+      <div><span class="code">601700</span><h3>风范股份</h3></div>
+      <span class="chip">6 笔</span>
+    </div>
+    <div class="stock-metrics">
+      <span>买入 <b>1,800</b><em>12,888.00 / 现金12,918.13</em></span>
+      <span>卖出 <b>0</b><em>0.00 / 到账0.00</em></span>
+      <span>可见已实现 <b class="is-profit">0.00</b><em>FIFO / 含截图费用</em></span>
+      <span>期末可见 <b>1,800 股/份，成本12,918.13</b><em>持仓截图待校准</em></span>
+    </div>
+    <p>风范股份 8/6 分6笔买入1800股，期末是否盈利取决于后续持仓和卖出数据。当前只能按持仓待验证处理。</p>
+    <div class="chart-frame">
+      <div class="chart-empty">
+        <b>真实5分钟走势待补</b>
+        <span>当前补档页只展示截图成交点，不伪造价格路径。补分时图或可用行情数据后再画完整买卖点走势。</span>
+      </div>
+      <div class="trade-points">
+        <span class="is-buy">B 08-06 09:38 7.16 / 600</span>
+        <span class="is-buy">B 08-06 09:38 7.16 / 200</span>
+        <span class="is-buy">B 08-06 09:38 7.16 / 500</span>
+        <span class="is-buy">B 08-06 09:38 7.16 / 200</span>
+        <span class="is-buy">B 08-06 09:39 7.16 / 100</span>
+        <span class="is-buy">B 08-06 13:07 7.16 / 200</span></div>
+    </div>
+  </article></div>
+  </section>
+    <section class="panel" id="daily">
+    <span class="label">Daily Review</span>
+    <h2>逐日复盘</h2>
+    <div class="day-grid-cards"><article class="day-card">
+        <div class="day-card-head"><b>周五</b><span>07-31</span></div>
+        <h3>一鸣食品成本行</h3>
+        <p>买入一鸣食品200股。</p>
+        <div class="account-strip"><span>买入额 <b>3,874.00</b></span><span>卖出额 <b>0.00</b></span><span>成交笔数 <b>1</b></span></div>
+        <p><b>初步复盘：</b>该行用于给 8/3 卖出提供成本，属于跨周带入，不单独作为本周结论。</p>
+      </article><article class="day-card">
+        <div class="day-card-head"><b>周一</b><span>08-03</span></div>
+        <h3>一鸣兑现，半导试错</h3>
+        <p>卖出一鸣食品200股；买入半导体设备ETF国泰5000份、科创半导ETF华夏3600份。</p>
+        <div class="account-strip"><span>买入额 <b>6,112.00</b></span><span>卖出额 <b>3,902.00</b></span><span>成交笔数 <b>3</b></span></div>
+        <p><b>初步复盘：</b>一鸣食品小赚闭环，半导ETF属于科技线试错。ETF仓位相对个股更分散，但仍需要次日强度验证。</p>
+      </article><article class="day-card">
+        <div class="day-card-head"><b>周二</b><span>08-04</span></div>
+        <h3>半导ETF兑现</h3>
+        <p>卖出半导体设备ETF国泰5000份、科创半导ETF华夏3600份。</p>
+        <div class="account-strip"><span>买入额 <b>0.00</b></span><span>卖出额 <b>6,322.30</b></span><span>成交笔数 <b>6</b></span></div>
+        <p><b>初步复盘：</b>两只ETF都完成小幅正闭环，说明试错后能及时兑现，没有把ETF小反弹误判成大主升。</p>
+      </article><article class="day-card">
+        <div class="day-card-head"><b>周四</b><span>08-06</span></div>
+        <h3>风范股份建仓</h3>
+        <p>分6笔买入风范股份1800股。</p>
+        <div class="account-strip"><span>买入额 <b>12,888.00</b></span><span>卖出额 <b>0.00</b></span><span>成交笔数 <b>6</b></span></div>
+        <p><b>初步复盘：</b>风范股份是本页最大期末待验证仓，真实结果取决于后续持仓截图和卖出处理；当前只能记录买入动作和成本。</p>
+      </article></div>
+  </section>
+    <section class="panel" id="rules">
+    <span class="label">Rules</span>
+    <h2>本周暂定规则</h2>
+    <p class="lead">这些规则来自截图成交反推，等你补二次反思后再替换成正式版本。</p>
+    <div class="rules"><article><span>01</span><b>ETF试错快验快走</b><p>半导ETF本周小赚，关键不是赚得多，而是试错后能及时兑现，不把小反弹升级成主升。</p></article><article><span>02</span><b>趋势不明优先ETF</b><p>科技方向没有明确唯一龙头时，ETF比中位个股更适合试错，仓位和预期都要低一级。</p></article><article><span>03</span><b>期末持仓别提前归因</b><p>风范股份只有买入没有卖出和期末浮盈亏，暂时只能写成待验证仓，不能提前说赚亏根源。</p></article><article><span>04</span><b>跨周成本要保留</b><p>一鸣食品这种跨周买卖必须保留上一周成本行，否则闭环盈亏会失真。</p></article></div>
+  </section>
+    <section class="panel" id="trades">
+    <span class="label">Transactions</span>
+    <h2>成交明细</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>日期</th><th>时间</th><th>代码</th><th>名称</th><th>方向</th><th>数量</th><th>均价</th><th>金额</th><th>费用</th><th>发生金额</th><th>资金余额</th><th>市场</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>2026-08-06</td>
+            <td>13:07:22</td>
+            <td>601700</td>
+            <td>风范股份</td>
+            <td class="is-buy">买入</td>
+            <td>200</td>
+            <td>7.16</td>
+            <td>1,432.00</td>
+            <td>5.00</td>
+            <td class="is-loss">-1,437.02</td>
+            <td>487.21</td>
+            <td>沪A</td>
+          </tr>
+          <tr>
+            <td>2026-08-06</td>
+            <td>09:39:14</td>
+            <td>601700</td>
+            <td>风范股份</td>
+            <td class="is-buy">买入</td>
+            <td>100</td>
+            <td>7.16</td>
+            <td>716.00</td>
+            <td>5.00</td>
+            <td class="is-loss">-721.01</td>
+            <td>1,924.23</td>
+            <td>沪A</td>
+          </tr>
+          <tr>
+            <td>2026-08-06</td>
+            <td>09:38:29</td>
+            <td>601700</td>
+            <td>风范股份</td>
+            <td class="is-buy">买入</td>
+            <td>500</td>
+            <td>7.16</td>
+            <td>3,580.00</td>
+            <td>5.00</td>
+            <td class="is-loss">-3,585.04</td>
+            <td>4,082.25</td>
+            <td>沪A</td>
+          </tr>
+          <tr>
+            <td>2026-08-06</td>
+            <td>09:38:29</td>
+            <td>601700</td>
+            <td>风范股份</td>
+            <td class="is-buy">买入</td>
+            <td>200</td>
+            <td>7.16</td>
+            <td>1,432.00</td>
+            <td>5.00</td>
+            <td class="is-loss">-1,437.01</td>
+            <td>2,645.24</td>
+            <td>沪A</td>
+          </tr>
+          <tr>
+            <td>2026-08-06</td>
+            <td>09:38:26</td>
+            <td>601700</td>
+            <td>风范股份</td>
+            <td class="is-buy">买入</td>
+            <td>600</td>
+            <td>7.16</td>
+            <td>4,296.00</td>
+            <td>5.00</td>
+            <td class="is-loss">-4,301.04</td>
+            <td>9,104.30</td>
+            <td>沪A</td>
+          </tr>
+          <tr>
+            <td>2026-08-06</td>
+            <td>09:38:26</td>
+            <td>601700</td>
+            <td>风范股份</td>
+            <td class="is-buy">买入</td>
+            <td>200</td>
+            <td>7.16</td>
+            <td>1,432.00</td>
+            <td>5.00</td>
+            <td class="is-loss">-1,437.01</td>
+            <td>7,667.29</td>
+            <td>沪A</td>
+          </tr>
+          <tr>
+            <td>2026-08-04</td>
+            <td>13:36:44</td>
+            <td>159516</td>
+            <td>半导体设备ETF国泰</td>
+            <td class="is-sell">卖出</td>
+            <td>2,300</td>
+            <td>0.65</td>
+            <td>1,483.50</td>
+            <td>5.00</td>
+            <td class="is-profit">+1,478.50</td>
+            <td>12,096.34</td>
+            <td>深A</td>
+          </tr>
+          <tr>
+            <td>2026-08-04</td>
+            <td>13:36:41</td>
+            <td>588170</td>
+            <td>科创半导ETF华夏</td>
+            <td class="is-sell">卖出</td>
+            <td>1,500</td>
+            <td>0.88</td>
+            <td>1,314.00</td>
+            <td>5.00</td>
+            <td class="is-profit">+1,309.00</td>
+            <td>13,405.34</td>
+            <td>沪A</td>
+          </tr>
+          <tr>
+            <td>2026-08-04</td>
+            <td>13:24:00</td>
+            <td>159516</td>
+            <td>半导体设备ETF国泰</td>
+            <td class="is-sell">卖出</td>
+            <td>1,100</td>
+            <td>0.64</td>
+            <td>700.70</td>
+            <td>5.00</td>
+            <td class="is-profit">+695.70</td>
+            <td>9,844.34</td>
+            <td>深A</td>
+          </tr>
+          <tr>
+            <td>2026-08-04</td>
+            <td>13:23:43</td>
+            <td>588170</td>
+            <td>科创半导ETF华夏</td>
+            <td class="is-sell">卖出</td>
+            <td>900</td>
+            <td>0.87</td>
+            <td>778.50</td>
+            <td>5.00</td>
+            <td class="is-profit">+773.50</td>
+            <td>10,617.84</td>
+            <td>沪A</td>
+          </tr>
+          <tr>
+            <td>2026-08-04</td>
+            <td>13:13:04</td>
+            <td>588170</td>
+            <td>科创半导ETF华夏</td>
+            <td class="is-sell">卖出</td>
+            <td>1,200</td>
+            <td>0.86</td>
+            <td>1,034.40</td>
+            <td>5.00</td>
+            <td class="is-profit">+1,029.40</td>
+            <td>9,148.64</td>
+            <td>沪A</td>
+          </tr>
+          <tr>
+            <td>2026-08-04</td>
+            <td>13:12:36</td>
+            <td>159516</td>
+            <td>半导体设备ETF国泰</td>
+            <td class="is-sell">卖出</td>
+            <td>1,600</td>
+            <td>0.63</td>
+            <td>1,011.20</td>
+            <td>5.00</td>
+            <td class="is-profit">+1,006.20</td>
+            <td>8,119.24</td>
+            <td>深A</td>
+          </tr>
+          <tr>
+            <td>2026-08-03</td>
+            <td>13:45:54</td>
+            <td>588170</td>
+            <td>科创半导ETF华夏</td>
+            <td class="is-buy">买入</td>
+            <td>3,600</td>
+            <td>0.85</td>
+            <td>3,042.00</td>
+            <td>5.00</td>
+            <td class="is-loss">-3,047.00</td>
+            <td>7,113.04</td>
+            <td>沪A</td>
+          </tr>
+          <tr>
+            <td>2026-08-03</td>
+            <td>13:36:50</td>
+            <td>159516</td>
+            <td>半导体设备ETF国泰</td>
+            <td class="is-buy">买入</td>
+            <td>5,000</td>
+            <td>0.61</td>
+            <td>3,070.00</td>
+            <td>5.00</td>
+            <td class="is-loss">-3,075.00</td>
+            <td>10,160.04</td>
+            <td>深A</td>
+          </tr>
+          <tr>
+            <td>2026-08-03</td>
+            <td>09:37:01</td>
+            <td>601579</td>
+            <td>一鸣食品</td>
+            <td class="is-sell">卖出</td>
+            <td>200</td>
+            <td>19.51</td>
+            <td>3,902.00</td>
+            <td>6.95</td>
+            <td class="is-profit">+3,895.01</td>
+            <td>13,235.04</td>
+            <td>沪A</td>
+          </tr>
+          <tr>
+            <td>2026-07-31</td>
+            <td>13:17:16</td>
+            <td>601579</td>
+            <td>一鸣食品</td>
+            <td class="is-buy">买入</td>
+            <td>200</td>
+            <td>19.37</td>
+            <td>3,874.00</td>
+            <td>5.00</td>
+            <td class="is-loss">-3,879.04</td>
+            <td>9,340.03</td>
+            <td>沪A</td>
+          </tr></tbody>
+      </table>
+    </div>
+  </section>
+    <section class="panel missing-panel" id="missing">
+    <span class="label">To Fill</span>
+    <h2>后续待补内容</h2>
+    <div class="missing-list"><article><b>1. 8/8 或该周最后交易日期的期末持仓截图</b><p>8/8 或该周最后交易日期的期末持仓截图，重点确认风范股份1800股成本、市价、市值、浮盈亏、账户总资产。</p></article><article><b>2. 本周每日账户收益率、收益金额、仓位、当前总金额。</b><p>本周每日账户收益率、收益金额、仓位、当前总金额。</p></article><article><b>3. 本周日度KISS复盘与二次反思。</b><p>本周日度KISS复盘与二次反思。</p></article><article><b>4. 若需要真实5分钟走势</b><p>若需要真实5分钟走势，请补券商/同花顺分时截图或确认使用行情接口可得数据。</p></article></div>
+  </section>
+  </main>
+</body>
+</html>
