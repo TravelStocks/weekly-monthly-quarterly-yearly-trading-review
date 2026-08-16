@@ -9,14 +9,18 @@
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{margin:0;color:var(--ink);background:linear-gradient(180deg,#f7f8fa 0%,#eef2f5 100%);font-family:"Avenir Next","PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif;overflow-x:hidden}
-    a{color:inherit}
+    a{color:inherit;-webkit-tap-highlight-color:rgba(194,65,45,.12);touch-action:manipulation}
+    a:focus-visible{outline:3px solid rgba(29,78,216,.38);outline-offset:3px}
     p,li{color:var(--muted);line-height:1.72}
     h1,h2,h3,p{margin-top:0;letter-spacing:0}
-    h1{margin:14px 0 14px;font-size:clamp(38px,5vw,68px);line-height:1.04}
-    .date-range{display:grid;gap:0}
+    h1{margin:14px 0 14px;font-size:clamp(38px,5vw,68px);line-height:1.04;text-wrap:balance}
+    .date-range,.title-line{display:grid;gap:0}
     h2{font-size:28px;margin-bottom:12px}
     h3{font-size:18px;margin-bottom:8px}
     .page-shell{width:min(1180px,calc(100vw - 28px));margin:0 auto;padding:34px 0 56px;display:grid;gap:20px}
+    section[id]{scroll-margin-top:18px}
+    .skip-link{position:absolute;left:16px;top:12px;z-index:5;transform:translateY(-140%);border-radius:8px;background:var(--ink);color:#fff;padding:10px 14px;text-decoration:none;font-weight:800}
+    .skip-link:focus-visible{transform:translateY(0)}
     .page-shell > *,.hero > *,.panel > *,.account-placeholder > *,.metric,.week-card,.stock-card,.day-card{min-width:0}
     .rail{position:fixed;left:18px;top:18px;z-index:2;display:flex;flex-direction:column;gap:7px}
     .rail a{width:78px;min-height:34px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.9);text-decoration:none;color:var(--muted);font-size:12px;font-weight:800;box-shadow:0 10px 28px rgba(23,32,42,.06)}
@@ -25,14 +29,16 @@
     .panel{padding:24px}
     .label{display:inline-flex;width:max-content;color:var(--red);background:#fff1ed;padding:7px 10px;border-radius:999px;font-size:12px;font-weight:800}
     .button-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
-    .button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;border-radius:8px;background:var(--ink);color:#fff;text-decoration:none;font-weight:800}
+    .button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;border-radius:8px;background:var(--ink);color:#fff;text-decoration:none;font-weight:800;transition:transform .16s ease,border-color .16s ease,background-color .16s ease}
+    .button:hover{transform:translateY(-1px);background:#0f1720}
     .button.secondary{background:#fff;color:var(--ink);border:1px solid var(--line)}
+    .button.secondary:hover{background:#f8fafc;border-color:#c6d0dc}
     .metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
     .metric{padding:16px;min-height:106px;display:grid;align-content:space-between}
     .metric span,.metric small{color:var(--muted);font-size:12px}
-    .metric strong{font-size:22px;line-height:1.18;word-break:break-word}
+    .metric strong{font-size:22px;line-height:1.18;word-break:break-word;font-variant-numeric:tabular-nums}
     .lead{font-size:17px;color:#334155}
-    .thesis-grid,.summary-grid,.stock-metrics,.day-numbers,.missing-list,.entrance-grid{display:grid;gap:12px}
+    .thesis-grid,.summary-grid,.stock-metrics,.day-numbers,.missing-list,.entrance-grid,.dimension-stack,.dimension-grid{display:grid;gap:12px}
     .thesis-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
     .thesis-grid article,.rules article,.missing-list article{background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px}
     .thesis-grid b,.rules b,.missing-list b{display:block;margin-bottom:7px}
@@ -95,43 +101,52 @@
     .rules article span{display:inline-flex;color:var(--blue);font-size:12px;font-weight:900;margin-bottom:8px}
     .missing-list{grid-template-columns:repeat(4,minmax(0,1fr))}
     .archive{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-    .week-card{padding:20px;display:grid;gap:14px;text-decoration:none;color:inherit}
+    .week-card{padding:20px;display:grid;gap:14px;text-decoration:none;color:inherit;transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease}
+    .week-card:hover{border-color:#c6d0dc;box-shadow:0 20px 48px rgba(23,32,42,.1);transform:translateY(-1px)}
     .latest-link{border-color:rgba(29,78,216,.28)}
-    .entrance-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .entrance-grid,.dimension-grid.time{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .dimension-grid.outcome{grid-template-columns:1fr}
+    .dimension-head{display:flex;justify-content:space-between;gap:14px;align-items:end;margin-top:10px}
+    .dimension-head h3{margin:0;font-size:20px}
+    .dimension-head p{margin:0;max-width:620px;font-size:14px}
+    .dimension-mark{display:inline-flex;white-space:nowrap;border:1px solid var(--line);border-radius:999px;background:#f8fafc;padding:7px 10px;color:var(--muted);font-size:12px;font-weight:800}
+    .entrance-grid .mini-grid{grid-template-columns:1fr}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button,.week-card{transition:none}.button:hover,.week-card:hover{transform:none}}
     @media(max-width:1260px){.rail{position:static;width:min(1180px,calc(100vw - 28px));margin:18px auto 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}.rail a{width:auto}}
-    @media(max-width:920px){.hero,.data-panel,.account-placeholder{grid-template-columns:1fr}.metrics,.summary-grid,.latest-summary,.account-summary,.stock-metrics,.mini-ledger,.mini-grid,.thesis-grid,.rules,.missing-list,.archive,.entrance-grid{grid-template-columns:1fr}.account-bars{grid-template-columns:repeat(2,minmax(0,1fr))}.day-grid-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.page-shell{width:min(calc(100vw - 16px),1180px);padding-top:22px}.hero,.panel{padding:20px}}
+    @media(max-width:920px){.hero,.data-panel,.account-placeholder{grid-template-columns:1fr}.metrics,.summary-grid,.latest-summary,.account-summary,.stock-metrics,.mini-ledger,.mini-grid,.thesis-grid,.rules,.missing-list,.archive,.entrance-grid,.dimension-grid.time,.dimension-grid.outcome{grid-template-columns:1fr}.dimension-head{display:grid}.account-bars{grid-template-columns:repeat(2,minmax(0,1fr))}.day-grid-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.page-shell{width:min(calc(100vw - 16px),1180px);padding-top:22px}.hero,.panel{padding:20px}}
     @media(max-width:560px){.page-shell,.rail{width:calc(100% - 16px);max-width:100%;margin-left:auto;margin-right:auto}.rail{grid-template-columns:repeat(2,minmax(0,1fr))}.day-grid-cards,.account-bars,.account-strip{grid-template-columns:1fr}h1{font-size:34px}.metric strong{font-size:19px}}
   </style>
 </head>
 <body>
-  <main class="page-shell">
+  <a class="skip-link" href="#main-content">跳到主要内容</a>
+  <main class="page-shell" id="main-content">
     <section class="hero">
       <div>
         <span class="label">Weekly Trading Review</span>
         <h1>周度交割复盘</h1>
-        <p>每周一个独立页面，记录成交单、买卖点、账户变化、逐日复盘和当周新增交易纪律。最新周为 2026.07.20-07.24，当前为成交回报草稿版。</p>
+        <p>每周一个独立页面，记录成交单、买卖点、账户变化、逐日复盘和当周新增交易纪律。最新周为 2026.08.10-08.15，当前为成交截图草稿版，账户口径待补。</p>
         <div class="button-row">
-          <a class="button" href="../2026-07-20_2026-07-24/">进入最新周复盘</a>
+          <a class="button" href="../2026-08-10_2026-08-15/">进入最新周复盘</a>
           <a class="button secondary" href="../index.html">返回总首页</a>
         </div>
       </div>
       <div class="metrics">
-        <article class="metric"><span>周报数量</span><strong class="">11</strong><small>含本周草稿</small></article>
-        <article class="metric"><span>最新区间</span><strong class="">07.20</strong><small>至 07.24</small></article>
-        <article class="metric"><span>最新账户</span><strong class="is-profit">+1,816.40</strong><small>期末 17,648.65 / 仓位 3.70%</small></article>
-        <article class="metric"><span>最新规则</span><strong class="">强度确认</strong><small>主线/轮动/试错分层处理</small></article>
+        <article class="metric"><span>周报数量</span><strong class="">12</strong><small>含本周草稿</small></article>
+        <article class="metric"><span>最新区间</span><strong class="">08.10</strong><small>至 08.15</small></article>
+        <article class="metric"><span>最新闭环</span><strong class="is-profit">+436.30</strong><small>账户口径待补</small></article>
+        <article class="metric"><span>最新规则</span><strong class="">定位清楚</strong><small>龙头/反抽/低吸试错分层</small></article>
       </div>
     </section>
     <section class="panel">
       <span class="label">Latest Draft</span>
-      <h2>最新周：07.20-07.24</h2>
+      <h2>最新周：08.10-08.15</h2>
       <div class="latest-summary">
         <span>成交笔数 <b>22</b></span>
-        <span>成交额 <b>53,044.60</b></span>
-        <span>可见已实现 <b class="is-profit">+1,931.40</b></span>
-        <span>账户口径 <b class="is-profit">+1,816.40</b></span>
+        <span>成交额 <b>80,491.00</b></span>
+        <span>可见已实现 <b class="is-profit">+436.30</b></span>
+        <span>账户口径 <b>待补</b></span>
       </div>
-      <p>本周核心是立新能源做T兑现，科创半导体ETF/美利云作为科技弱修复试错，周五切入哈药股份小仓观察。账户日收益合计 +1,816.40，期末总金额 17,648.65。</p>
+      <p>本周核心是百花医药成功闭环、通鼎互联老龙反抽亏损、华西股份低吸待验证。截图可见闭环约 +436.30，账户日收益、仓位和期末总资产等待补齐。</p>
     </section>
     <section class="panel">
       <span class="label">Archive</span>
@@ -216,13 +231,21 @@
         <span>周收益 <b>-1.65%</b></span>
         <span>期末权益 <b>15,596.00</b></span>
       </div>
-    </a><a class="week-card latest-link" href="../2026-07-20_2026-07-24/">
-      <div class="week-head"><h3>07.20-07.24</h3><span class="chip">最新草稿</span></div>
+    </a><a class="week-card " href="../2026-07-20_2026-07-24/">
+      <div class="week-head"><h3>07.20-07.24</h3><span class="chip">已归档</span></div>
       <p>账户日收益已补；手续费与期末持仓继续待校准。</p>
       <div class="mini-grid">
         <span>金额变化 <b class="is-profit">+1,816.40</b></span>
         <span>周收益 <b>日度见表</b></span>
         <span>期末权益 <b>17,648.65</b></span>
+      </div>
+    </a><a class="week-card latest-link" href="../2026-08-10_2026-08-15/">
+      <div class="week-head"><h3>08.10-08.15</h3><span class="chip">最新草稿</span></div>
+      <p>先按成交截图与日度复盘生成；账户收益、期末持仓和二次反思待补。</p>
+      <div class="mini-grid">
+        <span>金额变化 <b class="">待补</b></span>
+        <span>周收益 <b>待补</b></span>
+        <span>期末权益 <b>待补</b></span>
       </div>
     </a></div>
     </section>
