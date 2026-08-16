@@ -63,6 +63,16 @@
     .mini-grid span,.trade-step{background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:10px;color:var(--muted);font-size:13px}
     .mini-grid b,.trade-step b{display:block;color:var(--ink);font-size:17px;margin-top:4px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
     .target-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .target-section{display:grid;gap:12px;margin-top:18px}
+    .target-section-head{display:flex;align-items:center;justify-content:space-between;gap:14px;border-top:1px solid var(--line);padding-top:18px}
+    .target-section-head h3{margin:0;font-size:22px}
+    .target-section-head p{margin:0;max-width:650px;font-size:14px}
+    .section-num{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:999px;background:#f8fafc;border:1px solid var(--line);font-weight:900;color:var(--ink);margin-right:8px}
+    .profit-section .target-section-head{border-top-color:rgba(194,65,45,.28)}
+    .loss-section .target-section-head{border-top-color:rgba(20,132,95,.28)}
+    .profit-section .section-num{color:var(--red);background:#fff1ed;border-color:rgba(194,65,45,.24)}
+    .loss-section .section-num{color:var(--green);background:#ecfdf3;border-color:rgba(20,132,95,.24)}
+    .profit-section .target-grid{grid-template-columns:1fr}
     .target-card.featured{grid-column:1/-1}
     .trade-flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
     .trade-step{position:relative;min-height:92px}
@@ -82,7 +92,7 @@
     .rule-card span{display:inline-flex;color:var(--blue);font-size:12px;font-weight:900;margin-bottom:8px}
     .note{background:#f8fafc;border:1px dashed #b8c1cc;border-radius:10px;padding:16px}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button,.case-card,.target-card{transition:none}.button:hover,.case-card:hover,.target-card:hover{transform:none}}
-    @media(max-width:980px){.hero,.split-grid,.target-grid,.field-grid,.rule-grid,.thought-grid{grid-template-columns:1fr}.dimension-head,.case-head,.target-head{display:grid}.metrics,.mini-grid,.trade-flow{grid-template-columns:1fr}.page-shell{width:min(calc(100vw - 16px),1180px);padding-top:22px}.hero,.panel{padding:20px}}
+    @media(max-width:980px){.hero,.split-grid,.target-grid,.field-grid,.rule-grid,.thought-grid{grid-template-columns:1fr}.dimension-head,.case-head,.target-head,.target-section-head{display:grid}.metrics,.mini-grid,.trade-flow{grid-template-columns:1fr}.page-shell{width:min(calc(100vw - 16px),1180px);padding-top:22px}.hero,.panel{padding:20px}}
     @media(max-width:560px){h1{font-size:34px}.metric strong{font-size:19px}}
   </style>
 </head>
@@ -146,7 +156,12 @@
         <div><span class="dimension-mark">个股 / ETF维度</span><h2>大利润标的与大回撤标的</h2></div>
         <p>标的维度更细：记录买入点、卖出点、错过点、当时盘面判断、仓位处理和下一次同类交易的执行规则。</p>
       </div>
-      <div class="target-grid">
+      <div class="target-section">
+        <div class="target-section-head">
+          <h3><span class="section-num">0</span>关键错过</h3>
+          <p>没有产生实际亏损，但错过了足够重要的龙头买点，单独放在前面作为预案和手速训练样本。</p>
+        </div>
+        <div class="target-grid">
         <a class="target-card missed featured" href="./stock-003032-missed/index.html">
           <div class="target-head"><div><span class="chip">003032</span><h3>传智教育：错过 8 板龙头周期</h3><p>4板没有提前纳入龙头候选，5板爆量弱转强回封时打慢。核心教训：唯一高标 + 题材支撑 + 量能到位 + 低点不破 + 跳空大单回拉时，要提前板上打单。</p></div><span class="case-type missed">关键错过</span></div>
           <div class="mini-grid"><span>关键节点 <b>4板 / 5板</b></span><span>回封低点 <b>8.02</b></span><span>错过动作 <b>打板排慢</b></span><span>沉淀规则 <b>回风提前打</b></span></div>
@@ -162,7 +177,15 @@
             <div class="thought-card"><h4>下一次规则</h4><p>量能接近前高、低点不破、上方压单薄、下方大单吃货时，提前挂涨停价。</p></div>
           </div>
         </a>
+        </div>
+      </div>
 
+      <div class="target-section profit-section" id="profit-targets">
+        <div class="target-section-head">
+          <h3><span class="section-num">1</span>大利润</h3>
+          <p>只放已经证明可复制的赚钱样本，重点看第一性、唯一性、仓位提升和兑现动作。</p>
+        </div>
+        <div class="target-grid">
         <a class="target-card profit" href="./stock-001258-profit/index.html">
           <div class="target-head"><div><span class="chip">001258</span><h3>立新能源：大利润个股</h3><p>电力方向确认后围绕龙头做T，最终可见已实现 +2,050.00。点击进入完整案例档案。</p></div><span class="case-type success">大利润</span></div>
           <div class="mini-grid"><span>买入金额 <b>18,051.00</b></span><span>卖出金额 <b>20,101.00</b></span><span>可见已实现 <b class="is-profit">+2,050.00</b></span></div>
@@ -178,7 +201,15 @@
             <div class="thought-card"><h4>下次规则</h4><p>龙头转强次日要更早给仓位，但卖点仍要按高位承接分批兑现。</p></div>
           </div>
         </a>
+        </div>
+      </div>
 
+      <div class="target-section loss-section" id="loss-targets">
+        <div class="target-section-head">
+          <h3><span class="section-num">2</span>大回撤</h3>
+          <p>集中记录造成账户伤害的票，重点拆失效信号、仓位错配、补仓冲动和下一次硬规则。</p>
+        </div>
+        <div class="target-grid">
         <a class="target-card loss featured" id="stock-001258-failure" href="./stock-001258-failure/index.html">
           <div class="target-head"><div><span class="chip">001258</span><h3>立新能源：主升3硬做失败</h3><p>7/28 在主升3分歧日未等回封确认，外出吃饭和手头忙时连续下随手单。巨大教训：主升3没有先手不参与。</p></div><span class="case-type failure">大回撤</span></div>
           <div class="mini-grid"><span>买入规模 <b>1,100 股</b></span><span>买入成本 <b>16,994.00</b></span><span>卖出回收 <b>12,759.61</b></span><span>闭环亏损 <b class="is-loss">-4,234.39</b></span></div>
@@ -276,6 +307,7 @@
             <div class="thought-card"><h4>下次规则</h4><p>同题材不同地位要分仓位，弹性票只能用试错仓，不能替代核心仓。</p></div>
           </div>
         </a>
+        </div>
       </div>
     </section>
 
