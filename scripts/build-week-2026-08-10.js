@@ -11,7 +11,7 @@ const week = {
   label: "08.10-08.15",
   status: "草稿版",
   title: "百花医药闭环兑现，通鼎反抽亏损，华西低吸待验证",
-  subtitle: "当前版本基于 2026/8/10-8/14 成交截图与 daily-trading-review 日度复盘摘取生成；账户日收益、期末持仓和二次反思待补后再校准。",
+  subtitle: "当前版本基于 2026/8/10-8/14 成交截图、账户日收益表与 daily-trading-review 日度复盘摘取生成；期末持仓和二次反思待补后再校准。",
 };
 
 const trades = [
@@ -83,11 +83,11 @@ const dailyNotes = [
 ];
 
 const accountDays = [
-  { date: "20260810", day: "周一", returnRate: null, pnl: null, position: null, equity: null, reflection: "账户日收益/仓位待补。" },
-  { date: "20260811", day: "周二", returnRate: null, pnl: null, position: null, equity: null, reflection: "账户日收益/仓位待补。" },
-  { date: "20260812", day: "周三", returnRate: null, pnl: null, position: null, equity: null, reflection: "账户日收益/仓位待补。" },
-  { date: "20260813", day: "周四", returnRate: null, pnl: null, position: null, equity: null, reflection: "账户日收益/仓位待补。" },
-  { date: "20260814", day: "周五", returnRate: null, pnl: null, position: null, equity: null, reflection: "账户日收益/仓位待补。" },
+  { date: "20260810", day: "周一", returnRate: 8.27, pnl: 999, position: 0, equity: 13057, reflection: "抓住了最高标抱团，跌停错杀的反包板，没有题材支撑只是主力自救的动作，所以反包完之后直接走。" },
+  { date: "20260811", day: "周二", returnRate: -0.15, pnl: -20, position: 97.6, equity: 13057, reflection: "大胆做好预判上重仓龙头，轻仓试错连板最强低位标的，很舒服。" },
+  { date: "20260812", day: "周三", returnRate: 9.73, pnl: 1268.94, position: 97.7, equity: 14305, reflection: "大胆板上清龙头，等监管之后反核再介入！小仓位机器人直接一字继续吃，舒服舒服！！！！" },
+  { date: "20260813", day: "周四", returnRate: -2.09, pnl: -298, position: 51.6, equity: 13990, reflection: "科技在大环境不好的时候不要追高，只能低吸；追高直接-10个点炸板巨深一个；只要在共振指数的时候才能做科技追高。" },
+  { date: "20260814", day: "周五", returnRate: -2.78, pnl: -389, position: 51.2, equity: 13594, reflection: "科技低吸可以，千万不能追高，而且是大环境不好的末期去追高那就更死咯。" },
 ];
 
 const archiveWeeks = [
@@ -102,7 +102,7 @@ const archiveWeeks = [
   { label: "06.29-07.04", folder: "2026-06-29_2026-07-04", pnl: "-1,741.00", pct: "-9.85%", equity: "待校准", note: "亏损收敛但仍未扭转。" },
   { label: "07.06-07.10", folder: "2026-07-06_2026-07-10", pnl: "-262.00", pct: "-1.65%", equity: "15,596.00", note: "三冰反核做对，科技ETF择时暴露问题。" },
   { label: "07.20-07.24", folder: "2026-07-20_2026-07-24", pnl: "+1,816.40", pct: "日度见表", equity: "17,648.65", note: "账户日收益已补；手续费与期末持仓继续待校准。" },
-  { label: "08.10-08.15", folder: week.folder, pnl: "待补", pct: "待补", equity: "待补", note: "先按成交截图与日度复盘生成；账户收益、期末持仓和二次反思待补。" },
+  { label: "08.10-08.15", folder: week.folder, pnl: "+1,560.94", pct: "+12.98%", equity: "13,594.00", note: "账户日收益已补；期末持仓和二次反思待补。" },
 ];
 
 const secids = {
@@ -278,13 +278,16 @@ const visibleRealized = byCode.reduce((total, item) => total + item.realized, 0)
 const openCost = byCode.reduce((total, item) => total + item.openCost, 0);
 const openPositions = byCode.filter((item) => item.openQty > 0);
 const accountByDate = new Map(accountDays.map((day) => [day.date, day]));
-const accountPnlTotal = null;
+const accountPnlTotal = accountDays.reduce((total, day) => total + (typeof day.pnl === "number" ? day.pnl : 0), 0);
+const accountReturnSum = accountDays.reduce((total, day) => total + (typeof day.returnRate === "number" ? day.returnRate : 0), 0);
 const finalAccountDay = [...accountDays].reverse().find((day) => typeof day.equity === "number");
 const finalEquity = finalAccountDay?.equity ?? null;
 const finalPosition = finalAccountDay?.position ?? null;
 const maxDailyPnl = Math.max(...accountDays.map((day) => Math.abs(day.pnl || 0)), 1);
-const avgPosition = null;
-const bestAccountDay = null;
+const positionDays = accountDays.filter((day) => typeof day.position === "number");
+const avgPosition = positionDays.reduce((total, day) => total + day.position, 0) / positionDays.length;
+const bestAccountDay = accountDays.reduce((best, day) => ((day.pnl ?? Number.NEGATIVE_INFINITY) > (best.pnl ?? Number.NEGATIVE_INFINITY) ? day : best), accountDays[0]);
+const worstAccountDay = accountDays.reduce((worst, day) => ((day.pnl ?? Number.POSITIVE_INFINITY) < (worst.pnl ?? Number.POSITIVE_INFINITY) ? day : worst), accountDays[0]);
 const finalCash = sortReverseChronological(trades).find((row) => typeof row.cash === "number")?.cash ?? null;
 
 function classByValue(value) {
@@ -481,28 +484,32 @@ function renderProfitLossPanel() {
 function renderAccountPanel() {
   return `<section class="panel account-panel" id="account">
       <span class="label">Account Curve</span>
-      <h2>账户收益与仓位待补</h2>
-      <p class="lead">这部分暂时只展示成交截图能确认的每日成交额和净发生金额。账户收益率、收益金额、仓位、当前总金额需要你后续补一张日收益表或账户截图后再入正式曲线。</p>
+      <h2>账户收益与仓位</h2>
+      <p class="lead">这部分按你补充的账户日收益表记录，和成交回报/FIFO闭环分开看。本周账户日收益合计 ${money(accountPnlTotal, { sign: true })}，日收益率简单相加 ${pct(accountReturnSum)}，期末总金额 ${rawMoney(finalEquity)}。</p>
       <div class="account-summary">
-        <span>账户日收益 <b>待补</b></span>
-        <span>期末总金额 <b>待补</b></span>
-        <span>平均仓位 <b>待补</b></span>
+        <span>账户日收益合计 <b class="${classByValue(accountPnlTotal)}">${money(accountPnlTotal, { sign: true })}</b></span>
+        <span>期末总金额 <b>${rawMoney(finalEquity)}</b></span>
+        <span>平均仓位 <b>${avgPosition.toFixed(2)}%</b></span>
         <span>期末现金余额 <b>${finalCash === null ? "待补" : rawMoney(finalCash)}</b></span>
         <span>截图闭环盈亏 <b class="${classByValue(visibleRealized)}">${money(visibleRealized, { sign: true })}</b></span>
-        <span>期末可见持仓 <b>${openPositions.length} 个</b></span>
+        <span>最佳/最差日 <b>${bestAccountDay.day} ${money(bestAccountDay.pnl, { sign: true })} / ${worstAccountDay.day} ${money(worstAccountDay.pnl, { sign: true })}</b></span>
       </div>
+      <div class="account-bars">${accountDays.map(renderAccountBar).join("")}</div>
       <div class="table-wrap compact-table"><table>
-        <thead><tr><th>日期</th><th>星期</th><th>成交笔数</th><th>买入金额</th><th>卖出金额</th><th>净发生金额</th><th>账户收益/仓位</th></tr></thead>
+        <thead><tr><th>日期</th><th>星期</th><th>收益率</th><th>收益金额</th><th>仓位</th><th>当前总金额</th><th>成交笔数</th><th>买入金额</th><th>卖出金额</th><th>个人反思</th></tr></thead>
         <tbody>${accountDays.map((day) => {
           const stat = dailyStats.get(day.date) || { rows: [], buyAmount: 0, sellAmount: 0, netCash: 0 };
           return `<tr>
           <td>${formatDate(day.date)}</td>
           <td>${day.day}</td>
+          <td class="${classByValue(day.returnRate)}">${pct(day.returnRate)}</td>
+          <td class="${classByValue(day.pnl)}">${money(day.pnl, { sign: true })}</td>
+          <td>${day.position.toFixed(2)}%</td>
+          <td>${rawMoney(day.equity)}</td>
           <td>${stat.rows.length}</td>
           <td>${rawMoney(stat.buyAmount)}</td>
           <td>${rawMoney(stat.sellAmount)}</td>
-          <td class="${classByValue(stat.netCash)}">${money(stat.netCash, { sign: true })}</td>
-          <td class="reflection-cell">收益率 / 收益金额 / 仓位 / 当前总金额待补</td>
+          <td class="reflection-cell">${day.reflection}</td>
         </tr>`;
         }).join("")}</tbody>
       </table></div>
@@ -630,7 +637,7 @@ function renderWeekPage(charts) {
     <a href="../">总入口</a>
     <a href="#overview">总览</a>
     <a href="#profit-loss">盈亏票</a>
-    <a href="#account">账户待补</a>
+    <a href="#account">账户</a>
     <a href="#stocks">标的</a>
     <a href="#daily">逐日</a>
     <a href="#rules">规则</a>
@@ -649,9 +656,9 @@ function renderWeekPage(charts) {
       </div>
       <div class="metrics">
         ${metricCard("成交笔数", `${trades.length}`, "仅统计截图中“已成”记录")}
+        ${metricCard("账户日收益", money(accountPnlTotal, { sign: true }), `日收益率合计 ${pct(accountReturnSum)}`, classByValue(accountPnlTotal))}
+        ${metricCard("期末总金额", rawMoney(finalEquity), `仓位 ${finalPosition.toFixed(2)}% / 现金 ${finalCash === null ? "待补" : rawMoney(finalCash)}`)}
         ${metricCard("可见闭环盈亏", money(visibleRealized, { sign: true }), "同周买卖FIFO，含截图费用", classByValue(visibleRealized))}
-        ${metricCard("期末现金", finalCash === null ? "待补" : rawMoney(finalCash), "来自最后一笔资金余额")}
-        ${metricCard("账户口径", "待补", "日收益/仓位/总资产待补")}
       </div>
     </section>
 
@@ -670,7 +677,7 @@ function renderWeekPage(charts) {
       <div>
         <span class="label">Data Scope</span>
         <h2>本版数据口径</h2>
-        <p>截图是成交查询，不包含期末持仓市值和历史买入成本。本页先按“发生金额”复盘本周能闭环的票；账户收益、仓位、风范股份真实盈亏、华西/秦安浮盈亏均标为待补。</p>
+        <p>截图是成交查询，不包含期末持仓市值和历史买入成本。本页按“发生金额”复盘本周能闭环的票，并按你补充的账户表展示账户日收益；风范股份真实盈亏、华西/秦安浮盈亏仍标为待补。</p>
       </div>
       <div class="summary-grid">
         <span>买入笔数 <b>${buyRows.length}</b></span>
@@ -726,12 +733,11 @@ function renderWeekPage(charts) {
       <span class="label">To Fill</span>
       <h2>后续待补内容</h2>
       <div class="missing-list">
-        <article><b>1. 每日账户表</b><p>请补 8/10-8/14 的收益率、收益金额、仓位、当前总金额，用来更新账户曲线和周度主页曲线。</p></article>
-        <article><b>2. 期末持仓截图</b><p>重点确认华西股份800股、秦安股份100股是否仍持有，以及成本价、市价、市值、浮盈亏、总资产。</p></article>
-        <article><b>3. 风范股份历史成本</b><p>8/10 卖出风范股份1800股属于历史持仓，没有上一笔买入成本，真实盈亏暂不能计算。</p></article>
-        <article><b>4. 二次反思</b><p>你后续补主观复盘后，我会把“二次复盘沉淀”改成正式版本，并更新盈亏根源分析。</p></article>
-        <article><b>5. 分时/K线补强</b><p>若你希望完全按券商/同花顺5分钟线呈现，请补对应截图或确认可继续用东方财富分钟接口。</p></article>
-        <article><b>6. 文件命名确认</b><p>当前按实际交易周做成 2026-08-10_2026-08-15；如需改成截图筛选区间 2026-08-09_2026-08-15，可再统一改名。</p></article>
+        <article><b>1. 期末持仓截图</b><p>重点确认华西股份800股、秦安股份100股是否仍持有，以及成本价、市价、市值、浮盈亏、总资产。</p></article>
+        <article><b>2. 风范股份历史成本</b><p>8/10 卖出风范股份1800股属于历史持仓，没有上一笔买入成本，真实盈亏暂不能计算。</p></article>
+        <article><b>3. 二次反思</b><p>你后续补主观复盘后，我会把“二次复盘沉淀”改成正式版本，并更新盈亏根源分析。</p></article>
+        <article><b>4. 分时/K线补强</b><p>若你希望完全按券商/同花顺5分钟线呈现，请补对应截图或确认可继续用东方财富分钟接口。</p></article>
+        <article><b>5. 文件命名确认</b><p>当前按实际交易周做成 2026-08-10_2026-08-15；如需改成截图筛选区间 2026-08-09_2026-08-15，可再统一改名。</p></article>
       </div>
     </section>
   </main>
@@ -755,7 +761,7 @@ function renderWeeklyHub() {
       <div>
         <span class="label">Weekly Trading Review</span>
         <h1>周度交割复盘</h1>
-        <p>每周一个独立页面，记录成交单、买卖点、账户变化、逐日复盘和当周新增交易纪律。最新周为 2026.08.10-08.15，当前为成交截图草稿版，账户口径待补。</p>
+        <p>每周一个独立页面，记录成交单、买卖点、账户变化、逐日复盘和当周新增交易纪律。最新周为 2026.08.10-08.15，账户日收益已补，期末持仓和二次反思待补。</p>
         <div class="button-row">
           <a class="button" href="../${week.folder}/">进入最新周复盘</a>
           <a class="button secondary" href="../index.html">返回总首页</a>
@@ -764,7 +770,7 @@ function renderWeeklyHub() {
       <div class="metrics">
         ${metricCard("周报数量", `${archiveWeeks.length}`, "含本周草稿")}
         ${metricCard("最新区间", "08.10", "至 08.15")}
-        ${metricCard("最新闭环", money(visibleRealized, { sign: true }), "账户口径待补", classByValue(visibleRealized))}
+        ${metricCard("最新账户", money(accountPnlTotal, { sign: true }), `期末 ${rawMoney(finalEquity)} / 仓位 ${finalPosition.toFixed(2)}%`, classByValue(accountPnlTotal))}
         ${metricCard("最新规则", "定位清楚", "龙头/反抽/低吸试错分层")}
       </div>
     </section>
@@ -775,9 +781,9 @@ function renderWeeklyHub() {
         <span>成交笔数 <b>${trades.length}</b></span>
         <span>成交额 <b>${rawMoney(turnover)}</b></span>
         <span>可见已实现 <b class="${classByValue(visibleRealized)}">${money(visibleRealized, { sign: true })}</b></span>
-        <span>账户口径 <b>待补</b></span>
+        <span>账户口径 <b class="${classByValue(accountPnlTotal)}">${money(accountPnlTotal, { sign: true })}</b></span>
       </div>
-      <p>本周核心是百花医药成功闭环、通鼎互联老龙反抽亏损、华西股份低吸待验证。截图可见闭环约 ${money(visibleRealized, { sign: true })}，账户日收益、仓位和期末总资产等待补齐。</p>
+      <p>本周核心是百花医药成功闭环、通鼎互联老龙反抽亏损、华西股份低吸待验证。账户日收益合计 ${money(accountPnlTotal, { sign: true })}，期末总金额 ${rawMoney(finalEquity)}。</p>
     </section>
     <section class="panel">
       <span class="label">Archive</span>
@@ -817,7 +823,7 @@ function renderRootIndex() {
       <div class="metrics">
         ${metricCard("周度归档", `${archiveWeeks.length}`, "已发布/草稿周复盘")}
         ${metricCard("最新区间", "08.10", "至 08.15")}
-        ${metricCard("最新闭环", money(visibleRealized, { sign: true }), "账户口径待补", classByValue(visibleRealized))}
+        ${metricCard("最新账户", money(accountPnlTotal, { sign: true }), `期末 ${rawMoney(finalEquity)}`, classByValue(accountPnlTotal))}
         ${metricCard("长期结构", "4 个主页", "周度 / 月季 / 年度 / 案例")}
       </div>
     </section>

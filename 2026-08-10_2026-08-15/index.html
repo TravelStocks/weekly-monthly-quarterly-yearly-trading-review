@@ -123,7 +123,7 @@
     <a href="../">总入口</a>
     <a href="#overview">总览</a>
     <a href="#profit-loss">盈亏票</a>
-    <a href="#account">账户待补</a>
+    <a href="#account">账户</a>
     <a href="#stocks">标的</a>
     <a href="#daily">逐日</a>
     <a href="#rules">规则</a>
@@ -134,7 +134,7 @@
       <div>
         <span class="label">草稿版 / 成交回报口径</span>
         <h1><span class="date-range"><span>2026.08.10 -</span><span>2026.08.15</span></span>周度交易复盘</h1>
-        <p>当前版本基于 2026/8/10-8/14 成交截图与 daily-trading-review 日度复盘摘取生成；账户日收益、期末持仓和二次反思待补后再校准。</p>
+        <p>当前版本基于 2026/8/10-8/14 成交截图、账户日收益表与 daily-trading-review 日度复盘摘取生成；期末持仓和二次反思待补后再校准。</p>
         <div class="button-row">
           <a class="button" href="../weekly-trading-review/">返回周度主页</a>
           <a class="button secondary" href="#missing">待补清单</a>
@@ -142,9 +142,9 @@
       </div>
       <div class="metrics">
         <article class="metric"><span>成交笔数</span><strong class="">22</strong><small>仅统计截图中“已成”记录</small></article>
+        <article class="metric"><span>账户日收益</span><strong class="is-profit">+1,560.94</strong><small>日收益率合计 +12.98%</small></article>
+        <article class="metric"><span>期末总金额</span><strong class="">13,594.00</strong><small>仓位 51.20% / 现金 6,636.02</small></article>
         <article class="metric"><span>可见闭环盈亏</span><strong class="is-profit">+436.30</strong><small>同周买卖FIFO，含截图费用</small></article>
-        <article class="metric"><span>期末现金</span><strong class="">6,636.02</strong><small>来自最后一笔资金余额</small></article>
-        <article class="metric"><span>账户口径</span><strong class="">待补</strong><small>日收益/仓位/总资产待补</small></article>
       </div>
     </section>
 
@@ -163,7 +163,7 @@
       <div>
         <span class="label">Data Scope</span>
         <h2>本版数据口径</h2>
-        <p>截图是成交查询，不包含期末持仓市值和历史买入成本。本页先按“发生金额”复盘本周能闭环的票；账户收益、仓位、风范股份真实盈亏、华西/秦安浮盈亏均标为待补。</p>
+        <p>截图是成交查询，不包含期末持仓市值和历史买入成本。本页按“发生金额”复盘本周能闭环的票，并按你补充的账户表展示账户日收益；风范股份真实盈亏、华西/秦安浮盈亏仍标为待补。</p>
       </div>
       <div class="summary-grid">
         <span>买入笔数 <b>15</b></span>
@@ -202,58 +202,104 @@
 
     <section class="panel account-panel" id="account">
       <span class="label">Account Curve</span>
-      <h2>账户收益与仓位待补</h2>
-      <p class="lead">这部分暂时只展示成交截图能确认的每日成交额和净发生金额。账户收益率、收益金额、仓位、当前总金额需要你后续补一张日收益表或账户截图后再入正式曲线。</p>
+      <h2>账户收益与仓位</h2>
+      <p class="lead">这部分按你补充的账户日收益表记录，和成交回报/FIFO闭环分开看。本周账户日收益合计 +1,560.94，日收益率简单相加 +12.98%，期末总金额 13,594.00。</p>
       <div class="account-summary">
-        <span>账户日收益 <b>待补</b></span>
-        <span>期末总金额 <b>待补</b></span>
-        <span>平均仓位 <b>待补</b></span>
+        <span>账户日收益合计 <b class="is-profit">+1,560.94</b></span>
+        <span>期末总金额 <b>13,594.00</b></span>
+        <span>平均仓位 <b>59.62%</b></span>
         <span>期末现金余额 <b>6,636.02</b></span>
         <span>截图闭环盈亏 <b class="is-profit">+436.30</b></span>
-        <span>期末可见持仓 <b>2 个</b></span>
+        <span>最佳/最差日 <b>周三 +1,268.94 / 周五 -389.00</b></span>
       </div>
+      <div class="account-bars"><article class="account-day">
+    <div class="account-day-head"><b>周一</b><span>08-10</span></div>
+    <div class="account-bar-track"><i style="height:79%"></i></div>
+    <strong class="is-profit">+999.00</strong>
+    <small>+8.27% / 仓位 0.00%</small>
+    <div class="position-meter" aria-label="周一 仓位 0.00%"><i style="width:0%"></i></div>
+  </article><article class="account-day">
+    <div class="account-day-head"><b>周二</b><span>08-11</span></div>
+    <div class="account-bar-track"><i style="height:6%"></i></div>
+    <strong class="is-loss">-20.00</strong>
+    <small>-0.15% / 仓位 97.60%</small>
+    <div class="position-meter" aria-label="周二 仓位 97.60%"><i style="width:97.6%"></i></div>
+  </article><article class="account-day">
+    <div class="account-day-head"><b>周三</b><span>08-12</span></div>
+    <div class="account-bar-track"><i style="height:100%"></i></div>
+    <strong class="is-profit">+1,268.94</strong>
+    <small>+9.73% / 仓位 97.70%</small>
+    <div class="position-meter" aria-label="周三 仓位 97.70%"><i style="width:97.7%"></i></div>
+  </article><article class="account-day">
+    <div class="account-day-head"><b>周四</b><span>08-13</span></div>
+    <div class="account-bar-track"><i style="height:23%"></i></div>
+    <strong class="is-loss">-298.00</strong>
+    <small>-2.09% / 仓位 51.60%</small>
+    <div class="position-meter" aria-label="周四 仓位 51.60%"><i style="width:51.6%"></i></div>
+  </article><article class="account-day">
+    <div class="account-day-head"><b>周五</b><span>08-14</span></div>
+    <div class="account-bar-track"><i style="height:31%"></i></div>
+    <strong class="is-loss">-389.00</strong>
+    <small>-2.78% / 仓位 51.20%</small>
+    <div class="position-meter" aria-label="周五 仓位 51.20%"><i style="width:51.2%"></i></div>
+  </article></div>
       <div class="table-wrap compact-table"><table>
-        <thead><tr><th>日期</th><th>星期</th><th>成交笔数</th><th>买入金额</th><th>卖出金额</th><th>净发生金额</th><th>账户收益/仓位</th></tr></thead>
+        <thead><tr><th>日期</th><th>星期</th><th>收益率</th><th>收益金额</th><th>仓位</th><th>当前总金额</th><th>成交笔数</th><th>买入金额</th><th>卖出金额</th><th>个人反思</th></tr></thead>
         <tbody><tr>
           <td>2026/08/10</td>
           <td>周一</td>
+          <td class="is-profit">+8.27%</td>
+          <td class="is-profit">+999.00</td>
+          <td>0.00%</td>
+          <td>13,057.00</td>
           <td>1</td>
           <td>0.00</td>
           <td>12,602.00</td>
-          <td class="is-profit">+12,590.58</td>
-          <td class="reflection-cell">收益率 / 收益金额 / 仓位 / 当前总金额待补</td>
+          <td class="reflection-cell">抓住了最高标抱团，跌停错杀的反包板，没有题材支撑只是主力自救的动作，所以反包完之后直接走。</td>
         </tr><tr>
           <td>2026/08/11</td>
           <td>周二</td>
+          <td class="is-loss">-0.15%</td>
+          <td class="is-loss">-20.00</td>
+          <td>97.60%</td>
+          <td>13,057.00</td>
           <td>4</td>
           <td>12,743.00</td>
           <td>0.00</td>
-          <td class="is-loss">-12,763.13</td>
-          <td class="reflection-cell">收益率 / 收益金额 / 仓位 / 当前总金额待补</td>
+          <td class="reflection-cell">大胆做好预判上重仓龙头，轻仓试错连板最强低位标的，很舒服。</td>
         </tr><tr>
           <td>2026/08/12</td>
           <td>周三</td>
+          <td class="is-profit">+9.73%</td>
+          <td class="is-profit">+1,268.94</td>
+          <td>97.70%</td>
+          <td>14,305.00</td>
           <td>5</td>
           <td>12,581.00</td>
           <td>12,627.00</td>
-          <td class="is-profit">+14.56</td>
-          <td class="reflection-cell">收益率 / 收益金额 / 仓位 / 当前总金额待补</td>
+          <td class="reflection-cell">大胆板上清龙头，等监管之后反核再介入！小仓位机器人直接一字继续吃，舒服舒服！！！！</td>
         </tr><tr>
           <td>2026/08/13</td>
           <td>周四</td>
+          <td class="is-loss">-2.09%</td>
+          <td class="is-loss">-298.00</td>
+          <td>51.60%</td>
+          <td>13,990.00</td>
           <td>3</td>
           <td>6,216.00</td>
           <td>12,682.00</td>
-          <td class="is-profit">+6,444.60</td>
-          <td class="reflection-cell">收益率 / 收益金额 / 仓位 / 当前总金额待补</td>
+          <td class="reflection-cell">科技在大环境不好的时候不要追高，只能低吸；追高直接-10个点炸板巨深一个；只要在共振指数的时候才能做科技追高。</td>
         </tr><tr>
           <td>2026/08/14</td>
           <td>周五</td>
+          <td class="is-loss">-2.78%</td>
+          <td class="is-loss">-389.00</td>
+          <td>51.20%</td>
+          <td>13,594.00</td>
           <td>9</td>
           <td>5,565.00</td>
           <td>5,475.00</td>
-          <td class="is-loss">-137.74</td>
-          <td class="reflection-cell">收益率 / 收益金额 / 仓位 / 当前总金额待补</td>
+          <td class="reflection-cell">科技低吸可以，千万不能追高，而且是大环境不好的末期去追高那就更死咯。</td>
         </tr></tbody>
       </table></div>
     </section>
@@ -558,7 +604,12 @@
       </div>
       <p><b>操作：</b>卖出风范股份1800股，成交金额12,602.00，发生金额+12,590.58。</p>
       <p><b>复盘：</b>日度复盘强调低开未快速转强就是卖点。本页暂缺风范股份历史成本，先把它归为“历史持仓卖出，真实盈亏待补”。</p>
-      <div class="account-strip"><span>账户收益 <b>待补</b></span><span>仓位 <b>待补</b></span></div>
+      <div class="account-strip">
+        <span>收益率 <b class="is-profit">+8.27%</b></span>
+        <span>收益 <b class="is-profit">+999.00</b></span>
+        <span>仓位 <b>0.00%</b></span>
+        <span>总金额 <b>13,057.00</b></span>
+      </div><p><b>个人反思：</b>抓住了最高标抱团，跌停错杀的反包板，没有题材支撑只是主力自救的动作，所以反包完之后直接走。</p>
       <div class="source-line"><a href="https://travelstocks.github.io/daily-trading-review/pages/%E7%AB%A0%E7%9B%9F%E4%B8%BB%E5%BC%8F%E8%B6%85%E7%9F%AD%E5%85%A8%E6%99%AF%E5%A4%8D%E7%9B%98%EF%BC%882026.8.10%20%E5%91%A8%E4%B8%80%EF%BC%89%2B%208.11%E4%B8%AA%E8%82%A1%E6%9D%BF%E5%9D%97%E9%A2%84%E6%A1%88%20-%20AI%E6%96%87%E6%A1%A3.html" target="_blank" rel="noreferrer">8/10 日度复盘</a><small>君正集团低开后未快速拉板，日内定义为卖点不是格局点；机器人高潮后的后排套利不再做。</small></div>
     </article><article class="day-card">
       <div class="day-card-head"><div><b>周二</b><span>2026/08/11</span></div><strong>创新药试错与轮动纪律</strong></div>
@@ -570,7 +621,12 @@
       </div>
       <p><b>操作：</b>竞价买入百花医药900股，另买入秦安股份100股。</p>
       <p><b>复盘：</b>轮动行情中，确定性不够时管住手是对的。百花医药属于创新药方向试错并在次日形成闭环；秦安股份期末是否仍持有待截图确认。</p>
-      <div class="account-strip"><span>账户收益 <b>待补</b></span><span>仓位 <b>待补</b></span></div>
+      <div class="account-strip">
+        <span>收益率 <b class="is-loss">-0.15%</b></span>
+        <span>收益 <b class="is-loss">-20.00</b></span>
+        <span>仓位 <b>97.60%</b></span>
+        <span>总金额 <b>13,057.00</b></span>
+      </div><p><b>个人反思：</b>大胆做好预判上重仓龙头，轻仓试错连板最强低位标的，很舒服。</p>
       <div class="source-line"><a href="https://travelstocks.github.io/daily-trading-review/pages/%E7%AB%A0%E7%9B%9F%E4%B8%BB%E5%BC%8F%E8%B6%85%E7%9F%AD%E5%85%A8%E6%99%AF%E5%A4%8D%E7%9B%98%EF%BC%882026.8.11%20%E5%91%A8%E4%BA%8C%EF%BC%89%2B%208.12%E4%B8%AA%E8%82%A1%E6%9D%BF%E5%9D%97%E9%A2%84%E6%A1%88%20-%20AI%E6%96%87%E6%A1%A3.html" target="_blank" rel="noreferrer">8/11 日度复盘</a><small>轮动行情中能空仓，不在没有确定性时硬做；算力硬件与创新药来回切。</small></div>
     </article><article class="day-card">
       <div class="day-card-head"><div><b>周三</b><span>2026/08/12</span></div><strong>百花兑现，尾盘科技先手</strong></div>
@@ -582,7 +638,12 @@
       </div>
       <p><b>操作：</b>卖出百花医药900股；尾盘买入亨通光电100股、风华高科100股。</p>
       <p><b>复盘：</b>百花医药闭环盈利是本周最清楚的正贡献，但日度复盘也提示卖早。科技尾盘先手可以，但必须次日用强度验证，不能一开始就给主线仓位。</p>
-      <div class="account-strip"><span>账户收益 <b>待补</b></span><span>仓位 <b>待补</b></span></div>
+      <div class="account-strip">
+        <span>收益率 <b class="is-profit">+9.73%</b></span>
+        <span>收益 <b class="is-profit">+1,268.94</b></span>
+        <span>仓位 <b>97.70%</b></span>
+        <span>总金额 <b>14,305.00</b></span>
+      </div><p><b>个人反思：</b>大胆板上清龙头，等监管之后反核再介入！小仓位机器人直接一字继续吃，舒服舒服！！！！</p>
       <div class="source-line"><a href="https://travelstocks.github.io/daily-trading-review/pages/%E7%AB%A0%E7%9B%9F%E4%B8%BB%E5%BC%8F%E8%B6%85%E7%9F%AD%E5%85%A8%E6%99%AF%E5%A4%8D%E7%9B%98%EF%BC%882026.8.12%20%E5%91%A8%E4%B8%89%EF%BC%89%2B%208.13%E4%B8%AA%E8%82%A1%E6%9D%BF%E5%9D%97%E9%A2%84%E6%A1%88%20-%20AI%E6%96%87%E6%A1%A3.html" target="_blank" rel="noreferrer">8/12 日度复盘</a><small>情绪改善，退潮可能结束；百花医药做对但卖早，尾盘科技先手属于试错。</small></div>
     </article><article class="day-card">
       <div class="day-card-head"><div><b>周四</b><span>2026/08/13</span></div><strong>科技处理与老龙反抽</strong></div>
@@ -594,7 +655,12 @@
       </div>
       <p><b>操作：</b>卖出亨通光电100股、风华高科100股；买入通鼎互联300股。</p>
       <p><b>复盘：</b>亨通、风华处理干净，说明科技分歧日止盈意识在线；通鼎互联是老龙反抽，买点偏急，买入后承接不足，不能给龙头预期。</p>
-      <div class="account-strip"><span>账户收益 <b>待补</b></span><span>仓位 <b>待补</b></span></div>
+      <div class="account-strip">
+        <span>收益率 <b class="is-loss">-2.09%</b></span>
+        <span>收益 <b class="is-loss">-298.00</b></span>
+        <span>仓位 <b>51.60%</b></span>
+        <span>总金额 <b>13,990.00</b></span>
+      </div><p><b>个人反思：</b>科技在大环境不好的时候不要追高，只能低吸；追高直接-10个点炸板巨深一个；只要在共振指数的时候才能做科技追高。</p>
       <div class="source-line"><a href="https://travelstocks.github.io/daily-trading-review/pages/%E7%AB%A0%E7%9B%9F%E4%B8%BB%E5%BC%8F%E8%B6%85%E7%9F%AD%E5%85%A8%E6%99%AF%E5%A4%8D%E7%9B%98%EF%BC%882026.8.13%20%E5%91%A8%E5%9B%9B%EF%BC%89%2B%208.14%E4%B8%AA%E8%82%A1%E6%9D%BF%E5%9D%97%E9%A2%84%E6%A1%88%20-%20AI%E6%96%87%E6%A1%A3.html" target="_blank" rel="noreferrer">8/13 日度复盘</a><small>科技分歧日止盈意识较强，亨通、风华处理干净；通鼎互联老龙反抽买点偏急。</small></div>
     </article><article class="day-card">
       <div class="day-card-head"><div><b>周五</b><span>2026/08/14</span></div><strong>通鼎止损，华西低吸待验证</strong></div>
@@ -606,7 +672,12 @@
       </div>
       <p><b>操作：</b>卖出通鼎互联300股；分8笔买入华西股份800股。</p>
       <p><b>复盘：</b>通鼎互联止损果断，避免把老龙反抽当龙头格局；华西股份买入过急，虽有承接但不是唯一核心，下周需要期末持仓和处理计划确认。</p>
-      <div class="account-strip"><span>账户收益 <b>待补</b></span><span>仓位 <b>待补</b></span></div>
+      <div class="account-strip">
+        <span>收益率 <b class="is-loss">-2.78%</b></span>
+        <span>收益 <b class="is-loss">-389.00</b></span>
+        <span>仓位 <b>51.20%</b></span>
+        <span>总金额 <b>13,594.00</b></span>
+      </div><p><b>个人反思：</b>科技低吸可以，千万不能追高，而且是大环境不好的末期去追高那就更死咯。</p>
       <div class="source-line"><a href="https://travelstocks.github.io/daily-trading-review/pages/%E7%AB%A0%E7%9B%9F%E4%B8%BB%E5%BC%8F%E8%B6%85%E7%9F%AD%E5%85%A8%E6%99%AF%E5%A4%8D%E7%9B%98%EF%BC%882026.8.14%20%E5%91%A8%E4%BA%94%EF%BC%89%2B%208.17%E4%B8%AA%E8%82%A1%E6%9D%BF%E5%9D%97%E9%A2%84%E6%A1%88%20-%20AI%E6%96%87%E6%A1%A3.html" target="_blank" rel="noreferrer">8/14 日度复盘</a><small>华西股份买入过急，国产算力/芯片回流但持续性仍待确认；华西有承接但不是唯一核心。</small></div>
     </article></div>
     </section>
@@ -924,12 +995,11 @@
       <span class="label">To Fill</span>
       <h2>后续待补内容</h2>
       <div class="missing-list">
-        <article><b>1. 每日账户表</b><p>请补 8/10-8/14 的收益率、收益金额、仓位、当前总金额，用来更新账户曲线和周度主页曲线。</p></article>
-        <article><b>2. 期末持仓截图</b><p>重点确认华西股份800股、秦安股份100股是否仍持有，以及成本价、市价、市值、浮盈亏、总资产。</p></article>
-        <article><b>3. 风范股份历史成本</b><p>8/10 卖出风范股份1800股属于历史持仓，没有上一笔买入成本，真实盈亏暂不能计算。</p></article>
-        <article><b>4. 二次反思</b><p>你后续补主观复盘后，我会把“二次复盘沉淀”改成正式版本，并更新盈亏根源分析。</p></article>
-        <article><b>5. 分时/K线补强</b><p>若你希望完全按券商/同花顺5分钟线呈现，请补对应截图或确认可继续用东方财富分钟接口。</p></article>
-        <article><b>6. 文件命名确认</b><p>当前按实际交易周做成 2026-08-10_2026-08-15；如需改成截图筛选区间 2026-08-09_2026-08-15，可再统一改名。</p></article>
+        <article><b>1. 期末持仓截图</b><p>重点确认华西股份800股、秦安股份100股是否仍持有，以及成本价、市价、市值、浮盈亏、总资产。</p></article>
+        <article><b>2. 风范股份历史成本</b><p>8/10 卖出风范股份1800股属于历史持仓，没有上一笔买入成本，真实盈亏暂不能计算。</p></article>
+        <article><b>3. 二次反思</b><p>你后续补主观复盘后，我会把“二次复盘沉淀”改成正式版本，并更新盈亏根源分析。</p></article>
+        <article><b>4. 分时/K线补强</b><p>若你希望完全按券商/同花顺5分钟线呈现，请补对应截图或确认可继续用东方财富分钟接口。</p></article>
+        <article><b>5. 文件命名确认</b><p>当前按实际交易周做成 2026-08-10_2026-08-15；如需改成截图筛选区间 2026-08-09_2026-08-15，可再统一改名。</p></article>
       </div>
     </section>
   </main>
