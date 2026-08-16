@@ -3,63 +3,69 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#f7f8fa" />
-  <title>诺德股份大回撤案例 | 5分K买卖点档案</title>
+  <title>诺德股份失败案例复盘</title>
   <style>
-    :root{--ink:#17202a;--muted:#667085;--line:#dfe4ea;--paper:#fff;--wash:#f5f7fa;--red:#c2412d;--green:#14845f;--blue:#1d4ed8;--shadow:0 18px 44px rgba(23,32,42,.08);--radius:10px}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:linear-gradient(180deg,#f7f8fa 0%,#eef2f5 100%);font-family:"Avenir Next","PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif;overflow-x:hidden}a{color:inherit;-webkit-tap-highlight-color:rgba(194,65,45,.12);touch-action:manipulation}a:focus-visible{outline:3px solid rgba(29,78,216,.38);outline-offset:3px}h1,h2,h3,p{margin-top:0;letter-spacing:0}h1{margin:14px 0;font-size:clamp(38px,5vw,66px);line-height:1.04;text-wrap:balance}h2{font-size:28px;margin-bottom:12px;text-wrap:balance}h3{font-size:19px;margin-bottom:8px}p,li{color:var(--muted);line-height:1.72}.skip-link{position:absolute;left:16px;top:12px;z-index:5;transform:translateY(-140%);border-radius:8px;background:var(--ink);color:#fff;padding:10px 14px;text-decoration:none;font-weight:800}.skip-link:focus-visible{transform:translateY(0)}.page-shell{width:min(1180px,calc(100vw - 28px));margin:0 auto;padding:34px 0 56px;display:grid;gap:20px}section[id]{scroll-margin-top:18px}.hero,.panel,.metric,.card,.k-card{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);min-width:0}.hero{padding:30px;display:grid;grid-template-columns:1.08fr .92fr;gap:26px;align-items:end}.panel{padding:24px}.label,.tag{display:inline-flex;width:max-content;max-width:100%;white-space:nowrap;border-radius:999px;font-size:12px;font-weight:800}.label{color:var(--green);background:#ecfdf3;padding:7px 10px}.tag{border:1px solid rgba(20,132,95,.22);background:#ecfdf3;padding:7px 10px;color:var(--green)}.lead{font-size:17px;color:#334155}.button-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}.button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;border-radius:8px;background:var(--ink);color:#fff;text-decoration:none;font-weight:800;transition:transform .16s ease,border-color .16s ease,background-color .16s ease}.button:hover{transform:translateY(-1px);background:#0f1720}.button.secondary{background:#fff;color:var(--ink);border:1px solid var(--line)}.metrics,.mini-grid,.summary-grid,.k-grid,.rule-grid{display:grid;gap:12px}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.metric{padding:16px;min-height:106px;display:grid;align-content:space-between}.metric span,.metric small{color:var(--muted);font-size:12px}.metric strong{font-size:22px;font-variant-numeric:tabular-nums}.is-loss{color:var(--green)}.summary-grid{grid-template-columns:1.1fr .9fr}.card{padding:18px;box-shadow:none}.card p{margin-bottom:0}.mini-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.mini-grid span{background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:10px;color:var(--muted);font-size:13px}.mini-grid b{display:block;color:var(--ink);font-size:17px;margin-top:4px;font-variant-numeric:tabular-nums}.k-card{display:grid;grid-template-columns:150px 1fr 1fr;gap:12px;padding:18px;box-shadow:none;border-left:4px solid rgba(20,132,95,.45)}.k-time{display:grid;gap:6px;align-content:start}.k-time b{font-size:18px}.k-note,.k-action{border:1px solid var(--line);border-radius:8px;background:#fff;padding:12px}.k-note p,.k-action p{margin-bottom:0;font-size:14px}.rule-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.note{background:#f8fafc;border:1px dashed #b8c1cc;border-radius:10px;padding:16px}.note p{margin-bottom:0}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button{transition:none}.button:hover{transform:none}}@media(max-width:980px){.hero,.summary-grid,.rule-grid,.k-card{grid-template-columns:1fr}.metrics,.mini-grid{grid-template-columns:1fr}.page-shell{width:min(calc(100vw - 16px),1180px);padding-top:22px}.hero,.panel{padding:20px}}@media(max-width:560px){h1{font-size:34px}.metric strong{font-size:19px}}
+    :root{--ink:#17202a;--muted:#667085;--line:#dfe4ea;--paper:#fff;--wash:#f5f7fa;--red:#c2412d;--green:#14845f;--blue:#1d4ed8;--amber:#b45309;--shadow:0 18px 44px rgba(23,32,42,.08);--radius:10px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:linear-gradient(180deg,#f7f8fa 0%,#eef2f5 100%);font-family:"Avenir Next","PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif}a{color:inherit}h1,h2,h3,h4,p{margin-top:0;letter-spacing:0}h1{margin:12px 0;font-size:clamp(34px,5vw,62px);line-height:1.05}h2{font-size:26px;margin-bottom:12px}h3{font-size:18px;margin-bottom:8px}p,li,td{color:var(--muted);line-height:1.72}.shell{width:min(1180px,calc(100vw - 28px));margin:0 auto;padding:32px 0 56px;display:grid;gap:18px}.hero,.panel,.metric,.card{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.hero{padding:30px;display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:end}.panel{padding:24px}.label,.chip{display:inline-flex;width:max-content;max-width:100%;white-space:nowrap;border-radius:999px;font-size:12px;font-weight:800}.label{color:var(--red);background:#fff1ed;padding:7px 10px}.chip{border:1px solid var(--line);background:#f8fafc;padding:7px 10px;color:var(--muted)}.lead{font-size:17px;color:#334155}.button-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}.button{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 15px;border-radius:8px;background:var(--ink);color:#fff;text-decoration:none;font-weight:800}.button.secondary{background:#fff;color:var(--ink);border:1px solid var(--line)}.metrics,.grid,.mini-grid,.rules{display:grid;gap:12px}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.metric{padding:16px;min-height:104px;display:grid;align-content:space-between}.metric span,.metric small{color:var(--muted);font-size:12px}.metric strong{font-size:22px;line-height:1.18;font-variant-numeric:tabular-nums}.pos{color:var(--red)!important}.neg{color:var(--green)!important}.warn{color:var(--amber)!important}.mini-grid{grid-template-columns:repeat(4,minmax(0,1fr));margin-top:14px}.mini-grid span{background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:10px;color:var(--muted);font-size:13px}.mini-grid b{display:block;color:var(--ink);font-size:16px;margin-top:4px}.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.card{box-shadow:none;padding:16px}.card p{margin-bottom:0}.chart-wrap{border:1px solid var(--line);border-radius:10px;background:#fff;overflow:hidden}.k-chart{display:block;width:100%;height:auto;min-height:280px;background:#fff}.axis{font-size:12px;fill:#64748b}.marker-label{font-size:12px;font-weight:900;fill:#111827}.note{background:#f8fafc;border:1px dashed #b8c1cc;border-radius:10px;padding:14px;margin-top:12px}.table-wrap{width:100%;overflow-x:auto;border:1px solid var(--line);border-radius:9px;background:#fff}table{width:100%;min-width:760px;border-collapse:collapse;font-size:13px}th,td{padding:11px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#f8fafc;color:var(--muted)}td:first-child{font-weight:800;color:var(--ink);white-space:nowrap}tr:last-child td{border-bottom:0}.rules{grid-template-columns:repeat(3,minmax(0,1fr))}.source-list{margin:0;padding-left:18px}.empty-chart{padding:28px;color:var(--muted)}@media(max-width:900px){.hero,.metrics,.grid,.mini-grid,.rules{grid-template-columns:1fr}.shell{width:min(calc(100vw - 16px),1180px);padding-top:22px}.hero,.panel{padding:20px}}
   </style>
 </head>
 <body>
-  <a class="skip-link" href="#main-content">跳到主要内容</a>
-  <main class="page-shell" id="main-content">
+  <main class="shell">
     <section class="hero">
       <div>
-        <span class="label">600110 Failure Case</span>
-        <h1>诺德股份大回撤案例</h1>
-        <p class="lead">这是“旧核心没有及时降级”的失败样本。上一周 1,100 股核心仓带入新周，强度不能继续证明后仍占用仓位，最后在 6/24 10:05K 附近止损，闭环亏损约 -2,948.55。</p>
-        <div class="button-row"><a class="button" href="../">返回案例索引</a><a class="button secondary" href="#five-minute-k">5分K买卖点</a><a class="button secondary" href="#rules">沉淀规则</a></div>
+        <span class="label">大回撤 · 600110</span>
+        <h1>诺德股份</h1>
+        <p class="lead">旧核心预期失效：上一周持仓没有及时降级，最后变成大额止损</p>
+        <div class="button-row">
+          <a class="button" href="../index.html#target-dimension">返回成功/失败复盘</a>
+          <a class="button secondary" href="../../weekly-trading-review/">周度主页</a>
+        </div>
       </div>
       <div class="metrics">
-        <article class="metric"><span>持仓来源</span><strong>上一周旧核心</strong><small>6/18 期末持仓带入</small></article>
-        <article class="metric"><span>含费成本</span><strong>19,270.22</strong><small>1,100 股</small></article>
-        <article class="metric"><span>卖出回收</span><strong>16,321.67</strong><small>6/24 10:08:37</small></article>
-        <article class="metric"><span>闭环亏损</span><strong class="is-loss">-2,948.55</strong><small>本周最大已实现亏损源</small></article>
+        <article class="metric"><span>闭环亏损</span><strong class="neg">-2,948.55</strong><small>2026-06-18 至 2026-06-24</small></article>
+        <article class="metric"><span>买入规模</span><strong>1,100 股</strong><small>交割单截图口径</small></article><article class="metric"><span>买入成本</span><strong>19,270.22</strong><small>交割单截图口径</small></article><article class="metric"><span>卖出回收</span><strong>16,321.67</strong><small>交割单截图口径</small></article><article class="metric"><span>成交均价</span><strong>买约 17.518 / 卖 14.850</strong><small>交割单截图口径</small></article>
       </div>
     </section>
 
     <section class="panel">
-      <span class="label">Case Verdict</span>
-      <h2>一句话定性</h2>
-      <div class="summary-grid">
-        <article class="card"><h3>亏损的本质</h3><p>核心预期没有随新周强度重新验证。上一周的核心票，到了新周如果不能继续证明强度，应该先降级，而不是让旧预期继续占住仓位。</p></article>
-        <article class="card"><h3>资料缺口</h3><p>当前档案已有 6/18 持仓成本和 6/24 卖点，原始 6/18 买点的 5 分K截图仍待补。先把已知卖点和新周失效过程锁住。</p></article>
+      <h2>一句话结论</h2>
+      <p>诺德股份的问题是旧核心失效后没有及时降级。它从上一周带入预期，但新周不能继续证明强度时，仓位仍然占用账户，最终在 6/24 形成约 -2,948.55 的大额闭环亏损。</p>
+      <div class="note"><strong>数据口径：</strong>成交记录只保留日期、时间、方向、数量、价格和发生金额；已隐藏合同号、成交编号等敏感字段。东方财富接口未返回该历史区间的 5 分钟K，本页先用成交5分钟窗口图标记真实买卖点，行情K线待补。成交价格仍以交割单截图为准。</div>
+    </section>
+
+    <section class="panel">
+      <h2>5分钟K买卖点</h2>
+      <p>红色 B 为买入，蓝色 S 为卖出；多笔同一 5 分钟窗口成交会横向错开，方便看清楚密集买入/卖出的位置。</p>
+      <div class="chart-wrap"><svg class="k-chart" viewBox="0 0 980 360" role="img" aria-label="诺德股份 成交5分钟窗口买卖点"><g><line x1="58" x2="956" y1="34.0" y2="34.0" stroke="rgba(23,32,42,.08)"></line><text x="48" y="38.0" text-anchor="end" class="axis">18.04</text></g><g><line x1="58" x2="956" y1="168.0" y2="168.0" stroke="rgba(23,32,42,.08)"></line><text x="48" y="172.0" text-anchor="end" class="axis">16.23</text></g><g><line x1="58" x2="956" y1="302.0" y2="302.0" stroke="rgba(23,32,42,.08)"></line><text x="48" y="306.0" text-anchor="end" class="axis">14.43</text></g><g><line x1="58.0" x2="58.0" y1="34" y2="302" stroke="rgba(23,32,42,.08)" stroke-dasharray="4 7"></line><text x="58.0" y="340" text-anchor="middle" class="axis">06-18</text></g><g><line x1="956.0" x2="956.0" y1="34" y2="302" stroke="rgba(23,32,42,.08)" stroke-dasharray="4 7"></line><text x="956.0" y="340" text-anchor="middle" class="axis">06-24</text></g><path d="M 58.0 64.9 L 157.8 66.4 L 257.6 71.6 L 357.3 75.3 L 457.1 73.9 L 556.9 85.0 L 656.7 81.3 L 756.4 85.0 L 856.2 96.2 L 956.0 271.1" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5 6"></path><g><line x1="58.0" x2="58.0" y1="34" y2="302" stroke="rgba(23,32,42,.12)" stroke-dasharray="3 6"></line><path d="M 58.0 53.9 L 51.0 69.9 L 65.0 69.9 Z" fill="#b91c1c" stroke="#fff" stroke-width="1.5"></path><text x="72.0" y="47.9" text-anchor="middle" class="marker-label">B</text><title>诺德股份 买入 2026-06-18 09:36:49 17.620 / 200股</title></g><g><line x1="157.8" x2="157.8" y1="34" y2="302" stroke="rgba(23,32,42,.12)" stroke-dasharray="3 6"></line><path d="M 157.8 55.4 L 150.8 71.4 L 164.8 71.4 Z" fill="#b91c1c" stroke="#fff" stroke-width="1.5"></path><text x="157.8" y="49.4" text-anchor="middle" class="marker-label">B</text><title>诺德股份 买入 2026-06-18 09:46:22 17.600 / 200股</title></g><g><line x1="257.6" x2="257.6" y1="34" y2="302" stroke="rgba(23,32,42,.12)" stroke-dasharray="3 6"></line><path d="M 257.6 60.6 L 250.6 76.6 L 264.6 76.6 Z" fill="#b91c1c" stroke="#fff" stroke-width="1.5"></path><text x="257.6" y="54.6" text-anchor="middle" class="marker-label">B</text><title>诺德股份 买入 2026-06-18 09:46:27 17.530 / 100股</title></g><g><line x1="357.3" x2="357.3" y1="34" y2="302" stroke="rgba(23,32,42,.12)" stroke-dasharray="3 6"></line><path d="M 357.3 64.3 L 350.3 80.3 L 364.3 80.3 Z" fill="#b91c1c" stroke="#fff" stroke-width="1.5"></path><text x="357.3" y="58.3" text-anchor="middle" class="marker-label">B</text><title>诺德股份 买入 2026-06-18 09:47:06 17.480 / 100股</title></g><g><line x1="457.1" x2="457.1" y1="34" y2="302" stroke="rgba(23,32,42,.12)" stroke-dasharray="3 6"></line><path d="M 457.1 62.9 L 450.1 78.9 L 464.1 78.9 Z" fill="#b91c1c" stroke="#fff" stroke-width="1.5"></path><text x="457.1" y="56.9" text-anchor="middle" class="marker-label">B</text><title>诺德股份 买入 2026-06-18 09:47:15 17.500 / 100股</title></g><g><line x1="556.9" x2="556.9" y1="34" y2="302" stroke="rgba(23,32,42,.12)" stroke-dasharray="3 6"></line><path d="M 556.9 74.0 L 549.9 90.0 L 563.9 90.0 Z" fill="#b91c1c" stroke="#fff" stroke-width="1.5"></path><text x="556.9" y="68.0" text-anchor="middle" class="marker-label">B</text><title>诺德股份 买入 2026-06-18 10:10:52 17.350 / 100股</title></g><g><line x1="656.7" x2="656.7" y1="34" y2="302" stroke="rgba(23,32,42,.12)" stroke-dasharray="3 6"></line><path d="M 656.7 70.3 L 649.7 86.3 L 663.7 86.3 Z" fill="#b91c1c" stroke="#fff" stroke-width="1.5"></path><text x="656.7" y="64.3" text-anchor="middle" class="marker-label">B</text><title>诺德股份 买入 2026-06-18 10:11:09 17.400 / 100股</title></g><g><line x1="756.4" x2="756.4" y1="34" y2="302" stroke="rgba(23,32,42,.12)" stroke-dasharray="3 6"></line><path d="M 756.4 74.0 L 749.4 90.0 L 763.4 90.0 Z" fill="#b91c1c" stroke="#fff" stroke-width="1.5"></path><text x="756.4" y="68.0" text-anchor="middle" class="marker-label">B</text><title>诺德股份 买入 2026-06-18 10:11:59 17.350 / 100股</title></g><g><line x1="856.2" x2="856.2" y1="34" y2="302" stroke="rgba(23,32,42,.12)" stroke-dasharray="3 6"></line><path d="M 856.2 85.2 L 849.2 101.2 L 863.2 101.2 Z" fill="#b91c1c" stroke="#fff" stroke-width="1.5"></path><text x="856.2" y="79.2" text-anchor="middle" class="marker-label">B</text><title>诺德股份 买入 2026-06-18 10:13:00 17.200 / 100股</title></g><g><line x1="956.0" x2="956.0" y1="34" y2="302" stroke="rgba(23,32,42,.12)" stroke-dasharray="3 6"></line><path d="M 956.0 282.1 L 949.0 266.1 L 963.0 266.1 Z" fill="#1d4ed8" stroke="#fff" stroke-width="1.5"></path><text x="942.0" y="295.1" text-anchor="middle" class="marker-label">S</text><title>诺德股份 卖出 2026-06-24 10:08:37 14.850 / 1100股</title></g><text x="58.0" y="324" text-anchor="middle" class="axis">09:40</text><text x="956.0" y="324" text-anchor="middle" class="axis">10:10</text><text x="58" y="20" class="axis">成交5分钟窗口图：按真实成交价标记，行情K线待补</text><text x="956" y="20" text-anchor="end" class="axis">成交价高 17.62 / 低 14.85</text></svg></div>
+    </section>
+
+    <section class="panel">
+      <h2>操作与情绪复盘摘录</h2>
+      <div class="note"><strong>来源口径：</strong><ul class="source-list"><li>每日A股复盘 2026-06-18：诺德股份被当作科技/趋势方向观察对象。</li><li>6/22-6/26 周度交割复盘：诺德股份为当周最大已实现亏损来源。</li></ul></div>
+      <ul class="source-list"><li>6/22-6/26 周复盘把诺德列为本周最大已实现亏损源。</li><li>复盘重点不是交易频率，而是核心预期变弱后是否及时降级。</li><li>旧核心到了新周期不能续强，必须先降级，不能继续占仓位。</li></ul>
+      <div class="grid" style="margin-top:14px"><article class="card"><h3>错误核心</h3><p>用上一周的核心预期延长持仓，却没有让当周盘面重新证明它仍是核心。</p></article><article class="card"><h3>情绪链路</h3><p>因为它曾经强，所以倾向继续相信；真正应该做的是让强度、板块和资金承接重新投票。</p></article><article class="card"><h3>下一次规则</h3><p>跨周旧核心不能自动续命；新周不能主动转强，先降级处理，再看是否有二次买点。</p></article></div>
+    </section>
+
+    <section class="panel">
+      <h2>成交明细</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>日期</th><th>时间</th><th>方向</th><th>数量</th><th>成交价</th><th>发生金额</th></tr></thead>
+          <tbody>
+            <tr><td>2026-06-18</td><td>09:36:49</td><td class="pos">买入</td><td>200</td><td>17.620</td><td class="neg">-3,529.04</td></tr><tr><td>2026-06-18</td><td>09:46:22</td><td class="pos">买入</td><td>200</td><td>17.600</td><td class="neg">-3,525.04</td></tr><tr><td>2026-06-18</td><td>09:46:27</td><td class="pos">买入</td><td>100</td><td>17.530</td><td class="neg">-1,758.02</td></tr><tr><td>2026-06-18</td><td>09:47:06</td><td class="pos">买入</td><td>100</td><td>17.480</td><td class="neg">-1,753.02</td></tr><tr><td>2026-06-18</td><td>09:47:15</td><td class="pos">买入</td><td>100</td><td>17.500</td><td class="neg">-1,755.02</td></tr><tr><td>2026-06-18</td><td>10:10:52</td><td class="pos">买入</td><td>100</td><td>17.350</td><td class="neg">-1,740.02</td></tr><tr><td>2026-06-18</td><td>10:11:09</td><td class="pos">买入</td><td>100</td><td>17.400</td><td class="neg">-1,745.02</td></tr><tr><td>2026-06-18</td><td>10:11:59</td><td class="pos">买入</td><td>100</td><td>17.350</td><td class="neg">-1,740.02</td></tr><tr><td>2026-06-18</td><td>10:13:00</td><td class="pos">买入</td><td>100</td><td>17.200</td><td class="neg">-1,725.02</td></tr><tr><td>2026-06-24</td><td>10:08:37</td><td class="neg">卖出</td><td>1,100</td><td>14.850</td><td class="pos">+16,321.67</td></tr>
+          </tbody>
+        </table>
       </div>
     </section>
 
-    <section class="panel" id="five-minute-k">
-      <span class="label">5-Minute K Map</span>
-      <h2>5分K买卖点复盘</h2>
-      <div class="mini-grid"><span>6/22 收盘暂估 <b>17.15</b></span><span>6/23 收盘暂估 <b>15.44</b></span><span>6/24 卖出 <b>14.85</b></span><span>闭环亏损 <b class="is-loss">-2,948.55</b></span></div>
-      <div class="k-grid">
-        <article class="k-card"><div class="k-time"><span class="tag">买点资料</span><b>06/18 待补K</b><small>上一周买入</small></div><div class="k-note"><h3>成交事实</h3><p>期末持有 1,100 股，含费成本 19,270.22，成交均价约 17.477。</p></div><div class="k-action"><h3>应该补齐</h3><p>后续需要补 6/18 原始买点所在 5 分K，判断买点是否过急、是否追在一致后。</p></div></article>
-        <article class="k-card"><div class="k-time"><span class="tag">失效 1</span><b>06/22 全日</b><small>收 17.15</small></div><div class="k-note"><h3>成交事实</h3><p>新周没有卖出，按收盘价暂估，当日亏损约 -405.22。</p></div><div class="k-action"><h3>应该动作</h3><p>旧核心新周没有继续证明强度，应先降级观察，不能继续按强趋势核心对待。</p></div></article>
-        <article class="k-card"><div class="k-time"><span class="tag">失效 2</span><b>06/23 全日</b><small>收 15.44</small></div><div class="k-note"><h3>成交事实</h3><p>未卖出，暂时亏损扩大到约 -2,286.22。</p></div><div class="k-action"><h3>应该动作</h3><p>连续弱化已经不是正常分歧，应该从“格局核心”切换到“处理风险”。</p></div></article>
-        <article class="k-card"><div class="k-time"><span class="tag">卖点</span><b>06/24 10:05K</b><small>10:08:37</small></div><div class="k-note"><h3>成交事实</h3><p>14.85 卖出 1,100 股，净回收 16,321.67。</p></div><div class="k-action"><h3>复盘判断</h3><p>这是迟到的止损。真正的问题在前两天没有及时降级，而不是卖出那一刻本身。</p></div></article>
-      </div>
-    </section>
-
-    <section class="panel" id="rules">
-      <span class="label">Rules</span>
+    <section class="panel">
       <h2>沉淀规则</h2>
-      <div class="rule-grid">
-        <article class="card"><h3>旧核心新周重验</h3><p>跨周持仓必须重新验证强度，不能自动沿用上一周预期。</p></article>
-        <article class="card"><h3>不能证明先降级</h3><p>核心票不能续强，先降仓或清仓，不让旧预期占用判断空间。</p></article>
-        <article class="card"><h3>止损日不急切仓</h3><p>大亏止损后情绪最容易急着扳回，新方向必须先小仓验证。</p></article>
+      <div class="rules">
+        <article class="card"><h3>先定地位</h3><p>先问它是不是题材第一、是不是唯一核心、当前位置能不能做左侧；回答不清楚就降级为小仓观察。</p></article>
+        <article class="card"><h3>再定仓位</h3><p>旧高标、非唯一中高位、爆量弱转强、第二个大烂板，都不能给核心仓位。</p></article>
+        <article class="card"><h3>最后定卖点</h3><p>冲高回落、题材同步走弱、不能重新证明强度时，先保护账户，不把幻想留到隔日。</p></article>
       </div>
     </section>
-
-    <section class="panel"><h2>档案总结</h2><div class="note"><p>诺德这笔要沉淀的不是“卖晚了”三个字，而是：旧核心一旦不能继续证明强度，账户应该先保护自己，再寻找新主线。</p></div></section>
   </main>
 </body>
 </html>
