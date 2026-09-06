@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2026.08.31 - 2026.09.04 周度交易复盘</title>
+  <style>
+    :root{--ink:#17202a;--muted:#667085;--line:#dfe4ea;--paper:#ffffff;--wash:#f5f7fa;--red:#c2412d;--green:#14845f;--blue:#1d4ed8;--amber:#b45309;--violet:#6d5bd0;--shadow:0 18px 44px rgba(23,32,42,.08);--radius:10px}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;color:var(--ink);background:linear-gradient(180deg,#f7f8fa 0%,#eef2f5 100%);font-family:"Avenir Next","PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif;overflow-x:hidden}
+    a{color:inherit;-webkit-tap-highlight-color:rgba(194,65,45,.12);touch-action:manipulation}
+    a:focus-visible{outline:3px solid rgba(29,78,216,.38);outline-offset:3px}
+    p,li{color:var(--muted);line-height:1.72}
+    h1,h2,h3,p{margin-top:0;letter-spacing:0}
+    h1{margin:14px 0 14px;font-size:clamp(38px,5vw,68px);line-height:1.04;text-wrap:balance}
+    .date-range,.title-line{display:grid;gap:0}
+    h2{font-size:28px;margin-bottom:12px}
+    h3{font-size:18px;margin-bottom:8px}
+    .page-shell{width:min(1180px,calc(100vw - 28px));margin:0 auto;padding:34px 0 56px;display:grid;gap:20px}
+    section[id]{scroll-margin-top:18px}
+    .skip-link{position:absolute;left:16px;top:12px;z-index:5;transform:translateY(-140%);border-radius:8px;background:var(--ink);color:#fff;padding:10px 14px;text-decoration:none;font-weight:800}
+    .skip-link:focus-visible{transform:translateY(0)}
+    .page-shell > *,.hero > *,.panel > *,.account-placeholder > *,.metric,.week-card,.stock-card,.day-card{min-width:0}
+    .rail{position:fixed;left:18px;top:18px;z-index:2;display:flex;flex-direction:column;gap:7px}
+    .rail a{width:78px;min-height:34px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.9);text-decoration:none;color:var(--muted);font-size:12px;font-weight:800;box-shadow:0 10px 28px rgba(23,32,42,.06)}
+    .hero,.panel,.metric,.week-card,.stock-card,.loss-banner{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .hero{padding:30px;display:grid;grid-template-columns:1.08fr .92fr;gap:26px;align-items:end}
+    .panel{padding:24px}
+    .loss-banner{padding:28px;border:2px solid rgba(194,65,45,.24);background:linear-gradient(135deg,#fff1ed 0%,#fff 64%)}
+    .loss-banner h1{font-size:clamp(34px,4vw,54px);line-height:1.05;margin:8px 0 16px}
+    .loss-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+    .loss-grid article{background:#fff;border:1px solid rgba(194,65,45,.16);border-radius:8px;padding:16px}
+    .loss-grid b{display:block;margin-bottom:7px;font-size:17px}
+    .loss-grid p{margin-bottom:0}
+    .label{display:inline-flex;width:max-content;color:var(--red);background:#fff1ed;padding:7px 10px;border-radius:999px;font-size:12px;font-weight:800}
+    .button-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+    .button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;border-radius:8px;background:var(--ink);color:#fff;text-decoration:none;font-weight:800;transition:transform .16s ease,border-color .16s ease,background-color .16s ease}
+    .button:hover{transform:translateY(-1px);background:#0f1720}
+    .button.secondary{background:#fff;color:var(--ink);border:1px solid var(--line)}
+    .button.secondary:hover{background:#f8fafc;border-color:#c6d0dc}
+    .metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .metric{padding:16px;min-height:106px;display:grid;align-content:space-between}
+    .metric span,.metric small{color:var(--muted);font-size:12px}
+    .metric strong{font-size:22px;line-height:1.18;word-break:break-word;font-variant-numeric:tabular-nums}
+    .lead{font-size:17px;color:#334155}
+    .thesis-grid,.summary-grid,.stock-metrics,.day-numbers,.missing-list,.entrance-grid,.dimension-stack,.dimension-grid{display:grid;gap:12px}
+    .thesis-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .thesis-grid article,.rules article,.missing-list article{background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px}
+    .thesis-grid b,.rules b,.missing-list b{display:block;margin-bottom:7px}
+    .data-panel{display:grid;grid-template-columns:.95fr 1.05fr;gap:22px;align-items:center}
+    .summary-grid,.latest-summary,.account-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+    .summary-grid span,.latest-summary span,.mini-grid span,.day-numbers span,.stock-metrics span,.mini-ledger span,.account-summary span,.account-strip span{background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:10px;color:var(--muted);font-size:13px}
+    .summary-grid b,.latest-summary b,.mini-grid b,.day-numbers b,.stock-metrics b,.mini-ledger b,.account-summary b,.account-strip b{display:block;color:var(--ink);font-size:17px;margin-top:4px}
+    .stock-metrics{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .stock-metrics em{display:block;font-style:normal;font-size:12px;color:var(--muted);margin-top:3px}
+    .table-wrap{width:100%;overflow-x:auto;border:1px solid var(--line);border-radius:9px;background:#fff;margin:14px 0}
+    table{width:100%;min-width:920px;border-collapse:collapse;font-size:13px}
+    th,td{padding:11px 12px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+    th:first-child,td:first-child{text-align:left}
+    th{background:#f8fafc;color:var(--muted)}
+    .reflection-cell{text-align:left;white-space:normal;min-width:260px;color:var(--ink)}
+    .compact-table table{min-width:760px}
+    .is-profit,.is-buy{color:var(--red)}
+    .is-loss{color:var(--green)}
+    .is-sell{color:var(--blue)}
+    .account-placeholder{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;align-items:center;border:1px dashed #b8c1cc;border-radius:10px;background:#f8fafc;padding:18px}
+    .account-placeholder strong{font-size:22px}
+    .account-bars{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin:18px 0}
+    .account-day{border:1px solid var(--line);border-radius:8px;background:#fff;padding:12px;display:grid;gap:8px;min-height:236px}
+    .account-day-head{display:flex;justify-content:space-between;gap:8px;color:var(--muted);font-size:12px}
+    .account-day-head b{color:var(--ink);font-size:15px}
+    .account-bar-track{height:92px;border-radius:7px;background:#f1f5f9;display:flex;align-items:end;overflow:hidden}
+    .account-bar-track i{display:block;width:100%;border-radius:7px 7px 0 0;background:linear-gradient(180deg,#c2412d,#e8917f)}
+    .account-day strong{font-size:19px}
+    .account-day small{color:var(--muted);line-height:1.45}
+    .position-meter{height:8px;border-radius:999px;background:#edf2f7;overflow:hidden}
+    .position-meter i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#1d4ed8,#7fb0ff)}
+    .mini-ledger,.mini-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+    .stock-grid{display:grid;gap:16px;margin-top:18px}
+    .stock-card{padding:18px;box-shadow:none}
+    .stock-card-head,.week-head,.day-card-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+    .code,.chip{display:inline-flex;white-space:nowrap;border:1px solid var(--line);border-radius:999px;background:#f8fafc;padding:7px 10px;color:var(--muted);font-size:12px;font-weight:800}
+    .chart-frame{margin-top:14px;border:1px solid var(--line);border-radius:10px;overflow-x:auto;background:#fff}
+    .stock-chart{display:block;width:100%;min-width:860px;height:auto}
+    .stock-chart rect{fill:#fff}
+    .stock-chart .axis line,.stock-chart .day-grid line{stroke:rgba(23,32,42,.10);stroke-dasharray:4 6}
+    .stock-chart .axis text,.stock-chart .day-grid text{fill:var(--muted);font-size:12px}
+    .stock-chart path{stroke:var(--ink);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+    .trade-marker.buy circle{fill:var(--red);stroke:#fff;stroke-width:2}
+    .trade-marker.sell circle{fill:var(--blue);stroke:#fff;stroke-width:2}
+    .trade-marker text{font-size:11px;font-weight:900;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+    .trade-marker.buy text{fill:var(--red)}
+    .trade-marker.sell text{fill:var(--blue)}
+    .chart-empty{padding:22px;display:grid;gap:6px;color:var(--muted)}
+    .chart-empty b{color:var(--ink)}
+    .day-grid-cards{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+    .day-card{border:1px solid var(--line);border-radius:8px;background:#fff;padding:15px;display:grid;gap:10px}
+    .day-card-head{display:grid;gap:8px}
+    .day-card-head span{display:block;color:var(--muted);font-size:12px;margin-top:3px}
+    .day-numbers{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .account-strip{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+    .day-card p{margin-bottom:0}
+    .source-line{display:grid;gap:5px;border-top:1px solid var(--line);padding-top:10px;color:var(--blue);font-size:13px;font-weight:800}
+    .source-line small{color:var(--muted);font-weight:500;line-height:1.55}
+    .rules{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+    .rules article span{display:inline-flex;color:var(--blue);font-size:12px;font-weight:900;margin-bottom:8px}
+    .missing-list{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .archive{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+    .week-card{padding:20px;display:grid;gap:14px;text-decoration:none;color:inherit;transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease}
+    .week-card:hover{border-color:#c6d0dc;box-shadow:0 20px 48px rgba(23,32,42,.1);transform:translateY(-1px)}
+    .latest-link{border-color:rgba(29,78,216,.28)}
+    .entrance-grid,.dimension-grid.time{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .dimension-grid.outcome{grid-template-columns:1fr}
+    .dimension-head{display:flex;justify-content:space-between;gap:14px;align-items:end;margin-top:10px}
+    .dimension-head h3{margin:0;font-size:20px}
+    .dimension-head p{margin:0;max-width:620px;font-size:14px}
+    .dimension-mark{display:inline-flex;white-space:nowrap;border:1px solid var(--line);border-radius:999px;background:#f8fafc;padding:7px 10px;color:var(--muted);font-size:12px;font-weight:800}
+    .entrance-grid .mini-grid{grid-template-columns:1fr}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button,.week-card{transition:none}.button:hover,.week-card:hover{transform:none}}
+    @media(max-width:1260px){.rail{position:static;width:min(1180px,calc(100vw - 28px));margin:18px auto 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}.rail a{width:auto}}
+    @media(max-width:920px){.hero,.data-panel,.account-placeholder{grid-template-columns:1fr}.metrics,.summary-grid,.latest-summary,.account-summary,.stock-metrics,.mini-ledger,.mini-grid,.thesis-grid,.rules,.missing-list,.archive,.entrance-grid,.dimension-grid.time,.dimension-grid.outcome,.loss-grid{grid-template-columns:1fr}.dimension-head{display:grid}.account-bars{grid-template-columns:repeat(2,minmax(0,1fr))}.day-grid-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.page-shell{width:min(calc(100vw - 16px),1180px);padding-top:22px}.hero,.panel,.loss-banner{padding:20px}}
+    @media(max-width:560px){.page-shell,.rail{width:calc(100% - 16px);max-width:100%;margin-left:auto;margin-right:auto}.rail{grid-template-columns:repeat(2,minmax(0,1fr))}.day-grid-cards,.account-bars,.account-strip{grid-template-columns:1fr}h1{font-size:34px}.metric strong{font-size:19px}}
+  </style>
+</head>
+<body>
+  <nav class="rail" aria-label="页面导航">
+    <a href="../weekly-trading-review/">周度主页</a>
+    <a href="../">总入口</a>
+    <a href="#overview">总览</a>
+    <a href="#profit-loss">盈亏票</a>
+    <a href="#account">账户</a>
+    <a href="#stocks">标的</a>
+    <a href="#daily">逐日</a>
+    <a href="#rules">规则</a>
+    <a href="#trades">成交</a>
+  </nav>
+  <main class="page-shell">
+    <section class="hero" id="overview">
+      <div>
+        <span class="label">草稿版 / 成交回报口径</span>
+        <h1><span class="date-range"><span>2026.08.31 -</span><span>2026.09.04</span></span>周度交易复盘</h1>
+        <p>当前版本基于 2026/8/31-9/4 成交截图先做草稿；账户日收益表、期末持仓截图、历史持仓成本、每日操作&情绪复盘和二次反思待补后再校准。</p>
+        <div class="button-row">
+          <a class="button" href="../weekly-trading-review/">返回周度主页</a>
+          <a class="button secondary" href="#missing">待补清单</a>
+        </div>
+      </div>
+      <div class="metrics">
+        <article class="metric"><span>成交笔数</span><strong class="">11</strong><small>仅统计截图中“已成”记录</small></article>
+        <article class="metric"><span>账户日收益</span><strong class="">待补</strong><small>日收益率合计 待补</small></article>
+        <article class="metric"><span>期末总金额</span><strong class="">待补</strong><small>仓位 待补 / 现金 11,169.91</small></article>
+        <article class="metric"><span>可见闭环盈亏</span><strong class="is-loss">-965.38</strong><small>同周买卖FIFO，含截图费用</small></article>
+      </div>
+    </section>
+
+    <section class="panel thesis-panel">
+      <span class="label">Week Thesis</span>
+      <h2>这一周先写成一个核心问题</h2>
+      <p class="lead">本周先版的核心问题是：旧仓卖出后，新的短线闭环质量不够稳定。金健米业小赚，说明有利润能走；但时代出版和欢瑞世纪连续亏损，说明在传媒/影视方向的题材地位、唯一性和买点级别还需要重新核对。账户收益和仓位待补，所以这里先不下最终周级结论。</p>
+      <div class="thesis-grid">
+        <article><b>做对</b><p>金健米业隔日小赚兑现，说明尾盘试错后次日快速处理是有效的，没有把套利票拖成被动持仓。</p></article>
+        <article><b>待优化</b><p>时代出版和欢瑞世纪连续亏损，重点不是单笔买卖价差，而是进入前有没有确认板块回流、个股唯一性和隔日承接预期。</p></article>
+        <article><b>待确认</b><p>百花医药、昊华科技是历史仓卖出，缺买入成本；账户日收益、仓位、期末总资产和二次反思也需要你后续补齐。</p></article>
+      </div>
+    </section>
+
+    <section class="panel data-panel">
+      <div>
+        <span class="label">Data Scope</span>
+        <h2>本版数据口径</h2>
+        <p>截图是成交查询，不包含期末持仓市值和历史买入成本。本页按“发生金额”复盘本周能闭环的票；百花医药、昊华科技因缺历史成本暂不计算真实盈亏，账户收益表和期末持仓截图补齐后再校准。</p>
+      </div>
+      <div class="summary-grid">
+        <span>买入笔数 <b>5</b></span>
+        <span>卖出笔数 <b>6</b></span>
+        <span>买入金额 <b>15,273.00</b></span>
+        <span>卖出金额 <b>26,497.00</b></span>
+        <span>现金差额 <b class="is-profit">+11,155.43</b></span>
+        <span>费用合计 <b>68.24</b></span>
+      </div>
+    </section>
+
+    <section class="panel" id="profit-loss">
+    <span class="label">Profit / Loss Roots</span>
+    <h2>本周赚钱/亏损主要票及其分析</h2>
+    <div class="thesis-grid">
+      <article>
+        <b>主要赚钱：金健米业 +156.03 / +4.31%</b>
+        <p>8/31尾盘买入，9/1早盘卖出，短线闭环小赚。赚钱根源是试错后没有拖泥带水，隔日有利润就兑现；但是否是农业线最强、是否卖早，需要等日度复盘和二次反思补齐后再定稿。</p>
+      </article>
+      <article>
+        <b>主要亏损：时代出版 -576.63 / -10.27%</b>
+        <p>9/2早盘买入，9/3早盘止损，是本周可见最大亏损。亏损根源暂定为“接力/题材地位未完全确认就上手”，需要补充当日传媒/文化方向的强弱排序和情绪背景。</p>
+      </article>
+      <article>
+        <b>连续亏损：欢瑞世纪 -476.34 / -9.23%</b>
+        <p>时代出版止损后，当天继续买入欢瑞世纪，次日再亏损卖出。两笔都在传媒/影视线附近，后面重点要确认：这是板块回流失败，还是非唯一核心的连续试错。</p>
+      </article>
+    </div>
+    <div class="rules">
+      <article><span>01</span><b>赚钱根源</b><p>金健米业盈利来自尾盘试错后隔日快速兑现，先手和卖出纪律都比较清楚。</p></article>
+      <article><span>02</span><b>亏损根源</b><p>时代出版、欢瑞世纪共同指向“题材地位和唯一性待验证”，不是简单卖点问题。</p></article>
+      <article><span>03</span><b>待核算票</b><p>百花医药、昊华科技只有卖出记录，缺历史成本，不能把现金到账直接当盈利。</p></article>
+      <article><span>04</span><b>下周重点</b><p>亏损后不要在同一弱方向连续找补，先确认板块回流、唯一核心和买点级别。</p></article>
+    </div>
+  </section>
+
+    <section class="panel account-panel" id="account">
+      <span class="label">Account Curve</span>
+      <h2>账户收益与仓位</h2>
+      <p class="lead">这部分按账户日收益表记录，和成交回报/FIFO闭环分开看。本周账户日收益、收益率、平均仓位和期末权益暂缺，先保留表格位置，等你补数据后直接校准。</p>
+      <div class="account-summary">
+        <span>账户日收益合计 <b class="">待补</b></span>
+        <span>期末总金额 <b>待补</b></span>
+        <span>平均仓位 <b>待补</b></span>
+        <span>期末现金余额 <b>11,169.91</b></span>
+        <span>截图闭环盈亏 <b class="is-loss">-965.38</b></span>
+        <span>最佳/最差日 <b>待补</b></span>
+      </div>
+      <div class="account-bars"><article class="account-day">
+    <div class="account-day-head"><b>周一</b><span>08-31</span></div>
+    <div class="account-bar-track"><i style="height:6%;background:#cbd5e1"></i></div>
+    <strong>待补</strong>
+    <small>收益率 / 收益金额 / 仓位待补</small>
+    <div class="position-meter" aria-label="周一 仓位待补"><i style="width:0%"></i></div>
+  </article><article class="account-day">
+    <div class="account-day-head"><b>周二</b><span>09-01</span></div>
+    <div class="account-bar-track"><i style="height:6%;background:#cbd5e1"></i></div>
+    <strong>待补</strong>
+    <small>收益率 / 收益金额 / 仓位待补</small>
+    <div class="position-meter" aria-label="周二 仓位待补"><i style="width:0%"></i></div>
+  </article><article class="account-day">
+    <div class="account-day-head"><b>周三</b><span>09-02</span></div>
+    <div class="account-bar-track"><i style="height:6%;background:#cbd5e1"></i></div>
+    <strong>待补</strong>
+    <small>收益率 / 收益金额 / 仓位待补</small>
+    <div class="position-meter" aria-label="周三 仓位待补"><i style="width:0%"></i></div>
+  </article><article class="account-day">
+    <div class="account-day-head"><b>周四</b><span>09-03</span></div>
+    <div class="account-bar-track"><i style="height:6%;background:#cbd5e1"></i></div>
+    <strong>待补</strong>
+    <small>收益率 / 收益金额 / 仓位待补</small>
+    <div class="position-meter" aria-label="周四 仓位待补"><i style="width:0%"></i></div>
+  </article><article class="account-day">
+    <div class="account-day-head"><b>周五</b><span>09-04</span></div>
+    <div class="account-bar-track"><i style="height:6%;background:#cbd5e1"></i></div>
+    <strong>待补</strong>
+    <small>收益率 / 收益金额 / 仓位待补</small>
+    <div class="position-meter" aria-label="周五 仓位待补"><i style="width:0%"></i></div>
+  </article></div>
+      <div class="table-wrap compact-table"><table>
+        <thead><tr><th>日期</th><th>星期</th><th>收益率</th><th>收益金额</th><th>仓位</th><th>当前总金额</th><th>成交笔数</th><th>买入金额</th><th>卖出金额</th><th>个人反思</th></tr></thead>
+        <tbody><tr>
+          <td>2026/08/31</td>
+          <td>周一</td>
+          <td>待补</td>
+          <td>待补</td>
+          <td>待补</td>
+          <td>待补</td>
+          <td>4</td>
+          <td>4,515.00</td>
+          <td>12,137.00</td>
+          <td class="reflection-cell">账户日收益、仓位、当前总金额待补；本行先展示成交统计。</td>
+        </tr><tr>
+          <td>2026/09/01</td>
+          <td>周二</td>
+          <td>待补</td>
+          <td>待补</td>
+          <td>待补</td>
+          <td>待补</td>
+          <td>2</td>
+          <td>0.00</td>
+          <td>4,625.00</td>
+          <td class="reflection-cell">账户日收益、仓位、当前总金额待补；本行先展示成交统计。</td>
+        </tr><tr>
+          <td>2026/09/02</td>
+          <td>周三</td>
+          <td>待补</td>
+          <td>待补</td>
+          <td>待补</td>
+          <td>待补</td>
+          <td>1</td>
+          <td>5,610.00</td>
+          <td>0.00</td>
+          <td class="reflection-cell">账户日收益、仓位、当前总金额待补；本行先展示成交统计。</td>
+        </tr><tr>
+          <td>2026/09/03</td>
+          <td>周四</td>
+          <td>待补</td>
+          <td>待补</td>
+          <td>待补</td>
+          <td>待补</td>
+          <td>3</td>
+          <td>5,148.00</td>
+          <td>5,046.00</td>
+          <td class="reflection-cell">账户日收益、仓位、当前总金额待补；本行先展示成交统计。</td>
+        </tr><tr>
+          <td>2026/09/04</td>
+          <td>周五</td>
+          <td>待补</td>
+          <td>待补</td>
+          <td>待补</td>
+          <td>待补</td>
+          <td>1</td>
+          <td>0.00</td>
+          <td>4,689.00</td>
+          <td class="reflection-cell">账户日收益、仓位、当前总金额待补；本行先展示成交统计。</td>
+        </tr></tbody>
+      </table></div>
+    </section>
+
+    <section class="panel" id="stocks">
+      <span class="label">Stock Review</span>
+      <h2>标的复盘与买卖点</h2>
+      <div class="table-wrap compact-table"><table>
+        <thead><tr><th>标的</th><th>买入数量</th><th>买入金额</th><th>卖出数量</th><th>卖出金额</th><th>可见已实现</th><th>期末可见</th></tr></thead>
+        <tbody><tr>
+    <td><a href="#stock-000892">000892 欢瑞世纪</a></td>
+    <td>900</td>
+    <td>5,148.00</td>
+    <td>900</td>
+    <td>4,689.00</td>
+    <td class="is-loss">-476.34</td>
+    <td>已清仓</td>
+  </tr><tr>
+    <td><a href="#stock-600551">600551 时代出版</a></td>
+    <td>600</td>
+    <td>5,610.00</td>
+    <td>600</td>
+    <td>5,046.00</td>
+    <td class="is-loss">-576.63</td>
+    <td>已清仓</td>
+  </tr><tr>
+    <td><a href="#stock-600127">600127 金健米业</a></td>
+    <td>300</td>
+    <td>3,612.00</td>
+    <td>300</td>
+    <td>3,780.00</td>
+    <td class="is-profit">+156.03</td>
+    <td>已清仓</td>
+  </tr><tr>
+    <td><a href="#stock-600354">600354 敦煌种业</a></td>
+    <td>100</td>
+    <td>903.00</td>
+    <td>100</td>
+    <td>845.00</td>
+    <td class="is-loss">-68.44</td>
+    <td>已清仓</td>
+  </tr><tr>
+    <td><a href="#stock-600721">600721 百花医药</a></td>
+    <td>0</td>
+    <td>0.00</td>
+    <td>500</td>
+    <td>6,950.00</td>
+    <td class="">历史成本待补</td>
+    <td>已清仓</td>
+  </tr><tr>
+    <td><a href="#stock-600378">600378 昊华科技</a></td>
+    <td>0</td>
+    <td>0.00</td>
+    <td>100</td>
+    <td>5,187.00</td>
+    <td class="">历史成本待补</td>
+    <td>已清仓</td>
+  </tr></tbody>
+      </table></div>
+      <div class="stock-grid"><article class="stock-card" id="stock-000892">
+      <div class="stock-card-head">
+        <div><span class="code">000892</span><h3>欢瑞世纪</h3></div>
+        <span class="chip">3 笔</span>
+      </div>
+      <div class="stock-metrics">
+        <span>买入 <b>900</b><em>5,148.00 / 现金5,158.00</em></span>
+        <span>卖出 <b>900</b><em>4,689.00 / 到账4,681.66</em></span>
+        <span>可见已实现 <b class="is-loss">-476.34</b><em>FIFO / 含截图费用</em></span>
+        <span>期末可见 <b>已清仓</b><em>持仓截图待校准</em></span>
+      </div>
+      <p>欢瑞世纪是本周第二个清楚亏损闭环：9/3 中午前后两笔买入900股，9/4早盘卖出，含费用约-476.34，约-9.23%。从成交行为看，更像亏损后继续在传媒/影视方向寻找修复，后续需要补充当日题材地位和买点确认。</p>
+      <div class="chart-frame"><svg class="stock-chart" viewBox="0 0 920 280" role="img" aria-label="欢瑞世纪 5分钟走势与成交点">
+    <rect x="0" y="0" width="920" height="280" rx="10"></rect>
+    <g class="axis"><g><line x1="54" x2="894" y1="234.0" y2="234.0"></line><text x="44" y="238.0" text-anchor="end">3.84</text></g><g><line x1="54" x2="894" y1="131.0" y2="131.0"></line><text x="44" y="135.0" text-anchor="end">4.88</text></g><g><line x1="54" x2="894" y1="28.0" y2="28.0"></line><text x="44" y="32.0" text-anchor="end">5.92</text></g></g>
+    <g class="day-grid"><g class="day-tick"><line x1="54.0" x2="54.0" y1="28" y2="234"></line><text x="54.0" y="262" text-anchor="middle">08-31</text></g><g class="day-tick"><line x1="222.1" x2="222.1" y1="28" y2="234"></line><text x="222.1" y="262" text-anchor="middle">09-01</text></g><g class="day-tick"><line x1="390.3" x2="390.3" y1="28" y2="234"></line><text x="390.3" y="262" text-anchor="middle">09-02</text></g><g class="day-tick"><line x1="558.4" x2="558.4" y1="28" y2="234"></line><text x="558.4" y="262" text-anchor="middle">09-03</text></g><g class="day-tick"><line x1="726.6" x2="726.6" y1="28" y2="234"></line><text x="726.6" y="262" text-anchor="middle">09-04</text></g></g>
+    <path d="M 54.0,214.1 L 54.7,188.4 L 55.4,193.3 L 56.1,193.3 L 56.8,204.2 L 57.5,188.4 L 58.2,188.4 L 58.9,188.4 L 59.6,188.4 L 60.3,188.4 L 61.0,188.4 L 61.7,188.4 L 62.4,188.4 L 63.1,188.4 L 63.8,188.4 L 64.5,188.4 L 65.2,188.4 L 65.9,188.4 L 66.6,188.4 L 67.3,188.4 L 68.0,188.4 L 68.7,188.4 L 69.3,188.4 L 70.0,188.4 L 70.7,188.4 L 71.4,188.4 L 72.1,188.4 L 72.8,188.4 L 73.5,188.4 L 74.2,188.4 L 74.9,188.4 L 75.6,188.4 L 76.3,188.4 L 77.0,188.4 L 77.7,188.4 L 78.4,188.4 L 79.1,188.4 L 79.8,188.4 L 80.5,188.4 L 81.2,188.4 L 81.9,188.4 L 82.6,188.4 L 83.3,188.4 L 84.0,188.4 L 84.7,188.4 L 85.4,188.4 L 86.1,188.4 L 86.8,188.4 L 87.5,188.4 L 88.2,188.4 L 88.9,188.4 L 89.6,188.4 L 90.3,188.4 L 91.0,188.4 L 91.7,188.4 L 92.4,188.4 L 93.1,188.4 L 93.8,188.4 L 94.5,188.4 L 95.2,188.4 L 95.9,188.4 L 96.6,188.4 L 97.3,188.4 L 98.0,188.4 L 98.7,188.4 L 99.3,188.4 L 100.0,188.4 L 100.7,188.4 L 101.4,188.4 L 102.1,188.4 L 102.8,188.4 L 103.5,188.4 L 104.2,188.4 L 104.9,188.4 L 105.6,188.4 L 106.3,188.4 L 107.0,188.4 L 107.7,188.4 L 108.4,188.4 L 109.1,188.4 L 109.8,188.4 L 110.5,188.4 L 111.2,188.4 L 111.9,188.4 L 112.6,188.4 L 113.3,188.4 L 114.0,188.4 L 114.7,188.4 L 115.4,188.4 L 116.1,188.4 L 116.8,188.4 L 117.5,188.4 L 118.2,188.4 L 118.9,188.4 L 119.6,188.4 L 120.3,188.4 L 121.0,188.4 L 121.7,188.4 L 122.4,188.4 L 123.1,188.4 L 123.8,188.4 L 124.5,188.4 L 125.2,188.4 L 125.9,188.4 L 126.6,188.4 L 127.3,188.4 L 128.0,188.4 L 128.7,188.4 L 129.3,188.4 L 130.0,188.4 L 130.7,188.4 L 131.4,188.4 L 132.1,188.4 L 132.8,188.4 L 133.5,188.4 L 134.2,188.4 L 134.9,188.4 L 135.6,188.4 L 136.3,188.4 L 137.0,188.4 L 137.7,188.4 L 138.4,188.4 L 139.1,188.4 L 139.8,188.4 L 140.5,188.4 L 141.2,188.4 L 141.9,188.4 L 142.6,188.4 L 143.3,188.4 L 144.0,188.4 L 144.7,188.4 L 145.4,188.4 L 146.1,188.4 L 146.8,188.4 L 147.5,188.4 L 148.2,188.4 L 148.9,188.4 L 149.6,188.4 L 150.3,188.4 L 151.0,188.4 L 151.7,188.4 L 152.4,188.4 L 153.1,188.4 L 153.8,188.4 L 154.5,188.4 L 155.2,188.4 L 155.9,188.4 L 156.6,188.4 L 157.3,188.4 L 158.0,188.4 L 158.7,188.4 L 159.3,188.4 L 160.0,188.4 L 160.7,188.4 L 161.4,188.4 L 162.1,188.4 L 162.8,188.4 L 163.5,188.4 L 164.2,188.4 L 164.9,188.4 L 165.6,188.4 L 166.3,188.4 L 167.0,188.4 L 167.7,188.4 L 168.4,188.4 L 169.1,188.4 L 169.8,188.4 L 170.5,188.4 L 171.2,188.4 L 171.9,188.4 L 172.6,188.4 L 173.3,188.4 L 174.0,188.4 L 174.7,188.4 L 175.4,188.4 L 176.1,188.4 L 176.8,188.4 L 177.5,188.4 L 178.2,188.4 L 178.9,188.4 L 179.6,188.4 L 180.3,188.4 L 181.0,188.4 L 181.7,188.4 L 182.4,188.4 L 183.1,188.4 L 183.8,188.4 L 184.5,188.4 L 185.2,188.4 L 185.9,188.4 L 186.6,188.4 L 187.3,188.4 L 188.0,188.4 L 188.7,188.4 L 189.3,188.4 L 190.0,188.4 L 190.7,188.4 L 191.4,188.4 L 192.1,188.4 L 192.8,188.4 L 193.5,188.4 L 194.2,188.4 L 194.9,188.4 L 195.6,188.4 L 196.3,188.4 L 197.0,188.4 L 197.7,188.4 L 198.4,188.4 L 199.1,188.4 L 199.8,188.4 L 200.5,188.4 L 201.2,188.4 L 201.9,188.4 L 202.6,188.4 L 203.3,188.4 L 204.0,188.4 L 204.7,188.4 L 205.4,188.4 L 206.1,188.4 L 206.8,188.4 L 207.5,188.4 L 208.2,188.4 L 208.9,188.4 L 209.6,188.4 L 210.3,188.4 L 211.0,188.4 L 211.7,188.4 L 212.4,188.4 L 213.1,188.4 L 213.8,188.4 L 214.5,188.4 L 215.2,188.4 L 215.9,188.4 L 216.6,188.4 L 217.3,188.4 L 218.0,188.4 L 218.7,188.4 L 219.3,188.4 L 220.0,188.4 L 220.7,188.4 L 221.4,188.4 L 222.1,145.8 L 222.8,145.8 L 223.5,145.8 L 224.2,145.8 L 224.9,145.8 L 225.6,145.8 L 226.3,145.8 L 227.0,145.8 L 227.7,145.8 L 228.4,145.8 L 229.1,145.8 L 229.8,145.8 L 230.5,145.8 L 231.2,145.8 L 231.9,145.8 L 232.6,145.8 L 233.3,145.8 L 234.0,145.8 L 234.7,145.8 L 235.4,145.8 L 236.1,145.8 L 236.8,145.8 L 237.5,145.8 L 238.2,145.8 L 238.9,145.8 L 239.6,145.8 L 240.3,145.8 L 241.0,145.8 L 241.7,145.8 L 242.4,145.8 L 243.1,145.8 L 243.8,145.8 L 244.5,145.8 L 245.2,145.8 L 245.9,145.8 L 246.6,145.8 L 247.3,145.8 L 248.0,145.8 L 248.7,145.8 L 249.3,145.8 L 250.0,145.8 L 250.7,145.8 L 251.4,145.8 L 252.1,145.8 L 252.8,145.8 L 253.5,145.8 L 254.2,145.8 L 254.9,145.8 L 255.6,145.8 L 256.3,145.8 L 257.0,145.8 L 257.7,145.8 L 258.4,145.8 L 259.1,145.8 L 259.8,145.8 L 260.5,145.8 L 261.2,145.8 L 261.9,145.8 L 262.6,145.8 L 263.3,145.8 L 264.0,145.8 L 264.7,145.8 L 265.4,145.8 L 266.1,145.8 L 266.8,145.8 L 267.5,145.8 L 268.2,145.8 L 268.9,145.8 L 269.6,145.8 L 270.3,145.8 L 271.0,145.8 L 271.7,145.8 L 272.4,145.8 L 273.1,145.8 L 273.8,145.8 L 274.5,145.8 L 275.2,145.8 L 275.9,145.8 L 276.6,145.8 L 277.3,145.8 L 278.0,145.8 L 278.7,145.8 L 279.3,145.8 L 280.0,145.8 L 280.7,145.8 L 281.4,145.8 L 282.1,145.8 L 282.8,145.8 L 283.5,145.8 L 284.2,145.8 L 284.9,145.8 L 285.6,145.8 L 286.3,145.8 L 287.0,145.8 L 287.7,145.8 L 288.4,145.8 L 289.1,145.8 L 289.8,145.8 L 290.5,145.8 L 291.2,145.8 L 291.9,145.8 L 292.6,145.8 L 293.3,145.8 L 294.0,145.8 L 294.7,145.8 L 295.4,145.8 L 296.1,145.8 L 296.8,145.8 L 297.5,145.8 L 298.2,145.8 L 298.9,145.8 L 299.6,145.8 L 300.3,145.8 L 301.0,145.8 L 301.7,145.8 L 302.4,145.8 L 303.1,145.8 L 303.8,145.8 L 304.5,145.8 L 305.2,145.8 L 305.9,145.8 L 306.6,145.8 L 307.3,145.8 L 308.0,145.8 L 308.7,145.8 L 309.3,145.8 L 310.0,145.8 L 310.7,145.8 L 311.4,145.8 L 312.1,145.8 L 312.8,145.8 L 313.5,145.8 L 314.2,145.8 L 314.9,145.8 L 315.6,145.8 L 316.3,145.8 L 317.0,145.8 L 317.7,145.8 L 318.4,145.8 L 319.1,145.8 L 319.8,145.8 L 320.5,145.8 L 321.2,145.8 L 321.9,145.8 L 322.6,145.8 L 323.3,145.8 L 324.0,145.8 L 324.7,145.8 L 325.4,145.8 L 326.1,145.8 L 326.8,145.8 L 327.5,145.8 L 328.2,145.8 L 328.9,145.8 L 329.6,145.8 L 330.3,145.8 L 331.0,145.8 L 331.7,145.8 L 332.4,145.8 L 333.1,145.8 L 333.8,145.8 L 334.5,145.8 L 335.2,145.8 L 335.9,145.8 L 336.6,145.8 L 337.3,145.8 L 338.0,145.8 L 338.7,145.8 L 339.3,145.8 L 340.0,145.8 L 340.7,145.8 L 341.4,145.8 L 342.1,145.8 L 342.8,145.8 L 343.5,145.8 L 344.2,145.8 L 344.9,145.8 L 345.6,145.8 L 346.3,145.8 L 347.0,145.8 L 347.7,145.8 L 348.4,145.8 L 349.1,145.8 L 349.8,145.8 L 350.5,145.8 L 351.2,145.8 L 351.9,145.8 L 352.6,145.8 L 353.3,145.8 L 354.0,145.8 L 354.7,145.8 L 355.4,145.8 L 356.1,145.8 L 356.8,145.8 L 357.5,145.8 L 358.2,145.8 L 358.9,145.8 L 359.6,145.8 L 360.3,145.8 L 361.0,145.8 L 361.7,145.8 L 362.4,145.8 L 363.1,145.8 L 363.8,145.8 L 364.5,145.8 L 365.2,145.8 L 365.9,145.8 L 366.6,145.8 L 367.3,145.8 L 368.0,145.8 L 368.7,145.8 L 369.3,145.8 L 370.0,145.8 L 370.7,145.8 L 371.4,145.8 L 372.1,145.8 L 372.8,145.8 L 373.5,145.8 L 374.2,145.8 L 374.9,145.8 L 375.6,145.8 L 376.3,145.8 L 377.0,145.8 L 377.7,145.8 L 378.4,145.8 L 379.1,145.8 L 379.8,145.8 L 380.5,145.8 L 381.2,145.8 L 381.9,145.8 L 382.6,145.8 L 383.3,145.8 L 384.0,145.8 L 384.7,145.8 L 385.4,145.8 L 386.1,145.8 L 386.8,145.8 L 387.5,145.8 L 388.2,145.8 L 388.9,145.8 L 389.6,145.8 L 390.3,99.4 L 391.0,99.4 L 391.7,99.4 L 392.4,99.4 L 393.1,99.4 L 393.8,99.4 L 394.5,99.4 L 395.2,99.4 L 395.9,99.4 L 396.6,99.4 L 397.3,99.4 L 398.0,99.4 L 398.7,99.4 L 399.3,99.4 L 400.0,99.4 L 400.7,99.4 L 401.4,99.4 L 402.1,99.4 L 402.8,99.4 L 403.5,99.4 L 404.2,99.4 L 404.9,99.4 L 405.6,99.4 L 406.3,99.4 L 407.0,99.4 L 407.7,99.4 L 408.4,99.4 L 409.1,99.4 L 409.8,99.4 L 410.5,99.4 L 411.2,99.4 L 411.9,99.4 L 412.6,99.4 L 413.3,99.4 L 414.0,99.4 L 414.7,99.4 L 415.4,99.4 L 416.1,99.4 L 416.8,99.4 L 417.5,99.4 L 418.2,99.4 L 418.9,99.4 L 419.6,99.4 L 420.3,99.4 L 421.0,99.4 L 421.7,99.4 L 422.4,99.4 L 423.1,99.4 L 423.8,99.4 L 424.5,99.4 L 425.2,99.4 L 425.9,99.4 L 426.6,99.4 L 427.3,99.4 L 428.0,99.4 L 428.7,99.4 L 429.3,99.4 L 430.0,99.4 L 430.7,99.4 L 431.4,99.4 L 432.1,99.4 L 432.8,99.4 L 433.5,99.4 L 434.2,99.4 L 434.9,99.4 L 435.6,99.4 L 436.3,99.4 L 437.0,99.4 L 437.7,99.4 L 438.4,99.4 L 439.1,99.4 L 439.8,99.4 L 440.5,99.4 L 441.2,99.4 L 441.9,99.4 L 442.6,99.4 L 443.3,99.4 L 444.0,99.4 L 444.7,99.4 L 445.4,99.4 L 446.1,99.4 L 446.8,99.4 L 447.5,99.4 L 448.2,99.4 L 448.9,99.4 L 449.6,99.4 L 450.3,99.4 L 451.0,99.4 L 451.7,99.4 L 452.4,99.4 L 453.1,99.4 L 453.8,99.4 L 454.5,99.4 L 455.2,99.4 L 455.9,99.4 L 456.6,99.4 L 457.3,99.4 L 458.0,99.4 L 458.7,99.4 L 459.3,99.4 L 460.0,99.4 L 460.7,99.4 L 461.4,99.4 L 462.1,99.4 L 462.8,99.4 L 463.5,99.4 L 464.2,99.4 L 464.9,99.4 L 465.6,99.4 L 466.3,99.4 L 467.0,99.4 L 467.7,99.4 L 468.4,99.4 L 469.1,99.4 L 469.8,99.4 L 470.5,99.4 L 471.2,99.4 L 471.9,99.4 L 472.6,99.4 L 473.3,99.4 L 474.0,99.4 L 474.7,99.4 L 475.4,99.4 L 476.1,99.4 L 476.8,99.4 L 477.5,99.4 L 478.2,99.4 L 478.9,99.4 L 479.6,99.4 L 480.3,99.4 L 481.0,99.4 L 481.7,99.4 L 482.4,99.4 L 483.1,99.4 L 483.8,99.4 L 484.5,99.4 L 485.2,99.4 L 485.9,99.4 L 486.6,99.4 L 487.3,99.4 L 488.0,99.4 L 488.7,99.4 L 489.3,99.4 L 490.0,99.4 L 490.7,99.4 L 491.4,99.4 L 492.1,99.4 L 492.8,99.4 L 493.5,99.4 L 494.2,99.4 L 494.9,99.4 L 495.6,99.4 L 496.3,99.4 L 497.0,99.4 L 497.7,99.4 L 498.4,99.4 L 499.1,99.4 L 499.8,99.4 L 500.5,99.4 L 501.2,99.4 L 501.9,99.4 L 502.6,99.4 L 503.3,99.4 L 504.0,99.4 L 504.7,99.4 L 505.4,99.4 L 506.1,99.4 L 506.8,99.4 L 507.5,99.4 L 508.2,99.4 L 508.9,99.4 L 509.6,99.4 L 510.3,99.4 L 511.0,99.4 L 511.7,99.4 L 512.4,99.4 L 513.1,99.4 L 513.8,99.4 L 514.5,99.4 L 515.2,99.4 L 515.9,99.4 L 516.6,99.4 L 517.3,99.4 L 518.0,99.4 L 518.7,99.4 L 519.3,99.4 L 520.0,99.4 L 520.7,99.4 L 521.4,99.4 L 522.1,99.4 L 522.8,99.4 L 523.5,99.4 L 524.2,99.4 L 524.9,99.4 L 525.6,99.4 L 526.3,99.4 L 527.0,99.4 L 527.7,99.4 L 528.4,99.4 L 529.1,99.4 L 529.8,99.4 L 530.5,99.4 L 531.2,99.4 L 531.9,99.4 L 532.6,99.4 L 533.3,99.4 L 534.0,99.4 L 534.7,99.4 L 535.4,99.4 L 536.1,99.4 L 536.8,99.4 L 537.5,99.4 L 538.2,99.4 L 538.9,99.4 L 539.6,99.4 L 540.3,99.4 L 541.0,99.4 L 541.7,99.4 L 542.4,99.4 L 543.1,99.4 L 543.8,99.4 L 544.5,99.4 L 545.2,99.4 L 545.9,99.4 L 546.6,99.4 L 547.3,99.4 L 548.0,99.4 L 548.7,99.4 L 549.3,99.4 L 550.0,99.4 L 550.7,99.4 L 551.4,99.4 L 552.1,99.4 L 552.8,99.4 L 553.5,99.4 L 554.2,99.4 L 554.9,99.4 L 555.6,99.4 L 556.3,99.4 L 557.0,99.4 L 557.7,99.4 L 558.4,72.7 L 559.1,47.9 L 559.8,47.9 L 560.5,47.9 L 561.2,47.9 L 561.9,47.9 L 562.6,47.9 L 563.3,47.9 L 564.0,47.9 L 564.7,47.9 L 565.4,47.9 L 566.1,47.9 L 566.8,47.9 L 567.5,47.9 L 568.2,47.9 L 568.9,47.9 L 569.6,47.9 L 570.3,47.9 L 571.0,47.9 L 571.7,47.9 L 572.4,47.9 L 573.1,47.9 L 573.8,47.9 L 574.5,47.9 L 575.2,47.9 L 575.9,47.9 L 576.6,47.9 L 577.3,47.9 L 578.0,47.9 L 578.7,47.9 L 579.3,47.9 L 580.0,47.9 L 580.7,47.9 L 581.4,47.9 L 582.1,47.9 L 582.8,47.9 L 583.5,47.9 L 584.2,47.9 L 584.9,47.9 L 585.6,47.9 L 586.3,47.9 L 587.0,47.9 L 587.7,47.9 L 588.4,47.9 L 589.1,47.9 L 589.8,47.9 L 590.5,47.9 L 591.2,47.9 L 591.9,47.9 L 592.6,47.9 L 593.3,47.9 L 594.0,47.9 L 594.7,47.9 L 595.4,47.9 L 596.1,47.9 L 596.8,47.9 L 597.5,47.9 L 598.2,47.9 L 598.9,47.9 L 599.6,47.9 L 600.3,47.9 L 601.0,47.9 L 601.7,47.9 L 602.4,47.9 L 603.1,47.9 L 603.8,47.9 L 604.5,47.9 L 605.2,47.9 L 605.9,47.9 L 606.6,47.9 L 607.3,47.9 L 608.0,47.9 L 608.7,47.9 L 609.3,47.9 L 610.0,47.9 L 610.7,47.9 L 611.4,47.9 L 612.1,47.9 L 612.8,47.9 L 613.5,47.9 L 614.2,47.9 L 614.9,47.9 L 615.6,47.9 L 616.3,47.9 L 617.0,47.9 L 617.7,47.9 L 618.4,47.9 L 619.1,47.9 L 619.8,47.9 L 620.5,47.9 L 621.2,47.9 L 621.9,47.9 L 622.6,47.9 L 623.3,47.9 L 624.0,47.9 L 624.7,47.9 L 625.4,47.9 L 626.1,47.9 L 626.8,47.9 L 627.5,47.9 L 628.2,47.9 L 628.9,47.9 L 629.6,47.9 L 630.3,47.9 L 631.0,47.9 L 631.7,47.9 L 632.4,47.9 L 633.1,47.9 L 633.8,47.9 L 634.5,47.9 L 635.2,47.9 L 635.9,47.9 L 636.6,47.9 L 637.3,64.7 L 638.0,67.7 L 638.7,70.7 L 639.3,80.6 L 640.0,82.5 L 640.7,81.6 L 641.4,87.5 L 642.1,77.6 L 642.8,97.4 L 643.5,94.4 L 644.2,102.3 L 644.9,104.3 L 645.6,113.2 L 646.3,115.2 L 647.0,113.2 L 647.7,110.2 L 648.4,112.2 L 649.1,105.3 L 649.8,107.3 L 650.5,108.3 L 651.2,112.2 L 651.9,111.2 L 652.6,113.2 L 653.3,114.2 L 654.0,110.2 L 654.7,116.2 L 655.4,112.2 L 656.1,107.3 L 656.8,101.3 L 657.5,107.3 L 658.2,109.2 L 658.9,110.2 L 659.6,107.3 L 660.3,112.2 L 661.0,111.2 L 661.7,113.2 L 662.4,113.2 L 663.1,112.2 L 663.8,112.2 L 664.5,113.2 L 665.2,115.2 L 665.9,113.2 L 666.6,113.2 L 667.3,114.2 L 668.0,108.3 L 668.7,91.4 L 669.3,89.5 L 670.0,103.3 L 670.7,97.4 L 671.4,98.4 L 672.1,99.4 L 672.8,100.3 L 673.5,106.3 L 674.2,107.3 L 674.9,106.3 L 675.6,106.3 L 676.3,104.3 L 677.0,105.3 L 677.7,108.3 L 678.4,107.3 L 679.1,107.3 L 679.8,107.3 L 680.5,107.3 L 681.2,108.3 L 681.9,109.2 L 682.6,110.2 L 683.3,108.3 L 684.0,106.3 L 684.7,108.3 L 685.4,107.3 L 686.1,113.2 L 686.8,111.2 L 687.5,112.2 L 688.2,112.2 L 688.9,112.2 L 689.6,111.2 L 690.3,112.2 L 691.0,111.2 L 691.7,114.2 L 692.4,111.2 L 693.1,102.3 L 693.8,75.6 L 694.5,54.9 L 695.2,72.7 L 695.9,69.7 L 696.6,69.7 L 697.3,80.6 L 698.0,82.5 L 698.7,70.7 L 699.3,79.6 L 700.0,75.6 L 700.7,80.6 L 701.4,81.6 L 702.1,89.5 L 702.8,87.5 L 703.5,81.6 L 704.2,86.5 L 704.9,86.5 L 705.6,91.4 L 706.3,89.5 L 707.0,99.4 L 707.7,95.4 L 708.4,96.4 L 709.1,97.4 L 709.8,95.4 L 710.5,99.4 L 711.2,103.3 L 711.9,101.3 L 712.6,102.3 L 713.3,104.3 L 714.0,102.3 L 714.7,105.3 L 715.4,106.3 L 716.1,112.2 L 716.8,110.2 L 717.5,113.2 L 718.2,111.2 L 718.9,110.2 L 719.6,110.2 L 720.3,109.2 L 721.0,110.2 L 721.7,111.2 L 722.4,112.2 L 723.1,111.2 L 723.8,111.2 L 724.5,111.2 L 725.2,111.2 L 725.9,111.2 L 726.6,141.9 L 727.3,117.2 L 728.0,118.1 L 728.7,119.1 L 729.3,124.1 L 730.0,116.2 L 730.7,123.1 L 731.4,122.1 L 732.1,111.2 L 732.8,99.4 L 733.5,101.3 L 734.2,99.4 L 734.9,103.3 L 735.6,104.3 L 736.3,97.4 L 737.0,103.3 L 737.7,95.4 L 738.4,92.4 L 739.1,91.4 L 739.8,85.5 L 740.5,85.5 L 741.2,80.6 L 741.9,71.7 L 742.6,72.7 L 743.3,67.7 L 744.0,60.8 L 744.7,66.7 L 745.4,60.8 L 746.1,60.8 L 746.8,62.8 L 747.5,60.8 L 748.2,63.8 L 748.9,61.8 L 749.6,61.8 L 750.3,60.8 L 751.0,60.8 L 751.7,60.8 L 752.4,60.8 L 753.1,60.8 L 753.8,60.8 L 754.5,60.8 L 755.2,60.8 L 755.9,60.8 L 756.6,60.8 L 757.3,60.8 L 758.0,60.8 L 758.7,60.8 L 759.3,60.8 L 760.0,63.8 L 760.7,65.7 L 761.4,61.8 L 762.1,61.8 L 762.8,61.8 L 763.5,61.8 L 764.2,60.8 L 764.9,61.8 L 765.6,62.8 L 766.3,60.8 L 767.0,60.8 L 767.7,60.8 L 768.4,60.8 L 769.1,61.8 L 769.8,61.8 L 770.5,61.8 L 771.2,60.8 L 771.9,64.7 L 772.6,64.7 L 773.3,64.7 L 774.0,64.7 L 774.7,68.7 L 775.4,64.7 L 776.1,63.8 L 776.8,64.7 L 777.5,62.8 L 778.2,61.8 L 778.9,61.8 L 779.6,63.8 L 780.3,64.7 L 781.0,65.7 L 781.7,67.7 L 782.4,63.8 L 783.1,63.8 L 783.8,62.8 L 784.5,61.8 L 785.2,61.8 L 785.9,61.8 L 786.6,62.8 L 787.3,63.8 L 788.0,61.8 L 788.7,63.8 L 789.3,62.8 L 790.0,62.8 L 790.7,61.8 L 791.4,60.8 L 792.1,60.8 L 792.8,61.8 L 793.5,60.8 L 794.2,60.8 L 794.9,60.8 L 795.6,60.8 L 796.3,60.8 L 797.0,60.8 L 797.7,60.8 L 798.4,60.8 L 799.1,60.8 L 799.8,60.8 L 800.5,60.8 L 801.2,60.8 L 801.9,60.8 L 802.6,60.8 L 803.3,60.8 L 804.0,60.8 L 804.7,60.8 L 805.4,60.8 L 806.1,60.8 L 806.8,60.8 L 807.5,60.8 L 808.2,60.8 L 808.9,60.8 L 809.6,60.8 L 810.3,60.8 L 811.0,60.8 L 811.7,60.8 L 812.4,60.8 L 813.1,60.8 L 813.8,60.8 L 814.5,60.8 L 815.2,60.8 L 815.9,60.8 L 816.6,60.8 L 817.3,60.8 L 818.0,60.8 L 818.7,60.8 L 819.3,60.8 L 820.0,60.8 L 820.7,60.8 L 821.4,60.8 L 822.1,60.8 L 822.8,60.8 L 823.5,60.8 L 824.2,60.8 L 824.9,60.8 L 825.6,60.8 L 826.3,60.8 L 827.0,60.8 L 827.7,60.8 L 828.4,60.8 L 829.1,60.8 L 829.8,60.8 L 830.5,60.8 L 831.2,60.8 L 831.9,61.8 L 832.6,61.8 L 833.3,60.8 L 834.0,60.8 L 834.7,60.8 L 835.4,60.8 L 836.1,60.8 L 836.8,60.8 L 837.5,64.7 L 838.2,60.8 L 838.9,61.8 L 839.6,60.8 L 840.3,60.8 L 841.0,60.8 L 841.7,60.8 L 842.4,60.8 L 843.1,60.8 L 843.8,60.8 L 844.5,60.8 L 845.2,60.8 L 845.9,60.8 L 846.6,60.8 L 847.3,60.8 L 848.0,60.8 L 848.7,60.8 L 849.3,60.8 L 850.0,65.7 L 850.7,64.7 L 851.4,63.8 L 852.1,61.8 L 852.8,63.8 L 853.5,61.8 L 854.2,63.8 L 854.9,64.7 L 855.6,66.7 L 856.3,61.8 L 857.0,61.8 L 857.7,61.8 L 858.4,60.8 L 859.1,61.8 L 859.8,61.8 L 860.5,62.8 L 861.2,62.8 L 861.9,61.8 L 862.6,62.8 L 863.3,61.8 L 864.0,64.7 L 864.7,63.8 L 865.4,63.8 L 866.1,62.8 L 866.8,62.8 L 867.5,62.8 L 868.2,63.8 L 868.9,64.7 L 869.6,63.8 L 870.3,62.8 L 871.0,61.8 L 871.7,62.8 L 872.4,60.8 L 873.1,60.8 L 873.8,62.8 L 874.5,63.8 L 875.2,63.8 L 875.9,63.8 L 876.6,62.8 L 877.3,64.7 L 878.0,63.8 L 878.7,61.8 L 879.3,60.8 L 880.0,60.8 L 880.7,61.8 L 881.4,60.8 L 882.1,60.8 L 882.8,60.8 L 883.5,60.8 L 884.2,60.8 L 884.9,60.8 L 885.6,60.8 L 886.3,60.8 L 887.0,60.8 L 887.7,60.8 L 888.4,60.8 L 889.1,60.8 L 889.8,60.8 L 890.5,60.8 L 891.2,60.8 L 891.9,60.8 L 892.6,60.8 L 893.3,60.8 L 894.0,60.8" fill="none"></path>
+    <g class="trade-marker buy">
+      <circle cx="635.2" cy="47.9" r="5.5"></circle>
+      <text x="635.2" y="35.9" text-anchor="middle">B 11:20</text>
+      <title>2026/09/03 11:20:37 买入 600 @ 5.720</title>
+    </g><g class="trade-marker buy">
+      <circle cx="635.9" cy="47.9" r="5.5"></circle>
+      <text x="635.9" y="35.9" text-anchor="middle">B 11:21</text>
+      <title>2026/09/03 11:21:56 买入 300 @ 5.720</title>
+    </g><g class="trade-marker sell">
+      <circle cx="732.1" cy="98.4" r="5.5"></circle>
+      <text x="732.1" y="117.4" text-anchor="middle">S 09:38</text>
+      <title>2026/09/04 09:38:56 卖出 900 @ 5.210</title>
+    </g>
+  </svg></div>
+    </article><article class="stock-card" id="stock-600551">
+      <div class="stock-card-head">
+        <div><span class="code">600551</span><h3>时代出版</h3></div>
+        <span class="chip">2 笔</span>
+      </div>
+      <div class="stock-metrics">
+        <span>买入 <b>600</b><em>5,610.00 / 现金5,615.06</em></span>
+        <span>卖出 <b>600</b><em>5,046.00 / 到账5,038.43</em></span>
+        <span>可见已实现 <b class="is-loss">-576.63</b><em>FIFO / 含截图费用</em></span>
+        <span>期末可见 <b>已清仓</b><em>持仓截图待校准</em></span>
+      </div>
+      <p>时代出版是本周可见最大亏损票：9/2早盘买入600股，9/3早盘卖出，含费用约-576.63，约-10.27%。这笔需要重点复盘买入前是否确认了题材强度、唯一性和次日承接预期。</p>
+      <div class="chart-frame"><svg class="stock-chart" viewBox="0 0 920 280" role="img" aria-label="时代出版 5分钟走势与成交点">
+    <rect x="0" y="0" width="920" height="280" rx="10"></rect>
+    <g class="axis"><g><line x1="54" x2="894" y1="234.0" y2="234.0"></line><text x="44" y="238.0" text-anchor="end">6.87</text></g><g><line x1="54" x2="894" y1="131.0" y2="131.0"></line><text x="44" y="135.0" text-anchor="end">8.31</text></g><g><line x1="54" x2="894" y1="28.0" y2="28.0"></line><text x="44" y="32.0" text-anchor="end">9.74</text></g></g>
+    <g class="day-grid"><g class="day-tick"><line x1="54.0" x2="54.0" y1="28" y2="234"></line><text x="54.0" y="262" text-anchor="middle">08-31</text></g><g class="day-tick"><line x1="222.1" x2="222.1" y1="28" y2="234"></line><text x="222.1" y="262" text-anchor="middle">09-01</text></g><g class="day-tick"><line x1="390.3" x2="390.3" y1="28" y2="234"></line><text x="390.3" y="262" text-anchor="middle">09-02</text></g><g class="day-tick"><line x1="558.4" x2="558.4" y1="28" y2="234"></line><text x="558.4" y="262" text-anchor="middle">09-03</text></g><g class="day-tick"><line x1="726.6" x2="726.6" y1="28" y2="234"></line><text x="726.6" y="262" text-anchor="middle">09-04</text></g></g>
+    <path d="M 54.0,214.1 L 54.7,209.0 L 55.4,213.3 L 56.1,209.0 L 56.8,210.5 L 57.5,208.3 L 58.2,208.3 L 58.9,208.3 L 59.6,209.0 L 60.3,212.6 L 61.0,209.0 L 61.7,209.0 L 62.4,206.9 L 63.1,204.0 L 63.8,210.5 L 64.5,210.5 L 65.2,210.5 L 65.9,209.7 L 66.6,209.0 L 67.3,211.2 L 68.0,210.5 L 68.7,209.0 L 69.3,211.2 L 70.0,210.5 L 70.7,210.5 L 71.4,210.5 L 72.1,213.3 L 72.8,211.9 L 73.5,212.6 L 74.2,213.3 L 74.9,210.5 L 75.6,209.0 L 76.3,208.3 L 77.0,210.5 L 77.7,211.2 L 78.4,209.7 L 79.1,213.3 L 79.8,212.6 L 80.5,210.5 L 81.2,209.0 L 81.9,209.0 L 82.6,209.0 L 83.3,209.0 L 84.0,208.3 L 84.7,207.6 L 85.4,206.9 L 86.1,207.6 L 86.8,206.9 L 87.5,207.6 L 88.2,207.6 L 88.9,206.9 L 89.6,206.9 L 90.3,206.9 L 91.0,204.7 L 91.7,206.2 L 92.4,204.7 L 93.1,203.3 L 93.8,204.7 L 94.5,205.4 L 95.2,205.4 L 95.9,204.7 L 96.6,204.0 L 97.3,201.8 L 98.0,199.7 L 98.7,200.4 L 99.3,201.1 L 100.0,197.5 L 100.7,199.0 L 101.4,199.0 L 102.1,199.0 L 102.8,200.4 L 103.5,200.4 L 104.2,200.4 L 104.9,199.7 L 105.6,196.8 L 106.3,199.0 L 107.0,199.7 L 107.7,199.0 L 108.4,199.7 L 109.1,201.1 L 109.8,201.1 L 110.5,201.1 L 111.2,201.1 L 111.9,199.7 L 112.6,199.7 L 113.3,199.0 L 114.0,199.7 L 114.7,201.8 L 115.4,200.4 L 116.1,201.8 L 116.8,200.4 L 117.5,199.0 L 118.2,198.2 L 118.9,199.0 L 119.6,198.2 L 120.3,197.5 L 121.0,197.5 L 121.7,196.8 L 122.4,196.8 L 123.1,196.1 L 123.8,196.1 L 124.5,195.4 L 125.2,196.1 L 125.9,196.8 L 126.6,197.5 L 127.3,196.8 L 128.0,194.6 L 128.7,192.5 L 129.3,183.9 L 130.0,183.9 L 130.7,184.6 L 131.4,186.0 L 132.1,187.5 L 132.8,190.3 L 133.5,188.2 L 134.2,184.6 L 134.9,187.5 L 135.6,188.2 L 136.3,186.7 L 137.0,184.6 L 137.7,185.3 L 138.4,181.7 L 139.1,180.3 L 139.8,180.3 L 140.5,175.9 L 141.2,173.1 L 141.9,163.0 L 142.6,168.0 L 143.3,158.0 L 144.0,137.1 L 144.7,144.3 L 145.4,138.6 L 146.1,146.5 L 146.8,145.7 L 147.5,147.2 L 148.2,145.0 L 148.9,146.5 L 149.6,151.5 L 150.3,155.1 L 151.0,154.4 L 151.7,150.1 L 152.4,149.3 L 153.1,135.0 L 153.8,135.0 L 154.5,135.0 L 155.2,135.0 L 155.9,135.0 L 156.6,135.0 L 157.3,135.0 L 158.0,135.0 L 158.7,135.0 L 159.3,135.0 L 160.0,135.0 L 160.7,135.0 L 161.4,135.0 L 162.1,135.0 L 162.8,135.0 L 163.5,135.0 L 164.2,135.0 L 164.9,135.0 L 165.6,135.0 L 166.3,135.0 L 167.0,135.0 L 167.7,135.0 L 168.4,135.0 L 169.1,135.0 L 169.8,135.0 L 170.5,135.0 L 171.2,135.0 L 171.9,135.0 L 172.6,135.0 L 173.3,135.0 L 174.0,135.0 L 174.7,135.0 L 175.4,135.0 L 176.1,135.0 L 176.8,135.0 L 177.5,135.0 L 178.2,135.0 L 178.9,135.0 L 179.6,135.0 L 180.3,135.0 L 181.0,135.0 L 181.7,135.0 L 182.4,135.0 L 183.1,135.0 L 183.8,135.0 L 184.5,135.0 L 185.2,135.0 L 185.9,135.0 L 186.6,135.0 L 187.3,135.0 L 188.0,135.0 L 188.7,135.0 L 189.3,135.0 L 190.0,135.0 L 190.7,135.0 L 191.4,135.0 L 192.1,135.0 L 192.8,135.0 L 193.5,135.0 L 194.2,135.0 L 194.9,135.0 L 195.6,135.0 L 196.3,135.0 L 197.0,135.0 L 197.7,135.0 L 198.4,135.0 L 199.1,135.0 L 199.8,135.0 L 200.5,135.0 L 201.2,135.0 L 201.9,135.0 L 202.6,135.0 L 203.3,135.0 L 204.0,135.0 L 204.7,135.0 L 205.4,135.0 L 206.1,135.0 L 206.8,135.0 L 207.5,135.0 L 208.2,135.0 L 208.9,135.0 L 209.6,135.0 L 210.3,135.0 L 211.0,135.0 L 211.7,135.0 L 212.4,135.0 L 213.1,135.0 L 213.8,135.0 L 214.5,135.0 L 215.2,135.0 L 215.9,135.0 L 216.6,135.0 L 217.3,135.0 L 218.0,135.0 L 218.7,135.0 L 219.3,135.0 L 220.0,135.0 L 220.7,135.0 L 221.4,135.0 L 222.1,100.4 L 222.8,76.7 L 223.5,75.3 L 224.2,75.3 L 224.9,75.3 L 225.6,75.3 L 226.3,75.3 L 227.0,75.3 L 227.7,91.8 L 228.4,91.8 L 229.1,99.0 L 229.8,88.2 L 230.5,83.9 L 231.2,78.1 L 231.9,79.6 L 232.6,80.3 L 233.3,86.8 L 234.0,83.2 L 234.7,90.4 L 235.4,94.0 L 236.1,89.6 L 236.8,92.5 L 237.5,95.4 L 238.2,96.1 L 238.9,84.6 L 239.6,88.2 L 240.3,86.8 L 241.0,86.8 L 241.7,88.9 L 242.4,88.9 L 243.1,88.2 L 243.8,88.2 L 244.5,88.9 L 245.2,92.5 L 245.9,95.4 L 246.6,91.8 L 247.3,90.4 L 248.0,91.1 L 248.7,89.6 L 249.3,76.7 L 250.0,75.3 L 250.7,75.3 L 251.4,75.3 L 252.1,75.3 L 252.8,75.3 L 253.5,75.3 L 254.2,75.3 L 254.9,75.3 L 255.6,75.3 L 256.3,75.3 L 257.0,75.3 L 257.7,75.3 L 258.4,75.3 L 259.1,75.3 L 259.8,81.0 L 260.5,80.3 L 261.2,75.3 L 261.9,76.7 L 262.6,75.3 L 263.3,75.3 L 264.0,75.3 L 264.7,75.3 L 265.4,75.3 L 266.1,75.3 L 266.8,75.3 L 267.5,75.3 L 268.2,75.3 L 268.9,75.3 L 269.6,75.3 L 270.3,75.3 L 271.0,75.3 L 271.7,75.3 L 272.4,75.3 L 273.1,75.3 L 273.8,75.3 L 274.5,75.3 L 275.2,75.3 L 275.9,75.3 L 276.6,75.3 L 277.3,75.3 L 278.0,75.3 L 278.7,75.3 L 279.3,75.3 L 280.0,75.3 L 280.7,75.3 L 281.4,75.3 L 282.1,75.3 L 282.8,75.3 L 283.5,75.3 L 284.2,75.3 L 284.9,75.3 L 285.6,75.3 L 286.3,75.3 L 287.0,75.3 L 287.7,75.3 L 288.4,75.3 L 289.1,75.3 L 289.8,75.3 L 290.5,75.3 L 291.2,75.3 L 291.9,75.3 L 292.6,75.3 L 293.3,75.3 L 294.0,75.3 L 294.7,75.3 L 295.4,75.3 L 296.1,75.3 L 296.8,75.3 L 297.5,75.3 L 298.2,75.3 L 298.9,75.3 L 299.6,75.3 L 300.3,75.3 L 301.0,75.3 L 301.7,75.3 L 302.4,75.3 L 303.1,75.3 L 303.8,75.3 L 304.5,75.3 L 305.2,75.3 L 305.9,75.3 L 306.6,75.3 L 307.3,75.3 L 308.0,75.3 L 308.7,75.3 L 309.3,75.3 L 310.0,75.3 L 310.7,75.3 L 311.4,75.3 L 312.1,75.3 L 312.8,75.3 L 313.5,75.3 L 314.2,75.3 L 314.9,75.3 L 315.6,75.3 L 316.3,75.3 L 317.0,75.3 L 317.7,75.3 L 318.4,75.3 L 319.1,75.3 L 319.8,75.3 L 320.5,75.3 L 321.2,75.3 L 321.9,75.3 L 322.6,75.3 L 323.3,75.3 L 324.0,75.3 L 324.7,75.3 L 325.4,75.3 L 326.1,75.3 L 326.8,75.3 L 327.5,75.3 L 328.2,75.3 L 328.9,75.3 L 329.6,75.3 L 330.3,75.3 L 331.0,75.3 L 331.7,75.3 L 332.4,75.3 L 333.1,75.3 L 333.8,75.3 L 334.5,75.3 L 335.2,75.3 L 335.9,75.3 L 336.6,75.3 L 337.3,75.3 L 338.0,75.3 L 338.7,75.3 L 339.3,75.3 L 340.0,75.3 L 340.7,75.3 L 341.4,75.3 L 342.1,75.3 L 342.8,75.3 L 343.5,75.3 L 344.2,75.3 L 344.9,75.3 L 345.6,75.3 L 346.3,75.3 L 347.0,75.3 L 347.7,75.3 L 348.4,75.3 L 349.1,75.3 L 349.8,75.3 L 350.5,75.3 L 351.2,75.3 L 351.9,75.3 L 352.6,75.3 L 353.3,75.3 L 354.0,75.3 L 354.7,75.3 L 355.4,75.3 L 356.1,75.3 L 356.8,75.3 L 357.5,75.3 L 358.2,75.3 L 358.9,75.3 L 359.6,75.3 L 360.3,75.3 L 361.0,75.3 L 361.7,75.3 L 362.4,75.3 L 363.1,75.3 L 363.8,75.3 L 364.5,75.3 L 365.2,75.3 L 365.9,75.3 L 366.6,75.3 L 367.3,75.3 L 368.0,75.3 L 368.7,75.3 L 369.3,75.3 L 370.0,75.3 L 370.7,75.3 L 371.4,75.3 L 372.1,75.3 L 372.8,75.3 L 373.5,75.3 L 374.2,75.3 L 374.9,75.3 L 375.6,75.3 L 376.3,75.3 L 377.0,75.3 L 377.7,75.3 L 378.4,75.3 L 379.1,75.3 L 379.8,75.3 L 380.5,75.3 L 381.2,75.3 L 381.9,75.3 L 382.6,75.3 L 383.3,75.3 L 384.0,75.3 L 384.7,75.3 L 385.4,75.3 L 386.1,75.3 L 386.8,75.3 L 387.5,75.3 L 388.2,75.3 L 388.9,75.3 L 389.6,75.3 L 390.3,81.0 L 391.0,47.9 L 391.7,76.0 L 392.4,91.8 L 393.1,91.8 L 393.8,104.0 L 394.5,105.5 L 395.2,98.3 L 395.9,111.2 L 396.6,102.6 L 397.3,93.2 L 398.0,97.6 L 398.7,95.4 L 399.3,99.7 L 400.0,100.4 L 400.7,95.4 L 401.4,94.7 L 402.1,97.6 L 402.8,96.1 L 403.5,94.7 L 404.2,96.8 L 404.9,104.0 L 405.6,104.0 L 406.3,110.5 L 407.0,102.6 L 407.7,101.2 L 408.4,105.5 L 409.1,104.8 L 409.8,104.0 L 410.5,108.3 L 411.2,105.5 L 411.9,107.6 L 412.6,103.3 L 413.3,92.5 L 414.0,97.6 L 414.7,102.6 L 415.4,99.7 L 416.1,95.4 L 416.8,97.6 L 417.5,100.4 L 418.2,100.4 L 418.9,99.7 L 419.6,99.7 L 420.3,97.6 L 421.0,96.8 L 421.7,96.8 L 422.4,101.2 L 423.1,103.3 L 423.8,105.5 L 424.5,102.6 L 425.2,103.3 L 425.9,104.0 L 426.6,101.9 L 427.3,101.2 L 428.0,98.3 L 428.7,99.7 L 429.3,99.7 L 430.0,99.7 L 430.7,103.3 L 431.4,102.6 L 432.1,104.0 L 432.8,105.5 L 433.5,104.0 L 434.2,104.0 L 434.9,102.6 L 435.6,103.3 L 436.3,101.2 L 437.0,101.2 L 437.7,99.0 L 438.4,93.2 L 439.1,96.8 L 439.8,96.1 L 440.5,93.2 L 441.2,95.4 L 441.9,96.1 L 442.6,98.3 L 443.3,103.3 L 444.0,99.7 L 444.7,100.4 L 445.4,103.3 L 446.1,99.0 L 446.8,96.8 L 447.5,96.8 L 448.2,99.0 L 448.9,99.0 L 449.6,96.1 L 450.3,96.8 L 451.0,101.2 L 451.7,99.7 L 452.4,101.9 L 453.1,102.6 L 453.8,104.0 L 454.5,103.3 L 455.2,105.5 L 455.9,109.8 L 456.6,106.9 L 457.3,109.1 L 458.0,107.6 L 458.7,107.6 L 459.3,106.9 L 460.0,107.6 L 460.7,109.1 L 461.4,108.3 L 462.1,109.8 L 462.8,110.5 L 463.5,111.9 L 464.2,108.3 L 464.9,106.9 L 465.6,106.9 L 466.3,107.6 L 467.0,106.2 L 467.7,104.8 L 468.4,102.6 L 469.1,104.0 L 469.8,106.9 L 470.5,106.2 L 471.2,108.3 L 471.9,107.6 L 472.6,104.8 L 473.3,107.6 L 474.0,106.9 L 474.7,103.3 L 475.4,104.0 L 476.1,103.3 L 476.8,99.0 L 477.5,100.4 L 478.2,99.0 L 478.9,101.2 L 479.6,101.2 L 480.3,100.4 L 481.0,99.7 L 481.7,102.6 L 482.4,99.7 L 483.1,102.6 L 483.8,102.6 L 484.5,103.3 L 485.2,103.3 L 485.9,101.9 L 486.6,101.2 L 487.3,104.0 L 488.0,104.8 L 488.7,104.8 L 489.3,104.0 L 490.0,104.0 L 490.7,104.0 L 491.4,104.0 L 492.1,104.0 L 492.8,104.8 L 493.5,104.0 L 494.2,101.2 L 494.9,101.2 L 495.6,103.3 L 496.3,104.0 L 497.0,104.0 L 497.7,104.8 L 498.4,104.0 L 499.1,103.3 L 499.8,104.0 L 500.5,104.0 L 501.2,103.3 L 501.9,103.3 L 502.6,104.8 L 503.3,105.5 L 504.0,106.9 L 504.7,107.6 L 505.4,107.6 L 506.1,106.9 L 506.8,106.9 L 507.5,106.9 L 508.2,106.2 L 508.9,106.2 L 509.6,106.2 L 510.3,106.9 L 511.0,106.9 L 511.7,106.9 L 512.4,106.2 L 513.1,106.2 L 513.8,106.2 L 514.5,107.6 L 515.2,111.2 L 515.9,109.1 L 516.6,109.1 L 517.3,109.1 L 518.0,109.8 L 518.7,109.1 L 519.3,109.1 L 520.0,108.3 L 520.7,106.9 L 521.4,106.2 L 522.1,105.5 L 522.8,106.9 L 523.5,108.3 L 524.2,107.6 L 524.9,106.2 L 525.6,106.2 L 526.3,108.3 L 527.0,108.3 L 527.7,110.5 L 528.4,110.5 L 529.1,111.2 L 529.8,110.5 L 530.5,110.5 L 531.2,110.5 L 531.9,117.0 L 532.6,114.8 L 533.3,117.7 L 534.0,120.6 L 534.7,120.6 L 535.4,115.5 L 536.1,117.0 L 536.8,114.8 L 537.5,119.1 L 538.2,118.4 L 538.9,119.9 L 539.6,126.3 L 540.3,122.7 L 541.0,123.4 L 541.7,123.4 L 542.4,124.2 L 543.1,122.7 L 543.8,119.9 L 544.5,122.7 L 545.2,122.0 L 545.9,120.6 L 546.6,122.0 L 547.3,116.3 L 548.0,119.1 L 548.7,115.5 L 549.3,114.8 L 550.0,113.4 L 550.7,114.8 L 551.4,114.1 L 552.1,117.0 L 552.8,117.0 L 553.5,113.4 L 554.2,109.8 L 554.9,111.9 L 555.6,114.8 L 556.3,114.1 L 557.0,114.1 L 557.7,108.3 L 558.4,117.7 L 559.1,99.7 L 559.8,108.3 L 560.5,106.2 L 561.2,94.0 L 561.9,103.3 L 562.6,114.8 L 563.3,116.3 L 564.0,99.0 L 564.7,99.0 L 565.4,93.2 L 566.1,99.0 L 566.8,94.0 L 567.5,95.4 L 568.2,103.3 L 568.9,103.3 L 569.6,100.4 L 570.3,104.0 L 571.0,101.9 L 571.7,109.8 L 572.4,109.8 L 573.1,114.8 L 573.8,119.1 L 574.5,117.0 L 575.2,111.9 L 575.9,127.0 L 576.6,122.7 L 577.3,125.6 L 578.0,128.5 L 578.7,119.1 L 579.3,118.4 L 580.0,113.4 L 580.7,117.0 L 581.4,117.0 L 582.1,115.5 L 582.8,111.2 L 583.5,116.3 L 584.2,116.3 L 584.9,118.4 L 585.6,122.7 L 586.3,116.3 L 587.0,115.5 L 587.7,119.9 L 588.4,116.3 L 589.1,117.7 L 589.8,117.7 L 590.5,118.4 L 591.2,120.6 L 591.9,119.9 L 592.6,117.7 L 593.3,121.3 L 594.0,117.7 L 594.7,118.4 L 595.4,121.3 L 596.1,118.4 L 596.8,119.1 L 597.5,119.9 L 598.2,119.1 L 598.9,118.4 L 599.6,119.9 L 600.3,119.9 L 601.0,121.3 L 601.7,119.9 L 602.4,121.3 L 603.1,124.9 L 603.8,122.0 L 604.5,126.3 L 605.2,124.2 L 605.9,124.9 L 606.6,125.6 L 607.3,123.4 L 608.0,121.3 L 608.7,123.4 L 609.3,122.7 L 610.0,124.9 L 610.7,124.2 L 611.4,122.7 L 612.1,124.2 L 612.8,123.4 L 613.5,124.9 L 614.2,125.6 L 614.9,125.6 L 615.6,124.9 L 616.3,124.2 L 617.0,124.9 L 617.7,127.8 L 618.4,126.3 L 619.1,125.6 L 619.8,127.8 L 620.5,128.5 L 621.2,129.2 L 621.9,127.0 L 622.6,127.8 L 623.3,134.2 L 624.0,132.8 L 624.7,132.8 L 625.4,137.1 L 626.1,137.1 L 626.8,136.4 L 627.5,135.7 L 628.2,137.1 L 628.9,137.1 L 629.6,141.4 L 630.3,142.1 L 631.0,140.0 L 631.7,142.1 L 632.4,140.7 L 633.1,139.3 L 633.8,141.4 L 634.5,140.0 L 635.2,143.6 L 635.9,145.7 L 636.6,144.3 L 637.3,145.0 L 638.0,145.0 L 638.7,148.6 L 639.3,146.5 L 640.0,147.2 L 640.7,147.9 L 641.4,148.6 L 642.1,147.9 L 642.8,147.2 L 643.5,148.6 L 644.2,151.5 L 644.9,152.9 L 645.6,153.7 L 646.3,154.4 L 647.0,155.1 L 647.7,153.7 L 648.4,151.5 L 649.1,152.2 L 649.8,152.2 L 650.5,152.2 L 651.2,149.3 L 651.9,149.3 L 652.6,152.2 L 653.3,152.9 L 654.0,152.2 L 654.7,150.8 L 655.4,152.9 L 656.1,152.2 L 656.8,152.2 L 657.5,150.8 L 658.2,149.3 L 658.9,145.7 L 659.6,145.7 L 660.3,143.6 L 661.0,145.7 L 661.7,144.3 L 662.4,146.5 L 663.1,147.9 L 663.8,147.2 L 664.5,145.7 L 665.2,144.3 L 665.9,142.1 L 666.6,143.6 L 667.3,143.6 L 668.0,145.7 L 668.7,145.7 L 669.3,146.5 L 670.0,144.3 L 670.7,145.0 L 671.4,145.0 L 672.1,142.9 L 672.8,142.1 L 673.5,145.0 L 674.2,147.9 L 674.9,147.9 L 675.6,147.2 L 676.3,147.2 L 677.0,147.9 L 677.7,143.6 L 678.4,146.5 L 679.1,144.3 L 679.8,145.7 L 680.5,142.9 L 681.2,145.0 L 681.9,145.0 L 682.6,145.7 L 683.3,145.7 L 684.0,145.0 L 684.7,146.5 L 685.4,146.5 L 686.1,145.7 L 686.8,145.7 L 687.5,146.5 L 688.2,146.5 L 688.9,148.6 L 689.6,147.9 L 690.3,145.0 L 691.0,145.7 L 691.7,146.5 L 692.4,145.7 L 693.1,145.0 L 693.8,141.4 L 694.5,142.9 L 695.2,140.7 L 695.9,140.7 L 696.6,145.7 L 697.3,145.7 L 698.0,144.3 L 698.7,145.7 L 699.3,147.9 L 700.0,147.2 L 700.7,147.2 L 701.4,147.2 L 702.1,147.2 L 702.8,147.9 L 703.5,147.9 L 704.2,147.9 L 704.9,147.9 L 705.6,148.6 L 706.3,148.6 L 707.0,147.9 L 707.7,148.6 L 708.4,150.1 L 709.1,152.2 L 709.8,152.2 L 710.5,155.1 L 711.2,154.4 L 711.9,153.7 L 712.6,153.7 L 713.3,154.4 L 714.0,154.4 L 714.7,153.7 L 715.4,153.7 L 716.1,153.7 L 716.8,154.4 L 717.5,155.8 L 718.2,158.0 L 718.9,155.8 L 719.6,152.9 L 720.3,153.7 L 721.0,150.8 L 721.7,151.5 L 722.4,155.8 L 723.1,153.7 L 723.8,155.1 L 724.5,155.1 L 725.2,155.1 L 725.9,155.8 L 726.6,168.0 L 727.3,147.9 L 728.0,147.2 L 728.7,145.0 L 729.3,147.9 L 730.0,137.1 L 730.7,145.0 L 731.4,150.1 L 732.1,149.3 L 732.8,145.0 L 733.5,149.3 L 734.2,144.3 L 734.9,147.9 L 735.6,148.6 L 736.3,146.5 L 737.0,149.3 L 737.7,141.4 L 738.4,133.5 L 739.1,136.4 L 739.8,132.8 L 740.5,135.0 L 741.2,133.5 L 741.9,131.4 L 742.6,134.2 L 743.3,137.1 L 744.0,138.6 L 744.7,138.6 L 745.4,142.1 L 746.1,139.3 L 746.8,142.1 L 747.5,142.1 L 748.2,137.1 L 748.9,138.6 L 749.6,138.6 L 750.3,135.7 L 751.0,134.2 L 751.7,136.4 L 752.4,131.4 L 753.1,128.5 L 753.8,122.7 L 754.5,128.5 L 755.2,127.0 L 755.9,125.6 L 756.6,117.7 L 757.3,123.4 L 758.0,124.9 L 758.7,126.3 L 759.3,126.3 L 760.0,127.8 L 760.7,132.8 L 761.4,130.6 L 762.1,132.1 L 762.8,132.8 L 763.5,135.0 L 764.2,132.8 L 764.9,135.7 L 765.6,136.4 L 766.3,135.7 L 767.0,135.0 L 767.7,132.8 L 768.4,136.4 L 769.1,135.0 L 769.8,135.7 L 770.5,135.0 L 771.2,137.1 L 771.9,139.3 L 772.6,137.8 L 773.3,139.3 L 774.0,142.1 L 774.7,142.9 L 775.4,145.7 L 776.1,141.4 L 776.8,138.6 L 777.5,141.4 L 778.2,139.3 L 778.9,137.1 L 779.6,141.4 L 780.3,142.9 L 781.0,140.0 L 781.7,140.0 L 782.4,140.0 L 783.1,140.7 L 783.8,140.0 L 784.5,139.3 L 785.2,140.0 L 785.9,141.4 L 786.6,139.3 L 787.3,140.0 L 788.0,140.7 L 788.7,141.4 L 789.3,142.1 L 790.0,140.7 L 790.7,140.7 L 791.4,140.0 L 792.1,140.0 L 792.8,140.0 L 793.5,140.0 L 794.2,139.3 L 794.9,139.3 L 795.6,140.0 L 796.3,140.7 L 797.0,141.4 L 797.7,140.7 L 798.4,142.1 L 799.1,143.6 L 799.8,144.3 L 800.5,143.6 L 801.2,144.3 L 801.9,144.3 L 802.6,142.1 L 803.3,142.9 L 804.0,143.6 L 804.7,145.0 L 805.4,148.6 L 806.1,146.5 L 806.8,145.0 L 807.5,145.0 L 808.2,146.5 L 808.9,147.2 L 809.6,146.5 L 810.3,146.5 L 811.0,143.6 L 811.7,143.6 L 812.4,142.9 L 813.1,143.6 L 813.8,145.0 L 814.5,145.0 L 815.2,144.3 L 815.9,144.3 L 816.6,145.0 L 817.3,145.7 L 818.0,145.7 L 818.7,145.0 L 819.3,144.3 L 820.0,144.3 L 820.7,144.3 L 821.4,145.0 L 822.1,145.0 L 822.8,145.0 L 823.5,145.0 L 824.2,143.6 L 824.9,144.3 L 825.6,145.7 L 826.3,146.5 L 827.0,145.7 L 827.7,145.7 L 828.4,145.0 L 829.1,146.5 L 829.8,146.5 L 830.5,147.9 L 831.2,147.2 L 831.9,147.2 L 832.6,147.9 L 833.3,147.9 L 834.0,147.2 L 834.7,146.5 L 835.4,147.2 L 836.1,147.2 L 836.8,147.2 L 837.5,147.9 L 838.2,149.3 L 838.9,150.8 L 839.6,149.3 L 840.3,148.6 L 841.0,148.6 L 841.7,147.9 L 842.4,148.6 L 843.1,148.6 L 843.8,148.6 L 844.5,148.6 L 845.2,147.2 L 845.9,144.3 L 846.6,145.0 L 847.3,146.5 L 848.0,148.6 L 848.7,148.6 L 849.3,147.2 L 850.0,147.2 L 850.7,146.5 L 851.4,145.7 L 852.1,146.5 L 852.8,146.5 L 853.5,147.2 L 854.2,147.2 L 854.9,146.5 L 855.6,145.7 L 856.3,145.0 L 857.0,145.7 L 857.7,146.5 L 858.4,147.2 L 859.1,147.2 L 859.8,146.5 L 860.5,147.9 L 861.2,147.9 L 861.9,146.5 L 862.6,147.9 L 863.3,147.2 L 864.0,147.2 L 864.7,147.9 L 865.4,148.6 L 866.1,149.3 L 866.8,149.3 L 867.5,148.6 L 868.2,147.9 L 868.9,147.9 L 869.6,148.6 L 870.3,147.9 L 871.0,147.9 L 871.7,148.6 L 872.4,148.6 L 873.1,148.6 L 873.8,147.9 L 874.5,148.6 L 875.2,150.1 L 875.9,151.5 L 876.6,152.9 L 877.3,155.1 L 878.0,152.9 L 878.7,152.9 L 879.3,152.2 L 880.0,153.7 L 880.7,153.7 L 881.4,153.7 L 882.1,154.4 L 882.8,154.4 L 883.5,152.2 L 884.2,152.9 L 884.9,154.4 L 885.6,155.8 L 886.3,155.8 L 887.0,153.7 L 887.7,152.9 L 888.4,154.4 L 889.1,150.1 L 889.8,149.3 L 890.5,148.6 L 891.2,148.6 L 891.9,147.9 L 892.6,147.9 L 893.3,147.9 L 894.0,149.3" fill="none"></path>
+    <g class="trade-marker buy">
+      <circle cx="390.3" cy="55.8" r="5.5"></circle>
+      <text x="390.3" y="43.8" text-anchor="middle">B 09:30</text>
+      <title>2026/09/02 09:30:59 买入 600 @ 9.350</title>
+    </g><g class="trade-marker sell">
+      <circle cx="562.6" cy="123.4" r="5.5"></circle>
+      <text x="562.6" y="142.4" text-anchor="middle">S 09:36</text>
+      <title>2026/09/03 09:36:41 卖出 600 @ 8.410</title>
+    </g>
+  </svg></div>
+    </article><article class="stock-card" id="stock-600127">
+      <div class="stock-card-head">
+        <div><span class="code">600127</span><h3>金健米业</h3></div>
+        <span class="chip">2 笔</span>
+      </div>
+      <div class="stock-metrics">
+        <span>买入 <b>300</b><em>3,612.00 / 现金3,617.04</em></span>
+        <span>卖出 <b>300</b><em>3,780.00 / 到账3,773.07</em></span>
+        <span>可见已实现 <b class="is-profit">+156.03</b><em>FIFO / 含截图费用</em></span>
+        <span>期末可见 <b>已清仓</b><em>持仓截图待校准</em></span>
+      </div>
+      <p>金健米业是本周可见主要盈利票：8/31尾盘买入300股，9/1早盘卖出，含费用约+156.03，约+4.31%。它说明农业线短线试错里，隔日能快速兑现利润是对的。</p>
+      <div class="chart-frame"><svg class="stock-chart" viewBox="0 0 920 280" role="img" aria-label="金健米业 5分钟走势与成交点">
+    <rect x="0" y="0" width="920" height="280" rx="10"></rect>
+    <g class="axis"><g><line x1="54" x2="894" y1="234.0" y2="234.0"></line><text x="44" y="238.0" text-anchor="end">11.34</text></g><g><line x1="54" x2="894" y1="131.0" y2="131.0"></line><text x="44" y="135.0" text-anchor="end">12.57</text></g><g><line x1="54" x2="894" y1="28.0" y2="28.0"></line><text x="44" y="32.0" text-anchor="end">13.81</text></g></g>
+    <g class="day-grid"><g class="day-tick"><line x1="54.0" x2="54.0" y1="28" y2="234"></line><text x="54.0" y="262" text-anchor="middle">08-31</text></g><g class="day-tick"><line x1="222.1" x2="222.1" y1="28" y2="234"></line><text x="222.1" y="262" text-anchor="middle">09-01</text></g><g class="day-tick"><line x1="390.3" x2="390.3" y1="28" y2="234"></line><text x="390.3" y="262" text-anchor="middle">09-02</text></g><g class="day-tick"><line x1="558.4" x2="558.4" y1="28" y2="234"></line><text x="558.4" y="262" text-anchor="middle">09-03</text></g><g class="day-tick"><line x1="726.6" x2="726.6" y1="28" y2="234"></line><text x="726.6" y="262" text-anchor="middle">09-04</text></g></g>
+    <path d="M 54.0,196.5 L 54.7,169.8 L 55.4,172.3 L 56.1,185.7 L 56.8,175.7 L 57.5,158.1 L 58.2,142.3 L 58.9,151.5 L 59.6,169.0 L 60.3,157.3 L 61.0,156.5 L 61.7,159.0 L 62.4,159.8 L 63.1,152.3 L 63.8,162.3 L 64.5,157.3 L 65.2,154.0 L 65.9,153.1 L 66.6,148.9 L 67.3,149.8 L 68.0,147.3 L 68.7,143.1 L 69.3,148.1 L 70.0,138.9 L 70.7,139.8 L 71.4,133.9 L 72.1,145.6 L 72.8,135.6 L 73.5,143.9 L 74.2,143.9 L 74.9,152.3 L 75.6,145.6 L 76.3,145.6 L 77.0,142.3 L 77.7,137.3 L 78.4,148.1 L 79.1,142.3 L 79.8,147.3 L 80.5,148.9 L 81.2,152.3 L 81.9,154.8 L 82.6,149.8 L 83.3,150.6 L 84.0,145.6 L 84.7,147.3 L 85.4,148.9 L 86.1,145.6 L 86.8,139.8 L 87.5,147.3 L 88.2,144.8 L 88.9,149.8 L 89.6,145.6 L 90.3,149.8 L 91.0,147.3 L 91.7,153.1 L 92.4,155.6 L 93.1,148.9 L 93.8,154.0 L 94.5,155.6 L 95.2,161.5 L 95.9,149.8 L 96.6,152.3 L 97.3,153.1 L 98.0,148.9 L 98.7,149.8 L 99.3,153.1 L 100.0,153.1 L 100.7,158.1 L 101.4,154.0 L 102.1,153.1 L 102.8,157.3 L 103.5,157.3 L 104.2,154.8 L 104.9,157.3 L 105.6,157.3 L 106.3,159.0 L 107.0,158.1 L 107.7,151.5 L 108.4,151.5 L 109.1,146.4 L 109.8,147.3 L 110.5,148.9 L 111.2,138.1 L 111.9,138.9 L 112.6,135.6 L 113.3,140.6 L 114.0,138.1 L 114.7,141.4 L 115.4,142.3 L 116.1,139.8 L 116.8,140.6 L 117.5,141.4 L 118.2,143.1 L 118.9,146.4 L 119.6,141.4 L 120.3,141.4 L 121.0,139.8 L 121.7,141.4 L 122.4,138.9 L 123.1,135.6 L 123.8,134.8 L 124.5,138.9 L 125.2,138.1 L 125.9,137.3 L 126.6,139.8 L 127.3,139.8 L 128.0,137.3 L 128.7,138.1 L 129.3,138.1 L 130.0,139.8 L 130.7,135.6 L 131.4,135.6 L 132.1,137.3 L 132.8,135.6 L 133.5,136.4 L 134.2,138.1 L 134.9,138.1 L 135.6,138.1 L 136.3,138.1 L 137.0,138.1 L 137.7,139.8 L 138.4,143.9 L 139.1,144.8 L 139.8,147.3 L 140.5,141.4 L 141.2,145.6 L 141.9,153.1 L 142.6,145.6 L 143.3,150.6 L 144.0,152.3 L 144.7,155.6 L 145.4,155.6 L 146.1,151.5 L 146.8,148.9 L 147.5,151.5 L 148.2,151.5 L 148.9,154.8 L 149.6,154.8 L 150.3,149.8 L 151.0,146.4 L 151.7,148.9 L 152.4,144.8 L 153.1,145.6 L 153.8,145.6 L 154.5,152.3 L 155.2,149.8 L 155.9,148.9 L 156.6,153.1 L 157.3,171.5 L 158.0,170.7 L 158.7,182.3 L 159.3,175.7 L 160.0,171.5 L 160.7,173.2 L 161.4,179.0 L 162.1,186.5 L 162.8,191.5 L 163.5,180.7 L 164.2,183.2 L 164.9,184.8 L 165.6,169.0 L 166.3,174.8 L 167.0,174.8 L 167.7,169.8 L 168.4,172.3 L 169.1,174.8 L 169.8,168.1 L 170.5,163.1 L 171.2,165.6 L 171.9,171.5 L 172.6,167.3 L 173.3,169.8 L 174.0,167.3 L 174.7,169.8 L 175.4,174.8 L 176.1,178.2 L 176.8,182.3 L 177.5,187.4 L 178.2,184.0 L 178.9,179.8 L 179.6,184.8 L 180.3,179.8 L 181.0,184.8 L 181.7,178.2 L 182.4,174.0 L 183.1,171.5 L 183.8,175.7 L 184.5,178.2 L 185.2,177.3 L 185.9,179.0 L 186.6,177.3 L 187.3,172.3 L 188.0,174.8 L 188.7,177.3 L 189.3,175.7 L 190.0,181.5 L 190.7,180.7 L 191.4,175.7 L 192.1,176.5 L 192.8,178.2 L 193.5,177.3 L 194.2,169.0 L 194.9,175.7 L 195.6,173.2 L 196.3,174.0 L 197.0,174.0 L 197.7,175.7 L 198.4,177.3 L 199.1,181.5 L 199.8,178.2 L 200.5,179.8 L 201.2,176.5 L 201.9,180.7 L 202.6,175.7 L 203.3,174.8 L 204.0,174.0 L 204.7,172.3 L 205.4,171.5 L 206.1,174.8 L 206.8,176.5 L 207.5,176.5 L 208.2,172.3 L 208.9,170.7 L 209.6,171.5 L 210.3,172.3 L 211.0,173.2 L 211.7,174.0 L 212.4,174.0 L 213.1,183.2 L 213.8,183.2 L 214.5,181.5 L 215.2,186.5 L 215.9,180.7 L 216.6,179.0 L 217.3,176.5 L 218.0,179.8 L 218.7,178.2 L 219.3,174.8 L 220.0,176.5 L 220.7,176.5 L 221.4,175.7 L 222.1,174.8 L 222.8,154.0 L 223.5,124.7 L 224.2,144.8 L 224.9,133.9 L 225.6,132.3 L 226.3,108.0 L 227.0,95.5 L 227.7,83.8 L 228.4,75.5 L 229.1,75.5 L 229.8,75.5 L 230.5,75.5 L 231.2,75.5 L 231.9,75.5 L 232.6,75.5 L 233.3,75.5 L 234.0,75.5 L 234.7,75.5 L 235.4,75.5 L 236.1,75.5 L 236.8,75.5 L 237.5,75.5 L 238.2,75.5 L 238.9,75.5 L 239.6,75.5 L 240.3,75.5 L 241.0,75.5 L 241.7,75.5 L 242.4,75.5 L 243.1,75.5 L 243.8,75.5 L 244.5,75.5 L 245.2,75.5 L 245.9,75.5 L 246.6,75.5 L 247.3,75.5 L 248.0,75.5 L 248.7,75.5 L 249.3,75.5 L 250.0,75.5 L 250.7,75.5 L 251.4,75.5 L 252.1,75.5 L 252.8,75.5 L 253.5,75.5 L 254.2,75.5 L 254.9,75.5 L 255.6,75.5 L 256.3,75.5 L 257.0,75.5 L 257.7,75.5 L 258.4,75.5 L 259.1,75.5 L 259.8,75.5 L 260.5,75.5 L 261.2,75.5 L 261.9,75.5 L 262.6,75.5 L 263.3,75.5 L 264.0,75.5 L 264.7,75.5 L 265.4,75.5 L 266.1,75.5 L 266.8,75.5 L 267.5,75.5 L 268.2,75.5 L 268.9,75.5 L 269.6,75.5 L 270.3,75.5 L 271.0,75.5 L 271.7,75.5 L 272.4,75.5 L 273.1,75.5 L 273.8,75.5 L 274.5,75.5 L 275.2,75.5 L 275.9,75.5 L 276.6,75.5 L 277.3,75.5 L 278.0,75.5 L 278.7,75.5 L 279.3,75.5 L 280.0,75.5 L 280.7,75.5 L 281.4,75.5 L 282.1,75.5 L 282.8,75.5 L 283.5,75.5 L 284.2,75.5 L 284.9,75.5 L 285.6,75.5 L 286.3,75.5 L 287.0,75.5 L 287.7,75.5 L 288.4,75.5 L 289.1,75.5 L 289.8,75.5 L 290.5,75.5 L 291.2,75.5 L 291.9,75.5 L 292.6,75.5 L 293.3,75.5 L 294.0,75.5 L 294.7,75.5 L 295.4,75.5 L 296.1,75.5 L 296.8,75.5 L 297.5,75.5 L 298.2,75.5 L 298.9,75.5 L 299.6,75.5 L 300.3,75.5 L 301.0,75.5 L 301.7,75.5 L 302.4,75.5 L 303.1,75.5 L 303.8,75.5 L 304.5,75.5 L 305.2,75.5 L 305.9,75.5 L 306.6,75.5 L 307.3,75.5 L 308.0,75.5 L 308.7,75.5 L 309.3,75.5 L 310.0,75.5 L 310.7,75.5 L 311.4,75.5 L 312.1,75.5 L 312.8,75.5 L 313.5,75.5 L 314.2,75.5 L 314.9,75.5 L 315.6,75.5 L 316.3,75.5 L 317.0,75.5 L 317.7,75.5 L 318.4,75.5 L 319.1,75.5 L 319.8,75.5 L 320.5,75.5 L 321.2,75.5 L 321.9,75.5 L 322.6,75.5 L 323.3,75.5 L 324.0,75.5 L 324.7,75.5 L 325.4,75.5 L 326.1,75.5 L 326.8,75.5 L 327.5,75.5 L 328.2,75.5 L 328.9,75.5 L 329.6,75.5 L 330.3,75.5 L 331.0,75.5 L 331.7,75.5 L 332.4,75.5 L 333.1,75.5 L 333.8,75.5 L 334.5,75.5 L 335.2,75.5 L 335.9,75.5 L 336.6,75.5 L 337.3,75.5 L 338.0,75.5 L 338.7,75.5 L 339.3,75.5 L 340.0,75.5 L 340.7,75.5 L 341.4,75.5 L 342.1,75.5 L 342.8,75.5 L 343.5,75.5 L 344.2,75.5 L 344.9,75.5 L 345.6,75.5 L 346.3,75.5 L 347.0,75.5 L 347.7,75.5 L 348.4,75.5 L 349.1,75.5 L 349.8,75.5 L 350.5,75.5 L 351.2,75.5 L 351.9,75.5 L 352.6,75.5 L 353.3,75.5 L 354.0,75.5 L 354.7,75.5 L 355.4,75.5 L 356.1,75.5 L 356.8,75.5 L 357.5,75.5 L 358.2,75.5 L 358.9,75.5 L 359.6,75.5 L 360.3,75.5 L 361.0,75.5 L 361.7,75.5 L 362.4,75.5 L 363.1,75.5 L 363.8,75.5 L 364.5,75.5 L 365.2,75.5 L 365.9,75.5 L 366.6,75.5 L 367.3,75.5 L 368.0,75.5 L 368.7,75.5 L 369.3,75.5 L 370.0,75.5 L 370.7,75.5 L 371.4,75.5 L 372.1,75.5 L 372.8,75.5 L 373.5,75.5 L 374.2,75.5 L 374.9,75.5 L 375.6,75.5 L 376.3,75.5 L 377.0,75.5 L 377.7,75.5 L 378.4,75.5 L 379.1,75.5 L 379.8,75.5 L 380.5,75.5 L 381.2,75.5 L 381.9,75.5 L 382.6,75.5 L 383.3,75.5 L 384.0,75.5 L 384.7,75.5 L 385.4,75.5 L 386.1,75.5 L 386.8,75.5 L 387.5,75.5 L 388.2,75.5 L 388.9,75.5 L 389.6,75.5 L 390.3,78.8 L 391.0,107.2 L 391.7,80.5 L 392.4,47.9 L 393.1,70.5 L 393.8,69.6 L 394.5,79.7 L 395.2,70.5 L 395.9,52.1 L 396.6,53.8 L 397.3,59.6 L 398.0,69.6 L 398.7,94.7 L 399.3,86.3 L 400.0,106.4 L 400.7,95.5 L 401.4,95.5 L 402.1,118.9 L 402.8,109.7 L 403.5,117.2 L 404.2,91.3 L 404.9,101.4 L 405.6,95.5 L 406.3,106.4 L 407.0,103.9 L 407.7,116.4 L 408.4,103.0 L 409.1,100.5 L 409.8,109.7 L 410.5,104.7 L 411.2,96.4 L 411.9,103.9 L 412.6,111.4 L 413.3,111.4 L 414.0,103.0 L 414.7,118.1 L 415.4,116.4 L 416.1,113.9 L 416.8,123.9 L 417.5,118.9 L 418.2,137.3 L 418.9,128.9 L 419.6,144.8 L 420.3,129.7 L 421.0,130.6 L 421.7,122.2 L 422.4,128.1 L 423.1,127.2 L 423.8,109.7 L 424.5,119.7 L 425.2,109.7 L 425.9,113.9 L 426.6,120.6 L 427.3,124.7 L 428.0,114.7 L 428.7,117.2 L 429.3,118.1 L 430.0,113.1 L 430.7,113.9 L 431.4,113.1 L 432.1,113.9 L 432.8,120.6 L 433.5,118.9 L 434.2,127.2 L 434.9,127.2 L 435.6,127.2 L 436.3,126.4 L 437.0,138.9 L 437.7,128.9 L 438.4,138.9 L 439.1,132.3 L 439.8,132.3 L 440.5,133.1 L 441.2,137.3 L 441.9,134.8 L 442.6,144.8 L 443.3,138.9 L 444.0,148.9 L 444.7,143.9 L 445.4,152.3 L 446.1,144.8 L 446.8,143.9 L 447.5,137.3 L 448.2,138.9 L 448.9,134.8 L 449.6,142.3 L 450.3,138.1 L 451.0,143.1 L 451.7,143.9 L 452.4,135.6 L 453.1,138.1 L 453.8,138.1 L 454.5,141.4 L 455.2,141.4 L 455.9,144.8 L 456.6,139.8 L 457.3,143.1 L 458.0,143.1 L 458.7,147.3 L 459.3,149.8 L 460.0,150.6 L 460.7,148.1 L 461.4,154.0 L 462.1,154.0 L 462.8,153.1 L 463.5,153.1 L 464.2,144.8 L 464.9,138.1 L 465.6,142.3 L 466.3,140.6 L 467.0,136.4 L 467.7,141.4 L 468.4,142.3 L 469.1,141.4 L 469.8,148.1 L 470.5,146.4 L 471.2,145.6 L 471.9,139.8 L 472.6,140.6 L 473.3,138.1 L 474.0,138.1 L 474.7,138.9 L 475.4,140.6 L 476.1,138.9 L 476.8,133.1 L 477.5,119.7 L 478.2,123.1 L 478.9,124.7 L 479.6,118.9 L 480.3,124.7 L 481.0,117.2 L 481.7,114.7 L 482.4,116.4 L 483.1,121.4 L 483.8,124.7 L 484.5,128.1 L 485.2,130.6 L 485.9,127.2 L 486.6,132.3 L 487.3,130.6 L 488.0,125.6 L 488.7,130.6 L 489.3,130.6 L 490.0,130.6 L 490.7,131.4 L 491.4,129.7 L 492.1,122.2 L 492.8,123.1 L 493.5,123.9 L 494.2,123.9 L 494.9,125.6 L 495.6,130.6 L 496.3,137.3 L 497.0,138.9 L 497.7,139.8 L 498.4,142.3 L 499.1,137.3 L 499.8,140.6 L 500.5,140.6 L 501.2,140.6 L 501.9,134.8 L 502.6,133.1 L 503.3,133.1 L 504.0,132.3 L 504.7,131.4 L 505.4,138.9 L 506.1,134.8 L 506.8,125.6 L 507.5,128.9 L 508.2,128.1 L 508.9,128.9 L 509.6,133.1 L 510.3,135.6 L 511.0,133.9 L 511.7,133.9 L 512.4,135.6 L 513.1,133.9 L 513.8,133.9 L 514.5,134.8 L 515.2,138.1 L 515.9,140.6 L 516.6,138.9 L 517.3,138.9 L 518.0,137.3 L 518.7,137.3 L 519.3,138.1 L 520.0,135.6 L 520.7,138.1 L 521.4,138.1 L 522.1,141.4 L 522.8,138.9 L 523.5,135.6 L 524.2,133.9 L 524.9,133.1 L 525.6,137.3 L 526.3,136.4 L 527.0,134.8 L 527.7,124.7 L 528.4,126.4 L 529.1,122.2 L 529.8,124.7 L 530.5,128.9 L 531.2,131.4 L 531.9,128.9 L 532.6,133.9 L 533.3,133.1 L 534.0,133.1 L 534.7,133.9 L 535.4,138.9 L 536.1,138.1 L 536.8,133.9 L 537.5,137.3 L 538.2,139.8 L 538.9,137.3 L 539.6,136.4 L 540.3,134.8 L 541.0,141.4 L 541.7,139.8 L 542.4,146.4 L 543.1,150.6 L 543.8,147.3 L 544.5,143.9 L 545.2,146.4 L 545.9,144.8 L 546.6,142.3 L 547.3,143.1 L 548.0,143.9 L 548.7,145.6 L 549.3,148.1 L 550.0,134.8 L 550.7,137.3 L 551.4,133.9 L 552.1,138.1 L 552.8,133.1 L 553.5,135.6 L 554.2,141.4 L 554.9,138.1 L 555.6,143.1 L 556.3,146.4 L 557.0,146.4 L 557.7,145.6 L 558.4,139.8 L 559.1,126.4 L 559.8,118.9 L 560.5,128.9 L 561.2,164.0 L 561.9,159.8 L 562.6,163.1 L 563.3,162.3 L 564.0,152.3 L 564.7,159.0 L 565.4,144.8 L 566.1,142.3 L 566.8,129.7 L 567.5,133.1 L 568.2,128.9 L 568.9,133.1 L 569.6,122.2 L 570.3,131.4 L 571.0,131.4 L 571.7,130.6 L 572.4,133.1 L 573.1,135.6 L 573.8,128.9 L 574.5,128.1 L 575.2,128.9 L 575.9,124.7 L 576.6,128.1 L 577.3,118.9 L 578.0,122.2 L 578.7,128.9 L 579.3,124.7 L 580.0,134.8 L 580.7,140.6 L 581.4,142.3 L 582.1,145.6 L 582.8,145.6 L 583.5,146.4 L 584.2,154.0 L 584.9,145.6 L 585.6,150.6 L 586.3,154.0 L 587.0,159.0 L 587.7,162.3 L 588.4,157.3 L 589.1,154.0 L 589.8,153.1 L 590.5,152.3 L 591.2,147.3 L 591.9,143.1 L 592.6,148.9 L 593.3,154.8 L 594.0,157.3 L 594.7,156.5 L 595.4,157.3 L 596.1,162.3 L 596.8,165.6 L 597.5,162.3 L 598.2,160.6 L 598.9,159.8 L 599.6,159.0 L 600.3,165.6 L 601.0,169.0 L 601.7,163.1 L 602.4,167.3 L 603.1,169.8 L 603.8,170.7 L 604.5,173.2 L 605.2,169.8 L 605.9,178.2 L 606.6,178.2 L 607.3,183.2 L 608.0,180.7 L 608.7,185.7 L 609.3,186.5 L 610.0,173.2 L 610.7,178.2 L 611.4,170.7 L 612.1,164.0 L 612.8,169.0 L 613.5,166.5 L 614.2,161.5 L 614.9,154.8 L 615.6,156.5 L 616.3,153.1 L 617.0,164.0 L 617.7,161.5 L 618.4,168.1 L 619.1,171.5 L 619.8,166.5 L 620.5,169.8 L 621.2,177.3 L 621.9,166.5 L 622.6,169.0 L 623.3,171.5 L 624.0,174.0 L 624.7,170.7 L 625.4,174.8 L 626.1,168.1 L 626.8,164.8 L 627.5,166.5 L 628.2,165.6 L 628.9,170.7 L 629.6,174.0 L 630.3,173.2 L 631.0,173.2 L 631.7,172.3 L 632.4,179.0 L 633.1,179.0 L 633.8,174.8 L 634.5,174.8 L 635.2,172.3 L 635.9,179.0 L 636.6,181.5 L 637.3,179.8 L 638.0,179.8 L 638.7,182.3 L 639.3,183.2 L 640.0,183.2 L 640.7,180.7 L 641.4,180.7 L 642.1,181.5 L 642.8,184.0 L 643.5,185.7 L 644.2,184.0 L 644.9,186.5 L 645.6,189.9 L 646.3,190.7 L 647.0,188.2 L 647.7,187.4 L 648.4,188.2 L 649.1,183.2 L 649.8,181.5 L 650.5,176.5 L 651.2,179.8 L 651.9,175.7 L 652.6,180.7 L 653.3,181.5 L 654.0,178.2 L 654.7,180.7 L 655.4,181.5 L 656.1,167.3 L 656.8,174.8 L 657.5,170.7 L 658.2,174.8 L 658.9,154.8 L 659.6,162.3 L 660.3,164.0 L 661.0,164.8 L 661.7,171.5 L 662.4,165.6 L 663.1,170.7 L 663.8,169.8 L 664.5,169.8 L 665.2,170.7 L 665.9,179.0 L 666.6,177.3 L 667.3,179.8 L 668.0,183.2 L 668.7,185.7 L 669.3,184.8 L 670.0,184.0 L 670.7,179.0 L 671.4,184.0 L 672.1,184.8 L 672.8,187.4 L 673.5,190.7 L 674.2,194.0 L 674.9,193.2 L 675.6,198.2 L 676.3,195.7 L 677.0,202.4 L 677.7,201.5 L 678.4,202.4 L 679.1,199.0 L 679.8,209.1 L 680.5,212.4 L 681.2,209.9 L 681.9,209.9 L 682.6,206.6 L 683.3,203.2 L 684.0,208.2 L 684.7,209.1 L 685.4,183.2 L 686.1,186.5 L 686.8,188.2 L 687.5,191.5 L 688.2,189.9 L 688.9,192.4 L 689.6,195.7 L 690.3,194.9 L 691.0,193.2 L 691.7,196.5 L 692.4,194.0 L 693.1,193.2 L 693.8,198.2 L 694.5,198.2 L 695.2,188.2 L 695.9,189.9 L 696.6,194.9 L 697.3,191.5 L 698.0,190.7 L 698.7,187.4 L 699.3,187.4 L 700.0,187.4 L 700.7,193.2 L 701.4,194.9 L 702.1,194.0 L 702.8,194.0 L 703.5,186.5 L 704.2,188.2 L 704.9,189.9 L 705.6,185.7 L 706.3,182.3 L 707.0,180.7 L 707.7,186.5 L 708.4,183.2 L 709.1,186.5 L 709.8,184.0 L 710.5,179.8 L 711.2,174.8 L 711.9,173.2 L 712.6,169.0 L 713.3,175.7 L 714.0,170.7 L 714.7,174.8 L 715.4,173.2 L 716.1,168.1 L 716.8,166.5 L 717.5,165.6 L 718.2,166.5 L 718.9,163.1 L 719.6,168.1 L 720.3,164.0 L 721.0,160.6 L 721.7,148.1 L 722.4,154.0 L 723.1,139.8 L 723.8,133.1 L 724.5,131.4 L 725.2,131.4 L 725.9,123.1 L 726.6,193.2 L 727.3,204.0 L 728.0,214.1 L 728.7,183.2 L 729.3,171.5 L 730.0,159.8 L 730.7,159.0 L 731.4,160.6 L 732.1,172.3 L 732.8,165.6 L 733.5,164.0 L 734.2,156.5 L 734.9,159.8 L 735.6,157.3 L 736.3,163.1 L 737.0,153.1 L 737.7,157.3 L 738.4,148.9 L 739.1,152.3 L 739.8,156.5 L 740.5,163.1 L 741.2,148.1 L 741.9,138.1 L 742.6,147.3 L 743.3,143.1 L 744.0,139.8 L 744.7,138.1 L 745.4,141.4 L 746.1,148.9 L 746.8,154.8 L 747.5,151.5 L 748.2,159.0 L 748.9,157.3 L 749.6,148.9 L 750.3,152.3 L 751.0,141.4 L 751.7,151.5 L 752.4,148.9 L 753.1,151.5 L 753.8,149.8 L 754.5,154.8 L 755.2,154.0 L 755.9,160.6 L 756.6,154.0 L 757.3,156.5 L 758.0,158.1 L 758.7,155.6 L 759.3,160.6 L 760.0,158.1 L 760.7,150.6 L 761.4,148.1 L 762.1,148.1 L 762.8,143.9 L 763.5,144.8 L 764.2,149.8 L 764.9,154.0 L 765.6,157.3 L 766.3,157.3 L 767.0,157.3 L 767.7,151.5 L 768.4,148.9 L 769.1,149.8 L 769.8,148.9 L 770.5,150.6 L 771.2,151.5 L 771.9,153.1 L 772.6,151.5 L 773.3,152.3 L 774.0,156.5 L 774.7,151.5 L 775.4,152.3 L 776.1,157.3 L 776.8,154.0 L 777.5,156.5 L 778.2,156.5 L 778.9,154.0 L 779.6,154.0 L 780.3,153.1 L 781.0,148.1 L 781.7,150.6 L 782.4,150.6 L 783.1,154.8 L 783.8,151.5 L 784.5,153.1 L 785.2,150.6 L 785.9,151.5 L 786.6,149.8 L 787.3,149.8 L 788.0,149.8 L 788.7,152.3 L 789.3,150.6 L 790.0,154.0 L 790.7,154.8 L 791.4,156.5 L 792.1,153.1 L 792.8,154.0 L 793.5,151.5 L 794.2,150.6 L 794.9,150.6 L 795.6,151.5 L 796.3,151.5 L 797.0,152.3 L 797.7,153.1 L 798.4,151.5 L 799.1,143.9 L 799.8,143.1 L 800.5,142.3 L 801.2,139.8 L 801.9,136.4 L 802.6,133.9 L 803.3,134.8 L 804.0,138.9 L 804.7,137.3 L 805.4,142.3 L 806.1,138.1 L 806.8,133.1 L 807.5,133.9 L 808.2,131.4 L 808.9,137.3 L 809.6,134.8 L 810.3,138.1 L 811.0,142.3 L 811.7,142.3 L 812.4,134.8 L 813.1,130.6 L 813.8,128.1 L 814.5,125.6 L 815.2,123.9 L 815.9,129.7 L 816.6,128.9 L 817.3,126.4 L 818.0,128.1 L 818.7,126.4 L 819.3,123.1 L 820.0,128.9 L 820.7,131.4 L 821.4,135.6 L 822.1,133.9 L 822.8,129.7 L 823.5,128.9 L 824.2,133.9 L 824.9,139.8 L 825.6,142.3 L 826.3,142.3 L 827.0,141.4 L 827.7,140.6 L 828.4,143.1 L 829.1,146.4 L 829.8,139.8 L 830.5,144.8 L 831.2,141.4 L 831.9,141.4 L 832.6,138.9 L 833.3,134.8 L 834.0,137.3 L 834.7,137.3 L 835.4,142.3 L 836.1,144.8 L 836.8,144.8 L 837.5,142.3 L 838.2,145.6 L 838.9,147.3 L 839.6,148.1 L 840.3,147.3 L 841.0,149.8 L 841.7,151.5 L 842.4,148.9 L 843.1,148.1 L 843.8,140.6 L 844.5,143.9 L 845.2,144.8 L 845.9,146.4 L 846.6,142.3 L 847.3,145.6 L 848.0,143.1 L 848.7,143.9 L 849.3,144.8 L 850.0,145.6 L 850.7,140.6 L 851.4,126.4 L 852.1,108.0 L 852.8,99.7 L 853.5,100.5 L 854.2,103.9 L 854.9,112.2 L 855.6,103.0 L 856.3,107.2 L 857.0,101.4 L 857.7,105.5 L 858.4,104.7 L 859.1,112.2 L 859.8,117.2 L 860.5,111.4 L 861.2,113.9 L 861.9,111.4 L 862.6,112.2 L 863.3,116.4 L 864.0,123.1 L 864.7,120.6 L 865.4,122.2 L 866.1,118.9 L 866.8,120.6 L 867.5,121.4 L 868.2,122.2 L 868.9,120.6 L 869.6,112.2 L 870.3,114.7 L 871.0,110.5 L 871.7,116.4 L 872.4,115.6 L 873.1,120.6 L 873.8,125.6 L 874.5,146.4 L 875.2,138.1 L 875.9,135.6 L 876.6,139.8 L 877.3,133.1 L 878.0,135.6 L 878.7,139.8 L 879.3,137.3 L 880.0,136.4 L 880.7,143.1 L 881.4,148.9 L 882.1,139.8 L 882.8,140.6 L 883.5,140.6 L 884.2,152.3 L 884.9,155.6 L 885.6,153.1 L 886.3,144.8 L 887.0,147.3 L 887.7,148.1 L 888.4,146.4 L 889.1,138.1 L 889.8,148.1 L 890.5,146.4 L 891.2,148.9 L 891.9,159.8 L 892.6,164.0 L 893.3,164.0 L 894.0,154.0" fill="none"></path>
+    <g class="trade-marker buy">
+      <circle cx="221.4" cy="175.7" r="5.5"></circle>
+      <text x="221.4" y="163.7" text-anchor="middle">B 15:00</text>
+      <title>2026/08/31 15:00:00 买入 300 @ 12.040</title>
+    </g><g class="trade-marker sell">
+      <circle cx="225.6" cy="128.9" r="5.5"></circle>
+      <text x="225.6" y="147.9" text-anchor="middle">S 09:35</text>
+      <title>2026/09/01 09:35:00 卖出 300 @ 12.600</title>
+    </g>
+  </svg></div>
+    </article><article class="stock-card" id="stock-600354">
+      <div class="stock-card-head">
+        <div><span class="code">600354</span><h3>敦煌种业</h3></div>
+        <span class="chip">2 笔</span>
+      </div>
+      <div class="stock-metrics">
+        <span>买入 <b>100</b><em>903.00 / 现金908.01</em></span>
+        <span>卖出 <b>100</b><em>845.00 / 到账839.57</em></span>
+        <span>可见已实现 <b class="is-loss">-68.44</b><em>FIFO / 含截图费用</em></span>
+        <span>期末可见 <b>已清仓</b><em>持仓截图待校准</em></span>
+      </div>
+      <p>敦煌种业8/31午后买入100股，9/1早盘卖出，含费用约-68.44，约-7.54%。小亏可控，但说明同方向试错里不是所有票都具备足够强度，后续要分清第一性和跟随性。</p>
+      <div class="chart-frame"><svg class="stock-chart" viewBox="0 0 920 280" role="img" aria-label="敦煌种业 5分钟走势与成交点">
+    <rect x="0" y="0" width="920" height="280" rx="10"></rect>
+    <g class="axis"><g><line x1="54" x2="894" y1="234.0" y2="234.0"></line><text x="44" y="238.0" text-anchor="end">7.33</text></g><g><line x1="54" x2="894" y1="131.0" y2="131.0"></line><text x="44" y="135.0" text-anchor="end">8.32</text></g><g><line x1="54" x2="894" y1="28.0" y2="28.0"></line><text x="44" y="32.0" text-anchor="end">9.31</text></g></g>
+    <g class="day-grid"><g class="day-tick"><line x1="54.0" x2="54.0" y1="28" y2="234"></line><text x="54.0" y="262" text-anchor="middle">08-31</text></g><g class="day-tick"><line x1="222.1" x2="222.1" y1="28" y2="234"></line><text x="222.1" y="262" text-anchor="middle">09-01</text></g><g class="day-tick"><line x1="390.3" x2="390.3" y1="28" y2="234"></line><text x="390.3" y="262" text-anchor="middle">09-02</text></g><g class="day-tick"><line x1="558.4" x2="558.4" y1="28" y2="234"></line><text x="558.4" y="262" text-anchor="middle">09-03</text></g><g class="day-tick"><line x1="726.6" x2="726.6" y1="28" y2="234"></line><text x="726.6" y="262" text-anchor="middle">09-04</text></g></g>
+    <path d="M 54.0,57.3 L 54.7,57.3 L 55.4,57.3 L 56.1,57.3 L 56.8,57.3 L 57.5,57.3 L 58.2,57.3 L 58.9,57.3 L 59.6,57.3 L 60.3,57.3 L 61.0,57.3 L 61.7,57.3 L 62.4,57.3 L 63.1,57.3 L 63.8,57.3 L 64.5,57.3 L 65.2,57.3 L 65.9,57.3 L 66.6,57.3 L 67.3,57.3 L 68.0,57.3 L 68.7,57.3 L 69.3,57.3 L 70.0,57.3 L 70.7,57.3 L 71.4,57.3 L 72.1,57.3 L 72.8,57.3 L 73.5,57.3 L 74.2,57.3 L 74.9,57.3 L 75.6,57.3 L 76.3,57.3 L 77.0,57.3 L 77.7,57.3 L 78.4,57.3 L 79.1,57.3 L 79.8,57.3 L 80.5,57.3 L 81.2,57.3 L 81.9,57.3 L 82.6,57.3 L 83.3,57.3 L 84.0,57.3 L 84.7,57.3 L 85.4,57.3 L 86.1,57.3 L 86.8,57.3 L 87.5,57.3 L 88.2,57.3 L 88.9,57.3 L 89.6,57.3 L 90.3,57.3 L 91.0,57.3 L 91.7,57.3 L 92.4,57.3 L 93.1,57.3 L 93.8,57.3 L 94.5,57.3 L 95.2,57.3 L 95.9,57.3 L 96.6,57.3 L 97.3,57.3 L 98.0,57.3 L 98.7,57.3 L 99.3,57.3 L 100.0,57.3 L 100.7,57.3 L 101.4,57.3 L 102.1,57.3 L 102.8,57.3 L 103.5,57.3 L 104.2,57.3 L 104.9,57.3 L 105.6,57.3 L 106.3,57.3 L 107.0,57.3 L 107.7,57.3 L 108.4,57.3 L 109.1,57.3 L 109.8,57.3 L 110.5,57.3 L 111.2,57.3 L 111.9,57.3 L 112.6,57.3 L 113.3,57.3 L 114.0,57.3 L 114.7,57.3 L 115.4,57.3 L 116.1,57.3 L 116.8,57.3 L 117.5,57.3 L 118.2,57.3 L 118.9,57.3 L 119.6,57.3 L 120.3,57.3 L 121.0,57.3 L 121.7,57.3 L 122.4,57.3 L 123.1,57.3 L 123.8,57.3 L 124.5,57.3 L 125.2,57.3 L 125.9,57.3 L 126.6,57.3 L 127.3,57.3 L 128.0,57.3 L 128.7,57.3 L 129.3,57.3 L 130.0,57.3 L 130.7,57.3 L 131.4,57.3 L 132.1,57.3 L 132.8,57.3 L 133.5,57.3 L 134.2,57.3 L 134.9,57.3 L 135.6,57.3 L 136.3,57.3 L 137.0,57.3 L 137.7,57.3 L 138.4,57.3 L 139.1,57.3 L 139.8,57.3 L 140.5,57.3 L 141.2,57.3 L 141.9,57.3 L 142.6,57.3 L 143.3,57.3 L 144.0,57.3 L 144.7,57.3 L 145.4,57.3 L 146.1,57.3 L 146.8,57.3 L 147.5,57.3 L 148.2,57.3 L 148.9,57.3 L 149.6,57.3 L 150.3,57.3 L 151.0,57.3 L 151.7,57.3 L 152.4,57.3 L 153.1,57.3 L 153.8,57.3 L 154.5,57.3 L 155.2,57.3 L 155.9,57.3 L 156.6,57.3 L 157.3,57.3 L 158.0,57.3 L 158.7,57.3 L 159.3,57.3 L 160.0,57.3 L 160.7,57.3 L 161.4,95.7 L 162.1,111.3 L 162.8,101.9 L 163.5,67.7 L 164.2,57.3 L 164.9,57.3 L 165.6,65.6 L 166.3,67.7 L 167.0,57.3 L 167.7,65.6 L 168.4,79.1 L 169.1,91.5 L 169.8,82.2 L 170.5,84.3 L 171.2,82.2 L 171.9,83.2 L 172.6,87.4 L 173.3,88.4 L 174.0,90.5 L 174.7,96.7 L 175.4,98.8 L 176.1,107.1 L 176.8,112.3 L 177.5,114.4 L 178.2,120.6 L 178.9,114.4 L 179.6,120.6 L 180.3,126.8 L 181.0,123.7 L 181.7,120.6 L 182.4,121.7 L 183.1,120.6 L 183.8,113.3 L 184.5,122.7 L 185.2,123.7 L 185.9,125.8 L 186.6,120.6 L 187.3,120.6 L 188.0,122.7 L 188.7,133.1 L 189.3,133.1 L 190.0,133.1 L 190.7,127.9 L 191.4,126.8 L 192.1,117.5 L 192.8,124.8 L 193.5,125.8 L 194.2,126.8 L 194.9,132.0 L 195.6,136.2 L 196.3,133.1 L 197.0,131.0 L 197.7,131.0 L 198.4,124.8 L 199.1,130.0 L 199.8,130.0 L 200.5,126.8 L 201.2,118.5 L 201.9,117.5 L 202.6,126.8 L 203.3,124.8 L 204.0,122.7 L 204.7,119.6 L 205.4,121.7 L 206.1,124.8 L 206.8,124.8 L 207.5,126.8 L 208.2,126.8 L 208.9,131.0 L 209.6,130.0 L 210.3,133.1 L 211.0,138.3 L 211.7,135.2 L 212.4,134.1 L 213.1,135.2 L 213.8,136.2 L 214.5,135.2 L 215.2,130.0 L 215.9,132.0 L 216.6,131.0 L 217.3,134.1 L 218.0,136.2 L 218.7,134.1 L 219.3,134.1 L 220.0,134.1 L 220.7,134.1 L 221.4,134.1 L 222.1,134.1 L 222.8,114.4 L 223.5,113.3 L 224.2,122.7 L 224.9,113.3 L 225.6,97.8 L 226.3,94.7 L 227.0,88.4 L 227.7,88.4 L 228.4,72.9 L 229.1,71.8 L 229.8,79.1 L 230.5,82.2 L 231.2,70.8 L 231.9,59.4 L 232.6,70.8 L 233.3,70.8 L 234.0,65.6 L 234.7,56.2 L 235.4,47.9 L 236.1,47.9 L 236.8,47.9 L 237.5,47.9 L 238.2,47.9 L 238.9,47.9 L 239.6,47.9 L 240.3,47.9 L 241.0,47.9 L 241.7,47.9 L 242.4,47.9 L 243.1,47.9 L 243.8,47.9 L 244.5,47.9 L 245.2,47.9 L 245.9,47.9 L 246.6,47.9 L 247.3,47.9 L 248.0,47.9 L 248.7,47.9 L 249.3,47.9 L 250.0,47.9 L 250.7,47.9 L 251.4,47.9 L 252.1,47.9 L 252.8,47.9 L 253.5,47.9 L 254.2,47.9 L 254.9,47.9 L 255.6,47.9 L 256.3,47.9 L 257.0,47.9 L 257.7,47.9 L 258.4,47.9 L 259.1,47.9 L 259.8,47.9 L 260.5,47.9 L 261.2,47.9 L 261.9,47.9 L 262.6,47.9 L 263.3,47.9 L 264.0,47.9 L 264.7,47.9 L 265.4,47.9 L 266.1,47.9 L 266.8,47.9 L 267.5,47.9 L 268.2,47.9 L 268.9,47.9 L 269.6,47.9 L 270.3,47.9 L 271.0,47.9 L 271.7,47.9 L 272.4,47.9 L 273.1,47.9 L 273.8,47.9 L 274.5,47.9 L 275.2,47.9 L 275.9,47.9 L 276.6,47.9 L 277.3,47.9 L 278.0,47.9 L 278.7,47.9 L 279.3,47.9 L 280.0,47.9 L 280.7,47.9 L 281.4,47.9 L 282.1,47.9 L 282.8,47.9 L 283.5,47.9 L 284.2,47.9 L 284.9,47.9 L 285.6,47.9 L 286.3,47.9 L 287.0,47.9 L 287.7,47.9 L 288.4,47.9 L 289.1,47.9 L 289.8,47.9 L 290.5,47.9 L 291.2,47.9 L 291.9,47.9 L 292.6,47.9 L 293.3,47.9 L 294.0,47.9 L 294.7,47.9 L 295.4,47.9 L 296.1,47.9 L 296.8,47.9 L 297.5,47.9 L 298.2,47.9 L 298.9,47.9 L 299.6,47.9 L 300.3,47.9 L 301.0,47.9 L 301.7,47.9 L 302.4,47.9 L 303.1,47.9 L 303.8,47.9 L 304.5,47.9 L 305.2,47.9 L 305.9,47.9 L 306.6,47.9 L 307.3,47.9 L 308.0,47.9 L 308.7,47.9 L 309.3,47.9 L 310.0,47.9 L 310.7,47.9 L 311.4,47.9 L 312.1,47.9 L 312.8,47.9 L 313.5,47.9 L 314.2,47.9 L 314.9,47.9 L 315.6,47.9 L 316.3,47.9 L 317.0,47.9 L 317.7,47.9 L 318.4,47.9 L 319.1,47.9 L 319.8,47.9 L 320.5,47.9 L 321.2,47.9 L 321.9,47.9 L 322.6,47.9 L 323.3,47.9 L 324.0,47.9 L 324.7,47.9 L 325.4,47.9 L 326.1,47.9 L 326.8,47.9 L 327.5,47.9 L 328.2,47.9 L 328.9,47.9 L 329.6,47.9 L 330.3,47.9 L 331.0,47.9 L 331.7,47.9 L 332.4,47.9 L 333.1,47.9 L 333.8,47.9 L 334.5,47.9 L 335.2,47.9 L 335.9,47.9 L 336.6,47.9 L 337.3,47.9 L 338.0,47.9 L 338.7,47.9 L 339.3,47.9 L 340.0,47.9 L 340.7,47.9 L 341.4,47.9 L 342.1,47.9 L 342.8,47.9 L 343.5,47.9 L 344.2,47.9 L 344.9,47.9 L 345.6,47.9 L 346.3,47.9 L 347.0,47.9 L 347.7,47.9 L 348.4,47.9 L 349.1,47.9 L 349.8,47.9 L 350.5,47.9 L 351.2,47.9 L 351.9,47.9 L 352.6,47.9 L 353.3,47.9 L 354.0,47.9 L 354.7,47.9 L 355.4,47.9 L 356.1,47.9 L 356.8,47.9 L 357.5,47.9 L 358.2,47.9 L 358.9,47.9 L 359.6,47.9 L 360.3,47.9 L 361.0,47.9 L 361.7,47.9 L 362.4,47.9 L 363.1,47.9 L 363.8,47.9 L 364.5,47.9 L 365.2,47.9 L 365.9,47.9 L 366.6,47.9 L 367.3,47.9 L 368.0,47.9 L 368.7,47.9 L 369.3,47.9 L 370.0,47.9 L 370.7,47.9 L 371.4,47.9 L 372.1,47.9 L 372.8,47.9 L 373.5,47.9 L 374.2,47.9 L 374.9,47.9 L 375.6,47.9 L 376.3,47.9 L 377.0,47.9 L 377.7,47.9 L 378.4,47.9 L 379.1,47.9 L 379.8,47.9 L 380.5,47.9 L 381.2,47.9 L 381.9,47.9 L 382.6,47.9 L 383.3,47.9 L 384.0,47.9 L 384.7,47.9 L 385.4,47.9 L 386.1,47.9 L 386.8,47.9 L 387.5,47.9 L 388.2,47.9 L 388.9,47.9 L 389.6,47.9 L 390.3,57.3 L 391.0,117.5 L 391.7,98.8 L 392.4,95.7 L 393.1,114.4 L 393.8,112.3 L 394.5,123.7 L 395.2,112.3 L 395.9,106.1 L 396.6,109.2 L 397.3,119.6 L 398.0,128.9 L 398.7,133.1 L 399.3,126.8 L 400.0,134.1 L 400.7,132.0 L 401.4,132.0 L 402.1,134.1 L 402.8,133.1 L 403.5,135.2 L 404.2,125.8 L 404.9,132.0 L 405.6,133.1 L 406.3,135.2 L 407.0,137.2 L 407.7,140.3 L 408.4,141.4 L 409.1,137.2 L 409.8,136.2 L 410.5,140.3 L 411.2,140.3 L 411.9,142.4 L 412.6,141.4 L 413.3,142.4 L 414.0,141.4 L 414.7,141.4 L 415.4,142.4 L 416.1,142.4 L 416.8,142.4 L 417.5,142.4 L 418.2,142.4 L 418.9,142.4 L 419.6,142.4 L 420.3,142.4 L 421.0,142.4 L 421.7,142.4 L 422.4,142.4 L 423.1,142.4 L 423.8,142.4 L 424.5,142.4 L 425.2,142.4 L 425.9,142.4 L 426.6,142.4 L 427.3,142.4 L 428.0,142.4 L 428.7,142.4 L 429.3,141.4 L 430.0,141.4 L 430.7,141.4 L 431.4,142.4 L 432.1,141.4 L 432.8,142.4 L 433.5,142.4 L 434.2,142.4 L 434.9,142.4 L 435.6,142.4 L 436.3,142.4 L 437.0,142.4 L 437.7,142.4 L 438.4,142.4 L 439.1,142.4 L 439.8,142.4 L 440.5,142.4 L 441.2,142.4 L 441.9,142.4 L 442.6,142.4 L 443.3,142.4 L 444.0,142.4 L 444.7,142.4 L 445.4,142.4 L 446.1,142.4 L 446.8,142.4 L 447.5,142.4 L 448.2,142.4 L 448.9,142.4 L 449.6,142.4 L 450.3,142.4 L 451.0,142.4 L 451.7,142.4 L 452.4,142.4 L 453.1,142.4 L 453.8,142.4 L 454.5,142.4 L 455.2,142.4 L 455.9,142.4 L 456.6,142.4 L 457.3,142.4 L 458.0,142.4 L 458.7,142.4 L 459.3,142.4 L 460.0,142.4 L 460.7,142.4 L 461.4,142.4 L 462.1,142.4 L 462.8,142.4 L 463.5,142.4 L 464.2,142.4 L 464.9,142.4 L 465.6,142.4 L 466.3,142.4 L 467.0,142.4 L 467.7,142.4 L 468.4,142.4 L 469.1,142.4 L 469.8,142.4 L 470.5,142.4 L 471.2,142.4 L 471.9,142.4 L 472.6,142.4 L 473.3,142.4 L 474.0,142.4 L 474.7,142.4 L 475.4,142.4 L 476.1,142.4 L 476.8,142.4 L 477.5,142.4 L 478.2,142.4 L 478.9,142.4 L 479.6,142.4 L 480.3,142.4 L 481.0,142.4 L 481.7,141.4 L 482.4,141.4 L 483.1,141.4 L 483.8,141.4 L 484.5,141.4 L 485.2,142.4 L 485.9,142.4 L 486.6,142.4 L 487.3,142.4 L 488.0,142.4 L 488.7,141.4 L 489.3,141.4 L 490.0,142.4 L 490.7,141.4 L 491.4,141.4 L 492.1,142.4 L 492.8,141.4 L 493.5,141.4 L 494.2,141.4 L 494.9,141.4 L 495.6,142.4 L 496.3,142.4 L 497.0,142.4 L 497.7,142.4 L 498.4,142.4 L 499.1,142.4 L 499.8,142.4 L 500.5,142.4 L 501.2,142.4 L 501.9,142.4 L 502.6,142.4 L 503.3,142.4 L 504.0,142.4 L 504.7,142.4 L 505.4,142.4 L 506.1,142.4 L 506.8,142.4 L 507.5,142.4 L 508.2,142.4 L 508.9,142.4 L 509.6,142.4 L 510.3,142.4 L 511.0,142.4 L 511.7,142.4 L 512.4,142.4 L 513.1,142.4 L 513.8,142.4 L 514.5,142.4 L 515.2,142.4 L 515.9,142.4 L 516.6,142.4 L 517.3,142.4 L 518.0,142.4 L 518.7,142.4 L 519.3,142.4 L 520.0,142.4 L 520.7,142.4 L 521.4,142.4 L 522.1,142.4 L 522.8,142.4 L 523.5,142.4 L 524.2,142.4 L 524.9,142.4 L 525.6,142.4 L 526.3,142.4 L 527.0,142.4 L 527.7,142.4 L 528.4,142.4 L 529.1,142.4 L 529.8,142.4 L 530.5,142.4 L 531.2,142.4 L 531.9,142.4 L 532.6,142.4 L 533.3,142.4 L 534.0,142.4 L 534.7,142.4 L 535.4,142.4 L 536.1,142.4 L 536.8,142.4 L 537.5,142.4 L 538.2,142.4 L 538.9,142.4 L 539.6,142.4 L 540.3,142.4 L 541.0,142.4 L 541.7,142.4 L 542.4,142.4 L 543.1,142.4 L 543.8,142.4 L 544.5,142.4 L 545.2,142.4 L 545.9,142.4 L 546.6,142.4 L 547.3,142.4 L 548.0,142.4 L 548.7,142.4 L 549.3,142.4 L 550.0,142.4 L 550.7,142.4 L 551.4,142.4 L 552.1,142.4 L 552.8,142.4 L 553.5,142.4 L 554.2,142.4 L 554.9,142.4 L 555.6,142.4 L 556.3,142.4 L 557.0,142.4 L 557.7,142.4 L 558.4,181.9 L 559.1,173.6 L 559.8,167.3 L 560.5,178.8 L 561.2,187.1 L 561.9,185.0 L 562.6,192.3 L 563.3,193.3 L 564.0,185.0 L 564.7,186.0 L 565.4,187.1 L 566.1,182.9 L 566.8,186.0 L 567.5,184.0 L 568.2,189.1 L 568.9,182.9 L 569.6,173.6 L 570.3,176.7 L 571.0,173.6 L 571.7,161.1 L 572.4,167.3 L 573.1,166.3 L 573.8,165.3 L 574.5,153.8 L 575.2,153.8 L 575.9,151.8 L 576.6,161.1 L 577.3,163.2 L 578.0,167.3 L 578.7,167.3 L 579.3,163.2 L 580.0,168.4 L 580.7,172.5 L 581.4,176.7 L 582.1,174.6 L 582.8,176.7 L 583.5,168.4 L 584.2,172.5 L 584.9,172.5 L 585.6,172.5 L 586.3,173.6 L 587.0,174.6 L 587.7,177.7 L 588.4,180.8 L 589.1,177.7 L 589.8,174.6 L 590.5,174.6 L 591.2,173.6 L 591.9,170.5 L 592.6,173.6 L 593.3,178.8 L 594.0,179.8 L 594.7,179.8 L 595.4,178.8 L 596.1,182.9 L 596.8,182.9 L 597.5,185.0 L 598.2,185.0 L 598.9,187.1 L 599.6,185.0 L 600.3,185.0 L 601.0,187.1 L 601.7,186.0 L 602.4,185.0 L 603.1,186.0 L 603.8,185.0 L 604.5,187.1 L 605.2,188.1 L 605.9,190.2 L 606.6,190.2 L 607.3,190.2 L 608.0,188.1 L 608.7,188.1 L 609.3,191.2 L 610.0,191.2 L 610.7,190.2 L 611.4,191.2 L 612.1,190.2 L 612.8,191.2 L 613.5,189.1 L 614.2,189.1 L 614.9,190.2 L 615.6,187.1 L 616.3,186.0 L 617.0,186.0 L 617.7,189.1 L 618.4,192.3 L 619.1,193.3 L 619.8,194.3 L 620.5,195.4 L 621.2,195.4 L 621.9,193.3 L 622.6,192.3 L 623.3,194.3 L 624.0,192.3 L 624.7,191.2 L 625.4,194.3 L 626.1,193.3 L 626.8,190.2 L 627.5,191.2 L 628.2,190.2 L 628.9,191.2 L 629.6,194.3 L 630.3,194.3 L 631.0,195.4 L 631.7,196.4 L 632.4,197.5 L 633.1,197.5 L 633.8,197.5 L 634.5,196.4 L 635.2,197.5 L 635.9,198.5 L 636.6,198.5 L 637.3,198.5 L 638.0,198.5 L 638.7,199.5 L 639.3,198.5 L 640.0,195.4 L 640.7,195.4 L 641.4,196.4 L 642.1,197.5 L 642.8,196.4 L 643.5,197.5 L 644.2,198.5 L 644.9,199.5 L 645.6,198.5 L 646.3,197.5 L 647.0,197.5 L 647.7,189.1 L 648.4,190.2 L 649.1,187.1 L 649.8,185.0 L 650.5,181.9 L 651.2,182.9 L 651.9,182.9 L 652.6,187.1 L 653.3,188.1 L 654.0,186.0 L 654.7,189.1 L 655.4,187.1 L 656.1,180.8 L 656.8,181.9 L 657.5,185.0 L 658.2,184.0 L 658.9,177.7 L 659.6,176.7 L 660.3,178.8 L 661.0,174.6 L 661.7,177.7 L 662.4,175.6 L 663.1,180.8 L 663.8,181.9 L 664.5,180.8 L 665.2,184.0 L 665.9,185.0 L 666.6,185.0 L 667.3,186.0 L 668.0,186.0 L 668.7,185.0 L 669.3,184.0 L 670.0,184.0 L 670.7,184.0 L 671.4,185.0 L 672.1,184.0 L 672.8,185.0 L 673.5,187.1 L 674.2,188.1 L 674.9,188.1 L 675.6,189.1 L 676.3,189.1 L 677.0,190.2 L 677.7,190.2 L 678.4,191.2 L 679.1,190.2 L 679.8,191.2 L 680.5,193.3 L 681.2,193.3 L 681.9,193.3 L 682.6,194.3 L 683.3,195.4 L 684.0,193.3 L 684.7,192.3 L 685.4,186.0 L 686.1,181.9 L 686.8,184.0 L 687.5,185.0 L 688.2,184.0 L 688.9,182.9 L 689.6,185.0 L 690.3,184.0 L 691.0,185.0 L 691.7,185.0 L 692.4,186.0 L 693.1,182.9 L 693.8,182.9 L 694.5,182.9 L 695.2,182.9 L 695.9,182.9 L 696.6,185.0 L 697.3,184.0 L 698.0,185.0 L 698.7,184.0 L 699.3,182.9 L 700.0,179.8 L 700.7,181.9 L 701.4,181.9 L 702.1,182.9 L 702.8,186.0 L 703.5,186.0 L 704.2,185.0 L 704.9,185.0 L 705.6,186.0 L 706.3,186.0 L 707.0,187.1 L 707.7,187.1 L 708.4,185.0 L 709.1,185.0 L 709.8,185.0 L 710.5,186.0 L 711.2,186.0 L 711.9,187.1 L 712.6,187.1 L 713.3,187.1 L 714.0,186.0 L 714.7,188.1 L 715.4,188.1 L 716.1,188.1 L 716.8,188.1 L 717.5,188.1 L 718.2,186.0 L 718.9,184.0 L 719.6,185.0 L 720.3,184.0 L 721.0,180.8 L 721.7,173.6 L 722.4,174.6 L 723.1,177.7 L 723.8,173.6 L 724.5,174.6 L 725.2,174.6 L 725.9,177.7 L 726.6,198.5 L 727.3,214.1 L 728.0,212.0 L 728.7,203.7 L 729.3,186.0 L 730.0,185.0 L 730.7,182.9 L 731.4,172.5 L 732.1,169.4 L 732.8,166.3 L 733.5,160.1 L 734.2,146.6 L 734.9,141.4 L 735.6,148.7 L 736.3,143.5 L 737.0,139.3 L 737.7,136.2 L 738.4,124.8 L 739.1,128.9 L 739.8,122.7 L 740.5,124.8 L 741.2,109.2 L 741.9,95.7 L 742.6,104.0 L 743.3,100.9 L 744.0,96.7 L 744.7,95.7 L 745.4,95.7 L 746.1,95.7 L 746.8,95.7 L 747.5,95.7 L 748.2,95.7 L 748.9,95.7 L 749.6,95.7 L 750.3,95.7 L 751.0,95.7 L 751.7,95.7 L 752.4,95.7 L 753.1,95.7 L 753.8,95.7 L 754.5,95.7 L 755.2,95.7 L 755.9,95.7 L 756.6,95.7 L 757.3,95.7 L 758.0,95.7 L 758.7,95.7 L 759.3,95.7 L 760.0,95.7 L 760.7,95.7 L 761.4,95.7 L 762.1,95.7 L 762.8,95.7 L 763.5,95.7 L 764.2,95.7 L 764.9,95.7 L 765.6,96.7 L 766.3,95.7 L 767.0,98.8 L 767.7,95.7 L 768.4,95.7 L 769.1,95.7 L 769.8,95.7 L 770.5,95.7 L 771.2,95.7 L 771.9,95.7 L 772.6,95.7 L 773.3,95.7 L 774.0,95.7 L 774.7,95.7 L 775.4,96.7 L 776.1,95.7 L 776.8,95.7 L 777.5,95.7 L 778.2,95.7 L 778.9,95.7 L 779.6,95.7 L 780.3,95.7 L 781.0,95.7 L 781.7,95.7 L 782.4,95.7 L 783.1,95.7 L 783.8,95.7 L 784.5,95.7 L 785.2,95.7 L 785.9,95.7 L 786.6,95.7 L 787.3,95.7 L 788.0,95.7 L 788.7,95.7 L 789.3,95.7 L 790.0,95.7 L 790.7,95.7 L 791.4,95.7 L 792.1,95.7 L 792.8,95.7 L 793.5,95.7 L 794.2,95.7 L 794.9,95.7 L 795.6,95.7 L 796.3,95.7 L 797.0,95.7 L 797.7,95.7 L 798.4,95.7 L 799.1,95.7 L 799.8,95.7 L 800.5,95.7 L 801.2,95.7 L 801.9,95.7 L 802.6,95.7 L 803.3,95.7 L 804.0,95.7 L 804.7,95.7 L 805.4,95.7 L 806.1,95.7 L 806.8,95.7 L 807.5,95.7 L 808.2,95.7 L 808.9,95.7 L 809.6,95.7 L 810.3,95.7 L 811.0,95.7 L 811.7,95.7 L 812.4,95.7 L 813.1,95.7 L 813.8,95.7 L 814.5,95.7 L 815.2,95.7 L 815.9,95.7 L 816.6,95.7 L 817.3,95.7 L 818.0,95.7 L 818.7,95.7 L 819.3,95.7 L 820.0,95.7 L 820.7,95.7 L 821.4,95.7 L 822.1,95.7 L 822.8,95.7 L 823.5,95.7 L 824.2,95.7 L 824.9,95.7 L 825.6,95.7 L 826.3,95.7 L 827.0,95.7 L 827.7,95.7 L 828.4,95.7 L 829.1,95.7 L 829.8,95.7 L 830.5,95.7 L 831.2,95.7 L 831.9,95.7 L 832.6,95.7 L 833.3,95.7 L 834.0,95.7 L 834.7,95.7 L 835.4,95.7 L 836.1,95.7 L 836.8,95.7 L 837.5,95.7 L 838.2,95.7 L 838.9,95.7 L 839.6,95.7 L 840.3,95.7 L 841.0,95.7 L 841.7,95.7 L 842.4,95.7 L 843.1,95.7 L 843.8,95.7 L 844.5,95.7 L 845.2,95.7 L 845.9,95.7 L 846.6,95.7 L 847.3,95.7 L 848.0,95.7 L 848.7,95.7 L 849.3,95.7 L 850.0,95.7 L 850.7,95.7 L 851.4,95.7 L 852.1,95.7 L 852.8,95.7 L 853.5,95.7 L 854.2,95.7 L 854.9,95.7 L 855.6,95.7 L 856.3,95.7 L 857.0,95.7 L 857.7,95.7 L 858.4,95.7 L 859.1,95.7 L 859.8,95.7 L 860.5,95.7 L 861.2,95.7 L 861.9,95.7 L 862.6,95.7 L 863.3,95.7 L 864.0,95.7 L 864.7,95.7 L 865.4,95.7 L 866.1,95.7 L 866.8,95.7 L 867.5,95.7 L 868.2,95.7 L 868.9,95.7 L 869.6,95.7 L 870.3,95.7 L 871.0,95.7 L 871.7,95.7 L 872.4,95.7 L 873.1,95.7 L 873.8,95.7 L 874.5,95.7 L 875.2,95.7 L 875.9,95.7 L 876.6,95.7 L 877.3,95.7 L 878.0,95.7 L 878.7,95.7 L 879.3,95.7 L 880.0,95.7 L 880.7,96.7 L 881.4,95.7 L 882.1,96.7 L 882.8,95.7 L 883.5,95.7 L 884.2,95.7 L 884.9,95.7 L 885.6,95.7 L 886.3,95.7 L 887.0,95.7 L 887.7,95.7 L 888.4,95.7 L 889.1,95.7 L 889.8,95.7 L 890.5,95.7 L 891.2,95.7 L 891.9,95.7 L 892.6,95.7 L 893.3,95.7 L 894.0,95.7" fill="none"></path>
+    <g class="trade-marker buy">
+      <circle cx="163.5" cy="57.3" r="5.5"></circle>
+      <text x="163.5" y="45.3" text-anchor="middle">B 13:37</text>
+      <title>2026/08/31 13:37:25 买入 100 @ 9.030</title>
+    </g><g class="trade-marker sell">
+      <circle cx="223.5" cy="117.5" r="5.5"></circle>
+      <text x="223.5" y="136.5" text-anchor="middle">S 09:32</text>
+      <title>2026/09/01 09:32:34 卖出 100 @ 8.450</title>
+    </g>
+  </svg></div>
+    </article><article class="stock-card" id="stock-600721">
+      <div class="stock-card-head">
+        <div><span class="code">600721</span><h3>百花医药</h3></div>
+        <span class="chip">1 笔</span>
+      </div>
+      <div class="stock-metrics">
+        <span>买入 <b>0</b><em>0.00 / 现金0.00</em></span>
+        <span>卖出 <b>500</b><em>6,950.00 / 到账6,941.45</em></span>
+        <span>可见已实现 <b class="">历史成本待补</b><em>FIFO / 含截图费用</em></span>
+        <span>期末可见 <b>已清仓</b><em>持仓截图待校准</em></span>
+      </div>
+      <p>百花医药8/31卖出500股，到账约6,941.45。截图没有本次持仓买入成本，本页只记录卖出动作，真实盈亏等待历史成本补齐后校准。</p>
+      <div class="chart-frame"><svg class="stock-chart" viewBox="0 0 920 280" role="img" aria-label="百花医药 5分钟走势与成交点">
+    <rect x="0" y="0" width="920" height="280" rx="10"></rect>
+    <g class="axis"><g><line x1="54" x2="894" y1="234.0" y2="234.0"></line><text x="44" y="238.0" text-anchor="end">10.89</text></g><g><line x1="54" x2="894" y1="131.0" y2="131.0"></line><text x="44" y="135.0" text-anchor="end">12.60</text></g><g><line x1="54" x2="894" y1="28.0" y2="28.0"></line><text x="44" y="32.0" text-anchor="end">14.30</text></g></g>
+    <g class="day-grid"><g class="day-tick"><line x1="54.0" x2="54.0" y1="28" y2="234"></line><text x="54.0" y="262" text-anchor="middle">08-31</text></g><g class="day-tick"><line x1="222.1" x2="222.1" y1="28" y2="234"></line><text x="222.1" y="262" text-anchor="middle">09-01</text></g><g class="day-tick"><line x1="390.3" x2="390.3" y1="28" y2="234"></line><text x="390.3" y="262" text-anchor="middle">09-02</text></g><g class="day-tick"><line x1="558.4" x2="558.4" y1="28" y2="234"></line><text x="558.4" y="262" text-anchor="middle">09-03</text></g><g class="day-tick"><line x1="726.6" x2="726.6" y1="28" y2="234"></line><text x="726.6" y="262" text-anchor="middle">09-04</text></g></g>
+    <path d="M 54.0,52.2 L 54.7,52.2 L 55.4,52.2 L 56.1,52.2 L 56.8,52.2 L 57.5,52.2 L 58.2,52.2 L 58.9,52.2 L 59.6,52.2 L 60.3,52.2 L 61.0,52.2 L 61.7,52.2 L 62.4,52.2 L 63.1,52.2 L 63.8,52.2 L 64.5,52.2 L 65.2,52.2 L 65.9,52.2 L 66.6,52.2 L 67.3,52.2 L 68.0,52.2 L 68.7,52.2 L 69.3,52.2 L 70.0,52.2 L 70.7,52.2 L 71.4,52.2 L 72.1,52.2 L 72.8,52.2 L 73.5,52.2 L 74.2,52.2 L 74.9,52.2 L 75.6,52.2 L 76.3,52.2 L 77.0,52.2 L 77.7,52.2 L 78.4,52.2 L 79.1,52.2 L 79.8,52.2 L 80.5,52.2 L 81.2,52.2 L 81.9,52.2 L 82.6,52.2 L 83.3,52.2 L 84.0,52.2 L 84.7,52.2 L 85.4,52.2 L 86.1,52.2 L 86.8,52.2 L 87.5,52.2 L 88.2,52.2 L 88.9,52.2 L 89.6,52.2 L 90.3,52.2 L 91.0,52.2 L 91.7,52.2 L 92.4,52.2 L 93.1,52.2 L 93.8,52.2 L 94.5,52.2 L 95.2,52.2 L 95.9,52.2 L 96.6,52.2 L 97.3,52.2 L 98.0,52.2 L 98.7,52.2 L 99.3,52.2 L 100.0,52.2 L 100.7,51.0 L 101.4,52.2 L 102.1,52.2 L 102.8,52.2 L 103.5,52.2 L 104.2,52.2 L 104.9,52.2 L 105.6,52.2 L 106.3,52.2 L 107.0,52.2 L 107.7,52.2 L 108.4,52.2 L 109.1,52.2 L 109.8,52.2 L 110.5,52.2 L 111.2,52.2 L 111.9,52.2 L 112.6,52.2 L 113.3,52.2 L 114.0,52.2 L 114.7,52.2 L 115.4,52.2 L 116.1,52.2 L 116.8,52.2 L 117.5,52.2 L 118.2,52.2 L 118.9,52.2 L 119.6,52.2 L 120.3,52.2 L 121.0,52.2 L 121.7,52.2 L 122.4,52.2 L 123.1,52.2 L 123.8,52.2 L 124.5,52.2 L 125.2,52.2 L 125.9,52.2 L 126.6,52.2 L 127.3,52.2 L 128.0,52.2 L 128.7,52.2 L 129.3,52.2 L 130.0,52.2 L 130.7,52.2 L 131.4,52.2 L 132.1,52.2 L 132.8,52.2 L 133.5,52.2 L 134.2,52.2 L 134.9,52.2 L 135.6,52.2 L 136.3,52.2 L 137.0,52.2 L 137.7,52.2 L 138.4,52.2 L 139.1,52.2 L 139.8,52.2 L 140.5,52.2 L 141.2,52.2 L 141.9,52.2 L 142.6,52.2 L 143.3,52.2 L 144.0,52.2 L 144.7,52.2 L 145.4,52.2 L 146.1,52.2 L 146.8,52.2 L 147.5,52.2 L 148.2,52.2 L 148.9,52.2 L 149.6,52.2 L 150.3,52.2 L 151.0,52.2 L 151.7,52.2 L 152.4,52.2 L 153.1,52.2 L 153.8,52.2 L 154.5,52.2 L 155.2,52.2 L 155.9,52.2 L 156.6,52.2 L 157.3,52.2 L 158.0,52.2 L 158.7,52.2 L 159.3,52.2 L 160.0,52.2 L 160.7,52.2 L 161.4,52.2 L 162.1,52.2 L 162.8,52.2 L 163.5,52.2 L 164.2,52.2 L 164.9,52.2 L 165.6,52.2 L 166.3,52.2 L 167.0,52.2 L 167.7,52.2 L 168.4,52.2 L 169.1,52.2 L 169.8,52.2 L 170.5,52.2 L 171.2,52.2 L 171.9,52.2 L 172.6,52.2 L 173.3,52.2 L 174.0,52.2 L 174.7,52.2 L 175.4,52.2 L 176.1,52.2 L 176.8,52.2 L 177.5,52.2 L 178.2,52.2 L 178.9,52.2 L 179.6,52.2 L 180.3,52.2 L 181.0,52.2 L 181.7,52.2 L 182.4,52.2 L 183.1,52.2 L 183.8,52.2 L 184.5,52.2 L 185.2,52.2 L 185.9,52.2 L 186.6,52.2 L 187.3,52.2 L 188.0,52.2 L 188.7,52.2 L 189.3,52.2 L 190.0,52.2 L 190.7,52.2 L 191.4,52.2 L 192.1,52.2 L 192.8,52.2 L 193.5,52.2 L 194.2,52.2 L 194.9,52.2 L 195.6,52.2 L 196.3,52.2 L 197.0,52.2 L 197.7,52.2 L 198.4,52.2 L 199.1,52.2 L 199.8,52.2 L 200.5,52.2 L 201.2,52.2 L 201.9,52.2 L 202.6,52.2 L 203.3,52.2 L 204.0,52.2 L 204.7,52.2 L 205.4,52.2 L 206.1,52.2 L 206.8,52.2 L 207.5,52.2 L 208.2,52.2 L 208.9,52.2 L 209.6,52.2 L 210.3,52.2 L 211.0,52.2 L 211.7,52.2 L 212.4,52.2 L 213.1,52.2 L 213.8,52.2 L 214.5,52.2 L 215.2,52.2 L 215.9,52.2 L 216.6,52.2 L 217.3,52.2 L 218.0,52.2 L 218.7,52.2 L 219.3,52.2 L 220.0,52.2 L 220.7,52.2 L 221.4,52.2 L 222.1,111.4 L 222.8,105.3 L 223.5,116.2 L 224.2,107.1 L 224.9,78.7 L 225.6,83.0 L 226.3,84.8 L 227.0,71.5 L 227.7,79.3 L 228.4,82.4 L 229.1,94.5 L 229.8,80.0 L 230.5,85.4 L 231.2,86.0 L 231.9,78.7 L 232.6,68.5 L 233.3,73.9 L 234.0,55.2 L 234.7,47.9 L 235.4,58.2 L 236.1,52.8 L 236.8,66.1 L 237.5,57.0 L 238.2,59.4 L 238.9,63.6 L 239.6,58.2 L 240.3,63.6 L 241.0,73.3 L 241.7,76.9 L 242.4,69.1 L 243.1,85.4 L 243.8,76.9 L 244.5,87.8 L 245.2,84.8 L 245.9,82.4 L 246.6,92.0 L 247.3,89.6 L 248.0,80.0 L 248.7,90.8 L 249.3,84.8 L 250.0,85.4 L 250.7,88.4 L 251.4,88.4 L 252.1,83.6 L 252.8,82.4 L 253.5,88.4 L 254.2,88.4 L 254.9,87.8 L 255.6,98.7 L 256.3,102.9 L 257.0,93.2 L 257.7,101.1 L 258.4,98.1 L 259.1,96.3 L 259.8,98.1 L 260.5,104.1 L 261.2,104.1 L 261.9,99.3 L 262.6,88.4 L 263.3,91.4 L 264.0,96.3 L 264.7,92.0 L 265.4,90.2 L 266.1,92.0 L 266.8,92.0 L 267.5,95.7 L 268.2,101.1 L 268.9,97.5 L 269.6,96.3 L 270.3,91.4 L 271.0,96.3 L 271.7,98.7 L 272.4,100.5 L 273.1,99.9 L 273.8,98.7 L 274.5,93.8 L 275.2,95.1 L 275.9,95.1 L 276.6,95.1 L 277.3,94.5 L 278.0,92.0 L 278.7,92.0 L 279.3,94.5 L 280.0,95.1 L 280.7,96.3 L 281.4,96.9 L 282.1,98.7 L 282.8,100.5 L 283.5,100.5 L 284.2,100.5 L 284.9,96.3 L 285.6,97.5 L 286.3,96.9 L 287.0,95.7 L 287.7,95.7 L 288.4,95.7 L 289.1,95.1 L 289.8,95.1 L 290.5,95.1 L 291.2,96.3 L 291.9,98.7 L 292.6,100.5 L 293.3,101.7 L 294.0,101.7 L 294.7,98.1 L 295.4,96.9 L 296.1,99.9 L 296.8,95.1 L 297.5,95.1 L 298.2,95.1 L 298.9,92.0 L 299.6,91.4 L 300.3,94.5 L 301.0,94.5 L 301.7,93.2 L 302.4,87.8 L 303.1,82.4 L 303.8,79.3 L 304.5,84.8 L 305.2,76.9 L 305.9,82.4 L 306.6,83.6 L 307.3,87.8 L 308.0,89.0 L 308.7,86.0 L 309.3,84.8 L 310.0,82.4 L 310.7,87.8 L 311.4,87.2 L 312.1,88.4 L 312.8,90.2 L 313.5,95.7 L 314.2,98.1 L 314.9,98.1 L 315.6,98.1 L 316.3,92.6 L 317.0,81.8 L 317.7,87.8 L 318.4,82.4 L 319.1,87.8 L 319.8,83.0 L 320.5,83.6 L 321.2,81.8 L 321.9,70.3 L 322.6,53.4 L 323.3,54.6 L 324.0,68.5 L 324.7,53.4 L 325.4,55.2 L 326.1,62.4 L 326.8,57.0 L 327.5,61.2 L 328.2,63.6 L 328.9,58.8 L 329.6,65.5 L 330.3,64.2 L 331.0,60.6 L 331.7,63.0 L 332.4,63.0 L 333.1,64.2 L 333.8,72.7 L 334.5,66.1 L 335.2,65.5 L 335.9,61.2 L 336.6,65.5 L 337.3,64.2 L 338.0,64.2 L 338.7,64.2 L 339.3,66.7 L 340.0,68.5 L 340.7,66.1 L 341.4,60.6 L 342.1,58.8 L 342.8,60.0 L 343.5,55.2 L 344.2,50.4 L 344.9,58.2 L 345.6,51.6 L 346.3,52.2 L 347.0,54.0 L 347.7,53.4 L 348.4,61.2 L 349.1,57.0 L 349.8,63.0 L 350.5,63.0 L 351.2,63.0 L 351.9,60.6 L 352.6,63.6 L 353.3,64.2 L 354.0,62.4 L 354.7,61.8 L 355.4,64.2 L 356.1,65.5 L 356.8,71.5 L 357.5,74.5 L 358.2,68.5 L 358.9,73.3 L 359.6,72.1 L 360.3,69.1 L 361.0,72.1 L 361.7,73.9 L 362.4,71.5 L 363.1,69.7 L 363.8,70.9 L 364.5,74.5 L 365.2,75.1 L 365.9,73.9 L 366.6,73.9 L 367.3,74.5 L 368.0,74.5 L 368.7,75.1 L 369.3,83.6 L 370.0,78.1 L 370.7,80.0 L 371.4,85.4 L 372.1,83.6 L 372.8,83.6 L 373.5,86.0 L 374.2,90.8 L 374.9,98.7 L 375.6,83.6 L 376.3,88.4 L 377.0,89.6 L 377.7,86.6 L 378.4,90.8 L 379.1,95.1 L 379.8,93.2 L 380.5,90.8 L 381.2,91.4 L 381.9,94.5 L 382.6,90.8 L 383.3,90.8 L 384.0,93.8 L 384.7,92.6 L 385.4,94.5 L 386.1,97.5 L 386.8,95.7 L 387.5,95.7 L 388.2,95.7 L 388.9,95.7 L 389.6,95.1 L 390.3,127.1 L 391.0,143.4 L 391.7,139.8 L 392.4,144.0 L 393.1,134.9 L 393.8,145.8 L 394.5,140.4 L 395.2,145.8 L 395.9,159.1 L 396.6,159.1 L 397.3,165.1 L 398.0,160.9 L 398.7,157.3 L 399.3,164.5 L 400.0,173.0 L 400.7,168.8 L 401.4,164.5 L 402.1,170.0 L 402.8,171.8 L 403.5,170.6 L 404.2,168.2 L 404.9,164.5 L 405.6,162.7 L 406.3,162.7 L 407.0,166.3 L 407.7,166.9 L 408.4,166.3 L 409.1,162.1 L 409.8,164.5 L 410.5,166.9 L 411.2,167.5 L 411.9,162.7 L 412.6,153.7 L 413.3,151.8 L 414.0,152.4 L 414.7,150.0 L 415.4,151.2 L 416.1,147.0 L 416.8,144.0 L 417.5,150.0 L 418.2,143.4 L 418.9,149.4 L 419.6,155.5 L 420.3,153.0 L 421.0,159.1 L 421.7,155.5 L 422.4,155.5 L 423.1,157.3 L 423.8,160.9 L 424.5,157.3 L 425.2,153.7 L 425.9,160.3 L 426.6,155.5 L 427.3,159.7 L 428.0,158.5 L 428.7,159.7 L 429.3,161.5 L 430.0,162.7 L 430.7,162.1 L 431.4,159.1 L 432.1,162.1 L 432.8,165.7 L 433.5,166.3 L 434.2,164.5 L 434.9,163.9 L 435.6,163.3 L 436.3,164.5 L 437.0,166.9 L 437.7,167.5 L 438.4,167.5 L 439.1,167.5 L 439.8,161.5 L 440.5,154.9 L 441.2,159.7 L 441.9,157.9 L 442.6,159.1 L 443.3,159.1 L 444.0,147.6 L 444.7,142.2 L 445.4,128.9 L 446.1,123.4 L 446.8,124.1 L 447.5,112.6 L 448.2,118.6 L 448.9,113.8 L 449.6,127.1 L 450.3,124.1 L 451.0,134.9 L 451.7,127.7 L 452.4,134.3 L 453.1,137.3 L 453.8,136.7 L 454.5,131.3 L 455.2,137.3 L 455.9,134.3 L 456.6,136.1 L 457.3,134.9 L 458.0,131.9 L 458.7,131.3 L 459.3,133.7 L 460.0,131.3 L 460.7,131.9 L 461.4,131.3 L 462.1,132.5 L 462.8,134.9 L 463.5,136.7 L 464.2,136.1 L 464.9,136.7 L 465.6,137.3 L 466.3,142.2 L 467.0,142.8 L 467.7,134.3 L 468.4,139.8 L 469.1,139.8 L 469.8,142.2 L 470.5,145.2 L 471.2,146.4 L 471.9,145.2 L 472.6,142.2 L 473.3,142.2 L 474.0,142.8 L 474.7,144.6 L 475.4,145.2 L 476.1,148.2 L 476.8,148.2 L 477.5,148.2 L 478.2,146.4 L 478.9,147.0 L 479.6,145.2 L 480.3,146.4 L 481.0,146.4 L 481.7,148.2 L 482.4,145.8 L 483.1,147.0 L 483.8,146.4 L 484.5,142.2 L 485.2,145.2 L 485.9,145.2 L 486.6,145.8 L 487.3,148.2 L 488.0,148.2 L 488.7,148.8 L 489.3,148.2 L 490.0,150.0 L 490.7,154.9 L 491.4,153.7 L 492.1,151.8 L 492.8,149.4 L 493.5,147.0 L 494.2,148.2 L 494.9,147.0 L 495.6,137.3 L 496.3,137.3 L 497.0,140.4 L 497.7,143.4 L 498.4,145.2 L 499.1,143.4 L 499.8,139.2 L 500.5,142.8 L 501.2,143.4 L 501.9,131.3 L 502.6,131.9 L 503.3,128.9 L 504.0,127.1 L 504.7,127.7 L 505.4,122.2 L 506.1,125.3 L 506.8,116.8 L 507.5,124.1 L 508.2,113.8 L 508.9,112.0 L 509.6,105.9 L 510.3,110.2 L 511.0,118.0 L 511.7,120.4 L 512.4,109.6 L 513.1,119.2 L 513.8,115.6 L 514.5,104.1 L 515.2,105.9 L 515.9,98.1 L 516.6,100.5 L 517.3,104.7 L 518.0,101.1 L 518.7,103.5 L 519.3,89.0 L 520.0,76.3 L 520.7,93.2 L 521.4,76.9 L 522.1,80.6 L 522.8,83.0 L 523.5,81.2 L 524.2,87.8 L 524.9,83.6 L 525.6,83.0 L 526.3,86.0 L 527.0,88.4 L 527.7,86.6 L 528.4,84.8 L 529.1,86.6 L 529.8,88.4 L 530.5,90.2 L 531.2,90.2 L 531.9,90.2 L 532.6,98.1 L 533.3,95.7 L 534.0,91.4 L 534.7,95.7 L 535.4,94.5 L 536.1,95.1 L 536.8,95.7 L 537.5,99.9 L 538.2,114.4 L 538.9,99.3 L 539.6,110.2 L 540.3,105.9 L 541.0,102.9 L 541.7,105.9 L 542.4,102.9 L 543.1,104.7 L 543.8,111.4 L 544.5,106.5 L 545.2,107.7 L 545.9,110.8 L 546.6,112.0 L 547.3,109.0 L 548.0,108.3 L 548.7,108.3 L 549.3,110.2 L 550.0,110.8 L 550.7,110.8 L 551.4,111.4 L 552.1,116.2 L 552.8,118.6 L 553.5,113.8 L 554.2,113.2 L 554.9,113.8 L 555.6,113.8 L 556.3,113.8 L 557.0,113.8 L 557.7,115.0 L 558.4,118.6 L 559.1,105.9 L 559.8,105.3 L 560.5,102.9 L 561.2,101.1 L 561.9,109.0 L 562.6,122.8 L 563.3,121.0 L 564.0,121.0 L 564.7,125.9 L 565.4,124.1 L 566.1,128.9 L 566.8,121.6 L 567.5,129.5 L 568.2,126.5 L 568.9,133.1 L 569.6,127.1 L 570.3,125.3 L 571.0,128.9 L 571.7,130.7 L 572.4,128.9 L 573.1,135.5 L 573.8,136.7 L 574.5,135.5 L 575.2,139.8 L 575.9,141.0 L 576.6,144.0 L 577.3,144.0 L 578.0,150.6 L 578.7,146.4 L 579.3,145.8 L 580.0,151.2 L 580.7,145.2 L 581.4,144.0 L 582.1,140.4 L 582.8,142.8 L 583.5,139.8 L 584.2,141.0 L 584.9,142.8 L 585.6,145.8 L 586.3,144.6 L 587.0,146.4 L 587.7,148.2 L 588.4,148.2 L 589.1,148.2 L 589.8,149.4 L 590.5,150.0 L 591.2,143.4 L 591.9,146.4 L 592.6,143.4 L 593.3,147.6 L 594.0,147.0 L 594.7,148.2 L 595.4,150.0 L 596.1,149.4 L 596.8,148.2 L 597.5,144.6 L 598.2,145.8 L 598.9,147.0 L 599.6,145.2 L 600.3,142.2 L 601.0,144.0 L 601.7,145.8 L 602.4,146.4 L 603.1,144.0 L 603.8,144.6 L 604.5,145.8 L 605.2,149.4 L 605.9,150.6 L 606.6,159.1 L 607.3,157.3 L 608.0,154.9 L 608.7,158.5 L 609.3,158.5 L 610.0,154.9 L 610.7,154.9 L 611.4,156.1 L 612.1,157.3 L 612.8,165.1 L 613.5,160.9 L 614.2,166.3 L 614.9,160.9 L 615.6,164.5 L 616.3,173.0 L 617.0,166.9 L 617.7,174.8 L 618.4,170.6 L 619.1,174.2 L 619.8,168.2 L 620.5,167.5 L 621.2,167.5 L 621.9,166.3 L 622.6,169.4 L 623.3,170.6 L 624.0,164.5 L 624.7,167.5 L 625.4,164.5 L 626.1,159.7 L 626.8,163.9 L 627.5,164.5 L 628.2,162.7 L 628.9,166.9 L 629.6,164.5 L 630.3,167.5 L 631.0,168.2 L 631.7,167.5 L 632.4,167.5 L 633.1,166.9 L 633.8,168.8 L 634.5,170.6 L 635.2,170.0 L 635.9,170.0 L 636.6,170.0 L 637.3,170.6 L 638.0,168.8 L 638.7,168.8 L 639.3,167.5 L 640.0,166.9 L 640.7,167.5 L 641.4,166.9 L 642.1,165.7 L 642.8,165.1 L 643.5,168.2 L 644.2,168.8 L 644.9,171.2 L 645.6,170.6 L 646.3,168.8 L 647.0,169.4 L 647.7,170.6 L 648.4,171.2 L 649.1,171.2 L 649.8,171.2 L 650.5,172.4 L 651.2,171.8 L 651.9,171.8 L 652.6,171.8 L 653.3,171.2 L 654.0,171.8 L 654.7,171.8 L 655.4,173.0 L 656.1,174.2 L 656.8,175.4 L 657.5,177.2 L 658.2,179.6 L 658.9,178.4 L 659.6,179.0 L 660.3,179.6 L 661.0,183.9 L 661.7,188.7 L 662.4,181.4 L 663.1,183.3 L 663.8,176.6 L 664.5,179.6 L 665.2,177.8 L 665.9,178.4 L 666.6,179.0 L 667.3,180.8 L 668.0,183.3 L 668.7,183.9 L 669.3,184.5 L 670.0,184.5 L 670.7,181.4 L 671.4,182.0 L 672.1,182.0 L 672.8,185.7 L 673.5,186.3 L 674.2,187.5 L 674.9,185.1 L 675.6,185.1 L 676.3,185.7 L 677.0,185.1 L 677.7,185.1 L 678.4,185.1 L 679.1,184.5 L 679.8,181.4 L 680.5,183.3 L 681.2,179.0 L 681.9,181.4 L 682.6,180.8 L 683.3,174.8 L 684.0,171.2 L 684.7,174.2 L 685.4,167.5 L 686.1,173.0 L 686.8,170.6 L 687.5,174.2 L 688.2,176.6 L 688.9,179.0 L 689.6,176.6 L 690.3,174.2 L 691.0,176.6 L 691.7,177.8 L 692.4,179.6 L 693.1,180.8 L 693.8,181.4 L 694.5,182.7 L 695.2,182.0 L 695.9,184.5 L 696.6,183.9 L 697.3,182.7 L 698.0,179.6 L 698.7,181.4 L 699.3,182.7 L 700.0,183.9 L 700.7,181.4 L 701.4,182.7 L 702.1,183.3 L 702.8,183.9 L 703.5,183.3 L 704.2,185.1 L 704.9,184.5 L 705.6,185.7 L 706.3,186.3 L 707.0,185.7 L 707.7,186.3 L 708.4,185.7 L 709.1,185.7 L 709.8,186.3 L 710.5,188.1 L 711.2,191.1 L 711.9,191.7 L 712.6,192.9 L 713.3,192.3 L 714.0,192.9 L 714.7,192.3 L 715.4,189.3 L 716.1,186.3 L 716.8,186.3 L 717.5,185.7 L 718.2,186.9 L 718.9,188.1 L 719.6,189.9 L 720.3,191.1 L 721.0,191.7 L 721.7,188.7 L 722.4,189.9 L 723.1,190.5 L 723.8,180.2 L 724.5,180.8 L 725.2,180.8 L 725.9,179.0 L 726.6,179.0 L 727.3,214.1 L 728.0,203.8 L 728.7,208.0 L 729.3,198.4 L 730.0,199.0 L 730.7,198.4 L 731.4,195.3 L 732.1,198.4 L 732.8,194.1 L 733.5,192.9 L 734.2,191.1 L 734.9,188.1 L 735.6,182.0 L 736.3,188.1 L 737.0,188.1 L 737.7,180.8 L 738.4,179.0 L 739.1,178.4 L 739.8,177.2 L 740.5,179.0 L 741.2,180.8 L 741.9,182.0 L 742.6,189.3 L 743.3,183.9 L 744.0,189.3 L 744.7,192.9 L 745.4,191.1 L 746.1,196.5 L 746.8,193.5 L 747.5,190.5 L 748.2,195.3 L 748.9,195.9 L 749.6,191.7 L 750.3,192.9 L 751.0,186.3 L 751.7,188.7 L 752.4,191.1 L 753.1,192.3 L 753.8,188.7 L 754.5,187.5 L 755.2,191.1 L 755.9,189.3 L 756.6,192.3 L 757.3,192.3 L 758.0,192.9 L 758.7,191.7 L 759.3,191.1 L 760.0,191.1 L 760.7,186.3 L 761.4,188.1 L 762.1,189.3 L 762.8,180.8 L 763.5,180.8 L 764.2,183.3 L 764.9,186.3 L 765.6,184.5 L 766.3,187.5 L 767.0,189.9 L 767.7,187.5 L 768.4,190.5 L 769.1,189.3 L 769.8,191.1 L 770.5,186.3 L 771.2,189.3 L 771.9,189.9 L 772.6,189.9 L 773.3,189.9 L 774.0,189.9 L 774.7,190.5 L 775.4,195.3 L 776.1,195.9 L 776.8,197.1 L 777.5,194.7 L 778.2,197.1 L 778.9,197.8 L 779.6,199.0 L 780.3,197.8 L 781.0,195.9 L 781.7,197.8 L 782.4,199.0 L 783.1,199.0 L 783.8,198.4 L 784.5,200.8 L 785.2,201.4 L 785.9,199.0 L 786.6,197.8 L 787.3,199.6 L 788.0,201.4 L 788.7,203.8 L 789.3,202.6 L 790.0,199.0 L 790.7,200.2 L 791.4,197.8 L 792.1,194.7 L 792.8,194.1 L 793.5,194.7 L 794.2,190.5 L 794.9,182.0 L 795.6,180.8 L 796.3,182.7 L 797.0,183.9 L 797.7,185.1 L 798.4,184.5 L 799.1,174.8 L 799.8,180.2 L 800.5,177.8 L 801.2,180.2 L 801.9,182.7 L 802.6,182.0 L 803.3,183.9 L 804.0,184.5 L 804.7,184.5 L 805.4,185.1 L 806.1,186.3 L 806.8,185.1 L 807.5,185.1 L 808.2,185.7 L 808.9,185.7 L 809.6,185.7 L 810.3,185.1 L 811.0,187.5 L 811.7,187.5 L 812.4,186.9 L 813.1,188.1 L 813.8,189.3 L 814.5,188.1 L 815.2,188.7 L 815.9,188.1 L 816.6,187.5 L 817.3,182.7 L 818.0,179.0 L 818.7,178.4 L 819.3,178.4 L 820.0,179.6 L 820.7,174.8 L 821.4,162.1 L 822.1,154.3 L 822.8,157.3 L 823.5,157.3 L 824.2,150.6 L 824.9,153.7 L 825.6,156.7 L 826.3,157.3 L 827.0,160.9 L 827.7,161.5 L 828.4,162.1 L 829.1,163.9 L 829.8,166.3 L 830.5,161.5 L 831.2,165.1 L 831.9,165.1 L 832.6,165.7 L 833.3,168.2 L 834.0,165.1 L 834.7,167.5 L 835.4,165.7 L 836.1,162.1 L 836.8,166.3 L 837.5,165.7 L 838.2,166.3 L 838.9,166.3 L 839.6,169.4 L 840.3,166.9 L 841.0,170.6 L 841.7,171.2 L 842.4,167.5 L 843.1,168.8 L 843.8,170.0 L 844.5,170.6 L 845.2,168.2 L 845.9,167.5 L 846.6,169.4 L 847.3,172.4 L 848.0,174.8 L 848.7,174.8 L 849.3,174.2 L 850.0,173.0 L 850.7,170.0 L 851.4,166.9 L 852.1,168.8 L 852.8,167.5 L 853.5,169.4 L 854.2,171.8 L 854.9,173.0 L 855.6,173.6 L 856.3,170.0 L 857.0,170.0 L 857.7,172.4 L 858.4,172.4 L 859.1,174.2 L 859.8,176.0 L 860.5,177.8 L 861.2,172.4 L 861.9,172.4 L 862.6,173.0 L 863.3,173.0 L 864.0,173.0 L 864.7,173.0 L 865.4,173.6 L 866.1,173.6 L 866.8,173.6 L 867.5,176.0 L 868.2,176.6 L 868.9,177.2 L 869.6,180.2 L 870.3,183.3 L 871.0,179.0 L 871.7,178.4 L 872.4,179.6 L 873.1,183.3 L 873.8,180.2 L 874.5,176.6 L 875.2,178.4 L 875.9,180.8 L 876.6,179.6 L 877.3,180.8 L 878.0,182.7 L 878.7,187.5 L 879.3,180.8 L 880.0,181.4 L 880.7,182.7 L 881.4,183.9 L 882.1,183.9 L 882.8,183.3 L 883.5,183.9 L 884.2,183.9 L 884.9,188.1 L 885.6,186.3 L 886.3,183.9 L 887.0,185.1 L 887.7,180.2 L 888.4,179.0 L 889.1,177.2 L 889.8,170.6 L 890.5,174.8 L 891.2,170.0 L 891.9,172.4 L 892.6,171.8 L 893.3,171.8 L 894.0,170.6" fill="none"></path>
+    <g class="trade-marker sell">
+      <circle cx="88.2" cy="52.2" r="5.5"></circle>
+      <text x="88.2" y="71.2" text-anchor="middle">S 10:19</text>
+      <title>2026/08/31 10:19:48 卖出 500 @ 13.900</title>
+    </g>
+  </svg></div>
+    </article><article class="stock-card" id="stock-600378">
+      <div class="stock-card-head">
+        <div><span class="code">600378</span><h3>昊华科技</h3></div>
+        <span class="chip">1 笔</span>
+      </div>
+      <div class="stock-metrics">
+        <span>买入 <b>0</b><em>0.00 / 现金0.00</em></span>
+        <span>卖出 <b>100</b><em>5,187.00 / 到账5,179.36</em></span>
+        <span>可见已实现 <b class="">历史成本待补</b><em>FIFO / 含截图费用</em></span>
+        <span>期末可见 <b>已清仓</b><em>持仓截图待校准</em></span>
+      </div>
+      <p>昊华科技8/31卖出100股，到账约5,179.36。截图没有本次持仓买入成本，本页只记录卖出动作，真实盈亏等待历史成本补齐后校准。</p>
+      <div class="chart-frame"><svg class="stock-chart" viewBox="0 0 920 280" role="img" aria-label="昊华科技 5分钟走势与成交点">
+    <rect x="0" y="0" width="920" height="280" rx="10"></rect>
+    <g class="axis"><g><line x1="54" x2="894" y1="234.0" y2="234.0"></line><text x="44" y="238.0" text-anchor="end">44.31</text></g><g><line x1="54" x2="894" y1="131.0" y2="131.0"></line><text x="44" y="135.0" text-anchor="end">49.98</text></g><g><line x1="54" x2="894" y1="28.0" y2="28.0"></line><text x="44" y="32.0" text-anchor="end">55.66</text></g></g>
+    <g class="day-grid"><g class="day-tick"><line x1="54.0" x2="54.0" y1="28" y2="234"></line><text x="54.0" y="262" text-anchor="middle">08-31</text></g><g class="day-tick"><line x1="222.1" x2="222.1" y1="28" y2="234"></line><text x="222.1" y="262" text-anchor="middle">09-01</text></g><g class="day-tick"><line x1="390.3" x2="390.3" y1="28" y2="234"></line><text x="390.3" y="262" text-anchor="middle">09-02</text></g><g class="day-tick"><line x1="558.4" x2="558.4" y1="28" y2="234"></line><text x="558.4" y="262" text-anchor="middle">09-03</text></g><g class="day-tick"><line x1="726.6" x2="726.6" y1="28" y2="234"></line><text x="726.6" y="262" text-anchor="middle">09-04</text></g></g>
+    <path d="M 54.0,106.2 L 54.7,99.7 L 55.4,74.4 L 56.1,68.3 L 56.8,70.1 L 57.5,66.3 L 58.2,68.5 L 58.9,75.7 L 59.6,67.9 L 60.3,70.4 L 61.0,67.0 L 61.7,85.3 L 62.4,74.3 L 63.1,69.4 L 63.8,75.9 L 64.5,67.9 L 65.2,73.9 L 65.9,73.4 L 66.6,77.5 L 67.3,83.7 L 68.0,82.1 L 68.7,72.1 L 69.3,69.5 L 70.0,61.2 L 70.7,60.6 L 71.4,52.8 L 72.1,47.9 L 72.8,54.5 L 73.5,59.6 L 74.2,63.2 L 74.9,67.4 L 75.6,65.4 L 76.3,66.1 L 77.0,71.7 L 77.7,67.2 L 78.4,64.6 L 79.1,66.5 L 79.8,62.8 L 80.5,62.8 L 81.2,65.5 L 81.9,62.8 L 82.6,67.0 L 83.3,62.8 L 84.0,68.1 L 84.7,71.4 L 85.4,74.3 L 86.1,70.3 L 86.8,71.5 L 87.5,77.0 L 88.2,77.7 L 88.9,77.2 L 89.6,74.6 L 90.3,78.4 L 91.0,81.3 L 91.7,80.8 L 92.4,83.2 L 93.1,85.2 L 93.8,84.1 L 94.5,88.1 L 95.2,83.9 L 95.9,83.9 L 96.6,85.2 L 97.3,94.1 L 98.0,93.7 L 98.7,94.6 L 99.3,94.4 L 100.0,100.4 L 100.7,98.0 L 101.4,96.4 L 102.1,94.1 L 102.8,93.9 L 103.5,95.3 L 104.2,98.4 L 104.9,95.5 L 105.6,99.3 L 106.3,98.0 L 107.0,95.7 L 107.7,95.9 L 108.4,95.5 L 109.1,96.2 L 109.8,99.3 L 110.5,97.9 L 111.2,99.3 L 111.9,99.3 L 112.6,101.3 L 113.3,102.0 L 114.0,100.6 L 114.7,97.0 L 115.4,97.7 L 116.1,97.7 L 116.8,98.8 L 117.5,100.6 L 118.2,101.0 L 118.9,103.7 L 119.6,100.6 L 120.3,102.9 L 121.0,104.2 L 121.7,105.1 L 122.4,104.8 L 123.1,102.2 L 123.8,103.5 L 124.5,100.8 L 125.2,99.3 L 125.9,99.0 L 126.6,99.9 L 127.3,99.5 L 128.0,95.9 L 128.7,97.0 L 129.3,97.5 L 130.0,96.8 L 130.7,95.9 L 131.4,92.4 L 132.1,91.0 L 132.8,93.0 L 133.5,92.4 L 134.2,96.8 L 134.9,96.2 L 135.6,96.6 L 136.3,96.8 L 137.0,99.0 L 137.7,100.2 L 138.4,96.8 L 139.1,100.0 L 139.8,101.1 L 140.5,99.0 L 141.2,98.2 L 141.9,99.7 L 142.6,100.4 L 143.3,97.0 L 144.0,96.2 L 144.7,95.5 L 145.4,96.2 L 146.1,96.4 L 146.8,97.1 L 147.5,97.3 L 148.2,96.4 L 148.9,93.0 L 149.6,92.8 L 150.3,92.2 L 151.0,94.4 L 151.7,93.3 L 152.4,91.7 L 153.1,92.6 L 153.8,90.2 L 154.5,94.1 L 155.2,94.6 L 155.9,91.9 L 156.6,91.3 L 157.3,89.7 L 158.0,90.8 L 158.7,91.0 L 159.3,89.7 L 160.0,85.7 L 160.7,88.2 L 161.4,90.4 L 162.1,89.9 L 162.8,89.7 L 163.5,91.3 L 164.2,88.4 L 164.9,90.8 L 165.6,90.8 L 166.3,92.1 L 167.0,94.2 L 167.7,93.0 L 168.4,92.1 L 169.1,91.1 L 169.8,92.2 L 170.5,93.9 L 171.2,95.3 L 171.9,95.7 L 172.6,94.8 L 173.3,96.6 L 174.0,98.0 L 174.7,98.0 L 175.4,100.6 L 176.1,99.0 L 176.8,98.2 L 177.5,98.6 L 178.2,96.6 L 178.9,97.0 L 179.6,98.0 L 180.3,97.0 L 181.0,98.8 L 181.7,98.8 L 182.4,100.6 L 183.1,99.1 L 183.8,98.8 L 184.5,96.6 L 185.2,95.7 L 185.9,95.3 L 186.6,96.4 L 187.3,95.7 L 188.0,93.0 L 188.7,90.8 L 189.3,92.6 L 190.0,97.0 L 190.7,95.9 L 191.4,95.7 L 192.1,94.8 L 192.8,94.2 L 193.5,93.7 L 194.2,93.3 L 194.9,92.8 L 195.6,92.8 L 196.3,91.9 L 197.0,89.5 L 197.7,89.3 L 198.4,90.8 L 199.1,91.0 L 199.8,91.7 L 200.5,91.1 L 201.2,88.2 L 201.9,85.3 L 202.6,82.4 L 203.3,84.1 L 204.0,79.5 L 204.7,82.8 L 205.4,83.3 L 206.1,87.5 L 206.8,86.1 L 207.5,82.8 L 208.2,78.6 L 208.9,78.3 L 209.6,80.3 L 210.3,80.3 L 211.0,78.1 L 211.7,77.3 L 212.4,78.3 L 213.1,77.3 L 213.8,77.3 L 214.5,77.9 L 215.2,80.3 L 215.9,79.9 L 216.6,82.1 L 217.3,80.8 L 218.0,79.5 L 218.7,76.3 L 219.3,76.8 L 220.0,76.4 L 220.7,76.4 L 221.4,76.1 L 222.1,87.3 L 222.8,89.7 L 223.5,114.8 L 224.2,119.8 L 224.9,122.7 L 225.6,122.6 L 226.3,134.7 L 227.0,138.0 L 227.7,136.2 L 228.4,133.5 L 229.1,131.8 L 229.8,131.3 L 230.5,144.2 L 231.2,140.0 L 231.9,143.4 L 232.6,140.2 L 233.3,135.8 L 234.0,134.0 L 234.7,143.1 L 235.4,136.9 L 236.1,141.3 L 236.8,136.4 L 237.5,135.3 L 238.2,141.4 L 238.9,139.3 L 239.6,138.7 L 240.3,140.5 L 241.0,140.7 L 241.7,146.5 L 242.4,143.3 L 243.1,145.8 L 243.8,142.9 L 244.5,145.4 L 245.2,145.1 L 245.9,144.9 L 246.6,142.9 L 247.3,144.5 L 248.0,143.6 L 248.7,146.0 L 249.3,146.0 L 250.0,148.7 L 250.7,146.5 L 251.4,142.5 L 252.1,141.6 L 252.8,141.6 L 253.5,142.3 L 254.2,143.8 L 254.9,139.8 L 255.6,142.0 L 256.3,144.7 L 257.0,144.2 L 257.7,143.8 L 258.4,146.0 L 259.1,145.1 L 259.8,145.1 L 260.5,149.6 L 261.2,148.7 L 261.9,148.2 L 262.6,148.7 L 263.3,150.0 L 264.0,150.7 L 264.7,149.2 L 265.4,152.3 L 266.1,151.2 L 266.8,149.8 L 267.5,152.9 L 268.2,152.7 L 268.9,150.7 L 269.6,152.0 L 270.3,154.5 L 271.0,153.8 L 271.7,155.1 L 272.4,154.7 L 273.1,152.9 L 273.8,151.6 L 274.5,149.4 L 275.2,151.1 L 275.9,150.5 L 276.6,150.7 L 277.3,149.8 L 278.0,150.0 L 278.7,148.9 L 279.3,147.8 L 280.0,150.7 L 280.7,151.6 L 281.4,152.9 L 282.1,153.2 L 282.8,153.2 L 283.5,150.5 L 284.2,149.2 L 284.9,150.2 L 285.6,150.7 L 286.3,150.9 L 287.0,150.0 L 287.7,151.1 L 288.4,151.8 L 289.1,152.5 L 289.8,151.1 L 290.5,152.5 L 291.2,153.8 L 291.9,154.0 L 292.6,152.0 L 293.3,152.3 L 294.0,153.2 L 294.7,151.8 L 295.4,152.2 L 296.1,152.0 L 296.8,150.0 L 297.5,152.2 L 298.2,151.4 L 298.9,152.0 L 299.6,152.9 L 300.3,153.2 L 301.0,152.9 L 301.7,151.8 L 302.4,151.6 L 303.1,149.4 L 303.8,146.9 L 304.5,146.0 L 305.2,144.2 L 305.9,146.5 L 306.6,149.4 L 307.3,146.3 L 308.0,147.2 L 308.7,142.5 L 309.3,140.9 L 310.0,138.9 L 310.7,139.6 L 311.4,140.2 L 312.1,140.7 L 312.8,138.0 L 313.5,139.3 L 314.2,140.7 L 314.9,137.3 L 315.6,140.4 L 316.3,142.0 L 317.0,141.3 L 317.7,143.3 L 318.4,140.9 L 319.1,141.6 L 319.8,143.6 L 320.5,145.3 L 321.2,145.4 L 321.9,146.5 L 322.6,146.5 L 323.3,147.4 L 324.0,146.9 L 324.7,147.2 L 325.4,148.7 L 326.1,149.2 L 326.8,150.0 L 327.5,150.3 L 328.2,150.0 L 328.9,150.3 L 329.6,150.2 L 330.3,149.8 L 331.0,148.5 L 331.7,149.2 L 332.4,149.1 L 333.1,149.1 L 333.8,148.5 L 334.5,150.3 L 335.2,150.7 L 335.9,150.3 L 336.6,149.8 L 337.3,148.7 L 338.0,148.2 L 338.7,148.5 L 339.3,148.5 L 340.0,148.3 L 340.7,148.3 L 341.4,148.9 L 342.1,150.2 L 342.8,150.0 L 343.5,150.3 L 344.2,149.2 L 344.9,150.2 L 345.6,149.4 L 346.3,148.2 L 347.0,149.1 L 347.7,149.1 L 348.4,149.6 L 349.1,149.4 L 349.8,150.5 L 350.5,150.9 L 351.2,151.1 L 351.9,151.2 L 352.6,151.8 L 353.3,152.2 L 354.0,152.3 L 354.7,153.2 L 355.4,153.4 L 356.1,153.4 L 356.8,153.1 L 357.5,153.2 L 358.2,153.4 L 358.9,154.1 L 359.6,154.5 L 360.3,153.6 L 361.0,153.4 L 361.7,153.8 L 362.4,154.1 L 363.1,153.8 L 363.8,154.1 L 364.5,155.4 L 365.2,154.7 L 365.9,152.7 L 366.6,153.4 L 367.3,152.9 L 368.0,152.0 L 368.7,152.5 L 369.3,152.9 L 370.0,152.9 L 370.7,152.9 L 371.4,152.0 L 372.1,153.2 L 372.8,150.2 L 373.5,152.2 L 374.2,152.5 L 374.9,152.0 L 375.6,151.8 L 376.3,152.0 L 377.0,151.1 L 377.7,151.2 L 378.4,150.7 L 379.1,147.8 L 379.8,150.7 L 380.5,150.9 L 381.2,151.1 L 381.9,151.4 L 382.6,149.4 L 383.3,150.5 L 384.0,151.4 L 384.7,151.6 L 385.4,152.3 L 386.1,151.8 L 386.8,150.3 L 387.5,151.2 L 388.2,151.4 L 388.9,151.4 L 389.6,151.4 L 390.3,158.0 L 391.0,167.2 L 391.7,148.9 L 392.4,147.6 L 393.1,134.4 L 393.8,143.3 L 394.5,129.6 L 395.2,125.3 L 395.9,128.4 L 396.6,108.8 L 397.3,108.9 L 398.0,107.1 L 398.7,99.3 L 399.3,96.2 L 400.0,104.4 L 400.7,105.3 L 401.4,112.6 L 402.1,109.7 L 402.8,114.4 L 403.5,104.0 L 404.2,112.6 L 404.9,108.9 L 405.6,103.1 L 406.3,106.8 L 407.0,103.5 L 407.7,106.8 L 408.4,112.0 L 409.1,110.9 L 409.8,113.7 L 410.5,119.3 L 411.2,114.8 L 411.9,113.5 L 412.6,113.1 L 413.3,117.5 L 414.0,116.4 L 414.7,119.7 L 415.4,117.3 L 416.1,115.3 L 416.8,117.5 L 417.5,116.2 L 418.2,115.8 L 418.9,114.2 L 419.6,116.6 L 420.3,117.1 L 421.0,119.3 L 421.7,116.6 L 422.4,113.1 L 423.1,111.7 L 423.8,116.7 L 424.5,115.1 L 425.2,116.4 L 425.9,117.5 L 426.6,115.5 L 427.3,112.2 L 428.0,102.9 L 428.7,108.0 L 429.3,108.4 L 430.0,108.8 L 430.7,110.6 L 431.4,114.0 L 432.1,115.8 L 432.8,118.9 L 433.5,116.2 L 434.2,116.9 L 434.9,116.2 L 435.6,112.6 L 436.3,110.9 L 437.0,112.6 L 437.7,114.6 L 438.4,115.5 L 439.1,113.5 L 439.8,114.6 L 440.5,114.0 L 441.2,114.2 L 441.9,115.1 L 442.6,114.0 L 443.3,116.2 L 444.0,117.5 L 444.7,117.7 L 445.4,117.7 L 446.1,116.6 L 446.8,118.2 L 447.5,118.7 L 448.2,118.6 L 448.9,118.6 L 449.6,118.4 L 450.3,120.4 L 451.0,123.8 L 451.7,126.7 L 452.4,122.6 L 453.1,124.4 L 453.8,122.6 L 454.5,121.6 L 455.2,124.9 L 455.9,125.5 L 456.6,121.6 L 457.3,122.6 L 458.0,124.4 L 458.7,124.7 L 459.3,124.7 L 460.0,122.9 L 460.7,123.3 L 461.4,124.9 L 462.1,124.6 L 462.8,124.7 L 463.5,124.9 L 464.2,124.7 L 464.9,123.3 L 465.6,124.6 L 466.3,123.3 L 467.0,119.3 L 467.7,119.8 L 468.4,116.7 L 469.1,116.2 L 469.8,116.7 L 470.5,118.0 L 471.2,117.3 L 471.9,116.9 L 472.6,115.8 L 473.3,118.9 L 474.0,118.2 L 474.7,125.3 L 475.4,127.5 L 476.1,127.3 L 476.8,127.8 L 477.5,127.6 L 478.2,127.3 L 478.9,127.1 L 479.6,128.7 L 480.3,130.0 L 481.0,130.5 L 481.7,133.6 L 482.4,129.3 L 483.1,127.8 L 483.8,129.1 L 484.5,128.0 L 485.2,127.6 L 485.9,128.2 L 486.6,128.7 L 487.3,128.9 L 488.0,130.0 L 488.7,130.7 L 489.3,133.5 L 490.0,130.5 L 490.7,131.8 L 491.4,130.9 L 492.1,129.8 L 492.8,130.7 L 493.5,129.8 L 494.2,129.8 L 494.9,128.7 L 495.6,128.7 L 496.3,129.3 L 497.0,128.4 L 497.7,131.1 L 498.4,131.6 L 499.1,129.5 L 499.8,130.5 L 500.5,129.8 L 501.2,130.0 L 501.9,130.7 L 502.6,130.0 L 503.3,129.3 L 504.0,126.7 L 504.7,124.7 L 505.4,126.9 L 506.1,127.5 L 506.8,125.3 L 507.5,125.1 L 508.2,122.9 L 508.9,122.0 L 509.6,122.9 L 510.3,120.9 L 511.0,118.9 L 511.7,121.3 L 512.4,121.3 L 513.1,121.3 L 513.8,118.4 L 514.5,118.0 L 515.2,116.7 L 515.9,114.8 L 516.6,116.7 L 517.3,118.7 L 518.0,119.1 L 518.7,120.9 L 519.3,123.1 L 520.0,122.6 L 520.7,121.3 L 521.4,121.3 L 522.1,120.0 L 522.8,120.4 L 523.5,121.6 L 524.2,122.6 L 524.9,122.4 L 525.6,122.0 L 526.3,119.1 L 527.0,121.1 L 527.7,122.4 L 528.4,124.0 L 529.1,124.9 L 529.8,124.9 L 530.5,123.8 L 531.2,123.5 L 531.9,123.6 L 532.6,123.6 L 533.3,124.4 L 534.0,124.2 L 534.7,124.4 L 535.4,123.1 L 536.1,122.0 L 536.8,122.2 L 537.5,123.1 L 538.2,123.5 L 538.9,124.2 L 539.6,124.6 L 540.3,124.4 L 541.0,124.2 L 541.7,123.8 L 542.4,123.6 L 543.1,123.3 L 543.8,124.4 L 544.5,123.8 L 545.2,123.6 L 545.9,124.4 L 546.6,124.6 L 547.3,121.5 L 548.0,122.7 L 548.7,122.4 L 549.3,121.8 L 550.0,120.9 L 550.7,117.1 L 551.4,122.9 L 552.1,122.9 L 552.8,123.1 L 553.5,122.7 L 554.2,122.6 L 554.9,123.1 L 555.6,122.7 L 556.3,122.7 L 557.0,122.7 L 557.7,122.7 L 558.4,118.0 L 559.1,102.9 L 559.8,96.2 L 560.5,112.6 L 561.2,118.6 L 561.9,133.6 L 562.6,136.2 L 563.3,135.1 L 564.0,145.1 L 564.7,146.7 L 565.4,138.0 L 566.1,144.3 L 566.8,136.2 L 567.5,139.6 L 568.2,144.9 L 568.9,137.6 L 569.6,126.0 L 570.3,129.1 L 571.0,130.2 L 571.7,136.0 L 572.4,136.5 L 573.1,139.1 L 573.8,144.9 L 574.5,146.9 L 575.2,145.8 L 575.9,150.3 L 576.6,152.7 L 577.3,153.8 L 578.0,153.1 L 578.7,151.8 L 579.3,154.7 L 580.0,164.5 L 580.7,164.3 L 581.4,168.3 L 582.1,172.7 L 582.8,158.7 L 583.5,154.1 L 584.2,158.3 L 584.9,161.6 L 585.6,163.6 L 586.3,165.2 L 587.0,160.7 L 587.7,165.6 L 588.4,169.2 L 589.1,161.6 L 589.8,166.0 L 590.5,169.4 L 591.2,165.4 L 591.9,162.0 L 592.6,164.3 L 593.3,162.5 L 594.0,157.4 L 594.7,157.6 L 595.4,158.1 L 596.1,160.7 L 596.8,161.6 L 597.5,157.1 L 598.2,159.1 L 598.9,161.0 L 599.6,162.0 L 600.3,163.4 L 601.0,158.3 L 601.7,160.1 L 602.4,159.4 L 603.1,157.2 L 603.8,156.3 L 604.5,153.1 L 605.2,154.3 L 605.9,157.1 L 606.6,158.0 L 607.3,159.2 L 608.0,159.8 L 608.7,157.2 L 609.3,156.9 L 610.0,153.6 L 610.7,158.7 L 611.4,158.0 L 612.1,158.7 L 612.8,160.3 L 613.5,161.6 L 614.2,161.8 L 614.9,158.9 L 615.6,162.5 L 616.3,163.0 L 617.0,163.0 L 617.7,161.4 L 618.4,162.3 L 619.1,163.2 L 619.8,163.8 L 620.5,164.5 L 621.2,163.6 L 621.9,158.9 L 622.6,157.6 L 623.3,157.1 L 624.0,153.8 L 624.7,152.5 L 625.4,155.4 L 626.1,156.3 L 626.8,156.7 L 627.5,153.8 L 628.2,154.5 L 628.9,154.3 L 629.6,155.2 L 630.3,156.1 L 631.0,157.2 L 631.7,157.4 L 632.4,158.9 L 633.1,160.5 L 633.8,160.0 L 634.5,159.1 L 635.2,156.3 L 635.9,155.4 L 636.6,156.1 L 637.3,156.3 L 638.0,154.7 L 638.7,151.1 L 639.3,148.9 L 640.0,150.3 L 640.7,145.6 L 641.4,150.2 L 642.1,149.8 L 642.8,153.1 L 643.5,154.1 L 644.2,156.1 L 644.9,156.5 L 645.6,154.5 L 646.3,151.1 L 647.0,155.6 L 647.7,154.3 L 648.4,156.9 L 649.1,157.1 L 649.8,158.3 L 650.5,158.9 L 651.2,157.6 L 651.9,158.9 L 652.6,159.6 L 653.3,162.7 L 654.0,164.0 L 654.7,163.8 L 655.4,161.2 L 656.1,161.2 L 656.8,163.8 L 657.5,166.1 L 658.2,167.0 L 658.9,167.0 L 659.6,168.9 L 660.3,168.5 L 661.0,166.9 L 661.7,168.3 L 662.4,168.3 L 663.1,167.0 L 663.8,166.1 L 664.5,164.7 L 665.2,165.8 L 665.9,164.7 L 666.6,166.9 L 667.3,166.9 L 668.0,166.3 L 668.7,166.7 L 669.3,166.7 L 670.0,164.5 L 670.7,162.0 L 671.4,164.7 L 672.1,166.1 L 672.8,165.2 L 673.5,165.6 L 674.2,166.1 L 674.9,166.3 L 675.6,166.9 L 676.3,166.5 L 677.0,164.5 L 677.7,159.4 L 678.4,163.2 L 679.1,162.5 L 679.8,154.7 L 680.5,152.9 L 681.2,156.1 L 681.9,150.2 L 682.6,149.2 L 683.3,151.4 L 684.0,150.2 L 684.7,149.1 L 685.4,150.2 L 686.1,147.4 L 686.8,147.4 L 687.5,152.5 L 688.2,149.1 L 688.9,149.8 L 689.6,152.2 L 690.3,155.1 L 691.0,153.6 L 691.7,155.1 L 692.4,156.7 L 693.1,157.6 L 693.8,158.0 L 694.5,157.2 L 695.2,148.9 L 695.9,150.2 L 696.6,150.7 L 697.3,150.0 L 698.0,152.5 L 698.7,154.5 L 699.3,153.8 L 700.0,155.4 L 700.7,155.1 L 701.4,153.4 L 702.1,152.5 L 702.8,151.6 L 703.5,151.2 L 704.2,151.2 L 704.9,152.3 L 705.6,152.3 L 706.3,153.6 L 707.0,155.4 L 707.7,157.2 L 708.4,156.1 L 709.1,155.2 L 709.8,155.1 L 710.5,155.8 L 711.2,156.7 L 711.9,157.8 L 712.6,157.4 L 713.3,157.2 L 714.0,158.5 L 714.7,159.4 L 715.4,159.8 L 716.1,159.8 L 716.8,159.2 L 717.5,158.7 L 718.2,158.1 L 718.9,158.7 L 719.6,158.9 L 720.3,158.9 L 721.0,158.0 L 721.7,154.5 L 722.4,154.3 L 723.1,156.1 L 723.8,155.8 L 724.5,155.8 L 725.2,155.8 L 725.9,155.6 L 726.6,146.2 L 727.3,147.4 L 728.0,139.6 L 728.7,140.9 L 729.3,146.0 L 730.0,144.3 L 730.7,154.1 L 731.4,149.2 L 732.1,158.0 L 732.8,164.9 L 733.5,165.2 L 734.2,171.4 L 734.9,171.6 L 735.6,169.9 L 736.3,175.8 L 737.0,177.8 L 737.7,183.4 L 738.4,179.9 L 739.1,181.9 L 739.8,182.1 L 740.5,187.0 L 741.2,185.0 L 741.9,187.6 L 742.6,183.9 L 743.3,188.3 L 744.0,190.8 L 744.7,183.2 L 745.4,185.2 L 746.1,182.7 L 746.8,182.3 L 747.5,182.1 L 748.2,182.5 L 748.9,184.3 L 749.6,178.8 L 750.3,176.3 L 751.0,175.2 L 751.7,177.6 L 752.4,178.8 L 753.1,180.7 L 753.8,180.7 L 754.5,179.9 L 755.2,181.7 L 755.9,178.5 L 756.6,177.0 L 757.3,178.3 L 758.0,175.0 L 758.7,175.0 L 759.3,177.4 L 760.0,175.2 L 760.7,181.2 L 761.4,179.2 L 762.1,178.5 L 762.8,179.4 L 763.5,180.3 L 764.2,181.7 L 764.9,180.1 L 765.6,177.0 L 766.3,181.2 L 767.0,177.6 L 767.7,181.4 L 768.4,181.6 L 769.1,181.6 L 769.8,181.0 L 770.5,180.3 L 771.2,183.0 L 771.9,184.3 L 772.6,185.7 L 773.3,186.8 L 774.0,187.0 L 774.7,186.8 L 775.4,186.3 L 776.1,185.9 L 776.8,183.9 L 777.5,185.6 L 778.2,186.5 L 778.9,186.8 L 779.6,189.9 L 780.3,187.4 L 781.0,188.8 L 781.7,188.3 L 782.4,188.5 L 783.1,188.5 L 783.8,187.7 L 784.5,182.8 L 785.2,185.7 L 785.9,185.7 L 786.6,186.8 L 787.3,188.8 L 788.0,188.8 L 788.7,188.6 L 789.3,189.4 L 790.0,187.7 L 790.7,187.2 L 791.4,187.4 L 792.1,188.3 L 792.8,188.5 L 793.5,188.5 L 794.2,188.8 L 794.9,188.5 L 795.6,188.5 L 796.3,188.6 L 797.0,189.0 L 797.7,189.6 L 798.4,190.3 L 799.1,190.8 L 799.8,188.8 L 800.5,188.3 L 801.2,188.6 L 801.9,187.7 L 802.6,185.4 L 803.3,186.5 L 804.0,187.6 L 804.7,187.9 L 805.4,190.6 L 806.1,191.2 L 806.8,190.6 L 807.5,190.5 L 808.2,192.3 L 808.9,192.1 L 809.6,192.3 L 810.3,191.2 L 811.0,189.2 L 811.7,189.6 L 812.4,187.6 L 813.1,190.8 L 813.8,189.4 L 814.5,190.5 L 815.2,190.6 L 815.9,189.9 L 816.6,191.2 L 817.3,191.6 L 818.0,192.5 L 818.7,193.4 L 819.3,194.1 L 820.0,193.9 L 820.7,193.2 L 821.4,193.7 L 822.1,194.5 L 822.8,190.8 L 823.5,189.2 L 824.2,187.9 L 824.9,188.8 L 825.6,189.6 L 826.3,191.2 L 827.0,189.2 L 827.7,188.6 L 828.4,191.9 L 829.1,193.7 L 829.8,195.9 L 830.5,195.7 L 831.2,195.7 L 831.9,196.6 L 832.6,198.3 L 833.3,198.3 L 834.0,197.7 L 834.7,197.2 L 835.4,198.5 L 836.1,198.3 L 836.8,199.5 L 837.5,199.7 L 838.2,199.7 L 838.9,199.9 L 839.6,197.9 L 840.3,196.3 L 841.0,198.8 L 841.7,198.6 L 842.4,197.5 L 843.1,197.5 L 843.8,196.3 L 844.5,196.6 L 845.2,197.7 L 845.9,198.5 L 846.6,199.2 L 847.3,199.7 L 848.0,199.9 L 848.7,200.6 L 849.3,201.7 L 850.0,200.3 L 850.7,198.3 L 851.4,198.1 L 852.1,199.4 L 852.8,201.2 L 853.5,199.4 L 854.2,200.8 L 854.9,199.2 L 855.6,198.5 L 856.3,199.7 L 857.0,200.8 L 857.7,203.0 L 858.4,203.0 L 859.1,202.1 L 859.8,201.0 L 860.5,199.4 L 861.2,199.7 L 861.9,200.4 L 862.6,201.2 L 863.3,201.7 L 864.0,202.4 L 864.7,203.0 L 865.4,203.2 L 866.1,203.2 L 866.8,203.0 L 867.5,203.0 L 868.2,202.1 L 868.9,203.2 L 869.6,203.0 L 870.3,202.8 L 871.0,203.0 L 871.7,203.4 L 872.4,205.2 L 873.1,205.5 L 873.8,205.3 L 874.5,207.2 L 875.2,207.7 L 875.9,210.3 L 876.6,210.8 L 877.3,211.3 L 878.0,207.9 L 878.7,208.8 L 879.3,209.9 L 880.0,210.8 L 880.7,211.2 L 881.4,211.5 L 882.1,212.4 L 882.8,212.6 L 883.5,213.5 L 884.2,212.2 L 884.9,214.1 L 885.6,213.2 L 886.3,207.7 L 887.0,204.4 L 887.7,207.9 L 888.4,209.0 L 889.1,208.1 L 889.8,208.1 L 890.5,207.7 L 891.2,207.7 L 891.9,207.9 L 892.6,208.1 L 893.3,208.1 L 894.0,207.9" fill="none"></path>
+    <g class="trade-marker sell">
+      <circle cx="54.7" cy="96.8" r="5.5"></circle>
+      <text x="54.7" y="115.8" text-anchor="middle">S 09:31</text>
+      <title>2026/08/31 09:31:04 卖出 100 @ 51.870</title>
+    </g>
+  </svg></div>
+    </article></div>
+    </section>
+
+    <section class="panel" id="daily">
+      <span class="label">Daily Review</span>
+      <h2>逐日复盘</h2>
+      <div class="day-grid-cards"><article class="day-card">
+      <div class="day-card-head"><div><b>周一</b><span>2026/08/31</span></div><strong>旧仓兑现 + 农业尾盘试错</strong></div>
+      <div class="day-numbers">
+        <span>成交笔数 <b>4</b></span>
+        <span>买入金额 <b>4,515.00</b></span>
+        <span>卖出金额 <b>12,137.00</b></span>
+        <span>成交额 <b>16,652.00</b></span>
+      </div>
+      <p><b>操作：</b>卖出昊华科技100股、百花医药500股；午后买入敦煌种业100股，尾盘买入金健米业300股。</p>
+      <p><b>复盘：</b>旧仓处理后转向农业线，金健米业次日形成小赚闭环，敦煌种业次日小亏止损。日度操作&情绪原文待补，本页先按交割行为占位。</p>
+      <div class="account-strip"><span>账户收益 <b>待补</b></span><span>仓位 <b>待补</b></span></div>
+      <div class="source-line"><span>日度复盘待补</span><small>后续补充日度复盘文本后再同步。</small></div>
+    </article><article class="day-card">
+      <div class="day-card-head"><div><b>周二</b><span>2026/09/01</span></div><strong>农业试错快速闭环</strong></div>
+      <div class="day-numbers">
+        <span>成交笔数 <b>2</b></span>
+        <span>买入金额 <b>0.00</b></span>
+        <span>卖出金额 <b>4,625.00</b></span>
+        <span>成交额 <b>4,625.00</b></span>
+      </div>
+      <p><b>操作：</b>卖出敦煌种业100股、金健米业300股。</p>
+      <p><b>复盘：</b>金健米业实现约+156.03，敦煌种业约-68.44。这里能看出快进快出纪律在线，但需要补当日对农业题材强弱、卖点是否过早/过慢的反思。</p>
+      <div class="account-strip"><span>账户收益 <b>待补</b></span><span>仓位 <b>待补</b></span></div>
+      <div class="source-line"><span>日度复盘待补</span><small>后续补充日度复盘文本后再同步。</small></div>
+    </article><article class="day-card">
+      <div class="day-card-head"><div><b>周三</b><span>2026/09/02</span></div><strong>时代出版接力试错</strong></div>
+      <div class="day-numbers">
+        <span>成交笔数 <b>1</b></span>
+        <span>买入金额 <b>5,610.00</b></span>
+        <span>卖出金额 <b>0.00</b></span>
+        <span>成交额 <b>5,610.00</b></span>
+      </div>
+      <p><b>操作：</b>早盘买入时代出版600股。</p>
+      <p><b>复盘：</b>时代出版次日亏损闭环约-576.63，是本周可见最大亏损票。需要补充买入逻辑：是文化传媒题材回流、连板接力、还是反抽套利。</p>
+      <div class="account-strip"><span>账户收益 <b>待补</b></span><span>仓位 <b>待补</b></span></div>
+      <div class="source-line"><span>日度复盘待补</span><small>后续补充日度复盘文本后再同步。</small></div>
+    </article><article class="day-card">
+      <div class="day-card-head"><div><b>周四</b><span>2026/09/03</span></div><strong>时代止损后切入欢瑞世纪</strong></div>
+      <div class="day-numbers">
+        <span>成交笔数 <b>3</b></span>
+        <span>买入金额 <b>5,148.00</b></span>
+        <span>卖出金额 <b>5,046.00</b></span>
+        <span>成交额 <b>10,194.00</b></span>
+      </div>
+      <p><b>操作：</b>早盘卖出时代出版600股；中午前后买入欢瑞世纪900股。</p>
+      <p><b>复盘：</b>同日从时代出版切换到欢瑞世纪，说明仍在传媒/影视方向继续试错。若板块强度并未确认，容易出现亏损后继续在同方向加风险。</p>
+      <div class="account-strip"><span>账户收益 <b>待补</b></span><span>仓位 <b>待补</b></span></div>
+      <div class="source-line"><span>日度复盘待补</span><small>后续补充日度复盘文本后再同步。</small></div>
+    </article><article class="day-card">
+      <div class="day-card-head"><div><b>周五</b><span>2026/09/04</span></div><strong>欢瑞世纪亏损闭环</strong></div>
+      <div class="day-numbers">
+        <span>成交笔数 <b>1</b></span>
+        <span>买入金额 <b>0.00</b></span>
+        <span>卖出金额 <b>4,689.00</b></span>
+        <span>成交额 <b>4,689.00</b></span>
+      </div>
+      <p><b>操作：</b>早盘卖出欢瑞世纪900股。</p>
+      <p><b>复盘：</b>欢瑞世纪可见闭环约-476.34，和时代出版一起构成本周主要可见亏损。后续需要用二次反思确认：亏损来自题材退潮、非唯一核心、追高接力，还是卖点纪律问题。</p>
+      <div class="account-strip"><span>账户收益 <b>待补</b></span><span>仓位 <b>待补</b></span></div>
+      <div class="source-line"><span>日度复盘待补</span><small>后续补充日度复盘文本后再同步。</small></div>
+    </article></div>
+    </section>
+
+    <section class="panel" id="rules">
+      <span class="label">Second Review</span>
+      <h2>二次复盘沉淀</h2>
+      <p class="lead">二次复盘待补。当前先沉淀成交单能看出的临时规则：本周真正需要解释的是时代出版、欢瑞世纪为什么连续亏损，以及金健米业为什么能小赚兑现；等你补充每日操作&情绪复盘后，再把这里整理成完整的Keep / Improve / Start / Stop。</p>
+      <div class="thesis-grid">
+        <article><b>赚钱票先问原因</b><p>金健米业的小赚要确认是农业方向地位做对，还是单纯隔日卖点执行好；两者对应的下周规则不同。</p></article>
+        <article><b>亏损票先问地位</b><p>时代出版、欢瑞世纪都需要回到“是否第一、是否唯一、是否有板块承接”三个问题，不能只复盘卖点。</p></article>
+        <article><b>旧仓不要混算</b><p>百花医药和昊华科技卖出只代表释放现金，真实盈亏必须等历史成本补齐，避免账户口径和成交口径混在一起。</p></article>
+      </div>
+      <div class="rules"><article><span>01</span><b>旧仓另算</b><p>百花医药、昊华科技只有本周卖出记录，没有对应买入成本；必须补历史成本后再核算，不把现金到账误判成盈利。</p></article><article><span>02</span><b>闭环先看地位</b><p>时代出版、欢瑞世纪亏损都要回到题材地位复盘：是否第一性、是否唯一性、是否只是跟风修复。</p></article><article><span>03</span><b>亏损后停一下</b><p>时代出版亏损后继续切欢瑞世纪，容易变成同方向找补；亏损日要先确认板块是否还在给机会。</p></article><article><span>04</span><b>小赚要复盘卖点</b><p>金健米业小赚兑现是正反馈，但也要补日度复盘确认：卖出是纪律兑现，还是卖早。</p></article><article><span>05</span><b>同题材只做前排</b><p>农业、传媒、影视这种轮动线，如果没有清楚的板块第一和全场辨识度，就只能轻仓快验。</p></article><article><span>06</span><b>隔日不强就走</b><p>接力/套利票买入前必须写好隔日处理：低开、冲高、弱反、不能回均线分别怎么做。</p></article><article><span>07</span><b>账户口径分离</b><p>成交净流入不是账户收益；期末持仓市值、浮盈亏、总资产和日收益表必须单独补齐。</p></article><article><span>08</span><b>图形只辅助</b><p>5分钟线标买卖点用于复盘节奏，不替代成交单；真正归因仍看题材、地位、周期和纪律。</p></article></div>
+    </section>
+
+    <section class="panel" id="trades">
+      <span class="label">Transactions</span>
+      <h2>成交明细</h2>
+      <div class="table-wrap"><table>
+    <thead><tr><th>成交时间</th><th>代码</th><th>名称</th><th>操作</th><th>数量</th><th>成交均价</th><th>成交金额</th><th>手续费</th><th>印花税</th><th>发生金额</th><th>资金余额</th><th>市场</th></tr></thead>
+    <tbody><tr>
+    <td>2026/09/04 09:38:56</td>
+    <td>000892</td>
+    <td>欢瑞世纪</td>
+    <td class="is-sell">卖出</td>
+    <td>900</td>
+    <td>5.21</td>
+    <td>4,689.00</td>
+    <td>5.00</td>
+    <td>2.34</td>
+    <td class="is-profit">+4,681.66</td>
+    <td>11,169.91</td>
+    <td>深A</td>
+  </tr><tr>
+    <td>2026/09/03 11:21:56</td>
+    <td>000892</td>
+    <td>欢瑞世纪</td>
+    <td class="is-buy">买入</td>
+    <td>300</td>
+    <td>5.72</td>
+    <td>1,716.00</td>
+    <td>5.00</td>
+    <td>0.00</td>
+    <td class="is-loss">-1,721.00</td>
+    <td>1,449.82</td>
+    <td>深A</td>
+  </tr><tr>
+    <td>2026/09/03 11:20:37</td>
+    <td>000892</td>
+    <td>欢瑞世纪</td>
+    <td class="is-buy">买入</td>
+    <td>600</td>
+    <td>5.72</td>
+    <td>3,432.00</td>
+    <td>5.00</td>
+    <td>0.00</td>
+    <td class="is-loss">-3,437.00</td>
+    <td>3,170.82</td>
+    <td>深A</td>
+  </tr><tr>
+    <td>2026/09/03 09:36:41</td>
+    <td>600551</td>
+    <td>时代出版</td>
+    <td class="is-sell">卖出</td>
+    <td>600</td>
+    <td>8.41</td>
+    <td>5,046.00</td>
+    <td>5.00</td>
+    <td>2.52</td>
+    <td class="is-profit">+5,038.43</td>
+    <td>6,488.25</td>
+    <td>沪A</td>
+  </tr><tr>
+    <td>2026/09/02 09:30:59</td>
+    <td>600551</td>
+    <td>时代出版</td>
+    <td class="is-buy">买入</td>
+    <td>600</td>
+    <td>9.35</td>
+    <td>5,610.00</td>
+    <td>5.00</td>
+    <td>0.00</td>
+    <td class="is-loss">-5,615.06</td>
+    <td>6,607.82</td>
+    <td>沪A</td>
+  </tr><tr>
+    <td>2026/09/01 09:35:00</td>
+    <td>600127</td>
+    <td>金健米业</td>
+    <td class="is-sell">卖出</td>
+    <td>300</td>
+    <td>12.60</td>
+    <td>3,780.00</td>
+    <td>5.00</td>
+    <td>1.89</td>
+    <td class="is-profit">+3,773.07</td>
+    <td>12,222.88</td>
+    <td>沪A</td>
+  </tr><tr>
+    <td>2026/09/01 09:32:34</td>
+    <td>600354</td>
+    <td>敦煌种业</td>
+    <td class="is-sell">卖出</td>
+    <td>100</td>
+    <td>8.45</td>
+    <td>845.00</td>
+    <td>5.00</td>
+    <td>0.42</td>
+    <td class="is-profit">+839.57</td>
+    <td>8,449.81</td>
+    <td>沪A</td>
+  </tr><tr>
+    <td>2026/08/31 15:00:00</td>
+    <td>600127</td>
+    <td>金健米业</td>
+    <td class="is-buy">买入</td>
+    <td>300</td>
+    <td>12.04</td>
+    <td>3,612.00</td>
+    <td>5.00</td>
+    <td>0.00</td>
+    <td class="is-loss">-3,617.04</td>
+    <td>7,610.24</td>
+    <td>沪A</td>
+  </tr><tr>
+    <td>2026/08/31 13:37:25</td>
+    <td>600354</td>
+    <td>敦煌种业</td>
+    <td class="is-buy">买入</td>
+    <td>100</td>
+    <td>9.03</td>
+    <td>903.00</td>
+    <td>5.00</td>
+    <td>0.00</td>
+    <td class="is-loss">-908.01</td>
+    <td>11,227.28</td>
+    <td>沪A</td>
+  </tr><tr>
+    <td>2026/08/31 10:19:48</td>
+    <td>600721</td>
+    <td>百花医药</td>
+    <td class="is-sell">卖出</td>
+    <td>500</td>
+    <td>13.90</td>
+    <td>6,950.00</td>
+    <td>5.00</td>
+    <td>3.48</td>
+    <td class="is-profit">+6,941.45</td>
+    <td>6,955.93</td>
+    <td>沪A</td>
+  </tr><tr>
+    <td>2026/08/31 09:31:04</td>
+    <td>600378</td>
+    <td>昊华科技</td>
+    <td class="is-sell">卖出</td>
+    <td>100</td>
+    <td>51.87</td>
+    <td>5,187.00</td>
+    <td>5.00</td>
+    <td>2.59</td>
+    <td class="is-profit">+5,179.36</td>
+    <td>12,135.29</td>
+    <td>沪A</td>
+  </tr></tbody>
+  </table></div>
+    </section>
+
+    <section class="panel" id="ignored">
+      <span class="label">Orders Not Booked</span>
+      <h2>撤单 / 废单 / 已报</h2>
+      <p>这些记录不计入成交和盈亏，只作为操作意图核对。若后续你给完整交割单，以交割单为准。</p>
+      <div class="chart-empty"><b>本次截图未见撤单/废单记录</b><span>如后续给委托单截图，可在这里补充未成交意图和撤单原因。</span></div>
+    </section>
+
+    <section class="panel missing-panel" id="missing">
+      <span class="label">To Fill</span>
+      <h2>后续待补内容</h2>
+      <div class="missing-list">
+        <article><b>1. 账户日收益表</b><p>需要 8/31-9/4 每日收益率、收益金额、仓位、当前总金额，用来补账户曲线和周度主页汇总。</p></article>
+        <article><b>2. 期末持仓截图</b><p>确认 9/4 收盘是否空仓、现金余额、持仓市值和总资产；成交截图最后一笔现金余额为 11,169.91，只能作交易后现金参考。</p></article>
+        <article><b>3. 历史持仓成本</b><p>百花医药500股、昊华科技100股只有卖出记录，需要补买入成本/上周结转成本后计算真实盈亏。</p></article>
+        <article><b>4. 日度与二次反思</b><p>每日操作&情绪复盘、二次反思、主要赚钱亏损票的主观归因待补；我会据此替换当前占位文案。</p></article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

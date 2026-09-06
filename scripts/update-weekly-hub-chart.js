@@ -13,6 +13,10 @@ const weeks = [
   { label: "06.08-06.12", pnl: -466, equity: 22879, avgPosition: 49.19, bestDay: "周一 06-08 +1,996.00", worstDay: "周二 06-09 -2,492.00", href: "../2026-06-08_2026-06-12/" },
   { label: "06.15-06.20", pnl: -299, equity: 22567, avgPosition: 44.68, bestDay: "周四 06-18 +409.00", worstDay: "周一 06-15 -627.00", href: "../2026-06-15_2026-06-20/" },
   { label: "06.22-06.26*", pnl: -4839.42, equity: 17671.22, equityLabel: "暂估 / 市值17,671.22", avgPosition: 92.57, bestDay: "周一 06-22 -405.22", worstDay: "周五 06-26 -4,839.42", href: "../2026-06-22_2026-06-26/" },
+  { label: "06.29-07.04", pnl: -1741, equity: 15858, avgPosition: 58.44, bestDay: "周二 06-30 +257.00", worstDay: "周四 07-02 -1,284.00", href: "../2026-06-29_2026-07-04/" },
+  { label: "07.06-07.10", pnl: -262, equity: 15596, avgPosition: 50.08, bestDay: "周四 07-09 +605.00", worstDay: "周五 07-10 -514.40", href: "../2026-07-06_2026-07-10/" },
+  { label: "07.20-07.24", pnl: 1816.4, equity: 17648.65, avgPosition: 41.12, bestDay: "周五 07-24 +1,170.00", worstDay: "周一 07-20 +0.00", href: "../2026-07-20_2026-07-24/" },
+  { label: "08.10-08.15", pnl: 1560.94, equity: 13594, avgPosition: 59.62, bestDay: "周三 08-12 +1,268.94", worstDay: "周五 08-14 -389.00", href: "../2026-08-10_2026-08-15/" },
 ];
 
 let peak = -Infinity;
@@ -76,13 +80,14 @@ function renderChart() {
     return `<g><line x1="${xx.toFixed(1)}" x2="${xx.toFixed(1)}" y1="${top}" y2="${height - bottom}" stroke="rgba(28,37,48,.08)"></line><text x="${xx.toFixed(1)}" y="${height - 34}" text-anchor="middle" class="axis-label">${week.label}</text></g>`;
   }).join("");
   const amountDots = amountPoints.map((point) => {
-    const color = point.week.pnl >= 0 ? "#14845f" : "#c2412d";
+    const color = point.week.pnl >= 0 ? "#c2412d" : "#14845f";
     return `<a href="${point.week.href}"><g><title>${point.week.label} 金额变化 ${money(point.week.pnl)}</title><circle cx="${point.x.toFixed(1)}" cy="${point.y.toFixed(1)}" r="5.5" fill="${color}" stroke="#fff" stroke-width="2"></circle></g></a>`;
   }).join("");
   const amountLabels = amountPoints.map((point, index) => {
     const offset = point.week.pnl > 0 || index >= 4 ? 23 : -14;
     const y = Math.max(top + 12, Math.min(height - bottom - 8, point.y + offset));
-    return `<text x="${point.x.toFixed(1)}" y="${y.toFixed(1)}" text-anchor="middle" class="value-label amount-label">${money(point.week.pnl)}</text>`;
+    const fill = point.week.pnl >= 0 ? "#c2412d" : "#14845f";
+    return `<text x="${point.x.toFixed(1)}" y="${y.toFixed(1)}" text-anchor="middle" class="value-label amount-label" style="fill:${fill}">${money(point.week.pnl)}</text>`;
   }).join("");
   const ddDots = ddPoints.map((point) => `<g><title>${point.week.label} 累计回撤 ${pct(point.week.drawdown)}</title><circle cx="${point.x.toFixed(1)}" cy="${point.y.toFixed(1)}" r="4.5" fill="#1d4ed8" stroke="#fff" stroke-width="2"></circle></g>`).join("");
   const ddLabels = ddPoints.map((point) => {
@@ -106,7 +111,7 @@ function renderPanel() {
   const latest = weeks[weeks.length - 1];
   const maxDrawdown = weeks.reduce((min, week) => Math.min(min, week.drawdown), 0);
   const rows = weeks.map((week) => `<tr><td><a href="${week.href}">${week.label}</a></td><td class="${trendClass(week.pnl)}">${money(week.pnl)}</td><td class="${trendClass(week.weekPct)}">${pct(week.weekPct)}</td><td>${week.avgPosition.toFixed(2)}%</td><td>${week.equityLabel || week.equity.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td><td class="${week.drawdown < 0 ? "trade-down" : "trade-up"}">${pct(week.drawdown)}</td><td class="trade-up">${week.bestDay}</td><td class="trade-down">${week.worstDay}</td></tr>`).join("");
-  return `<section class="panel overview-panel"><div class="chart-head"><div><h2>每周资金曲线</h2><p>左轴看每周账户金额变化；右轴同时看累计回撤和当周涨跌/回撤。当周百分比按上一归档期末权益推算，第一周按周初权益推算；平均周仓位按已提供交易日仓位简单平均。带 * 的最新草稿周按交割单和未卖持仓收盘市值暂估，等账户截图补齐后再校准正式权益。</p></div><div class="legend-row"><span><i class="legend-line amount"></i>金额变化</span><span><i class="legend-line drawdown"></i>累计回撤</span><span><i class="legend-line weekly"></i>当周涨跌/回撤</span></div></div>${renderChart()}<div class="weekly-data-wrap"><table class="weekly-data-table"><thead><tr><th>周区间</th><th>金额变化</th><th>当周涨跌/回撤</th><th>平均周仓位</th><th>期末权益</th><th>累计回撤</th><th>最赚日</th><th>最亏日</th></tr></thead><tbody>${rows}</tbody></table></div><div class="mini-grid chart-summary"><span>累计变化 <b class="${cumulative >= 0 ? "pos" : "neg"}">${money(cumulative)}</b></span><span>最大单周盈利 <b class="pos">${best.label} ${money(best.pnl)}</b></span><span>最大单周亏损 <b class="neg">${worst.label} ${money(worst.pnl)}</b></span><span>最新当周 <b class="${latest.weekPct >= 0 ? "pos" : "neg"}">${pct(latest.weekPct)}</b></span><span>最新累计回撤 <b class="neg">${pct(latest.drawdown)}</b></span><span>最大累计回撤 <b class="neg">${pct(maxDrawdown)}</b></span><span>最新权益 <b>${latest.equityLabel || latest.equity.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</b></span></div></section>`;
+  return `<section class="panel overview-panel"><div class="chart-head"><div><h2>每周资金曲线</h2><p>左轴看每周账户金额变化；右轴同时看累计回撤和当周涨跌/回撤。当周百分比按上一归档期末权益推算，第一周按周初权益推算；平均周仓位按已提供交易日仓位简单平均。08.31-09.04 最新草稿周因账户日收益和期末权益待补，暂不纳入资金曲线，补齐后再校准。</p></div><div class="legend-row"><span><i class="legend-line amount"></i>金额变化</span><span><i class="legend-line drawdown"></i>累计回撤</span><span><i class="legend-line weekly"></i>当周涨跌/回撤</span></div></div>${renderChart()}<div class="weekly-data-wrap"><table class="weekly-data-table"><thead><tr><th>周区间</th><th>金额变化</th><th>当周涨跌/回撤</th><th>平均周仓位</th><th>期末权益</th><th>累计回撤</th><th>最赚日</th><th>最亏日</th></tr></thead><tbody>${rows}</tbody></table></div><div class="mini-grid chart-summary"><span>累计变化 <b class="${cumulative >= 0 ? "pos" : "neg"}">${money(cumulative)}</b></span><span>最大单周盈利 <b class="pos">${best.label} ${money(best.pnl)}</b></span><span>最大单周亏损 <b class="neg">${worst.label} ${money(worst.pnl)}</b></span><span>最新入曲线 <b class="${latest.weekPct >= 0 ? "pos" : "neg"}">${latest.label} ${pct(latest.weekPct)}</b></span><span>最新累计回撤 <b class="neg">${pct(latest.drawdown)}</b></span><span>最大累计回撤 <b class="neg">${pct(maxDrawdown)}</b></span><span>最新权益 <b>${latest.equityLabel || latest.equity.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</b></span></div></section>`;
 }
 
 function renderMotto() {
@@ -126,8 +131,11 @@ if (injectedCssStart >= 0) {
     html = html.slice(0, injectedCssStart) + html.slice(nextMedia);
   }
 }
-html = html.replace(/\.loss-num\{[^}]+}\@media/, `.loss-num{width:30px;height:30px;border-radius:8px;background:var(--danger);color:#fff;display:inline-grid;place-items:center;font-size:14px;margin-right:8px}${css}@media`);
-html = html.replace(/<section class="panel cycle-motto">[\s\S]*?<\/section><section class="panel overview-panel">[\s\S]*?<\/section><section class="panel"><h2>最新周复盘<\/h2>/, `<section class="panel"><h2>最新周复盘</h2>`);
-html = html.replace(/<section class="panel overview-panel">[\s\S]*?<\/section><section class="panel"><h2>最新周复盘<\/h2>/, `<section class="panel"><h2>最新周复盘</h2>`);
-html = html.replace(/<\/section><section class="panel"><h2>最新周复盘<\/h2>/, `</section>${renderMotto()}${renderPanel()}<section class="panel"><h2>最新周复盘</h2>`);
+if (!html.includes(".cycle-motto{")) {
+  html = html.replace(/@media\(prefers-reduced-motion:reduce\)/, `${css}@media(prefers-reduced-motion:reduce)`);
+}
+
+html = html.replace(/<section class="panel cycle-motto">[\s\S]*?<section class="panel">\s*<span class="label">Latest Draft<\/span>/, `<section class="panel">\n      <span class="label">Latest Draft</span>`);
+html = html.replace(/<section class="panel overview-panel">[\s\S]*?<section class="panel">\s*<span class="label">Latest Draft<\/span>/, `<section class="panel">\n      <span class="label">Latest Draft</span>`);
+html = html.replace(/<\/section>\s*<section class="panel">\s*<span class="label">Latest Draft<\/span>/, `</section>${renderMotto()}${renderPanel()}<section class="panel">\n      <span class="label">Latest Draft</span>`);
 fs.writeFileSync(hubPath, html, "utf8");
