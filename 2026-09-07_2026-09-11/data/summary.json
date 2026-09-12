@@ -1,0 +1,61 @@
+{
+  "range": "2026.09.07 - 2026.09.11",
+  "tradeCount": 17,
+  "stockCount": 4,
+  "buyAmount": 34051,
+  "sellAmount": 22989,
+  "turnover": 57040,
+  "feeTotal": 85,
+  "taxTotal": 11.49,
+  "netCash": -11158.689999999999,
+  "visibleRealized": -541.6899999999998,
+  "openCost": 10617,
+  "stocks": [
+    {
+      "code": "000978",
+      "name": "桂林旅游",
+      "buyQty": 1500,
+      "sellQty": 500,
+      "realized": -23.42,
+      "closedReturn": -0.4829,
+      "openQty": 1000,
+      "openCost": 10617
+    },
+    {
+      "code": "600865",
+      "name": "百大集团",
+      "buyQty": 600,
+      "sellQty": 600,
+      "realized": 69.22,
+      "closedReturn": 0.7622,
+      "openQty": 0,
+      "openCost": 0
+    },
+    {
+      "code": "002403",
+      "name": "爱仕达",
+      "buyQty": 600,
+      "sellQty": 600,
+      "realized": -582.81,
+      "closedReturn": -7.1074,
+      "openQty": 0,
+      "openCost": 0
+    },
+    {
+      "code": "000735",
+      "name": "罗牛山",
+      "buyQty": 200,
+      "sellQty": 200,
+      "realized": -4.68,
+      "closedReturn": -0.3459,
+      "openQty": 0,
+      "openCost": 0
+    }
+  ],
+  "accountStatus": "pending",
+  "sourceDates": [
+    "2026-09-09",
+    "2026-09-08",
+    "2026-09-07"
+  ]
+}
