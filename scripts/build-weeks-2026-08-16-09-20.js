@@ -199,3 +199,8 @@ for (const [index, week] of weeks.entries()) {
   fs.writeFileSync(path.join(directory, "trade-summary.json"), JSON.stringify(summary, null, 2) + "\n", "utf8");
   console.log(`${week.folder}: ${week.rows.length} trades; turnover ${money(week.turnover)}; fees ${money(week.fees)}; realized ${money(week.realized, true)}; cash ${money(week.closingCash)}`);
 }
+
+require("./fill-weekly-daily-traded-stocks.cjs").update(weeks.map(week => week.folder)).catch(error => {
+  console.error(error);
+  process.exitCode = 1;
+});

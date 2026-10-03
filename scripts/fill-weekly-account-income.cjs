@@ -187,6 +187,7 @@ async function update() {
     })});
     fs.writeFileSync(file,normalize(html),"utf8");
   } finally {await browser.close();}
+  await require("./fill-weekly-daily-traded-stocks.cjs").update();
 }
 if(require.main===module)update().catch(error=>{console.error(error);process.exitCode=1;});
 module.exports=update;

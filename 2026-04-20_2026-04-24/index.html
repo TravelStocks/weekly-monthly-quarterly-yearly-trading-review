@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>本周交割复盘</title>
   <style>
     :root { --bg:#f5efe5; --panel:rgba(255,255,255,.86); --ink:#162131; --muted:#6d7685; --line:rgba(22,33,49,.08); --accent:#e76f51; --accent-soft:rgba(231,111,81,.12); --up:#1f9d74; --down:#c43d3d; --shadow:0 18px 60px rgba(69,51,31,.12); --radius:24px; }
@@ -129,7 +128,7 @@
     @media (max-width:1080px) { .hero,.overview-grid,.featured-grid,.stock-grid,.metric-grid,.kiss-grid,.kiss-day-grid,.daily-stat-row,.daily-section-grid,.day-stock-metrics,.nav-scroller,.curve-stat-grid,.curve-legend { grid-template-columns:1fr; } .stat-row { grid-template-columns:repeat(2, minmax(0, 1fr)); } }
     @media (max-width:720px) { .app-shell { width:min(100vw - 16px, 1520px); padding-top:14px; } .page { padding-top:0; } .hero-main,.hero-side,.panel,.stock-card,.featured-card,.metric-card,.daily-review-card,.nav-card { padding:18px; } .stat-row { grid-template-columns:1fr; } .campaign-table,.trade-table { font-size:12px; } .daily-review-head,.daily-stock-top,.holding-item { flex-direction:column; } .holding-figures { justify-items:start; text-align:left; } }
   </style>
-</head>
+<style id="weekly-day-symbols-style">.weekly-day-symbols-cell{text-align:left!important;white-space:normal!important;min-width:220px;vertical-align:top}.weekly-day-symbols{display:grid;gap:9px;font-size:13px;line-height:1.5;min-width:0}.weekly-day-symbols .day-trade-group{display:grid;grid-template-columns:32px minmax(0,1fr);gap:8px}.weekly-day-symbols .is-buy{color:#b42318}.weekly-day-symbols .is-sell{color:#1d4ed8}.weekly-day-symbols ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}.weekly-day-symbols li{min-width:0;overflow-wrap:anywhere;white-space:normal}.weekly-day-symbols a{color:var(--ink,#162131);text-decoration:underline;text-underline-offset:3px}.weekly-day-symbols a:focus-visible{outline:2px solid #2563eb;outline-offset:3px}.weekly-day-symbols .symbol-code{font-size:12px;color:var(--muted,#64748b);margin-left:6px}.weekly-day-symbols .trade-quantity{display:block;font-size:12px;color:var(--muted,#64748b);font-variant-numeric:tabular-nums}.weekly-day-symbols .no-trades{color:var(--muted,#64748b)}.weekly-day-symbols-wrap{max-width:100%;overflow-x:auto;border:1px solid var(--line,#dbe3eb);border-radius:8px;margin:16px 0}.weekly-day-symbols-table{width:100%;border-collapse:collapse;font-size:13px;min-width:460px}.weekly-day-symbols-table th,.weekly-day-symbols-table td{padding:12px;border-bottom:1px solid var(--line,#dbe3eb);text-align:left;vertical-align:top;line-height:1.5}.weekly-day-symbols-table th{background:#f8fafc;color:var(--muted,#64748b)}.weekly-day-symbols-table td:first-child{white-space:nowrap}.weekly-day-symbols-table tr:last-child td{border-bottom:0}.page:has([data-weekly-trade-summary]){min-width:0}.weekly-day-symbols-wrap{width:100%;min-width:0}#daily-review-section:has(>[data-weekly-trade-summary]){opacity:1;transform:none}</style></head>
 <body>
   <div class="app-shell">
     <aside class="side-nav">
@@ -158,7 +157,7 @@
 
     <div class="page">
     <section class="hero" id="section-top">
-      <article class="card hero-main" data-reveal>
+      <article class="card hero-main" data-reveal="">
         <div>
           <div class="eyebrow"><span class="dot"></span><span id="hero-eyebrow"></span></div>
           <h1>本周交割复盘</h1>
@@ -166,7 +165,7 @@
         </div>
         <div class="hero-pills" id="hero-pills"></div>
       </article>
-      <aside class="card hero-side" data-reveal>
+      <aside class="card hero-side" data-reveal="">
         <div>
           <h3>执行画像</h3>
           <p class="muted" id="hero-side-copy"></p>
@@ -176,7 +175,7 @@
       </aside>
     </section>
 
-    <section class="panel curve-card" data-reveal id="section-equity-curve">
+    <section class="panel curve-card" data-reveal="" id="section-equity-curve">
       <div class="section-head"><h2>本周收益曲线</h2><span class="muted">按你补充的账户记录画资金曲线，更接近这周真实体感</span></div>
       <div class="curve-meta">
         <div class="curve-stat-grid" id="equity-curve-stats"></div>
@@ -188,18 +187,18 @@
     <section class="metric-grid" id="metric-grid"></section>
 
     <section class="overview-grid" id="section-overview">
-      <article class="panel" data-reveal><div class="section-head"><h2>一眼看懂</h2><span class="muted">把 63 笔成交压缩成几条关键结论</span></div><ul class="takeaway-list" id="takeaway-list"></ul></article>
-      <article class="panel" data-reveal><div class="section-head"><h2>成交回放已实现</h2><span class="muted">按 FIFO 归集到卖出当天，不等于账户当天真实盈亏</span></div><div class="bar-list" id="daily-bars"></div></article>
-      <article class="panel" data-reveal><div class="section-head"><h2>个股贡献</h2><span class="muted">仅统计成本可确认部分</span></div><div class="bar-list" id="contribution-bars"></div></article>
+      <article class="panel" data-reveal=""><div class="section-head"><h2>一眼看懂</h2><span class="muted">把 63 笔成交压缩成几条关键结论</span></div><ul class="takeaway-list" id="takeaway-list"></ul></article>
+      <article class="panel" data-reveal=""><div class="section-head"><h2>成交回放已实现</h2><span class="muted">按 FIFO 归集到卖出当天，不等于账户当天真实盈亏</span></div><div class="bar-list" id="daily-bars"></div></article>
+      <article class="panel" data-reveal=""><div class="section-head"><h2>个股贡献</h2><span class="muted">仅统计成本可确认部分</span></div><div class="bar-list" id="contribution-bars"></div></article>
     </section>
 
     <section class="overview-grid" id="actual-account-section">
-      <article class="panel" data-reveal><div class="section-head"><h2>实盘口径</h2><span class="muted">这部分以你补充的账户当日收益和仓位记录为准</span></div><ul class="takeaway-list" id="actual-summary-list"></ul></article>
-      <article class="panel" data-reveal><div class="section-head"><h2>账户当日收益</h2><span class="muted">更接近你账户每天真实体感</span></div><div class="bar-list" id="actual-pnl-bars"></div></article>
-      <article class="panel" data-reveal><div class="section-head"><h2>实际仓位</h2><span class="muted">高仓位让利润和回撤都会更明显</span></div><div class="bar-list" id="actual-position-bars"></div></article>
+      <article class="panel" data-reveal=""><div class="section-head"><h2>实盘口径</h2><span class="muted">这部分以你补充的账户当日收益和仓位记录为准</span></div><ul class="takeaway-list" id="actual-summary-list"></ul></article>
+      <article class="panel" data-reveal=""><div class="section-head"><h2>账户当日收益</h2><span class="muted">更接近你账户每天真实体感</span></div><div class="bar-list" id="actual-pnl-bars"></div></article>
+      <article class="panel" data-reveal=""><div class="section-head"><h2>实际仓位</h2><span class="muted">高仓位让利润和回撤都会更明显</span></div><div class="bar-list" id="actual-position-bars"></div></article>
     </section>
 
-    <section class="panel" data-reveal id="discipline-section">
+    <section class="panel" data-reveal="" id="discipline-section">
       <div class="section-head"><h2>交易纪律</h2><span class="muted">把这周的感受压成下周必须执行的标的数量与打板规则</span></div>
       <div class="reflection-stack">
         <div class="insight-card" id="discipline-headline"></div>
@@ -207,7 +206,7 @@
       </div>
     </section>
 
-    <section class="panel" data-reveal id="reflection-section">
+    <section class="panel" data-reveal="" id="reflection-section">
       <div class="section-head"><h2>KISS 反思</h2><span class="muted">把你文档里的反思总结，直接放回这周实际交易结果里看</span></div>
       <div class="reflection-stack">
         <div class="bar-list" id="reflection-insights"></div>
@@ -219,12 +218,12 @@
       </div>
     </section>
 
-    <section class="panel" data-reveal id="daily-review-section">
-      <div class="section-head"><h2>逐日联动复盘</h2><span class="muted">把每日持仓、当日买卖点和当天 KISS 复盘放在一张卡里看</span></div>
+    <section class="panel" data-reveal="" id="daily-review-section">
+      <div class="section-head"><h2>逐日联动复盘</h2><span class="muted">把每日持仓、当日买卖点和当天 KISS 复盘放在一张卡里看</span></div><div class="weekly-day-symbols-wrap" data-weekly-trade-summary=""><table class="weekly-day-symbols-table"><thead><tr><th>成交日期</th><th scope="col">当日操作标的</th><th>成交笔数</th></tr></thead><tbody><tr><td>2026-04-20</td><td class="weekly-day-symbols-cell"><div class="daily-trades weekly-day-symbols" data-date="2026-04-20"><div class="day-trade-group"><b class="is-buy">买入</b><ul><li data-code="603178" data-side="buy" data-qty="200" data-count="1"><a href="#stock-603178">圣龙股份</a><span class="symbol-code">603178</span><span class="trade-quantity">200股 · 1笔</span></li><li data-code="603601" data-side="buy" data-qty="100" data-count="1"><a href="#stock-603601">再升科技</a><span class="symbol-code">603601</span><span class="trade-quantity">100股 · 1笔</span></li><li data-code="002361" data-side="buy" data-qty="1200" data-count="7"><a href="#stock-002361">神剑股份</a><span class="symbol-code">002361</span><span class="trade-quantity">1,200股 · 7笔</span></li><li data-code="002217" data-side="buy" data-qty="1300" data-count="1"><a href="#stock-002217">合力泰</a><span class="symbol-code">002217</span><span class="trade-quantity">1,300股 · 1笔</span></li></ul></div><div class="day-trade-group"><b class="is-sell">卖出</b><ul><li data-code="002771" data-side="sell" data-qty="200" data-count="1"><a href="#stock-002771">真视通</a><span class="symbol-code">002771</span><span class="trade-quantity">200股 · 1笔</span></li><li data-code="603687" data-side="sell" data-qty="1200" data-count="1"><a href="#stock-603687">大胜达</a><span class="symbol-code">603687</span><span class="trade-quantity">1,200股 · 1笔</span></li></ul></div></div></td><td>12</td></tr><tr><td>2026-04-21</td><td class="weekly-day-symbols-cell"><div class="daily-trades weekly-day-symbols" data-date="2026-04-21"><div class="day-trade-group"><b class="is-buy">买入</b><ul><li data-code="603773" data-side="buy" data-qty="100" data-count="1"><a href="#stock-603773">沃格光电</a><span class="symbol-code">603773</span><span class="trade-quantity">100股 · 1笔</span></li></ul></div><div class="day-trade-group"><b class="is-sell">卖出</b><ul><li data-code="603178" data-side="sell" data-qty="200" data-count="1"><a href="#stock-603178">圣龙股份</a><span class="symbol-code">603178</span><span class="trade-quantity">200股 · 1笔</span></li><li data-code="603601" data-side="sell" data-qty="100" data-count="1"><a href="#stock-603601">再升科技</a><span class="symbol-code">603601</span><span class="trade-quantity">100股 · 1笔</span></li><li data-code="002217" data-side="sell" data-qty="1300" data-count="1"><a href="#stock-002217">合力泰</a><span class="symbol-code">002217</span><span class="trade-quantity">1,300股 · 1笔</span></li></ul></div></div></td><td>4</td></tr><tr><td>2026-04-22</td><td class="weekly-day-symbols-cell"><div class="daily-trades weekly-day-symbols" data-date="2026-04-22"><div class="day-trade-group"><b class="is-buy">买入</b><ul><li data-code="600736" data-side="buy" data-qty="600" data-count="1"><a href="#stock-600736">苏州高新</a><span class="symbol-code">600736</span><span class="trade-quantity">600股 · 1笔</span></li><li data-code="002081" data-side="buy" data-qty="700" data-count="1"><a href="#stock-002081">金螳螂</a><span class="symbol-code">002081</span><span class="trade-quantity">700股 · 1笔</span></li><li data-code="002361" data-side="buy" data-qty="1000" data-count="8"><a href="#stock-002361">神剑股份</a><span class="symbol-code">002361</span><span class="trade-quantity">1,000股 · 8笔</span></li><li data-code="002328" data-side="buy" data-qty="500" data-count="4"><a href="#stock-002328">新朋股份</a><span class="symbol-code">002328</span><span class="trade-quantity">500股 · 4笔</span></li></ul></div><div class="day-trade-group"><b class="is-sell">卖出</b><ul><li data-code="603773" data-side="sell" data-qty="100" data-count="1"><a href="#stock-603773">沃格光电</a><span class="symbol-code">603773</span><span class="trade-quantity">100股 · 1笔</span></li><li data-code="002361" data-side="sell" data-qty="1200" data-count="1"><a href="#stock-002361">神剑股份</a><span class="symbol-code">002361</span><span class="trade-quantity">1,200股 · 1笔</span></li></ul></div></div></td><td>16</td></tr><tr><td>2026-04-23</td><td class="weekly-day-symbols-cell"><div class="daily-trades weekly-day-symbols" data-date="2026-04-23"><div class="day-trade-group"><b class="is-buy">买入</b><ul><li data-code="002081" data-side="buy" data-qty="100" data-count="1"><a href="#stock-002081">金螳螂</a><span class="symbol-code">002081</span><span class="trade-quantity">100股 · 1笔</span></li><li data-code="002194" data-side="buy" data-qty="300" data-count="3"><a href="#stock-002194">武汉凡谷</a><span class="symbol-code">002194</span><span class="trade-quantity">300股 · 3笔</span></li><li data-code="002361" data-side="buy" data-qty="900" data-count="7"><a href="#stock-002361">神剑股份</a><span class="symbol-code">002361</span><span class="trade-quantity">900股 · 7笔</span></li><li data-code="002565" data-side="buy" data-qty="200" data-count="1"><a href="#stock-002565">顺灏股份</a><span class="symbol-code">002565</span><span class="trade-quantity">200股 · 1笔</span></li></ul></div><div class="day-trade-group"><b class="is-sell">卖出</b><ul><li data-code="002081" data-side="sell" data-qty="700" data-count="1"><a href="#stock-002081">金螳螂</a><span class="symbol-code">002081</span><span class="trade-quantity">700股 · 1笔</span></li><li data-code="002328" data-side="sell" data-qty="500" data-count="1"><a href="#stock-002328">新朋股份</a><span class="symbol-code">002328</span><span class="trade-quantity">500股 · 1笔</span></li><li data-code="002361" data-side="sell" data-qty="1000" data-count="1"><a href="#stock-002361">神剑股份</a><span class="symbol-code">002361</span><span class="trade-quantity">1,000股 · 1笔</span></li></ul></div></div></td><td>15</td></tr><tr><td>2026-04-24</td><td class="weekly-day-symbols-cell"><div class="daily-trades weekly-day-symbols" data-date="2026-04-24"><div class="day-trade-group"><b class="is-buy">买入</b><ul><li data-code="600736" data-side="buy" data-qty="1200" data-count="3"><a href="#stock-600736">苏州高新</a><span class="symbol-code">600736</span><span class="trade-quantity">1,200股 · 3笔</span></li><li data-code="002361" data-side="buy" data-qty="900" data-count="9"><a href="#stock-002361">神剑股份</a><span class="symbol-code">002361</span><span class="trade-quantity">900股 · 9笔</span></li></ul></div><div class="day-trade-group"><b class="is-sell">卖出</b><ul><li data-code="002565" data-side="sell" data-qty="200" data-count="1"><a href="#stock-002565">顺灏股份</a><span class="symbol-code">002565</span><span class="trade-quantity">200股 · 1笔</span></li><li data-code="002194" data-side="sell" data-qty="300" data-count="1"><a href="#stock-002194">武汉凡谷</a><span class="symbol-code">002194</span><span class="trade-quantity">300股 · 1笔</span></li><li data-code="002361" data-side="sell" data-qty="900" data-count="1"><a href="#stock-002361">神剑股份</a><span class="symbol-code">002361</span><span class="trade-quantity">900股 · 1笔</span></li><li data-code="002081" data-side="sell" data-qty="100" data-count="1"><a href="#stock-002081">金螳螂</a><span class="symbol-code">002081</span><span class="trade-quantity">100股 · 1笔</span></li></ul></div></div></td><td>16</td></tr></tbody></table></div>
       <div class="daily-review-list" id="daily-review-list"></div>
     </section>
 
-    <section class="panel" data-reveal id="section-featured">
+    <section class="panel" data-reveal="" id="section-featured">
       <div class="section-head"><h2>重点走势图</h2><span class="muted">分钟线标注成交点，完整覆盖这周所有实际买卖过的股票</span></div>
       <div class="featured-grid" id="featured-grid"></div>
     </section>
@@ -232,7 +231,7 @@
     <div style="height:18px"></div>
     <section class="stock-grid" id="stock-grid"></section>
 
-    <section class="panel" data-reveal id="section-method">
+    <section class="panel" data-reveal="" id="section-method">
       <div class="section-head"><h2>方法说明</h2><span class="muted">把这页当作交易复盘，不把它当成投资建议</span></div>
       <ol class="limit-list" id="limitations"></ol>
       <details>
@@ -925,6 +924,4 @@
     document.getElementById("limitations").innerHTML = report.limitations.map((line) => `<li>${line}</li>`).join("");
     renderTradeTable();
     revealOnScroll();
-  </script>
-</body>
-</html>
+  </script></body></html>

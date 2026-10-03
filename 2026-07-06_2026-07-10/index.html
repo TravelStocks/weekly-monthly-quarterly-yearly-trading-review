@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>2026.07.06 - 2026.07.10 每周交割复盘</title>
   <style>
     :root{--bg:#f6f7f8;--panel:#fff;--ink:#1c2530;--muted:#667085;--line:#dfe4ea;--soft:#f2f5f8;--accent:#c2412d;--accent-soft:#fff1ed;--red:#c2412d;--green:#14845f;--blue:#1d4ed8;--amber:#b76305;--shadow:0 18px 44px rgba(28,37,48,.08);--radius:12px}
@@ -14,7 +13,7 @@
     @media(max-width:1100px){.shell{grid-template-columns:minmax(0,1fr);overflow-x:hidden}.page,.hero,.panel,.metric,.ticket-card,.daily-card,.day-card,.trade-map,.stock-card,.source-strip,.grid-2,.grid-3,.daily-grid,.day-list,.rules,.note-grid,.raw-note-grid,.two-col,.stock-grid{min-width:0;max-width:100%}.page{width:100%;overflow-x:hidden}.panel{overflow-x:hidden}.side{position:sticky;top:0;z-index:10;width:100%;max-width:100%;min-width:0;display:flex;overflow-x:auto;border-radius:0 0 var(--radius) var(--radius)}.side h2{display:none}.side a{flex:0 0 auto}.hero,.source-strip,.grid-2,.two-col{grid-template-columns:minmax(0,1fr)}.daily-grid,.rules,.grid-3,.raw-note-grid,.stock-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.note-grid{grid-template-columns:minmax(0,1fr)}}
     @media(max-width:720px){html,body{overflow-x:hidden}.shell{width:min(100vw - 14px,1480px);padding-top:0}.hero,.panel{padding:18px}.hero-side,.metric-grid,.daily-grid,.rules,.grid-3,.raw-note-grid,.mini-grid,.stock-grid,.trade-point-list{grid-template-columns:minmax(0,1fr)}.account-day{grid-template-columns:1fr 1fr}.account-day strong{grid-column:1/-1}.hero h1{font-size:32px}.section-head,.ticket-head,.trade-map-head,.day-head,.stock-top{display:grid}.trade-chart{width:760px;max-width:none;min-width:0}}
   </style>
-</head>
+<style id="weekly-day-symbols-style">.weekly-day-symbols-cell{text-align:left!important;white-space:normal!important;min-width:220px;vertical-align:top}.weekly-day-symbols{display:grid;gap:9px;font-size:13px;line-height:1.5;min-width:0}.weekly-day-symbols .day-trade-group{display:grid;grid-template-columns:32px minmax(0,1fr);gap:8px}.weekly-day-symbols .is-buy{color:#b42318}.weekly-day-symbols .is-sell{color:#1d4ed8}.weekly-day-symbols ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}.weekly-day-symbols li{min-width:0;overflow-wrap:anywhere;white-space:normal}.weekly-day-symbols a{color:var(--ink,#162131);text-decoration:underline;text-underline-offset:3px}.weekly-day-symbols a:focus-visible{outline:2px solid #2563eb;outline-offset:3px}.weekly-day-symbols .symbol-code{font-size:12px;color:var(--muted,#64748b);margin-left:6px}.weekly-day-symbols .trade-quantity{display:block;font-size:12px;color:var(--muted,#64748b);font-variant-numeric:tabular-nums}.weekly-day-symbols .no-trades{color:var(--muted,#64748b)}.weekly-day-symbols-wrap{max-width:100%;overflow-x:auto;border:1px solid var(--line,#dbe3eb);border-radius:8px;margin:16px 0}.weekly-day-symbols-table{width:100%;border-collapse:collapse;font-size:13px;min-width:460px}.weekly-day-symbols-table th,.weekly-day-symbols-table td{padding:12px;border-bottom:1px solid var(--line,#dbe3eb);text-align:left;vertical-align:top;line-height:1.5}.weekly-day-symbols-table th{background:#f8fafc;color:var(--muted,#64748b)}.weekly-day-symbols-table td:first-child{white-space:nowrap}.weekly-day-symbols-table tr:last-child td{border-bottom:0}.page:has([data-weekly-trade-summary]){min-width:0}.weekly-day-symbols-wrap{width:100%;min-width:0}#daily-review-section:has(>[data-weekly-trade-summary]){opacity:1;transform:none}</style></head>
 <body>
   <main class="shell">
     <nav class="side" aria-label="周复盘导航">
@@ -123,37 +122,37 @@
     <text x="76" y="24" class="axis">左轴：每日盈亏百分比 / 柱状图</text>
     <text x="814" y="24" text-anchor="end" class="axis">右轴：每日持仓比例 / 蓝色虚线</text>
   </svg></div>
-        <div class="table-wrap account-table"><table><thead><tr><th>日期</th><th>星期</th><th>收益率</th><th>收益金额</th><th>仓位</th><th>当前总金额</th></tr></thead><tbody><tr>
+        <div class="table-wrap account-table"><table><thead><tr><th>日期</th><th scope="col">当日操作标的</th><th>星期</th><th>收益率</th><th>收益金额</th><th>仓位</th><th>当前总金额</th></tr></thead><tbody><tr>
     <td>2026/07/06</td>
-    <td>周一</td>
+    <td class="weekly-day-symbols-cell"><div class="daily-trades weekly-day-symbols" data-date="2026-07-06"><div class="day-trade-group"><b class="is-buy">买入</b><ul><li data-code="159050" data-side="buy" data-qty="8900" data-count="5"><span>机器人ETF广发</span><span class="symbol-code">159050</span><span class="trade-quantity">8,900份 · 5笔</span></li></ul></div><div class="day-trade-group"><b class="is-sell">卖出</b><ul><li data-code="588010" data-side="sell" data-qty="2800" data-count="1"><span>科创新材ETF博时</span><span class="symbol-code">588010</span><span class="trade-quantity">2,800份 · 1笔</span></li></ul></div></div></td><td>周一</td>
     <td class="is-loss">-2.02%</td>
     <td class="is-profit">+320.00</td>
     <td>61.10%</td>
     <td>15,533.00</td>
   </tr><tr>
     <td>2026/07/07</td>
-    <td>周二</td>
+    <td class="weekly-day-symbols-cell"><div class="daily-trades weekly-day-symbols" data-date="2026-07-07"><div class="day-trade-group"><b class="is-sell">卖出</b><ul><li data-code="159050" data-side="sell" data-qty="8900" data-count="1"><span>机器人ETF广发</span><span class="symbol-code">159050</span><span class="trade-quantity">8,900份 · 1笔</span></li></ul></div></div></td><td>周二</td>
     <td class="is-profit">+0.50%</td>
     <td class="is-profit">+80.00</td>
     <td>0.00%</td>
     <td>15,608.00</td>
   </tr><tr>
     <td>2026/07/08</td>
-    <td>周三</td>
+    <td class="weekly-day-symbols-cell"><div class="daily-trades weekly-day-symbols" data-date="2026-07-08"><div class="day-trade-group"><b class="is-buy">买入</b><ul><li data-code="600094" data-side="buy" data-qty="100" data-count="1"><span>大名城</span><span class="symbol-code">600094</span><span class="trade-quantity">100股 · 1笔</span></li><li data-code="159506" data-side="buy" data-qty="100" data-count="1"><span>恒生医疗</span><span class="symbol-code">159506</span><span class="trade-quantity">100份 · 1笔</span></li><li data-code="159516" data-side="buy" data-qty="1500" data-count="1"><span>半导体设备ETF国泰</span><span class="symbol-code">159516</span><span class="trade-quantity">1,500份 · 1笔</span></li></ul></div></div></td><td>周三</td>
     <td class="is-loss">-0.12%</td>
     <td class="is-loss">-19.00</td>
     <td>20.50%</td>
     <td>15,588.00</td>
   </tr><tr>
     <td>2026/07/09</td>
-    <td>周四</td>
+    <td class="weekly-day-symbols-cell"><div class="daily-trades weekly-day-symbols" data-date="2026-07-09"><div class="day-trade-group"><b class="is-buy">买入</b><ul><li data-code="588170" data-side="buy" data-qty="3300" data-count="5"><span>科创半导体ETF华夏</span><span class="symbol-code">588170</span><span class="trade-quantity">3,300份 · 5笔</span></li><li data-code="512760" data-side="buy" data-qty="1400" data-count="2"><span>芯片ETF国泰</span><span class="symbol-code">512760</span><span class="trade-quantity">1,400份 · 2笔</span></li><li data-code="159516" data-side="buy" data-qty="3200" data-count="8"><span>半导体设备ETF国泰</span><span class="symbol-code">159516</span><span class="trade-quantity">3,200份 · 8笔</span></li></ul></div><div class="day-trade-group"><b class="is-sell">卖出</b><ul><li data-code="159516" data-side="sell" data-qty="1500" data-count="1"><span>半导体设备ETF国泰</span><span class="symbol-code">159516</span><span class="trade-quantity">1,500份 · 1笔</span></li><li data-code="600094" data-side="sell" data-qty="100" data-count="1"><span>大名城</span><span class="symbol-code">600094</span><span class="trade-quantity">100股 · 1笔</span></li><li data-code="159506" data-side="sell" data-qty="100" data-count="1"><span>恒生医疗</span><span class="symbol-code">159506</span><span class="trade-quantity">100份 · 1笔</span></li></ul></div></div></td><td>周四</td>
     <td class="is-profit">+4.30%</td>
     <td class="is-profit">+605.00</td>
     <td>80.30%</td>
     <td>16,195.00</td>
   </tr><tr>
     <td>2026/07/10</td>
-    <td>周五</td>
+    <td class="weekly-day-symbols-cell"><div class="daily-trades weekly-day-symbols" data-date="2026-07-10"><div class="day-trade-group"><b class="is-buy">买入</b><ul><li data-code="159516" data-side="buy" data-qty="10400" data-count="6"><span>半导体设备ETF国泰</span><span class="symbol-code">159516</span><span class="trade-quantity">10,400份 · 6笔</span></li><li data-code="588170" data-side="buy" data-qty="3400" data-count="3"><span>科创半导体ETF华夏</span><span class="symbol-code">588170</span><span class="trade-quantity">3,400份 · 3笔</span></li></ul></div><div class="day-trade-group"><b class="is-sell">卖出</b><ul><li data-code="512760" data-side="sell" data-qty="1400" data-count="1"><span>芯片ETF国泰</span><span class="symbol-code">512760</span><span class="trade-quantity">1,400份 · 1笔</span></li><li data-code="588170" data-side="sell" data-qty="3300" data-count="1"><span>科创半导体ETF华夏</span><span class="symbol-code">588170</span><span class="trade-quantity">3,300份 · 1笔</span></li><li data-code="159516" data-side="sell" data-qty="6400" data-count="6"><span>半导体设备ETF国泰</span><span class="symbol-code">159516</span><span class="trade-quantity">6,400份 · 6笔</span></li></ul></div></div></td><td>周五</td>
     <td class="is-loss">-3.10%</td>
     <td class="is-loss">-514.40</td>
     <td>88.50%</td>
@@ -167,42 +166,42 @@
     <div class="ticket-head"><div><span class="label">主要赚钱/做对线</span><h3>三冰反核 ETF 主仓</h3><p>159516 / 588170 / 512760</p></div><strong class="is-profit">+408.70</strong></div>
     <div class="note-grid">
       <p><b>盈亏依据</b>可见闭环部分约 +408.70，但期末仍持有 159516 与 588170，真实周贡献需等持仓截图校准。赚钱的根源不是某只票，而是周四三冰反核节点踩对，用 ETF 承接科技修复。</p>
-      <p><b>操作&情绪</b>周四敢把仓位推到 80% 是进步，说明能在极致冰点后的反核确认日从防守切进攻。这里要保留的是择时和 ETF 主仓，而不是随意重仓任何科技票。</p>
+      <p><b>操作&amp;情绪</b>周四敢把仓位推到 80% 是进步，说明能在极致冰点后的反核确认日从防守切进攻。这里要保留的是择时和 ETF 主仓，而不是随意重仓任何科技票。</p>
       <p><b>下次规则</b>三冰反核是高性价比节点，但必须用预案管理：启动日敢打，二高潮次日先按分化做T，错了按 ETF 单笔风险离场。</p>
     </div>
   </article><article class="ticket-card">
     <div class="ticket-head"><div><span class="label">主要亏损票</span><h3>机器人ETF广发</h3><p>159050</p></div><strong class="is-loss">-248.30</strong></div>
     <div class="note-grid">
       <p><b>盈亏依据</b>7/6 分批买入 8900 股，7/7 条件单清仓，可见闭环约 -248.30。亏损根源是高潮次日分歧还进早了，机器人没有一致回流，也没有核心一字顶住。</p>
-      <p><b>操作&情绪</b>心理上有着急回本和摊成本倾向：价格到大阳线一半/5日线就想动手，但没有等板块强度和核心信号确认。</p>
+      <p><b>操作&amp;情绪</b>心理上有着急回本和摊成本倾向：价格到大阳线一半/5日线就想动手，但没有等板块强度和核心信号确认。</p>
       <p><b>下次规则</b>退潮期 ETF 试错仓必须小，不能靠补仓解决节奏错误；补仓只能发生在确认加仓，而不是摊成本。</p>
     </div>
   </article><article class="ticket-card">
     <div class="ticket-head"><div><span class="label">主要亏损/风险根源</span><h3>半导体设备ETF国泰</h3><p>159516</p></div><strong class="">待补</strong></div>
     <div class="note-grid">
       <p><b>盈亏依据</b>本周可见买入 15100 股、卖出 7900 股，期末按可见口径剩余 7200 股；但 7/10 早盘卖出数量与本周前序可见买入、价格口径存在明显跨期/复权口径问题，真实盈亏待持仓截图与历史成本校准。</p>
-      <p><b>操作&情绪</b>周五早盘高抛是对的，午后商业航天虹吸后继续低吸摊平是错的。错误不在第一次低吸，而在 -3% 后承接失效仍继续加仓。</p>
+      <p><b>操作&amp;情绪</b>周五早盘高抛是对的，午后商业航天虹吸后继续低吸摊平是错的。错误不在第一次低吸，而在 -3% 后承接失效仍继续加仓。</p>
       <p><b>下次规则</b>ETF低吸必须有失效线：正常分歧可 -1%、-2%、-3% 分批；跌破 -3% 后继续走弱且资金被别的题材虹吸，就进入冷静模式，不再摊平。</p>
     </div>
   </article><article class="ticket-card">
     <div class="ticket-head"><div><span class="label">期末持仓/待校准</span><h3>科创半导体ETF华夏</h3><p>588170</p></div><strong class="is-profit">+291.50</strong></div>
     <div class="note-grid">
       <p><b>盈亏依据</b>7/9 买入的 3300 股在 7/10 早盘卖出，可见闭环约 +291.50；7/10 午后又买回 3400 股，含费可见成本约 4,621.10，期末市价和浮盈亏待持仓截图确认。</p>
-      <p><b>操作&情绪</b>这票体现出会做T，但预案失效后停手不够的问题。前半段高抛正确，后半段在科技承接塌陷时继续接回，风险抬高。</p>
+      <p><b>操作&amp;情绪</b>这票体现出会做T，但预案失效后停手不够的问题。前半段高抛正确，后半段在科技承接塌陷时继续接回，风险抬高。</p>
       <p><b>下次规则</b>顺势做T可以，逆势摊平不行；商业航天这类新题材虹吸改变资金结构时，旧主线不能再按普通分歧模板处理。</p>
     </div>
   </article><article class="ticket-card">
     <div class="ticket-head"><div><span class="label">小仓试错</span><h3>大名城 / 恒生医疗</h3><p>600094 / 159506</p></div><strong class="is-loss">-18.21</strong></div>
     <div class="note-grid">
       <p><b>盈亏依据</b>两笔小仓试错合计约 -18.21，金额很小，不是本周账户主因。它们的价值是感受水温，而不是贡献收益。</p>
-      <p><b>操作&情绪</b>周三小仓试错控制得住，没有把不确定票做成主仓，这是对的。</p>
+      <p><b>操作&amp;情绪</b>周三小仓试错控制得住，没有把不确定票做成主仓，这是对的。</p>
       <p><b>下次规则</b>退潮末期观察票只做感受水温；没有题材强度、分时主动性和止损边界，就不加仓。</p>
     </div>
   </article><article class="ticket-card">
     <div class="ticket-head"><div><span class="label">跨周处理</span><h3>科创新材ETF博时</h3><p>588010</p></div><strong class="is-profit">+1.20</strong></div>
     <div class="note-grid">
       <p><b>盈亏依据</b>7/3 买入 2800 股含费成本约 3,922.20，7/6 卖出净回笼 3923.40，可见跨周小幅约 +1.20。</p>
-      <p><b>操作&情绪</b>这笔不是本周核心问题，更多是跨周仓位的平稳处理。</p>
+      <p><b>操作&amp;情绪</b>这笔不是本周核心问题，更多是跨周仓位的平稳处理。</p>
       <p><b>下次规则</b>跨周仓必须把前一周成本带进来，否则现金流会误导单票贡献。</p>
     </div>
   </article></div>
@@ -232,7 +231,7 @@
       </section>
 
       <section class="panel" id="daily">
-        <div class="section-head"><div><h2>逐日操作&情绪复盘</h2><p>按前几周周度模板重做：每日内容从 daily-trading-review 对应日期页面摘取，拆成主线与情绪、操作&情绪复盘、个人反思、次日关注四块，并保留每日原文链接。</p></div><span class="chip">每日A股复盘引入</span></div>
+        <div class="section-head"><div><h2>逐日操作&amp;情绪复盘</h2><p>按前几周周度模板重做：每日内容从 daily-trading-review 对应日期页面摘取，拆成主线与情绪、操作&amp;情绪复盘、个人反思、次日关注四块，并保留每日原文链接。</p></div><span class="chip">每日A股复盘引入</span></div>
         <div class="day-list"><article class="day-card warn">
     <div class="day-head">
       <div>
@@ -245,7 +244,7 @@
     <div class="daily-account"><b class="is-profit">+320.00 元</b><span class="is-loss">-2.02%</span><span>仓位 61.10%</span><span>总金额 15,533.00</span></div>
     <div class="raw-note-grid">
       <section><h4>主线与情绪</h4><p>每日复盘把这一天定义为高潮次日分歧：机器人开盘已经兑现，板块没有一致回流，也没有核心一字顶住。</p></section>
-      <section><h4>操作&情绪复盘</h4><p>做对的是选择 ETF 而不是接力个股，降低了退潮期个股波动；做错的是看到位置到达就进，忽略板块一致性和核心强度确认，随后阴跌中继续补仓。</p></section>
+      <section><h4>操作&amp;情绪复盘</h4><p>做对的是选择 ETF 而不是接力个股，降低了退潮期个股波动；做错的是看到位置到达就进，忽略板块一致性和核心强度确认，随后阴跌中继续补仓。</p></section>
       <section><h4>个人反思</h4><p>机器人ETF不是自动确认主线延续的龙头载体。退潮期用 ETF 试错可以，但要等有量回升和企稳确认；跌到 -5%、-6% 才止跌，已经不是普通分歧，而是破位信号。</p></section>
       <section><h4>次日关注</h4><p>强回流才继续看 2-3 天；不强回流、跌破 5 日线、资金被医药或防御抢走就离场。</p><a class="source-link" href="https://travelstocks.github.io/daily-trading-review/pages/%E7%AB%A0%E7%9B%9F%E4%B8%BB%E5%BC%8F%E8%B6%85%E7%9F%AD%E5%85%A8%E6%99%AF%E5%A4%8D%E7%9B%98%EF%BC%882026.7.6%20%E5%91%A8%E4%B8%80%EF%BC%89%2B%207.7%E4%B8%AA%E8%82%A1%E6%9D%BF%E5%9D%97%E9%A2%84%E6%A1%88-AI%E6%96%87%E6%A1%A3.html" target="_blank" rel="noreferrer">查看每日原文</a></section>
     </div>
@@ -261,7 +260,7 @@
     <div class="daily-account"><b class="is-profit">+80.00 元</b><span class="is-profit">+0.50%</span><span>仓位 0.00%</span><span>总金额 15,608.00</span></div>
     <div class="raw-note-grid">
       <section><h4>主线与情绪</h4><p>每日复盘认为这是二冰大冰日，退潮没有完整度过前要保持防守，不能因为跌多就提前抄底。</p></section>
-      <section><h4>操作&情绪复盘</h4><p>机器人ETF处理很好：提前设置条件单，冲高不急跑，第一次下杀不慌，跌破开盘价和第一波下杀拐点后清仓，避开后面大亏。</p></section>
+      <section><h4>操作&amp;情绪复盘</h4><p>机器人ETF处理很好：提前设置条件单，冲高不急跑，第一次下杀不慌，跌破开盘价和第一波下杀拐点后清仓，避开后面大亏。</p></section>
       <section><h4>个人反思</h4><p>不亏就是大赚。冰点不是买点本身，只有冰点、企稳信号、核心题材持续性同时出现，才是试错条件。</p></section>
       <section><h4>次日关注</h4><p>明天即使有三冰反核，也只围绕机器人核心、芯片/光模块高位优质票反弹，小仓试错，不扩散到杂毛。</p><a class="source-link" href="https://travelstocks.github.io/daily-trading-review/pages/%E7%AB%A0%E7%9B%9F%E4%B8%BB%E5%BC%8F%E8%B6%85%E7%9F%AD%E5%85%A8%E6%99%AF%E5%A4%8D%E7%9B%98%EF%BC%882026.7.7%20%E5%91%A8%E4%BA%8C%EF%BC%89%2B%207.8%E4%B8%AA%E8%82%A1%E6%9D%BF%E5%9D%97%E9%A2%84%E6%A1%88-AI%E6%96%87%E6%A1%A3.html" target="_blank" rel="noreferrer">查看每日原文</a></section>
     </div>
@@ -277,7 +276,7 @@
     <div class="daily-account"><b class="is-loss">-19.00 元</b><span class="is-loss">-0.12%</span><span>仓位 20.50%</span><span>总金额 15,588.00</span></div>
     <div class="raw-note-grid">
       <section><h4>主线与情绪</h4><p>每日复盘认为仍处退潮 2 末期，早盘不出手、盘中弱修复不追，尾盘才看抗跌核心的反核试错。</p></section>
-      <section><h4>操作&情绪复盘</h4><p>半导体设备ETF 159516 的试错理由是承接强、均线/零轴上方平台企稳、涨幅不算过分、尾盘反包。大名城和恒生医疗只用于感受水温，不影响账户。</p></section>
+      <section><h4>操作&amp;情绪复盘</h4><p>半导体设备ETF 159516 的试错理由是承接强、均线/零轴上方平台企稳、涨幅不算过分、尾盘反包。大名城和恒生医疗只用于感受水温，不影响账户。</p></section>
       <section><h4>个人反思</h4><p>今天没有核心失误，最大风险是盘中追高但实际没有发生。退潮期空仓不是怂，小仓位试错是为了验证盘面。</p></section>
       <section><h4>次日关注</h4><p>明天如果指数弱反抽失败、159516 跌破平台、核心票无法带队，就承认退潮 3 开始并立刻降风险。</p><a class="source-link" href="https://travelstocks.github.io/daily-trading-review/pages/%E7%AB%A0%E7%9B%9F%E4%B8%BB%E5%BC%8F%E8%B6%85%E7%9F%AD%E5%85%A8%E6%99%AF%E5%A4%8D%E7%9B%98%EF%BC%882026.7.8%20%E5%91%A8%E4%B8%89%EF%BC%89%2B%207.9%E4%B8%AA%E8%82%A1%E6%9D%BF%E5%9D%97%E9%A2%84%E6%A1%88-AI%E6%96%87%E6%A1%A3.html" target="_blank" rel="noreferrer">查看每日原文</a></section>
     </div>
@@ -293,7 +292,7 @@
     <div class="daily-account"><b class="is-profit">+605.00 元</b><span class="is-profit">+4.30%</span><span>仓位 80.30%</span><span>总金额 16,195.00</span></div>
     <div class="raw-note-grid">
       <section><h4>主线与情绪</h4><p>每日复盘将其视为科技主升三启动日：指数前低附近、主线消息发酵、科创综指/芯片/ETF共振企稳。</p></section>
-      <section><h4>操作&情绪复盘</h4><p>方向和仓位推进整体正确，用 ETF 表达主线，避免分仓大票或追连板杂毛。缺点是最便宜的 3929/3939 附近试探仓下得不够果断。</p></section>
+      <section><h4>操作&amp;情绪复盘</h4><p>方向和仓位推进整体正确，用 ETF 表达主线，避免分仓大票或追连板杂毛。缺点是最便宜的 3929/3939 附近试探仓下得不够果断。</p></section>
       <section><h4>个人反思</h4><p>三冰反核要果断；真正高手在启动日敢于在赔率最好的位置先上桌，后续确认再加，而不是等完全确认才追。</p></section>
       <section><h4>次日关注</h4><p>二高潮次日按分化预期做T：有先手高开砸、低开吸；ETF 错了按约 2% 止损。</p><a class="source-link" href="https://travelstocks.github.io/daily-trading-review/pages/%E7%AB%A0%E7%9B%9F%E4%B8%BB%E5%BC%8F%E8%B6%85%E7%9F%AD%E5%85%A8%E6%99%AF%E5%A4%8D%E7%9B%98%EF%BC%882026.7.9%20%E5%91%A8%E5%9B%9B%EF%BC%89%2B%207.10%20%E4%B8%AA%E8%82%A1%E6%9D%BF%E5%9D%97%E9%A2%84%E6%A1%88-AI%E6%96%87%E6%A1%A3.html" target="_blank" rel="noreferrer">查看每日原文</a></section>
     </div>
@@ -309,7 +308,7 @@
     <div class="daily-account"><b class="is-loss">-514.40 元</b><span class="is-loss">-3.10%</span><span>仓位 88.50%</span><span>总金额 15,596.00</span></div>
     <div class="raw-note-grid">
       <section><h4>主线与情绪</h4><p>每日复盘认为盘面结构很割裂：商业航天午后虹吸资金，科技链从正常分歧升级成承接塌陷，芯片/半导体被打到冰点。</p></section>
-      <section><h4>操作&情绪复盘</h4><p>早盘 159516 在 2%-3% 附近高抛、588170 约 1% 冲高卖出是对的；真正错误是 -3% 后继续向 -4%、-5% 走时，没有承认低吸预案失效，继续加仓摊平成本。</p></section>
+      <section><h4>操作&amp;情绪复盘</h4><p>早盘 159516 在 2%-3% 附近高抛、588170 约 1% 冲高卖出是对的；真正错误是 -3% 后继续向 -4%、-5% 走时，没有承认低吸预案失效，继续加仓摊平成本。</p></section>
       <section><h4>个人反思</h4><p>金字塔加仓只能用于做对之后扩大战果，不能用于做错后安慰自己。做错时第一动作是停止继续犯错，而不是把仓位越打越重。</p></section>
       <section><h4>次日关注</h4><p>7/13 只按强修复、弱修复、不修复三套预案处理；强修复也降仓，弱修复减仓，不修复认错，禁止继续摊平。</p><a class="source-link" href="https://travelstocks.github.io/daily-trading-review/pages/%E7%AB%A0%E7%9B%9F%E4%B8%BB%E5%BC%8F%E8%B6%85%E7%9F%AD%E5%85%A8%E6%99%AF%E5%A4%8D%E7%9B%98%EF%BC%882026.7.10%20%E5%91%A8%E4%BA%94%EF%BC%89%2B%207.13%E4%B8%AA%E8%82%A1%E6%9D%BF%E5%9D%97%E9%A2%84%E6%A1%88-AI%E6%96%87%E6%A1%A3.html" target="_blank" rel="noreferrer">查看每日原文</a></section>
     </div>
@@ -1053,6 +1052,4 @@
         <ul><li>7/10 期末持仓截图：请补 159516、588170 的持股数、成本价、市价、市值、浮盈亏、总资产和仓位占比，用于校准期末持仓盈亏。</li><li>159516 的历史持仓/复权口径：7/10 早盘卖出数量与本周可见前序买入、价格口径存在不匹配，需要持仓成本或券商持仓截图确认。</li><li>7/6 收益金额口径：表格写 +320，但收益率 -2.02%、期末权益较上周下降；页面已按期末权益变化入周度曲线，待你确认是否应改成 -320 或其他口径。</li></ul>
       </section>
     </div>
-  </main>
-</body>
-</html>
+  </main></body></html>
