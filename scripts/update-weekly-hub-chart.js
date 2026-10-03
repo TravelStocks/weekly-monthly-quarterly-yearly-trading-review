@@ -3,6 +3,7 @@ const path = require("path");
 
 const repo = path.resolve(__dirname, "..");
 const hubPath = path.join(repo, "weekly-trading-review", "index.html");
+const returnRates = require("./weekly-return-rates.cjs");
 
 const weeks = [
   { label: "04.20-04.24", pnl: 1616.89, equity: 31027.99, avgPosition: 94.7, bestDay: "周二 04-21 +2,117.00", worstDay: "周五 04-24 -2,413.00", href: "../2026-04-20_2026-04-24/" },
@@ -23,7 +24,8 @@ let peak = -Infinity;
 let previousEquity = null;
 for (const week of weeks) {
   const startEquity = previousEquity ?? (week.equity - week.pnl);
-  week.weekPct = startEquity ? (week.pnl / startEquity) * 100 : 0;
+  const supplied = returnRates.forFolder(week.href.split("/").filter(part => part !== "..").find(Boolean));
+  week.weekPct = supplied ? supplied.points / 100 : startEquity ? (week.pnl / startEquity) * 100 : 0;
   peak = Math.max(peak, week.equity);
   week.drawdown = ((week.equity - peak) / peak) * 100;
   previousEquity = week.equity;
@@ -57,8 +59,8 @@ function renderChart() {
   const plotH = height - top - bottom;
   const amountMin = -5000;
   const amountMax = 2000;
-  const ddMin = -50;
-  const ddMax = 10;
+  const ddMin = Math.floor(Math.min(...weeks.map(week => week.drawdown), ...weeks.map(week => week.weekPct)) / 10) * 10;
+  const ddMax = Math.max(10, Math.ceil(Math.max(...weeks.map(week => week.weekPct)) / 10) * 10);
   const x = (i) => left + (i / (weeks.length - 1)) * plotW;
   const yAmount = (value) => top + ((amountMax - value) / (amountMax - amountMin)) * plotH;
   const yDrawdown = (value) => top + ((ddMax - value) / (ddMax - ddMin)) * plotH;
@@ -66,7 +68,7 @@ function renderChart() {
   const ddPoints = weeks.map((week, i) => ({ x: x(i), y: yDrawdown(week.drawdown), week }));
   const weekPctPoints = weeks.map((week, i) => ({ x: x(i), y: yDrawdown(week.weekPct), week }));
   const amountTicks = [2000, 0, -2500, -5000];
-  const ddTicks = [10, 0, -10, -20, -30, -40, -50];
+  const ddTicks = Array.from({ length: (ddMax - ddMin) / 10 + 1 }, (_, i) => ddMax - i * 10);
   const grid = amountTicks.map((tick) => {
     const y = yAmount(tick);
     return `<g><line x1="${left}" x2="${width - right}" y1="${y.toFixed(1)}" y2="${y.toFixed(1)}" stroke="rgba(28,37,48,.10)" stroke-dasharray="4 7"></line><text x="${left - 12}" y="${(y + 4).toFixed(1)}" text-anchor="end" class="axis-label">${money(tick)}</text></g>`;
@@ -94,14 +96,14 @@ function renderChart() {
     const y = Math.max(top + 12, Math.min(height - bottom - 8, point.y + 19));
     return `<text x="${point.x.toFixed(1)}" y="${y.toFixed(1)}" text-anchor="middle" class="value-label cum-label">累${pct(point.week.drawdown)}</text>`;
   }).join("");
-  const weekPctDots = weekPctPoints.map((point) => `<g><title>${point.week.label} 当周涨跌/回撤 ${pct(point.week.weekPct)}</title><circle cx="${point.x.toFixed(1)}" cy="${point.y.toFixed(1)}" r="4.5" fill="#d97706" stroke="#fff" stroke-width="2"></circle></g>`).join("");
+  const weekPctDots = weekPctPoints.map((point) => `<g><title>${point.week.label} 周收益率 ${pct(point.week.weekPct)}</title><circle cx="${point.x.toFixed(1)}" cy="${point.y.toFixed(1)}" r="4.5" fill="#d97706" stroke="#fff" stroke-width="2"></circle></g>`).join("");
   const weekPctLabels = weekPctPoints.map((point) => {
     const y = Math.max(top + 12, Math.min(height - bottom - 8, point.y - 14));
     return `<text x="${point.x.toFixed(1)}" y="${y.toFixed(1)}" text-anchor="middle" class="value-label week-label ${trendClass(point.week.weekPct)}">${pct(point.week.weekPct)}</text>`;
   }).join("");
   const zeroY = yAmount(0);
 
-  return `<div class="chart-wrap"><svg class="weekly-chart" viewBox="0 0 ${width} ${height}" role="img" aria-label="每周金额变化、累计回撤与当周涨跌百分比折线图"><rect x="0" y="0" width="${width}" height="${height}" rx="12" fill="#fff"></rect>${grid}${rightAxis}${xLabels}<line x1="${left}" x2="${width - right}" y1="${zeroY.toFixed(1)}" y2="${zeroY.toFixed(1)}" stroke="rgba(28,37,48,.28)"></line><line x1="${left}" x2="${left}" y1="${top}" y2="${height - bottom}" stroke="rgba(28,37,48,.18)"></line><line x1="${width - right}" x2="${width - right}" y1="${top}" y2="${height - bottom}" stroke="rgba(29,78,216,.22)"></line><path d="${pointPath(amountPoints)}" fill="none" stroke="#c2412d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path><path d="${pointPath(ddPoints)}" fill="none" stroke="#1d4ed8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 7"></path><path d="${pointPath(weekPctPoints)}" fill="none" stroke="#d97706" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2 7"></path>${amountDots}${ddDots}${weekPctDots}${amountLabels}${ddLabels}${weekPctLabels}<text x="${left}" y="${top - 24}" class="axis-label">金额变化（元）</text><text x="${width - right}" y="${top - 24}" text-anchor="end" class="axis-label">百分比轴：累计回撤 / 当周涨跌</text></svg></div>`;
+  return `<div class="chart-wrap"><svg class="weekly-chart" viewBox="0 0 ${width} ${height}" role="img" aria-label="每周金额变化、累计回撤与周收益率折线图"><rect x="0" y="0" width="${width}" height="${height}" rx="12" fill="#fff"></rect>${grid}${rightAxis}${xLabels}<line x1="${left}" x2="${width - right}" y1="${zeroY.toFixed(1)}" y2="${zeroY.toFixed(1)}" stroke="rgba(28,37,48,.28)"></line><line x1="${left}" x2="${left}" y1="${top}" y2="${height - bottom}" stroke="rgba(28,37,48,.18)"></line><line x1="${width - right}" x2="${width - right}" y1="${top}" y2="${height - bottom}" stroke="rgba(29,78,216,.22)"></line><path d="${pointPath(amountPoints)}" fill="none" stroke="#c2412d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path><path d="${pointPath(ddPoints)}" fill="none" stroke="#1d4ed8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 7"></path><path d="${pointPath(weekPctPoints)}" fill="none" stroke="#d97706" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2 7"></path>${amountDots}${ddDots}${weekPctDots}${amountLabels}${ddLabels}${weekPctLabels}<text x="${left}" y="${top - 24}" class="axis-label">金额变化（元）</text><text x="${width - right}" y="${top - 24}" text-anchor="end" class="axis-label">百分比轴：累计回撤 / 周收益率</text></svg></div>`;
 }
 
 function renderPanel() {
@@ -111,7 +113,7 @@ function renderPanel() {
   const latest = weeks[weeks.length - 1];
   const maxDrawdown = weeks.reduce((min, week) => Math.min(min, week.drawdown), 0);
   const rows = weeks.map((week) => `<tr><td><a href="${week.href}">${week.label}</a></td><td class="${trendClass(week.pnl)}">${money(week.pnl)}</td><td class="${trendClass(week.weekPct)}">${pct(week.weekPct)}</td><td>${week.avgPosition.toFixed(2)}%</td><td>${week.equityLabel || week.equity.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td><td class="${week.drawdown < 0 ? "trade-down" : "trade-up"}">${pct(week.drawdown)}</td><td class="trade-up">${week.bestDay}</td><td class="trade-down">${week.worstDay}</td></tr>`).join("");
-  return `<section class="panel overview-panel"><div class="chart-head"><div><h2>每周资金曲线</h2><p>左轴看每周账户金额变化；右轴同时看累计回撤和当周涨跌/回撤。当周百分比按上一归档期末权益推算，第一周按周初权益推算；平均周仓位按已提供交易日仓位简单平均。08.31-09.04、09.07-09.11 和 09.21-09.30（两周合并） 初版因账户日收益和期末权益待补，暂不纳入资金曲线，补齐后再校准。</p></div><div class="legend-row"><span><i class="legend-line amount"></i>金额变化</span><span><i class="legend-line drawdown"></i>累计回撤</span><span><i class="legend-line weekly"></i>当周涨跌/回撤</span></div></div>${renderChart()}<div class="weekly-data-wrap"><table class="weekly-data-table"><thead><tr><th>周区间</th><th>金额变化</th><th>当周涨跌/回撤</th><th>平均周仓位</th><th>期末权益</th><th>累计回撤</th><th>最赚日</th><th>最亏日</th></tr></thead><tbody>${rows}<tr><td><a href="../2026-09-21_2026-09-30/">09.21-09.30（合并）</a></td><td colspan="7" style="text-align:left">账户数据待补；7日平均仓位、最赚/最亏日及期间回撤暂不计算。闭环-221.06元另见本期复盘。</td></tr></tbody></table></div><div class="mini-grid chart-summary"><span>累计变化 <b class="${cumulative >= 0 ? "pos" : "neg"}">${money(cumulative)}</b></span><span>最大单周盈利 <b class="pos">${best.label} ${money(best.pnl)}</b></span><span>最大单周亏损 <b class="neg">${worst.label} ${money(worst.pnl)}</b></span><span>最新入曲线 <b class="${latest.weekPct >= 0 ? "pos" : "neg"}">${latest.label} ${pct(latest.weekPct)}</b></span><span>最新累计回撤 <b class="neg">${pct(latest.drawdown)}</b></span><span>最大累计回撤 <b class="neg">${pct(maxDrawdown)}</b></span><span>最新权益 <b>${latest.equityLabel || latest.equity.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</b></span></div></section>`;
+  return `<section class="panel overview-panel"><div class="chart-head"><div><h2>每周资金曲线</h2><p>左轴看每周账户金额变化；右轴同时看累计回撤和周收益率。已补充的周收益率采用用户提供的每日收益率相加值；其余历史周保留原有金额/权益推算口径，第一周按周初权益推算。平均周仓位按已提供交易日仓位简单平均。08.31-09.04、09.07-09.11 和 09.21-09.30（两周合并） 已有周收益率列于下方完整表；因账户收益金额和期末权益待补，暂不新增资金曲线点，补齐后再校准。</p></div><div class="legend-row"><span><i class="legend-line amount"></i>金额变化</span><span><i class="legend-line drawdown"></i>累计回撤</span><span><i class="legend-line weekly"></i>周收益率</span></div></div>${renderChart()}<div class="weekly-data-wrap"><table class="weekly-data-table"><thead><tr><th>周区间</th><th>金额变化</th><th>周收益率</th><th>平均周仓位</th><th>期末权益</th><th>累计回撤</th><th>最赚日</th><th>最亏日</th></tr></thead><tbody>${rows}<tr><td><a href="../2026-09-21_2026-09-30/">09.21-09.30（合并）</a></td><td>待补</td><td class="trade-up">${returnRates.forFolder("2026-09-21_2026-09-30").formatted}</td><td>待补</td><td>待补</td><td>待补</td><td>待补</td><td>待补</td></tr></tbody></table></div><div class="mini-grid chart-summary"><span>累计变化 <b class="${cumulative >= 0 ? "pos" : "neg"}">${money(cumulative)}</b></span><span>最大单周盈利 <b class="pos">${best.label} ${money(best.pnl)}</b></span><span>最大单周亏损 <b class="neg">${worst.label} ${money(worst.pnl)}</b></span><span>最新入曲线 <b class="${latest.weekPct >= 0 ? "pos" : "neg"}">${latest.label} ${pct(latest.weekPct)}</b></span><span>最新累计回撤 <b class="neg">${pct(latest.drawdown)}</b></span><span>最大累计回撤 <b class="neg">${pct(maxDrawdown)}</b></span><span>最新权益 <b>${latest.equityLabel || latest.equity.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</b></span></div></section>`;
 }
 
 function renderMotto() {
