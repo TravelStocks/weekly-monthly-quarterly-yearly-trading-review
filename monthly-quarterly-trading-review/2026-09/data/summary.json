@@ -1,0 +1,909 @@
+{
+  "range": [
+    "2026-08-15",
+    "2026-09-30"
+  ],
+  "buildDate": "2026-10-03",
+  "trades": 86,
+  "stocks": [
+    {
+      "code": "000936",
+      "name": "华西股份",
+      "realized": -340.64,
+      "openQty": 0,
+      "openCost": 0,
+      "openingQty": 800,
+      "model": "非模式",
+      "tags": [
+        "非唯一",
+        "负贡献"
+      ],
+      "classification": "不确定",
+      "rounds": [
+        {
+          "start": "期初持仓",
+          "cost": 5605,
+          "pnl": -340.64,
+          "old": true,
+          "end": "2026-08-17"
+        }
+      ]
+    },
+    {
+      "code": "002081",
+      "name": "金螳螂",
+      "realized": 5.83,
+      "openQty": 0,
+      "openCost": 0,
+      "openingQty": 0,
+      "model": "需复核",
+      "tags": [
+        "小额正贡献",
+        "需查第一性"
+      ],
+      "classification": "不确定",
+      "rounds": [
+        {
+          "start": "2026-08-17",
+          "cost": 2328,
+          "pnl": 5.83,
+          "old": false,
+          "end": "2026-08-18"
+        }
+      ]
+    },
+    {
+      "code": "603758",
+      "name": "秦安股份",
+      "realized": 64.31,
+      "openQty": 0,
+      "openCost": 0,
+      "openingQty": 100,
+      "model": "需复核",
+      "tags": [
+        "小额正贡献",
+        "需查第一性"
+      ],
+      "classification": "不确定",
+      "rounds": [
+        {
+          "start": "期初持仓",
+          "cost": 1273.01,
+          "pnl": 64.31,
+          "old": true,
+          "end": "2026-08-17"
+        }
+      ]
+    },
+    {
+      "code": "600313",
+      "name": "农发种业",
+      "realized": -70.35,
+      "openQty": 0,
+      "openCost": 0,
+      "openingQty": 0,
+      "model": "需复核",
+      "tags": [
+        "负贡献",
+        "需查第一性"
+      ],
+      "classification": "不确定",
+      "rounds": [
+        {
+          "start": "2026-08-19",
+          "cost": 729.01,
+          "pnl": -70.35,
+          "old": false,
+          "end": "2026-08-20"
+        }
+      ]
+    },
+    {
+      "code": "159516",
+      "name": "半导设备",
+      "realized": -3.8,
+      "openQty": 0,
+      "openCost": 0,
+      "openingQty": 0,
+      "model": "需复核",
+      "tags": [
+        "轻仓套利",
+        "小亏闭环"
+      ],
+      "classification": "不确定",
+      "rounds": [
+        {
+          "start": "2026-08-19",
+          "cost": 2292.8,
+          "pnl": -3.8,
+          "old": false,
+          "end": "2026-08-20"
+        }
+      ]
+    },
+    {
+      "code": "588170",
+      "name": "科创半导",
+      "realized": -19,
+      "openQty": 0,
+      "openCost": 0,
+      "openingQty": 0,
+      "model": "需复核",
+      "tags": [
+        "轻仓套利",
+        "止损后回补",
+        "买点复盘"
+      ],
+      "classification": "不确定",
+      "rounds": [
+        {
+          "start": "2026-08-19",
+          "cost": 2055,
+          "pnl": -6,
+          "old": false,
+          "end": "2026-08-20"
+        },
+        {
+          "start": "2026-09-18",
+          "cost": 209,
+          "pnl": -10,
+          "old": false,
+          "end": "2026-09-21"
+        },
+        {
+          "start": "2026-09-21",
+          "cost": 1421.8,
+          "pnl": 15.2,
+          "old": false,
+          "end": "2026-09-22"
+        },
+        {
+          "start": "2026-09-22",
+          "cost": 513.2,
+          "pnl": -18.2,
+          "old": false,
+          "end": "2026-09-23"
+        }
+      ]
+    },
+    {
+      "code": "600127",
+      "name": "金健米业",
+      "realized": -20.07,
+      "openQty": 0,
+      "openCost": 0,
+      "openingQty": 0,
+      "model": "模式内",
+      "tags": [
+        "核心处理",
+        "买点复盘"
+      ],
+      "classification": "可避免部分 + 模式内损益",
+      "rounds": [
+        {
+          "start": "2026-08-20",
+          "cost": 4184.05,
+          "pnl": -176.1,
+          "old": false,
+          "end": "2026-08-21"
+        },
+        {
+          "start": "2026-08-31",
+          "cost": 3617.04,
+          "pnl": 156.03,
+          "old": false,
+          "end": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "code": "600664",
+      "name": "哈药股份",
+      "realized": -109.82,
+      "openQty": 0,
+      "openCost": 0,
+      "openingQty": 0,
+      "model": "需复核",
+      "tags": [
+        "负贡献",
+        "需验证核心地位"
+      ],
+      "classification": "不确定",
+      "rounds": [
+        {
+          "start": "2026-08-21",
+          "cost": 822.01,
+          "pnl": -9.43,
+          "old": false,
+          "end": "2026-08-24"
+        },
+        {
+          "start": "2026-09-24",
+          "cost": 838.01,
+          "pnl": -100.39,
+          "old": false,
+          "end": "2026-09-28"
+        }
+      ]
+    },
+    {
+      "code": "002412",
+      "name": "汉森制药",
+      "realized": 597.77,
+      "openQty": 0,
+      "openCost": 0,
+      "openingQty": 0,
+      "model": "模式内",
+      "tags": [
+        "核心处理",
+        "值得复制",
+        "正贡献"
+      ],
+      "classification": "值得复制",
+      "rounds": [
+        {
+          "start": "2026-08-25",
+          "cost": 11845,
+          "pnl": 597.77,
+          "old": false,
+          "end": "2026-08-27"
+        }
+      ]
+    },
+    {
+      "code": "600721",
+      "name": "百花医药",
+      "realized": -1283.64,
+      "openQty": 0,
+      "openCost": 0,
+      "openingQty": 0,
+      "model": "非模式",
+      "tags": [
+        "亏损后加单",
+        "负贡献"
+      ],
+      "classification": "可避免",
+      "rounds": [
+        {
+          "start": "2026-08-27",
+          "cost": 8225.09,
+          "pnl": -1283.64,
+          "old": false,
+          "end": "2026-08-31"
+        }
+      ]
+    },
+    {
+      "code": "600378",
+      "name": "昊华科技",
+      "realized": -156.69,
+      "openQty": 0,
+      "openCost": 0,
+      "openingQty": 0,
+      "model": "需复核",
+      "tags": [
+        "负贡献",
+        "买点复盘"
+      ],
+      "classification": "不确定",
+      "rounds": [
+        {
+          "start": "2026-08-28",
+          "cost": 5336.05,
+          "pnl": -156.69,
+          "old": false,
+          "end": "2026-08-31"
+        }
+      ]
+    },
+    {
+      "code": "600354",
+      "name": "敦煌种业",
+      "realized": -68.44,
+      "openQty": 0,
+      "openCost": 0,
+      "openingQty": 0,
+      "model": "需复核",
+      "tags": [
+        "轻仓套利",
+        "小亏闭环"
+      ],
+      "classification": "不确定",
+      "rounds": [
+        {
+          "start": "2026-08-31",
+          "cost": 908.01,
+          "pnl": -68.44,
+          "old": false,
+          "end": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "code": "600551",
+      "name": "时代出版",
+      "realized": -576.63,
+      "openQty": 0,
+      "openCost": 0,
+      "openingQty": 0,
+      "model": "需复核",
+      "tags": [
+        "负贡献",
+        "需查第一性"
+      ],
+      "classification": "不确定",
+      "rounds": [
+        {
+          "start": "2026-09-02",
+          "cost": 5615.06,
+          "pnl": -576.63,
+          "old": false,
+          "end": "2026-09-03"
+        }
+      ]
+    },
+    {
+      "code": "000892",
+      "name": "欢瑞世纪",
+      "realized": -476.34,
+      "openQty": 0,
+      "openCost": 0,
+      "openingQty": 0,
+      "model": "需复核",
+      "tags": [
+        "负贡献",
+        "买点复盘"
+      ],
+      "classification": "不确定",
+      "rounds": [
+        {
+          "start": "2026-09-03",
+          "cost": 5158,
+          "pnl": -476.34,
+          "old": false,
+          "end": "2026-09-04"
+        }
+      ]
+    },
+    {
+      "code": "000735",
+      "name": "罗牛山",
+      "realized": -4.68,
+      "openQty": 0,
+      "openCost": 0,
+      "openingQty": 0,
+      "model": "模式内",
+      "tags": [
+        "轻仓套利",
+        "小亏闭环"
+      ],
+      "classification": "模式内正常亏损",
+      "rounds": [
+        {
+          "start": "2026-09-07",
+          "cost": 1353,
+          "pnl": -4.68,
+          "old": false,
+          "end": "2026-09-08"
+        }
+      ]
+    },
+    {
+      "code": "002403",
+      "name": "爱仕达",
+      "realized": -582.81,
+      "openQty": 0,
+      "openCost": 0,
+      "openingQty": 0,
+      "model": "非模式",
+      "tags": [
+        "非第一",
+        "买点复盘",
+        "负贡献"
+      ],
+      "classification": "可避免",
+      "rounds": [
+        {
+          "start": "2026-09-08",
+          "cost": 8200,
+          "pnl": -582.81,
+          "old": false,
+          "end": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "code": "600865",
+      "name": "百大集团",
+      "realized": 69.22,
+      "openQty": 0,
+      "openCost": 0,
+      "openingQty": 0,
+      "model": "模式内",
+      "tags": [
+        "核心龙头",
+        "正贡献",
+        "值得复制"
+      ],
+      "classification": "值得复制",
+      "rounds": [
+        {
+          "start": "2026-09-09",
+          "cost": 9081.1,
+          "pnl": 69.22,
+          "old": false,
+          "end": "2026-09-10"
+        }
+      ]
+    },
+    {
+      "code": "000978",
+      "name": "桂林旅游",
+      "realized": -75.72,
+      "openQty": 0,
+      "openCost": 0,
+      "openingQty": 0,
+      "model": "需复核",
+      "tags": [
+        "止损后回补",
+        "买点过急",
+        "负贡献"
+      ],
+      "classification": "可避免（回补行为）",
+      "rounds": [
+        {
+          "start": "2026-09-10",
+          "cost": 4850,
+          "pnl": -23.42,
+          "old": false,
+          "end": "2026-09-11"
+        },
+        {
+          "start": "2026-09-11",
+          "cost": 10617,
+          "pnl": -52.3,
+          "old": false,
+          "end": "2026-09-14"
+        }
+      ]
+    },
+    {
+      "code": "601086",
+      "name": "国芳集团",
+      "realized": -147.85,
+      "openQty": 0,
+      "openCost": 0,
+      "openingQty": 0,
+      "model": "模式内",
+      "tags": [
+        "轻仓套利",
+        "负贡献"
+      ],
+      "classification": "可避免（退出拖延）",
+      "rounds": [
+        {
+          "start": "2026-09-14",
+          "cost": 1761.02,
+          "pnl": -147.85,
+          "old": false,
+          "end": "2026-09-15"
+        }
+      ]
+    },
+    {
+      "code": "000993",
+      "name": "闽东电力",
+      "realized": -58.49,
+      "openQty": 100,
+      "openCost": 1714,
+      "openingQty": 0,
+      "model": "模式内",
+      "tags": [
+        "核心龙头",
+        "小亏闭环"
+      ],
+      "classification": "不确定",
+      "rounds": [
+        {
+          "start": "2026-09-15",
+          "cost": 5040,
+          "pnl": -58.49,
+          "old": false,
+          "end": "2026-09-17"
+        }
+      ]
+    },
+    {
+      "code": "002584",
+      "name": "西陇科学",
+      "realized": -343.88,
+      "openQty": 0,
+      "openCost": 0,
+      "openingQty": 0,
+      "model": "需复核",
+      "tags": [
+        "负贡献",
+        "买点复盘"
+      ],
+      "classification": "不确定",
+      "rounds": [
+        {
+          "start": "2026-09-17",
+          "cost": 10094,
+          "pnl": -343.88,
+          "old": false,
+          "end": "2026-09-21"
+        }
+      ]
+    },
+    {
+      "code": "603230",
+      "name": "内蒙新华",
+      "realized": 380.86,
+      "openQty": 0,
+      "openCost": 0,
+      "openingQty": 0,
+      "model": "模式内",
+      "tags": [
+        "核心处理",
+        "值得复制",
+        "正贡献"
+      ],
+      "classification": "值得复制",
+      "rounds": [
+        {
+          "start": "2026-09-21",
+          "cost": 9443.1,
+          "pnl": 380.86,
+          "old": false,
+          "end": "2026-09-23"
+        }
+      ]
+    },
+    {
+      "code": "000504",
+      "name": "南华生物",
+      "realized": -50.27,
+      "openQty": 0,
+      "openCost": 0,
+      "openingQty": 0,
+      "model": "模式内",
+      "tags": [
+        "轻仓套利",
+        "小亏闭环"
+      ],
+      "classification": "模式内正常亏损（暂定）",
+      "rounds": [
+        {
+          "start": "2026-09-23",
+          "cost": 2584,
+          "pnl": -50.27,
+          "old": false,
+          "end": "2026-09-28"
+        }
+      ]
+    },
+    {
+      "code": "002238",
+      "name": "天威视讯",
+      "realized": -94.38,
+      "openQty": 0,
+      "openCost": 0,
+      "openingQty": 0,
+      "model": "需复核",
+      "tags": [
+        "负贡献",
+        "买点复盘"
+      ],
+      "classification": "不确定",
+      "rounds": [
+        {
+          "start": "2026-09-24",
+          "cost": 848,
+          "pnl": -94.38,
+          "old": false,
+          "end": "2026-09-28"
+        }
+      ]
+    }
+  ],
+  "closedRealized": -3365.51,
+  "newPositionRealized": -3089.18,
+  "openingPositionRealized": -276.33,
+  "allTradeFees": 489.7,
+  "grossProfit": 1117.99,
+  "grossLoss": 4483.5,
+  "rankingBasis": "含费历史成本闭环；闽东电力期末100股浮盈浮亏按用户要求排除。跨期持仓闭环不等于本期资产贡献。",
+  "accountReturn": null,
+  "accountMaxDrawdown": null,
+  "accountPnl": null,
+  "cashReconciliationDifference": 0.8,
+  "maxConcurrentHoldings": 3,
+  "models": [
+    {
+      "label": "模式内",
+      "count": 8
+    },
+    {
+      "label": "非模式",
+      "count": 3
+    },
+    {
+      "label": "需复核",
+      "count": 13
+    }
+  ],
+  "reentries": [
+    {
+      "code": "588170",
+      "name": "科创半导",
+      "sell": "2026-09-21 09:35:53",
+      "buy": "2026-09-21 15:00:00",
+      "precedingRealized": -1000,
+      "confirmedLoss": true
+    },
+    {
+      "code": "588170",
+      "name": "科创半导",
+      "sell": "2026-09-22 09:30:54",
+      "buy": "2026-09-22 11:01:38",
+      "precedingRealized": 1520,
+      "confirmedLoss": false
+    },
+    {
+      "code": "000978",
+      "name": "桂林旅游",
+      "sell": "2026-09-11 09:35:38",
+      "buy": "2026-09-11 09:42:21",
+      "precedingRealized": -2342,
+      "confirmedLoss": true
+    }
+  ],
+  "snapshots": [
+    {
+      "date": "2026-08-17",
+      "held": 1,
+      "cost": 232800,
+      "cash": 1090970,
+      "costUsage": 17.58613656450894,
+      "realized": -27633
+    },
+    {
+      "date": "2026-08-18",
+      "held": 0,
+      "cost": 0,
+      "cash": 1324353,
+      "costUsage": 0,
+      "realized": 583
+    },
+    {
+      "date": "2026-08-19",
+      "held": 3,
+      "cost": 507681,
+      "cash": 816672,
+      "costUsage": 38.334265864161594,
+      "realized": 0
+    },
+    {
+      "date": "2026-08-20",
+      "held": 1,
+      "cost": 418405,
+      "cash": 897933,
+      "costUsage": 31.785529248566856,
+      "realized": -8015
+    },
+    {
+      "date": "2026-08-21",
+      "held": 1,
+      "cost": 82201,
+      "cash": 1216527,
+      "costUsage": 6.329346868628381,
+      "realized": -17610
+    },
+    {
+      "date": "2026-08-24",
+      "held": 0,
+      "cost": 0,
+      "cash": 1297785,
+      "costUsage": 0,
+      "realized": -943
+    },
+    {
+      "date": "2026-08-25",
+      "held": 1,
+      "cost": 370400,
+      "cash": 927385,
+      "costUsage": 28.54093705814137,
+      "realized": 0
+    },
+    {
+      "date": "2026-08-26",
+      "held": 1,
+      "cost": 1184500,
+      "cash": 113285,
+      "costUsage": 91.27089618080036,
+      "realized": 0
+    },
+    {
+      "date": "2026-08-27",
+      "held": 1,
+      "cost": 659007,
+      "cash": 698555,
+      "costUsage": 48.543418274819125,
+      "realized": 59777
+    },
+    {
+      "date": "2026-08-28",
+      "held": 2,
+      "cost": 1356114,
+      "cash": 1448,
+      "costUsage": 99.89333820481127,
+      "realized": 0
+    },
+    {
+      "date": "2026-08-31",
+      "held": 2,
+      "cost": 452505,
+      "cash": 761024,
+      "costUsage": 37.28835487244228,
+      "realized": -144033
+    },
+    {
+      "date": "2026-09-01",
+      "held": 0,
+      "cost": 0,
+      "cash": 1222288,
+      "costUsage": 0,
+      "realized": 8759
+    },
+    {
+      "date": "2026-09-02",
+      "held": 1,
+      "cost": 561506,
+      "cash": 660782,
+      "costUsage": 45.938927650439176,
+      "realized": 0
+    },
+    {
+      "date": "2026-09-03",
+      "held": 1,
+      "cost": 515800,
+      "cash": 144982,
+      "costUsage": 78.05902703160801,
+      "realized": -57663
+    },
+    {
+      "date": "2026-09-04",
+      "held": 0,
+      "cost": 0,
+      "cash": 1116991,
+      "costUsage": 0,
+      "realized": -47634
+    },
+    {
+      "date": "2026-09-07",
+      "held": 1,
+      "cost": 135300,
+      "cash": 981691,
+      "costUsage": 12.112899745835016,
+      "realized": 0
+    },
+    {
+      "date": "2026-09-08",
+      "held": 1,
+      "cost": 820000,
+      "cash": 296523,
+      "costUsage": 73.44228466408663,
+      "realized": -468
+    },
+    {
+      "date": "2026-09-09",
+      "held": 1,
+      "cost": 908110,
+      "cash": 150132,
+      "costUsage": 85.81307489213242,
+      "realized": -58281
+    },
+    {
+      "date": "2026-09-10",
+      "held": 1,
+      "cost": 485000,
+      "cash": 580164,
+      "costUsage": 45.532894465077675,
+      "realized": 6922
+    },
+    {
+      "date": "2026-09-11",
+      "held": 1,
+      "cost": 1061700,
+      "cash": 1122,
+      "costUsage": 99.89443199331592,
+      "realized": -2342
+    },
+    {
+      "date": "2026-09-14",
+      "held": 1,
+      "cost": 176102,
+      "cash": 881490,
+      "costUsage": 16.651222777781978,
+      "realized": -5230
+    },
+    {
+      "date": "2026-09-15",
+      "held": 1,
+      "cost": 504000,
+      "cash": 538807,
+      "costUsage": 48.33109098807354,
+      "realized": -14785
+    },
+    {
+      "date": "2026-09-17",
+      "held": 1,
+      "cost": 420900,
+      "cash": 616058,
+      "costUsage": 40.58987924293944,
+      "realized": -5849
+    },
+    {
+      "date": "2026-09-18",
+      "held": 2,
+      "cost": 1030300,
+      "cash": 6738,
+      "costUsage": 99.35026488903974,
+      "realized": 0
+    },
+    {
+      "date": "2026-09-21",
+      "held": 2,
+      "cost": 439283,
+      "cash": 562367,
+      "costUsage": 43.8559377027904,
+      "realized": -35388
+    },
+    {
+      "date": "2026-09-22",
+      "held": 2,
+      "cost": 995630,
+      "cash": 7540,
+      "costUsage": 99.24838262707219,
+      "realized": 1520
+    },
+    {
+      "date": "2026-09-23",
+      "held": 1,
+      "cost": 258400,
+      "cash": 781036,
+      "costUsage": 24.859635417668812,
+      "realized": 36266
+    },
+    {
+      "date": "2026-09-24",
+      "held": 3,
+      "cost": 427001,
+      "cash": 612435,
+      "costUsage": 41.08006649760062,
+      "realized": 0
+    },
+    {
+      "date": "2026-09-28",
+      "held": 0,
+      "cost": 0,
+      "cash": 1014932,
+      "costUsage": 0,
+      "realized": -24504
+    },
+    {
+      "date": "2026-09-30",
+      "held": 1,
+      "cost": 171400,
+      "cash": 843532,
+      "costUsage": 16.88783090886877,
+      "realized": 0
+    }
+  ],
+  "pendingReflectionQuestions": [
+    "这1.5个月最大的错误是什么？",
+    "做对且想继续的动作是什么？",
+    "10月最想改变的一件事是什么？"
+  ]
+}
