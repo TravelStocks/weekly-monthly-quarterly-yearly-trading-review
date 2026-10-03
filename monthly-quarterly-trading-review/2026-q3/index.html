@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>每季交割复盘｜2026 Q3｜6-8月二次反思</title>
+  <title>每季交割复盘｜2026 Q3｜6–9月系统演进与红线再犯</title>
   <style>
     :root {
       --bg: #f6f7f8;
@@ -22,17 +22,17 @@
       --radius: 10px;
     }
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; overflow-x: hidden; }
+    html { scroll-behavior: smooth; overflow-x: clip; }
     body {
       margin: 0;
       color: var(--ink);
-      background: linear-gradient(180deg, #f8fafb 0%, #eef2f5 100%);
+      background: var(--bg);
       font-family: "Avenir Next", "PingFang SC", "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif;
-      overflow-x: hidden;
+      overflow-x: clip;
     }
     a { color: inherit; }
     h1, h2, h3, h4, p { margin-top: 0; letter-spacing: 0; }
-    h1 { margin: 12px 0; font-size: clamp(32px, 4vw, 52px); line-height: 1.08; overflow-wrap: anywhere; word-break: break-word; }
+    h1 { margin: 12px 0; font-size: 32px; line-height: 1.08; overflow-wrap: anywhere; word-break: break-word; }
     h2 { font-size: 24px; margin-bottom: 8px; }
     h3 { font-size: 18px; margin-bottom: 8px; }
     p, li, td { color: var(--muted); line-height: 1.68; }
@@ -272,6 +272,46 @@
       .metrics, .grid-2, .grid-3, .grid-4, .missing-grid { grid-template-columns: 1fr; }
       table { min-width: 860px; font-size: 13px; }
     }
+
+
+  .content{display:block;background:white;border:1px solid var(--line)}
+  .content>section{border-bottom:1px solid var(--line);scroll-margin-top:18px}
+  .content>section:last-child{border-bottom:0}
+  .hero,.panel{border:0;border-radius:0;box-shadow:none;background:white}
+  .hero{display:block;padding:28px}
+  .hero h1{font-size:30px;line-height:1.35;letter-spacing:0}
+  .hero .label{background:none;border-radius:0;padding:0;color:var(--muted)}
+  .hero .metrics{grid-template-columns:repeat(4,minmax(0,1fr));margin-top:24px;gap:18px}
+  .metric{border:0;border-radius:0;border-left:2px solid var(--line);box-shadow:none;min-height:100px;padding:0 0 0 14px;background:none}
+  .metric strong{font-size:21px;line-height:1.5}
+  .verdict-strip{display:block}.verdict-main,.verdict-aside{border:0;border-radius:0;background:none;padding:0;box-shadow:none}
+  .verdict-main{border-left:4px solid var(--down);padding-left:16px}.verdict-aside{margin-top:18px;padding-left:20px}
+  .verdict-main .label{padding:0;background:none;border-radius:0}
+  .sidebar-inner{border-radius:8px;box-shadow:none;max-height:calc(100dvh - 36px);overflow:auto}
+  .sidebar a:focus-visible,summary:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+  .card,.score-card,.goal-card,.verdict-card{border-radius:6px;box-shadow:none}
+  .table-wrap{border-radius:4px}.strength-statement{border-left:3px solid var(--up);padding:3px 0 3px 16px;margin:18px 0}
+  .strength-statement h3{font-size:21px}.strength-statement p{margin-bottom:0;color:var(--ink)}
+  .strength-lines{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin:22px 0}
+  .strength-lines article{border-top:2px solid var(--line);padding-top:12px}.strength-lines b{font-size:15px}.strength-lines p{font-size:14px;margin:7px 0 0}
+  .winning-sample{padding:20px 0;border-top:1px solid var(--line);scroll-margin-top:20px}.winning-sample:first-child{border-top:0}
+  .sample-head{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;margin-bottom:12px}.sample-head h3{font-size:20px;margin:0 0 5px}.sample-head small{display:block;font-size:12px;color:var(--muted);font-weight:400;margin-top:3px}.sample-quality{color:var(--up);font-size:12px}
+  .sample-value{max-width:310px;text-align:right}.sample-value strong{font-size:25px;font-variant-numeric:tabular-nums;white-space:nowrap}.winning-sample p{font-size:14px;margin:8px 0}.winning-sample b{color:var(--ink)}
+  .excluded-samples{border-top:1px solid var(--line);margin:14px 0}.excluded-samples article{padding:12px 0;border-bottom:1px solid var(--line)}.excluded-samples article>div{display:flex;gap:10px 18px;flex-wrap:wrap;align-items:center;font-size:14px}.excluded-samples p{font-size:13px;margin:5px 0 0}.excluded-samples span{font-size:12px;color:var(--down)}
+  .redline-lead{border-left:3px solid var(--down);padding-left:14px;color:var(--ink)}.repeat-table{min-width:1060px;font-size:13px}.repeat-table th{white-space:normal}.repeat-table th:first-child{width:190px}.repeat-table td{min-width:135px}.repeat-table td:last-child{min-width:220px}.repeat-table tbody th{background:white}.repeat-table strong{color:var(--ink)}.repeat-table small{display:block;color:var(--muted);font-size:12px;margin-top:7px}.repeat-label{display:block;color:var(--down);font-size:12px;margin-top:7px}.repeat-hit{background:#fff8f8}.repeat-hit a{color:var(--muted);text-decoration:underline;text-underline-offset:3px}
+  .contrast-figure{margin:18px 0;border:1px solid var(--line);border-radius:4px}.contrast-figure figcaption{padding:10px 14px;background:var(--soft);font-size:13px;color:var(--muted)}.chart-scroll{overflow:auto;max-width:100%}.comparison-chart{display:block;width:100%;min-width:760px;aspect-ratio:900/380}.chart-name{font:700 16px 'Microsoft YaHei',sans-serif;fill:var(--ink)}.chart-note{font:12px 'Microsoft YaHei',sans-serif;fill:var(--muted)}.chart-value{font:700 14px Arial,sans-serif;fill:var(--ink)}
+  .contrast-cases article{border-top:1px solid var(--line);padding:16px 0}.contrast-cases h3{font-size:17px}.contrast-cases p{font-size:14px;margin:6px 0}.contrast-cases small{display:block;font-size:12px;color:var(--muted);margin-top:4px}
+  .quarter-section-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.quarter-section-head .section-note{font-size:12px;margin:0 0 5px}.quarter-section-head h2{margin:0}.september-points{padding-left:23px}.september-points li{padding:10px 0;line-height:1.85;border-bottom:1px solid var(--line)}.september-points li:last-child{border-bottom:0}.september-points b{color:var(--ink)}
+  .quarter-note{border-top:1px solid var(--line);padding:10px 0}.quarter-note summary{cursor:pointer;font-weight:700;min-height:44px;padding:8px 0}.quarter-note p{font-size:13px;margin:8px 0}.sample-nav>summary{cursor:pointer;font-size:14px;font-weight:700;min-height:44px;padding:8px 10px}.sample-nav a{display:block;font-size:13px;line-height:1.5;text-decoration:none;color:var(--ink);padding:8px 10px;min-height:44px}.sample-nav small{display:block;color:var(--muted);font-size:11px}
+  .rule-list li,.check-list li{border-radius:4px;background:none;border:0;border-bottom:1px solid var(--line);padding-left:0}.rule-list b,.check-list b{border-radius:4px;background:var(--soft);color:var(--ink)}
+  .missing-grid{grid-template-columns:1fr 1fr}.missing-grid article{border-radius:4px;border:0;border-top:1px solid var(--line);background:none;padding:14px 0}.missing-grid p{font-size:13px}
+  @media(max-width:1120px){.hero .metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.sidebar-inner{max-height:none}.strength-lines{grid-template-columns:1fr}.sample-nav>div{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}}
+  @media(max-width:720px){.hero h1{font-size:27px}.hero .metrics{gap:18px 12px}.metric strong{font-size:19px}.hero,.panel{padding:22px 16px}.sample-head{display:block}.sample-value{text-align:left;max-width:none;margin-top:10px}.sample-value strong{font-size:23px}.sample-nav>div{grid-template-columns:repeat(2,minmax(0,1fr))}.strength-statement h3{font-size:19px}.missing-grid{grid-template-columns:1fr}.sidebar-brand{display:grid}}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+    .chapter-nav>summary{display:none}
+    .quarter-verdict{margin-top:22px}
+    @media(max-width:1120px){.chapter-nav>summary{display:list-item;cursor:pointer;font-weight:700;min-height:44px;padding:8px 10px}}
   </style>
 </head>
 <body>
@@ -279,542 +319,504 @@
     <div class="page-layout">
       <aside class="sidebar" aria-label="季度复盘导航">
         <div class="sidebar-inner">
-          <a class="sidebar-brand" href="#top"><span>2026 Q3滚动</span><strong>每季交割复盘</strong></a>
-          <nav class="side-nav" aria-label="本页导航">
-            <a class="primary" href="#top">Q3首页</a>
-            <a href="#verdict">最大错误</a>
-            <a href="#months">月份拆解</a>
-            <a href="#sources">周度来源</a>
-            <a href="#core">核心票审判</a>
-            <a href="#stages">能力图</a>
-            <a href="#score">阶段评分</a>
-            <a href="#rules">铁律</a>
-            <a href="#checklist">执行清单</a>
-            <a href="#goals">下阶段目标</a>
-            <a href="#missing">待补数据</a>
-          </nav>
+          <a class="sidebar-brand" href="#top"><span>2026 Q3 · 6月作基线</span><strong>每季交割复盘</strong></a>
+          <details class="chapter-nav" open>
+            <summary>章节导航</summary>
+            <nav class="side-nav" aria-label="本页导航">
+              <a class="primary" href="#top">Q3概览</a>
+              <a href="#verdict">季度审判书</a>
+              <a href="#right">优势与边界</a>
+              <a href="#wins">大肉证据</a>
+              <a href="#wrong">红线再犯矩阵</a>
+              <a href="#core">同票前后对照</a>
+              <a href="#months">6–9月演进</a>
+              <a href="#reflection">9月关键点</a>
+              <a href="#stages">能力图</a>
+              <a href="#score">系统评分</a>
+              <a href="#rules">落地规则</a>
+              <a href="#checklist">执行清单</a>
+              <a href="#goals">下阶段目标</a>
+              <a href="#sources">17段周度来源</a>
+              <a href="#missing">证据边界</a>
+            </nav>
+          </details>
+          <details class="sample-nav">
+            <summary>盈利样本索引</summary>
+            <div><a href="#sample-dayou">大有能源<small>06.03–06.05前段</small></a><a href="#sample-lixin-first">立新能源<small>07.21–07.24前段</small></a><a href="#sample-hayao-first">哈药股份<small>07.14–07.17</small></a><a href="#sample-baihua-first">百花医药<small>08.11–08.12</small></a><a href="#sample-neimeng">内蒙新华<small>09.21–09.23</small></a></div>
+          </details>
           <nav class="side-nav external" aria-label="站点导航">
             <a href="../">月/季导航</a>
             <a href="../../weekly-trading-review/">周度主页</a>
             <a href="../../index.html">总首页</a>
           </nav>
           <div class="sidebar-meta">
-            <b>二次反思版</b>
-            <span>精确月度排行、全部成交时间和买卖点地图待按自然月回填。</span>
+            <b>9月反思已整合</b>
+            <span>再犯矩阵统计有证据月份，不把跨周闭环重复计数。6月只作基线，不并入自然Q3收益。</span>
           </div>
         </div>
       </aside>
-
       <div class="content">
         <section class="hero">
-          <div>
-            <span class="label">2026 Q3 Rolling Trading Review · built 2026-08-16</span>
-            <h1>每季交割复盘<br />2026 Q3 · 6-8月二次反思</h1>
-            <p>本页按你本次要求，把2026年6月、7月、8月截至08.15的阶段复盘写入Q3页。自然季度Q3通常是7-9月，所以9月结束后需要再补9月并校准为完整季度；当前版本先作为6-8月滚动审判书。</p>
-            <div class="button-row">
-              <a class="button" href="#verdict">先看最大错误</a>
-              <a class="button secondary" href="#sources">周度来源</a>
-              <a class="button secondary" href="../">月/季导航</a>
-            </div>
+          <span class="label">6–9月系统演进 · 更新 2026-10-04</span>
+          <h1>2026 Q3 季度复盘</h1>
+          <p>把6月作为进化基线，回看7–9月自然季度：哪种大肉来自有效动作，哪类错误一直在重复，以及9月补齐了什么。反思覆盖6–9月，不把四个月、跨月阶段和自然Q3收益混算。</p>
+          <div class="button-row">
+            <a class="button" href="#wrong">查看红线再犯</a>
+            <a class="button secondary" href="#wins">查看大肉证据</a>
           </div>
           <div class="metrics">
-            
         <article class="metric">
-          <span>当前跨度</span>
-          <strong class="">06.01-08.15</strong>
-          <small>按本次要求写入Q3滚动复盘；9月后再校准自然季度</small>
+          <span>复盘跨度</span>
+          <strong class="">06.01–09.30</strong>
+          <small>6月作基线；自然Q3仍是7–9月</small>
         </article>
         <article class="metric">
-          <span>阶段结论</span>
-          <strong class="pos">主升2已会</strong>
-          <small>从6月不会做，到7-8月能围绕节点和最高标交易</small>
+          <span>最强优势证据</span>
+          <strong class="pos">第一唯一性核心</strong>
+          <small>大有、立新前段、哈药、百花前段；内蒙补执行样本</small>
         </article>
         <article class="metric">
-          <span>最大系统伤害</span>
-          <strong class="neg">主升3无先手硬上</strong>
-          <small>7月立新能源二次参与成为阶段最大亏损样本</small>
+          <span>跨月反复伤害</span>
+          <strong class="neg">阶段错配 / 摊成本</strong>
+          <small>4个月均有同类证据，不等于只发生4次</small>
         </article>
         <article class="metric">
-          <span>下阶段红线</span>
-          <strong class="warn">-5条件单</strong>
-          <small>不及预期开在-4/-3且不快速拉板，先保护再判断</small>
-        </article>
-          </div>
+          <span>9月新增能力</span>
+          <strong class="warn">模式与窗口分开</strong>
+          <small>补涨三板、二波尾盘、普通龙头板上确认</small>
+        </article></div>
         </section>
-
         <section class="panel" id="verdict">
           <div class="verdict-strip">
             <div class="verdict-main">
-              <span class="label">季度审判书</span>
-              <h2>最大错误：主升阶段识别滞后，尤其主升3没有先手还硬上</h2>
-              <p>6月的问题是不会做主升2，标准大唐发电周期没有主攻；7月的问题是主升3第一天没拿先手，第二天仍追进去，立新能源样本造成阶段最大系统伤害；8月的问题已经缩小到“最高标不及预期开盘时没有马上用条件单保护”。这说明系统在进化，但短板也很清楚：主升1和主升3还没有完全内化，趋势科技也不能再用连板追高思维做。</p>
+              <span class="label">季度审判书 · 按系统伤害排序</span>
+              <h2>最大的错误：先买熟悉的票，后解释阶段；错了又用追加修复成本。</h2>
+              <p>6月错过主升2、7月无先手硬上主升3、8月补涨期盲目切换、9月弱切换和陌生反核，根子都是阶段与模式错配。粤电力、科技ETF、百花、西陇的追加则把判断错误放大成风险错误。</p>
             </div>
             <div class="verdict-aside">
-              <h3>一句话结论</h3>
-              <p><strong>从6月到8月，你不是没有进步，而是从“不会做主升2”进化到“主升2能做、主升3还会被先手规则惩罚”。</strong></p>
-              <p>后续账户曲线要继续变好，关键不是增加交易，而是把主升3、科技趋势、不及预期开盘这三类红线写死。</p>
+              <h3>同时也别抹掉已经做对的事</h3>
+              <p>大有、立新前段、哈药、百花前段支持你在明确节点下识别第一唯一性核心的相对优势。短板更多在阶段迁移、窗口约束和利润保护，而不是从来不会定龙。</p>
+              <p><strong>下一步优先级：先停止放大错误，再稳定复制优势；不是增加出手数量。</strong></p>
             </div>
           </div>
+          <div class="grid-3 quarter-verdict">
+        <article class="verdict-card neg">
+          <div class="card-head">
+            <h3>主罪：阶段与模式错配</h3>
+            <span class="chip neg">跨月系统问题</span>
+          </div>
+          <p>6月错过主升2、7月无先手主升3、8月补涨盲目切换、9月弱切换与陌生反核，是同一前置判断问题的不同表现。</p>
+        </article>
+        <article class="verdict-card neg">
+          <div class="card-head">
+            <h3>次罪：错过窗口，再追加摊成本</h3>
+            <span class="chip neg">4个月再犯证据</span>
+          </div>
+          <p>粤电力、科技ETF、百花、西陇显示追加不一定来自新确认。风险预算不能用来修复错误成本；同一闭环跨周只记一次。</p>
+        </article>
+        <article class="verdict-card warn">
+          <div class="card-head">
+            <h3>隐患：选对核心仍没守住利润</h3>
+            <span class="chip warn">兑现不稳定</span>
+          </div>
+          <p>大有、风范、闽东等提醒：方向判断可能强于卖点执行。弱天时、监管与高度要传导到仓位和持有预期。</p>
+        </article></div>
         </section>
-
+        <section class="panel" id="right"><h2>我更擅长什么？先看证据，不看运气。</h2><div class="strength-statement"><h3>明确节点下的第一唯一性龙头、最高标抱团。</h3><p>更擅长在题材与节点明确后，识别并参与第一唯一性龙头、最高标抱团；主升2式核心确认比临盘切杂票、无先手主升3、旧龙二波迟买更有正样本支持。</p></div><div class="strength-lines"><article><b>最有证据</b><p>识别核心方向与第一唯一性，然后围绕核心参与、兑现。6月大有、7月立新前段/哈药、8月百花前段构成多段正样本。</p></article><article><b>正在形成</b><p>按条件单保护与主动等待。9月内蒙有正样本，但此前回吐反复，暂不宣称稳定掌握。</p></article><article><b>继续训练</b><p>补涨、二波、主升1/3、科技趋势与反核。回看懂了，不等于已经形成成熟执行。</p></article></div><p class="section-note">这是交易记录显示的相对优势，不是天生标签或未来收益保证。方向识别强于买卖点与利润保护；尚未具备完整样本的分模式胜率、期望值或稳定性证明。</p></section>
+        <section class="panel" id="wins"><h2>做对的大肉，以及值得继续的执行</h2><p class="section-note">选取有来源、能解释模式的盈利样本，不是假定这是6–9月完整盈利排行。金额口径逐例标清，不合并成季度净收益。</p><div class="winning-samples"><article class="winning-sample" id="sample-dayou" data-pnl-cents="143394"><div class="sample-head"><div><h3>大有能源 <small>600403 · 06.03–06.05前段</small></h3><span class="sample-quality">大肉 · 核心方向有效</span></div><div class="sample-value"><strong class="pos">+1,433.94</strong><small>含费闭环；不含6/5午后新开仓</small></div></div><p><b>共性优势：</b>第一唯一性核心，按确认与风险处理</p><p>看清核心后参与；下杀先处理、回封重新验证。后段回吐仍须另审，不把整个大有周期都判优秀。</p><a class="blue" href="../../2026-06-01_2026-06-05/#stocks">对应成交与买卖点</a></article><article class="winning-sample" id="sample-lixin-first" data-pnl-cents="205000"><div class="sample-head"><div><h3>立新能源 <small>001258 · 07.21–07.24前段</small></h3><span class="sample-quality">大肉 · 方向可复制，买点仍改</span></div><div class="sample-value"><strong class="pos">+2,050.00</strong><small>可见价差，未计费；不是账户净收益</small></div></div><p><b>共性优势：</b>明确节点下围绕核心龙头</p><p>方向与兑现有效，转强加仓偏晚仍要优化；不能由本轮盈利放宽主升3先手约束。</p><a class="blue" href="../../2026-07-20_2026-07-24/#stocks">对应成交与买卖点</a></article><article class="winning-sample" id="sample-hayao-first" data-pnl-cents="85503"><div class="sample-head"><div><h3>哈药股份 <small>600664 · 07.14–07.17</small></h3><span class="sample-quality">中肉 · 核心兑现样本</span></div><div class="sample-value"><strong class="pos">+855.03</strong><small>含费完整闭环</small></div></div><p><b>共性优势：</b>龙头方向，分批建仓与集中兑现</p><p>选择更清楚的核心后等待强度兑现，比来回切弱科技更有正反馈；不是后续每次哈药都可买。</p><a class="blue" href="../../2026-07-10_2026-07-18/#stocks">对应成交与买卖点</a></article><article class="winning-sample" id="sample-baihua-first" data-pnl-cents="111544"><div class="sample-head"><div><h3>百花医药 <small>600721 · 08.11–08.12</small></h3><span class="sample-quality">大肉 · 最高标方向有效</span></div><div class="sample-value"><strong class="pos">+1,115.44</strong><small>含费完整闭环</small></div></div><p><b>共性优势：</b>最高标抱团 / 唯一性与竞价强度</p><p>当时最高标唯一性和兑现得到本人认可；复制识别与确认，不将老龙身份迁移为后段二波买点。</p><a class="blue" href="../../2026-08-10_2026-08-15/#stocks">对应成交与买卖点</a></article><article class="winning-sample" id="sample-neimeng" data-pnl-cents="38086"><div class="sample-head"><div><h3>内蒙新华 <small>603230 · 09.21–09.23</small></h3><span class="sample-quality">非大肉 · 执行进步样本</span></div><div class="sample-value"><strong class="pos">+380.86</strong><small>含费完整闭环</small></div></div><p><b>共性优势：</b>题材、身位、承接 / 条件单兑现</p><p>值得保留三组条件单退出；首笔预算仍需前置，不在次日更高位置补遗憾。</p><a class="blue" href="../2026-09/#stock-603230">对应成交与买卖点</a></article></div><h3>同样盈利，但不计作已掌握优势</h3><div class="excluded-samples"><article><div><a class="blue" href="../2026-09/#stock-002412">汉森制药</a><strong class="pos">+597.77</strong><span>运气盈利</span></div><p>本人确认当时未理解补涨与高唯一性；可作事后学习，不作已掌握技能的证据。</p></article><article><div><a class="blue" href="../2026-09/#stock-603758">秦安股份</a><strong class="pos">+64.31</strong><span>赚钱但不可复制</span></div><p>期初仓历史成本闭环；本人明确操作不合模式。</p></article><article><div><a class="blue" href="../2026-09/#stock-002081">金螳螂</a><strong class="pos">+5.83</strong><span>赚钱但不可复制</span></div><p>当时不是科技主导阶段；小赚不改变错误定性。</p></article></div><p class="section-note">大肉不能只按金额认定：立新前段与百花前段说明方向有效，不代表每笔买点都完美；汉森历史盈利仍严格归为运气盈利。</p></section>
+        <section class="panel" id="wrong"><h2>红线再犯：最该着重标记的五类问题</h2><p class="redline-lead">最顽固的不是“不会找股票”，而是<strong>阶段错配、错误追加与科技节奏错用反复出现</strong>。前一轮盈利不能成为下一轮放宽规则的理由。</p><div class="table-wrap repeat-wrap"><table class="repeat-table"><thead><tr><th>问题 / 系统伤害</th><th>6月基线</th><th>7月</th><th>8月</th><th>9月</th><th>下阶段必须改变</th></tr></thead><tbody><tr data-error-id="phase"><th scope="row"><strong>阶段没认清，就套熟悉战法</strong><span class="repeat-label">主罪 · 4个月再现</span><small>有证据月份：4</small></th><td class="repeat-hit"><a href="../../2026-06-22_2026-06-26/">大唐主升2没主攻，尾段与旁支参与。</a></td><td class="repeat-hit"><a href="../../2026-07-24_2026-08-01/">立新主升3无第一天先手，仍按延续龙头追。</a></td><td class="repeat-hit"><a href="../2026-09/#reflection-week-1">医药补涨没识别，昊华等错误科技切换。</a></td><td class="repeat-hit"><a href="../2026-09/#reflection-week-4">农业补涨做弱爱仕达；后段哈药不熟悉反核。</a></td><td><strong>盘前先写当下赚钱效应与新旧题材阶段，模式匹配后才选票。</strong><small>把熟悉的票或形态放在前面，天时与题材阶段放在买后解释。</small></td></tr><tr data-error-id="averaging"><th scope="row"><strong>承接转弱后，想靠加仓降低成本</strong><span class="repeat-label">红线再犯 · 4个月有证据</span><small>有证据月份：4</small></th><td class="repeat-hit"><a href="../../2026-06-01_2026-06-05/">粤电力走弱后追加。</a></td><td class="repeat-hit"><a href="../../2026-07-06_2026-07-10/">科技承接被虹吸后继续摊成本。</a></td><td class="repeat-hit"><a href="../2026-09/#stock-600721">百花错过二波窗口，次日走弱仍追加。</a></td><td class="repeat-hit"><a href="../2026-09/#stock-002584">西陇9/18追加，本人明确动机是摊低成本。</a></td><td><strong>加仓只凭新确认与原逻辑仍有效；为摊低成本追加次数必须为0。</strong><small>把成本改善误当逻辑改善，价格下跌反而扩大风险。</small></td></tr><tr data-error-id="technology"><th scope="row"><strong>科技节奏不匹配，非核心套连板预期</strong><span class="repeat-label">红线再犯 · 4个月同类信号</span><small>有证据月份：4</small></th><td class="repeat-hit"><a href="../../2026-06-29_2026-07-04/">科技节奏与个股核心识别不稳，转ETF仍须择时。</a></td><td class="repeat-hit"><a href="../../2026-07-06_2026-07-10/">多次科技追高与承接失效追加；本人回看不能按连板做。</a></td><td class="repeat-hit"><a href="../2026-09/#reflection-week-1">高潮后追高、补涨期做非主导科技与ETF。</a></td><td class="repeat-hit"><a href="../2026-09/#stock-002584">西陇非唯一高标参与并追加。</a></td><td><strong>只做熟悉的科技趋势/低吸；接力例外须更严格唯一性与阶段验证，ETF不豁免。</strong><small>用量能或一次回拉代替核心地位和市场主导风格。</small></td></tr><tr data-error-id="protection"><th scope="row"><strong>选对龙头，却没有把天时变成兑现</strong><span class="repeat-label">至少3个月有证据</span><small>有证据月份：3</small></th><td class="repeat-hit"><a href="../../2026-06-08_2026-06-12/">大有周一扩大利润，次日保护不足回吐。</a></td><td class="">未计独立证据</td><td class="repeat-hit"><a href="../../2026-08-10_2026-08-15/">最高标弱开未及时保护，风范等样本暴露退出缺口。</a></td><td class="repeat-hit"><a href="../2026-09/#reflection-week-5">闽东高度压力下兑现不足；国芳尾端与爱仕达退出问题。</a></td><td><strong>开仓就写强弱环境退出与可卖保护；触发个人监管压力时按该票80%/20%处理。</strong><small>知道环境弱，但持有预期与风险预算仍沿用强环境。</small></td></tr><tr data-error-id="entry"><th scope="row"><strong>该等确认时抢，该拿先手时迟</strong><span class="repeat-label">至少3个月窗口错误</span><small>有证据月份：3</small></th><td class="">未计独立证据</td><td class="repeat-hit"><a href="../../2026-07-24_2026-08-01/">主升3第一天没先手，第二天硬上。</a></td><td class="repeat-hit"><a href="../2026-09/#stock-600721">百花二波错过尾盘窗口，后面再追。</a></td><td class="repeat-hit"><a href="../2026-09/#reflection-week-3">时代分时买点错，欢瑞抢同身位PK。</a></td><td><strong>按模式写独立择时与分时触发；错过不可拿另一模式的买点补救。</strong><small>把主升3、普通龙头、补涨和二波当成一种“强了就买”。</small></td></tr></tbody></table></div><p class="section-note">再犯矩阵统计有来源的覆盖月份，不是精确交易次数；同一事件可对应多类错误，类别数不能相加成闭环数。9月本人概括6次主要失误闭环，不拿来当整个6–9月总次数。</p><p class="section-note">“再犯”指同类行为仍在后续发生，不是新增虚拟亏损，也不把桂林的自动回补标记升级为本人未确认的违规。</p></section>
+        <section class="panel" id="core"><h2>同一只龙头：为什么前段吃肉，后段受伤？</h2><figure class="contrast-figure"><figcaption>盈利不是股票名字带来的，关键在阶段、买点与风控。</figcaption><div class="chart-scroll"><svg class="comparison-chart" viewBox="0 0 900 380" role="img" aria-label="立新能源、百花医药、哈药股份不同阶段两轮交易的盈亏对照"><rect width="900" height="380" fill="white"/><g data-pair="立新能源"><text x="18" y="54" class="chart-name">立新能源</text><text x="18" y="75" class="chart-note">两轮交易，不是同一轮</text><text x="170" y="54" class="chart-note">前段</text><rect x="210" y="38" width="266.27" height="24" fill="#08764f"/><text x="484.27" y="55" class="chart-value">+2,050.00</text><text x="170" y="94" class="chart-note">后段</text><rect x="210" y="78" width="550.00" height="24" fill="#b42332"/><text x="768.00" y="95" class="chart-value">-4,234.39</text><text x="210" y="124" class="chart-note">07.21–07.24前段 / 07.28–07.29 · 前段未计费，后段含费</text></g><g data-pair="百花医药"><text x="18" y="170" class="chart-name">百花医药</text><text x="18" y="191" class="chart-note">两轮交易，不是同一轮</text><text x="170" y="170" class="chart-note">前段</text><rect x="210" y="154" width="144.88" height="24" fill="#08764f"/><text x="362.88" y="171" class="chart-value">+1,115.44</text><text x="170" y="210" class="chart-note">后段</text><rect x="210" y="194" width="166.73" height="24" fill="#b42332"/><text x="384.73" y="211" class="chart-value">-1,283.64</text><text x="210" y="240" class="chart-note">08.11–08.12 / 08.27–08.31 · 均为含费闭环</text></g><g data-pair="哈药股份"><text x="18" y="286" class="chart-name">哈药股份</text><text x="18" y="307" class="chart-note">两轮交易，不是同一轮</text><text x="170" y="286" class="chart-note">前段</text><rect x="210" y="270" width="111.06" height="24" fill="#08764f"/><text x="329.06" y="287" class="chart-value">+855.03</text><text x="170" y="326" class="chart-note">后段</text><rect x="210" y="310" width="13.04" height="24" fill="#b42332"/><text x="231.04" y="327" class="chart-value">-100.39</text><text x="210" y="356" class="chart-note">07.14–07.17 / 09.24–09.28后轮 · 均为含费闭环</text></g></svg></div></figure><div class="contrast-cases"><article><h3>立新能源</h3><p><a href="#sample-lixin-first">前段 +2,050.00</a> / <a href="../../2026-07-24_2026-08-01/#stocks">后段 -4,234.39</a><small>可见价差，未计费；不是账户净收益；含费本轮闭环；排除重复7/24卖出。</small></p><p><b>差别：</b>前段核心方向有效；主升3第一天无先手，第二天硬追。</p><p><b>规则：</b>同票换阶段必须重新验模式；无第一天先手不延用前段盈利信心。</p></article><article><h3>百花医药</h3><p><a href="#sample-baihua-first">前段 +1,115.44</a> / <a href="../2026-09/#stock-600721">后段 -1,283.64</a><small>含费完整闭环；含费本轮闭环，跨周只记一次。</small></p><p><b>差别：</b>最高标唯一性有效；老龙二波错过严格窗口后迟买并追加。</p><p><b>规则：</b>二波突破上一波最高价、当日相对昨收涨幅达到5%，当天尾盘确认；错过不追、不摊成本。</p></article><article><h3>哈药股份</h3><p><a href="#sample-hayao-first">前段 +855.03</a> / <a href="../2026-09/#stock-600664">后段 -100.39</a><small>含费完整闭环；含费后轮；非两轮合计-109.82。</small></p><p><b>差别：</b>前段核心强度兑现；9月不熟悉的深水反核不匹配当时市场。</p><p><b>规则：</b>老龙名字不豁免本次阶段与熟练度；反核不是跌得深。</p></article></div><p class="section-note">这里只比较两轮选定样本，不能推导完整个股周期净收益、策略胜率或“亏损本可全部避免”。立新前后口径不同，尤其不能据此算利润抵销百分比。</p></section>
         <section class="panel" id="months">
-          <h2>6-7-8月拆解</h2>
-          <p class="section-note">先按二次反思提炼，不强行合并成自然月总收益。自然月盈亏排行、期末持仓浮盈浮亏和全部成交时间，等完整月度页再回填。</p>
-          <div class="grid-3">
-            
+          <h2>6–9月：进步到了哪里，哪里仍在原地？</h2>
+          <p class="section-note">按事件所在月份拆解。8月前半段盈利与后段亏损分别看；9月阶段页跨8/15–9/30，不整段重复计入两个月。</p>
+          <div class="grid-2">
         <article class="card month-snapshot neg">
           <div class="card-head">
-            <h3>6月</h3>
-            <span class="chip neg">主升2未掌握</span>
+            <h3>6月 · 基线</h3>
+            <span class="chip neg">识别核心，但阶段与保护不稳</span>
           </div>
           <div class="mini-stack">
-            <p><b>做对：</b>大有能源这类第一性、唯一性样本开始做对，趋势科技不会选个股时转向ETF的意识开始形成。</p>
-            <p><b>做错：</b>诺德和大唐周期处理差：大唐发电作为标准龙头周期没有主攻，反而在尾段或旁支里处理，属于不会做主升2的系统性错误。</p>
-            <p><b>结论：</b>主升2不是尾段追强，也不是后排替代；必须在节点成型时围绕总龙/核心龙头处理。</p>
+            <p><b>做对：</b>大有能源6/3–6/5前段含费闭环+1,433.94元，唯一性与核心方向开始有正样本。</p>
+            <p><b>做错：</b>大唐标准主升2周期未主攻，诺德旧仓处理差；大有后段利润回吐，粤电力走弱追加。</p>
+            <p><b>结论：</b>先学会正确阶段围绕核心，再把认错和保护动作前置。</p>
           </div>
         </article>
         <article class="card month-snapshot warn">
           <div class="card-head">
             <h3>7月</h3>
-            <span class="chip warn">主升3吃大亏</span>
+            <span class="chip warn">主升2进步，主升3无先手重伤</span>
           </div>
           <div class="mini-stack">
-            <p><b>做对：</b>哈药股份与立芯/立新一类龙头周期做进去时，反馈舒服，说明龙头识别和核心处理能力在变强。</p>
-            <p><b>做错：</b>7/4、7/10、7/13科技方向追高，没有按趋势低吸节奏处理；立新能源主升3第一天没拿先手，第二天仍硬上，连续大幅亏损，用户口述回撤超过20个点。</p>
-            <p><b>结论：</b>主升3是先手游戏：第一天没有先手，第二天不再追；趋势科技不按连板做，必须练低吸与ETF替代。</p>
+            <p><b>做对：</b>哈药7/14–7/17含费+855.03；立新前段价差+2,050.00（未计费），围绕龙头有有效反馈。</p>
+            <p><b>做错：</b>立新主升3第一天没有先手，7/28追入、7/29含费-4,234.39；科技追高、承接塌陷时摊成本。</p>
+            <p><b>结论：</b>做对一个龙头名字，不等于它的每个阶段都能做。阶段切换后必须重新过买点与预算。</p>
           </div>
         </article>
-        <article class="card month-snapshot pos">
+        <article class="card month-snapshot warn">
           <div class="card-head">
-            <h3>8月截至08.15</h3>
-            <span class="chip pos">正收益 / 回撤收敛</span>
+            <h3>8月</h3>
+            <span class="chip warn">最高标有效，补涨与二波识别不足</span>
           </div>
           <div class="mini-stack">
-            <p><b>做对：</b>最高标抱团和龙头唯一性做对，百花医药这类最高标确认后敢上，是本阶段最重要的正反馈。</p>
-            <p><b>做错：</b>最高标不及预期开在-4/-3以下、没有快速拉板时，未能第一时间走；科技高潮后仍想追高或继续吸，造成利润回吐。</p>
-            <p><b>结论：</b>启动共振日可以头铁，高潮次日要卖分歧；科技低吸可以，追高只允许发生在指数、板块、赚钱效应共振的启动点。</p>
+            <p><b>做对：</b>百花8/11–8/12最高标含费+1,115.44，唯一性识别和兑现有明确正样本。</p>
+            <p><b>做错：</b>前段弱开未及时保护；后段医药补涨没认清，科技错误切换。汉森+597.77为运气盈利；百花错过二波窗口后追加。</p>
+            <p><b>结论：</b>不能把8月前半段的进步和正反馈当作完整8月结果。补涨、切换、二波要分模式。</p>
           </div>
         </article>
+        <article class="card month-snapshot warn">
+          <div class="card-head">
+            <h3>9月</h3>
+            <span class="chip warn">买点细化，弱环境退出开始改善</span>
           </div>
-        </section>
-
-        <section class="panel" id="sources">
-          <h2>每周结果与复盘反思</h2>
-          <p class="section-note">先看每周的复盘反思，再对照金额变化。周涨幅优先采用已补周收益率（每日收益率相加），未补周沿用原周复盘值；金额缺失先用可见闭环计算值，期末金额缺失按上一期金额加本期变化推算。计算、推算与暂估值已标注，后续用账户数据校准。</p>
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>周度区间</th>
-                  <th>周涨幅</th>
-                  <th>实际盈亏金额（元）</th>
-                  <th>期末金额（元）</th>
-                  <th>每周复盘反思 / 下一步规则</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-    <td><a class="blue" href="../../2026-06-01_2026-06-05/">06.01-06.05</a></td>
-    <td><strong class="neg">-0.13%</strong></td>
-    <td><strong class="neg">-31.00</strong></td>
-    <td><strong>23,598.74</strong></td>
-    <td class="weekly-reflection"><strong>从看强弱升级为看题材地位</strong><p>大有能源的唯一性、竞价和封单强度判断做对；粤电力A走弱后加仓、中京电子和鑫科材料非第一性参与是错误。下一步：走弱不加仓，只围绕唯一核心，买前写保护线。</p><a class="blue" href="../../2026-06-01_2026-06-05/">查看完整周复盘 →</a></td>
-  </tr><tr>
-    <td><a class="blue" href="../../2026-06-08_2026-06-12/">06.08-06.12</a></td>
-    <td><strong class="neg">-2.00%</strong></td>
-    <td><strong class="neg">-466.00</strong></td>
-    <td><strong>22,879.00</strong></td>
-    <td class="weekly-reflection"><strong>抓到龙头，更要保护利润</strong><p>大有能源周一扩大盈利，周二未按强弱及时保护导致大幅回吐；天娱数科条件止损有效。下一步：第三板弱板减半保护、强板不机械减半，第四天以验证为主。</p><a class="blue" href="../../2026-06-08_2026-06-12/">查看完整周复盘 →</a></td>
-  </tr><tr>
-    <td><a class="blue" href="../../2026-06-15_2026-06-20/">06.15-06.20</a></td>
-    <td><strong class="neg">-1.31%</strong></td>
-    <td><strong class="neg">-299.00</strong></td>
-    <td><strong>22,567.00</strong><small class="source-tag">截至6/18</small></td>
-    <td class="weekly-reflection"><strong>趋势核心与试错仓要分清</strong><p>中化国际旧仓退出，科技链小仓闭环有正贡献，诺德成为期末主仓。下一步：用行业地位、抗跌和回拉速度筛选第一性；小仓盈利不能自动升级为核心，诺德买点与止损预案待二次反思确认。</p><a class="blue" href="../../2026-06-15_2026-06-20/">查看完整周复盘 →</a></td>
-  </tr><tr>
-    <td><a class="blue" href="../../2026-06-22_2026-06-26/">06.22-06.26</a></td>
-    <td><strong class="neg">-21.50%</strong></td>
-    <td><strong class="neg">-4,839.42</strong><small class="source-tag">暂估</small></td>
-    <td><strong>17,671.22</strong><small class="source-tag">暂估</small></td>
-    <td class="weekly-reflection"><strong>止损后切仓，要重新判断节点</strong><p>诺德止损是最大亏损源，海欣、大唐切换后再进入亨通系；后续阶段反思指出大唐标准周期未主攻、尾段才参与。下一步：主升2在节点成型时围绕核心，避免亏损后连续切到旁支。</p><a class="blue" href="../../2026-06-22_2026-06-26/">查看完整周复盘 →</a></td>
-  </tr><tr>
-    <td><a class="blue" href="../../2026-06-29_2026-07-04/">06.29-07.04</a></td>
-    <td><strong class="neg">-10.03%</strong></td>
-    <td><strong class="neg">-1,741.00</strong></td>
-    <td><strong>15,858.00</strong></td>
-    <td class="weekly-reflection"><strong>科技趋势不要用连板追涨思维</strong><p>科技退潮后高位风险未及时退出，ETF浮盈保护不够；个股选择不稳时不应承担主仓。下一步：趋势行情优先ETF，二高、三高保护利润，冰点反核要结合指数和板块。</p><a class="blue" href="../../2026-06-29_2026-07-04/">查看完整周复盘 →</a></td>
-  </tr><tr>
-    <td><a class="blue" href="../../2026-07-06_2026-07-10/">07.06-07.10</a></td>
-    <td><strong class="neg">-0.44%</strong></td>
-    <td><strong class="neg">-262.00</strong></td>
-    <td><strong>15,596.00</strong></td>
-    <td class="weekly-reflection"><strong>反核择时有效，承接塌陷不能摊平</strong><p>周二空仓、周三小仓试错、周四三冰反核ETF做对；周一进早、周五科技被商业航天虹吸后继续摊平是问题。下一步：强修复降仓，弱修复减仓，不修复认错。</p><a class="blue" href="../../2026-07-06_2026-07-10/">查看完整周复盘 →</a></td>
-  </tr><tr>
-    <td><a class="blue" href="../../2026-07-10_2026-07-18/">07.13-07.17</a></td>
-    <td><strong class="pos">+1.68%</strong></td>
-    <td><strong class="neg">-533.37</strong><small class="source-tag">计算值</small></td>
-    <td><strong>15,062.63</strong><small class="source-tag">推算</small></td>
-    <td class="weekly-reflection"><strong>龙头盈利与科技追高形成对照</strong><p>哈药股份买入后等待强度兑现形成正贡献，半导ETF闭环亏损。下一步：围绕龙头保持节奏，趋势科技以低吸和快进快出为主；该周个人二次反思仍待补。</p><a class="blue" href="../../2026-07-10_2026-07-18/">查看完整周复盘 →</a></td>
-  </tr><tr>
-    <td><a class="blue" href="../../2026-07-20_2026-07-24/">07.20-07.24</a></td>
-    <td><strong class="pos">+11.10%</strong></td>
-    <td><strong class="pos">+1,816.40</strong></td>
-    <td><strong>17,648.65</strong></td>
-    <td class="weekly-reflection"><strong>围绕核心做T，转强仓位要及时</strong><p>立新能源方向识别和卖点执行较坚决；转强次日加仓偏晚，科技反弹参与不足。下一步：主线龙头、弱修复和次新试错分层，只有核心确认才提高仓位。</p><a class="blue" href="../../2026-07-20_2026-07-24/">查看完整周复盘 →</a></td>
-  </tr><tr>
-    <td><a class="blue" href="../../2026-07-24_2026-08-01/">07.27-07.31</a></td>
-    <td><strong class="neg">-26.79%</strong></td>
-    <td><strong class="neg">-4,434.59</strong><small class="source-tag">计算值</small></td>
-    <td><strong>13,214.06</strong><small class="source-tag">推算</small></td>
-    <td class="weekly-reflection"><strong>主升3没有先手，次日不能硬追</strong><p>立新能源二次参与成为阶段最大亏损样本；阶段反思指出第一天没上，第二天仍硬上。下一步：无第一天先手默认不追，重新参与先判断周期，不盯盘不打大仓位。</p><a class="blue" href="../../2026-07-24_2026-08-01/">查看完整周复盘 →</a></td>
-  </tr><tr>
-    <td><a class="blue" href="../../2026-07-31_2026-08-08/">08.03-08.07</a></td>
-    <td><strong class="neg">-8.44%</strong></td>
-    <td><strong class="pos">+186.27</strong><small class="source-tag">计算值</small></td>
-    <td><strong>13,400.33</strong><small class="source-tag">推算</small></td>
-    <td class="weekly-reflection"><strong>小闭环控制节奏，未平仓风险单独看</strong><p>半导ETF快进快出小赚，一鸣食品跨周小赚；风范股份期末未平仓不能用闭环盈利判断整周结果。下一步：科技弹性试错不升级仓位，核心低开不及预期时先执行保护线。</p><a class="blue" href="../../2026-07-31_2026-08-08/">查看完整周复盘 →</a></td>
-  </tr><tr>
-    <td><a class="blue" href="../../2026-08-10_2026-08-15/">08.10-08.14</a></td>
-    <td><strong class="pos">+12.63%</strong></td>
-    <td><strong class="pos">+1,560.94</strong></td>
-    <td><strong>13,594.00</strong></td>
-    <td class="weekly-reflection"><strong>最高标唯一性做对，科技逆境追高要停止</strong><p>百花医药的最高标唯一性、竞价强度和T字板介入做对；科技环境未稳时追高造成利润回吐。下一步：科技以低吸为主，追高仅限指数、板块与赚钱效应共振启动日。</p><a class="blue" href="../../2026-08-10_2026-08-15/">查看完整周复盘 →</a></td>
-  </tr>
-              </tbody>
-            </table>
+          <div class="mini-stack">
+            <p><b>做对：</b>百大唯一性确认+69.22，内蒙三组条件单+380.86；9/29空仓，后段有边界试错改善。</p>
+            <p><b>做错：</b>时代分时错、欢瑞抢PK、爱仕达弱切换仓位过重、西陇摊成本；国芳尾端、闽东兑现不足。</p>
+            <p><b>结论：</b>阶段→模式→唯一性→买点→预算→退出。合理试错失败、运气盈利与明确大错误分开评分。</p>
           </div>
+        </article></div>
         </section>
-
-        <section class="panel" id="core">
-          <h2>真正应该做的核心票</h2>
-          <p class="section-note">轻量定龙审判：只判断是否围绕第一性/唯一性，不展开完整月度票级买卖点地图。</p>
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>阶段</th>
-                  <th>真正应该盯的核心</th>
-                  <th>实际处理</th>
-                  <th>定龙是否正确</th>
-                  <th>定龙证据</th>
-                  <th>偏离原因</th>
-                  <th>审判</th>
-                </tr>
-              </thead>
-              <tbody>
-                
-        <tr>
-          <td><strong>6月大唐周期</strong></td>
-          <td>大唐发电 / 当期最高辨识度核心</td>
-          <td>诺德、大唐尾段及其他方向</td>
-          <td><span class="chip neg">否</span></td>
-          <td>用户二次反思明确：大唐发电龙头周期很标准，但当时没有做，说明主升2不会做。</td>
-          <td>判断慢；主升2节点理解不足；尾段才介入。</td>
-          <td>不是个别买点错，是没有在主升2核心节点围绕龙头做。</td>
-        </tr>
-        <tr>
-          <td><strong>7月龙头正样本</strong></td>
-          <td>哈药股份；立芯/立新类龙头样本</td>
-          <td>参与龙头周期</td>
-          <td><span class="chip pos">是</span></td>
-          <td>用户反思：哈药龙头做对，立芯/立新作为龙头做对，做进去就赚钱且反馈舒服。</td>
-          <td>围绕龙头；没有跑到后排。</td>
-          <td>这类动作要继续复制。</td>
-        </tr>
-        <tr>
-          <td><strong>7月主升3样本</strong></td>
-          <td>立新能源第一天先手，或第二天直接放弃</td>
-          <td>第一天没上，第二天追入并连续承压</td>
-          <td><span class="chip neg">否</span></td>
-          <td>用户口述：主升3是彻底先手游戏，第二天硬上后吃天地板和地板，合计亏损20多个点。</td>
-          <td>没有先手还追；把主升3当主升2处理。</td>
-          <td>阶段主罪，系统伤害最大。</td>
-        </tr>
-        <tr>
-          <td><strong>8月最高标抱团</strong></td>
-          <td>百花医药这类最高标唯一性确认票</td>
-          <td>百花医药盈利闭环</td>
-          <td><span class="chip pos">是</span></td>
-          <td>08.10-08.15周复盘：百花医药最高标唯一性、竞价强度、T字板介入同时做对。</td>
-          <td>高开确认、对手破板、唯一性清晰。</td>
-          <td>下阶段最该保留的正反馈。</td>
-        </tr>
-        <tr>
-          <td><strong>6-8月科技趋势</strong></td>
-          <td>低吸前排或ETF；只在指数/板块/赚钱效应共振启动日追高</td>
-          <td>7/4、7/10、7/13及8月部分节点追高</td>
-          <td><span class="chip warn">否/需复核</span></td>
-          <td>用户二次反思与08.10-08.15周复盘均指向：科技不应逆境追高，高潮次日更不能追。</td>
-          <td>把趋势科技当连板情绪处理；高潮后不卖分歧。</td>
-          <td>趋势系统仍未稳定，需要规则化。</td>
-        </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-
+        <section class="panel" id="reflection" data-status="integrated"><div class="quarter-section-head"><div><p class="section-note">新增 · 已确认9月阶段复盘</p><h2>9月补上的关键认知</h2></div><a class="blue" href="../2026-09/#reflection">完整二次反思</a></div><ol class="september-points"><li><b>先认题材阶段与赚钱效应。</b>有补涨优先补涨，强切换例外要有题材效应、合适节点与较低试错预算；不是一律禁止切换。</li><li><b>买点不能互借。</b>普通龙头先唯一性，再首次触板或封板确认；补涨三板是主要观察节点；二波突破上一波最高价、当日相对昨收涨幅达到5%，当天尾盘确认后买，不等次日追。</li><li><b>止住错误追加。</b>百花错过窗口后追加、西陇为摊低成本加仓，是明确错误；西陇跨9/17–9/21只记一个闭环。昊华是错误科技切换，不再写成二波迟买。</li><li><b>定龙正确也不豁免天时。</b>闽东切换方向正确，但高度与监管压力下兑现不足；国芳尾段介入要先验空间。个人减仓规则卖该票80%、留20%观察，不是账户降至两成。</li><li><b>结果与质量分开。</b>汉森为运气盈利；金螳、秦安赚但不合模式；桂林方向认可且回补细节不裁定；南华/天威等有边界失败不因亏损统一判非模式。</li><li><b>后段改善值得保留。</b>内蒙按条件单兑现，9/29空仓；9/30闽东100股仍未闭环，浮盈浮亏按本人要求不计。合理等待比为了出手临盘换模式更可复制。</li></ol><p class="section-note">9月阶段页范围是8/15–9/30，本文按事件归回8月、9月，不重复叠加整段-3,365.51元。本人概括的6次主要失误是交易闭环，不是6笔成交或全季总数。</p><details class="quarter-note"><summary>模式规则的适用边界</summary><p>5%基准是昨收，不是上一波最高价。3/5/8/12/30天为基于消息的主观预计持续时间；补涨约四板为经验范围。监管指标须按交易所连续30个交易日收盘价涨跌幅偏离值累计核验，约20个百分点缓冲和80%/20%动作是个人规则，非交易所强制要求。</p><a class="blue" href="../2026-09/#reflection-models">已确认三类买点与监管说明</a><p>指标依据：<a class="blue" href="https://docs.static.szse.cn/www/lawrules/rule/trade/current/W020260424690713155663.pdf" target="_blank" rel="noopener noreferrer">深交所交易规则（2026年修订）第5.4.4条</a>。具体个股仍须核验所属市场与板块规则，不把指标直接等同于固定连板高度。</p></details></section>
         <section class="panel" id="stages">
-          <h2>主升阶段能力图</h2>
-          <p class="section-note">这部分是这次6-8月最关键的系统进化图：不要把主升1、主升2、主升3混成一个“龙头追涨”。</p>
-          <div class="grid-4">
-            
-        <article class="card stage-card warn">
+          <h2>能力图：优势、形成中、训练区</h2>
+          <p class="section-note">回看能解释，和盘中能稳定执行，是两回事。主升1/2/3、补涨、二波、科技趋势不合并成一个“龙头追涨”。</p>
+          <div class="grid-3">
+        <article class="card stage-card pos">
           <div class="card-head">
-            <h3>主升1</h3>
-            <span class="chip warn">待训练</span>
+            <h3>主升2式核心确认</h3>
+            <span class="chip pos">目前最强证据</span>
           </div>
-          <p>核心是1进2水平和早期辨识度判断，目前还没有形成稳定打法。</p>
-          <p><b>下一步：</b>盘前必须列一进二候选，分清题材第一、市场第一和试错票。</p>
+          <p>6月未掌握，7–8月核心龙正反馈增多；目前最有重复正样本支持的是明确节点下的第一唯一性龙头。</p>
+          <p><b>下一步：</b>继续围绕题材、身位、量能、核心承接确认；胜出后也要做风险保护，不是无条件追涨。</p>
         </article>
         <article class="card stage-card pos">
           <div class="card-head">
-            <h3>主升2</h3>
-            <span class="chip pos">已明显进化</span>
+            <h3>最高标抱团</h3>
+            <span class="chip pos">相对优势</span>
           </div>
-          <p>6月不会做，7月后开始能围绕节点和核心龙头，说明这一段已经从认知变成可执行动作。</p>
-          <p><b>下一步：</b>主升2必须盯盘，节点到来时只围绕最高辨识度核心上仓位。</p>
-        </article>
-        <article class="card stage-card neg">
-          <div class="card-head">
-            <h3>主升3</h3>
-            <span class="chip neg">主攻短板</span>
-          </div>
-          <p>立新能源样本证明主升3不是追确认，而是先手游戏；没有第一天先手，第二天风险收益失衡。</p>
-          <p><b>下一步：</b>主升3第一天不上，第二天默认不做；除非竞价和承接极端超预期并重新给出买点。</p>
+          <p>百花前段和本人8月反思有明确支持；闽东方向正确也说明识别有能力，但高度压力下兑现未稳定。</p>
+          <p><b>下一步：</b>将高度、监管与退出一起验证，不把唯一性当风险豁免。</p>
         </article>
         <article class="card stage-card warn">
           <div class="card-head">
-            <h3>趋势科技</h3>
-            <span class="chip warn">需重练</span>
+            <h3>条件单兑现</h3>
+            <span class="chip warn">正在形成</span>
           </div>
-          <p>科技、PCB、半导一类不能按连板追高处理。个股选不准时，ETF比杂乱追票更优。</p>
-          <p><b>下一步：</b>只低吸前排，或用ETF；追高只允许在指数共振启动日发生。</p>
+          <p>内蒙三组兑现、9/29等待是进步；前段大有、风范、爱仕达、国芳仍有保护缺口。</p>
+          <p><b>下一步：</b>持续一个月记录预案和实际触发，才能从“偶尔做对”升级为稳定能力。</p>
         </article>
+        <article class="card stage-card warn">
+          <div class="card-head">
+            <h3>补涨与总龙二波</h3>
+            <span class="chip warn">认知补齐，执行待验证</span>
           </div>
+          <p>汉森是运气盈利，百花后段是窗口错误；9月才明确补涨三板、二波尾盘与共振条件。</p>
+          <p><b>下一步：</b>先纸面逐笔判阶段与窗口，再在风险预算内验证；不能宣称已经擅长。</p>
+        </article>
+        <article class="card stage-card neg">
+          <div class="card-head">
+            <h3>主升1 / 主升3</h3>
+            <span class="chip neg">仍是短板</span>
+          </div>
+          <p>主升1一进二仍在练；主升3无先手硬上已经造成明显系统伤害，尚缺稳定正样本。</p>
+          <p><b>下一步：</b>主升3无第一天先手默认不追；不盯盘不做大仓，不从事后上涨倒推必须参与。</p>
+        </article>
+        <article class="card stage-card neg">
+          <div class="card-head">
+            <h3>科技趋势 / 反核</h3>
+            <span class="chip neg">严格受限的训练区</span>
+          </div>
+          <p>科技择时反复错误，ETF有小赚也有成本与节点失败；哈药深水反核是明确不熟悉模式错误。</p>
+          <p><b>下一步：</b>只练熟悉模式，有假设、有小仓、有退出；不把工具替代或跌深当成买点。</p>
+        </article></div>
         </section>
-
         <section class="panel" id="score">
-          <h2>阶段评分</h2>
-          <p class="section-note">这是二次反思版主观评分，等完整月度账户数据和票级排行补齐后再校准。</p>
+          <h2>系统评分 · 1–5分</h2>
+          <p class="section-note">主观诊断，不是策略统计。按风控质量 &gt; 定龙质量 &gt; 执行纪律 &gt; 买卖点质量 &gt; 仓位集中度排列；缺失数据不伪装成精确胜率。</p>
           <div class="grid-3">
-            
-        <article class="score-card warn">
+        <article class="score-card neg">
           <div class="score-top">
             <span>风控质量</span>
-            <strong>3/5</strong>
+            <strong>2/5</strong>
           </div>
-          <p>8月回撤控制明显改善，但-4/-3不及预期开盘未快速退出、动态条件单未跟上，仍是硬伤。</p>
-          <small>1分：完全失控 / 3分：知道规则但执行不稳 / 5分：盘前有规则、盘中能执行、盘后可复核。</small>
+          <p>6月回吐、7月主升3重伤、8月弱开保护、9月摊成本与高度兑现均有证据；内蒙和后段等待是改善，不代表稳定。</p>
+          <small>1：失效仍扩风险 / 3：多数按预案退出 / 5：预算和保护持续执行</small>
         </article>
         <article class="score-card pos">
           <div class="score-top">
             <span>定龙质量</span>
-            <strong>3.5/5</strong>
-          </div>
-          <p>从6月错过大唐发电，到7-8月能做哈药、立新能源、百花医药，定龙能力在进化。</p>
-          <small>1分：完全失控 / 3分：知道规则但执行不稳 / 5分：盘前有规则、盘中能执行、盘后可复核。</small>
-        </article>
-        <article class="score-card warn">
-          <div class="score-top">
-            <span>执行纪律</span>
             <strong>3/5</strong>
           </div>
-          <p>龙头上能执行，但仍有不盯盘下单、科技高潮后继续追、无先手硬上的问题。</p>
-          <small>1分：完全失控 / 3分：知道规则但执行不稳 / 5分：盘前有规则、盘中能执行、盘后可复核。</small>
+          <p>多段核心正样本证明有识别优势；但阶段错配、抢PK和非唯一科技仍反复。</p>
+          <small>1：后排为主 / 3：部分核心做对 / 5：第一唯一性持续验证</small>
         </article>
         <article class="score-card neg">
           <div class="score-top">
-            <span>买卖点质量</span>
-            <strong>2.5/5</strong>
+            <span>执行纪律</span>
+            <strong>2/5</strong>
           </div>
-          <p>科技追高、主升3第二天追、卖点条件单不前置，说明买卖点仍需要靠规则强制。</p>
-          <small>1分：完全失控 / 3分：知道规则但执行不稳 / 5分：盘前有规则、盘中能执行、盘后可复核。</small>
+          <p>摊低成本、无先手追、不熟悉反核与非盯盘下单尚未彻底消失；汉森运气盈利不抬分。</p>
+          <small>1：红线重复 / 3：主规则执行偶失误 / 5：触发与失效按预案</small>
         </article>
-        <article class="score-card pos">
+        <article class="score-card warn">
+          <div class="score-top">
+            <span>买卖点质量</span>
+            <strong>2/5</strong>
+          </div>
+          <p>主升3先手、二波尾盘、时代分时和欢瑞唯一性要分别纠正；有效兑现样本保留。</p>
+          <small>1：模式窗口混用 / 3：部分核心有效 / 5：择时和分时均服从模式</small>
+        </article>
+        <article class="score-card warn">
           <div class="score-top">
             <span>仓位集中度</span>
-            <strong>3.5/5</strong>
+            <strong>3/5</strong>
           </div>
-          <p>8月开始围绕最高标和核心处理，仓位错误没有明显放大；但不盯盘时仍不能上大仓位。</p>
-          <small>1分：完全失控 / 3分：知道规则但执行不稳 / 5分：盘前有规则、盘中能执行、盘后可复核。</small>
-        </article>
-          </div>
+          <p>围绕核心有优势，但弱切换重仓与弱势追加说明集中不等于风险合理。9月阶段最多同时3只，不拿24只交易数当持仓分散。</p>
+          <small>1：发散无预算 / 3：集中但阶段风险不稳 / 5：核心与暴露均匹配天时</small>
+        </article></div>
         </section>
-
-        <section class="panel" id="right">
-          <h2>好的动作：继续复制</h2>
-          <p class="section-note">这里抓的不是某一笔盈利，而是能反复带来正期望的动作。</p>
-          <div class="grid-2">
-            
-        <article class="card compact-card">
-          <span class="number">01</span>
-          <p>最高标抱团和龙头唯一性看清楚后敢做，百花医药是最该复制的样本。</p>
-        </article>
-        <article class="card compact-card">
-          <span class="number">02</span>
-          <p>主升2从不会做到开始会做，说明规则正在从复盘文字进入盘中动作。</p>
-        </article>
-        <article class="card compact-card">
-          <span class="number">03</span>
-          <p>趋势科技选股没有把握时，用ETF替代个股，能减少非核心个股伤害。</p>
-        </article>
-        <article class="card compact-card">
-          <span class="number">04</span>
-          <p>8月错误仓位没有明显放大，回撤控制比7月更稳，这是账户层面最重要的进步。</p>
-        </article>
-        <article class="card compact-card">
-          <span class="number">05</span>
-          <p>开始意识到题材梯队要放进自选池，用二板、三板及以上票做强度跟踪。</p>
-        </article>
-          </div>
-        </section>
-
-        <section class="panel" id="wrong">
-          <h2>共性问题：主罪 + 次罪 + 隐患</h2>
-          <p class="section-note">按系统伤害排序，不按单笔金额排序。</p>
-          <div class="grid-2">
-            
-        <article class="verdict-card neg">
-          <div class="card-head">
-            <h3>主罪：主升3没有第一天先手，第二天还硬上</h3>
-            <span class="chip neg">系统伤害最大</span>
-          </div>
-          <p>立新能源样本说明：主升3不是等确认后追，而是第一天就要拿先手。第一天没上，第二天再追，容易直接接天地板和次日地板。</p>
-        </article>
-        <article class="verdict-card warn">
-          <div class="card-head">
-            <h3>次罪：趋势科技高潮后追高，不按低吸/ETF节奏做</h3>
-            <span class="chip warn">重复伤害</span>
-          </div>
-          <p>7/4、7/10、7/13以及8月部分科技动作，本质都是把趋势题材当连板处理。启动共振日可以头铁，高潮次日应该卖分歧。</p>
-        </article>
-        <article class="verdict-card warn">
-          <div class="card-head">
-            <h3>隐患：不及预期开盘没有条件单先保护</h3>
-            <span class="chip warn">风控缺口</span>
-          </div>
-          <p>最高标开在-4/-3以下、没有快速拉板，先退出再观察。风范股份这种低开样本，应该把-5作为硬保护线。</p>
-        </article>
-        <article class="verdict-card neg">
-          <div class="card-head">
-            <h3>隐患：不盯盘也下单，容易变成随手单</h3>
-            <span class="chip neg">执行污染</span>
-          </div>
-          <p>立新能源在外面吃饭时下单就是反例。大仓位只能发生在盯盘状态，不能把临盘随机冲动包装成模式交易。</p>
-        </article>
-          </div>
-        </section>
-
         <section class="panel" id="rules">
-          <h2>落地铁律</h2>
-          <p class="section-note">后续每个月都要回看这些规则是否被执行，重复违反就标红线再犯。</p>
+          <h2>落地规则</h2>
+          <p class="section-note">这是本人复盘形成的执行规则，不是未来盈利保证。确认买点仍要先检查风险预算与可卖保护。</p>
           <ul class="rule-list">
-            
         <li>
           <b>1</b>
-          <span><strong>不及预期开盘：</strong>-4/-3以下开、不能快速拉板、继续向下跳，先走；同时设置-5动态条件单。</span>
+          <span><strong>先天时，再阶段与模式：</strong>先判赚钱效应和新旧题材所处阶段，再选票；有补涨优先补涨，强切换例外仍需合适节点与较低试错预算。</span>
         </li>
         <li>
           <b>2</b>
-          <span><strong>主升3：</strong>第一天没有先手，第二天默认不追。主升3不是确认游戏，是先手游戏。</span>
+          <span><strong>四类买点分开：</strong>主升3先手、普通龙头板上确认、补涨三板、总龙二波尾盘窗口不互相借用；同身位唯一性未胜出不抢。</span>
         </li>
         <li>
           <b>3</b>
-          <span><strong>主升2：</strong>节点成型时只做最高辨识度核心；尾段再追、后排替代，都不算主升2。</span>
+          <span><strong>二波严格窗口：</strong>突破上一波最高价，且当日相对昨收涨幅达到5%，当天尾盘确认后买；仍查共振与监管空间。错过不追、不摊成本。</span>
         </li>
         <li>
           <b>4</b>
-          <span><strong>趋势科技：</strong>不会抓个股就做ETF；要做个股必须低吸前排，追高只允许指数/板块/赚钱效应共振启动日。</span>
+          <span><strong>弱势追加停止：</strong>只因价格更低、想降低成本，不构成新确认；禁止为摊低成本追加。科技ETF同样受模式与费用约束。</span>
         </li>
         <li>
           <b>5</b>
-          <span><strong>高潮次日：</strong>第二天高潮后，次日以卖分歧为主；可以打回封，不要上板追高。</span>
+          <span><strong>天时落实到预算与退出：</strong>强弱环境两套计划；个人监管缓冲规则触发时，卖该票持仓80%、留20%观察，不是账户只剩两成。</span>
         </li>
         <li>
           <b>6</b>
-          <span><strong>金字塔信号：</strong>越买越高、越卖越低，多半做错；越卖越高，说明利润卖早，应用条件单保护而不是急卖。</span>
+          <span><strong>保护可执行，不盯盘不大仓：</strong>弱开-3%/-4%且不能快速转强时先按预案保护；动态-5%保护等阈值必须写明参照价、触发、可卖数量与动作。T+1新买仓不能当天卖，条件单不保证成交，预算先行。</span>
         </li>
         <li>
           <b>7</b>
-          <span><strong>盯盘仓位：</strong>只有盯盘时才能把仓位打上去；不盯盘只允许轻仓或不交易。</span>
-        </li>
-          </ul>
-        </section>
-
-        <section class="panel" id="checklist">
-          <h2>下阶段执行清单</h2>
-          <p class="section-note">控制在8条以内，盘前能直接照着检查。</p>
-          <ul class="check-list">
-            
-        <li>
-          <b>1</b>
-          <span>盘前列出二板、三板及以上全部核心候选，重点看量能、题材、个股地位。</span>
-        </li>
-        <li>
-          <b>2</b>
-          <span>自选池按题材和梯队建立票池，不能把所有票混在同一列里看。</span>
-        </li>
-        <li>
-          <b>3</b>
-          <span>有明确龙头时，只围绕最高辨识度核心；没有龙头时，只做轻仓套利。</span>
-        </li>
-        <li>
-          <b>4</b>
-          <span>主升2节点必须盯盘确认，确认后围绕核心上仓位，不做尾段后排。</span>
-        </li>
-        <li>
-          <b>5</b>
-          <span>主升3第一天没先手，第二天默认放弃，不能硬接高位风险。</span>
-        </li>
-        <li>
-          <b>6</b>
-          <span>科技/PCB/半导只低吸前排或ETF，高潮后不追，上板追高禁止。</span>
-        </li>
-        <li>
-          <b>7</b>
-          <span>每笔核心仓都设置动态保护线，低开不及预期样本用-5条件单先保命。</span>
+          <span><strong>结果与质量分别记：</strong>含费闭环、账户日收益与浮盈浮亏分开；运气盈利不等于已掌握模式，合理失败不等于选错，一轮跨页不重算。</span>
         </li>
         <li>
           <b>8</b>
-          <span>不盯盘不大仓位，不在吃饭、路上、情绪上头时下随手单。</span>
+          <span><strong>题材梯队与量能每日更新：</strong>自选按题材和梯队分池，重点跟踪二板、三板及以上量能、身位和承接。沿用本人精简纪律：观察与操作总池不超8只，日常5–6只；集中不是弱天时重仓的理由。</span>
         </li>
-          </ul>
+        <li>
+          <b>9</b>
+          <span><strong>科技节奏单独验证：</strong>沿用6–8月反思：低吸前排，不把趋势当接力；指数、板块共振启动日是本人允许研究的追高例外，仍要验证确认与风险。高潮后不追；回封与直接追板分开。个股判断不稳可研究ETF替代，但择时、费用和止损不豁免。</span>
+        </li>
+        <li>
+          <b>10</b>
+          <span><strong>加减仓过程要复核：</strong>沿用金字塔加减仓复盘：越买越高、越卖越低是检查追价和失效退出的警报，不自动证明操作错；越卖越高则检查是否过早兑现，用动态保护保留空间，不事后要求卖到最高。</span>
+        </li></ul>
         </section>
-
+        <section class="panel" id="checklist">
+          <h2>下阶段执行清单 · 8条</h2>
+          <ul class="check-list">
+        <li>
+          <b>1</b>
+          <span>盘前写天时、新旧题材阶段与赚钱效应；自选分题材梯队，重点查二/三板以上量能，总池不超8只。</span>
+        </li>
+        <li>
+          <b>2</b>
+          <span>开仓写模式、第一唯一性证据和独立买点；有龙聚焦核心，无龙仅做有预算的轻仓套利，不随手切票。</span>
+        </li>
+        <li>
+          <b>3</b>
+          <span>主升3没有第一天先手默认不追；主升2节点须盯盘，不盯盘不做大仓位。</span>
+        </li>
+        <li>
+          <b>4</b>
+          <span>补涨优先三板；二波只检查前高、昨收5%与同日尾盘窗口，错过不补买。</span>
+        </li>
+        <li>
+          <b>5</b>
+          <span>为摊低成本加仓次数为0；加仓必须有新确认和原逻辑未失效证据。</span>
+        </li>
+        <li>
+          <b>6</b>
+          <span>先写最大亏损、动态保护价、可卖数量与减仓动作，再确定强弱环境预算。</span>
+        </li>
+        <li>
+          <b>7</b>
+          <span>科技高潮后不追，前排低吸与共振启动例外分开；陌生反核不硬上，ETF核算最低佣金后的空间。</span>
+        </li>
+        <li>
+          <b>8</b>
+          <span>收盘按闭环复核预案与加减仓过程；回补自动标记但不自动定罪，跨月不重复计数。</span>
+        </li></ul>
+        </section>
         <section class="panel" id="goals">
           <h2>下阶段三个目标</h2>
           <div class="grid-3">
-            
         <article class="goal-card">
           <span>01</span>
-          <h3>主升3</h3>
-          <p>把“第一天先手/第二天不追”写进盘前计划，连续执行一个月。</p>
+          <h3>阶段与模式记录100%</h3>
+          <p>每笔开仓保存天时、题材阶段、模式、唯一性和买点；无熟悉模式依据的随手单为0。</p>
         </article>
         <article class="goal-card">
           <span>02</span>
-          <h3>不及预期开盘</h3>
-          <p>所有核心仓开盘前写保护线；-4/-3弱开且不快速拉板，执行-5退出。</p>
+          <h3>摊成本追加为0</h3>
+          <p>每次加仓必须记录新确认；主升3无先手硬追、二波窗口外追入分别统计，目标均为0。</p>
         </article>
         <article class="goal-card">
           <span>03</span>
-          <h3>趋势科技</h3>
-          <p>只做共振启动日追高、分歧低吸前排或ETF，杜绝高潮后追。</p>
-        </article>
-          </div>
+          <h3>风险预案与兑现复核100%</h3>
+          <p>开仓前写最大亏损和退出动作；每轮闭环检查是否触发并执行，跨周只记一次。</p>
+        </article></div>
         </section>
-
+        <section class="panel" id="sources">
+          <h2>17段周度来源：结果与行为一起看</h2>
+          <p class="section-note">7/13起金额优先用每日收益表整数元日盈亏合计，收益率按本人既定口径逐日相加，非复利；更早周保留原记录并标明暂估。期末权益沿用账户记录或已有收盘估值，不用个股闭环盈亏倒推；跨月周不直接归为自然月总额。9/25每日收益缺失。</p>
+          <div class="table-wrap"><table>
+            <thead><tr><th>周度区间</th><th>周收益率</th><th>账户金额变化（元）</th><th>期末权益（元）</th><th>每周反思 / 下一步规则</th></tr></thead>
+            <tbody><tr>
+    <td><a class="blue" href="../../2026-06-01_2026-06-05/">06.01–06.05</a></td>
+    <td><strong class="neg">-0.13%</strong></td>
+    <td><strong class="neg">-31.00</strong><small class="source-tag">原周账户记录</small></td>
+    <td><strong>23,598.74</strong><small class="source-tag">已录入</small></td>
+    <td class="weekly-reflection"><strong>第一性有效，走弱不能追加</strong><p>大有核心方向有正反馈；粤电力走弱后加仓、中京和鑫科非第一性参与暴露模式问题。每笔买前写为什么买、怎样认错、最多亏多少。</p><a class="blue" href="../../2026-06-01_2026-06-05/">查看完整周复盘 →</a></td>
+  </tr><tr>
+    <td><a class="blue" href="../../2026-06-08_2026-06-12/">06.08–06.12</a></td>
+    <td><strong class="neg">-1.97%</strong></td>
+    <td><strong class="neg">-466.00</strong><small class="source-tag">原周账户记录</small></td>
+    <td><strong>22,879.00</strong><small class="source-tag">已录入</small></td>
+    <td class="weekly-reflection"><strong>抓到龙头，不等于利润已保护</strong><p>大有周一扩大盈利，周二未按强弱保护导致回吐；续段闭环仍+895.19，不能因此忽视账户过程风险。天娱条件止损是有效动作。</p><a class="blue" href="../../2026-06-08_2026-06-12/">查看完整周复盘 →</a></td>
+  </tr><tr>
+    <td><a class="blue" href="../../2026-06-15_2026-06-20/">06.15–06.20</a></td>
+    <td><strong class="neg">-1.31%</strong></td>
+    <td><strong class="neg">-299.00</strong><small class="source-tag">原周账户记录</small></td>
+    <td><strong>22,567.00</strong><small class="source-tag">已录入</small></td>
+    <td class="weekly-reflection"><strong>趋势试错不能直接升级核心仓</strong><p>小仓科技闭环有正贡献，诺德成为期末主仓；后续二次反思认定诺德与大唐周期处理差。买前题材地位和风险预案不足，不由小赚证明趋势系统成熟。</p><a class="blue" href="../../2026-06-15_2026-06-20/">查看完整周复盘 →</a></td>
+  </tr><tr>
+    <td><a class="blue" href="../../2026-06-22_2026-06-26/">06.22–06.26</a></td>
+    <td><strong class="neg">-21.44%</strong></td>
+    <td><strong class="neg">-4,839.42</strong><small class="source-tag">原暂估周金额，非闭环总和</small></td>
+    <td><strong>17,671.22</strong><small class="source-tag">收盘估值</small></td>
+    <td class="weekly-reflection"><strong>不会主升2，止损后仍乱切节点</strong><p>诺德旧仓退出含费-2,948.55；大唐标准龙头周期没有主攻，尾段才参与。先重判市场节点，不以新的旁支仓位修复上一笔。</p><a class="blue" href="../../2026-06-22_2026-06-26/">查看完整周复盘 →</a></td>
+  </tr><tr>
+    <td><a class="blue" href="../../2026-06-29_2026-07-04/">06.29–07.04</a></td>
+    <td><strong class="neg">-9.85%</strong></td>
+    <td><strong class="neg">-1,741.00</strong><small class="source-tag">原周账户记录</small></td>
+    <td><strong>15,858.00</strong><small class="source-tag">已录入</small></td>
+    <td class="weekly-reflection"><strong>科技退潮必须降低预期</strong><p>科技趋势未及时保护、ETF浮盈回吐；个股核心判断不稳时不承担主仓，工具替代仍需要择时与止损。跨月周不直接算作单个自然月总额。</p><a class="blue" href="../../2026-06-29_2026-07-04/">查看完整周复盘 →</a></td>
+  </tr><tr>
+    <td><a class="blue" href="../../2026-07-06_2026-07-10/">07.06–07.10</a></td>
+    <td><strong class="neg">-1.65%</strong></td>
+    <td><strong class="neg">-262.00</strong><small class="source-tag">原周账户记录</small></td>
+    <td><strong>15,596.00</strong><small class="source-tag">已录入</small></td>
+    <td class="weekly-reflection"><strong>有边界反核可试，承接塌陷不能摊平</strong><p>周二空仓、周三小仓和周四ETF反核有合理反馈；周五科技被虹吸后继续摊成本错误。修复不成立就认错，不因ETF而豁免风险。</p><a class="blue" href="../../2026-07-06_2026-07-10/">查看完整周复盘 →</a></td>
+  </tr><tr>
+    <td><a class="blue" href="../../2026-07-10_2026-07-18/">07.13–07.17</a></td>
+    <td><strong class="pos">+1.68%</strong></td>
+    <td><strong class="pos">+243.00</strong><small class="source-tag">日盈亏整数元合计 · 5天</small></td>
+    <td><strong>15,838.94</strong><small class="source-tag">可见空仓</small></td>
+    <td class="weekly-reflection"><strong>哈药正样本与科技追高形成对照</strong><p>哈药7/14、7/16建仓后7/17兑现+855.03；ETF同段闭环亏损。方向与成本闭环分别看，账户日盈亏合计+243.00不是单票盈利。</p><a class="blue" href="../../2026-07-10_2026-07-18/">查看完整周复盘 →</a></td>
+  </tr><tr>
+    <td><a class="blue" href="../../2026-07-20_2026-07-24/">07.20–07.24</a></td>
+    <td><strong class="pos">+11.10%</strong></td>
+    <td><strong class="pos">+1,810.00</strong><small class="source-tag">日盈亏整数元合计 · 5天</small></td>
+    <td><strong>17,648.65</strong><small class="source-tag">已录入</small></td>
+    <td class="weekly-reflection"><strong>龙头核心方向有效，买点仍需优化</strong><p>立新前段价差+2,050.00（未计费），卖点执行较坚决；转强加仓偏晚。复制围绕核心的方向，不把整段所有加仓都判完美。</p><a class="blue" href="../../2026-07-20_2026-07-24/">查看完整周复盘 →</a></td>
+  </tr><tr>
+    <td><a class="blue" href="../../2026-07-24_2026-08-01/">07.27–07.31</a></td>
+    <td><strong class="neg">-26.79%</strong></td>
+    <td><strong class="neg">-4,434.00</strong><small class="source-tag">日盈亏整数元合计 · 5天</small></td>
+    <td><strong>13,214.03</strong><small class="source-tag">收盘估值</small></td>
+    <td class="weekly-reflection"><strong>主升3无先手硬上，吞回前段利润</strong><p>立新7/28–7/29一轮含费-4,234.39；本人确认第一天没上，第二天还追。与7/24跨页重复卖出分开，只计本轮，不盯盘不做大仓。</p><a class="blue" href="../../2026-07-24_2026-08-01/">查看完整周复盘 →</a></td>
+  </tr><tr>
+    <td><a class="blue" href="../../2026-07-31_2026-08-08/">08.03–08.07</a></td>
+    <td><strong class="neg">-8.44%</strong></td>
+    <td><strong class="neg">-1,135.00</strong><small class="source-tag">日盈亏整数元合计 · 5天</small></td>
+    <td><strong>12,079.21</strong><small class="source-tag">收盘估值</small></td>
+    <td class="weekly-reflection"><strong>闭环小赚掩盖不了未平仓风险</strong><p>ETF小赚、一鸣跨周小赚；风范股份期末未闭环。账户日盈亏-1,135.00，与可见闭环+186.27是不同口径，不能用后者证明本周赚钱。</p><a class="blue" href="../../2026-07-31_2026-08-08/">查看完整周复盘 →</a></td>
+  </tr><tr>
+    <td><a class="blue" href="../../2026-08-10_2026-08-15/">08.10–08.14</a></td>
+    <td><strong class="pos">+12.63%</strong></td>
+    <td><strong class="pos">+1,516.00</strong><small class="source-tag">日盈亏整数元合计 · 5天</small></td>
+    <td><strong>13,594.00</strong><small class="source-tag">已录入</small></td>
+    <td class="weekly-reflection"><strong>最高标唯一性是明确优势样本</strong><p>百花竞价强度、最高标与T字板方向得到本人认可，含费+1,115.44；科技逆境追高和弱开保护仍有漏洞。前段盈利不代表整月风控已稳。</p><a class="blue" href="../../2026-08-10_2026-08-15/">查看完整周复盘 →</a></td>
+  </tr><tr>
+    <td><a class="blue" href="../../2026-08-16_2026-08-23/">08.17–08.21</a></td>
+    <td><strong class="neg">-4.55%</strong></td>
+    <td><strong class="neg">-611.00</strong><small class="source-tag">日盈亏整数元合计 · 5天</small></td>
+    <td><strong>12,982.27</strong><small class="source-tag">收盘估值</small></td>
+    <td class="weekly-reflection"><strong>补涨期盲目切换，盈利也可能非模式</strong><p>医药补涨没识别，华西与科技ETF阶段错配。金螳+5.83、秦安期初闭环+64.31仍为赚钱但不可复制；金健方向认可，保护需改。</p><a class="blue" href="../../2026-08-16_2026-08-23/">查看完整周复盘 →</a></td>
+  </tr><tr>
+    <td><a class="blue" href="../../2026-08-23_2026-08-30/">08.24–08.28</a></td>
+    <td><strong class="pos">+0.90%</strong></td>
+    <td><strong class="pos">+84.00</strong><small class="source-tag">日盈亏整数元合计 · 5天</small></td>
+    <td><strong>13,065.48</strong><small class="source-tag">收盘估值</small></td>
+    <td class="weekly-reflection"><strong>汉森运气盈利，百花窗口错后追加</strong><p>汉森高唯一性补涨净赚597.77，但本人当时未理解，定为运气盈利。百花错过二波窗口后买入并追加，昊华按澄清定为科技细分题材错误切换。</p><a class="blue" href="../../2026-08-23_2026-08-30/">查看完整周复盘 →</a></td>
+  </tr><tr>
+    <td><a class="blue" href="../../2026-08-30_2026-09-06/">08.31–09.04</a></td>
+    <td><strong class="neg">-15.08%</strong></td>
+    <td><strong class="neg">-1,895.00</strong><small class="source-tag">日盈亏整数元合计 · 5天</small></td>
+    <td><strong>11,169.91</strong><small class="source-tag">可见空仓</small></td>
+    <td class="weekly-reflection"><strong>百花、时代、欢瑞是三类错误</strong><p>百花兑现前周错误，不重复计罪；时代方向有逻辑但分时错；欢瑞同身位PK未胜出。二波尾盘、普通龙头板上和择时唯一性分别检查。</p><a class="blue" href="../../2026-08-30_2026-09-06/">查看完整周复盘 →</a></td>
+  </tr><tr>
+    <td><a class="blue" href="../../2026-09-06_2026-09-13/">09.07–09.11</a></td>
+    <td><strong class="neg">-11.84%</strong></td>
+    <td><strong class="neg">-1,289.00</strong><small class="source-tag">日盈亏整数元合计 · 5天</small></td>
+    <td><strong>9,881.22</strong><small class="source-tag">收盘估值</small></td>
+    <td class="weekly-reflection"><strong>补涨优先，弱切换只能有边界试错</strong><p>农业补涨第二轮、消费第一轮百大与第二轮桂林要分清。爱仕达弱机器人切换仓位过重；百大确实参与盈利，罗牛退出保留，桂林方向认可，回补细节不新增裁定。</p><a class="blue" href="../../2026-09-06_2026-09-13/">查看完整周复盘 →</a></td>
+  </tr><tr>
+    <td><a class="blue" href="../../2026-09-13_2026-09-20/">09.14–09.18</a></td>
+    <td><strong class="pos">+2.21%</strong></td>
+    <td><strong class="pos">+141.00</strong><small class="source-tag">日盈亏整数元合计 · 5天</small></td>
+    <td><strong>10,021.18</strong><small class="source-tag">收盘估值</small></td>
+    <td class="weekly-reflection"><strong>选对闽东，天时没传导到兑现</strong><p>闽东新节点切换正确，但高度与监管压力下保护不足；国芳旧龙尾端入场；西陇为摊低成本追加，9/17–9/21只计一个跨周闭环。</p><a class="blue" href="../../2026-09-13_2026-09-20/">查看完整周复盘 →</a></td>
+  </tr><tr>
+    <td><a class="blue" href="../../2026-09-21_2026-09-30/">09.21–09.30</a></td>
+    <td><strong class="pos">+1.35%</strong></td>
+    <td><strong class="pos">+122.00</strong><small class="source-tag">日盈亏整数元合计 · 7天</small></td>
+    <td><strong>10,144.32</strong><small class="source-tag">收盘估值</small></td>
+    <td class="weekly-reflection"><strong>大错误减少，保留条件单和等待</strong><p>直接沿用已确认双周反思：内蒙+380.86、分批条件单有进步；哈药后轮反核不熟悉，南华/天威为有逻辑的失败样本。9/29空仓、9/30闽东观察仓不预记成功。</p><a class="blue" href="../../2026-09-21_2026-09-30/">查看完整周复盘 →</a></td>
+  </tr></tbody>
+          </table></div>
+        </section>
         <section class="panel" id="missing">
-          <h2>待补数据</h2>
-          <p class="section-note">这些数据补齐后，才能升级成完整自然月/完整季度核算页。</p>
-          <div class="missing-grid">
-            <article><b>1. 6月、7月、8月自然月账户结果</b><p>起始资产、期末资产、月收益、月收益率、最大回撤。</p></article>
-            <article><b>2. 票级盈亏排行</b><p>按月末持仓浮盈浮亏口径，把赢家和亏家分开两行展示。</p></article>
-            <article><b>3. 全部成交时间</b><p>月度明细页必须保留每笔成交时间，不压缩成交流水。</p></article>
-            <article><b>4. 买卖点地图</b><p>从周度复盘回填每只票真实分时图，月度只展开最重要前几名。</p></article>
+          <h2>证据边界与待补项</h2>
+          <div class="missing-grid"><article><b>1. 证据边界</b><p>尚无完整6–9月逐笔统一口径总账，不给四个月或自然Q3制造精确总盈亏与分模式胜率。</p></article><article><b>2. 证据边界</b><p>每日收益表7/13起覆盖57天，9/25未提供；月度收益率简单相加不等于真实累计收益率。</p></article><article><b>3. 证据边界</b><p>9月阶段期末闽东100股浮盈浮亏按本人要求排除；周度收盘权益含估值的口径独立保留。</p></article><article><b>4. 证据边界</b><p>主升1/3、补涨二波和科技趋势尚需更多规范正样本，不能由回看懂了直接宣布稳定掌握。</p></article></div>
+          <div class="button-row">
+            <a class="blue" href="../2026-09/#maps">9月完整分时买卖点</a>
+            <a class="blue" href="../2026-09/#trades">全部成交时间</a>
+            <a class="blue" href="data/system-review.json">季度证据与规则</a>
+            <a class="blue" href="data/summary.json">结构化摘要</a>
           </div>
         </section>
       </div>
     </div>
   </main>
+  <script>
+    const chapterNav = document.querySelector('.chapter-nav');
+    if (matchMedia('(max-width:1120px)').matches) chapterNav.open = false;
+    function revealHash() {
+      const target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+      if (!target) return;
+      for (let node = target.parentElement; node; node = node.parentElement) {
+        if (node.tagName === 'DETAILS') node.open = true;
+      }
+    }
+    revealHash();
+    addEventListener('hashchange', revealHash);
+    const links = Array.from(document.querySelectorAll('.chapter-nav a'));
+    const observer = new IntersectionObserver(entries => {
+      const visible = entries.filter(entry => entry.isIntersecting).sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (!visible) return;
+      const id = visible.target.classList.contains('hero') ? 'top' : visible.target.id;
+      links.forEach(link => link.classList.toggle('primary', link.hash === '#' + id));
+    }, {rootMargin:'-5% 0px -65% 0px', threshold:[0,0.1,0.5]});
+    document.querySelectorAll('.content>section').forEach(section => observer.observe(section));
+  </script>
 </body>
 </html>

@@ -5,416 +5,43 @@ const ROOT = path.resolve(__dirname, "..");
 const OUT_DIR = path.join(ROOT, "monthly-quarterly-trading-review", "2026-q3");
 const OUT_FILE = path.join(OUT_DIR, "index.html");
 
-const buildDate = "2026-08-16";
+const assert = require("node:assert/strict");
+const content = require("./quarterly-2026-q3-content.cjs");
+const review = require("../monthly-quarterly-trading-review/2026-q3/data/system-review.json");
+const income = require("./weekly-account-income.cjs");
+const equity = require("./weekly-equity.cjs");
+const september = require("../monthly-quarterly-trading-review/2026-09/data/summary.json");
+const confirmed = require("../monthly-quarterly-trading-review/2026-09/data/second-reflection.json");
 
-const metrics = [
-  {
-    label: "当前跨度",
-    value: "06.01-08.15",
-    note: "按本次要求写入Q3滚动复盘；9月后再校准自然季度",
-  },
-  {
-    label: "阶段结论",
-    value: "主升2已会",
-    note: "从6月不会做，到7-8月能围绕节点和最高标交易",
-    tone: "pos",
-  },
-  {
-    label: "最大系统伤害",
-    value: "主升3无先手硬上",
-    note: "7月立新能源二次参与成为阶段最大亏损样本",
-    tone: "neg",
-  },
-  {
-    label: "下阶段红线",
-    value: "-5条件单",
-    note: "不及预期开在-4/-3且不快速拉板，先保护再判断",
-    tone: "warn",
-  },
-];
-
-const monthSnapshots = [
-  {
-    month: "6月",
-    status: "主升2未掌握",
-    tone: "neg",
-    right:
-      "大有能源这类第一性、唯一性样本开始做对，趋势科技不会选个股时转向ETF的意识开始形成。",
-    wrong:
-      "诺德和大唐周期处理差：大唐发电作为标准龙头周期没有主攻，反而在尾段或旁支里处理，属于不会做主升2的系统性错误。",
-    lesson:
-      "主升2不是尾段追强，也不是后排替代；必须在节点成型时围绕总龙/核心龙头处理。",
-  },
-  {
-    month: "7月",
-    status: "主升3吃大亏",
-    tone: "warn",
-    right:
-      "哈药股份与立芯/立新一类龙头周期做进去时，反馈舒服，说明龙头识别和核心处理能力在变强。",
-    wrong:
-      "7/4、7/10、7/13科技方向追高，没有按趋势低吸节奏处理；立新能源主升3第一天没拿先手，第二天仍硬上，连续大幅亏损，用户口述回撤超过20个点。",
-    lesson:
-      "主升3是先手游戏：第一天没有先手，第二天不再追；趋势科技不按连板做，必须练低吸与ETF替代。",
-  },
-  {
-    month: "8月截至08.15",
-    status: "正收益 / 回撤收敛",
-    tone: "pos",
-    right:
-      "最高标抱团和龙头唯一性做对，百花医药这类最高标确认后敢上，是本阶段最重要的正反馈。",
-    wrong:
-      "最高标不及预期开在-4/-3以下、没有快速拉板时，未能第一时间走；科技高潮后仍想追高或继续吸，造成利润回吐。",
-    lesson:
-      "启动共振日可以头铁，高潮次日要卖分歧；科技低吸可以，追高只允许发生在指数、板块、赚钱效应共振的启动点。",
-  },
-];
-
-const weeklySources = [
-  {
-    "range": "06.01-06.05",
-    "href": "../../2026-06-01_2026-06-05/",
-    "change": "-0.13%",
-    "pnl": "-31.00",
-    "pnlNote": "",
-    "equity": "23,598.74",
-    "equityNote": "",
-    "reflectionTitle": "从看强弱升级为看题材地位",
-    "reflection": "大有能源的唯一性、竞价和封单强度判断做对；粤电力A走弱后加仓、中京电子和鑫科材料非第一性参与是错误。下一步：走弱不加仓，只围绕唯一核心，买前写保护线。"
-  },
-  {
-    "range": "06.08-06.12",
-    "href": "../../2026-06-08_2026-06-12/",
-    "change": "-2.00%",
-    "pnl": "-466.00",
-    "pnlNote": "",
-    "equity": "22,879.00",
-    "equityNote": "",
-    "reflectionTitle": "抓到龙头，更要保护利润",
-    "reflection": "大有能源周一扩大盈利，周二未按强弱及时保护导致大幅回吐；天娱数科条件止损有效。下一步：第三板弱板减半保护、强板不机械减半，第四天以验证为主。"
-  },
-  {
-    "range": "06.15-06.20",
-    "href": "../../2026-06-15_2026-06-20/",
-    "change": "-1.31%",
-    "pnl": "-299.00",
-    "pnlNote": "",
-    "equity": "22,567.00",
-    "equityNote": "截至6/18",
-    "reflectionTitle": "趋势核心与试错仓要分清",
-    "reflection": "中化国际旧仓退出，科技链小仓闭环有正贡献，诺德成为期末主仓。下一步：用行业地位、抗跌和回拉速度筛选第一性；小仓盈利不能自动升级为核心，诺德买点与止损预案待二次反思确认。"
-  },
-  {
-    "range": "06.22-06.26",
-    "href": "../../2026-06-22_2026-06-26/",
-    "change": "-21.50%",
-    "pnl": "-4,839.42",
-    "pnlNote": "暂估",
-    "equity": "17,671.22",
-    "equityNote": "暂估",
-    "reflectionTitle": "止损后切仓，要重新判断节点",
-    "reflection": "诺德止损是最大亏损源，海欣、大唐切换后再进入亨通系；后续阶段反思指出大唐标准周期未主攻、尾段才参与。下一步：主升2在节点成型时围绕核心，避免亏损后连续切到旁支。"
-  },
-  {
-    "range": "06.29-07.04",
-    "href": "../../2026-06-29_2026-07-04/",
-    "change": "-10.03%",
-    "pnl": "-1,741.00",
-    "pnlNote": "",
-    "equity": "15,858.00",
-    "equityNote": "",
-    "reflectionTitle": "科技趋势不要用连板追涨思维",
-    "reflection": "科技退潮后高位风险未及时退出，ETF浮盈保护不够；个股选择不稳时不应承担主仓。下一步：趋势行情优先ETF，二高、三高保护利润，冰点反核要结合指数和板块。"
-  },
-  {
-    "range": "07.06-07.10",
-    "href": "../../2026-07-06_2026-07-10/",
-    "change": "-0.44%",
-    "pnl": "-262.00",
-    "pnlNote": "",
-    "equity": "15,596.00",
-    "equityNote": "",
-    "reflectionTitle": "反核择时有效，承接塌陷不能摊平",
-    "reflection": "周二空仓、周三小仓试错、周四三冰反核ETF做对；周一进早、周五科技被商业航天虹吸后继续摊平是问题。下一步：强修复降仓，弱修复减仓，不修复认错。"
-  },
-  {
-    "range": "07.13-07.17",
-    "href": "../../2026-07-10_2026-07-18/",
-    "change": "+1.68%",
-    "pnl": "-533.37",
-    "pnlNote": "计算值",
-    "equity": "15,062.63",
-    "equityNote": "推算",
-    "reflectionTitle": "龙头盈利与科技追高形成对照",
-    "reflection": "哈药股份买入后等待强度兑现形成正贡献，半导ETF闭环亏损。下一步：围绕龙头保持节奏，趋势科技以低吸和快进快出为主；该周个人二次反思仍待补。"
-  },
-  {
-    "range": "07.20-07.24",
-    "href": "../../2026-07-20_2026-07-24/",
-    "change": "+11.10%",
-    "pnl": "+1,816.40",
-    "pnlNote": "",
-    "equity": "17,648.65",
-    "equityNote": "",
-    "reflectionTitle": "围绕核心做T，转强仓位要及时",
-    "reflection": "立新能源方向识别和卖点执行较坚决；转强次日加仓偏晚，科技反弹参与不足。下一步：主线龙头、弱修复和次新试错分层，只有核心确认才提高仓位。"
-  },
-  {
-    "range": "07.27-07.31",
-    "href": "../../2026-07-24_2026-08-01/",
-    "change": "-26.79%",
-    "pnl": "-4,434.59",
-    "pnlNote": "计算值",
-    "equity": "13,214.06",
-    "equityNote": "推算",
-    "reflectionTitle": "主升3没有先手，次日不能硬追",
-    "reflection": "立新能源二次参与成为阶段最大亏损样本；阶段反思指出第一天没上，第二天仍硬上。下一步：无第一天先手默认不追，重新参与先判断周期，不盯盘不打大仓位。"
-  },
-  {
-    "range": "08.03-08.07",
-    "href": "../../2026-07-31_2026-08-08/",
-    "change": "-8.44%",
-    "pnl": "+186.27",
-    "pnlNote": "计算值",
-    "equity": "13,400.33",
-    "equityNote": "推算",
-    "reflectionTitle": "小闭环控制节奏，未平仓风险单独看",
-    "reflection": "半导ETF快进快出小赚，一鸣食品跨周小赚；风范股份期末未平仓不能用闭环盈利判断整周结果。下一步：科技弹性试错不升级仓位，核心低开不及预期时先执行保护线。"
-  },
-  {
-    "range": "08.10-08.14",
-    "href": "../../2026-08-10_2026-08-15/",
-    "change": "+12.63%",
-    "pnl": "+1,560.94",
-    "pnlNote": "",
-    "equity": "13,594.00",
-    "equityNote": "",
-    "reflectionTitle": "最高标唯一性做对，科技逆境追高要停止",
-    "reflection": "百花医药的最高标唯一性、竞价强度和T字板介入做对；科技环境未稳时追高造成利润回吐。下一步：科技以低吸为主，追高仅限指数、板块与赚钱效应共振启动日。"
-  }
-];
-
-const coreTickets = [
-  {
-    phase: "6月大唐周期",
-    should: "大唐发电 / 当期最高辨识度核心",
-    actual: "诺德、大唐尾段及其他方向",
-    correct: "否",
-    evidence:
-      "用户二次反思明确：大唐发电龙头周期很标准，但当时没有做，说明主升2不会做。",
-    reason: "判断慢；主升2节点理解不足；尾段才介入。",
-    judgment: "不是个别买点错，是没有在主升2核心节点围绕龙头做。",
-    tone: "neg",
-  },
-  {
-    phase: "7月龙头正样本",
-    should: "哈药股份；立芯/立新类龙头样本",
-    actual: "参与龙头周期",
-    correct: "是",
-    evidence:
-      "用户反思：哈药龙头做对，立芯/立新作为龙头做对，做进去就赚钱且反馈舒服。",
-    reason: "围绕龙头；没有跑到后排。",
-    judgment: "这类动作要继续复制。",
-    tone: "pos",
-  },
-  {
-    phase: "7月主升3样本",
-    should: "立新能源第一天先手，或第二天直接放弃",
-    actual: "第一天没上，第二天追入并连续承压",
-    correct: "否",
-    evidence:
-      "用户口述：主升3是彻底先手游戏，第二天硬上后吃天地板和地板，合计亏损20多个点。",
-    reason: "没有先手还追；把主升3当主升2处理。",
-    judgment: "阶段主罪，系统伤害最大。",
-    tone: "neg",
-  },
-  {
-    phase: "8月最高标抱团",
-    should: "百花医药这类最高标唯一性确认票",
-    actual: "百花医药盈利闭环",
-    correct: "是",
-    evidence:
-      "08.10-08.15周复盘：百花医药最高标唯一性、竞价强度、T字板介入同时做对。",
-    reason: "高开确认、对手破板、唯一性清晰。",
-    judgment: "下阶段最该保留的正反馈。",
-    tone: "pos",
-  },
-  {
-    phase: "6-8月科技趋势",
-    should: "低吸前排或ETF；只在指数/板块/赚钱效应共振启动日追高",
-    actual: "7/4、7/10、7/13及8月部分节点追高",
-    correct: "否/需复核",
-    evidence:
-      "用户二次反思与08.10-08.15周复盘均指向：科技不应逆境追高，高潮次日更不能追。",
-    reason: "把趋势科技当连板情绪处理；高潮后不卖分歧。",
-    judgment: "趋势系统仍未稳定，需要规则化。",
-    tone: "warn",
-  },
-];
-
-const stages = [
-  {
-    name: "主升1",
-    level: "待训练",
-    tone: "warn",
-    summary: "核心是1进2水平和早期辨识度判断，目前还没有形成稳定打法。",
-    next: "盘前必须列一进二候选，分清题材第一、市场第一和试错票。",
-  },
-  {
-    name: "主升2",
-    level: "已明显进化",
-    tone: "pos",
-    summary: "6月不会做，7月后开始能围绕节点和核心龙头，说明这一段已经从认知变成可执行动作。",
-    next: "主升2必须盯盘，节点到来时只围绕最高辨识度核心上仓位。",
-  },
-  {
-    name: "主升3",
-    level: "主攻短板",
-    tone: "neg",
-    summary: "立新能源样本证明主升3不是追确认，而是先手游戏；没有第一天先手，第二天风险收益失衡。",
-    next: "主升3第一天不上，第二天默认不做；除非竞价和承接极端超预期并重新给出买点。",
-  },
-  {
-    name: "趋势科技",
-    level: "需重练",
-    tone: "warn",
-    summary: "科技、PCB、半导一类不能按连板追高处理。个股选不准时，ETF比杂乱追票更优。",
-    next: "只低吸前排，或用ETF；追高只允许在指数共振启动日发生。",
-  },
-];
-
-const scores = [
-  {
-    name: "风控质量",
-    score: "3/5",
-    tone: "warn",
-    reason:
-      "8月回撤控制明显改善，但-4/-3不及预期开盘未快速退出、动态条件单未跟上，仍是硬伤。",
-  },
-  {
-    name: "定龙质量",
-    score: "3.5/5",
-    tone: "pos",
-    reason:
-      "从6月错过大唐发电，到7-8月能做哈药、立新能源、百花医药，定龙能力在进化。",
-  },
-  {
-    name: "执行纪律",
-    score: "3/5",
-    tone: "warn",
-    reason:
-      "龙头上能执行，但仍有不盯盘下单、科技高潮后继续追、无先手硬上的问题。",
-  },
-  {
-    name: "买卖点质量",
-    score: "2.5/5",
-    tone: "neg",
-    reason:
-      "科技追高、主升3第二天追、卖点条件单不前置，说明买卖点仍需要靠规则强制。",
-  },
-  {
-    name: "仓位集中度",
-    score: "3.5/5",
-    tone: "pos",
-    reason:
-      "8月开始围绕最高标和核心处理，仓位错误没有明显放大；但不盯盘时仍不能上大仓位。",
-  },
-];
-
-const rightActions = [
-  "最高标抱团和龙头唯一性看清楚后敢做，百花医药是最该复制的样本。",
-  "主升2从不会做到开始会做，说明规则正在从复盘文字进入盘中动作。",
-  "趋势科技选股没有把握时，用ETF替代个股，能减少非核心个股伤害。",
-  "8月错误仓位没有明显放大，回撤控制比7月更稳，这是账户层面最重要的进步。",
-  "开始意识到题材梯队要放进自选池，用二板、三板及以上票做强度跟踪。",
-];
-
-const wrongActions = [
-  {
-    title: "主罪：主升3没有第一天先手，第二天还硬上",
-    tag: "系统伤害最大",
-    tone: "neg",
-    body:
-      "立新能源样本说明：主升3不是等确认后追，而是第一天就要拿先手。第一天没上，第二天再追，容易直接接天地板和次日地板。",
-  },
-  {
-    title: "次罪：趋势科技高潮后追高，不按低吸/ETF节奏做",
-    tag: "重复伤害",
-    tone: "warn",
-    body:
-      "7/4、7/10、7/13以及8月部分科技动作，本质都是把趋势题材当连板处理。启动共振日可以头铁，高潮次日应该卖分歧。",
-  },
-  {
-    title: "隐患：不及预期开盘没有条件单先保护",
-    tag: "风控缺口",
-    tone: "warn",
-    body:
-      "最高标开在-4/-3以下、没有快速拉板，先退出再观察。风范股份这种低开样本，应该把-5作为硬保护线。",
-  },
-  {
-    title: "隐患：不盯盘也下单，容易变成随手单",
-    tag: "执行污染",
-    tone: "neg",
-    body:
-      "立新能源在外面吃饭时下单就是反例。大仓位只能发生在盯盘状态，不能把临盘随机冲动包装成模式交易。",
-  },
-];
-
-const rules = [
-  {
-    title: "不及预期开盘",
-    body: "-4/-3以下开、不能快速拉板、继续向下跳，先走；同时设置-5动态条件单。",
-  },
-  {
-    title: "主升3",
-    body: "第一天没有先手，第二天默认不追。主升3不是确认游戏，是先手游戏。",
-  },
-  {
-    title: "主升2",
-    body: "节点成型时只做最高辨识度核心；尾段再追、后排替代，都不算主升2。",
-  },
-  {
-    title: "趋势科技",
-    body: "不会抓个股就做ETF；要做个股必须低吸前排，追高只允许指数/板块/赚钱效应共振启动日。",
-  },
-  {
-    title: "高潮次日",
-    body: "第二天高潮后，次日以卖分歧为主；可以打回封，不要上板追高。",
-  },
-  {
-    title: "金字塔信号",
-    body: "越买越高、越卖越低，多半做错；越卖越高，说明利润卖早，应用条件单保护而不是急卖。",
-  },
-  {
-    title: "盯盘仓位",
-    body: "只有盯盘时才能把仓位打上去；不盯盘只允许轻仓或不交易。",
-  },
-];
-
-const checklist = [
-  "盘前列出二板、三板及以上全部核心候选，重点看量能、题材、个股地位。",
-  "自选池按题材和梯队建立票池，不能把所有票混在同一列里看。",
-  "有明确龙头时，只围绕最高辨识度核心；没有龙头时，只做轻仓套利。",
-  "主升2节点必须盯盘确认，确认后围绕核心上仓位，不做尾段后排。",
-  "主升3第一天没先手，第二天默认放弃，不能硬接高位风险。",
-  "科技/PCB/半导只低吸前排或ETF，高潮后不追，上板追高禁止。",
-  "每笔核心仓都设置动态保护线，低开不及预期样本用-5条件单先保命。",
-  "不盯盘不大仓位，不在吃饭、路上、情绪上头时下随手单。",
-];
-
-const goals = [
-  {
-    name: "主升3",
-    target: "把“第一天先手/第二天不追”写进盘前计划，连续执行一个月。",
-  },
-  {
-    name: "不及预期开盘",
-    target: "所有核心仓开盘前写保护线；-4/-3弱开且不快速拉板，执行-5退出。",
-  },
-  {
-    name: "趋势科技",
-    target: "只做共振启动日追高、分歧低吸前排或ETF，杜绝高潮后追。",
-  },
-];
+assert.equal(september.reflection.status, "integrated");
+assert.equal(confirmed.clarificationStatus, "resolved");
+assert.equal(confirmed.confirmedFramework.twoWaveEntry.minimumDailyReturnPercent, 5);
+assert.equal(review.checklist.length, 8);
+assert.equal(review.goals.length, 3);
+assert.equal(new Set(review.weeklySources.map(w => w.folder)).size, review.weeklySources.length);
+for (const sample of review.winningCases) {
+  assert(Number.isSafeInteger(sample.pnlCents) && sample.pnlCents > 0);
+  assert.equal(sample.buyQty, sample.sellQty, sample.name + " must be closed");
+}
+for (const error of review.repeatErrors) {
+  assert.equal(new Set(error.months.map(m => m.month)).size, error.months.length);
+}
+const buildDate = review.updatedOn;
+const { metrics, monthSnapshots, stages, scores, wrongActions, rules, checklist, goals } = review;
+const weeklySources = review.weeklySources.map(week => {
+  const account = income.forFolder(week.folder);
+  const position = equity.rows.find(row => row.folder === week.folder);
+  assert(position, "Missing weekly equity: " + week.folder);
+  return {
+    ...week, href: "../../" + week.folder + "/",
+    change: account ? income.rate(account.rateBasisPoints) : week.legacyRate,
+    pnl: account ? income.money(account.amountCents) : content.money(position.changeCents),
+    pnlNote: account ? "日盈亏整数元合计 · " + account.rows.length + "天" : position.provisional ? "原暂估周金额，非闭环总和" : "原周账户记录",
+    equity: equity.money(position.endingCents),
+    equityNote: equity.statusLabel(position)
+  };
+});
+const sections = content.render(review, esc);
 
 function esc(value) {
   return String(value)
@@ -470,23 +97,6 @@ function monthCards(items) {
     .join("");
 }
 
-function coreRows(items) {
-  return items
-    .map(
-      (item) => `
-        <tr>
-          <td><strong>${esc(item.phase)}</strong></td>
-          <td>${esc(item.should)}</td>
-          <td>${esc(item.actual)}</td>
-          <td>${chip(item.correct, item.tone)}</td>
-          <td>${esc(item.evidence)}</td>
-          <td>${esc(item.reason)}</td>
-          <td>${esc(item.judgment)}</td>
-        </tr>`
-    )
-    .join("");
-}
-
 function stageCards(items) {
   return items
     .map(
@@ -513,19 +123,7 @@ function scoreCards(items) {
             <strong>${esc(item.score)}</strong>
           </div>
           <p>${esc(item.reason)}</p>
-          <small>1分：完全失控 / 3分：知道规则但执行不稳 / 5分：盘前有规则、盘中能执行、盘后可复核。</small>
-        </article>`
-    )
-    .join("");
-}
-
-function plainCards(items) {
-  return items
-    .map(
-      (text, index) => `
-        <article class="card compact-card">
-          <span class="number">${String(index + 1).padStart(2, "0")}</span>
-          <p>${esc(text)}</p>
+          <small>${esc(item.rubric)}</small>
         </article>`
     )
     .join("");
@@ -588,7 +186,7 @@ const html = `<!DOCTYPE html>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>每季交割复盘｜2026 Q3｜6-8月二次反思</title>
+  <title>每季交割复盘｜2026 Q3｜6–9月系统演进与红线再犯</title>
   <style>
     :root {
       --bg: #f6f7f8;
@@ -607,17 +205,17 @@ const html = `<!DOCTYPE html>
       --radius: 10px;
     }
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; overflow-x: hidden; }
+    html { scroll-behavior: smooth; overflow-x: clip; }
     body {
       margin: 0;
       color: var(--ink);
-      background: linear-gradient(180deg, #f8fafb 0%, #eef2f5 100%);
+      background: var(--bg);
       font-family: "Avenir Next", "PingFang SC", "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif;
-      overflow-x: hidden;
+      overflow-x: clip;
     }
     a { color: inherit; }
     h1, h2, h3, h4, p { margin-top: 0; letter-spacing: 0; }
-    h1 { margin: 12px 0; font-size: clamp(32px, 4vw, 52px); line-height: 1.08; overflow-wrap: anywhere; word-break: break-word; }
+    h1 { margin: 12px 0; font-size: 32px; line-height: 1.08; overflow-wrap: anywhere; word-break: break-word; }
     h2 { font-size: 24px; margin-bottom: 8px; }
     h3 { font-size: 18px; margin-bottom: 8px; }
     p, li, td { color: var(--muted); line-height: 1.68; }
@@ -857,6 +455,11 @@ const html = `<!DOCTYPE html>
       .metrics, .grid-2, .grid-3, .grid-4, .missing-grid { grid-template-columns: 1fr; }
       table { min-width: 860px; font-size: 13px; }
     }
+
+${content.styles}
+    .chapter-nav>summary{display:none}
+    .quarter-verdict{margin-top:22px}
+    @media(max-width:1120px){.chapter-nav>summary{display:list-item;cursor:pointer;font-weight:700;min-height:44px;padding:8px 10px}}
   </style>
 </head>
 <body>
@@ -864,188 +467,162 @@ const html = `<!DOCTYPE html>
     <div class="page-layout">
       <aside class="sidebar" aria-label="季度复盘导航">
         <div class="sidebar-inner">
-          <a class="sidebar-brand" href="#top"><span>2026 Q3滚动</span><strong>每季交割复盘</strong></a>
-          <nav class="side-nav" aria-label="本页导航">
-            <a class="primary" href="#top">Q3首页</a>
-            <a href="#verdict">最大错误</a>
-            <a href="#months">月份拆解</a>
-            <a href="#sources">周度来源</a>
-            <a href="#core">核心票审判</a>
-            <a href="#stages">能力图</a>
-            <a href="#score">阶段评分</a>
-            <a href="#rules">铁律</a>
-            <a href="#checklist">执行清单</a>
-            <a href="#goals">下阶段目标</a>
-            <a href="#missing">待补数据</a>
-          </nav>
+          <a class="sidebar-brand" href="#top"><span>2026 Q3 · 6月作基线</span><strong>每季交割复盘</strong></a>
+          <details class="chapter-nav" open>
+            <summary>章节导航</summary>
+            <nav class="side-nav" aria-label="本页导航">
+              <a class="primary" href="#top">Q3概览</a>
+              <a href="#verdict">季度审判书</a>
+              <a href="#right">优势与边界</a>
+              <a href="#wins">大肉证据</a>
+              <a href="#wrong">红线再犯矩阵</a>
+              <a href="#core">同票前后对照</a>
+              <a href="#months">6–9月演进</a>
+              <a href="#reflection">9月关键点</a>
+              <a href="#stages">能力图</a>
+              <a href="#score">系统评分</a>
+              <a href="#rules">落地规则</a>
+              <a href="#checklist">执行清单</a>
+              <a href="#goals">下阶段目标</a>
+              <a href="#sources">17段周度来源</a>
+              <a href="#missing">证据边界</a>
+            </nav>
+          </details>
+          <details class="sample-nav">
+            <summary>盈利样本索引</summary>
+            <div>${sections.sampleIndex}</div>
+          </details>
           <nav class="side-nav external" aria-label="站点导航">
             <a href="../">月/季导航</a>
             <a href="../../weekly-trading-review/">周度主页</a>
             <a href="../../index.html">总首页</a>
           </nav>
           <div class="sidebar-meta">
-            <b>二次反思版</b>
-            <span>精确月度排行、全部成交时间和买卖点地图待按自然月回填。</span>
+            <b>9月反思已整合</b>
+            <span>再犯矩阵统计有证据月份，不把跨周闭环重复计数。6月只作基线，不并入自然Q3收益。</span>
           </div>
         </div>
       </aside>
-
       <div class="content">
         <section class="hero">
-          <div>
-            <span class="label">2026 Q3 Rolling Trading Review · built ${esc(buildDate)}</span>
-            <h1>每季交割复盘<br />2026 Q3 · 6-8月二次反思</h1>
-            <p>本页按你本次要求，把2026年6月、7月、8月截至08.15的阶段复盘写入Q3页。自然季度Q3通常是7-9月，所以9月结束后需要再补9月并校准为完整季度；当前版本先作为6-8月滚动审判书。</p>
-            <div class="button-row">
-              <a class="button" href="#verdict">先看最大错误</a>
-              <a class="button secondary" href="#sources">周度来源</a>
-              <a class="button secondary" href="../">月/季导航</a>
-            </div>
+          <span class="label">6–9月系统演进 · 更新 ${esc(buildDate)}</span>
+          <h1>2026 Q3 季度复盘</h1>
+          <p>把6月作为进化基线，回看7–9月自然季度：哪种大肉来自有效动作，哪类错误一直在重复，以及9月补齐了什么。反思覆盖6–9月，不把四个月、跨月阶段和自然Q3收益混算。</p>
+          <div class="button-row">
+            <a class="button" href="#wrong">查看红线再犯</a>
+            <a class="button secondary" href="#wins">查看大肉证据</a>
           </div>
-          <div class="metrics">
-            ${metricCards(metrics)}
-          </div>
+          <div class="metrics">${metricCards(metrics)}</div>
         </section>
-
         <section class="panel" id="verdict">
           <div class="verdict-strip">
             <div class="verdict-main">
-              <span class="label">季度审判书</span>
-              <h2>最大错误：主升阶段识别滞后，尤其主升3没有先手还硬上</h2>
-              <p>6月的问题是不会做主升2，标准大唐发电周期没有主攻；7月的问题是主升3第一天没拿先手，第二天仍追进去，立新能源样本造成阶段最大系统伤害；8月的问题已经缩小到“最高标不及预期开盘时没有马上用条件单保护”。这说明系统在进化，但短板也很清楚：主升1和主升3还没有完全内化，趋势科技也不能再用连板追高思维做。</p>
+              <span class="label">季度审判书 · 按系统伤害排序</span>
+              <h2>最大的错误：先买熟悉的票，后解释阶段；错了又用追加修复成本。</h2>
+              <p>6月错过主升2、7月无先手硬上主升3、8月补涨期盲目切换、9月弱切换和陌生反核，根子都是阶段与模式错配。粤电力、科技ETF、百花、西陇的追加则把判断错误放大成风险错误。</p>
             </div>
             <div class="verdict-aside">
-              <h3>一句话结论</h3>
-              <p><strong>从6月到8月，你不是没有进步，而是从“不会做主升2”进化到“主升2能做、主升3还会被先手规则惩罚”。</strong></p>
-              <p>后续账户曲线要继续变好，关键不是增加交易，而是把主升3、科技趋势、不及预期开盘这三类红线写死。</p>
+              <h3>同时也别抹掉已经做对的事</h3>
+              <p>大有、立新前段、哈药、百花前段支持你在明确节点下识别第一唯一性核心的相对优势。短板更多在阶段迁移、窗口约束和利润保护，而不是从来不会定龙。</p>
+              <p><strong>下一步优先级：先停止放大错误，再稳定复制优势；不是增加出手数量。</strong></p>
             </div>
           </div>
+          <div class="grid-3 quarter-verdict">${verdictCards(wrongActions)}</div>
         </section>
-
+        ${sections.strengths}
+        ${sections.wins}
+        ${sections.repeated}
+        ${sections.contrasts}
         <section class="panel" id="months">
-          <h2>6-7-8月拆解</h2>
-          <p class="section-note">先按二次反思提炼，不强行合并成自然月总收益。自然月盈亏排行、期末持仓浮盈浮亏和全部成交时间，等完整月度页再回填。</p>
-          <div class="grid-3">
-            ${monthCards(monthSnapshots)}
-          </div>
+          <h2>6–9月：进步到了哪里，哪里仍在原地？</h2>
+          <p class="section-note">按事件所在月份拆解。8月前半段盈利与后段亏损分别看；9月阶段页跨8/15–9/30，不整段重复计入两个月。</p>
+          <div class="grid-2">${monthCards(monthSnapshots)}</div>
         </section>
-
-        <section class="panel" id="sources">
-          <h2>每周结果与复盘反思</h2>
-          <p class="section-note">先看每周的复盘反思，再对照金额变化。周涨幅优先采用已补周收益率（每日收益率相加），未补周沿用原周复盘值；金额缺失先用可见闭环计算值，期末金额缺失按上一期金额加本期变化推算。计算、推算与暂估值已标注，后续用账户数据校准。</p>
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>周度区间</th>
-                  <th>周涨幅</th>
-                  <th>实际盈亏金额（元）</th>
-                  <th>期末金额（元）</th>
-                  <th>每周复盘反思 / 下一步规则</th>
-                </tr>
-              </thead>
-              <tbody>
-                ${sourceRows(weeklySources)}
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <section class="panel" id="core">
-          <h2>真正应该做的核心票</h2>
-          <p class="section-note">轻量定龙审判：只判断是否围绕第一性/唯一性，不展开完整月度票级买卖点地图。</p>
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>阶段</th>
-                  <th>真正应该盯的核心</th>
-                  <th>实际处理</th>
-                  <th>定龙是否正确</th>
-                  <th>定龙证据</th>
-                  <th>偏离原因</th>
-                  <th>审判</th>
-                </tr>
-              </thead>
-              <tbody>
-                ${coreRows(coreTickets)}
-              </tbody>
-            </table>
-          </div>
-        </section>
-
+        ${sections.september}
         <section class="panel" id="stages">
-          <h2>主升阶段能力图</h2>
-          <p class="section-note">这部分是这次6-8月最关键的系统进化图：不要把主升1、主升2、主升3混成一个“龙头追涨”。</p>
-          <div class="grid-4">
-            ${stageCards(stages)}
-          </div>
+          <h2>能力图：优势、形成中、训练区</h2>
+          <p class="section-note">回看能解释，和盘中能稳定执行，是两回事。主升1/2/3、补涨、二波、科技趋势不合并成一个“龙头追涨”。</p>
+          <div class="grid-3">${stageCards(stages)}</div>
         </section>
-
         <section class="panel" id="score">
-          <h2>阶段评分</h2>
-          <p class="section-note">这是二次反思版主观评分，等完整月度账户数据和票级排行补齐后再校准。</p>
-          <div class="grid-3">
-            ${scoreCards(scores)}
-          </div>
+          <h2>系统评分 · 1–5分</h2>
+          <p class="section-note">主观诊断，不是策略统计。按风控质量 &gt; 定龙质量 &gt; 执行纪律 &gt; 买卖点质量 &gt; 仓位集中度排列；缺失数据不伪装成精确胜率。</p>
+          <div class="grid-3">${scoreCards(scores)}</div>
         </section>
-
-        <section class="panel" id="right">
-          <h2>好的动作：继续复制</h2>
-          <p class="section-note">这里抓的不是某一笔盈利，而是能反复带来正期望的动作。</p>
-          <div class="grid-2">
-            ${plainCards(rightActions)}
-          </div>
-        </section>
-
-        <section class="panel" id="wrong">
-          <h2>共性问题：主罪 + 次罪 + 隐患</h2>
-          <p class="section-note">按系统伤害排序，不按单笔金额排序。</p>
-          <div class="grid-2">
-            ${verdictCards(wrongActions)}
-          </div>
-        </section>
-
         <section class="panel" id="rules">
-          <h2>落地铁律</h2>
-          <p class="section-note">后续每个月都要回看这些规则是否被执行，重复违反就标红线再犯。</p>
-          <ul class="rule-list">
-            ${ruleList(rules)}
-          </ul>
+          <h2>落地规则</h2>
+          <p class="section-note">这是本人复盘形成的执行规则，不是未来盈利保证。确认买点仍要先检查风险预算与可卖保护。</p>
+          <ul class="rule-list">${ruleList(rules)}</ul>
         </section>
-
         <section class="panel" id="checklist">
-          <h2>下阶段执行清单</h2>
-          <p class="section-note">控制在8条以内，盘前能直接照着检查。</p>
-          <ul class="check-list">
-            ${checklistItems(checklist)}
-          </ul>
+          <h2>下阶段执行清单 · 8条</h2>
+          <ul class="check-list">${checklistItems(checklist)}</ul>
         </section>
-
         <section class="panel" id="goals">
           <h2>下阶段三个目标</h2>
-          <div class="grid-3">
-            ${goalCards(goals)}
-          </div>
+          <div class="grid-3">${goalCards(goals)}</div>
         </section>
-
+        <section class="panel" id="sources">
+          <h2>17段周度来源：结果与行为一起看</h2>
+          <p class="section-note">7/13起金额优先用每日收益表整数元日盈亏合计，收益率按本人既定口径逐日相加，非复利；更早周保留原记录并标明暂估。期末权益沿用账户记录或已有收盘估值，不用个股闭环盈亏倒推；跨月周不直接归为自然月总额。9/25每日收益缺失。</p>
+          <div class="table-wrap"><table>
+            <thead><tr><th>周度区间</th><th>周收益率</th><th>账户金额变化（元）</th><th>期末权益（元）</th><th>每周反思 / 下一步规则</th></tr></thead>
+            <tbody>${sourceRows(weeklySources)}</tbody>
+          </table></div>
+        </section>
         <section class="panel" id="missing">
-          <h2>待补数据</h2>
-          <p class="section-note">这些数据补齐后，才能升级成完整自然月/完整季度核算页。</p>
-          <div class="missing-grid">
-            <article><b>1. 6月、7月、8月自然月账户结果</b><p>起始资产、期末资产、月收益、月收益率、最大回撤。</p></article>
-            <article><b>2. 票级盈亏排行</b><p>按月末持仓浮盈浮亏口径，把赢家和亏家分开两行展示。</p></article>
-            <article><b>3. 全部成交时间</b><p>月度明细页必须保留每笔成交时间，不压缩成交流水。</p></article>
-            <article><b>4. 买卖点地图</b><p>从周度复盘回填每只票真实分时图，月度只展开最重要前几名。</p></article>
+          <h2>证据边界与待补项</h2>
+          <div class="missing-grid">${review.openEvidence.map((text,index) => `<article><b>${index + 1}. 证据边界</b><p>${esc(text)}</p></article>`).join("")}</div>
+          <div class="button-row">
+            <a class="blue" href="../2026-09/#maps">9月完整分时买卖点</a>
+            <a class="blue" href="../2026-09/#trades">全部成交时间</a>
+            <a class="blue" href="data/system-review.json">季度证据与规则</a>
+            <a class="blue" href="data/summary.json">结构化摘要</a>
           </div>
         </section>
       </div>
     </div>
   </main>
+  <script>
+    const chapterNav = document.querySelector('.chapter-nav');
+    if (matchMedia('(max-width:1120px)').matches) chapterNav.open = false;
+    function revealHash() {
+      const target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+      if (!target) return;
+      for (let node = target.parentElement; node; node = node.parentElement) {
+        if (node.tagName === 'DETAILS') node.open = true;
+      }
+    }
+    revealHash();
+    addEventListener('hashchange', revealHash);
+    const links = Array.from(document.querySelectorAll('.chapter-nav a'));
+    const observer = new IntersectionObserver(entries => {
+      const visible = entries.filter(entry => entry.isIntersecting).sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (!visible) return;
+      const id = visible.target.classList.contains('hero') ? 'top' : visible.target.id;
+      links.forEach(link => link.classList.toggle('primary', link.hash === '#' + id));
+    }, {rootMargin:'-5% 0px -65% 0px', threshold:[0,0.1,0.5]});
+    document.querySelectorAll('.content>section').forEach(section => observer.observe(section));
+  </script>
 </body>
 </html>
 `;
-
 fs.mkdirSync(OUT_DIR, { recursive: true });
 fs.writeFileSync(OUT_FILE, html, "utf8");
-console.log(`Wrote ${path.relative(ROOT, OUT_FILE)}`);
+const summary = {
+  scope: review.scope, updatedOn: buildDate,
+  septemberReflection: september.reflection.status,
+  winningSamples: review.winningCases, excludedWinners: review.excludedWinners,
+  repeatErrors: review.repeatErrors.map(error => ({id:error.id,title:error.title,coveredMonths:error.months.map(month => month.month)})),
+  weeklySources, checklistCount: checklist.length, targetCount: goals.length,
+  countingBoundary: review.countingBoundary
+};
+fs.mkdirSync(path.join(OUT_DIR, "data"), { recursive: true });
+fs.writeFileSync(path.join(OUT_DIR, "data/summary.json"), JSON.stringify(summary, null, 2) + "\n", "utf8");
+const hubPath = path.join(ROOT, "monthly-quarterly-trading-review/index.html");
+const hub = fs.readFileSync(hubPath, "utf8");
+const quarterCard = /<a class="quarter-card active" href="\.\/2026-q3\/">[\s\S]*?<\/a>/g;
+assert.equal((hub.match(quarterCard) || []).length, 1, "Expected one Q3 navigation card");
+const updatedHub = hub.replace(quarterCard, '<a class="quarter-card active" href="./2026-q3/"><div class="card-head"><h3>2026 Q3</h3><span class="chip warn">反思已整合</span></div><p>6–9月系统演进：6月作基线，补入9月关键点；标记红线再犯，核对大肉与运气盈利。自然Q3账户总收益另待统一核算。</p></a>');
+if (hub !== updatedHub) fs.writeFileSync(hubPath, updatedHub, "utf8");
+console.log("Wrote " + path.relative(ROOT, OUT_FILE));
