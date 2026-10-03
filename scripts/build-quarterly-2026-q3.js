@@ -73,67 +73,89 @@ const weeklySources = [
   {
     range: "06.01-06.05",
     href: "../../2026-06-01_2026-06-05/",
-    result: "账户 -31.00；持仓浮盈 +1,151.70",
+    change: "-0.13%",
+    pnl: "-31.00",
+    basis: "账户表；持仓浮盈另计 +1,151.70；与持仓截图总资产差241.80元",
     focus: "大有能源验证第一性，粤电力A/中京电子/鑫科材料暴露非第一问题。",
   },
   {
     range: "06.08-06.12",
     href: "../../2026-06-08_2026-06-12/",
-    result: "账户表估算 -466",
+    change: "-2.00%",
+    pnl: "-466.00",
+    basis: "账户表估算；期初23,345，期末22,879；日收益合计-410，差56元",
     focus: "中化国际期末仓位，6月中旬仍处在定位和口径校准阶段。",
   },
   {
     range: "06.15-06.20",
     href: "../../2026-06-15_2026-06-20/",
-    result: "账户口径 -299.00",
+    change: "-1.31%",
+    pnl: "-299.00",
+    basis: "账户表截至6/18；期初22,866，期末22,567；不含未记录的6/19",
     focus: "诺德股份成为期末核心，但后续证明这段处理需要按买点、预期和止损线重审。",
   },
   {
     range: "06.22-06.26",
     href: "../../2026-06-22_2026-06-26/",
-    result: "暂估总亏损 -4,839.42",
+    change: "-21.50%",
+    pnl: "-4,839.42",
+    basis: "交割单＋6/26收盘市值暂估；已实现-3,225.24，持仓浮亏-1,614.18",
     focus: "诺德大亏后切仓，大唐尾段处理；核心问题是主升2没有在正确节点围绕龙头做。",
   },
   {
     range: "06.29-07.04",
     href: "../../2026-06-29_2026-07-04/",
-    result: "账户口径 -1,741.00",
+    change: "-10.17%",
+    pnl: "-1,741.00",
+    basis: "金额为日收益合计；涨幅按17,653→15,858计算，资产变化-1,795，与金额差54元",
     focus: "科技与ETF节奏继续暴露，7月初追高问题从这里开始需要被拉红线。",
   },
   {
     range: "07.06-07.10",
     href: "../../2026-07-06_2026-07-10/",
-    result: "账户口径 -262.00",
+    change: "-1.65%",
+    pnl: "-262.00",
+    basis: "期初15,858→期末15,596；日收益合计+471.60与账户变化冲突，以资产变化为准",
     focus: "半导设备ETF/科创半导持仓待校准，趋势科技仍不是连板打法。",
   },
   {
     range: "07.10-07.18",
     href: "../../2026-07-10_2026-07-18/",
-    result: "可见闭环 -533.37；账户待补",
+    change: "未记录",
+    pnl: "—",
+    basis: "账户数据缺失；可见已实现盈亏-533.37元，不代表全账户周盈亏",
     focus: "半导ETF亏损闭环，哈药股份盈利闭环；正确方向是龙头，错误方向是科技追高。",
   },
   {
     range: "07.20-07.24",
     href: "../../2026-07-20_2026-07-24/",
-    result: "账户日收益 +1,816.40",
+    change: "+13.34%",
+    pnl: "+1,816.40",
+    basis: "金额为日收益合计；期初按7/21总额15,596减收益24倒推15,572；期末17,648.65；资产变化+2,076.65，差260.25元",
     focus: "立新能源围绕核心处理、哈药试错；主线龙头和弱修复轮动开始分层。",
   },
   {
     range: "07.24-08.01",
     href: "../../2026-07-24_2026-08-01/",
-    result: "可见闭环 -4,434.59；账户待补",
+    change: "未记录",
+    pnl: "—",
+    basis: "账户数据缺失；可见已实现盈亏-4,434.59元，跨周成本仍待校准",
     focus: "立新能源二次参与成为阶段最大亏损样本：高位龙头重新参与必须重新定性。",
   },
   {
     range: "07.31-08.08",
     href: "../../2026-07-31_2026-08-08/",
-    result: "可见闭环 +186.27；账户待补",
+    change: "未记录",
+    pnl: "—",
+    basis: "账户数据缺失；可见已实现盈亏+186.27元；期末风范股份未核算",
     focus: "半导ETF小赚闭环，风范股份期末持仓待验证，回撤控制开始收敛。",
   },
   {
     range: "08.10-08.15",
     href: "../../2026-08-10_2026-08-15/",
-    result: "账户日收益 +1,560.94",
+    change: "+12.74%",
+    pnl: "+1,560.94",
+    basis: "金额为日收益合计；期初按8/10总额13,057减收益999倒推12,058；期末13,594；资产变化+1,536，差24.94元",
     focus: "百花医药最高标唯一性做对，科技环境未稳时追高造成利润回吐。",
   },
 ];
@@ -392,7 +414,9 @@ function sourceRows(items) {
       (item) => `
         <tr>
           <td><a class="blue" href="${item.href}">${esc(item.range)}</a></td>
-          <td><strong>${esc(item.result)}</strong></td>
+          <td><strong class="${item.change.startsWith("-") ? "neg" : item.change.startsWith("+") ? "pos" : ""}">${esc(item.change)}</strong></td>
+          <td><strong class="${item.pnl.startsWith("-") ? "neg" : item.pnl.startsWith("+") ? "pos" : ""}">${esc(item.pnl)}</strong></td>
+          <td>${esc(item.basis)}</td>
           <td>${esc(item.focus)}</td>
           <td>${chip("已接入", "pos")}</td>
         </tr>`
@@ -537,7 +561,7 @@ const html = `<!DOCTYPE html>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>2026 Q3滚动交易复盘｜6-8月二次反思</title>
+  <title>每季交割复盘｜2026 Q3｜6-8月二次反思</title>
   <style>
     :root {
       --bg: #f6f7f8;
@@ -808,7 +832,7 @@ const html = `<!DOCTYPE html>
     <div class="page-layout">
       <aside class="sidebar" aria-label="季度复盘导航">
         <div class="sidebar-inner">
-          <a class="sidebar-brand" href="#top"><span>2026 Q3滚动</span><strong>6-8月复盘</strong></a>
+          <a class="sidebar-brand" href="#top"><span>2026 Q3滚动</span><strong>每季交割复盘</strong></a>
           <nav class="side-nav" aria-label="本页导航">
             <a class="primary" href="#top">Q3首页</a>
             <a href="#verdict">最大错误</a>
@@ -838,7 +862,7 @@ const html = `<!DOCTYPE html>
         <section class="hero">
           <div>
             <span class="label">2026 Q3 Rolling Trading Review · built ${esc(buildDate)}</span>
-            <h1>2026 Q3滚动复盘：<br />6-8月二次反思</h1>
+            <h1>每季交割复盘<br />2026 Q3 · 6-8月二次反思</h1>
             <p>本页按你本次要求，把2026年6月、7月、8月截至08.15的阶段复盘写入Q3页。自然季度Q3通常是7-9月，所以9月结束后需要再补9月并校准为完整季度；当前版本先作为6-8月滚动审判书。</p>
             <div class="button-row">
               <a class="button" href="#verdict">先看最大错误</a>
@@ -876,13 +900,15 @@ const html = `<!DOCTYPE html>
 
         <section class="panel" id="sources">
           <h2>周度来源</h2>
-          <p class="section-note">这些周度复盘已接入本页作为来源。跨月周不在这里拆分自然月盈亏，只保留来源链接和阶段事实。</p>
+          <p class="section-note">按已有周度复盘逐周记录。周涨幅＝（期末资产－期初资产）÷期初资产；倒推期初与市值暂估均在口径栏注明。盈亏金额沿用来源账户口径，日收益合计与资产变化不一致时分别列示。账户数据缺失的周以“—”表示，可见已实现盈亏单列，不替代账户盈亏。跨月、重叠来源区间保留原范围，不重复累加为季度总收益。</p>
           <div class="table-wrap">
             <table>
               <thead>
                 <tr>
                   <th>周度区间</th>
-                  <th>已见账户/闭环结果</th>
+                  <th>周涨幅</th>
+                  <th>实际盈亏金额（元）</th>
+                  <th>核算口径 / 差异</th>
                   <th>对Q3判断的作用</th>
                   <th>状态</th>
                 </tr>
