@@ -1,7 +1,10 @@
 from __future__ import annotations
 
+import json
 from html import escape
 from pathlib import Path
+
+from august_trade_data import load_trade_data, money
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -12,13 +15,13 @@ INDEX_PATH = MONTHLY_DIR / "index.html"
 
 
 SUMMARY_POINTS = [
-    "8月不是大亏月份，而是防守明显进步、进攻没有完全打出来的月份；整月约-1%，回撤控制比前几个月明显改善。",
+    "用户口述认为8月防守进步、进攻没有完全打出来，整月约-1%；当前截图只覆盖部分交易，该整月判断仍待完整流水、资产与出入金核验。",
     "最大遗憾不是亏多，而是传智教育、百花医药、深中华A、千金药业等关键大肉机会没有充分做到。",
     "核心矛盾从“看不懂”变成“看懂但执行不到位”：扫板/排板、同批次PK切换、板上确认和失败撤退需要机械化。",
 ]
 
 GOOD_POINTS = [
-    "回撤控制明显改善，整月约-1%，没有因为单笔错误扩大成月度大亏。",
+    "口述认为回撤控制明显改善；整月约-1%的估计尚未用完整账户数据核验。",
     "华西股份这种失败案例能用动态跌停条件单及时离场，亏损约-2%可以接受。",
     "很多亏损不是模式大错，而是模式失败后的正常止损，说明风控端开始稳定。",
     "已经能区分“买点没错但市场不认”和“模式本身不该做”，复盘质量提高。",
@@ -137,6 +140,10 @@ RULE_CARDS = [
 ]
 
 PENDING = [
+    "补齐8月1日至31日完整成交、7月末与8月末持仓及账户总资产、期间出入金，核验整月收益和回撤；现金余额不能替代总资产。",
+    "补齐秦安股份100股、风华高科100股的后续卖出或期末估值；当前仅能确认截图内买入成本。",
+    "一鸣食品7月31日买入、8月3日卖出，+15.97元是整段持有期盈亏；计算八月自然月贡献还需7月末估值。",
+    "本截图未覆盖汉森制药8月27日、百花医药8月28日等后半月交易；这些手册案例仍需对应流水。",
     "“明月”具体标的名称待确认。",
     "“新龙股份”具体名称待确认，可能存在语音识别误差。",
     "“利辛”或此前月份主升案例名称待确认。",
@@ -168,7 +175,77 @@ def card(title: str, body: str, chip: str | None = None) -> str:
     return f'<article class="card"><div class="card-head"><h3>{h(title)}</h3>{chip_html}</div><p>{h(body)}</p></article>'
 
 
-def render() -> str:
+def render_transactions(rows: list[dict], summary: dict) -> str:
+    closed_rows = [(
+        f"{item['name']} / {item['code']}",
+        f"{item['buy_date']} → {item['sell_date']}" + ("（跨月）" if item["cross_month"] else ""),
+        str(item["quantity"]), f"{item['buy_average']:.3f} → {item['sell_average']:.3f}",
+        money(item["buy_cost"]), money(item["sell_proceeds"]), money(item["total_cost"]),
+        money(item["net_pnl"], signed=True), f"{item['return_pct']:+.2f}%",
+    ) for item in summary["closed_trades"]]
+    open_rows = [(
+        f"{item['name']} / {item['code']}", item["buy_date"], str(item["quantity"]),
+        money(item["buy_cost"]), "后续卖出或期末持仓待补；浮盈浮亏未计入",
+    ) for item in summary["open_trades"]]
+    ledger_rows = []
+    for row in rows:
+        cells = [
+            row["row_id"], row["trade_date"], row["trade_time"], row["code"], row["name"],
+            row["side"], row["quantity"], f"{row['price']:.3f}", money(row["amount"]),
+            money(row["commission"]), money(row["stamp_tax"]), money(row["other_fees"]),
+            money(row["cash_flow"], signed=True), money(row["cash_balance"]),
+            row["market"], row["settlement_date"],
+        ]
+        period = row["trade_date"][:7]
+        hidden = " hidden" if period != "2026-08" else ""
+        direction = "buy" if row["is_buy"] else "sell"
+        ledger_rows.append(
+            f'<tr data-period="{period}" data-code="{row["code"]}" data-side="{direction}"{hidden}>'
+            + "".join(f"<td>{h(cell)}</td>" for cell in cells) + "</tr>"
+        )
+    headers = ["行号", "成交日期", "成交时间", "代码", "名称", "操作", "数量", "价格", "成交金额", "手续费", "印花税", "其他杂费", "发生金额", "现金余额", "市场", "交收日期"]
+    symbols = {row["code"]: row["name"] for row in rows}
+    symbol_options = "".join(f'<option value="{code}">{h(name)} {code}</option>' for code, name in sorted(symbols.items()))
+    return f"""
+        <section class="panel trade-panel" id="trade-summary">
+          <h2>实际交易数据与净盈亏</h2>
+          <p class="section-note">来源：用户提供的券商交易截图，逐行核对。查询区间为7月26日至8月16日，可见成交为7月27日至8月13日；其中八月26条、七月参考16条，尚未覆盖完整自然月。</p>
+          <div class="trade-metrics">
+            <div><span>八月可见成交</span><strong>{summary['month_row_count']}条 / {summary['month_symbol_count']}个标的</strong><small>买入{summary['month_buy_count']}条，卖出{summary['month_sell_count']}条</small></div>
+            <div><span>可核验闭合净盈亏</span><strong class="pos">{money(summary['closed_net_pnl'], True)}元</strong><small>6组交易；按发生金额含费用</small></div>
+            <div><span>八月买入成交额</span><strong>{money(summary['month_buy_amount'])}元</strong><small>卖出成交额 {money(summary['month_sell_amount'])}元</small></div>
+            <div><span>八月可见成交费用</span><strong>{money(summary['month_total_cost'])}元</strong><small>手续费130.00元，印花税17.57元</small></div>
+          </div>
+          <p class="data-basis"><strong>盈亏口径：</strong>只统计买卖成本完整可见、在八月卖出的6组交易。买卖均在八月的5组净盈亏为{money(summary['within_month_pnl'], True)}元；一鸣食品跨月整段盈亏为{money(summary['cross_month_pnl'], True)}元。它们不能代替整月账户收益。截图现金余额为可用资金，不含持仓市值。</p>
+          {table(["标的", "买入 → 卖出", "数量", "成交均价", "买入现金成本", "卖出净回款", "全部费用", "净盈亏（元）", "成本收益率"], closed_rows, "pnl-table")}
+          <p class="data-footnote">成本收益率＝净盈亏÷含费用买入成本。费用按成交金额与发生金额差额计算；八月发生金额与截图已列费用合计另有0.67元差额，沿用原发生金额，不推测费用名称。均价由成交金额÷数量计算，原始显示价格保留在下方明细。</p>
+          <h3>截图内未闭合交易</h3>
+          {table(["标的", "可见买入日期", "未配对数量", "含费用成本（元）", "状态"], open_rows, "open-table")}
+          <p class="data-footnote">未配对数量只表示本截图缺少对应卖出，不等同于8月末持仓。七月的立新能源、长缆科技不并入八月盈亏；哈药股份缺少买入成本。</p>
+        </section>
+        <section class="panel trade-panel" id="trade-ledger">
+          <div class="ledger-heading"><div><h2>逐笔成交明细</h2><p class="section-note">42条截图原始记录全部保留；同时间、同价格的多条成交分别计费，未合并。</p></div><div class="download-links"><a href="./trades.csv" download>下载成交CSV</a><a href="./trade-summary.json" download>下载盈亏汇总</a></div></div>
+          <div class="ledger-filters">
+            <label>月份<select id="ledger-period"><option value="2026-08">八月成交</option><option value="2026-07">七月跨月参考</option><option value="all">全部记录</option></select></label>
+            <label>标的<select id="ledger-symbol"><option value="all">全部标的</option>{symbol_options}</select></label>
+            <label>操作<select id="ledger-side"><option value="all">全部操作</option><option value="buy">买入（含对方买入）</option><option value="sell">卖出</option></select></label>
+            <p id="ledger-count" role="status" aria-live="polite">显示26 / 42条</p>
+          </div>
+          <div class="table-wrap ledger-wrap" tabindex="0" role="region" aria-label="逐笔成交明细，可横向滚动">
+            <table class="ledger-table"><caption class="sr-only">券商截图成交明细；金额单位为元，数量为股或基金份额</caption><thead><tr>{''.join(f'<th scope="col">{h(item)}</th>' for item in headers)}</tr></thead><tbody>{''.join(ledger_rows)}</tbody></table>
+          </div>
+          <p id="ledger-empty" hidden>当前条件没有成交记录。</p>
+        </section>
+        <section class="panel trade-panel" id="trade-reflections">
+          <h2>从实际成交回看执行</h2>
+          <div class="trade-reflection"><h3>百花医药：盈利最大，买入性质仍需确认</h3><p>8月11日09:25以12.750元分三条买入900股；8月12日09:33:05、14:01:25、14:56:08以14.030元分三条卖出，净赚1,115.44元，成本收益率+9.71%。流水能确认竞价成交和分批退出；是否属于建仓或加仓、是否符合当时节点，需要当日计划和分钟线核验。手册中“二波走弱加仓”的后半月案例尚未出现在本截图。</p></div>
+          <div class="trade-reflection"><h3>风范股份：控制了单笔亏损，切换动作待核验</h3><p>8月6日09:38至13:07共六条买入1,800股，成交价7.160元；8月10日09:37:22全部卖出，净亏327.55元，成本收益率-2.54%。六条买入手续费合计30元。实际亏损幅度可核验；低开、条件单和是否及时卖弱切强，还需分钟线及当时决策记录。</p></div>
+          <div class="trade-reflection"><h3>科技ETF与隔夜套利：按实际净利润评价</h3><p>半导体设备ETF于8月3日买入5,000份、8月4日分三条卖出，净赚105.40元；科创半导体ETF同期买入3,600份并分三条卖出，净赚64.90元。亨通光电8月12日至13日100股净赚79.87元。一鸣食品7月31日至8月3日200股净赚15.97元，归为跨月样本。</p></div>
+          <div class="trade-reflection"><h3>整月结论：等待余下流水和持仓估值</h3><p>手册的“约-1%”继续作为口述估计保留。当前闭合样本盈利与该估计口径不同，后半月亏损、未闭合持仓、月初市值和出入金尚不完整，不能据此确认或否定整月结果。月度复盘固定以实际成交、闭合盈亏和期末持仓为基础，再评价模式与执行。</p></div>
+        </section>"""
+
+
+def render(rows: list[dict], trade_summary: dict) -> str:
     mode_cards = "".join(card(name, f"{position} {buy} 风险：{risk} 案例：{example}", "模式") for name, position, buy, risk, example in MODES)
     rule_cards = "".join(card(name, f"{action}。{body}", "动作") for name, action, body in RULES)
     case_cards = "".join(
@@ -189,10 +266,14 @@ def render() -> str:
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>2026年8月月度交易复盘｜战法手册版</title>
+  <title>2026年8月月度交易复盘｜实际成交与战法手册</title>
   <style>
     :root{{--bg:#f5f6f8;--paper:#fff;--ink:#17202a;--muted:#667085;--line:#dde4eb;--soft:#f6f8fa;--accent:#bd3d2a;--accent-soft:#fff1ed;--blue:#1d4ed8;--green:#137a5a;--red:#b4232f;--amber:#a15c07;--shadow:0 18px 44px rgba(23,32,42,.08);--radius:8px}}
     *{{box-sizing:border-box}}html{{scroll-behavior:smooth;overflow-x:hidden}}body{{margin:0;background:linear-gradient(180deg,#fafbfc 0%,#eef2f6 100%);color:var(--ink);font-family:"Avenir Next","PingFang SC","Noto Sans SC","Microsoft YaHei",Arial,sans-serif;overflow-x:hidden}}a{{color:inherit}}h1,h2,h3,p{{margin-top:0;letter-spacing:0}}h1{{margin:12px 0;font-size:clamp(32px,4vw,56px);line-height:1.06}}h2{{font-size:24px;margin-bottom:8px}}h3{{font-size:18px;margin-bottom:8px}}p,li,td{{color:var(--muted);line-height:1.68}}strong{{color:var(--ink)}}.shell{{width:min(1460px,calc(100vw - 24px));margin:0 auto;padding:18px 0 54px;display:grid;gap:18px}}.page-layout{{display:grid;grid-template-columns:230px minmax(0,1fr);gap:18px;align-items:start}}.sidebar{{position:sticky;top:18px}}.sidebar-inner,.hero,.panel,.card,.case-card,.sop-card,.rule-card{{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);min-width:0}}.sidebar-inner{{padding:14px;display:grid;gap:12px}}.sidebar-brand{{display:grid;gap:3px;padding:10px 10px 12px;text-decoration:none;border-bottom:1px solid var(--line)}}.sidebar-brand span{{color:var(--muted);font-size:12px;font-weight:800}}.sidebar-brand strong{{font-size:20px;line-height:1.18}}.side-nav{{display:grid;gap:6px}}.side-nav a{{min-height:40px;display:flex;align-items:center;padding:9px 10px;border-radius:8px;color:var(--muted);font-size:14px;font-weight:800;text-decoration:none}}.side-nav a:hover,.side-nav a:focus-visible{{background:#f8fafc;color:var(--ink);outline:2px solid transparent}}.side-nav a.primary{{background:var(--ink);color:#fff}}.content{{display:grid;gap:18px;min-width:0}}.hero{{padding:30px;display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:stretch}}.label,.chip{{display:inline-flex;width:max-content;max-width:100%;align-items:center;min-height:28px;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:900;overflow-wrap:anywhere}}.label{{color:var(--accent);background:var(--accent-soft)}}.chip{{background:#eef2ff;color:#344054;white-space:nowrap}}.chip.warn{{background:#fff7ed;color:#9a3412}}.chip.pos{{background:#ecfdf3;color:#067647}}.chip.neg{{background:#fef2f2;color:#991b1b}}.nav{{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}}.button{{min-height:44px;display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:8px;text-decoration:none;background:var(--ink);color:#fff;font-weight:800}}.button.secondary{{background:#fff;color:var(--ink);border:1px solid var(--line)}}.metrics{{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}}.metric{{min-height:116px;padding:16px;border:1px solid var(--line);border-radius:8px;background:#f8fafc;display:grid;align-content:space-between}}.metric span,.metric small{{color:var(--muted);font-size:12px;line-height:1.45}}.metric strong{{font-size:25px;overflow-wrap:anywhere}}.panel{{padding:22px;overflow:hidden}}.section-note{{margin-bottom:16px;color:var(--muted)}}.grid-2{{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}}.grid-3{{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}}.card,.case-card,.sop-card,.rule-card{{box-shadow:none;padding:16px;background:#f8fafc}}.card-head,.case-title{{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}}.card p,.case-card p,.rule-card p{{margin-bottom:0}}.case-grid{{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}}.sop-grid{{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}}.rule-grid{{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}}.lead-list{{margin:0;padding-left:20px}}.table-wrap{{width:100%;overflow:auto;border:1px solid var(--line);border-radius:8px;background:#fff}}table{{width:100%;min-width:980px;border-collapse:collapse;font-size:13px}}th,td{{padding:12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}}th{{color:var(--muted);background:#f8fafc;font-size:13px}}tr:last-child td{{border-bottom:0}}.axis{{display:grid;grid-template-columns:repeat(7,minmax(124px,1fr));gap:8px;overflow:auto;padding-bottom:2px}}.axis-item{{min-height:126px;padding:12px;border:1px solid var(--line);border-radius:8px;background:#fff}}.axis-item b{{display:block;font-size:22px;color:var(--accent);margin-bottom:6px}}.source-box{{border:1px solid #f2d39c;background:#fffaf0;border-radius:8px;padding:14px}}.source-box p{{margin:0}}.pending{{margin:0;padding-left:20px}}.pos{{color:var(--green)}}.neg{{color:var(--red)}}.warn{{color:var(--amber)}}@media(max-width:1120px){{.page-layout,.hero,.grid-2,.grid-3,.sop-grid,.rule-grid{{grid-template-columns:1fr}}.sidebar{{position:static}}.side-nav{{grid-template-columns:repeat(4,minmax(0,1fr))}}.case-grid{{grid-template-columns:1fr}}}}@media(max-width:720px){{.shell{{width:min(100vw - 16px,1460px);padding-top:12px}}.hero,.panel{{padding:18px}}.metrics,.side-nav{{grid-template-columns:1fr}}.nav{{display:grid;grid-template-columns:1fr 1fr}}.button{{width:100%;padding-left:10px;padding-right:10px}}h1{{font-size:33px}}.card-head,.case-title{{flex-wrap:wrap}}.axis{{grid-template-columns:1fr;overflow:visible}}table{{min-width:780px;font-size:12px}}}}
+  </style>
+  <style>
+    h1{{font-size:38px;line-height:1.2}}.trade-panel{{border:0;border-bottom:1px solid var(--line);border-radius:0;box-shadow:none;background:var(--paper)}}.trade-metrics{{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin:22px 0}}.trade-metrics>div{{display:grid;gap:8px;padding-left:14px;border-left:3px solid var(--line);min-width:0}}.trade-metrics span,.trade-metrics small{{color:var(--muted);font-size:13px}}.trade-metrics strong{{font-size:25px;overflow-wrap:anywhere}}.data-basis{{padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}}.data-footnote{{font-size:13px;margin:12px 0 22px}}.ledger-heading{{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}}.download-links{{display:flex;flex-wrap:wrap;gap:16px;align-items:center;font-size:13px}}.download-links a{{color:var(--blue);padding:10px 0}}.ledger-filters{{display:flex;flex-wrap:wrap;align-items:end;gap:12px;margin:12px 0 16px}}.ledger-filters label{{display:grid;gap:6px;color:var(--muted);font-size:13px;min-width:160px;flex:1}}.ledger-filters select{{width:100%;height:42px;border:1px solid var(--line);border-radius:4px;background:#fff;color:var(--ink);padding:0 10px;font:inherit}}.ledger-filters p{{font-size:13px;margin:0;padding-bottom:10px;white-space:nowrap}}.ledger-table{{min-width:1810px;font-variant-numeric:tabular-nums}}.ledger-table th,.ledger-table td{{white-space:nowrap;padding:10px}}.ledger-table [data-side="buy"] td:nth-child(6){{color:var(--red)}}.ledger-table [data-side="sell"] td:nth-child(6){{color:var(--blue)}}.ledger-wrap:focus-visible,select:focus-visible{{outline:2px solid var(--blue);outline-offset:2px}}.trade-reflection{{padding:16px 0;border-top:1px solid var(--line)}}.trade-reflection h3{{font-size:17px}}.trade-reflection p{{margin-bottom:0}}.sr-only{{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}}[hidden]{{display:none!important}}@media(max-width:720px){{h1{{font-size:30px}}.trade-metrics{{grid-template-columns:1fr}}.ledger-filters label{{min-width:100%;flex:auto}}.trade-metrics strong{{font-size:23px}}}}
+    @media(max-width:720px){{.side-nav{{grid-template-columns:repeat(2,minmax(0,1fr));gap:4px}}.side-nav a{{min-height:36px;padding:8px;font-size:13px}}}}
   </style>
 </head>
 <body>
@@ -203,6 +284,9 @@ def render() -> str:
           <a class="sidebar-brand" href="#top"><span>2026年8月</span><strong>月度复盘</strong></a>
           <nav class="side-nav" aria-label="本页导航">
             <a class="primary" href="#top">本月概览</a>
+            <a href="#trade-summary">实际盈亏</a>
+            <a href="#trade-ledger">逐笔成交</a>
+            <a href="#trade-reflections">数据复盘</a>
             <a href="#position">核心矛盾</a>
             <a href="#modes">战法框架</a>
             <a href="#nodes">板数节点</a>
@@ -224,25 +308,26 @@ def render() -> str:
       <div class="content">
         <section class="hero" id="top">
           <div>
-            <span class="label">Monthly Trading Review · 战法手册版</span>
+            <span class="label">Monthly Trading Review · 实际成交 + 战法手册</span>
             <h1>2026年8月月度交易复盘</h1>
             <p>最高标抱团 / 爆量弱转强 / 同批次PK切换 / 补涨龙边界 / 二波首板 / 一进二套利</p>
-            <div class="source-box"><p><strong>口径说明：</strong>本页依据《2026年8月交易战法手册-增强版》整理，保留用户口述判断；未额外抓取行情、龙虎榜、主力净额或异动监管数据。逐笔成交、分钟线买卖点和外部核验数据后续可继续补齐。</p></div>
+            <div class="source-box"><p><strong>数据覆盖：</strong>已加入券商截图42条成交，其中八月26条、七月参考16条，可见交易截至8月13日。手册判断与实际成交一并复盘；完整八月流水、月末持仓和账户收益待核验。</p></div>
             <div class="nav">
               <a class="button" href="../">返回月度导航</a>
               <a class="button secondary" href="../../weekly-trading-review/">周度主页</a>
             </div>
           </div>
           <div class="metrics">
-            <article class="metric"><span>月度状态</span><strong>防守进步</strong><small>错误数量减少，亏损没有扩大</small></article>
-            <article class="metric"><span>账户结果</span><strong class="neg">约 -1%</strong><small>以口述复盘为准，待成交数据核验</small></article>
+            <article class="metric"><span>八月可见成交</span><strong>26条</strong><small>8个标的；14条买入、12条卖出</small></article>
+            <article class="metric"><span>闭合样本净盈亏</span><strong class="pos">{money(trade_summary['closed_net_pnl'], True)}元</strong><small>6组含费用，含跨月；非整月账户收益</small></article>
             <article class="metric"><span>核心矛盾</span><strong>看懂但没做到</strong><small>扫板、排板、切换与确认动作待强化</small></article>
             <article class="metric"><span>下月主题</span><strong>把核心机会做到</strong><small>盘前列池、竞价PK、板上确认、失败撤退</small></article>
           </div>
         </section>
+{render_transactions(rows, trade_summary)}
         <section class="panel" id="position">
           <h2>月度定位与核心矛盾</h2>
-          <p class="section-note">增强版手册的重点不是增加交易次数，而是把“该做的核心机会”标准化。</p>
+          <p class="section-note">以下保留增强版手册的用户口述判断。除上方已核验成交外，整月结果和后半月案例仍待对应数据。</p>
           <div class="grid-3">{''.join(card(f"结论 {idx}", point) for idx, point in enumerate(SUMMARY_POINTS, 1))}</div>
           <div class="grid-2" style="margin-top:14px">
             <article class="card"><div class="card-head"><h3>本月做得最好的地方</h3><span class="chip pos">Keep</span></div><ul class="lead-list">{list_items(GOOD_POINTS)}</ul></article>
@@ -266,7 +351,7 @@ def render() -> str:
         </section>
         <section class="panel" id="cases">
           <h2>关键案例详解</h2>
-          <p class="section-note">每个案例都落到一个可执行规则：要么下次必须做，要么下次必须撤。</p>
+          <p class="section-note">以下为手册案例与口述反思；本次截图仅覆盖部分实际成交，后半月案例与盘口描述仍需流水及行情核验。</p>
           <div class="case-grid">{case_cards}</div>
         </section>
         <section class="panel" id="dragon">
@@ -291,12 +376,32 @@ def render() -> str:
         </section>
         <section class="panel" id="pending">
           <h2>待确认与后续补充</h2>
-          <p class="section-note">正式归档或升级为逐笔成交页前，需要补充行情与交易流水核验。</p>
+          <p class="section-note">已补入42条截图成交；完成整月核验仍需余下流水、月初月末资产和对应行情。</p>
           <ul class="pending">{list_items(PENDING)}</ul>
         </section>
       </div>
     </div>
   </main>
+  <script>
+    const ledgerRows = [...document.querySelectorAll('.ledger-table tbody tr')];
+    const periodFilter = document.getElementById('ledger-period');
+    const symbolFilter = document.getElementById('ledger-symbol');
+    const sideFilter = document.getElementById('ledger-side');
+    function filterLedger() {{
+      let count = 0;
+      for (const row of ledgerRows) {{
+        const matches = (periodFilter.value === 'all' || row.dataset.period === periodFilter.value)
+          && (symbolFilter.value === 'all' || row.dataset.code === symbolFilter.value)
+          && (sideFilter.value === 'all' || row.dataset.side === sideFilter.value);
+        row.hidden = !matches;
+        if (matches) count++;
+      }}
+      document.getElementById('ledger-count').textContent = `显示${{count}} / ${{ledgerRows.length}}条`;
+      document.getElementById('ledger-empty').hidden = count !== 0;
+    }}
+    for (const control of [periodFilter, symbolFilter, sideFilter]) control.addEventListener('change', filterLedger);
+    filterLedger();
+  </script>
 </body>
 </html>
 """
@@ -305,10 +410,11 @@ def render() -> str:
 def update_navigation() -> None:
     html = INDEX_PATH.read_text(encoding="utf-8")
     august_placeholders = [
+        '<a class="month-card active" href="./2026-08/"><div class="card-head"><h3>2026年8月</h3><span class="chip warn">战法手册</span></div><p>已生成战法手册版月度复盘：最高标抱团、爆量弱转强、同批次PK与下月执行SOP；逐笔成交待补。</p></a>',
         '<a class="month-card disabled" aria-disabled="true"><div class="card-head"><h3>2026年8月</h3><span class="chip ">待补</span></div><p>等待对应自然月周复盘和月末持仓数据。</p></a>',
         '<a class="month-card disabled" aria-disabled="true"><div class="card-head"><h3>2026年8月</h3><span class="chip warn">Q3草案</span></div><p>已纳入Q3滚动二次反思；8月截至08.15，完整自然月待月底和9月5-10日整理。</p></a>',
     ]
-    new_august = '<a class="month-card active" href="./2026-08/"><div class="card-head"><h3>2026年8月</h3><span class="chip warn">战法手册</span></div><p>已生成战法手册版月度复盘：最高标抱团、爆量弱转强、同批次PK与下月执行SOP；逐笔成交待补。</p></a>'
+    new_august = '<a class="month-card active" href="./2026-08/"><div class="card-head"><h3>2026年8月</h3><span class="chip warn">实际成交</span></div><p>已补入42条截图成交，含八月26条；6组闭合净盈亏+1,054.03元，结合战法复盘。完整月度流水与期末资产待补。</p></a>'
     for placeholder in august_placeholders:
         if placeholder in html:
             html = html.replace(placeholder, new_august)
@@ -324,7 +430,12 @@ def update_navigation() -> None:
 
 def main() -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    OUT_PATH.write_text(render(), encoding="utf-8", newline="\n")
+    rows, summary = load_trade_data(OUT_DIR / "trades.csv")
+    OUT_PATH.write_text(render(rows, summary), encoding="utf-8", newline="\n")
+    (OUT_DIR / "trade-summary.json").write_text(
+        json.dumps(summary, ensure_ascii=False, default=str, indent=2) + "\n",
+        encoding="utf-8", newline="\n",
+    )
     update_navigation()
     print(OUT_PATH)
 

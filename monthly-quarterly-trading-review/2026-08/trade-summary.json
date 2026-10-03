@@ -1,0 +1,183 @@
+{
+  "source": "用户提供的券商交易截图，人工逐行核对转录",
+  "query_start": "2026-07-26",
+  "query_end": "2026-08-16",
+  "visible_start": "2026-07-27",
+  "visible_end": "2026-08-13",
+  "month": "2026-08",
+  "full_month_verified": false,
+  "account_return_pct": null,
+  "source_row_count": 42,
+  "month_row_count": 26,
+  "reference_row_count": 16,
+  "month_buy_count": 14,
+  "month_sell_count": 12,
+  "month_symbol_count": 8,
+  "month_buy_amount": "44324.000",
+  "month_sell_amount": "41476.300",
+  "month_commission": "130.000",
+  "month_stamp_tax": "17.570",
+  "month_total_cost": "148.240",
+  "month_fee_difference": "0.670",
+  "closed_count": 6,
+  "closed_net_pnl": "1054.030",
+  "cross_month_pnl": "15.970",
+  "within_month_pnl": "1038.060",
+  "closed_trades": [
+    {
+      "code": "600721",
+      "name": "百花医药",
+      "quantity": 900,
+      "buy_date": "2026-08-11",
+      "sell_date": "2026-08-12",
+      "buy_average": "12.750",
+      "sell_average": "14.030",
+      "buy_cost": "11490.120",
+      "sell_proceeds": "12605.560",
+      "total_cost": "36.560",
+      "net_pnl": "1115.440",
+      "return_pct": "9.707818543235405722481575475",
+      "cross_month": false,
+      "source_rows": [
+        "10",
+        "09",
+        "08",
+        "06",
+        "05",
+        "04"
+      ]
+    },
+    {
+      "code": "159516",
+      "name": "半导设备",
+      "quantity": 5000,
+      "buy_date": "2026-08-03",
+      "sell_date": "2026-08-04",
+      "buy_average": "0.614",
+      "sell_average": "0.63908",
+      "buy_cost": "3075.000",
+      "sell_proceeds": "3180.400",
+      "total_cost": "20.000",
+      "net_pnl": "105.400",
+      "return_pct": "3.427642276422764227642276423",
+      "cross_month": false,
+      "source_rows": [
+        "25",
+        "23",
+        "20",
+        "18"
+      ]
+    },
+    {
+      "code": "600487",
+      "name": "亨通光电",
+      "quantity": 100,
+      "buy_date": "2026-08-12",
+      "sell_date": "2026-08-13",
+      "buy_average": "59.300",
+      "sell_average": "60.230",
+      "buy_cost": "5935.060",
+      "sell_proceeds": "6014.930",
+      "total_cost": "13.130",
+      "net_pnl": "79.870",
+      "return_pct": "1.345731972381071126492402773",
+      "cross_month": false,
+      "source_rows": [
+        "02",
+        "01"
+      ]
+    },
+    {
+      "code": "588170",
+      "name": "科创半导",
+      "quantity": 3600,
+      "buy_date": "2026-08-03",
+      "sell_date": "2026-08-04",
+      "buy_average": "0.845",
+      "sell_average": "0.8685833333333333333333333333",
+      "buy_cost": "3047.000",
+      "sell_proceeds": "3111.900",
+      "total_cost": "20.000",
+      "net_pnl": "64.900",
+      "return_pct": "2.129963898916967509025270758",
+      "cross_month": false,
+      "source_rows": [
+        "24",
+        "22",
+        "21",
+        "19"
+      ]
+    },
+    {
+      "code": "605179",
+      "name": "一鸣食品",
+      "quantity": 200,
+      "buy_date": "2026-07-31",
+      "sell_date": "2026-08-03",
+      "buy_average": "19.370",
+      "sell_average": "19.510",
+      "buy_cost": "3879.040",
+      "sell_proceeds": "3895.010",
+      "total_cost": "12.030",
+      "net_pnl": "15.970",
+      "return_pct": "0.4116998020128691635043722158",
+      "cross_month": true,
+      "source_rows": [
+        "27",
+        "26"
+      ]
+    },
+    {
+      "code": "601700",
+      "name": "风范股份",
+      "quantity": 1800,
+      "buy_date": "2026-08-06",
+      "sell_date": "2026-08-10",
+      "buy_average": "7.160",
+      "sell_average": "7.001111111111111111111111111",
+      "buy_cost": "12918.130",
+      "sell_proceeds": "12590.580",
+      "total_cost": "41.550",
+      "net_pnl": "-327.550",
+      "return_pct": "-2.535583710645426234292424678",
+      "cross_month": false,
+      "source_rows": [
+        "17",
+        "16",
+        "15",
+        "14",
+        "13",
+        "12",
+        "11"
+      ]
+    }
+  ],
+  "open_trades": [
+    {
+      "code": "000636",
+      "name": "风华高科",
+      "quantity": 100,
+      "buy_date": "2026-08-12",
+      "buy_cost": "6656.000",
+      "source_rows": [
+        "03"
+      ],
+      "status": "截图内未闭合；期末持仓与估值待核验"
+    },
+    {
+      "code": "603758",
+      "name": "秦安股份",
+      "quantity": 100,
+      "buy_date": "2026-08-11",
+      "buy_cost": "1273.010",
+      "source_rows": [
+        "07"
+      ],
+      "status": "截图内未闭合；期末持仓与估值待核验"
+    }
+  ],
+  "unmatched_sell_rows": [
+    "42"
+  ],
+  "pnl_basis": "可见买卖完整配对、八月卖出的整段持有期盈亏；按券商发生金额计入费用，跨月交易含七月买入成本；非整月账户收益"
+}
