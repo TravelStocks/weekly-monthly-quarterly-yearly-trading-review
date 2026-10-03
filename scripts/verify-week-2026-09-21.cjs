@@ -70,4 +70,3 @@ async function main() {
   console.log(JSON.stringify(results,null,2));
 }
 main().catch(error => { console.error(error); process.exitCode = 1; });
-
