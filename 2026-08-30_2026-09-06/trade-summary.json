@@ -1,0 +1,190 @@
+{
+  "range": {
+    "start": "2026-08-30",
+    "end": "2026-09-06"
+  },
+  "source": "用户提供的五张券商周度交割截图",
+  "count": 11,
+  "moneyUnit": "CNY cents",
+  "buyCount": 5,
+  "sellCount": 6,
+  "buyAmount": 1527300,
+  "sellAmount": 2649700,
+  "turnover": 4177000,
+  "commission": 5500,
+  "stampTax": 1324,
+  "feeDifference": 33,
+  "totalFees": 6857,
+  "netCash": 1115543,
+  "openingCash": 1448,
+  "closingCash": 1116991,
+  "calculatedCash": 1116991,
+  "cashBalanceDifference": 0,
+  "realizedPnl": -240571,
+  "accountReturn": null,
+  "accountEquity": null,
+  "openingPositions": [
+    {
+      "code": "600721",
+      "name": "百花医药",
+      "qty": 500,
+      "cost": 822509,
+      "sources": [
+        "2026-08-27 10:02:35",
+        "2026-08-27 10:05:21",
+        "2026-08-28 09:32:11"
+      ]
+    },
+    {
+      "code": "600378",
+      "name": "昊华科技",
+      "qty": 100,
+      "cost": 533605,
+      "sources": [
+        "2026-08-28 09:31:26"
+      ]
+    }
+  ],
+  "closingPositions": [],
+  "symbols": [
+    {
+      "code": "600378",
+      "name": "昊华科技",
+      "count": 1,
+      "opening": {
+        "code": "600378",
+        "name": "昊华科技",
+        "qty": 100,
+        "cost": 533605,
+        "sources": [
+          "2026-08-28 09:31:26"
+        ]
+      },
+      "buyQty": 0,
+      "sellQty": 100,
+      "buyAmount": 0,
+      "sellAmount": 518700,
+      "matchedCost": 533605,
+      "realized": -15669,
+      "crossWeek": true
+    },
+    {
+      "code": "600721",
+      "name": "百花医药",
+      "count": 1,
+      "opening": {
+        "code": "600721",
+        "name": "百花医药",
+        "qty": 500,
+        "cost": 822509,
+        "sources": [
+          "2026-08-27 10:02:35",
+          "2026-08-27 10:05:21",
+          "2026-08-28 09:32:11"
+        ]
+      },
+      "buyQty": 0,
+      "sellQty": 500,
+      "buyAmount": 0,
+      "sellAmount": 695000,
+      "matchedCost": 822509,
+      "realized": -128364,
+      "crossWeek": true
+    },
+    {
+      "code": "600354",
+      "name": "敦煌种业",
+      "count": 2,
+      "buyQty": 100,
+      "sellQty": 100,
+      "buyAmount": 90300,
+      "sellAmount": 84500,
+      "matchedCost": 90801,
+      "realized": -6844,
+      "crossWeek": false
+    },
+    {
+      "code": "600127",
+      "name": "金健米业",
+      "count": 2,
+      "buyQty": 300,
+      "sellQty": 300,
+      "buyAmount": 361200,
+      "sellAmount": 378000,
+      "matchedCost": 361704,
+      "realized": 15603,
+      "crossWeek": false
+    },
+    {
+      "code": "600551",
+      "name": "时代出版",
+      "count": 2,
+      "buyQty": 600,
+      "sellQty": 600,
+      "buyAmount": 561000,
+      "sellAmount": 504600,
+      "matchedCost": 561506,
+      "realized": -57663,
+      "crossWeek": false
+    },
+    {
+      "code": "000892",
+      "name": "欢瑞世纪",
+      "count": 3,
+      "buyQty": 900,
+      "sellQty": 900,
+      "buyAmount": 514800,
+      "sellAmount": 468900,
+      "matchedCost": 515800,
+      "realized": -47634,
+      "crossWeek": false
+    }
+  ],
+  "daily": [
+    {
+      "date": "20260831",
+      "count": 4,
+      "buyAmount": 451500,
+      "sellAmount": 1213700,
+      "fees": 2624,
+      "netCash": 759576,
+      "realized": -144033
+    },
+    {
+      "date": "20260901",
+      "count": 2,
+      "buyAmount": 0,
+      "sellAmount": 462500,
+      "fees": 1236,
+      "netCash": 461264,
+      "realized": 8759
+    },
+    {
+      "date": "20260902",
+      "count": 1,
+      "buyAmount": 561000,
+      "sellAmount": 0,
+      "fees": 506,
+      "netCash": -561506,
+      "realized": 0
+    },
+    {
+      "date": "20260903",
+      "count": 3,
+      "buyAmount": 514800,
+      "sellAmount": 504600,
+      "fees": 1757,
+      "netCash": -11957,
+      "realized": -57663
+    },
+    {
+      "date": "20260904",
+      "count": 1,
+      "buyAmount": 0,
+      "sellAmount": 468900,
+      "fees": 734,
+      "netCash": 468166,
+      "realized": -47634
+    }
+  ]
+}

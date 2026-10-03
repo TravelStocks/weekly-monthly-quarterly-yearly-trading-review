@@ -1,0 +1,229 @@
+{
+  "range": {
+    "start": "2026-08-16",
+    "end": "2026-08-23"
+  },
+  "source": "用户提供的五张券商周度交割截图",
+  "count": 17,
+  "moneyUnit": "CNY cents",
+  "buyCount": 10,
+  "sellCount": 7,
+  "buyAmount": 1236080,
+  "sellAmount": 1798200,
+  "turnover": 3034280,
+  "commission": 8500,
+  "stampTax": 682,
+  "feeDifference": 13,
+  "totalFees": 9195,
+  "netCash": 552925,
+  "openingCash": 663602,
+  "closingCash": 1216527,
+  "calculatedCash": 1216527,
+  "cashBalanceDifference": 0,
+  "realizedPnl": -52675,
+  "accountReturn": null,
+  "accountEquity": null,
+  "openingPositions": [
+    {
+      "code": "000936",
+      "name": "华西股份",
+      "qty": 800,
+      "cost": 560500,
+      "sources": [
+        "2026-08-10_2026-08-15/index.html：8月14日八笔买入，成交额5565.00，手续费40.00"
+      ]
+    },
+    {
+      "code": "603758",
+      "name": "秦安股份",
+      "qty": 100,
+      "cost": 127301,
+      "sources": [
+        "2026-08-10_2026-08-15/index.html：8月11日买入100股，发生金额-1273.01"
+      ]
+    }
+  ],
+  "closingPositions": [
+    {
+      "code": "600664",
+      "name": "哈药股份",
+      "qty": 100,
+      "cost": 82201,
+      "sources": [
+        "2026-08-21 09:41:37"
+      ]
+    }
+  ],
+  "symbols": [
+    {
+      "code": "000936",
+      "name": "华西股份",
+      "count": 1,
+      "opening": {
+        "code": "000936",
+        "name": "华西股份",
+        "qty": 800,
+        "cost": 560500,
+        "sources": [
+          "2026-08-10_2026-08-15/index.html：8月14日八笔买入，成交额5565.00，手续费40.00"
+        ]
+      },
+      "buyQty": 0,
+      "sellQty": 800,
+      "buyAmount": 0,
+      "sellAmount": 527200,
+      "matchedCost": 560500,
+      "realized": -34064,
+      "crossWeek": true
+    },
+    {
+      "code": "002081",
+      "name": "金螳螂",
+      "count": 3,
+      "buyQty": 400,
+      "sellQty": 400,
+      "buyAmount": 231800,
+      "sellAmount": 234000,
+      "matchedCost": 232800,
+      "realized": 583,
+      "crossWeek": false
+    },
+    {
+      "code": "603758",
+      "name": "秦安股份",
+      "count": 1,
+      "opening": {
+        "code": "603758",
+        "name": "秦安股份",
+        "qty": 100,
+        "cost": 127301,
+        "sources": [
+          "2026-08-10_2026-08-15/index.html：8月11日买入100股，发生金额-1273.01"
+        ]
+      },
+      "buyQty": 0,
+      "sellQty": 100,
+      "buyAmount": 0,
+      "sellAmount": 134300,
+      "matchedCost": 127301,
+      "realized": 6431,
+      "crossWeek": true
+    },
+    {
+      "code": "600313",
+      "name": "农发种业",
+      "count": 2,
+      "buyQty": 100,
+      "sellQty": 100,
+      "buyAmount": 72400,
+      "sellAmount": 66400,
+      "matchedCost": 72901,
+      "realized": -7035,
+      "crossWeek": false
+    },
+    {
+      "code": "159516",
+      "name": "半导体设备ETF国泰",
+      "count": 2,
+      "buyQty": 3100,
+      "sellQty": 3100,
+      "buyAmount": 228780,
+      "sellAmount": 229400,
+      "matchedCost": 229280,
+      "realized": -380,
+      "crossWeek": false
+    },
+    {
+      "code": "588170",
+      "name": "科创半导体ETF华夏",
+      "count": 2,
+      "buyQty": 2000,
+      "sellQty": 2000,
+      "buyAmount": 205000,
+      "sellAmount": 205400,
+      "matchedCost": 205500,
+      "realized": -600,
+      "crossWeek": false
+    },
+    {
+      "code": "600127",
+      "name": "金健米业",
+      "count": 5,
+      "buyQty": 500,
+      "sellQty": 500,
+      "buyAmount": 416400,
+      "sellAmount": 401500,
+      "matchedCost": 418405,
+      "realized": -17610,
+      "crossWeek": false
+    },
+    {
+      "code": "600664",
+      "name": "哈药股份",
+      "count": 1,
+      "closing": {
+        "code": "600664",
+        "name": "哈药股份",
+        "qty": 100,
+        "cost": 82201,
+        "sources": [
+          "2026-08-21 09:41:37"
+        ]
+      },
+      "buyQty": 100,
+      "sellQty": 0,
+      "buyAmount": 81700,
+      "sellAmount": 0,
+      "matchedCost": 0,
+      "realized": 0,
+      "crossWeek": false
+    }
+  ],
+  "daily": [
+    {
+      "date": "20260817",
+      "count": 4,
+      "buyAmount": 231800,
+      "sellAmount": 661500,
+      "fees": 2332,
+      "netCash": 427368,
+      "realized": -27633
+    },
+    {
+      "date": "20260818",
+      "count": 1,
+      "buyAmount": 0,
+      "sellAmount": 234000,
+      "fees": 617,
+      "netCash": 233383,
+      "realized": 583
+    },
+    {
+      "date": "20260819",
+      "count": 3,
+      "buyAmount": 506180,
+      "sellAmount": 0,
+      "fees": 1501,
+      "netCash": -507681,
+      "realized": 0
+    },
+    {
+      "date": "20260820",
+      "count": 7,
+      "buyAmount": 416400,
+      "sellAmount": 501200,
+      "fees": 3539,
+      "netCash": 81261,
+      "realized": -8015
+    },
+    {
+      "date": "20260821",
+      "count": 2,
+      "buyAmount": 81700,
+      "sellAmount": 401500,
+      "fees": 1206,
+      "netCash": 318594,
+      "realized": -17610
+    }
+  ]
+}

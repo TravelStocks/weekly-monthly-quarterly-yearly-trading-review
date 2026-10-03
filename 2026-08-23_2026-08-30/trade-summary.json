@@ -1,0 +1,185 @@
+{
+  "range": {
+    "start": "2026-08-23",
+    "end": "2026-08-30"
+  },
+  "source": "用户提供的五张券商周度交割截图",
+  "count": 10,
+  "moneyUnit": "CNY cents",
+  "buyCount": 6,
+  "sellCount": 4,
+  "buyAmount": 2537600,
+  "sellAmount": 1328200,
+  "turnover": 3865800,
+  "commission": 5000,
+  "stampTax": 664,
+  "feeDifference": 15,
+  "totalFees": 5679,
+  "netCash": -1215079,
+  "openingCash": 1216527,
+  "closingCash": 1448,
+  "calculatedCash": 1448,
+  "cashBalanceDifference": 0,
+  "realizedPnl": 58834,
+  "accountReturn": null,
+  "accountEquity": null,
+  "openingPositions": [
+    {
+      "code": "600664",
+      "name": "哈药股份",
+      "qty": 100,
+      "cost": 82201,
+      "sources": [
+        "2026-08-21 09:41:37"
+      ]
+    }
+  ],
+  "closingPositions": [
+    {
+      "code": "600721",
+      "name": "百花医药",
+      "qty": 500,
+      "cost": 822509,
+      "sources": [
+        "2026-08-27 10:02:35",
+        "2026-08-27 10:05:21",
+        "2026-08-28 09:32:11"
+      ]
+    },
+    {
+      "code": "600378",
+      "name": "昊华科技",
+      "qty": 100,
+      "cost": 533605,
+      "sources": [
+        "2026-08-28 09:31:26"
+      ]
+    }
+  ],
+  "symbols": [
+    {
+      "code": "600664",
+      "name": "哈药股份",
+      "count": 1,
+      "opening": {
+        "code": "600664",
+        "name": "哈药股份",
+        "qty": 100,
+        "cost": 82201,
+        "sources": [
+          "2026-08-21 09:41:37"
+        ]
+      },
+      "buyQty": 0,
+      "sellQty": 100,
+      "buyAmount": 0,
+      "sellAmount": 81800,
+      "matchedCost": 82201,
+      "realized": -943,
+      "crossWeek": true
+    },
+    {
+      "code": "002412",
+      "name": "汉森制药",
+      "count": 5,
+      "buyQty": 900,
+      "sellQty": 900,
+      "buyAmount": 1183500,
+      "sellAmount": 1246400,
+      "matchedCost": 1184500,
+      "realized": 59777,
+      "crossWeek": false
+    },
+    {
+      "code": "600721",
+      "name": "百花医药",
+      "count": 3,
+      "closing": {
+        "code": "600721",
+        "name": "百花医药",
+        "qty": 500,
+        "cost": 822509,
+        "sources": [
+          "2026-08-27 10:02:35",
+          "2026-08-27 10:05:21",
+          "2026-08-28 09:32:11"
+        ]
+      },
+      "buyQty": 500,
+      "sellQty": 0,
+      "buyAmount": 821000,
+      "sellAmount": 0,
+      "matchedCost": 0,
+      "realized": 0,
+      "crossWeek": false
+    },
+    {
+      "code": "600378",
+      "name": "昊华科技",
+      "count": 1,
+      "closing": {
+        "code": "600378",
+        "name": "昊华科技",
+        "qty": 100,
+        "cost": 533605,
+        "sources": [
+          "2026-08-28 09:31:26"
+        ]
+      },
+      "buyQty": 100,
+      "sellQty": 0,
+      "buyAmount": 533100,
+      "sellAmount": 0,
+      "matchedCost": 0,
+      "realized": 0,
+      "crossWeek": false
+    }
+  ],
+  "daily": [
+    {
+      "date": "20260824",
+      "count": 1,
+      "buyAmount": 0,
+      "sellAmount": 81800,
+      "fees": 542,
+      "netCash": 81258,
+      "realized": -943
+    },
+    {
+      "date": "20260825",
+      "count": 1,
+      "buyAmount": 369900,
+      "sellAmount": 0,
+      "fees": 500,
+      "netCash": -370400,
+      "realized": 0
+    },
+    {
+      "date": "20260826",
+      "count": 1,
+      "buyAmount": 813600,
+      "sellAmount": 0,
+      "fees": 500,
+      "netCash": -814100,
+      "realized": 0
+    },
+    {
+      "date": "20260827",
+      "count": 5,
+      "buyAmount": 658000,
+      "sellAmount": 1246400,
+      "fees": 3130,
+      "netCash": 585270,
+      "realized": 59777
+    },
+    {
+      "date": "20260828",
+      "count": 2,
+      "buyAmount": 696100,
+      "sellAmount": 0,
+      "fees": 1007,
+      "netCash": -697107,
+      "realized": 0
+    }
+  ]
+}

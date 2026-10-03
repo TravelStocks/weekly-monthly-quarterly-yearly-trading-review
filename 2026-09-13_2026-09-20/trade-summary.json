@@ -1,0 +1,190 @@
+{
+  "range": {
+    "start": "2026-09-13",
+    "end": "2026-09-20"
+  },
+  "source": "用户提供的五张券商周度交割截图",
+  "count": 10,
+  "moneyUnit": "CNY cents",
+  "buyCount": 6,
+  "sellCount": 4,
+  "buyAmount": 1707400,
+  "sellAmount": 1718800,
+  "turnover": 3426200,
+  "commission": 5000,
+  "stampTax": 860,
+  "feeDifference": 4,
+  "totalFees": 5864,
+  "netCash": 5536,
+  "openingCash": 1122,
+  "closingCash": 6738,
+  "calculatedCash": 6658,
+  "cashBalanceDifference": 80,
+  "realizedPnl": -25864,
+  "accountReturn": null,
+  "accountEquity": null,
+  "openingPositions": [
+    {
+      "code": "000978",
+      "name": "桂林旅游",
+      "qty": 1000,
+      "cost": 1061700,
+      "sources": [
+        "2026-09-11 09:42:21",
+        "2026-09-11 09:42:23",
+        "2026-09-11 09:48:59"
+      ]
+    }
+  ],
+  "closingPositions": [
+    {
+      "code": "588170",
+      "name": "科创半导体ETF华夏",
+      "qty": 200,
+      "cost": 20900,
+      "sources": [
+        "2026-09-18 14:56:20"
+      ]
+    },
+    {
+      "code": "002584",
+      "name": "西陇科学",
+      "qty": 1000,
+      "cost": 1009400,
+      "sources": [
+        "2026-09-17 09:40:18",
+        "2026-09-18 09:33:43"
+      ]
+    }
+  ],
+  "symbols": [
+    {
+      "code": "000978",
+      "name": "桂林旅游",
+      "count": 2,
+      "opening": {
+        "code": "000978",
+        "name": "桂林旅游",
+        "qty": 1000,
+        "cost": 1061700,
+        "sources": [
+          "2026-09-11 09:42:21",
+          "2026-09-11 09:42:23",
+          "2026-09-11 09:48:59"
+        ]
+      },
+      "buyQty": 0,
+      "sellQty": 1000,
+      "buyAmount": 0,
+      "sellAmount": 1058000,
+      "matchedCost": 1061700,
+      "realized": -5230,
+      "crossWeek": true
+    },
+    {
+      "code": "601086",
+      "name": "国芳集团",
+      "count": 2,
+      "buyQty": 100,
+      "sellQty": 100,
+      "buyAmount": 175600,
+      "sellAmount": 161900,
+      "matchedCost": 176102,
+      "realized": -14785,
+      "crossWeek": false
+    },
+    {
+      "code": "000993",
+      "name": "闽东电力",
+      "count": 3,
+      "buyQty": 300,
+      "sellQty": 300,
+      "buyAmount": 503000,
+      "sellAmount": 498900,
+      "matchedCost": 504000,
+      "realized": -5849,
+      "crossWeek": false
+    },
+    {
+      "code": "002584",
+      "name": "西陇科学",
+      "count": 2,
+      "closing": {
+        "code": "002584",
+        "name": "西陇科学",
+        "qty": 1000,
+        "cost": 1009400,
+        "sources": [
+          "2026-09-17 09:40:18",
+          "2026-09-18 09:33:43"
+        ]
+      },
+      "buyQty": 1000,
+      "sellQty": 0,
+      "buyAmount": 1008400,
+      "sellAmount": 0,
+      "matchedCost": 0,
+      "realized": 0,
+      "crossWeek": false
+    },
+    {
+      "code": "588170",
+      "name": "科创半导体ETF华夏",
+      "count": 1,
+      "closing": {
+        "code": "588170",
+        "name": "科创半导体ETF华夏",
+        "qty": 200,
+        "cost": 20900,
+        "sources": [
+          "2026-09-18 14:56:20"
+        ]
+      },
+      "buyQty": 200,
+      "sellQty": 0,
+      "buyAmount": 20400,
+      "sellAmount": 0,
+      "matchedCost": 0,
+      "realized": 0,
+      "crossWeek": false
+    }
+  ],
+  "daily": [
+    {
+      "date": "20260914",
+      "count": 3,
+      "buyAmount": 175600,
+      "sellAmount": 1058000,
+      "fees": 2032,
+      "netCash": 880368,
+      "realized": -5230
+    },
+    {
+      "date": "20260915",
+      "count": 3,
+      "buyAmount": 503000,
+      "sellAmount": 161900,
+      "fees": 1583,
+      "netCash": -342683,
+      "realized": -14785
+    },
+    {
+      "date": "20260917",
+      "count": 2,
+      "buyAmount": 420400,
+      "sellAmount": 498900,
+      "fees": 1249,
+      "netCash": 77251,
+      "realized": -5849
+    },
+    {
+      "date": "20260918",
+      "count": 2,
+      "buyAmount": 608400,
+      "sellAmount": 0,
+      "fees": 1000,
+      "netCash": -609400,
+      "realized": 0
+    }
+  ]
+}
