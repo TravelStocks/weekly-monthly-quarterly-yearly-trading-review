@@ -10,6 +10,15 @@ async function main() {
   fs.mkdirSync(output, { recursive: true });
   const browser = await puppeteer.launch({ executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe', headless: true });
   const results = [];
+  const expectedTrades = {
+    '20260921':['buy:603230:200','buy:588170:1400','sell:588170:200','sell:002584:1000'],
+    '20260922':['buy:603230:400','buy:588170:500','sell:588170:1400'],
+    '20260923':['buy:000504:200','sell:588170:500','sell:603230:600'],
+    '20260924':['buy:600664:100','buy:002238:100'],
+    '20260928':['sell:000504:200','sell:002238:100','sell:600664:100'],
+    '20260929':[],
+    '20260930':['buy:000993:100'],
+  };
   try {
     const page = await browser.newPage();
     const errors = [];
@@ -25,6 +34,14 @@ async function main() {
           candles: document.querySelectorAll('svg.stock-chart .candle').length,
           dailyCards: document.querySelectorAll('#daily .day-card').length,
           accountRows: document.querySelectorAll('#account tbody tr').length,
+          operations:[...document.querySelectorAll('#account .daily-trades')].map(el=>({
+            date:el.dataset.date,
+            inTable:!!el.closest('td'),
+            entries:[...el.querySelectorAll('li')].map(li=>`${li.dataset.side}:${li.dataset.code}:${li.dataset.qty}`),
+            empty:el.querySelector('.no-trades')?.textContent,
+            links:[...el.querySelectorAll('li')].every(li=>li.querySelector('a').getAttribute('href')==='#stock-'+li.dataset.code),
+            overflow:el.scrollWidth>el.clientWidth+1,
+          })),
           missingAnchors: [...document.querySelectorAll('a[href^="#"]')].filter(a => !document.getElementById(a.hash.slice(1))).map(a => a.hash),
           tradeRows: document.querySelectorAll('#trades tbody tr').length,
           invalidText: /undefined|NaN/.test(document.body.innerText),
@@ -47,6 +64,17 @@ async function main() {
           assert.equal(result.tradeRows, 21);
           assert.equal(result.dailyCards, 7);
           assert.equal(result.accountRows, 7);
+          assert.equal(result.operations.length, 14);
+          assert.equal(result.operations.filter(op=>op.inTable).length,7);
+          for(const operation of result.operations) {
+            assert.deepEqual(operation.entries.slice().sort(),expectedTrades[operation.date].slice().sort());
+            assert.equal(operation.links,true);
+            assert.equal(operation.overflow,false);
+            if(operation.date==='20260929')assert.equal(operation.empty,'无成交');
+          }
+          await (await page.$('#account')).screenshot({path:path.join(output,'account-operations-'+width+'.png')});
+          await page.locator('#account .account-day:first-child a[href="#stock-603230"]').click();
+          assert.equal(await page.evaluate(()=>location.hash),'#stock-603230');
           await page.screenshot({ path: path.join(output, 'week-' + width + '.png') });
           if (width === 1440) {
             for(const [selector,name] of [['#stock-603230','neimeng-chart'],['#stock-588170','etf-chart'],['#daily .day-card:nth-child(3)','wednesday-review'],['#holdings','holdings']]) {

@@ -68,6 +68,20 @@
     .account-bar-track i{display:block;width:100%;border-radius:7px 7px 0 0;background:linear-gradient(180deg,#c2412d,#e8917f)}
     .account-day strong{font-size:19px}
     .account-day small{color:var(--muted);line-height:1.45}
+    .account-day{align-content:start;min-width:0}
+    .daily-trades{display:grid;gap:10px;font-size:13px;line-height:1.45;min-width:0}
+    .account-day>.daily-trades{border-top:1px solid var(--line);padding-top:10px;margin-top:2px}
+    .day-trade-group{display:grid;gap:4px;min-width:0}
+    .day-trade-group>b{font-size:12px}
+    .daily-trades ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+    .daily-trades li{min-width:0;overflow-wrap:anywhere}
+    .daily-trades a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
+    .daily-trades a:hover,.daily-trades a:focus-visible{color:var(--blue);text-decoration-color:currentColor}
+    .trade-quantity{display:block;color:var(--muted);font-size:12px}
+    .no-trades{color:var(--muted)}
+    .daily-trades-cell{text-align:left;white-space:normal;min-width:210px;vertical-align:top}
+    .daily-trades-cell .day-trade-group{grid-template-columns:32px minmax(0,1fr);gap:6px}
+    .daily-trades-cell .trade-quantity{display:inline;margin-left:6px}
     .position-meter{height:8px;border-radius:999px;background:#edf2f7;overflow:hidden}
     .position-meter i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#1d4ed8,#7fb0ff)}
     .mini-ledger,.mini-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
@@ -144,48 +158,56 @@
     <strong>待补</strong>
     <small>收益率 / 收益金额 / 仓位待补</small>
     <div class="position-meter" aria-label="周一 仓位待补"><i style="width:0%"></i></div>
+    <div class="daily-trades" data-date="20260921"><div class="day-trade-group"><b class="is-buy">买入</b><ul><li data-code="603230" data-side="buy" data-qty="200"><a href="#stock-603230" title="2026/09/21 买入 内蒙新华 603230">内蒙新华</a><span class="trade-quantity">200股</span></li><li data-code="588170" data-side="buy" data-qty="1400"><a href="#stock-588170" title="2026/09/21 买入 科创半导 588170">科创半导</a><span class="trade-quantity">1,400份</span></li></ul></div><div class="day-trade-group"><b class="is-sell">卖出</b><ul><li data-code="588170" data-side="sell" data-qty="200"><a href="#stock-588170" title="2026/09/21 卖出 科创半导 588170">科创半导</a><span class="trade-quantity">200份</span></li><li data-code="002584" data-side="sell" data-qty="1000"><a href="#stock-002584" title="2026/09/21 卖出 西陇科学 002584">西陇科学</a><span class="trade-quantity">1,000股</span></li></ul></div></div>
   </article><article class="account-day">
     <div class="account-day-head"><b>周二</b><span>09-22</span></div>
     <div class="account-bar-track"><i style="height:6%;background:#cbd5e1"></i></div>
     <strong>待补</strong>
     <small>收益率 / 收益金额 / 仓位待补</small>
     <div class="position-meter" aria-label="周二 仓位待补"><i style="width:0%"></i></div>
+    <div class="daily-trades" data-date="20260922"><div class="day-trade-group"><b class="is-buy">买入</b><ul><li data-code="603230" data-side="buy" data-qty="400"><a href="#stock-603230" title="2026/09/22 买入 内蒙新华 603230">内蒙新华</a><span class="trade-quantity">400股</span></li><li data-code="588170" data-side="buy" data-qty="500"><a href="#stock-588170" title="2026/09/22 买入 科创半导 588170">科创半导</a><span class="trade-quantity">500份</span></li></ul></div><div class="day-trade-group"><b class="is-sell">卖出</b><ul><li data-code="588170" data-side="sell" data-qty="1400"><a href="#stock-588170" title="2026/09/22 卖出 科创半导 588170">科创半导</a><span class="trade-quantity">1,400份</span></li></ul></div></div>
   </article><article class="account-day">
     <div class="account-day-head"><b>周三</b><span>09-23</span></div>
     <div class="account-bar-track"><i style="height:6%;background:#cbd5e1"></i></div>
     <strong>待补</strong>
     <small>收益率 / 收益金额 / 仓位待补</small>
     <div class="position-meter" aria-label="周三 仓位待补"><i style="width:0%"></i></div>
+    <div class="daily-trades" data-date="20260923"><div class="day-trade-group"><b class="is-buy">买入</b><ul><li data-code="000504" data-side="buy" data-qty="200"><a href="#stock-000504" title="2026/09/23 买入 南华生物 000504">南华生物</a><span class="trade-quantity">200股</span></li></ul></div><div class="day-trade-group"><b class="is-sell">卖出</b><ul><li data-code="588170" data-side="sell" data-qty="500"><a href="#stock-588170" title="2026/09/23 卖出 科创半导 588170">科创半导</a><span class="trade-quantity">500份</span></li><li data-code="603230" data-side="sell" data-qty="600"><a href="#stock-603230" title="2026/09/23 卖出 内蒙新华 603230">内蒙新华</a><span class="trade-quantity">600股</span></li></ul></div></div>
   </article><article class="account-day">
     <div class="account-day-head"><b>周四</b><span>09-24</span></div>
     <div class="account-bar-track"><i style="height:6%;background:#cbd5e1"></i></div>
     <strong>待补</strong>
     <small>收益率 / 收益金额 / 仓位待补</small>
     <div class="position-meter" aria-label="周四 仓位待补"><i style="width:0%"></i></div>
+    <div class="daily-trades" data-date="20260924"><div class="day-trade-group"><b class="is-buy">买入</b><ul><li data-code="600664" data-side="buy" data-qty="100"><a href="#stock-600664" title="2026/09/24 买入 哈药股份 600664">哈药股份</a><span class="trade-quantity">100股</span></li><li data-code="002238" data-side="buy" data-qty="100"><a href="#stock-002238" title="2026/09/24 买入 天威视讯 002238">天威视讯</a><span class="trade-quantity">100股</span></li></ul></div></div>
   </article><article class="account-day">
     <div class="account-day-head"><b>周一</b><span>09-28</span></div>
     <div class="account-bar-track"><i style="height:6%;background:#cbd5e1"></i></div>
     <strong>待补</strong>
     <small>收益率 / 收益金额 / 仓位待补</small>
     <div class="position-meter" aria-label="周一 仓位待补"><i style="width:0%"></i></div>
+    <div class="daily-trades" data-date="20260928"><div class="day-trade-group"><b class="is-sell">卖出</b><ul><li data-code="000504" data-side="sell" data-qty="200"><a href="#stock-000504" title="2026/09/28 卖出 南华生物 000504">南华生物</a><span class="trade-quantity">200股</span></li><li data-code="002238" data-side="sell" data-qty="100"><a href="#stock-002238" title="2026/09/28 卖出 天威视讯 002238">天威视讯</a><span class="trade-quantity">100股</span></li><li data-code="600664" data-side="sell" data-qty="100"><a href="#stock-600664" title="2026/09/28 卖出 哈药股份 600664">哈药股份</a><span class="trade-quantity">100股</span></li></ul></div></div>
   </article><article class="account-day">
     <div class="account-day-head"><b>周二</b><span>09-29</span></div>
     <div class="account-bar-track"><i style="height:6%;background:#cbd5e1"></i></div>
     <strong>待补</strong>
     <small>收益率 / 收益金额 / 仓位待补</small>
     <div class="position-meter" aria-label="周二 仓位待补"><i style="width:0%"></i></div>
+    <div class="daily-trades" data-date="20260929"><span class="no-trades">无成交</span></div>
   </article><article class="account-day">
     <div class="account-day-head"><b>周三</b><span>09-30</span></div>
     <div class="account-bar-track"><i style="height:6%;background:#cbd5e1"></i></div>
     <strong>待补</strong>
     <small>收益率 / 收益金额 / 仓位待补</small>
     <div class="position-meter" aria-label="周三 仓位待补"><i style="width:0%"></i></div>
+    <div class="daily-trades" data-date="20260930"><div class="day-trade-group"><b class="is-buy">买入</b><ul><li data-code="000993" data-side="buy" data-qty="100"><a href="#stock-000993" title="2026/09/30 买入 闽东电力 000993">闽东电力</a><span class="trade-quantity">100股</span></li></ul></div></div>
   </article></div>
       <div class="table-wrap compact-table"><table>
-        <thead><tr><th>日期</th><th>星期</th><th>收益率</th><th>收益金额</th><th>仓位</th><th>当前总金额</th><th>成交笔数</th><th>买入金额</th><th>卖出金额</th><th>个人反思</th></tr></thead>
+        <thead><tr><th>日期</th><th>星期</th><th>当日操作标的</th><th>收益率</th><th>收益金额</th><th>仓位</th><th>当前总金额</th><th>成交笔数</th><th>买入金额</th><th>卖出金额</th><th>个人反思</th></tr></thead>
         <tbody><tr>
           <td>2026/09/21</td>
           <td>周一</td>
+          <td class="daily-trades-cell"><div class="daily-trades" data-date="20260921"><div class="day-trade-group"><b class="is-buy">买入</b><ul><li data-code="603230" data-side="buy" data-qty="200"><a href="#stock-603230" title="2026/09/21 买入 内蒙新华 603230">内蒙新华</a><span class="trade-quantity">200股</span></li><li data-code="588170" data-side="buy" data-qty="1400"><a href="#stock-588170" title="2026/09/21 买入 科创半导 588170">科创半导</a><span class="trade-quantity">1,400份</span></li></ul></div><div class="day-trade-group"><b class="is-sell">卖出</b><ul><li data-code="588170" data-side="sell" data-qty="200"><a href="#stock-588170" title="2026/09/21 卖出 科创半导 588170">科创半导</a><span class="trade-quantity">200份</span></li><li data-code="002584" data-side="sell" data-qty="1000"><a href="#stock-002584" title="2026/09/21 卖出 西陇科学 002584">西陇科学</a><span class="trade-quantity">1,000股</span></li></ul></div></div></td>
           <td>待补</td>
           <td>待补</td>
           <td>待补</td>
@@ -197,6 +219,7 @@
         </tr><tr>
           <td>2026/09/22</td>
           <td>周二</td>
+          <td class="daily-trades-cell"><div class="daily-trades" data-date="20260922"><div class="day-trade-group"><b class="is-buy">买入</b><ul><li data-code="603230" data-side="buy" data-qty="400"><a href="#stock-603230" title="2026/09/22 买入 内蒙新华 603230">内蒙新华</a><span class="trade-quantity">400股</span></li><li data-code="588170" data-side="buy" data-qty="500"><a href="#stock-588170" title="2026/09/22 买入 科创半导 588170">科创半导</a><span class="trade-quantity">500份</span></li></ul></div><div class="day-trade-group"><b class="is-sell">卖出</b><ul><li data-code="588170" data-side="sell" data-qty="1400"><a href="#stock-588170" title="2026/09/22 卖出 科创半导 588170">科创半导</a><span class="trade-quantity">1,400份</span></li></ul></div></div></td>
           <td>待补</td>
           <td>待补</td>
           <td>待补</td>
@@ -208,6 +231,7 @@
         </tr><tr>
           <td>2026/09/23</td>
           <td>周三</td>
+          <td class="daily-trades-cell"><div class="daily-trades" data-date="20260923"><div class="day-trade-group"><b class="is-buy">买入</b><ul><li data-code="000504" data-side="buy" data-qty="200"><a href="#stock-000504" title="2026/09/23 买入 南华生物 000504">南华生物</a><span class="trade-quantity">200股</span></li></ul></div><div class="day-trade-group"><b class="is-sell">卖出</b><ul><li data-code="588170" data-side="sell" data-qty="500"><a href="#stock-588170" title="2026/09/23 卖出 科创半导 588170">科创半导</a><span class="trade-quantity">500份</span></li><li data-code="603230" data-side="sell" data-qty="600"><a href="#stock-603230" title="2026/09/23 卖出 内蒙新华 603230">内蒙新华</a><span class="trade-quantity">600股</span></li></ul></div></div></td>
           <td>待补</td>
           <td>待补</td>
           <td>待补</td>
@@ -219,6 +243,7 @@
         </tr><tr>
           <td>2026/09/24</td>
           <td>周四</td>
+          <td class="daily-trades-cell"><div class="daily-trades" data-date="20260924"><div class="day-trade-group"><b class="is-buy">买入</b><ul><li data-code="600664" data-side="buy" data-qty="100"><a href="#stock-600664" title="2026/09/24 买入 哈药股份 600664">哈药股份</a><span class="trade-quantity">100股</span></li><li data-code="002238" data-side="buy" data-qty="100"><a href="#stock-002238" title="2026/09/24 买入 天威视讯 002238">天威视讯</a><span class="trade-quantity">100股</span></li></ul></div></div></td>
           <td>待补</td>
           <td>待补</td>
           <td>待补</td>
@@ -230,6 +255,7 @@
         </tr><tr>
           <td>2026/09/28</td>
           <td>周一</td>
+          <td class="daily-trades-cell"><div class="daily-trades" data-date="20260928"><div class="day-trade-group"><b class="is-sell">卖出</b><ul><li data-code="000504" data-side="sell" data-qty="200"><a href="#stock-000504" title="2026/09/28 卖出 南华生物 000504">南华生物</a><span class="trade-quantity">200股</span></li><li data-code="002238" data-side="sell" data-qty="100"><a href="#stock-002238" title="2026/09/28 卖出 天威视讯 002238">天威视讯</a><span class="trade-quantity">100股</span></li><li data-code="600664" data-side="sell" data-qty="100"><a href="#stock-600664" title="2026/09/28 卖出 哈药股份 600664">哈药股份</a><span class="trade-quantity">100股</span></li></ul></div></div></td>
           <td>待补</td>
           <td>待补</td>
           <td>待补</td>
@@ -241,6 +267,7 @@
         </tr><tr>
           <td>2026/09/29</td>
           <td>周二</td>
+          <td class="daily-trades-cell"><div class="daily-trades" data-date="20260929"><span class="no-trades">无成交</span></div></td>
           <td>待补</td>
           <td>待补</td>
           <td>待补</td>
@@ -252,6 +279,7 @@
         </tr><tr>
           <td>2026/09/30</td>
           <td>周三</td>
+          <td class="daily-trades-cell"><div class="daily-trades" data-date="20260930"><div class="day-trade-group"><b class="is-buy">买入</b><ul><li data-code="000993" data-side="buy" data-qty="100"><a href="#stock-000993" title="2026/09/30 买入 闽东电力 000993">闽东电力</a><span class="trade-quantity">100股</span></li></ul></div></div></td>
           <td>待补</td>
           <td>待补</td>
           <td>待补</td>

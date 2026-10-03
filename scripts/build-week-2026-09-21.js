@@ -388,6 +388,26 @@ function renderProfitLossPanel() {
   return '<section class="panel" id="profit-loss"><span class="label">Profit / Loss Roots</span><h2>本期持有/闭环票：赚钱与亏损主因</h2><p>收益率 = 含费闭环盈亏 / 对应已卖份额成本。它是这笔交易的收益率，不是个股最高点回撤，也不是账户收益率。</p><div class="ticket-analysis">'+rows+'</div><p><b>操作与情绪线索：</b>正文支持的进步是内蒙新华按条件单兑现、试错走弱后停止加码以及9/29空仓。需要补足的环节是把“等回流”“深水就走”“反核成功”写成可执行的价格、时间、量能条件。西陇科学与9/30闽东电力的主观原因等待本人补充。</p></section>';
 }
 
+function renderDailyTrades(date) {
+  const rows = dailyStats.get(date)?.rows || [];
+  if (!rows.length) return `<div class="daily-trades" data-date="${date}"><span class="no-trades">无成交</span></div>`;
+  const groups = ["buy", "sell"].map(side => {
+    const stocks = new Map();
+    for (const row of sortChronological(rows).filter(row => row.sideType === side)) {
+      if (!stocks.has(row.code)) stocks.set(row.code, {code:row.code, name:row.name, qty:0});
+      stocks.get(row.code).qty += row.qty;
+    }
+    if (!stocks.size) return "";
+    const label = side === "buy" ? "买入" : "卖出";
+    const items = [...stocks.values()].map(stock => {
+      const unit = /^[15]/.test(stock.code) ? "份" : "股";
+      return `<li data-code="${stock.code}" data-side="${side}" data-qty="${stock.qty}"><a href="#stock-${stock.code}" title="${formatDate(date)} ${label} ${escapeHtml(stock.name)} ${stock.code}">${escapeHtml(stock.name)}</a><span class="trade-quantity">${qty(stock.qty)}${unit}</span></li>`;
+    }).join("");
+    return `<div class="day-trade-group"><b class="is-${side}">${label}</b><ul>${items}</ul></div>`;
+  }).join("");
+  return `<div class="daily-trades" data-date="${date}">${groups}</div>`;
+}
+
 function renderAccountPanel() {
   const accountRows = accountDays.length ? accountDays.map((day) => {
     const stat = dailyStats.get(day.date) || { rows: [], buyAmount: 0, sellAmount: 0, netCash: 0 };
@@ -395,6 +415,7 @@ function renderAccountPanel() {
     return `<tr>
           <td>${formatDate(day.date)}</td>
           <td>${day.day}</td>
+          <td class="daily-trades-cell">${renderDailyTrades(day.date)}</td>
           <td class="${classByValue(day.returnRate)}">${pct(day.returnRate)}</td>
           <td class="${classByValue(day.pnl)}">${money(day.pnl, { sign: true })}</td>
           <td>${positionText}</td>
@@ -409,6 +430,7 @@ function renderAccountPanel() {
     return `<tr>
           <td>${formatDate(day.date)}</td>
           <td>${day.day}</td>
+          <td class="daily-trades-cell">${renderDailyTrades(day.date)}</td>
           <td>待补</td>
           <td>待补</td>
           <td>待补</td>
@@ -434,7 +456,7 @@ function renderAccountPanel() {
       </div>
       <div class="account-bars">${accountDays.length ? accountDays.map(renderAccountBar).join("") : dailyNotes.map(renderPendingAccountBar).join("")}</div>
       <div class="table-wrap compact-table"><table>
-        <thead><tr><th>日期</th><th>星期</th><th>收益率</th><th>收益金额</th><th>仓位</th><th>当前总金额</th><th>成交笔数</th><th>买入金额</th><th>卖出金额</th><th>个人反思</th></tr></thead>
+        <thead><tr><th>日期</th><th>星期</th><th>当日操作标的</th><th>收益率</th><th>收益金额</th><th>仓位</th><th>当前总金额</th><th>成交笔数</th><th>买入金额</th><th>卖出金额</th><th>个人反思</th></tr></thead>
         <tbody>${accountRows}</tbody>
       </table></div>
     </section>`;
@@ -450,6 +472,7 @@ function renderAccountBar(day) {
     <strong class="${classByValue(day.pnl)}">${money(day.pnl, { sign: true })}</strong>
     <small>${pct(day.returnRate)} / 仓位 ${typeof day.position === "number" ? `${day.position.toFixed(2)}%` : "待补"}</small>
     <div class="position-meter" aria-label="${day.day} 仓位 ${typeof day.position === "number" ? `${day.position.toFixed(2)}%` : "待补"}"><i style="width:${Math.max(0, Math.min(100, positionValue))}%"></i></div>
+    ${renderDailyTrades(day.date)}
   </article>`;
 }
 
@@ -460,6 +483,7 @@ function renderPendingAccountBar(day) {
     <strong>待补</strong>
     <small>收益率 / 收益金额 / 仓位待补</small>
     <div class="position-meter" aria-label="${day.day} 仓位待补"><i style="width:0%"></i></div>
+    ${renderDailyTrades(day.date)}
   </article>`;
 }
 
@@ -785,6 +809,20 @@ function sharedStyles() {
     .account-bar-track i{display:block;width:100%;border-radius:7px 7px 0 0;background:linear-gradient(180deg,#c2412d,#e8917f)}
     .account-day strong{font-size:19px}
     .account-day small{color:var(--muted);line-height:1.45}
+    .account-day{align-content:start;min-width:0}
+    .daily-trades{display:grid;gap:10px;font-size:13px;line-height:1.45;min-width:0}
+    .account-day>.daily-trades{border-top:1px solid var(--line);padding-top:10px;margin-top:2px}
+    .day-trade-group{display:grid;gap:4px;min-width:0}
+    .day-trade-group>b{font-size:12px}
+    .daily-trades ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+    .daily-trades li{min-width:0;overflow-wrap:anywhere}
+    .daily-trades a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
+    .daily-trades a:hover,.daily-trades a:focus-visible{color:var(--blue);text-decoration-color:currentColor}
+    .trade-quantity{display:block;color:var(--muted);font-size:12px}
+    .no-trades{color:var(--muted)}
+    .daily-trades-cell{text-align:left;white-space:normal;min-width:210px;vertical-align:top}
+    .daily-trades-cell .day-trade-group{grid-template-columns:32px minmax(0,1fr);gap:6px}
+    .daily-trades-cell .trade-quantity{display:inline;margin-left:6px}
     .position-meter{height:8px;border-radius:999px;background:#edf2f7;overflow:hidden}
     .position-meter i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#1d4ed8,#7fb0ff)}
     .mini-ledger,.mini-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
@@ -876,6 +914,10 @@ async function main() {
   },null,2)+"\n");
   fs.mkdirSync(weekDir, { recursive: true });
   fs.writeFileSync(path.join(weekDir, "index.html"), renderWeekPage(charts), "utf8");
+  if (process.argv.includes("--week-only")) {
+    console.log(`Updated only ${week.folder}/index.html`);
+    return;
+  }
   fs.writeFileSync(path.join(repo, "weekly-trading-review", "index.html"), renderWeeklyHub(), "utf8");
   fs.writeFileSync(path.join(repo, "index.html"), renderRootIndex(), "utf8");
   require("./update-weekly-hub-chart.js");
