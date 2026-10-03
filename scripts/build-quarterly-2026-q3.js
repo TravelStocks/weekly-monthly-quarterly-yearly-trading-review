@@ -71,93 +71,126 @@ const monthSnapshots = [
 
 const weeklySources = [
   {
-    range: "06.01-06.05",
-    href: "../../2026-06-01_2026-06-05/",
-    change: "-0.13%",
-    pnl: "-31.00",
-    basis: "账户表；持仓浮盈另计 +1,151.70；与持仓截图总资产差241.80元",
-    focus: "大有能源验证第一性，粤电力A/中京电子/鑫科材料暴露非第一问题。",
+    "range": "06.01-06.05",
+    "href": "../../2026-06-01_2026-06-05/",
+    "change": "-0.13%",
+    "pnl": "-31.00",
+    "pnlNote": "",
+    "equity": "23,598.74",
+    "equityNote": "",
+    "reflectionTitle": "从看强弱升级为看题材地位",
+    "reflection": "大有能源的唯一性、竞价和封单强度判断做对；粤电力A走弱后加仓、中京电子和鑫科材料非第一性参与是错误。下一步：走弱不加仓，只围绕唯一核心，买前写保护线。"
   },
   {
-    range: "06.08-06.12",
-    href: "../../2026-06-08_2026-06-12/",
-    change: "-2.00%",
-    pnl: "-466.00",
-    basis: "账户表估算；期初23,345，期末22,879；日收益合计-410，差56元",
-    focus: "中化国际期末仓位，6月中旬仍处在定位和口径校准阶段。",
+    "range": "06.08-06.12",
+    "href": "../../2026-06-08_2026-06-12/",
+    "change": "-2.00%",
+    "pnl": "-466.00",
+    "pnlNote": "",
+    "equity": "22,879.00",
+    "equityNote": "",
+    "reflectionTitle": "抓到龙头，更要保护利润",
+    "reflection": "大有能源周一扩大盈利，周二未按强弱及时保护导致大幅回吐；天娱数科条件止损有效。下一步：第三板弱板减半保护、强板不机械减半，第四天以验证为主。"
   },
   {
-    range: "06.15-06.20",
-    href: "../../2026-06-15_2026-06-20/",
-    change: "-1.31%",
-    pnl: "-299.00",
-    basis: "账户表截至6/18；期初22,866，期末22,567；不含未记录的6/19",
-    focus: "诺德股份成为期末核心，但后续证明这段处理需要按买点、预期和止损线重审。",
+    "range": "06.15-06.20",
+    "href": "../../2026-06-15_2026-06-20/",
+    "change": "-1.31%",
+    "pnl": "-299.00",
+    "pnlNote": "",
+    "equity": "22,567.00",
+    "equityNote": "截至6/18",
+    "reflectionTitle": "趋势核心与试错仓要分清",
+    "reflection": "中化国际旧仓退出，科技链小仓闭环有正贡献，诺德成为期末主仓。下一步：用行业地位、抗跌和回拉速度筛选第一性；小仓盈利不能自动升级为核心，诺德买点与止损预案待二次反思确认。"
   },
   {
-    range: "06.22-06.26",
-    href: "../../2026-06-22_2026-06-26/",
-    change: "-21.50%",
-    pnl: "-4,839.42",
-    basis: "交割单＋6/26收盘市值暂估；已实现-3,225.24，持仓浮亏-1,614.18",
-    focus: "诺德大亏后切仓，大唐尾段处理；核心问题是主升2没有在正确节点围绕龙头做。",
+    "range": "06.22-06.26",
+    "href": "../../2026-06-22_2026-06-26/",
+    "change": "-21.50%",
+    "pnl": "-4,839.42",
+    "pnlNote": "暂估",
+    "equity": "17,671.22",
+    "equityNote": "暂估",
+    "reflectionTitle": "止损后切仓，要重新判断节点",
+    "reflection": "诺德止损是最大亏损源，海欣、大唐切换后再进入亨通系；后续阶段反思指出大唐标准周期未主攻、尾段才参与。下一步：主升2在节点成型时围绕核心，避免亏损后连续切到旁支。"
   },
   {
-    range: "06.29-07.04",
-    href: "../../2026-06-29_2026-07-04/",
-    change: "-10.17%",
-    pnl: "-1,741.00",
-    basis: "金额为日收益合计；涨幅按17,653→15,858计算，资产变化-1,795，与金额差54元",
-    focus: "科技与ETF节奏继续暴露，7月初追高问题从这里开始需要被拉红线。",
+    "range": "06.29-07.04",
+    "href": "../../2026-06-29_2026-07-04/",
+    "change": "-10.17%",
+    "pnl": "-1,741.00",
+    "pnlNote": "",
+    "equity": "15,858.00",
+    "equityNote": "",
+    "reflectionTitle": "科技趋势不要用连板追涨思维",
+    "reflection": "科技退潮后高位风险未及时退出，ETF浮盈保护不够；个股选择不稳时不应承担主仓。下一步：趋势行情优先ETF，二高、三高保护利润，冰点反核要结合指数和板块。"
   },
   {
-    range: "07.06-07.10",
-    href: "../../2026-07-06_2026-07-10/",
-    change: "-1.65%",
-    pnl: "-262.00",
-    basis: "期初15,858→期末15,596；日收益合计+471.60与账户变化冲突，以资产变化为准",
-    focus: "半导设备ETF/科创半导持仓待校准，趋势科技仍不是连板打法。",
+    "range": "07.06-07.10",
+    "href": "../../2026-07-06_2026-07-10/",
+    "change": "-1.65%",
+    "pnl": "-262.00",
+    "pnlNote": "",
+    "equity": "15,596.00",
+    "equityNote": "",
+    "reflectionTitle": "反核择时有效，承接塌陷不能摊平",
+    "reflection": "周二空仓、周三小仓试错、周四三冰反核ETF做对；周一进早、周五科技被商业航天虹吸后继续摊平是问题。下一步：强修复降仓，弱修复减仓，不修复认错。"
   },
   {
-    range: "07.10-07.18",
-    href: "../../2026-07-10_2026-07-18/",
-    change: "未记录",
-    pnl: "—",
-    basis: "账户数据缺失；可见已实现盈亏-533.37元，不代表全账户周盈亏",
-    focus: "半导ETF亏损闭环，哈药股份盈利闭环；正确方向是龙头，错误方向是科技追高。",
+    "range": "07.13-07.17",
+    "href": "../../2026-07-10_2026-07-18/",
+    "change": "+1.68%",
+    "pnl": "-533.37",
+    "pnlNote": "计算值",
+    "equity": "15,062.63",
+    "equityNote": "推算",
+    "reflectionTitle": "龙头盈利与科技追高形成对照",
+    "reflection": "哈药股份买入后等待强度兑现形成正贡献，半导ETF闭环亏损。下一步：围绕龙头保持节奏，趋势科技以低吸和快进快出为主；该周个人二次反思仍待补。"
   },
   {
-    range: "07.20-07.24",
-    href: "../../2026-07-20_2026-07-24/",
-    change: "+13.34%",
-    pnl: "+1,816.40",
-    basis: "金额为日收益合计；期初按7/21总额15,596减收益24倒推15,572；期末17,648.65；资产变化+2,076.65，差260.25元",
-    focus: "立新能源围绕核心处理、哈药试错；主线龙头和弱修复轮动开始分层。",
+    "range": "07.20-07.24",
+    "href": "../../2026-07-20_2026-07-24/",
+    "change": "+11.10%",
+    "pnl": "+1,816.40",
+    "pnlNote": "",
+    "equity": "17,648.65",
+    "equityNote": "",
+    "reflectionTitle": "围绕核心做T，转强仓位要及时",
+    "reflection": "立新能源方向识别和卖点执行较坚决；转强次日加仓偏晚，科技反弹参与不足。下一步：主线龙头、弱修复和次新试错分层，只有核心确认才提高仓位。"
   },
   {
-    range: "07.24-08.01",
-    href: "../../2026-07-24_2026-08-01/",
-    change: "未记录",
-    pnl: "—",
-    basis: "账户数据缺失；可见已实现盈亏-4,434.59元，跨周成本仍待校准",
-    focus: "立新能源二次参与成为阶段最大亏损样本：高位龙头重新参与必须重新定性。",
+    "range": "07.27-07.31",
+    "href": "../../2026-07-24_2026-08-01/",
+    "change": "-26.79%",
+    "pnl": "-4,434.59",
+    "pnlNote": "计算值",
+    "equity": "13,214.06",
+    "equityNote": "推算",
+    "reflectionTitle": "主升3没有先手，次日不能硬追",
+    "reflection": "立新能源二次参与成为阶段最大亏损样本；阶段反思指出第一天没上，第二天仍硬上。下一步：无第一天先手默认不追，重新参与先判断周期，不盯盘不打大仓位。"
   },
   {
-    range: "07.31-08.08",
-    href: "../../2026-07-31_2026-08-08/",
-    change: "未记录",
-    pnl: "—",
-    basis: "账户数据缺失；可见已实现盈亏+186.27元；期末风范股份未核算",
-    focus: "半导ETF小赚闭环，风范股份期末持仓待验证，回撤控制开始收敛。",
+    "range": "08.03-08.07",
+    "href": "../../2026-07-31_2026-08-08/",
+    "change": "-8.44%",
+    "pnl": "+186.27",
+    "pnlNote": "计算值",
+    "equity": "13,400.33",
+    "equityNote": "推算",
+    "reflectionTitle": "小闭环控制节奏，未平仓风险单独看",
+    "reflection": "半导ETF快进快出小赚，一鸣食品跨周小赚；风范股份期末未平仓不能用闭环盈利判断整周结果。下一步：科技弹性试错不升级仓位，核心低开不及预期时先执行保护线。"
   },
   {
-    range: "08.10-08.15",
-    href: "../../2026-08-10_2026-08-15/",
-    change: "+12.74%",
-    pnl: "+1,560.94",
-    basis: "金额为日收益合计；期初按8/10总额13,057减收益999倒推12,058；期末13,594；资产变化+1,536，差24.94元",
-    focus: "百花医药最高标唯一性做对，科技环境未稳时追高造成利润回吐。",
-  },
+    "range": "08.10-08.14",
+    "href": "../../2026-08-10_2026-08-15/",
+    "change": "+12.63%",
+    "pnl": "+1,560.94",
+    "pnlNote": "",
+    "equity": "13,594.00",
+    "equityNote": "",
+    "reflectionTitle": "最高标唯一性做对，科技逆境追高要停止",
+    "reflection": "百花医药的最高标唯一性、竞价强度和T字板介入做对；科技环境未稳时追高造成利润回吐。下一步：科技以低吸为主，追高仅限指数、板块与赚钱效应共振启动日。"
+  }
 ];
 
 const coreTickets = [
@@ -409,19 +442,13 @@ function metricCards(items) {
 }
 
 function sourceRows(items) {
-  return items
-    .map(
-      (item) => `
-        <tr>
-          <td><a class="blue" href="${item.href}">${esc(item.range)}</a></td>
-          <td><strong class="${item.change.startsWith("-") ? "neg" : item.change.startsWith("+") ? "pos" : ""}">${esc(item.change)}</strong></td>
-          <td><strong class="${item.pnl.startsWith("-") ? "neg" : item.pnl.startsWith("+") ? "pos" : ""}">${esc(item.pnl)}</strong></td>
-          <td>${esc(item.basis)}</td>
-          <td>${esc(item.focus)}</td>
-          <td>${chip("已接入", "pos")}</td>
-        </tr>`
-    )
-    .join("");
+  return items.map(item => `<tr>
+    <td><a class="blue" href="${item.href}">${esc(item.range)}</a></td>
+    <td><strong class="${item.change.startsWith('-') ? 'neg' : 'pos'}">${esc(item.change)}</strong></td>
+    <td><strong class="${item.pnl.startsWith('-') ? 'neg' : 'pos'}">${esc(item.pnl)}</strong>${item.pnlNote ? `<small class="source-tag">${esc(item.pnlNote)}</small>` : ''}</td>
+    <td><strong>${esc(item.equity)}</strong>${item.equityNote ? `<small class="source-tag">${esc(item.equityNote)}</small>` : ''}</td>
+    <td class="weekly-reflection"><strong>${esc(item.reflectionTitle)}</strong><p>${esc(item.reflection)}</p><a class="blue" href="${item.href}">查看完整周复盘 →</a></td>
+  </tr>`).join('');
 }
 
 function monthCards(items) {
@@ -746,6 +773,11 @@ const html = `<!DOCTYPE html>
     .month-snapshot.neg { border-color: #f3c8cd; background: #fffafa; }
     .month-snapshot.warn { border-color: #f2d39c; background: #fffdf8; }
     .month-snapshot.pos { border-color: #bbf7d0; background: #fbfffd; }
+    .source-tag { display:block; color:var(--muted); font-size:12px; margin-top:5px; }
+    #sources th:nth-child(-n+4), #sources td:nth-child(-n+4) { white-space:nowrap; }
+    #sources .weekly-reflection { width:55%; min-width:340px; }
+    #sources .weekly-reflection > strong { color:var(--ink); font-size:15px; }
+    #sources .weekly-reflection p { margin:7px 0; line-height:1.75; }
     .table-wrap { width: 100%; overflow: auto; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
     table { width: 100%; border-collapse: collapse; min-width: 980px; font-size: 14px; }
     th, td { padding: 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
@@ -899,8 +931,8 @@ const html = `<!DOCTYPE html>
         </section>
 
         <section class="panel" id="sources">
-          <h2>周度来源</h2>
-          <p class="section-note">按已有周度复盘逐周记录。周涨幅＝（期末资产－期初资产）÷期初资产；倒推期初与市值暂估均在口径栏注明。盈亏金额沿用来源账户口径，日收益合计与资产变化不一致时分别列示。账户数据缺失的周以“—”表示，可见已实现盈亏单列，不替代账户盈亏。跨月、重叠来源区间保留原范围，不重复累加为季度总收益。</p>
+          <h2>每周结果与复盘反思</h2>
+          <p class="section-note">先看每周的复盘反思，再对照金额变化。周涨幅优先采用已补周收益率（每日收益率相加），未补周沿用原周复盘值；金额缺失先用可见闭环计算值，期末金额缺失按上一期金额加本期变化推算。计算、推算与暂估值已标注，后续用账户数据校准。</p>
           <div class="table-wrap">
             <table>
               <thead>
@@ -908,9 +940,8 @@ const html = `<!DOCTYPE html>
                   <th>周度区间</th>
                   <th>周涨幅</th>
                   <th>实际盈亏金额（元）</th>
-                  <th>核算口径 / 差异</th>
-                  <th>对Q3判断的作用</th>
-                  <th>状态</th>
+                  <th>期末金额（元）</th>
+                  <th>每周复盘反思 / 下一步规则</th>
                 </tr>
               </thead>
               <tbody>
