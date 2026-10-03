@@ -3,7 +3,6 @@ const path = require("node:path");
 const assert = require("node:assert/strict");
 const {pathToFileURL} = require("node:url");
 const puppeteer = require("puppeteer-core");
-const {execFileSync} = require("node:child_process");
 const {update, readTrades, renderTrades, folders} = require("./fill-weekly-daily-traded-stocks.cjs");
 
 async function main() {
@@ -33,7 +32,7 @@ async function main() {
       for (const folder of selected) {
         await page.goto(pathToFileURL(path.join(root,folder,"index.html")).href);
         if (width === 1440) {
-          const baseline = execFileSync("git", ["show", "HEAD:" + folder + "/index.html"], {cwd:root,encoding:"utf8",maxBuffer:6000000});
+          const baseline = before[selected.indexOf(folder)];
           const unchanged = await page.evaluate(baseline => {
             const original = new DOMParser().parseFromString(baseline,"text/html");
             const current = new DOMParser().parseFromString(document.documentElement.outerHTML,"text/html");
