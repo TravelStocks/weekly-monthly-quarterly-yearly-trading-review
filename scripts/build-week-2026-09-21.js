@@ -18,7 +18,7 @@ const week = {
   tradeRangeText: "2026.09.21 - 2026.09.30", label: "09.21-09.30",
   status: "两周合并 / 二次心得第一段已补",
   title: "内蒙新华分批兑现，前期西陇亏损与后续试错抵消盈利",
-  subtitle: "两周合并记录7个交易日、21笔成交与7只标的。本人二次总评：整体没有大的体系错误，小错误继续减少。弱环境先守住风险，空仓等待或轻仓试错，主动识别赚钱效应并匹配模式。账户日数据与期末持仓确认继续待补。",
+  subtitle: "两周合并记录7个交易日、21笔成交与7只标的。本人二次总评：整体没有大的体系错误，小错误继续减少。已补天时→地利→人和→交易的判断顺序、强弱环境仓位与退出节奏，以及金辰股份/沃格光电的第三方切换案例。账户日数据与期末持仓确认继续待补。",
 };
 const ignoredOrders = [];
 const sourceData = JSON.parse(fs.readFileSync(path.join(weekDir, "data/daily-reviews.json"), "utf8"));
@@ -73,7 +73,7 @@ const archiveWeeks = [
   { label: "08.30-09.06", folder: "2026-08-30_2026-09-06", dataOnly: true, pnl: "-2,405.71", cash: "11,169.91", holdings: "0", note: "11 笔成交；成交额 41,770.00；实际费用 68.57。交易日 08.31-09.04，已有完整复盘保留。" },
   { label: "09.06-09.13", folder: "2026-09-06_2026-09-13", dataOnly: true, pnl: "-541.69", cash: "11.22", holdings: "桂林旅游 1,000 股", note: "17 笔成交；成交额 57,040.00；实际费用 96.69。交易日 09.07-09.11，已有完整复盘保留。" },
   { label: "09.13-09.20", folder: "2026-09-13_2026-09-20", dataOnly: true, pnl: "-258.64", cash: "67.38", holdings: "西陇科学 1,000 / 科创半导体 200", note: "10 笔成交；成交额 34,262.00；实际费用 58.64。" },
-  { label:week.label, folder:week.folder, pnl:"账户待补", pct:"待补", equity:"待补", note:"二次总评已补：整体没有大的体系错误，弱环境避免大错、接受小赚小亏，以轻仓试错寻找赚钱效应。含前期成本的闭环-221.06元，期末闽东电力100股；账户日数据与持仓确认待补。" },
+  { label:week.label, folder:week.folder, pnl:"账户待补", pct:"待补", equity:"待补", note:"二次心得已补：整体无大错，先天时、再地利、人和与交易；强弱环境两套仓位和退出节奏，另记金辰股份/沃格光电第三方案例。含前期成本的闭环-221.06元，期末闽东电力100股；账户日数据与持仓确认待补。" },
 ];
 
 const secids = Object.fromEntries(config.codes.map(code=>[code,`${/^[56]/.test(code) ? "1" : "0"}.${code}`]));
@@ -566,7 +566,10 @@ function renderRules() {
 function renderSecondReflection() {
   const sections=secondReflection.sections.map(section=>'<div class="reflection-section"><h3>'+escapeHtml(section.title)+'</h3>'+section.paragraphs.map(text=>'<p>'+escapeHtml(text)+'</p>').join('')+'</div>').join('');
   const checks=secondReflection.checks.map(text=>'<li>'+escapeHtml(text)+'</li>').join('');
-  return '<section class="panel" id="second-review" data-reflection-part="'+secondReflection.part+'"><span class="label">Second Reflection / 第一段</span><h2>本期二次反思总结</h2><p class="lead"><b>'+escapeHtml(secondReflection.lead)+'</b></p><p class="source-line">'+escapeHtml(secondReflection.source)+'</p><p>'+escapeHtml(secondReflection.scope)+'</p>'+sections+'<details class="reflection-checks"><summary>口述与交割单核对说明</summary><ul>'+checks+'</ul></details></section>';
+  const sequence=secondReflection.decisionOrder.map(([title,body])=>'<li><b>'+escapeHtml(title)+'</b><p>'+escapeHtml(body)+'</p></li>').join('');
+  const positionRows=secondReflection.positionPlan.rows.map(row=>'<tr><th scope="row">'+escapeHtml(row.environment)+'</th><td class="plan-number">'+escapeHtml(row.total)+'</td><td class="plan-number">'+escapeHtml(row.single)+'</td><td>'+escapeHtml(row.execution)+'</td></tr>').join('');
+  const framework='<div class="reflection-section" id="decision-framework"><h3>判断顺序：天时 → 地利 → 人和 → 交易</h3><ol class="decision-sequence">'+sequence+'</ol><h3>强弱环境的仓位与退出计划</h3><p>'+escapeHtml(secondReflection.positionPlan.note)+'</p><div class="table-wrap"><table class="position-plan-table"><thead><tr><th>环境</th><th>总仓位计划</th><th>单票仓位计划</th><th>退出节奏</th></tr></thead><tbody>'+positionRows+'</tbody></table></div></div>';
+  return '<section class="panel" id="second-review" data-reflection-part="'+secondReflection.part+'"><span class="label">Second Reflection / 第一段及补充</span><h2>本期二次反思总结</h2><p class="lead"><b>'+escapeHtml(secondReflection.lead)+'</b></p><p class="source-line">'+escapeHtml(secondReflection.source)+'</p><p>'+escapeHtml(secondReflection.scope)+'</p>'+framework+sections+'<details class="reflection-checks"><summary>口述与交割单核对说明</summary><ul>'+checks+'</ul></details></section>';
 }
 
 function renderHoldingsPanel() {
@@ -626,7 +629,7 @@ function renderWeeklyHub() {
         ${metricCard("周报数量", `${archiveWeeks.length}`, "含本周草稿 / 同周数据不重复计数")}
         ${metricCard("最新区间", "09.21", "至 09.30 / 两周合并")}
         ${metricCard("最新账户", accountPnlLabel, `期末 ${finalEquityLabel} / 仓位 ${finalPositionLabel}`, knownAccountDays.length ? classByValue(accountPnlTotal) : "")}
-        ${metricCard("最新规则", "模式匹配", "先看赚钱效应，再按天时定仓位")}
+        ${metricCard("最新规则", "先判天时", "再选题材与个股，定仓位及退出节奏")}
       </div>
     </section>
     <section class="panel">
@@ -782,6 +785,12 @@ function sharedStyles() {
     .lead{font-size:17px;color:#334155}
     .reflection-section{padding:20px 0;border-top:1px solid var(--line)}
     .reflection-section p:last-child{margin-bottom:0}
+    .decision-sequence{padding-left:24px;margin:14px 0 24px}
+    .decision-sequence li{margin:12px 0}
+    .decision-sequence p{margin:5px 0 0}
+    .position-plan-table{min-width:700px}
+    .position-plan-table th,.position-plan-table td{text-align:left;white-space:normal;vertical-align:top;line-height:1.65}
+    .position-plan-table .plan-number{min-width:135px;font-variant-numeric:tabular-nums}
     .reflection-checks{border-top:1px solid var(--line);padding-top:16px}
     .reflection-checks li{margin:8px 0;line-height:1.7;color:var(--muted)}
     .hindsight{border-left:3px solid var(--blue);padding-left:14px;margin:16px 0}

@@ -35,9 +35,14 @@ async function main() {
           candles: document.querySelectorAll('svg.stock-chart .candle').length,
           dailyCards: document.querySelectorAll('#daily .day-card').length,
           accountRows: document.querySelectorAll('#account tbody tr').length,
+          accountAmountCents: document.querySelector('#account')?.dataset.accountAmountCents,
+          accountRatePoints: document.querySelector('#account')?.dataset.accountRateBasisPoints,
           reflectionPart: document.querySelector('#second-review')?.dataset.reflectionPart,
           reflectionLead: document.querySelector('#second-review .lead')?.textContent,
-          reflectionSections: document.querySelectorAll('#second-review .reflection-section').length,
+          reflectionSections: document.querySelectorAll('#second-review .reflection-section:not(#decision-framework)').length,
+          decisionSteps: [...document.querySelectorAll('#decision-framework .decision-sequence li')].map(el=>el.querySelector('b').textContent),
+          positionPlans: [...document.querySelectorAll('.position-plan-table tbody tr')].map(el=>[...el.children].map(cell=>cell.textContent)),
+          confirmedCaseNames: ['金辰股份','沃格光电'].every(name=>document.querySelector('#second-review')?.textContent.includes(name)),
           hindsight: [...document.querySelectorAll('#daily .hindsight')].map(el=>({date:el.dataset.date,text:el.querySelector('p').textContent})),
           stockAnalyses: [...document.querySelectorAll('#profit-loss article')].map(el=>el.dataset.code),
           originalDailySources: document.querySelectorAll('#daily details').length,
@@ -73,10 +78,15 @@ async function main() {
           assert.equal(result.tradeRows, 21);
           assert.equal(result.dailyCards, 7);
           assert.equal(result.accountRows, 7);
+          assert.equal(result.accountAmountCents, '12200', 'Preserve the published account income');
+          assert.equal(result.accountRatePoints, '135', 'Preserve the published daily-rate sum');
           assert.equal(result.reflectionPart, '1');
           assert.equal(result.reflectionLead, reflection.lead);
           assert.ok(result.reflectionLead.includes('整体没有大的体系错误'));
           assert.equal(result.reflectionSections, reflection.sections.length);
+          assert.deepEqual(result.decisionSteps, reflection.decisionOrder.map(row=>row[0]));
+          assert.deepEqual(result.positionPlans, reflection.positionPlan.rows.map(row=>[row.environment,row.total,row.single,row.execution]));
+          assert.equal(result.confirmedCaseNames, true);
           assert.equal(result.hindsight.length, 7);
           for(const item of result.hindsight) assert.equal(item.text, reflection.daily[item.date]);
           assert.deepEqual(result.stockAnalyses.slice().sort(), Object.keys(reflection.stocks).sort());
@@ -96,6 +106,7 @@ async function main() {
           assert.equal(await page.$eval('#second-review details',el=>el.open),true);
           await page.locator('#second-review .reflection-checks summary').click();
           await (await page.$('#second-review')).screenshot({path:path.join(output,'second-reflection-'+width+'.png')});
+          await (await page.$('#decision-framework')).screenshot({path:path.join(output,'decision-framework-'+width+'.png')});
           await (await page.$('#daily .day-card:first-child')).screenshot({path:path.join(output,'monday-hindsight-'+width+'.png')});
           await page.locator('#account .account-day:first-child a[href="#stock-603230"]').click();
           assert.equal(await page.evaluate(()=>location.hash),'#stock-603230');
