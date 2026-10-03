@@ -1,6 +1,6 @@
 {
   "openingCents": 2941110,
-  "source": "沿用周度主页现有金额变化；期末权益已有值来自原周卡片或资金表。金额与权益口径不一致时保留已有权益校准，不把差额解释为出入金。",
+  "source": "优先保留用户已提供的账户总金额；未提供账户总金额时，以交割单末笔现金加可见期末持仓数量乘当期最后交易日不复权收盘价估值。无其他持仓、漏单或后续资金变动为估值前提；已平仓盈亏不再用作期末权益的累计推算依据。",
   "periods": [
     {"folder":"2026-04-20_2026-04-24","label":"04.20-04.24","changeCents":161689,"recordedCents":3102799},
     {"folder":"2026-05-08_2026-05-16","label":"05.08-05.16","changeCents":-448226,"recordedCents":2654573},
@@ -9,19 +9,19 @@
     {"folder":"2026-06-01_2026-06-05","label":"06.01-06.05","changeCents":-3100,"recordedCents":2359874},
     {"folder":"2026-06-08_2026-06-12","label":"06.08-06.12","changeCents":-46600,"recordedCents":2287900},
     {"folder":"2026-06-15_2026-06-20","label":"06.15-06.20","changeCents":-29900,"recordedCents":2256700},
-    {"folder":"2026-06-22_2026-06-26","label":"06.22-06.26","changeCents":-483942,"recordedCents":1767122,"provisional":true},
+    {"folder":"2026-06-22_2026-06-26","label":"06.22-06.26","changeCents":-483942,"recordedCents":1767122,"provisional":true,"snapshot":{"date":"2026-06-26","cashCents":27222,"source":"2026-06-22_2026-06-26/index.html","note":"6/25末笔现金与持仓，按6/26无新增成交或资金变动延续。","holdings":[{"code":"600226","name":"亨通股份","qty":600},{"code":"600487","name":"亨通光电","qty":100}]}},
     {"folder":"2026-06-29_2026-07-04","label":"06.29-07.04","changeCents":-174100,"recordedCents":1585800},
     {"folder":"2026-07-06_2026-07-10","label":"07.06-07.10","changeCents":-26200,"recordedCents":1559600},
-    {"folder":"2026-07-10_2026-07-18","label":"07.13-07.17","changeCents":-53337,"closedOnly":true},
+    {"folder":"2026-07-10_2026-07-18","label":"07.13-07.17","changeCents":-53337,"closedOnly":true,"snapshot":{"date":"2026-07-17","cashCents":1583894,"source":"scripts/build-weeks-2026-07-24-08-03.js","note":"7/17哈药股份3100股卖出后，可见持仓清零。","holdings":[]}},
     {"folder":"2026-07-20_2026-07-24","label":"07.20-07.24","changeCents":181640,"recordedCents":1764865},
-    {"folder":"2026-07-24_2026-08-01","label":"07.27-07.31","changeCents":-443459,"closedOnly":true},
-    {"folder":"2026-07-31_2026-08-08","label":"08.03-08.07","changeCents":18627,"closedOnly":true},
+    {"folder":"2026-07-24_2026-08-01","label":"07.27-07.31","changeCents":-443459,"closedOnly":true,"snapshot":{"date":"2026-07-31","cashCents":934003,"source":"scripts/build-weeks-2026-07-24-08-03.js","note":"一鸣食品代码以用户原始截图605179及行情名称核验，修正旧脚本601579误录，仅用于本次权益估值。","holdings":[{"code":"605179","name":"一鸣食品","qty":200}]}},
+    {"folder":"2026-07-31_2026-08-08","label":"08.03-08.07","changeCents":18627,"closedOnly":true,"snapshot":{"date":"2026-08-07","cashCents":48721,"source":"scripts/build-weeks-2026-07-24-08-03.js","note":"8/6末笔现金与风范股份1800股，延续至8/7收盘。","holdings":[{"code":"601700","name":"风范股份","qty":1800}]}},
     {"folder":"2026-08-10_2026-08-15","label":"08.10-08.14","changeCents":156094,"recordedCents":1359400},
-    {"folder":"2026-08-16_2026-08-23","label":"08.17-08.21","changeCents":-52675,"closedOnly":true},
-    {"folder":"2026-08-23_2026-08-30","label":"08.24-08.28","changeCents":58834,"closedOnly":true},
-    {"folder":"2026-08-30_2026-09-06","label":"08.31-09.04","changeCents":-240571,"closedOnly":true},
-    {"folder":"2026-09-06_2026-09-13","label":"09.07-09.11","changeCents":-54169,"closedOnly":true},
-    {"folder":"2026-09-13_2026-09-20","label":"09.14-09.18","changeCents":-25864,"closedOnly":true},
-    {"folder":"2026-09-21_2026-09-30","label":"09.21-09.30（合并）","changeCents":-22106,"closedOnly":true}
+    {"folder":"2026-08-16_2026-08-23","label":"08.17-08.21","changeCents":-52675,"closedOnly":true,"snapshot":{"date":"2026-08-21","cashCents":1216527,"source":"2026-08-16_2026-08-23/trade-summary.json","holdings":[{"code":"600664","name":"哈药股份","qty":100}]}},
+    {"folder":"2026-08-23_2026-08-30","label":"08.24-08.28","changeCents":58834,"closedOnly":true,"snapshot":{"date":"2026-08-28","cashCents":1448,"source":"2026-08-23_2026-08-30/trade-summary.json","holdings":[{"code":"600721","name":"百花医药","qty":500},{"code":"600378","name":"昊华科技","qty":100}]}},
+    {"folder":"2026-08-30_2026-09-06","label":"08.31-09.04","changeCents":-240571,"closedOnly":true,"snapshot":{"date":"2026-09-04","cashCents":1116991,"source":"2026-08-30_2026-09-06/trade-summary.json","note":"9/4欢瑞世纪卖出后，可见持仓清零。","holdings":[]}},
+    {"folder":"2026-09-06_2026-09-13","label":"09.07-09.11","changeCents":-54169,"closedOnly":true,"snapshot":{"date":"2026-09-11","cashCents":1122,"source":"2026-09-06_2026-09-13/trade-summary.json","holdings":[{"code":"000978","name":"桂林旅游","qty":1000}]}},
+    {"folder":"2026-09-13_2026-09-20","label":"09.14-09.18","changeCents":-25864,"closedOnly":true,"snapshot":{"date":"2026-09-18","cashCents":6738,"source":"2026-09-13_2026-09-20/trade-summary.json","note":"现金使用截图余额67.38元，不用流水推算的66.58元；0.80元差异保留待核对。","holdings":[{"code":"588170","name":"科创半导体ETF华夏","qty":200},{"code":"002584","name":"西陇科学","qty":1000}]}},
+    {"folder":"2026-09-21_2026-09-30","label":"09.21-09.30（合并）","changeCents":-22106,"closedOnly":true,"snapshot":{"date":"2026-09-30","cashCents":843532,"source":"2026-09-21_2026-09-30/data/summary.json","holdings":[{"code":"000993","name":"闽东电力","qty":100}]}}
   ]
 }

@@ -8,8 +8,7 @@ async function update() {
   const file = path.resolve(__dirname, "../weekly-trading-review/index.html");
   const updates = equity.rows.map(row => ({...row, value:equity.money(row.endingCents),
     label:`期末权益${row.status === "recorded" ? "" : "（" + equity.statusLabel(row) + "）"}`,
-    note:row.status === "estimated" ? equity.formula(row) + "。沿用现有金额，未校准未知持仓浮盈亏或出入金。" :
-      row.adjustmentCents ? equity.formula(row) + `；保留原权益 ${equity.money(row.endingCents)} 校准，口径差额 ${equity.money(row.adjustmentCents)}，原因待核对。` : ""}));
+    note:row.snapshot ? equity.formula(row) + "。按交割单可见现金与持仓核算，不复权收盘估值；无其他持仓、漏单或资金变动为前提。" + (row.snapshot.note || "") : ""}));
   const browser = await puppeteer.launch({executablePath:"C:/Program Files/Google/Chrome/Application/chrome.exe",headless:true});
   try {
     const page = await browser.newPage();
@@ -32,12 +31,19 @@ async function update() {
         } else if(note) note.remove();
         count++;
       }
+      const latest=updates.at(-1);
+      const metric=[...doc.querySelectorAll(".hero .metric")].find(el=>/^最新账户|^最新权益/.test(el.querySelector("span")?.textContent));
+      if(metric && latest.snapshot) {
+        metric.querySelector("span").textContent="最新权益（估值）";
+        metric.querySelector("strong").textContent=latest.value;
+        metric.querySelector("small").textContent="现金与持仓市值合计 / 待券商核对";
+      }
       while(doc.body.lastChild?.nodeType === 3 && !doc.body.lastChild.textContent.trim()) doc.body.lastChild.remove();
       return {html:"<!DOCTYPE html>\n"+doc.documentElement.outerHTML+"\n",count};
     },{html:fs.readFileSync(file,"utf8"),updates});
     assert.equal(result.count,updates.length,"All equity periods must have archive cards");
     fs.writeFileSync(file,result.html,"utf8");
-    console.log(`Updated ${result.count} ending equities; ${updates.filter(row=>row.status==="estimated").length} estimated.`);
+    console.log(`Updated ${result.count} ending equities; ${updates.filter(row=>row.snapshot).length} cash/holding valuations.`);
   } finally {await browser.close();}
 }
 if(require.main===module)update().catch(error=>{console.error(error);process.exitCode=1;});

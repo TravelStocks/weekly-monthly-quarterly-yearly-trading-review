@@ -1,0 +1,203 @@
+{
+  "source": "东方财富不复权日K收盘价",
+  "quotes": [
+    {
+      "code": "600226",
+      "name": "亨通股份",
+      "date": "2026-06-26",
+      "close": 10.53,
+      "priceMilli": 10530,
+      "adjustment": "none",
+      "source": "https://push2his.eastmoney.com/api/qt/stock/kline/get?secid=1.600226&klt=101&fqt=0&beg=20260626&end=20260626&lmt=10&fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56",
+      "retrievedAt": "2026-10-03T08:38:30.593Z",
+      "raw": [
+        "2026-06-26",
+        "11.01",
+        "10.53",
+        "11.11",
+        "10.36",
+        "2926588"
+      ]
+    },
+    {
+      "code": "600487",
+      "name": "亨通光电",
+      "date": "2026-06-26",
+      "close": 110.81,
+      "priceMilli": 110810,
+      "adjustment": "none",
+      "source": "https://push2his.eastmoney.com/api/qt/stock/kline/get?secid=1.600487&klt=101&fqt=0&beg=20260626&end=20260626&lmt=10&fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56",
+      "retrievedAt": "2026-10-03T08:38:30.639Z",
+      "raw": [
+        "2026-06-26",
+        "119.50",
+        "110.81",
+        "120.00",
+        "110.70",
+        "1988227"
+      ]
+    },
+    {
+      "code": "605179",
+      "name": "一鸣食品",
+      "date": "2026-07-31",
+      "close": 19.37,
+      "priceMilli": 19370,
+      "adjustment": "none",
+      "source": "https://push2his.eastmoney.com/api/qt/stock/kline/get?secid=1.605179&klt=101&fqt=0&beg=20260731&end=20260731&lmt=10&fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56",
+      "retrievedAt": "2026-10-03T08:38:30.682Z",
+      "raw": [
+        "2026-07-31",
+        "17.44",
+        "19.37",
+        "19.37",
+        "17.00",
+        "212255"
+      ]
+    },
+    {
+      "code": "601700",
+      "name": "风范股份",
+      "date": "2026-08-07",
+      "close": 6.44,
+      "priceMilli": 6440,
+      "adjustment": "none",
+      "source": "https://push2his.eastmoney.com/api/qt/stock/kline/get?secid=1.601700&klt=101&fqt=0&beg=20260807&end=20260807&lmt=10&fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56",
+      "retrievedAt": "2026-10-03T08:38:30.725Z",
+      "raw": [
+        "2026-08-07",
+        "6.87",
+        "6.44",
+        "6.94",
+        "6.44",
+        "982140"
+      ]
+    },
+    {
+      "code": "600664",
+      "name": "哈药股份",
+      "date": "2026-08-21",
+      "close": 8.17,
+      "priceMilli": 8170,
+      "adjustment": "none",
+      "source": "https://push2his.eastmoney.com/api/qt/stock/kline/get?secid=1.600664&klt=101&fqt=0&beg=20260821&end=20260821&lmt=10&fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56",
+      "retrievedAt": "2026-10-03T08:38:30.768Z",
+      "raw": [
+        "2026-08-21",
+        "8.17",
+        "8.17",
+        "8.55",
+        "8.17",
+        "4486608"
+      ]
+    },
+    {
+      "code": "600721",
+      "name": "百花医药",
+      "date": "2026-08-28",
+      "close": 15.44,
+      "priceMilli": 15440,
+      "adjustment": "none",
+      "source": "https://push2his.eastmoney.com/api/qt/stock/kline/get?secid=1.600721&klt=101&fqt=0&beg=20260828&end=20260828&lmt=10&fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56",
+      "retrievedAt": "2026-10-03T08:38:30.811Z",
+      "raw": [
+        "2026-08-28",
+        "16.33",
+        "15.44",
+        "16.67",
+        "15.01",
+        "1837162"
+      ]
+    },
+    {
+      "code": "600378",
+      "name": "昊华科技",
+      "date": "2026-08-28",
+      "close": 53.31,
+      "priceMilli": 53310,
+      "adjustment": "none",
+      "source": "https://push2his.eastmoney.com/api/qt/stock/kline/get?secid=1.600378&klt=101&fqt=0&beg=20260828&end=20260828&lmt=10&fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56",
+      "retrievedAt": "2026-10-03T08:38:30.855Z",
+      "raw": [
+        "2026-08-28",
+        "53.31",
+        "53.31",
+        "53.31",
+        "52.60",
+        "558371"
+      ]
+    },
+    {
+      "code": "000978",
+      "name": "桂林旅游",
+      "date": "2026-09-11",
+      "close": 9.87,
+      "priceMilli": 9870,
+      "adjustment": "none",
+      "source": "https://push2his.eastmoney.com/api/qt/stock/kline/get?secid=0.000978&klt=101&fqt=0&beg=20260911&end=20260911&lmt=10&fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56",
+      "retrievedAt": "2026-10-03T08:38:30.898Z",
+      "raw": [
+        "2026-09-11",
+        "10.00",
+        "9.87",
+        "10.66",
+        "9.35",
+        "1645840"
+      ]
+    },
+    {
+      "code": "588170",
+      "name": "科创半导体ETF华夏",
+      "date": "2026-09-18",
+      "close": 1.019,
+      "priceMilli": 1019,
+      "adjustment": "none",
+      "source": "https://push2his.eastmoney.com/api/qt/stock/kline/get?secid=1.588170&klt=101&fqt=0&beg=20260918&end=20260918&lmt=10&fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56",
+      "retrievedAt": "2026-10-03T08:38:30.942Z",
+      "raw": [
+        "2026-09-18",
+        "1.000",
+        "1.019",
+        "1.033",
+        "0.987",
+        "69431435"
+      ]
+    },
+    {
+      "code": "002584",
+      "name": "西陇科学",
+      "date": "2026-09-18",
+      "close": 9.75,
+      "priceMilli": 9750,
+      "adjustment": "none",
+      "source": "https://push2his.eastmoney.com/api/qt/stock/kline/get?secid=0.002584&klt=101&fqt=0&beg=20260918&end=20260918&lmt=10&fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56",
+      "retrievedAt": "2026-10-03T08:38:30.986Z",
+      "raw": [
+        "2026-09-18",
+        "9.72",
+        "9.75",
+        "10.07",
+        "9.52",
+        "2176978"
+      ]
+    },
+    {
+      "code": "000993",
+      "name": "闽东电力",
+      "date": "2026-09-30",
+      "close": 17.09,
+      "priceMilli": 17090,
+      "adjustment": "none",
+      "source": "https://push2his.eastmoney.com/api/qt/stock/kline/get?secid=0.000993&klt=101&fqt=0&beg=20260930&end=20260930&lmt=10&fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56",
+      "retrievedAt": "2026-10-03T08:38:31.031Z",
+      "raw": [
+        "2026-09-30",
+        "16.81",
+        "17.09",
+        "17.27",
+        "16.56",
+        "659972"
+      ]
+    }
+  ]
+}

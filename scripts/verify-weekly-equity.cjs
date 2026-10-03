@@ -8,13 +8,19 @@ const equity = require("./weekly-equity.cjs");
 
 async function main() {
   assert.equal(equity.rows.length,21);
-  assert.deepEqual(equity.rows.filter(row=>row.status==="estimated").map(row=>row.endingCents),
-    [1506263,1321406,1340033,1306725,1365559,1124988,1070819,1044955,1022849]);
+  assert.deepEqual(equity.rows.filter(row=>row.snapshot).map(row=>row.endingCents),
+    [1767122,1583894,1321403,1207921,1298227,1306548,1116991,988122,1002118,1014432]);
+  assert.throws(()=>equity.calculate(equity.input,[]),/Missing unadjusted/);
+  const adjustedQuotes=equity.market.quotes.map(quote=>({...quote,adjustment:"forward"}));
+  assert.throws(()=>equity.calculate(equity.input,adjustedQuotes),/Missing unadjusted/);
+  assert.equal(equity.rows.find(row=>row.label==="09.14-09.18").holdings[0].valueCents,20380);
   equity.rows.forEach((row,i)=>{
     assert.equal(row.openingCents,i ? equity.rows[i-1].endingCents : equity.input.openingCents);
     assert.equal(row.calculatedCents,row.openingCents+row.changeCents);
-    if(row.recordedCents!=null)assert.equal(row.endingCents,row.recordedCents);
-    else assert.equal(row.endingCents,row.calculatedCents);
+    if(row.snapshot) {
+      assert.equal(row.endingCents,row.snapshot.cashCents+row.marketValueCents);
+      row.holdings.forEach(holding=>assert.equal(holding.quote.date,row.snapshot.date));
+    } else assert.equal(row.endingCents,row.recordedCents);
   });
   const root=path.resolve(__dirname,"..");
   const output=path.join(root,"output/weekly-equity");
@@ -40,6 +46,7 @@ async function main() {
           status:card.querySelector("[data-equity-status]")?.dataset.equityStatus,
           count:card.querySelectorAll("[data-equity-status]").length,
           notes:card.querySelectorAll(".equity-basis").length,
+          formula:card.querySelector(".equity-basis")?.textContent,
           cash:[...card.querySelectorAll(".mini-grid>span")].find(el=>el.textContent.startsWith("期末现金"))?.querySelector("b").textContent,
         })),
         rows:[...document.querySelectorAll(".weekly-data-table tbody tr")].map(row=>({
@@ -69,7 +76,7 @@ async function main() {
       assert.equal(result.latestChartVisible,true);
       assert.equal(result.amountLegend,"rgb(194, 65, 45)");
       assert.equal(result.amountLegendWidth,"3px");
-      for(const value of ["-18,189.64","09.21-09.30（合并） +1.35%","-67.03%","10,228.49"])
+      for(const value of ["-18,189.64","09.21-09.30（合并） +1.35%","-67.31%","10,144.32"])
         assert.ok(result.summary.includes(value));
       assert.equal(result.invalid,false);
       assert.equal(result.clipped,false);
@@ -83,7 +90,8 @@ async function main() {
         assert.ok(card.notes<=1);
         assert.equal(table.equity,card.value);
         assert.equal(table.status,equity.statusLabel(row));
-        if(row.status==="estimated") {
+        if(row.snapshot) assert.ok(card.formula.includes(equity.formula(row)));
+        if(row.snapshot && row.closedOnly) {
           assert.equal(table.position,"待补");
           assert.equal(table.best,"待补");
           assert.equal(table.worst,"待补");
