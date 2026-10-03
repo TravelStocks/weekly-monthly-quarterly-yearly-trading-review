@@ -160,11 +160,12 @@ def list_items(items: list[str]) -> str:
     return "".join(f"<li>{h(item)}</li>" for item in items)
 
 
-def table(headers: list[str], rows: list[tuple[str, ...]], class_name: str = "") -> str:
-    head = "".join(f"<th>{h(header)}</th>" for header in headers)
+def table(headers: list[str], rows: list[tuple[str, ...]], class_name: str = "", row_classes: list[str] | None = None) -> str:
+    head = "".join(f'<th scope="col">{h(header)}</th>' for header in headers)
     body = "".join(
-        "<tr>" + "".join(f"<td>{h(cell)}</td>" for cell in row) + "</tr>"
-        for row in rows
+        (f'<tr class="{h(row_classes[index])}">' if row_classes else "<tr>")
+        + "".join(f"<td>{h(cell)}</td>" for cell in row) + "</tr>"
+        for index, row in enumerate(rows)
     )
     cls = f' class="{class_name}"' if class_name else ""
     return f'<div class="table-wrap"><table{cls}><thead><tr>{head}</tr></thead><tbody>{body}</tbody></table></div>'
@@ -176,21 +177,46 @@ def card(title: str, body: str, chip: str | None = None) -> str:
 
 
 def render_transactions(rows: list[dict], summary: dict) -> str:
+    biggest_profit = max(summary["closed_trades"], key=lambda item: item["net_pnl"])
+    biggest_loss = min(summary["closed_trades"], key=lambda item: item["net_pnl"])
+    biggest_open = max(summary["open_trades"], key=lambda item: item["buy_cost"])
+    reference_loss = min(summary["reference_closed_trades"], key=lambda item: item["net_pnl"])
+    focus_labels = {}
+    for item, label, tone in [
+        (biggest_profit, "八月盈利重点", "profit"),
+        (biggest_loss, "八月亏损重点", "loss"),
+        (reference_loss, "七月大额亏损", "reference"),
+        (biggest_open, "大额未闭合", "cash"),
+    ]:
+        for source_row in item["source_rows"]:
+            focus_labels[source_row] = (label, tone)
+    profit_tags = {biggest_profit["code"]: "盈利重点", biggest_loss["code"]: "亏损重点"}
     closed_rows = [(
+        profit_tags.get(item["code"], "其他闭合"),
         f"{item['name']} / {item['code']}",
         f"{item['buy_date']} → {item['sell_date']}" + ("（跨月）" if item["cross_month"] else ""),
         str(item["quantity"]), f"{item['buy_average']:.3f} → {item['sell_average']:.3f}",
         money(item["buy_cost"]), money(item["sell_proceeds"]), money(item["total_cost"]),
         money(item["net_pnl"], signed=True), f"{item['return_pct']:+.2f}%",
     ) for item in summary["closed_trades"]]
+    closed_classes = [
+        "focus-profit" if item is biggest_profit else "focus-loss" if item is biggest_loss else ""
+        for item in summary["closed_trades"]
+    ]
     open_rows = [(
+        "大额未闭合" if item is biggest_open else "未闭合",
         f"{item['name']} / {item['code']}", item["buy_date"], str(item["quantity"]),
         money(item["buy_cost"]), "后续卖出或期末持仓待补；浮盈浮亏未计入",
     ) for item in summary["open_trades"]]
     ledger_rows = []
     for row in rows:
+        label, tone = focus_labels.get(row["row_id"], ("", ""))
+        if abs(row["cash_flow"]) >= 5000:
+            flow_label = "大额流出" if row["is_buy"] else "大额回款"
+            label = f"{label} · {flow_label}" if label else flow_label
+            tone = tone or "cash"
         cells = [
-            row["row_id"], row["trade_date"], row["trade_time"], row["code"], row["name"],
+            row["row_id"], label or "—", row["trade_date"], row["trade_time"], row["code"], row["name"],
             row["side"], row["quantity"], f"{row['price']:.3f}", money(row["amount"]),
             money(row["commission"]), money(row["stamp_tax"]), money(row["other_fees"]),
             money(row["cash_flow"], signed=True), money(row["cash_balance"]),
@@ -200,10 +226,10 @@ def render_transactions(rows: list[dict], summary: dict) -> str:
         hidden = " hidden" if period != "2026-08" else ""
         direction = "buy" if row["is_buy"] else "sell"
         ledger_rows.append(
-            f'<tr data-period="{period}" data-code="{row["code"]}" data-side="{direction}"{hidden}>'
+            f'<tr class="focus-{tone}" data-focus="{str(bool(label)).lower()}" data-period="{period}" data-code="{row["code"]}" data-side="{direction}"{hidden}>'
             + "".join(f"<td>{h(cell)}</td>" for cell in cells) + "</tr>"
         )
-    headers = ["行号", "成交日期", "成交时间", "代码", "名称", "操作", "数量", "价格", "成交金额", "手续费", "印花税", "其他杂费", "发生金额", "现金余额", "市场", "交收日期"]
+    headers = ["行号", "重点标记", "成交日期", "成交时间", "代码", "名称", "操作", "数量", "价格", "成交金额", "手续费", "印花税", "其他杂费", "发生金额", "现金余额", "市场", "交收日期"]
     symbols = {row["code"]: row["name"] for row in rows}
     symbol_options = "".join(f'<option value="{code}">{h(name)} {code}</option>' for code, name in sorted(symbols.items()))
     return f"""
@@ -216,11 +242,19 @@ def render_transactions(rows: list[dict], summary: dict) -> str:
             <div><span>八月买入成交额</span><strong>{money(summary['month_buy_amount'])}元</strong><small>卖出成交额 {money(summary['month_sell_amount'])}元</small></div>
             <div><span>八月可见成交费用</span><strong>{money(summary['month_total_cost'])}元</strong><small>手续费130.00元，印花税17.57元</small></div>
           </div>
+          <div class="trade-highlights" id="trade-highlights">
+            <h3>关键盈亏与大额资金变化</h3>
+            <div class="focus-line focus-profit"><div><span class="focus-label">八月可见闭合样本最大盈利</span><h4>{h(biggest_profit['name'])}</h4><p>买入成本{money(biggest_profit['buy_cost'])}元 → 净回款{money(biggest_profit['sell_proceeds'])}元；{biggest_profit['quantity']}股，{biggest_profit['buy_date']}至{biggest_profit['sell_date']}。</p></div><div class="focus-value"><strong>{money(biggest_profit['net_pnl'], True)}元</strong><span>{biggest_profit['return_pct']:+.2f}%</span></div></div>
+            <div class="focus-line focus-loss"><div><span class="focus-label">八月可见闭合样本最大亏损 / 最大投入</span><h4>{h(biggest_loss['name'])}</h4><p>买入成本{money(biggest_loss['buy_cost'])}元 → 净回款{money(biggest_loss['sell_proceeds'])}元；{biggest_loss['quantity']}股，{biggest_loss['buy_date']}至{biggest_loss['sell_date']}。</p></div><div class="focus-value"><strong>{money(biggest_loss['net_pnl'], True)}元</strong><span>{biggest_loss['return_pct']:+.2f}%</span></div></div>
+            <div class="focus-line focus-cash"><div><span class="focus-label">大额资金占用 / 盈亏待确认</span><h4>{h(biggest_open['name'])}</h4><p>{biggest_open['buy_date']}买入{biggest_open['quantity']}股；截图未见对应卖出，后续持仓和估值待补。</p></div><div class="focus-value"><strong>{money(biggest_open['buy_cost'])}元</strong><span>买入现金成本</span></div></div>
+            <p class="focus-insight"><strong>盈利集中：</strong>扣除{h(biggest_profit['name'])}这组盈利，其他5组闭合交易净盈亏合计为{money(summary['closed_net_pnl'] - biggest_profit['net_pnl'], True)}元。</p>
+            <details class="reference-highlight"><summary>七月参考：{h(reference_loss['name'])}大额亏损 {money(reference_loss['net_pnl'], True)}元</summary><p>{reference_loss['buy_date']}至{reference_loss['sell_date']}共{reference_loss['quantity']}股，买入现金成本{money(reference_loss['buy_cost'])}元、卖出净回款{money(reference_loss['sell_proceeds'])}元，含费用净亏{money(-reference_loss['net_pnl'])}元（{reference_loss['return_pct']:+.2f}%）。这是七月已闭合交易，不计入八月+1,054.03元汇总；对应原始成交已标记为“七月大额亏损”。</p></details>
+          </div>
           <p class="data-basis"><strong>盈亏口径：</strong>只统计买卖成本完整可见、在八月卖出的6组交易。买卖均在八月的5组净盈亏为{money(summary['within_month_pnl'], True)}元；一鸣食品跨月整段盈亏为{money(summary['cross_month_pnl'], True)}元。它们不能代替整月账户收益。截图现金余额为可用资金，不含持仓市值。</p>
-          {table(["标的", "买入 → 卖出", "数量", "成交均价", "买入现金成本", "卖出净回款", "全部费用", "净盈亏（元）", "成本收益率"], closed_rows, "pnl-table")}
+          {table(["重点", "标的", "买入 → 卖出", "数量", "成交均价", "买入现金成本", "卖出净回款", "全部费用", "净盈亏（元）", "成本收益率"], closed_rows, "pnl-table", closed_classes)}
           <p class="data-footnote">成本收益率＝净盈亏÷含费用买入成本。费用按成交金额与发生金额差额计算；八月发生金额与截图已列费用合计另有0.67元差额，沿用原发生金额，不推测费用名称。均价由成交金额÷数量计算，原始显示价格保留在下方明细。</p>
           <h3>截图内未闭合交易</h3>
-          {table(["标的", "可见买入日期", "未配对数量", "含费用成本（元）", "状态"], open_rows, "open-table")}
+          {table(["重点", "标的", "可见买入日期", "未配对数量", "含费用成本（元）", "状态"], open_rows, "open-table", ["focus-cash" if item is biggest_open else "" for item in summary["open_trades"]])}
           <p class="data-footnote">未配对数量只表示本截图缺少对应卖出，不等同于8月末持仓。七月的立新能源、长缆科技不并入八月盈亏；哈药股份缺少买入成本。</p>
         </section>
         <section class="panel trade-panel" id="trade-ledger">
@@ -229,8 +263,10 @@ def render_transactions(rows: list[dict], summary: dict) -> str:
             <label>月份<select id="ledger-period"><option value="2026-08">八月成交</option><option value="2026-07">七月跨月参考</option><option value="all">全部记录</option></select></label>
             <label>标的<select id="ledger-symbol"><option value="all">全部标的</option>{symbol_options}</select></label>
             <label>操作<select id="ledger-side"><option value="all">全部操作</option><option value="buy">买入（含对方买入）</option><option value="sell">卖出</option></select></label>
+            <label class="focus-toggle"><input type="checkbox" id="ledger-focus">仅看重点交易</label>
             <p id="ledger-count" role="status" aria-live="polite">显示26 / 42条</p>
           </div>
+          <p class="data-footnote">重点标记：八月最大盈利、最大亏损、大额未闭合及七月大额亏损；另标记单笔发生金额绝对值≥5,000元的资金流出或回款。大额回款是现金流，不等于单笔盈利。</p>
           <div class="table-wrap ledger-wrap" tabindex="0" role="region" aria-label="逐笔成交明细，可横向滚动">
             <table class="ledger-table"><caption class="sr-only">券商截图成交明细；金额单位为元，数量为股或基金份额</caption><thead><tr>{''.join(f'<th scope="col">{h(item)}</th>' for item in headers)}</tr></thead><tbody>{''.join(ledger_rows)}</tbody></table>
           </div>
@@ -273,6 +309,7 @@ def render(rows: list[dict], trade_summary: dict) -> str:
   </style>
   <style>
     h1{{font-size:38px;line-height:1.2}}.trade-panel{{border:0;border-bottom:1px solid var(--line);border-radius:0;box-shadow:none;background:var(--paper)}}.trade-metrics{{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin:22px 0}}.trade-metrics>div{{display:grid;gap:8px;padding-left:14px;border-left:3px solid var(--line);min-width:0}}.trade-metrics span,.trade-metrics small{{color:var(--muted);font-size:13px}}.trade-metrics strong{{font-size:25px;overflow-wrap:anywhere}}.data-basis{{padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}}.data-footnote{{font-size:13px;margin:12px 0 22px}}.ledger-heading{{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}}.download-links{{display:flex;flex-wrap:wrap;gap:16px;align-items:center;font-size:13px}}.download-links a{{color:var(--blue);padding:10px 0}}.ledger-filters{{display:flex;flex-wrap:wrap;align-items:end;gap:12px;margin:12px 0 16px}}.ledger-filters label{{display:grid;gap:6px;color:var(--muted);font-size:13px;min-width:160px;flex:1}}.ledger-filters select{{width:100%;height:42px;border:1px solid var(--line);border-radius:4px;background:#fff;color:var(--ink);padding:0 10px;font:inherit}}.ledger-filters p{{font-size:13px;margin:0;padding-bottom:10px;white-space:nowrap}}.ledger-table{{min-width:1810px;font-variant-numeric:tabular-nums}}.ledger-table th,.ledger-table td{{white-space:nowrap;padding:10px}}.ledger-table [data-side="buy"] td:nth-child(6){{color:var(--red)}}.ledger-table [data-side="sell"] td:nth-child(6){{color:var(--blue)}}.ledger-wrap:focus-visible,select:focus-visible{{outline:2px solid var(--blue);outline-offset:2px}}.trade-reflection{{padding:16px 0;border-top:1px solid var(--line)}}.trade-reflection h3{{font-size:17px}}.trade-reflection p{{margin-bottom:0}}.sr-only{{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}}[hidden]{{display:none!important}}@media(max-width:720px){{h1{{font-size:30px}}.trade-metrics{{grid-template-columns:1fr}}.ledger-filters label{{min-width:100%;flex:auto}}.trade-metrics strong{{font-size:23px}}}}
+    .trade-highlights{{margin:24px 0;scroll-margin-top:18px}}.trade-highlights h3{{font-size:19px;margin-bottom:14px}}.focus-line{{display:grid;grid-template-columns:minmax(0,1fr) minmax(160px,auto);gap:20px;padding:16px;border-left:4px solid var(--line);border-bottom:1px solid var(--line)}}.focus-line h4{{font-size:18px;margin:6px 0}}.focus-line p{{margin:0;font-size:13px}}.focus-profit{{background:#f0faf5}}.focus-loss{{background:#fff3f3}}.focus-cash{{background:#f0f6ff}}.focus-reference{{background:#fff8ef}}.focus-line.focus-profit{{border-left-color:var(--green)}}.focus-line.focus-loss{{border-left-color:var(--red)}}.focus-line.focus-cash{{border-left-color:var(--blue)}}.focus-label{{font-size:12px;font-weight:700}}.focus-profit .focus-label,.focus-profit .focus-value strong{{color:var(--green)}}.focus-loss .focus-label,.focus-loss .focus-value strong{{color:var(--red)}}.focus-cash .focus-label,.focus-cash .focus-value strong{{color:var(--blue)}}.focus-value{{display:grid;align-content:center;justify-items:end;gap:6px;font-variant-numeric:tabular-nums}}.focus-value strong{{font-size:26px;white-space:nowrap}}.focus-value span{{font-size:13px;color:var(--muted)}}.focus-insight{{font-size:14px;margin:14px 0}}.reference-highlight{{padding:12px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}}.reference-highlight summary{{cursor:pointer;color:var(--amber);font-weight:700;line-height:1.65}}.reference-highlight p{{font-size:13px;margin:10px 0 0}}.pnl-table{{min-width:1180px}}.pnl-table td:first-child,.open-table td:first-child,.ledger-table td:nth-child(2){{font-weight:700}}.pnl-table .focus-profit td:first-child,.pnl-table .focus-profit td:nth-last-child(-n+2){{color:var(--green);font-weight:700}}.pnl-table .focus-loss td:first-child,.pnl-table .focus-loss td:nth-last-child(-n+2){{color:var(--red);font-weight:700}}.ledger-table{{min-width:1990px}}.ledger-table [data-side="buy"] td:nth-child(6),.ledger-table [data-side="sell"] td:nth-child(6){{color:var(--muted)}}.ledger-table [data-side="buy"] td:nth-child(7){{color:var(--red)}}.ledger-table [data-side="sell"] td:nth-child(7){{color:var(--blue)}}.ledger-table .focus-profit td:nth-child(2){{color:var(--green)}}.ledger-table .focus-loss td:nth-child(2){{color:var(--red)}}.ledger-table .focus-cash td:nth-child(2){{color:var(--blue)}}.ledger-table .focus-reference td:nth-child(2){{color:var(--amber)}}.ledger-filters .focus-toggle{{display:flex;align-items:center;gap:8px;min-width:auto;flex:0 0 auto;height:42px;white-space:nowrap;color:var(--ink)}}.focus-toggle input{{width:16px;height:16px;accent-color:var(--blue);margin:0}}@media(max-width:720px){{.focus-line{{grid-template-columns:1fr;gap:10px;padding:14px}}.focus-value{{justify-items:start}}.focus-value strong{{font-size:24px}}}}
     @media(max-width:720px){{.side-nav{{grid-template-columns:repeat(2,minmax(0,1fr));gap:4px}}.side-nav a{{min-height:36px;padding:8px;font-size:13px}}}}
   </style>
 </head>
@@ -285,6 +322,7 @@ def render(rows: list[dict], trade_summary: dict) -> str:
           <nav class="side-nav" aria-label="本页导航">
             <a class="primary" href="#top">本月概览</a>
             <a href="#trade-summary">实际盈亏</a>
+            <a href="#trade-highlights">重点交易</a>
             <a href="#trade-ledger">逐笔成交</a>
             <a href="#trade-reflections">数据复盘</a>
             <a href="#position">核心矛盾</a>
@@ -387,19 +425,21 @@ def render(rows: list[dict], trade_summary: dict) -> str:
     const periodFilter = document.getElementById('ledger-period');
     const symbolFilter = document.getElementById('ledger-symbol');
     const sideFilter = document.getElementById('ledger-side');
+    const focusFilter = document.getElementById('ledger-focus');
     function filterLedger() {{
       let count = 0;
       for (const row of ledgerRows) {{
         const matches = (periodFilter.value === 'all' || row.dataset.period === periodFilter.value)
           && (symbolFilter.value === 'all' || row.dataset.code === symbolFilter.value)
-          && (sideFilter.value === 'all' || row.dataset.side === sideFilter.value);
+          && (sideFilter.value === 'all' || row.dataset.side === sideFilter.value)
+          && (!focusFilter.checked || row.dataset.focus === 'true');
         row.hidden = !matches;
         if (matches) count++;
       }}
       document.getElementById('ledger-count').textContent = `显示${{count}} / ${{ledgerRows.length}}条`;
       document.getElementById('ledger-empty').hidden = count !== 0;
     }}
-    for (const control of [periodFilter, symbolFilter, sideFilter]) control.addEventListener('change', filterLedger);
+    for (const control of [periodFilter, symbolFilter, sideFilter, focusFilter]) control.addEventListener('change', filterLedger);
     filterLedger();
   </script>
 </body>

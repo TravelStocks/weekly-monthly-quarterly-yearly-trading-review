@@ -152,6 +152,56 @@
       ]
     }
   ],
+  "reference_closed_trades": [
+    {
+      "code": "001258",
+      "name": "立新能源",
+      "quantity": 1100,
+      "buy_date": "2026-07-28",
+      "sell_date": "2026-07-29",
+      "buy_average": "15.39909090909090909090909091",
+      "sell_average": "11.610",
+      "buy_cost": "16994.000",
+      "sell_proceeds": "12759.610",
+      "total_cost": "66.390",
+      "net_pnl": "-4234.390",
+      "return_pct": "-24.91697069553960221254560433",
+      "cross_month": true,
+      "source_rows": [
+        "40",
+        "39",
+        "38",
+        "37",
+        "36",
+        "35",
+        "33",
+        "32",
+        "31",
+        "30",
+        "29",
+        "28"
+      ]
+    },
+    {
+      "code": "002879",
+      "name": "长缆科技",
+      "quantity": 100,
+      "buy_date": "2026-07-27",
+      "sell_date": "2026-07-28",
+      "buy_average": "19.860",
+      "sell_average": "17.900",
+      "buy_cost": "1991.000",
+      "sell_proceeds": "1784.100",
+      "total_cost": "10.900",
+      "net_pnl": "-206.900",
+      "return_pct": "-10.39176293319939728779507785",
+      "cross_month": true,
+      "source_rows": [
+        "41",
+        "34"
+      ]
+    }
+  ],
   "open_trades": [
     {
       "code": "000636",
