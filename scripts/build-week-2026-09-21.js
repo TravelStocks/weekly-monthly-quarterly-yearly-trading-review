@@ -67,8 +67,11 @@ const archiveWeeks = [
   { label: "07.24-08.01", folder: "2026-07-24_2026-08-01", pnl: "账户待补", pct: "待补", equity: "待补", note: "截图跨周补档；立新能源二次参与亏损，一鸣食品跨周试错。" },
   { label: "07.31-08.08", folder: "2026-07-31_2026-08-08", pnl: "账户待补", pct: "待补", equity: "待补", note: "截图跨周补档；半导ETF小赚闭环，风范股份持仓待验证。" },
   { label: "08.10-08.15", folder: "2026-08-10_2026-08-15", pnl: "+1,560.94", pct: "+12.98%", equity: "13,594.00", note: "二次反思已补；期末持仓与风范成本待补。" },
-  { label: "08.31-09.04", folder: "2026-08-31_2026-09-04", pnl: "账户待补", pct: "待补", equity: "待补", note: "成交截图草稿；账户日收益、期末持仓、历史成本和二次反思待补。" },
-  { label: "09.07-09.11", folder: "2026-09-07_2026-09-11", pnl: "账户待补", pct: "待补", equity: "待补", note: "17笔成交初版；闭环-541.69，桂林旅游留仓1,000股；账户与二次反思待补。" },
+  { label: "08.16-08.23", folder: "2026-08-16_2026-08-23", dataOnly: true, pnl: "-526.75", cash: "12,165.27", holdings: "哈药股份 100 股", note: "17 笔成交；成交额 30,342.80；实际费用 91.95。" },
+  { label: "08.23-08.30", folder: "2026-08-23_2026-08-30", dataOnly: true, pnl: "+588.34", cash: "14.48", holdings: "百花医药 500 / 昊华科技 100", note: "10 笔成交；成交额 38,658.00；实际费用 56.79。" },
+  { label: "08.30-09.06", folder: "2026-08-30_2026-09-06", dataOnly: true, pnl: "-2,405.71", cash: "11,169.91", holdings: "0", note: "11 笔成交；成交额 41,770.00；实际费用 68.57。交易日 08.31-09.04，已有完整复盘保留。" },
+  { label: "09.06-09.13", folder: "2026-09-06_2026-09-13", dataOnly: true, pnl: "-541.69", cash: "11.22", holdings: "桂林旅游 1,000 股", note: "17 笔成交；成交额 57,040.00；实际费用 96.69。交易日 09.07-09.11，已有完整复盘保留。" },
+  { label: "09.13-09.20", folder: "2026-09-13_2026-09-20", dataOnly: true, pnl: "-258.64", cash: "67.38", holdings: "西陇科学 1,000 / 科创半导体 200", note: "10 笔成交；成交额 34,262.00；实际费用 58.64。" },
   { label:week.label, folder:week.folder, pnl:"账户待补", pct:"待补", equity:"待补", note:"两周7个交易日合并；含前期成本的闭环-221.06元，期末闽东电力100股。账户与二次反思待补。" },
 ];
 
@@ -588,13 +591,14 @@ function renderWeeklyHub() {
         <span class="label">Weekly Trading Review</span>
         <h1>周度交割复盘</h1>
         <p>每周一个独立页面，记录成交单、买卖点、账户变化、逐日复盘和当周新增交易纪律。最新一期合并 2026.09.21-09.30 的7个交易日；21笔成交、7只标的的5分钟K线买卖点及四天操作反思已整理，账户数据和二次反思待补。</p>
+        <p>已补齐 08.16-08.23、08.23-08.30、08.30-09.06、09.06-09.13、09.13-09.20 五周交割数据，共 65 笔成交。各周包含费用、逐日交割汇总和跨周持仓结转。</p>
         <div class="button-row">
           <a class="button" href="../${week.folder}/">进入最新周复盘</a>
           <a class="button secondary" href="../index.html">返回总首页</a>
         </div>
       </div>
       <div class="metrics">
-        ${metricCard("周报数量", `${archiveWeeks.length}`, "含本周草稿")}
+        ${metricCard("周报数量", `${archiveWeeks.length}`, "含本周草稿 / 同周数据不重复计数")}
         ${metricCard("最新区间", "09.21", "至 09.30 / 两周合并")}
         ${metricCard("最新账户", accountPnlLabel, `期末 ${finalEquityLabel} / 仓位 ${finalPositionLabel}`, knownAccountDays.length ? classByValue(accountPnlTotal) : "")}
         ${metricCard("最新规则", "待二次反思", "先看题材地位 / 唯一性 / 卖点")}
@@ -669,7 +673,7 @@ function renderRootIndex() {
       <div class="dimension-stack">
         <div class="dimension-head"><div><span class="dimension-mark">时间维度</span><h3>按周期看账户曲线</h3></div><p>周度记录交割动作，月度/季度检查模式变化，年度沉淀交易体系。</p></div>
         <div class="entrance-grid dimension-grid time">
-          <a class="week-card" href="./weekly-trading-review/"><div class="week-head"><h3>周度交割复盘</h3><span class="chip">时间 1</span></div><p>每周一个独立复盘页面，记录交割、买卖点、账户变化、KISS复盘和周度规则。</p><div class="mini-grid"><span>周报 <b>${archiveWeeks.length} 篇</b></span><span>最新 <b>${week.label}</b></span><span>状态 <b>草稿版</b></span></div></a>
+          <a class="week-card" href="./weekly-trading-review/"><div class="week-head"><h3>周度交割复盘</h3><span class="chip">时间 1</span></div><p>每周一个独立复盘页面；08.16 至 09.20 五周交割数据已补齐，共 65 笔成交。</p><div class="mini-grid"><span>周报 <b>${archiveWeeks.length} 篇</b></span><span>最新 <b>${week.label}</b></span><span>状态 <b>草稿版</b></span></div></a>
           <a class="week-card" href="./monthly-quarterly-trading-review/"><div class="week-head"><h3>月度 / 季度复盘</h3><span class="chip">时间 2</span></div><p>月度承接周度结果，季度检查模式和仓位是否真正改善账户曲线。</p><div class="mini-grid"><span>月度 <b>1-12 月</b></span><span>季度 <b>Q1-Q4</b></span><span>状态 <b>框架版</b></span></div></a>
           <a class="week-card" href="./yearly-trading-review/"><div class="week-head"><h3>年度交易复盘</h3><span class="chip">时间 3</span></div><p>年度层面聚焦账户画像、模式进化、仓位风控、心理纪律和下一年执行准则。</p><div class="mini-grid"><span>年度 <b>自然年</b></span><span>核心 <b>体系沉淀</b></span><span>状态 <b>框架版</b></span></div></a>
         </div>
@@ -687,6 +691,13 @@ function renderRootIndex() {
 function renderArchiveCard(prefix) {
   return (item) => {
     const isDraft = item.folder === week.folder;
+    if (item.dataOnly) {
+      return `<a class="week-card" href="${prefix}/${item.folder}/">
+      <div class="week-head"><h3>${item.label}</h3><span class="chip">交割数据</span></div>
+      <p>${item.note}</p>
+      <div class="mini-grid"><span>已实现盈亏 <b class="${item.pnl.startsWith("+") ? "is-profit" : "is-loss"}">${item.pnl}</b></span><span>期末现金 <b>${item.cash}</b></span><span>期末结转 <b>${item.holdings}</b></span></div>
+    </a>`;
+    }
     return `<a class="week-card ${isDraft ? "latest-link" : ""}" href="${prefix}/${item.folder}/">
       <div class="week-head"><h3>${item.label}</h3><span class="chip">${isDraft ? "最新草稿" : "已归档"}</span></div>
       <p>${item.note}</p>

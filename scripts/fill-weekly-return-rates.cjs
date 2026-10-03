@@ -18,7 +18,11 @@ async function update() {
       for(const card of doc.querySelectorAll(".archive .week-card")){
         const folder=card.getAttribute("href").split("/").filter(x=>x!=="..").find(Boolean);
         const update=updates.find(row=>row.folder===folder);
-        const value=[...card.querySelectorAll(".mini-grid>span")].find(el=>/^周收益/.test(el.textContent));
+        let value=[...card.querySelectorAll(".mini-grid>span")].find(el=>/^周收益/.test(el.textContent));
+        if(!value && update){
+          value=doc.createElement("span");value.innerHTML="周收益率 <b>待补</b>";
+          card.querySelector(".mini-grid").append(value);
+        }
         if(!value)continue;
         const b=value.querySelector("b");
         value.firstChild.textContent="周收益率 ";

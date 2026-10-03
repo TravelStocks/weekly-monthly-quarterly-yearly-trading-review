@@ -4,7 +4,7 @@ const rangeLabel = row => row.start.slice(5).replace("-", ".") + "-" + row.end.s
 const rateClass = points => points > 0 ? "is-profit" : points < 0 ? "is-loss" : "";
 
 function forFolder(folder) {
-  const periods = data.periods.filter(row => row.folder === folder);
+  const periods = data.periods.filter(row => row.folder === folder || row.aliases?.includes(folder));
   if (!periods.length) return null;
   const points = periods.reduce((n,row) => n + row.basisPoints, 0);
   const components = periods.map(row => rangeLabel(row) + " " + formatRate(row.basisPoints)).join("；");

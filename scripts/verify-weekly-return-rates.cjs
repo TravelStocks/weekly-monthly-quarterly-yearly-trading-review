@@ -28,7 +28,7 @@ async function main() {
           rates:[...document.querySelectorAll("#weekly-return-rates tbody tr")].map(row=>row.cells[1].textContent),
           sections:document.querySelectorAll("#weekly-return-rates").length,
           oldLabels:[...document.querySelectorAll(".archive .mini-grid>span")].filter(el=>/^周收益\s/.test(el.textContent)).length,
-          moneyPreserved:["-533.37","-4,434.59","+186.27","-965.38","-541.69","-221.06"].every(value=>document.querySelector(".archive").textContent.includes(value)),
+          moneyPreserved:["-533.37","-4,434.59","+186.27","-526.75","+588.34","-2,405.71","-541.69","-258.64","-221.06"].every(value=>document.querySelector(".archive").textContent.includes(value)),
           positiveColors:[...document.querySelectorAll("#weekly-return-rates .is-profit")].map(el=>getComputedStyle(el).color),
           negativeColors:[...document.querySelectorAll("#weekly-return-rates .is-loss")].map(el=>getComputedStyle(el).color),
           invalid:/undefined|NaN/.test(document.body.innerText)
@@ -39,7 +39,7 @@ async function main() {
       assert.equal(result.oldLabels,0);
       assert.equal(result.invalid,false);
       assert.equal(result.moneyPreserved,true);
-      assert.equal(result.cards.length,18);
+      assert.equal(result.cards.length,21);
       assert.deepEqual(result.rates,rates.data.periods.map(row=>rates.formatRate(row.basisPoints)));
       for(const folder of new Set(rates.data.periods.map(row=>row.folder).filter(Boolean))){
         const card=result.cards.find(row=>row.href==="../"+folder+"/");
