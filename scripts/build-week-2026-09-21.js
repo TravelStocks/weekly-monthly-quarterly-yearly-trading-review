@@ -5,6 +5,7 @@ const assert = require("node:assert/strict");
 const repo = path.resolve(__dirname, "..");
 const weekDir = path.join(repo, "2026-09-21_2026-09-30");
 const config = JSON.parse(fs.readFileSync(path.join(weekDir, "data/config.json"), "utf8"));
+const secondReflection = JSON.parse(fs.readFileSync(path.join(weekDir, "data/second-reflection.json"), "utf8"));
 const statement = JSON.parse(fs.readFileSync(path.join(weekDir, "data/statement.json"), "utf8"));
 const startDate = config.start.replaceAll("-", "");
 const endDate = config.end.replaceAll("-", "");
@@ -15,9 +16,9 @@ const openingCost = config.openingLots.reduce((total, lot) => total + lot.cost, 
 const week = {
   folder: config.folder, rangeText: "2026.09.21 - 2026.09.30",
   tradeRangeText: "2026.09.21 - 2026.09.30", label: "09.21-09.30",
-  status: "两周合并初版 / 7个交易日",
+  status: "两周合并 / 二次心得第一段已补",
   title: "内蒙新华分批兑现，前期西陇亏损与后续试错抵消盈利",
-  subtitle: "两周合并记录7个交易日、21笔成交与7只标的。四天每日操作反思已摘编；账户日收益、期末持仓确认和二次反思待补。",
+  subtitle: "两周合并记录7个交易日、21笔成交与7只标的。已补二次心得第一段：先识别赚钱效应，再匹配熟悉模式；天时决定总体仓位，地利与人和决定题材和标的。账户日数据与期末持仓确认继续待补。",
 };
 const ignoredOrders = [];
 const sourceData = JSON.parse(fs.readFileSync(path.join(weekDir, "data/daily-reviews.json"), "utf8"));
@@ -26,7 +27,7 @@ const accountDays = config.accountDays;
 const dailyNotes = [
   {date:"20260921",day:"周一",theme:"退出前期仓位，切入内蒙新华",
     action:"卖出前期科创半导200份、西陇科学1,000股；买入内蒙新华200股，尾盘买入科创半导1,400份。",
-    review:"当天闭环-353.88元包含前期买入后的全部价差，不能作为当天账户亏损。西陇科学卖出与内蒙新华开仓的当时想法，网站暂未找到。"},
+    review:"当天闭环-353.88元包含前期买入后的全部价差，不能作为当天账户亏损。网站暂未找到当日日记；西陇退出与内蒙新华开仓的回看判断已由本次二次心得补充。"},
   {date:"20260922",day:"周二",theme:"内蒙新华加仓，ETF小仓来回",
     action:"内蒙新华两笔加400股，累计600股；卖出科创半导1,400份，随后两笔买入500份。",
     review:"日记肯定传媒/AI梯队、一字强度与承接确认，也反思重仓前监管距离和最大亏损未量化。日记的“ETF观察仓”与个股高位仓位要分开评估。",
@@ -41,14 +42,14 @@ const dailyNotes = [
     kiss:[["Keep 保持","保持同梯队唯一性、小仓确认与判断错误后不加码。"],["Improve 改进","把深水、快速拉回、反核成功写成价格、时间和量能条件。"],["Start 启动","每只持仓写明触发、动作、失效、仓位上限和最大亏损；反核先检查板块。"],["Stop 停止","不把单票回封等同于题材回流，不补弱，不以可能反包替代退出纪律。"]]},
   {date:"20260928",day:"周一",theme:"三只试错票退出",
     action:"09:30卖出南华生物200股，09:31卖出天威视讯100股，10:07卖出哈药股份100股。",
-    review:"三票合计含费亏损245.04元。截图可见仓位在这天退出；卖出前的触发条件、执行速度和实际情绪待补，不能只凭成交时间推断。"},
+    review:"三票合计含费闭环亏损245.04元，不等于当日账户损益。截图可见仓位在这天退出；本次二次心得已补亏损归因，卖出前的具体价格与时间触发仍待补。"},
   {date:"20260929",day:"周二",theme:"空仓等待，保留下一次出手机会",
     action:"本次截图没有成交；当日日记明确记录空仓。",
     review:"原文肯定空仓克制，提醒情绪缓和不等于新周期确认。纪律重点是不做节前低胜率套利，后续只按触发条件观察核心。",
     kiss:[["Keep 保持","保留空仓纪律、核心前排与不做后排的原则。"],["Improve 改进","参与前补齐仓位、失败条件与最大亏损。"],["Start 启动","把候选题材第一次分化写成触发卡，核对核心转强和后排助攻。"],["Stop 停止","停止中位接力、普通超跌反包、纯套利和节前频繁出手。"]]},
   {date:"20260930",day:"周三",theme:"节前尾盘新开闽东电力",
     action:"14:56:59以17.09元买入闽东电力100股，含费成本1,714.00元；截图最后现金8,435.32元。",
-    review:"这是本期的新仓，不与9/15至9/17已结束的闽东交易混算。买入逻辑、跨长假持仓预案和主观反思待补。"},
+    review:"这是本期的新仓，不与9/15至9/17已结束的闽东交易混算。企稳后反核的买入逻辑已在本次二次心得补充；节后持有与退出预案仍待明确。"},
 ];
 
 const archiveWeeks = [
@@ -72,7 +73,7 @@ const archiveWeeks = [
   { label: "08.30-09.06", folder: "2026-08-30_2026-09-06", dataOnly: true, pnl: "-2,405.71", cash: "11,169.91", holdings: "0", note: "11 笔成交；成交额 41,770.00；实际费用 68.57。交易日 08.31-09.04，已有完整复盘保留。" },
   { label: "09.06-09.13", folder: "2026-09-06_2026-09-13", dataOnly: true, pnl: "-541.69", cash: "11.22", holdings: "桂林旅游 1,000 股", note: "17 笔成交；成交额 57,040.00；实际费用 96.69。交易日 09.07-09.11，已有完整复盘保留。" },
   { label: "09.13-09.20", folder: "2026-09-13_2026-09-20", dataOnly: true, pnl: "-258.64", cash: "67.38", holdings: "西陇科学 1,000 / 科创半导体 200", note: "10 笔成交；成交额 34,262.00；实际费用 58.64。" },
-  { label:week.label, folder:week.folder, pnl:"账户待补", pct:"待补", equity:"待补", note:"两周7个交易日合并；含前期成本的闭环-221.06元，期末闽东电力100股。账户与二次反思待补。" },
+  { label:week.label, folder:week.folder, pnl:"账户待补", pct:"待补", equity:"待补", note:"二次心得第一段已补：赚钱效应与熟悉模式匹配，天时决定总体仓位。含前期成本的闭环-221.06元，期末闽东电力100股；账户日数据与持仓确认待补。" },
 ];
 
 const secids = Object.fromEntries(config.codes.map(code=>[code,`${/^[56]/.test(code) ? "1" : "0"}.${code}`]));
@@ -357,13 +358,13 @@ function renderStockCards(charts) {
 
 function stockNote(stock) {
   const notes = {
-    "002584":"9/17买400股、9/18买600股，含费成本10,094.00元；9/21全部卖出到账9,750.12元，闭环-343.88元（-3.41%）。这是前期建仓后的完整亏损，不能全部归到9/21当日。买入理由和退出情绪缺原文，暂不推断。",
+    "002584":"9/17买400股、9/18买600股，含费成本10,094.00元；9/21全部卖出到账9,750.12元，闭环-343.88元（-3.41%）。这是前期建仓后的完整亏损，不能全部归到9/21当日。本人二次心得将前周入场问题归于科技非唯一标的追高，认可本期卖出处理。",
     "588170":"期初200份卖出亏10.00元；本期1,400份隔日闭环赚15.20元；之后500份闭环亏18.20元，三段净亏13.00元。三段买卖毛价差合计+22.00元，完整闭环手续费35.00元，收益被费用抵消；其中5.00元属于期初买入。",
     "603230":"600股含费成本9,443.10元，三笔卖出到账9,823.96元，闭环+380.86元（+4.03%）。9/22日记确认题材梯队和承接；9/23正文肯定面对监管负反馈时等待反抽、三组条件单分批退出，不执着最高点。",
     "000504":"9/23均线附近两笔买200股，9/28卖出，闭环-50.27元（-1.95%）。日记肯定分批试仓、走弱停买；同时反思医药高标不能抵消板块退潮与爆量，最大亏损和退出触发条件仍需量化。",
     "600664":"9/24以8.33元买100股，9/28以7.43元卖出，闭环-100.39元（-11.98%）。9/24正文明确指出反核前置条件不足：医药板块回流基础弱。做对的是判断失误后没有补仓，改进点是先验证板块再验证个股。",
-    "002238":"9/24以8.43元买100股，9/28以7.59元卖出，闭环-94.38元（-11.13%）。原日记将唯一3板、换手和多题材接口作为参与理由，也提示封单薄、市场性不足。不能把唯一性当作可忽略题材退潮的依据；实际卖出触发待补。",
-    "000993":"9/30尾盘新买100股，含费成本1,714.00元，尚未卖出。9/15至9/17另一次300股交易已结束，不并入本期。新仓买入逻辑、假期持仓预案与期末截图待补。",
+    "002238":"9/24以8.43元买100股，9/28以7.59元卖出，闭环-94.38元（-11.13%）。原日记将唯一3板、换手和多题材接口作为参与理由，也提示封单薄、市场性不足。二次心得仍认可升位试错逻辑，但强调中位负反馈和天时偏弱时必须降低总体仓位。",
+    "000993":"9/30尾盘新买100股，含费成本1,714.00元，尚未卖出。9/15至9/17另一次300股交易已结束，不并入本期。二次心得补充为企稳后的龙头反核试仓，节后退出条件和期末账户截图仍待补。",
   };
   return notes[stock.code];
 }
@@ -381,11 +382,13 @@ function stockPctFigure(code) {
 
 function renderProfitLossPanel() {
   const roles = {"603230":"主要赚钱票","002584":"主要亏损票 / 前期仓","600664":"反核亏损","002238":"接力亏损","000504":"试错亏损","588170":"ETF费用影响","000993":"期末未平仓"};
-  const rows = ["603230","002584","600664","002238","000504","588170"].map(code=>{
+  const rows = ["603230","002584","600664","002238","000504","588170","000993"].map(code=>{
     const stock=stockByCode.get(code);
-    return '<article><span class="code">'+roles[code]+'</span><h3>'+stock.name+' <span class="'+classByValue(stock.realized)+'">'+stockFigure(code)+' / '+stockPctFigure(code)+'</span></h3><p>'+stockNote(stock)+'</p></article>';
+    const reflection=secondReflection.stocks[code];
+    const result=stock.closedCost ? stockFigure(code)+' / '+stockPctFigure(code) : '未平仓 / 待验证';
+    return '<article data-code="'+code+'"><span class="code">'+roles[code]+'</span><h3>'+stock.name+' <span class="'+classByValue(stock.realized)+'">'+result+'</span></h3><p>'+stockNote(stock)+'</p><p><b>本人二次归因：</b>'+escapeHtml(reflection.root)+'</p><p><b>操作与情绪：</b>'+escapeHtml(reflection.emotion)+'</p><p><b>后续纪律：</b>'+escapeHtml(reflection.rule)+'</p></article>';
   }).join('');
-  return '<section class="panel" id="profit-loss"><span class="label">Profit / Loss Roots</span><h2>本期持有/闭环票：赚钱与亏损主因</h2><p>收益率 = 含费闭环盈亏 / 对应已卖份额成本。它是这笔交易的收益率，不是个股最高点回撤，也不是账户收益率。</p><div class="ticket-analysis">'+rows+'</div><p><b>操作与情绪线索：</b>正文支持的进步是内蒙新华按条件单兑现、试错走弱后停止加码以及9/29空仓。需要补足的环节是把“等回流”“深水就走”“反核成功”写成可执行的价格、时间、量能条件。西陇科学与9/30闽东电力的主观原因等待本人补充。</p></section>';
+  return '<section class="panel" id="profit-loss"><span class="label">Profit / Loss Roots</span><h2>本期持有/闭环票：赚钱与亏损主因</h2><p>收益率 = 含费闭环盈亏 / 对应已卖份额成本。它是这笔交易的收益率，不是个股最高点回撤，也不是账户收益率。归因与情绪来自本人本次二次心得；未平仓试错单列，不计为已实现盈利。</p><div class="ticket-analysis">'+rows+'</div></section>';
 }
 
 function renderDailyTrades(date) {
@@ -438,7 +441,7 @@ function renderAccountPanel() {
           <td>${stat.rows.length}</td>
           <td>${rawMoney(stat.buyAmount)}</td>
           <td>${rawMoney(stat.sellAmount)}</td>
-          <td class="reflection-cell">账户日收益、仓位、当前总金额待补；本行先展示成交统计。</td>
+          <td class="reflection-cell"><b>二次心得：</b>${escapeHtml(secondReflection.daily[day.date])}</td>
         </tr>`;
   }).join("");
 
@@ -496,9 +499,9 @@ function renderDailyCards() {
     const stat=dailyStats.get(day.date)||{rows:[],buyAmount:0,sellAmount:0};
     const review=dailyReviews[day.date];
     const excerpt=review ? [review.operationChapter,review.chapter].filter((v,i,a)=>v&&a.indexOf(v)===i).join("\n\n") || review.operation : "";
-    return '<article class="day-card"><div class="day-card-head"><h3>'+formatDate(day.date)+' '+day.day+'</h3><b>'+day.theme+'</b></div><div class="day-numbers"><span>成交笔数<b>'+stat.rows.length+'</b></span><span>买入成交额<b>'+rawMoney(stat.buyAmount)+'</b></span><span>卖出成交额<b>'+rawMoney(stat.sellAmount)+'</b></span><span>当日平仓的完整盈亏<b class="'+classByValue(dailyRealized(day.date))+'">'+money(dailyRealized(day.date),{sign:true})+'</b></span></div><p><b>实际成交：</b>'+day.action+'</p><p><b>'+(review?'日记摘编与核对':'待补反思')+'：</b>'+day.review+'</p>'+
+    return '<article class="day-card"><div class="day-card-head"><h3>'+formatDate(day.date)+' '+day.day+'</h3><b>'+day.theme+'</b></div><div class="day-numbers"><span>成交笔数<b>'+stat.rows.length+'</b></span><span>买入成交额<b>'+rawMoney(stat.buyAmount)+'</b></span><span>卖出成交额<b>'+rawMoney(stat.sellAmount)+'</b></span><span>当日平仓的完整盈亏<b class="'+classByValue(dailyRealized(day.date))+'">'+money(dailyRealized(day.date),{sign:true})+'</b></span></div><p><b>实际成交：</b>'+day.action+'</p><p><b>'+(review?'日记摘编与核对':'交割事实核对')+'：</b>'+day.review+'</p><div class="hindsight" data-date="'+day.date+'"><b>二次心得补充（本次回看）</b><p>'+escapeHtml(secondReflection.daily[day.date])+'</p></div>'+
     (review?'<p><b>市场情绪（原日记口径）：</b>'+escapeHtml(review.emotion)+'</p><div class="kiss-grid">'+day.kiss.map(([label,content])=>'<div><b>'+label+'</b><p>'+content+'</p></div>').join('')+'</div><details><summary>查看对应日期的操作与反思正文</summary><div class="source-excerpt">'+escapeHtml(excerpt)+'</div></details><p class="source-line"><a href="'+escapeHtml(review.url)+'" target="_blank" rel="noreferrer">'+escapeHtml(review.title)+'</a><small>KISS由当日正文摘编；口述仓位仅保留为反思背景，精确账户比例仍待日度表。</small></p>':
-    '<div class="chart-empty"><b>当日个人反思待补</b><span>每日网站主页及公开目录暂未找到本日记录。本卡只列成交事实和待核对问题。</span></div>')+'</article>';
+    '<p class="source-line">本日原始日记暂未找到；上方回看由本人本次口述补充，不冒充当日原文。</p>')+'</article>';
   }).join('');
 }
 
@@ -557,15 +560,13 @@ function renderCodeSummaryRows() {
 }
 
 function renderRules() {
-  const rules=[
-    ["保留分批退出","9/23日记：监管反馈、板块与自身量价一起看，用条件单分批退出，不以卖到最高点衡量执行。"],
-    ["唯一性要有板块支持","9/24日记：唯一性需与题材余温、承接和市场环境共同成立，不能单凭身位放大预期。"],
-    ["反核先验证条件","9/24日记：先有板块强回流，再看个股主动反核；判断错误后不补仓。"],
-    ["模糊词改成触发卡","9/22至9/24反思共同要求写明价格、时间、动作、失效、仓位上限和最大亏损。"],
-    ["允许空仓","9/29日记：不把情绪缓和当成新周期，不因节前想做一笔而降低入场标准。"],
-    ["小额ETF先核费用","本次交割核算：三段完整ETF闭环毛价差+22.00元，手续费35.00元。下次复盘单列净收益与拆单成本。"],
-  ];
-  return rules.map(([title,body])=>'<article><b>'+title+'</b><p>'+body+'</p></article>').join('');
+  return secondReflection.rules.map(([title,body])=>'<article><b>'+escapeHtml(title)+'</b><p>'+escapeHtml(body)+'</p></article>').join('');
+}
+
+function renderSecondReflection() {
+  const sections=secondReflection.sections.map(section=>'<div class="reflection-section"><h3>'+escapeHtml(section.title)+'</h3>'+section.paragraphs.map(text=>'<p>'+escapeHtml(text)+'</p>').join('')+'</div>').join('');
+  const checks=secondReflection.checks.map(text=>'<li>'+escapeHtml(text)+'</li>').join('');
+  return '<section class="panel" id="second-review" data-reflection-part="'+secondReflection.part+'"><span class="label">Second Reflection / 第一段</span><h2>本期二次反思总结</h2><p class="lead"><b>'+escapeHtml(secondReflection.lead)+'</b></p><p class="source-line">'+escapeHtml(secondReflection.source)+'</p><p>'+escapeHtml(secondReflection.scope)+'</p>'+sections+'<details class="reflection-checks"><summary>口述与交割单核对说明</summary><ul>'+checks+'</ul></details></section>';
 }
 
 function renderHoldingsPanel() {
@@ -587,15 +588,15 @@ function renderWeekPage(charts) {
     ${metricCard("含费闭环盈亏",money(visibleRealized,{sign:true}),"含期初持仓完整成本，不是账户期间收益",classByValue(visibleRealized))}
     ${metricCard("主要盈利 / 亏损","内蒙新华 / 西陇科学","+380.86元 / -343.88元")}
     ${metricCard("期末可见持仓","闽东电力 100股","9/30新仓；含费成本1,714.00元")}</div></section>
-    <section class="panel" id="second-review"><span class="label">Second Reflection</span><h2>本期二次反思总结</h2><p class="lead">待你补充两周二次心得。以下先分开记录交割事实与已发布日记，不用成交结果反推你当时的情绪，也不替你编写最终总结。</p></section>
-    <section class="panel"><h2>本期初步结论</h2><div class="thesis-grid"><article><b>内蒙新华分批兑现</b><p>600股闭环+380.86元，含费收益率+4.03%。9/23日记肯定在监管与负反馈并存时用三组条件单退出，而不是执着最高点；9/22重仓前的风险量化仍需改进。</p></article><article><b>前期亏损与后续试错抵消盈利</b><p>西陇科学9/21卖出，完整持仓闭环-343.88元。南华生物、哈药股份、天威视讯合计-245.04元；日记反思题材退潮下，个股地位或唯一性不等于足够的入场条件。</p></article><article><b>空仓克制与新仓待验证</b><p>9/29无成交，日记肯定防守与等待。9/30尾盘新买闽东电力100股，尚未闭环；买入逻辑、节后预案和风险上限待补。ETF闭环-13.00元，费用抵消了毛价差。</p></article></div></section>
+    ${renderSecondReflection()}
+    <section class="panel"><h2>本期结论与交割核对</h2><div class="thesis-grid"><article><b>身位判断与兑现值得保留</b><p>内蒙新华600股闭环+380.86元，含费收益率+4.03%。本人认可华字辈身位及条件单兑现；改进点是首次确认时规划仓位，而非更高位置追仓。</p></article><article><b>模式错误与试错失败分开</b><p>西陇科学前周建仓、本期退出，完整闭环-343.88元。哈药反核被本人认定为模式不匹配；南华、天威则保留为有参与理由的失败样本。三只后续试错票合计-245.04元。</p></article><article><b>空仓是执行，新仓先验证</b><p>9/28清仓后等待，9/29无成交，9/30尾盘才以100股试闽东电力的企稳反核。二次心得已补买入逻辑，具体节后预案和风险上限待补；未平仓不提前记为成功。</p></article></div></section>
     <section class="panel data-panel"><div><h2>交割单 + 市值口径核算</h2><p>按“发生金额”进行含费FIFO核算。期初沿用9/17–9/18买入的西陇科学1,000股（成本10,094.00元）、科创半导200份（成本209.00元），以及现金67.38元。本期21笔成交净现金流与9/30余额8,435.32元完全衔接。</p><p>闭环包含跨期持仓的完整成本；未提供9/18收盘权益及7天账户表，因此不填账户收益率、平均仓位或最大回撤。原始私人截图、合同号、成交编号不公开。</p></div><div class="summary-grid"><span>买入笔数<b>${buyRows.length}</b></span><span>卖出笔数<b>${sellRows.length}</b></span><span>买入成交额<b>${rawMoney(buyAmount)}</b></span><span>卖出成交额<b>${rawMoney(sellAmount)}</b></span><span>成交净现金流<b>${money(netCash,{sign:true})}</b></span><span>本期现金费用<b>${rawMoney(sellAmount-buyAmount-netCash)}</b></span></div></section>
     ${renderAccountPanel()}${renderHoldingsPanel()}${renderProfitLossPanel()}
     <section class="panel" id="stocks"><span class="label">Trade Charts</span><h2>重点走势图与5分钟K线买卖点</h2><p>7只实际交易标的均使用真实5分钟K线。红色B为买入、蓝色S为卖出；编号对应下方精确成交时间、价格与数量。西陇科学与科创半导延长至9/17，标出“期初B”；其余从9/21开始。行情来源：东方财富，未复权。</p><div class="table-wrap"><table><thead><tr><th>标的</th><th>本期买入数量</th><th>买入成交额</th><th>本期卖出数量</th><th>卖出成交额</th><th>含费闭环</th><th>期末数量 / 成本</th></tr></thead><tbody>${renderCodeSummaryRows()}</tbody></table></div><div class="stock-grid">${renderStockCards(charts)}</div></section>
-    <section class="panel" id="daily"><span class="label">Daily KISS</span><h2>每日操作与情绪复盘</h2><p>9/22、9/23、9/24、9/29摘编自对应日期个人复盘正文，并附原文及链接。只采用当日操作章节，不混用网页底部重复的旧KISS卡片。9/21、9/28、9/30保留成交事实，情绪与反思待补。</p><div class="day-grid-cards">${renderDailyCards()}</div></section>
-    <section class="panel" id="rules"><h2>本期已有规则与待验证问题</h2><p>根据已发布日记整理，属于个人复盘纪律，不把经验判断写成确定收益或成功率。</p><div class="rules">${renderRules()}</div></section>
+    <section class="panel" id="daily"><span class="label">Daily KISS</span><h2>每日操作与情绪复盘</h2><p>9/22、9/23、9/24、9/29保留对应日期日记摘编、KISS与原文链接。7天均补入本次二次心得，并明确标记为事后回看；9/21、9/28、9/30不再留空，但不把新心得冒充当日日记。</p><div class="day-grid-cards">${renderDailyCards()}</div></section>
+    <section class="panel" id="rules"><h2>本期沉淀纪律</h2><p>由本人二次心得与原日记合并整理，属于个人交易复盘，不代表已验证的胜率或收益承诺。每笔仍须写清价格、时间、动作、失效、仓位上限和最大亏损。</p><div class="rules">${renderRules()}</div></section>
     <section class="panel" id="trades"><h2>本期成交明细</h2><p>仅列9/21–9/30的21笔成交。金额单位元，ETF数量单位份。截图手续费${rawMoney(feeTotal)}元、印花税${rawMoney(taxTotal)}元，发生金额另含${rawMoney(sellAmount-buyAmount-netCash-feeTotal-taxTotal)}元费用差额。现金流为交易资金流，不是账户盈亏。</p>${renderTradeTable()}</section>
-    <section class="panel" id="missing"><span class="label">To Fill</span><h2>后续待补内容</h2><div class="missing-list"><article><b>1. 七天账户数据</b><p>9/21、22、23、24、28、29、30每日收益率、收益金额、仓位、当前总金额，另补9/18期末总资产。用于账户曲线、7日平均仓位、最赚/最亏日和期间回撤。</p></article><article><b>2. 9/30期末持仓</b><p>确认闽东电力100股、现金8,435.32元，是否还有其他持仓；补期末账户截图及期间是否有入金、出金或其他资金变动。</p></article><article><b>3. 三天每日反思</b><p>网站尚未找到9/21、9/28、9/30的日记。重点补西陇退出、三只试错票兑现、新开闽东电力的想法及情绪。</p></article><article><b>4. 两周二次反思</b><p>补充主要赚钱/亏损根源、仓位与情绪变化、节后持仓计划。区间先按9/21–9/30；9/14–9/18不纳入本期。</p></article></div></section></main></body></html>`;
+    <section class="panel" id="missing"><span class="label">To Fill</span><h2>后续待补内容</h2><p>二次心得第一段已收录，主要个股归因与7天回看已补齐，不再作为缺失材料。</p><div class="missing-list"><article><b>1. 七天账户数据</b><p>9/21、22、23、24、28、29、30每日收益率、收益金额、仓位、当前总金额，另确认9/18期末总资产。用于账户曲线、7日平均仓位、最赚/最亏日和期间回撤；主页已有周收益率与权益估值保持原口径。</p></article><article><b>2. 9/30期末账户确认</b><p>确认闽东电力100股、现金8,435.32元，是否还有其他持仓；补券商期末账户截图及期间是否有入金、出金或其他资金变动。</p></article><article><b>3. 闽东电力节后预案</b><p>企稳后反核的逻辑已收到，仍需具体持有条件、失效信号、退出价格或时间、仓位上限与最大可接受亏损。</p></article><article><b>4. 可选补充与核对</b><p>新华文轩的具体候选日期和板位，口述前后有反复，暂归为未成交机会复盘；其他二次心得可继续追加，保留本段判断和后续修正。</p></article></div></section></main></body></html>`;
 }
 
 function renderWeeklyHub() {
@@ -614,7 +615,7 @@ function renderWeeklyHub() {
       <div>
         <span class="label">Weekly Trading Review</span>
         <h1>周度交割复盘</h1>
-        <p>每周一个独立页面，记录成交单、买卖点、账户变化、逐日复盘和当周新增交易纪律。最新一期合并 2026.09.21-09.30 的7个交易日；21笔成交、7只标的的5分钟K线买卖点及四天操作反思已整理，账户数据和二次反思待补。</p>
+        <p>每周一个独立页面，记录成交单、买卖点、账户变化、逐日复盘和当周新增交易纪律。最新一期合并 2026.09.21-09.30 的7个交易日；21笔成交、7只标的的5分钟K线买卖点已整理，二次心得第一段与7天回看已补，账户日数据与持仓确认待补。</p>
         <p>已补齐 08.16-08.23、08.23-08.30、08.30-09.06、09.06-09.13、09.13-09.20 五周交割数据，共 65 笔成交。各周包含费用、逐日交割汇总和跨周持仓结转。</p>
         <div class="button-row">
           <a class="button" href="../${week.folder}/">进入最新周复盘</a>
@@ -625,7 +626,7 @@ function renderWeeklyHub() {
         ${metricCard("周报数量", `${archiveWeeks.length}`, "含本周草稿 / 同周数据不重复计数")}
         ${metricCard("最新区间", "09.21", "至 09.30 / 两周合并")}
         ${metricCard("最新账户", accountPnlLabel, `期末 ${finalEquityLabel} / 仓位 ${finalPositionLabel}`, knownAccountDays.length ? classByValue(accountPnlTotal) : "")}
-        ${metricCard("最新规则", "待二次反思", "先看题材地位 / 唯一性 / 卖点")}
+        ${metricCard("最新规则", "模式匹配", "先看赚钱效应，再按天时定仓位")}
       </div>
     </section>
     <section class="panel">
@@ -779,6 +780,13 @@ function sharedStyles() {
     .metric span,.metric small{color:var(--muted);font-size:12px}
     .metric strong{font-size:22px;line-height:1.18;word-break:break-word;font-variant-numeric:tabular-nums}
     .lead{font-size:17px;color:#334155}
+    .reflection-section{padding:20px 0;border-top:1px solid var(--line)}
+    .reflection-section p:last-child{margin-bottom:0}
+    .reflection-checks{border-top:1px solid var(--line);padding-top:16px}
+    .reflection-checks li{margin:8px 0;line-height:1.7;color:var(--muted)}
+    .hindsight{border-left:3px solid var(--blue);padding-left:14px;margin:16px 0}
+    .hindsight>b{font-size:14px;color:var(--blue)}
+    .hindsight p{margin:6px 0 0}
     .thesis-grid,.summary-grid,.stock-metrics,.day-numbers,.missing-list,.entrance-grid,.dimension-stack,.dimension-grid{display:grid;gap:12px}
     .thesis-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
     .thesis-grid article,.rules article,.missing-list article{background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px}

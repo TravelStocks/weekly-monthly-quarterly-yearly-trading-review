@@ -10,6 +10,7 @@ async function main() {
   fs.mkdirSync(output, { recursive: true });
   const browser = await puppeteer.launch({ executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe', headless: true });
   const results = [];
+  const reflection = JSON.parse(fs.readFileSync(path.join(repo, '2026-09-21_2026-09-30/data/second-reflection.json'), 'utf8'));
   const expectedTrades = {
     '20260921':['buy:603230:200','buy:588170:1400','sell:588170:200','sell:002584:1000'],
     '20260922':['buy:603230:400','buy:588170:500','sell:588170:1400'],
@@ -34,6 +35,13 @@ async function main() {
           candles: document.querySelectorAll('svg.stock-chart .candle').length,
           dailyCards: document.querySelectorAll('#daily .day-card').length,
           accountRows: document.querySelectorAll('#account tbody tr').length,
+          reflectionPart: document.querySelector('#second-review')?.dataset.reflectionPart,
+          reflectionSections: document.querySelectorAll('#second-review .reflection-section').length,
+          hindsight: [...document.querySelectorAll('#daily .hindsight')].map(el=>({date:el.dataset.date,text:el.querySelector('p').textContent})),
+          stockAnalyses: [...document.querySelectorAll('#profit-loss article')].map(el=>el.dataset.code),
+          originalDailySources: document.querySelectorAll('#daily details').length,
+          ruleCount: document.querySelectorAll('#rules article').length,
+          staleReflection: /待你补充两周二次心得|当日个人反思待补|账户与二次反思待补/.test(document.body.innerText),
           operations:[...document.querySelectorAll('#account .daily-trades')].map(el=>({
             date:el.dataset.date,
             inTable:!!el.closest('td'),
@@ -64,6 +72,14 @@ async function main() {
           assert.equal(result.tradeRows, 21);
           assert.equal(result.dailyCards, 7);
           assert.equal(result.accountRows, 7);
+          assert.equal(result.reflectionPart, '1');
+          assert.equal(result.reflectionSections, reflection.sections.length);
+          assert.equal(result.hindsight.length, 7);
+          for(const item of result.hindsight) assert.equal(item.text, reflection.daily[item.date]);
+          assert.deepEqual(result.stockAnalyses.slice().sort(), Object.keys(reflection.stocks).sort());
+          assert.equal(result.originalDailySources, 4);
+          assert.equal(result.ruleCount, reflection.rules.length);
+          assert.equal(result.staleReflection, false);
           assert.equal(result.operations.length, 14);
           assert.equal(result.operations.filter(op=>op.inTable).length,7);
           for(const operation of result.operations) {
@@ -73,6 +89,11 @@ async function main() {
             if(operation.date==='20260929')assert.equal(operation.empty,'无成交');
           }
           await (await page.$('#account')).screenshot({path:path.join(output,'account-operations-'+width+'.png')});
+          await page.locator('#second-review .reflection-checks summary').click();
+          assert.equal(await page.$eval('#second-review details',el=>el.open),true);
+          await page.locator('#second-review .reflection-checks summary').click();
+          await (await page.$('#second-review')).screenshot({path:path.join(output,'second-reflection-'+width+'.png')});
+          await (await page.$('#daily .day-card:first-child')).screenshot({path:path.join(output,'monday-hindsight-'+width+'.png')});
           await page.locator('#account .account-day:first-child a[href="#stock-603230"]').click();
           assert.equal(await page.evaluate(()=>location.hash),'#stock-603230');
           await page.screenshot({ path: path.join(output, 'week-' + width + '.png') });
