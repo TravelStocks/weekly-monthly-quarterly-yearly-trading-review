@@ -1,0 +1,27 @@
+{
+  "openingCents": 2941110,
+  "source": "沿用周度主页现有金额变化；期末权益已有值来自原周卡片或资金表。金额与权益口径不一致时保留已有权益校准，不把差额解释为出入金。",
+  "periods": [
+    {"folder":"2026-04-20_2026-04-24","label":"04.20-04.24","changeCents":161689,"recordedCents":3102799},
+    {"folder":"2026-05-08_2026-05-16","label":"05.08-05.16","changeCents":-448226,"recordedCents":2654573},
+    {"folder":"2026-05-15_2026-05-22","label":"05.18-05.22","changeCents":-155376,"recordedCents":2499197},
+    {"folder":"2026-05-25_2026-05-29","label":"05.25-05.29","changeCents":-136223,"recordedCents":2362974},
+    {"folder":"2026-06-01_2026-06-05","label":"06.01-06.05","changeCents":-3100,"recordedCents":2359874},
+    {"folder":"2026-06-08_2026-06-12","label":"06.08-06.12","changeCents":-46600,"recordedCents":2287900},
+    {"folder":"2026-06-15_2026-06-20","label":"06.15-06.20","changeCents":-29900,"recordedCents":2256700},
+    {"folder":"2026-06-22_2026-06-26","label":"06.22-06.26","changeCents":-483942,"recordedCents":1767122,"provisional":true},
+    {"folder":"2026-06-29_2026-07-04","label":"06.29-07.04","changeCents":-174100,"recordedCents":1585800},
+    {"folder":"2026-07-06_2026-07-10","label":"07.06-07.10","changeCents":-26200,"recordedCents":1559600},
+    {"folder":"2026-07-10_2026-07-18","label":"07.13-07.17","changeCents":-53337,"closedOnly":true},
+    {"folder":"2026-07-20_2026-07-24","label":"07.20-07.24","changeCents":181640,"recordedCents":1764865},
+    {"folder":"2026-07-24_2026-08-01","label":"07.27-07.31","changeCents":-443459,"closedOnly":true},
+    {"folder":"2026-07-31_2026-08-08","label":"08.03-08.07","changeCents":18627,"closedOnly":true},
+    {"folder":"2026-08-10_2026-08-15","label":"08.10-08.14","changeCents":156094,"recordedCents":1359400},
+    {"folder":"2026-08-16_2026-08-23","label":"08.17-08.21","changeCents":-52675,"closedOnly":true},
+    {"folder":"2026-08-23_2026-08-30","label":"08.24-08.28","changeCents":58834,"closedOnly":true},
+    {"folder":"2026-08-30_2026-09-06","label":"08.31-09.04","changeCents":-240571,"closedOnly":true},
+    {"folder":"2026-09-06_2026-09-13","label":"09.07-09.11","changeCents":-54169,"closedOnly":true},
+    {"folder":"2026-09-13_2026-09-20","label":"09.14-09.18","changeCents":-25864,"closedOnly":true},
+    {"folder":"2026-09-21_2026-09-30","label":"09.21-09.30（合并）","changeCents":-22106,"closedOnly":true}
+  ]
+}

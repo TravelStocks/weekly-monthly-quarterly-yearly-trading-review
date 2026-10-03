@@ -4,8 +4,9 @@ const path = require("path");
 const repo = path.resolve(__dirname, "..");
 const hubPath = path.join(repo, "weekly-trading-review", "index.html");
 const returnRates = require("./weekly-return-rates.cjs");
+const equityLedger = require("./weekly-equity.cjs");
 
-const weeks = [
+const knownWeeks = [
   { label: "04.20-04.24", pnl: 1616.89, equity: 31027.99, avgPosition: 94.7, bestDay: "周二 04-21 +2,117.00", worstDay: "周五 04-24 -2,413.00", href: "../2026-04-20_2026-04-24/" },
   { label: "05.08-05.16", pnl: -4482.26, equity: 26545.73, avgPosition: 79.1, bestDay: "周一 05-11 +593.98", worstDay: "周四 05-14 -2,043.00", href: "../2026-05-08_2026-05-16/" },
   { label: "05.18-05.22", pnl: -1553.76, equity: 24991.97, avgPosition: 53.64, bestDay: "周五 05-22 +1,680.00", worstDay: "周四 05-21 -1,779.76", href: "../2026-05-15_2026-05-22/" },
@@ -19,6 +20,14 @@ const weeks = [
   { label: "07.20-07.24", pnl: 1816.4, equity: 17648.65, avgPosition: 41.12, bestDay: "周五 07-24 +1,170.00", worstDay: "周一 07-20 +0.00", href: "../2026-07-20_2026-07-24/" },
   { label: "08.10-08.15", pnl: 1560.94, equity: 13594, avgPosition: 59.62, bestDay: "周三 08-12 +1,268.94", worstDay: "周五 08-14 -389.00", href: "../2026-08-10_2026-08-15/" },
 ];
+
+const weeks = equityLedger.rows.map(row => ({
+  ...knownWeeks.find(week => week.href === `../${row.folder}/`),
+  label:row.label, href:`../${row.folder}/`, pnl:row.changeCents / 100,
+  equity:row.endingCents / 100, equityLabel:equityLedger.money(row.endingCents),
+  equityStatus:equityLedger.statusLabel(row), closedOnly:row.closedOnly,
+  equityNote:equityLedger.formula(row),
+}));
 
 let peak = -Infinity;
 let previousEquity = null;
@@ -49,7 +58,7 @@ function pointPath(points) {
 }
 
 function renderChart() {
-  const width = 1080;
+  const width = Math.max(1080, weeks.length * 110 + 180);
   const height = 430;
   const left = 90;
   const right = 92;
@@ -67,6 +76,16 @@ function renderChart() {
   const amountPoints = weeks.map((week, i) => ({ x: x(i), y: yAmount(week.pnl), week }));
   const ddPoints = weeks.map((week, i) => ({ x: x(i), y: yDrawdown(week.drawdown), week }));
   const weekPctPoints = weeks.map((week, i) => ({ x: x(i), y: yDrawdown(week.weekPct), week }));
+  const labelYs = weeks.map((week, i) => {
+    const labels = [
+      {key:"amount", y:amountPoints[i].y + (week.pnl > 0 || i >= 4 ? 23 : -14)},
+      {key:"drawdown", y:ddPoints[i].y + 19},
+      {key:"rate", y:weekPctPoints[i].y - 14},
+    ].sort((a,b)=>a.y-b.y);
+    labels.forEach((label,j)=>{label.y=Math.max(top+12,label.y,j ? labels[j-1].y+17 : top+12);});
+    for(let j=labels.length-1;j>=0;j--) labels[j].y=Math.min(labels[j].y,j===labels.length-1 ? height-bottom-8 : labels[j+1].y-17);
+    return Object.fromEntries(labels.map(label=>[label.key,label.y]));
+  });
   const amountTicks = [2000, 0, -2500, -5000];
   const ddTicks = Array.from({ length: (ddMax - ddMin) / 10 + 1 }, (_, i) => ddMax - i * 10);
   const grid = amountTicks.map((tick) => {
@@ -86,19 +105,18 @@ function renderChart() {
     return `<a href="${point.week.href}"><g><title>${point.week.label} 金额变化 ${money(point.week.pnl)}</title><circle cx="${point.x.toFixed(1)}" cy="${point.y.toFixed(1)}" r="5.5" fill="${color}" stroke="#fff" stroke-width="2"></circle></g></a>`;
   }).join("");
   const amountLabels = amountPoints.map((point, index) => {
-    const offset = point.week.pnl > 0 || index >= 4 ? 23 : -14;
-    const y = Math.max(top + 12, Math.min(height - bottom - 8, point.y + offset));
+    const y = labelYs[index].amount;
     const fill = point.week.pnl >= 0 ? "#c2412d" : "#14845f";
     return `<text x="${point.x.toFixed(1)}" y="${y.toFixed(1)}" text-anchor="middle" class="value-label amount-label" style="fill:${fill}">${money(point.week.pnl)}</text>`;
   }).join("");
   const ddDots = ddPoints.map((point) => `<g><title>${point.week.label} 累计回撤 ${pct(point.week.drawdown)}</title><circle cx="${point.x.toFixed(1)}" cy="${point.y.toFixed(1)}" r="4.5" fill="#1d4ed8" stroke="#fff" stroke-width="2"></circle></g>`).join("");
-  const ddLabels = ddPoints.map((point) => {
-    const y = Math.max(top + 12, Math.min(height - bottom - 8, point.y + 19));
+  const ddLabels = ddPoints.map((point, index) => {
+    const y = labelYs[index].drawdown;
     return `<text x="${point.x.toFixed(1)}" y="${y.toFixed(1)}" text-anchor="middle" class="value-label cum-label">累${pct(point.week.drawdown)}</text>`;
   }).join("");
   const weekPctDots = weekPctPoints.map((point) => `<g><title>${point.week.label} 周收益率 ${pct(point.week.weekPct)}</title><circle cx="${point.x.toFixed(1)}" cy="${point.y.toFixed(1)}" r="4.5" fill="#d97706" stroke="#fff" stroke-width="2"></circle></g>`).join("");
-  const weekPctLabels = weekPctPoints.map((point) => {
-    const y = Math.max(top + 12, Math.min(height - bottom - 8, point.y - 14));
+  const weekPctLabels = weekPctPoints.map((point, index) => {
+    const y = labelYs[index].rate;
     return `<text x="${point.x.toFixed(1)}" y="${y.toFixed(1)}" text-anchor="middle" class="value-label week-label ${trendClass(point.week.weekPct)}">${pct(point.week.weekPct)}</text>`;
   }).join("");
   const zeroY = yAmount(0);
@@ -112,8 +130,8 @@ function renderPanel() {
   const worst = weeks.reduce((a, b) => (b.pnl < a.pnl ? b : a), weeks[0]);
   const latest = weeks[weeks.length - 1];
   const maxDrawdown = weeks.reduce((min, week) => Math.min(min, week.drawdown), 0);
-  const rows = weeks.map((week) => `<tr><td><a href="${week.href}">${week.label}</a></td><td class="${trendClass(week.pnl)}">${money(week.pnl)}</td><td class="${trendClass(week.weekPct)}">${pct(week.weekPct)}</td><td>${week.avgPosition.toFixed(2)}%</td><td>${week.equityLabel || week.equity.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td><td class="${week.drawdown < 0 ? "trade-down" : "trade-up"}">${pct(week.drawdown)}</td><td class="trade-up">${week.bestDay}</td><td class="trade-down">${week.worstDay}</td></tr>`).join("");
-  return `<section class="panel overview-panel"><div class="chart-head"><div><h2>每周资金曲线</h2><p>左轴看每周账户金额变化；右轴同时看累计回撤和周收益率。已补充的周收益率采用用户提供的每日收益率相加值；其余历史周保留原有金额/权益推算口径，第一周按周初权益推算。平均周仓位按已提供交易日仓位简单平均。08.31-09.04、09.07-09.11 和 09.21-09.30（两周合并） 已有周收益率列于下方完整表；因账户收益金额和期末权益待补，暂不新增资金曲线点，补齐后再校准。</p></div><div class="legend-row"><span><i class="legend-line amount"></i>金额变化</span><span><i class="legend-line drawdown"></i>累计回撤</span><span><i class="legend-line weekly"></i>周收益率</span></div></div>${renderChart()}<div class="weekly-data-wrap"><table class="weekly-data-table"><thead><tr><th>周区间</th><th>金额变化</th><th>周收益率</th><th>平均周仓位</th><th>期末权益</th><th>累计回撤</th><th>最赚日</th><th>最亏日</th></tr></thead><tbody>${rows}<tr><td><a href="../2026-09-21_2026-09-30/">09.21-09.30（合并）</a></td><td>待补</td><td class="trade-up">${returnRates.forFolder("2026-09-21_2026-09-30").formatted}</td><td>待补</td><td>待补</td><td>待补</td><td>待补</td><td>待补</td></tr></tbody></table></div><div class="mini-grid chart-summary"><span>累计变化 <b class="${cumulative >= 0 ? "pos" : "neg"}">${money(cumulative)}</b></span><span>最大单周盈利 <b class="pos">${best.label} ${money(best.pnl)}</b></span><span>最大单周亏损 <b class="neg">${worst.label} ${money(worst.pnl)}</b></span><span>最新入曲线 <b class="${latest.weekPct >= 0 ? "pos" : "neg"}">${latest.label} ${pct(latest.weekPct)}</b></span><span>最新累计回撤 <b class="neg">${pct(latest.drawdown)}</b></span><span>最大累计回撤 <b class="neg">${pct(maxDrawdown)}</b></span><span>最新权益 <b>${latest.equityLabel || latest.equity.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</b></span></div></section>`;
+  const rows = weeks.map((week) => `<tr><td><a href="${week.href}">${week.label}</a></td><td class="${trendClass(week.pnl)}">${money(week.pnl)}${week.closedOnly ? '<small class="equity-caption">已平仓口径</small>' : ''}</td><td class="${trendClass(week.weekPct)}">${pct(week.weekPct)}</td><td>${week.avgPosition == null ? '待补' : week.avgPosition.toFixed(2)+'%'}</td><td title="${week.equityNote}">${week.equityLabel}<small class="equity-caption">${week.equityStatus}</small></td><td class="${trendClass(week.drawdown)}">${pct(week.drawdown)}</td><td class="trade-up">${week.bestDay || '待补'}</td><td class="trade-down">${week.worstDay || '待补'}</td></tr>`).join("");
+  return `<section class="panel overview-panel"><div class="chart-head"><div><h2>每周资金曲线</h2><p>缺失的期末权益＝上一归档期期末权益＋本期金额变化；已有权益保留并作为校准点。金额变化沿用原账户或已平仓口径，推算未校准未知持仓浮盈亏、出入金及归档间隔，不等于券商确认资产。累计回撤按这些归档期末值计算（含推算），并非每日最大回撤。周收益率保留每日直接相加值，不参与权益推算；其余早期周沿用原收益率口径。平均周仓位按已提供交易日仓位简单平均。</p></div><div class="legend-row"><span><i class="legend-line amount"></i>金额变化</span><span><i class="legend-line drawdown"></i>累计回撤（含推算）</span><span><i class="legend-line weekly"></i>周收益率</span></div></div>${renderChart()}<div class="weekly-data-wrap"><table class="weekly-data-table"><thead><tr><th>周区间</th><th>金额变化</th><th>周收益率</th><th>平均周仓位</th><th>期末权益</th><th>累计回撤<br>（含推算）</th><th>最赚日</th><th>最亏日</th></tr></thead><tbody>${rows}</tbody></table></div><div class="mini-grid chart-summary"><span>金额变化合计 <b class="${cumulative >= 0 ? "pos" : "neg"}">${money(cumulative)}</b></span><span>最大单周盈利 <b class="pos">${best.label} ${money(best.pnl)}</b></span><span>最大单周亏损 <b class="neg">${worst.label} ${money(worst.pnl)}</b></span><span>最新入曲线 <b class="${latest.weekPct >= 0 ? "pos" : "neg"}">${latest.label} ${pct(latest.weekPct)}</b></span><span>最新累计回撤（含推算） <b class="neg">${pct(latest.drawdown)}</b></span><span>最大累计回撤（含推算） <b class="neg">${pct(maxDrawdown)}</b></span><span>最新权益（${latest.equityStatus}） <b>${latest.equityLabel}</b></span></div></section>`;
 }
 
 function renderMotto() {
@@ -140,4 +158,7 @@ if (!html.includes(".cycle-motto{")) {
 html = html.replace(/<section class="panel cycle-motto">[\s\S]*?<section class="panel">\s*<span class="label">Latest Draft<\/span>/, `<section class="panel">\n      <span class="label">Latest Draft</span>`);
 html = html.replace(/<section class="panel overview-panel">[\s\S]*?<section class="panel">\s*<span class="label">Latest Draft<\/span>/, `<section class="panel">\n      <span class="label">Latest Draft</span>`);
 html = html.replace(/<\/section>\s*<section class="panel">\s*<span class="label">Latest Draft<\/span>/, `</section>${renderMotto()}${renderPanel()}<section class="panel">\n      <span class="label">Latest Draft</span>`);
+const equityCss = `<style id="weekly-equity-style">.equity-caption{display:block;margin-top:4px;color:var(--muted);font-size:11px}.equity-basis{display:block;color:var(--muted);line-height:1.6;overflow-wrap:anywhere}.weekly-chart{min-width:${Math.max(1080,weeks.length*110+180)}px}.weekly-data-table th{vertical-align:middle}</style>`;
+html = html.replace(/<style id="weekly-equity-style">[\s\S]*?<\/style>/, "");
+html = html.replace("</head>", `${equityCss}</head>`);
 fs.writeFileSync(hubPath, html, "utf8");

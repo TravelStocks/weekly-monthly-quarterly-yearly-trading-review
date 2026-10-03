@@ -881,6 +881,7 @@ async function main() {
   require("./update-weekly-hub-chart.js");
   if (fs.existsSync(path.join(__dirname, "fill-weekly-hub-calculated-pnl.js"))) require("./fill-weekly-hub-calculated-pnl.js");
   await require("./fill-weekly-return-rates.cjs")();
+  await require("./fill-weekly-equity.cjs")();
 
   console.log(`Wrote ${path.relative(repo, weekDir)}\\index.html`);
   console.log("Updated weekly-trading-review\\index.html");
