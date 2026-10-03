@@ -12,7 +12,7 @@ async function update() {
     const updates = [...new Set(rates.data.periods.map(row=>row.folder).filter(Boolean))]
       .map(folder=>({folder,...rates.forFolder(folder)}));
     const original = fs.readFileSync(file,"utf8");
-    const result = await page.evaluate(({html,updates,table})=>{
+    const result = await page.evaluate(({html,updates})=>{
       const doc = new DOMParser().parseFromString(html,"text/html");
       let count=0;
       for(const card of doc.querySelectorAll(".archive .week-card")){
@@ -34,15 +34,12 @@ async function update() {
         if(!note){note=doc.createElement("small");note.className="return-basis";card.append(note);}
         note.textContent=update.note;
       }
-      const archive=[...doc.querySelectorAll("section")].find(el=>el.querySelector(".archive"));
-      const existing=doc.getElementById("weekly-return-rates");
-      if(existing)existing.outerHTML=table;
-      else archive.insertAdjacentHTML("beforebegin",table);
+      doc.querySelectorAll("#weekly-return-rates").forEach(section=>section.remove());
       return {html:"<!DOCTYPE html>\n"+doc.documentElement.outerHTML+"\n",count};
-    },{html:original,updates,table:rates.renderTable()});
+    },{html:original,updates});
     assert.equal(result.count,updates.length);
     fs.writeFileSync(file,result.html,"utf8");
-    console.log("Updated "+result.count+" archive rates and all "+rates.data.periods.length+" supplied weeks.");
+    console.log("Updated "+result.count+" archive rates; removed the redundant standalone rate panel.");
   } finally {await browser.close();}
 }
 if(require.main===module)update().catch(error=>{console.error(error);process.exitCode=1;});

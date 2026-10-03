@@ -25,30 +25,31 @@ async function main() {
           note:card.querySelector(".return-basis")?.textContent
         }));
         return {width:innerWidth,scrollWidth:document.documentElement.scrollWidth,cards,
-          rates:[...document.querySelectorAll("#weekly-return-rates tbody tr")].map(row=>row.cells[1].textContent),
+          rates:[...document.querySelectorAll(".weekly-data-table tbody tr")].map(row=>({href:row.querySelector("a").getAttribute("href"),rate:row.cells[2].textContent})),
           sections:document.querySelectorAll("#weekly-return-rates").length,
           oldLabels:[...document.querySelectorAll(".archive .mini-grid>span")].filter(el=>/^周收益\s/.test(el.textContent)).length,
           moneyPreserved:["-533.37","-4,434.59","+186.27","-526.75","+588.34","-2,405.71","-541.69","-258.64","-221.06"].every(value=>document.querySelector(".archive").textContent.includes(value)),
-          positiveColors:[...document.querySelectorAll("#weekly-return-rates .is-profit")].map(el=>getComputedStyle(el).color),
-          negativeColors:[...document.querySelectorAll("#weekly-return-rates .is-loss")].map(el=>getComputedStyle(el).color),
+          positiveColors:[...document.querySelectorAll(".weekly-data-table td:nth-child(3).trade-up")].map(el=>getComputedStyle(el).color),
+          negativeColors:[...document.querySelectorAll(".weekly-data-table td:nth-child(3).trade-down")].map(el=>getComputedStyle(el).color),
           invalid:/undefined|NaN/.test(document.body.innerText)
         };
       });
       assert.equal(result.scrollWidth,width);
-      assert.equal(result.sections,1);
+      assert.equal(result.sections,0);
       assert.equal(result.oldLabels,0);
       assert.equal(result.invalid,false);
       assert.equal(result.moneyPreserved,true);
       assert.equal(result.cards.length,21);
-      assert.deepEqual(result.rates,rates.data.periods.map(row=>rates.formatRate(row.basisPoints)));
+      assert.equal(result.rates.length,21);
       for(const folder of new Set(rates.data.periods.map(row=>row.folder).filter(Boolean))){
         const card=result.cards.find(row=>row.href==="../"+folder+"/");
         assert.equal(card.rate,rates.forFolder(folder).formatted);
+        assert.equal(result.rates.find(row=>row.href===card.href).rate,card.rate);
         assert.ok(card.note.includes("相加"));
       }
       assert.ok(result.positiveColors.every(c=>c==="rgb(194, 65, 45)"));
       assert.ok(result.negativeColors.every(c=>c==="rgb(20, 132, 95)"));
-      await (await page.$("#weekly-return-rates")).screenshot({path:path.join(output,"rates-"+width+".png")});
+      await (await page.$(".overview-panel")).screenshot({path:path.join(output,"rates-"+width+".png")});
       await (await page.$(".archive")).screenshot({path:path.join(output,"archive-"+width+".png")});
       results.push(result);
     }

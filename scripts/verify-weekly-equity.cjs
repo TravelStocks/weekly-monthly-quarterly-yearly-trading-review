@@ -22,6 +22,7 @@ async function main() {
   const file=path.join(root,"weekly-trading-review/index.html");
   const before=fs.readFileSync(file,"utf8");
   execFileSync(process.execPath,[path.join(__dirname,"update-weekly-hub-chart.js")]);
+  await require("./fill-weekly-return-rates.cjs")();
   await require("./fill-weekly-equity.cjs")();
   assert.equal(fs.readFileSync(file,"utf8"),before,"Rebuilding must be idempotent");
   const browser=await puppeteer.launch({executablePath:"C:/Program Files/Google/Chrome/Application/chrome.exe",headless:true});
@@ -48,6 +49,11 @@ async function main() {
         })),
         points:document.querySelectorAll(".weekly-chart circle").length,
         styles:document.querySelectorAll("#weekly-equity-style").length,
+        redundantRates:document.querySelectorAll("#weekly-return-rates").length,
+        latestChartVisible:(()=>{const el=document.querySelector(".chart-wrap");return Math.abs(el.scrollLeft+el.clientWidth-el.scrollWidth)<=1;})(),
+        summary:document.querySelector(".chart-summary").textContent,
+        amountLegend:getComputedStyle(document.querySelector(".legend-line.amount")).borderTopColor,
+        amountLegendWidth:getComputedStyle(document.querySelector(".legend-line.amount")).borderTopWidth,
         invalid:/undefined|NaN/.test(document.body.innerText),
         clipped:[...document.querySelectorAll(".weekly-chart text")].some(text=>{
           const r=text.getBBox(),v=text.ownerSVGElement.viewBox.baseVal;
@@ -59,6 +65,12 @@ async function main() {
       assert.equal(result.rows.length,21);
       assert.equal(result.points,63);
       assert.equal(result.styles,1);
+      assert.equal(result.redundantRates,0);
+      assert.equal(result.latestChartVisible,true);
+      assert.equal(result.amountLegend,"rgb(194, 65, 45)");
+      assert.equal(result.amountLegendWidth,"3px");
+      for(const value of ["-18,189.64","09.21-09.30（合并） +1.35%","-67.03%","10,228.49"])
+        assert.ok(result.summary.includes(value));
       assert.equal(result.invalid,false);
       assert.equal(result.clipped,false);
       for(const row of equity.rows) {
