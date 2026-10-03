@@ -3,7 +3,7 @@
     "2026-08-15",
     "2026-09-30"
   ],
-  "buildDate": "2026-10-03",
+  "buildDate": "2026-10-04",
   "trades": 86,
   "stocks": [
     {
@@ -16,9 +16,10 @@
       "model": "非模式",
       "tags": [
         "非唯一",
+        "非模式",
         "负贡献"
       ],
-      "classification": "不确定",
+      "classification": "可避免",
       "rounds": [
         {
           "start": "期初持仓",
@@ -36,12 +37,13 @@
       "openQty": 0,
       "openCost": 0,
       "openingQty": 0,
-      "model": "需复核",
+      "model": "非模式",
       "tags": [
-        "小额正贡献",
-        "需查第一性"
+        "非模式",
+        "赚钱但不可复制",
+        "小额正贡献"
       ],
-      "classification": "不确定",
+      "classification": "赚钱但不可复制",
       "rounds": [
         {
           "start": "2026-08-17",
@@ -59,12 +61,13 @@
       "openQty": 0,
       "openCost": 0,
       "openingQty": 100,
-      "model": "需复核",
+      "model": "非模式",
       "tags": [
-        "小额正贡献",
-        "需查第一性"
+        "非模式",
+        "赚钱但不可复制",
+        "小额正贡献"
       ],
-      "classification": "不确定",
+      "classification": "赚钱但不可复制",
       "rounds": [
         {
           "start": "期初持仓",
@@ -82,12 +85,12 @@
       "openQty": 0,
       "openCost": 0,
       "openingQty": 0,
-      "model": "需复核",
+      "model": "模式内",
       "tags": [
-        "负贡献",
-        "需查第一性"
+        "轻仓套利",
+        "小亏闭环"
       ],
-      "classification": "不确定",
+      "classification": "模式内正常亏损（本人认可处理）",
       "rounds": [
         {
           "start": "2026-08-19",
@@ -105,12 +108,13 @@
       "openQty": 0,
       "openCost": 0,
       "openingQty": 0,
-      "model": "需复核",
+      "model": "非模式",
       "tags": [
+        "非模式",
         "轻仓套利",
         "小亏闭环"
       ],
-      "classification": "不确定",
+      "classification": "可避免（择时与成本）",
       "rounds": [
         {
           "start": "2026-08-19",
@@ -134,7 +138,7 @@
         "止损后回补",
         "买点复盘"
       ],
-      "classification": "不确定",
+      "classification": "不确定（分轮判断）",
       "rounds": [
         {
           "start": "2026-08-19",
@@ -203,12 +207,13 @@
       "openQty": 0,
       "openCost": 0,
       "openingQty": 0,
-      "model": "需复核",
+      "model": "非模式",
       "tags": [
-        "负贡献",
-        "需验证核心地位"
+        "非模式",
+        "买点过急",
+        "负贡献"
       ],
-      "classification": "不确定",
+      "classification": "可避免（9月反核轮）",
       "rounds": [
         {
           "start": "2026-08-21",
@@ -236,10 +241,10 @@
       "model": "模式内",
       "tags": [
         "核心处理",
-        "值得复制",
+        "运气盈利",
         "正贡献"
       ],
-      "classification": "值得复制",
+      "classification": "运气盈利",
       "rounds": [
         {
           "start": "2026-08-25",
@@ -259,6 +264,7 @@
       "openingQty": 0,
       "model": "非模式",
       "tags": [
+        "买点过急",
         "亏损后加单",
         "负贡献"
       ],
@@ -280,12 +286,12 @@
       "openQty": 0,
       "openCost": 0,
       "openingQty": 0,
-      "model": "需复核",
+      "model": "非模式",
       "tags": [
-        "负贡献",
-        "买点复盘"
+        "非模式",
+        "负贡献"
       ],
-      "classification": "不确定",
+      "classification": "可避免",
       "rounds": [
         {
           "start": "2026-08-28",
@@ -326,12 +332,13 @@
       "openQty": 0,
       "openCost": 0,
       "openingQty": 0,
-      "model": "需复核",
+      "model": "非模式",
       "tags": [
-        "负贡献",
-        "需查第一性"
+        "买点过急",
+        "买点复盘",
+        "负贡献"
       ],
-      "classification": "不确定",
+      "classification": "可避免",
       "rounds": [
         {
           "start": "2026-09-02",
@@ -349,12 +356,13 @@
       "openQty": 0,
       "openCost": 0,
       "openingQty": 0,
-      "model": "需复核",
+      "model": "非模式",
       "tags": [
-        "负贡献",
-        "买点复盘"
+        "非唯一",
+        "买点过急",
+        "负贡献"
       ],
-      "classification": "不确定",
+      "classification": "可避免",
       "rounds": [
         {
           "start": "2026-09-03",
@@ -397,7 +405,7 @@
       "openingQty": 0,
       "model": "非模式",
       "tags": [
-        "非第一",
+        "非模式",
         "买点复盘",
         "负贡献"
       ],
@@ -422,8 +430,8 @@
       "model": "模式内",
       "tags": [
         "核心龙头",
-        "正贡献",
-        "值得复制"
+        "值得复制",
+        "正贡献"
       ],
       "classification": "值得复制",
       "rounds": [
@@ -445,11 +453,11 @@
       "openingQty": 0,
       "model": "需复核",
       "tags": [
+        "核心处理",
         "止损后回补",
-        "买点过急",
-        "负贡献"
+        "小亏闭环"
       ],
-      "classification": "可避免（回补行为）",
+      "classification": "不确定（方向认可）",
       "rounds": [
         {
           "start": "2026-09-10",
@@ -474,12 +482,13 @@
       "openQty": 0,
       "openCost": 0,
       "openingQty": 0,
-      "model": "模式内",
+      "model": "非模式",
       "tags": [
-        "轻仓套利",
+        "买点过急",
+        "买点复盘",
         "负贡献"
       ],
-      "classification": "可避免（退出拖延）",
+      "classification": "可避免",
       "rounds": [
         {
           "start": "2026-09-14",
@@ -500,9 +509,10 @@
       "model": "模式内",
       "tags": [
         "核心龙头",
+        "买点复盘",
         "小亏闭环"
       ],
-      "classification": "不确定",
+      "classification": "可避免（利润保护）",
       "rounds": [
         {
           "start": "2026-09-15",
@@ -520,12 +530,13 @@
       "openQty": 0,
       "openCost": 0,
       "openingQty": 0,
-      "model": "需复核",
+      "model": "非模式",
       "tags": [
-        "负贡献",
-        "买点复盘"
+        "非唯一",
+        "亏损后加单",
+        "负贡献"
       ],
-      "classification": "不确定",
+      "classification": "可避免",
       "rounds": [
         {
           "start": "2026-09-17",
@@ -572,7 +583,7 @@
         "轻仓套利",
         "小亏闭环"
       ],
-      "classification": "模式内正常亏损（暂定）",
+      "classification": "模式内正常亏损（预案仍需核验）",
       "rounds": [
         {
           "start": "2026-09-23",
@@ -590,12 +601,12 @@
       "openQty": 0,
       "openCost": 0,
       "openingQty": 0,
-      "model": "需复核",
+      "model": "模式内",
       "tags": [
-        "负贡献",
-        "买点复盘"
+        "轻仓套利",
+        "小亏闭环"
       ],
-      "classification": "不确定",
+      "classification": "模式内正常亏损（预案仍需核验）",
       "rounds": [
         {
           "start": "2026-09-24",
@@ -622,15 +633,15 @@
   "models": [
     {
       "label": "模式内",
-      "count": 8
+      "count": 9
     },
     {
       "label": "非模式",
-      "count": 3
+      "count": 12
     },
     {
       "label": "需复核",
-      "count": 13
+      "count": 3
     }
   ],
   "reentries": [
@@ -901,9 +912,14 @@
       "realized": 0
     }
   ],
-  "pendingReflectionQuestions": [
-    "这1.5个月最大的错误是什么？",
-    "做对且想继续的动作是什么？",
-    "10月最想改变的一件事是什么？"
-  ]
+  "pendingReflectionQuestions": [],
+  "reflection": {
+    "status": "integrated",
+    "updatedOn": "2026-10-04",
+    "sourceParts": 5,
+    "inheritedWeeklyRange": "09.21–09.30",
+    "poorRoundCount": 6,
+    "countBasis": "本人总体回看，不是独立重算的成交数",
+    "skippedRebuyJudgment": "桂林旅游"
+  }
 }
