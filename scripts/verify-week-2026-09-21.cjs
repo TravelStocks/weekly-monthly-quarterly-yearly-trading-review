@@ -36,6 +36,7 @@ async function main() {
           dailyCards: document.querySelectorAll('#daily .day-card').length,
           accountRows: document.querySelectorAll('#account tbody tr').length,
           reflectionPart: document.querySelector('#second-review')?.dataset.reflectionPart,
+          reflectionLead: document.querySelector('#second-review .lead')?.textContent,
           reflectionSections: document.querySelectorAll('#second-review .reflection-section').length,
           hindsight: [...document.querySelectorAll('#daily .hindsight')].map(el=>({date:el.dataset.date,text:el.querySelector('p').textContent})),
           stockAnalyses: [...document.querySelectorAll('#profit-loss article')].map(el=>el.dataset.code),
@@ -73,6 +74,8 @@ async function main() {
           assert.equal(result.dailyCards, 7);
           assert.equal(result.accountRows, 7);
           assert.equal(result.reflectionPart, '1');
+          assert.equal(result.reflectionLead, reflection.lead);
+          assert.ok(result.reflectionLead.includes('整体没有大的体系错误'));
           assert.equal(result.reflectionSections, reflection.sections.length);
           assert.equal(result.hindsight.length, 7);
           for(const item of result.hindsight) assert.equal(item.text, reflection.daily[item.date]);

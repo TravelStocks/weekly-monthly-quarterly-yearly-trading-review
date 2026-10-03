@@ -18,7 +18,7 @@ const week = {
   tradeRangeText: "2026.09.21 - 2026.09.30", label: "09.21-09.30",
   status: "两周合并 / 二次心得第一段已补",
   title: "内蒙新华分批兑现，前期西陇亏损与后续试错抵消盈利",
-  subtitle: "两周合并记录7个交易日、21笔成交与7只标的。已补二次心得第一段：先识别赚钱效应，再匹配熟悉模式；天时决定总体仓位，地利与人和决定题材和标的。账户日数据与期末持仓确认继续待补。",
+  subtitle: "两周合并记录7个交易日、21笔成交与7只标的。本人二次总评：整体没有大的体系错误，小错误继续减少。弱环境先守住风险，空仓等待或轻仓试错，主动识别赚钱效应并匹配模式。账户日数据与期末持仓确认继续待补。",
 };
 const ignoredOrders = [];
 const sourceData = JSON.parse(fs.readFileSync(path.join(weekDir, "data/daily-reviews.json"), "utf8"));
@@ -73,7 +73,7 @@ const archiveWeeks = [
   { label: "08.30-09.06", folder: "2026-08-30_2026-09-06", dataOnly: true, pnl: "-2,405.71", cash: "11,169.91", holdings: "0", note: "11 笔成交；成交额 41,770.00；实际费用 68.57。交易日 08.31-09.04，已有完整复盘保留。" },
   { label: "09.06-09.13", folder: "2026-09-06_2026-09-13", dataOnly: true, pnl: "-541.69", cash: "11.22", holdings: "桂林旅游 1,000 股", note: "17 笔成交；成交额 57,040.00；实际费用 96.69。交易日 09.07-09.11，已有完整复盘保留。" },
   { label: "09.13-09.20", folder: "2026-09-13_2026-09-20", dataOnly: true, pnl: "-258.64", cash: "67.38", holdings: "西陇科学 1,000 / 科创半导体 200", note: "10 笔成交；成交额 34,262.00；实际费用 58.64。" },
-  { label:week.label, folder:week.folder, pnl:"账户待补", pct:"待补", equity:"待补", note:"二次心得第一段已补：赚钱效应与熟悉模式匹配，天时决定总体仓位。含前期成本的闭环-221.06元，期末闽东电力100股；账户日数据与持仓确认待补。" },
+  { label:week.label, folder:week.folder, pnl:"账户待补", pct:"待补", equity:"待补", note:"二次总评已补：整体没有大的体系错误，弱环境避免大错、接受小赚小亏，以轻仓试错寻找赚钱效应。含前期成本的闭环-221.06元，期末闽东电力100股；账户日数据与持仓确认待补。" },
 ];
 
 const secids = Object.fromEntries(config.codes.map(code=>[code,`${/^[56]/.test(code) ? "1" : "0"}.${code}`]));
