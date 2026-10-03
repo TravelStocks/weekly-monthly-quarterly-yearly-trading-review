@@ -799,7 +799,10 @@
   </main>
   <script>
     const chapterNav = document.querySelector('.chapter-nav');
-    if (matchMedia('(max-width:1120px)').matches) chapterNav.open = false;
+    const compactNavigation = matchMedia('(max-width:1120px)');
+    function syncNavigation() { chapterNav.open = !compactNavigation.matches; }
+    syncNavigation();
+    compactNavigation.addEventListener('change', syncNavigation);
     function revealHash() {
       const target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
       if (!target) return;

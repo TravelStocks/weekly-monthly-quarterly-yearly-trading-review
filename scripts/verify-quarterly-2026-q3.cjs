@@ -127,6 +127,12 @@ async function main() {
       await page.locator('.quarter-note>summary').click();
       assert.equal(await page.locator('.quarter-note').evaluate(e=>e.open),true);
       assert((await page.locator('.quarter-note').textContent()).includes('5%基准是昨收'));
+      if (width===1440) {
+        await page.setViewportSize({width:390,height:1050});
+        await page.waitForFunction(()=>!document.querySelector('.chapter-nav').open);
+        await page.setViewportSize({width:1440,height:1050});
+        await page.waitForFunction(()=>document.querySelector('.chapter-nav').open);
+      }
       assert.deepEqual(errors,[]);
       results.push({width,samples:check.samples,repeatCategories:check.matrix,weeklySources:check.weeks.length,svgBars:check.visibleBars,overflow:false,interactions:'pass'});
       await page.close();
