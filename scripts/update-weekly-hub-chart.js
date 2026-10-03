@@ -5,6 +5,7 @@ const repo = path.resolve(__dirname, "..");
 const hubPath = path.join(repo, "weekly-trading-review", "index.html");
 const returnRates = require("./weekly-return-rates.cjs");
 const equityLedger = require("./weekly-equity.cjs");
+const accountIncome = require("./weekly-account-income.cjs");
 
 const knownWeeks = [
   { label: "04.20-04.24", pnl: 1616.89, equity: 31027.99, avgPosition: 94.7, bestDay: "周二 04-21 +2,117.00", worstDay: "周五 04-24 -2,413.00", href: "../2026-04-20_2026-04-24/" },
@@ -21,13 +22,17 @@ const knownWeeks = [
   { label: "08.10-08.15", pnl: 1560.94, equity: 13594, avgPosition: 59.62, bestDay: "周三 08-12 +1,268.94", worstDay: "周五 08-14 -389.00", href: "../2026-08-10_2026-08-15/" },
 ];
 
-const weeks = equityLedger.rows.map(row => ({
-  ...knownWeeks.find(week => week.href === `../${row.folder}/`),
-  label:row.label, href:`../${row.folder}/`, pnl:row.changeCents / 100,
-  equity:row.endingCents / 100, equityLabel:equityLedger.money(row.endingCents),
-  equityStatus:equityLedger.statusLabel(row), closedOnly:row.closedOnly,
-  equityNote:equityLedger.formula(row),
-}));
+const weeks = equityLedger.rows.map(row => {
+  const daily=accountIncome.forFolder(row.folder);
+  return {
+    ...knownWeeks.find(week => week.href === `../${row.folder}/`),
+    label:row.label, href:`../${row.folder}/`, pnl:(daily ? daily.amountCents : row.changeCents) / 100,
+    equity:row.endingCents / 100, equityLabel:equityLedger.money(row.endingCents),
+    equityStatus:equityLedger.statusLabel(row), closedOnly:!daily && row.closedOnly,
+    equityNote:equityLedger.formula(row), dailySource:!!daily,
+    ...(daily ? {bestDay:accountIncome.dayLabel(daily.best), worstDay:accountIncome.dayLabel(daily.worst)} : {}),
+  };
+});
 
 let peak = -Infinity;
 let previousEquity = null;
@@ -130,8 +135,8 @@ function renderPanel() {
   const worst = weeks.reduce((a, b) => (b.pnl < a.pnl ? b : a), weeks[0]);
   const latest = weeks[weeks.length - 1];
   const maxDrawdown = weeks.reduce((min, week) => Math.min(min, week.drawdown), 0);
-  const rows = weeks.map((week) => `<tr><td><a href="${week.href}">${week.label}</a></td><td class="${trendClass(week.pnl)}">${money(week.pnl)}${week.closedOnly ? '<small class="equity-caption">已平仓口径</small>' : ''}</td><td class="${trendClass(week.weekPct)}">${pct(week.weekPct)}</td><td>${week.avgPosition == null ? '待补' : week.avgPosition.toFixed(2)+'%'}</td><td title="${week.equityNote}">${week.equityLabel}<small class="equity-caption">${week.equityStatus}</small></td><td class="${trendClass(week.drawdown)}">${pct(week.drawdown)}</td><td class="trade-up">${week.bestDay || '待补'}</td><td class="trade-down">${week.worstDay || '待补'}</td></tr>`).join("");
-  return `<section class="panel overview-panel"><div class="chart-head"><div><h2>每周资金曲线</h2><p>期末权益＝期末现金＋持仓数量×当期最后交易日不复权收盘价（多只标的分别相加）；已有账户总金额优先保留。估值以交割单可见现金、持仓及无额外资金变动为前提，不等于券商已确认资产，也不再累计已平仓盈亏替代权益。累计回撤按归档期末权益计算（含估值），并非每日最大回撤。周收益率保留每日直接相加值，其余早期周沿用原口径；平均周仓位按已提供交易日仓位简单平均。<a href="equity-inputs.json">现金与持仓依据</a> · <a href="equity-quotes.json">历史收盘价来源</a></p></div><div class="legend-row"><span><i class="legend-line amount"></i>金额变化</span><span><i class="legend-line drawdown"></i>累计回撤（含估值）</span><span><i class="legend-line weekly"></i>周收益率</span></div></div>${renderChart()}<div class="weekly-data-wrap"><table class="weekly-data-table"><thead><tr><th>周区间</th><th>金额变化</th><th>周收益率</th><th>平均周仓位</th><th>期末权益</th><th>累计回撤<br>（含估值）</th><th>最赚日</th><th>最亏日</th></tr></thead><tbody>${rows}</tbody></table></div><div class="mini-grid chart-summary"><span>金额变化合计 <b class="${cumulative >= 0 ? "pos" : "neg"}">${money(cumulative)}</b></span><span>最大单周盈利 <b class="pos">${best.label} ${money(best.pnl)}</b></span><span>最大单周亏损 <b class="neg">${worst.label} ${money(worst.pnl)}</b></span><span>最新入曲线 <b class="${latest.weekPct >= 0 ? "pos" : "neg"}">${latest.label} ${pct(latest.weekPct)}</b></span><span>最新累计回撤（含估值） <b class="neg">${pct(latest.drawdown)}</b></span><span>最大累计回撤（含估值） <b class="neg">${pct(maxDrawdown)}</b></span><span>最新权益（${latest.equityStatus}） <b>${latest.equityLabel}</b></span></div></section>`;
+  const rows = weeks.map((week) => `<tr><td><a href="${week.href}">${week.label}</a></td><td class="${trendClass(week.pnl)}">${money(week.pnl)}${week.dailySource ? '<small class="equity-caption">日盈亏合计（整数元）</small>' : week.closedOnly ? '<small class="equity-caption">已平仓口径</small>' : ''}</td><td class="${trendClass(week.weekPct)}">${pct(week.weekPct)}</td><td>${week.avgPosition == null ? '待补' : week.avgPosition.toFixed(2)+'%'}</td><td title="${week.equityNote}">${week.equityLabel}<small class="equity-caption">${week.equityStatus}</small></td><td class="${trendClass(week.drawdown)}">${pct(week.drawdown)}</td><td class="trade-up">${week.bestDay || '待补'}</td><td class="trade-down">${week.worstDay || '待补'}</td></tr>`).join("");
+  return `<section class="panel overview-panel"><div class="chart-head"><div><h2>每周资金曲线</h2><p>7/13–9/30 的金额变化采用每日收益明细中日盈亏整数元之和，收益率按每日相加；它们与交割闭环盈亏、现金净流入独立记录，不用于反推账户余额。<a href="daily-income.json">每日收益来源</a>。期末权益＝期末现金＋持仓数量×当期最后交易日不复权收盘价（多只标的分别相加）；已有账户总金额优先保留。估值以交割单可见现金、持仓及无额外资金变动为前提，不等于券商已确认资产，也不再累计已平仓盈亏替代权益。累计回撤按归档期末权益计算（含估值），并非每日最大回撤。周收益率保留每日直接相加值，其余早期周沿用原口径；平均周仓位按已提供交易日仓位简单平均。<a href="equity-inputs.json">现金与持仓依据</a> · <a href="equity-quotes.json">历史收盘价来源</a></p></div><div class="legend-row"><span><i class="legend-line amount"></i>金额变化</span><span><i class="legend-line drawdown"></i>累计回撤（含估值）</span><span><i class="legend-line weekly"></i>周收益率</span></div></div>${renderChart()}<div class="weekly-data-wrap"><table class="weekly-data-table"><thead><tr><th>周区间</th><th>金额变化</th><th>周收益率</th><th>平均周仓位</th><th>期末权益</th><th>累计回撤<br>（含估值）</th><th>最赚日</th><th>最亏日</th></tr></thead><tbody>${rows}</tbody></table></div><div class="mini-grid chart-summary"><span>金额变化合计 <b class="${cumulative >= 0 ? "pos" : "neg"}">${money(cumulative)}</b></span><span>最大单周盈利 <b class="pos">${best.label} ${money(best.pnl)}</b></span><span>最大单周亏损 <b class="neg">${worst.label} ${money(worst.pnl)}</b></span><span>最新入曲线 <b class="${latest.weekPct >= 0 ? "pos" : "neg"}">${latest.label} ${pct(latest.weekPct)}</b></span><span>最新累计回撤（含估值） <b class="neg">${pct(latest.drawdown)}</b></span><span>最大累计回撤（含估值） <b class="neg">${pct(maxDrawdown)}</b></span><span>最新权益（${latest.equityStatus}） <b>${latest.equityLabel}</b></span></div></section>`;
 }
 
 function renderMotto() {

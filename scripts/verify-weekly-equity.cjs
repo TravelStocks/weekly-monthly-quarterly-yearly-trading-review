@@ -5,6 +5,7 @@ const {pathToFileURL} = require("node:url");
 const {execFileSync} = require("node:child_process");
 const puppeteer = require("puppeteer-core");
 const equity = require("./weekly-equity.cjs");
+const income = require("./weekly-account-income.cjs");
 
 async function main() {
   assert.equal(equity.rows.length,21);
@@ -76,7 +77,7 @@ async function main() {
       assert.equal(result.latestChartVisible,true);
       assert.equal(result.amountLegend,"rgb(194, 65, 45)");
       assert.equal(result.amountLegendWidth,"3px");
-      for(const value of ["-18,189.64","09.21-09.30（合并） +1.35%","-67.31%","10,144.32"])
+      for(const value of ["-18,867.78","09.21-09.30（合并） +1.35%","-67.31%","10,144.32"])
         assert.ok(result.summary.includes(value));
       assert.equal(result.invalid,false);
       assert.equal(result.clipped,false);
@@ -93,9 +94,9 @@ async function main() {
         if(row.snapshot) assert.ok(card.formula.includes(equity.formula(row)));
         if(row.snapshot && row.closedOnly) {
           assert.equal(table.position,"待补");
-          assert.equal(table.best,"待补");
-          assert.equal(table.worst,"待补");
         }
+        const daily=income.forFolder(row.folder);
+        if(daily){assert.equal(table.best,income.dayLabel(daily.best));assert.equal(table.worst,income.dayLabel(daily.worst));}
       }
       assert.deepEqual(result.cards.filter(card=>card.cash).map(card=>card.cash).sort(),
         ["12,165.27","14.48","11,169.91","11.22","67.38"].sort());

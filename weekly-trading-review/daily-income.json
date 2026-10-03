@@ -1,0 +1,578 @@
+{
+  "source": "每日收益明细_20260713-20260930.xlsx",
+  "dailySheet": "每日明细",
+  "weeklySheet": "每周汇总",
+  "amountBasis": "每日截图整数元，周金额为日盈亏金额之和，非现金余额变化或交割闭环盈亏。",
+  "rateBasis": "每日收益率简单相加，不计复利，不代表实际累计收益率。",
+  "unlistedDates": [
+    "2026-09-25"
+  ],
+  "rows": [
+    {
+      "date": "2026-07-13",
+      "weekday": "周一",
+      "week": 1,
+      "rateBasisPoints": -393,
+      "amountCents": -61200,
+      "sourceRow": 7
+    },
+    {
+      "date": "2026-07-14",
+      "weekday": "周二",
+      "week": 1,
+      "rateBasisPoints": 7,
+      "amountCents": 1100,
+      "sourceRow": 8
+    },
+    {
+      "date": "2026-07-15",
+      "weekday": "周三",
+      "week": 1,
+      "rateBasisPoints": 246,
+      "amountCents": 36900,
+      "sourceRow": 9
+    },
+    {
+      "date": "2026-07-16",
+      "weekday": "周四",
+      "week": 1,
+      "rateBasisPoints": 257,
+      "amountCents": 39500,
+      "sourceRow": 10
+    },
+    {
+      "date": "2026-07-17",
+      "weekday": "周五",
+      "week": 1,
+      "rateBasisPoints": 51,
+      "amountCents": 8000,
+      "sourceRow": 11
+    },
+    {
+      "date": "2026-07-20",
+      "weekday": "周一",
+      "week": 2,
+      "rateBasisPoints": 0,
+      "amountCents": 0,
+      "sourceRow": 12
+    },
+    {
+      "date": "2026-07-21",
+      "weekday": "周二",
+      "week": 2,
+      "rateBasisPoints": 15,
+      "amountCents": 2400,
+      "sourceRow": 13
+    },
+    {
+      "date": "2026-07-22",
+      "weekday": "周三",
+      "week": 2,
+      "rateBasisPoints": 181,
+      "amountCents": 28700,
+      "sourceRow": 14
+    },
+    {
+      "date": "2026-07-23",
+      "weekday": "周四",
+      "week": 2,
+      "rateBasisPoints": 204,
+      "amountCents": 32900,
+      "sourceRow": 15
+    },
+    {
+      "date": "2026-07-24",
+      "weekday": "周五",
+      "week": 2,
+      "rateBasisPoints": 710,
+      "amountCents": 117000,
+      "sourceRow": 16
+    },
+    {
+      "date": "2026-07-27",
+      "weekday": "周一",
+      "week": 3,
+      "rateBasisPoints": 4,
+      "amountCents": 700,
+      "sourceRow": 17
+    },
+    {
+      "date": "2026-07-28",
+      "weekday": "周二",
+      "week": 3,
+      "rateBasisPoints": -1703,
+      "amountCents": -300600,
+      "sourceRow": 18
+    },
+    {
+      "date": "2026-07-29",
+      "weekday": "周三",
+      "week": 3,
+      "rateBasisPoints": -976,
+      "amountCents": -143000,
+      "sourceRow": 19
+    },
+    {
+      "date": "2026-07-30",
+      "weekday": "周四",
+      "week": 3,
+      "rateBasisPoints": 0,
+      "amountCents": 0,
+      "sourceRow": 20
+    },
+    {
+      "date": "2026-07-31",
+      "weekday": "周五",
+      "week": 3,
+      "rateBasisPoints": -4,
+      "amountCents": -500,
+      "sourceRow": 21
+    },
+    {
+      "date": "2026-08-03",
+      "weekday": "周一",
+      "week": 4,
+      "rateBasisPoints": -69,
+      "amountCents": -9200,
+      "sourceRow": 22
+    },
+    {
+      "date": "2026-08-04",
+      "weekday": "周二",
+      "week": 4,
+      "rateBasisPoints": 216,
+      "amountCents": 28300,
+      "sourceRow": 23
+    },
+    {
+      "date": "2026-08-05",
+      "weekday": "周三",
+      "week": 4,
+      "rateBasisPoints": 0,
+      "amountCents": 0,
+      "sourceRow": 24
+    },
+    {
+      "date": "2026-08-06",
+      "weekday": "周四",
+      "week": 4,
+      "rateBasisPoints": -22,
+      "amountCents": -3000,
+      "sourceRow": 25
+    },
+    {
+      "date": "2026-08-07",
+      "weekday": "周五",
+      "week": 4,
+      "rateBasisPoints": -969,
+      "amountCents": -129600,
+      "sourceRow": 26
+    },
+    {
+      "date": "2026-08-10",
+      "weekday": "周一",
+      "week": 5,
+      "rateBasisPoints": 827,
+      "amountCents": 99900,
+      "sourceRow": 27
+    },
+    {
+      "date": "2026-08-11",
+      "weekday": "周二",
+      "week": 5,
+      "rateBasisPoints": -15,
+      "amountCents": -2000,
+      "sourceRow": 28
+    },
+    {
+      "date": "2026-08-12",
+      "weekday": "周三",
+      "week": 5,
+      "rateBasisPoints": 955,
+      "amountCents": 124800,
+      "sourceRow": 29
+    },
+    {
+      "date": "2026-08-13",
+      "weekday": "周四",
+      "week": 5,
+      "rateBasisPoints": -220,
+      "amountCents": -31400,
+      "sourceRow": 30
+    },
+    {
+      "date": "2026-08-14",
+      "weekday": "周五",
+      "week": 5,
+      "rateBasisPoints": -284,
+      "amountCents": -39700,
+      "sourceRow": 31
+    },
+    {
+      "date": "2026-08-17",
+      "weekday": "周一",
+      "week": 6,
+      "rateBasisPoints": -262,
+      "amountCents": -35600,
+      "sourceRow": 32
+    },
+    {
+      "date": "2026-08-18",
+      "weekday": "周二",
+      "week": 6,
+      "rateBasisPoints": 4,
+      "amountCents": 600,
+      "sourceRow": 33
+    },
+    {
+      "date": "2026-08-19",
+      "weekday": "周三",
+      "week": 6,
+      "rateBasisPoints": -29,
+      "amountCents": -3800,
+      "sourceRow": 34
+    },
+    {
+      "date": "2026-08-20",
+      "weekday": "周四",
+      "week": 6,
+      "rateBasisPoints": 56,
+      "amountCents": 7400,
+      "sourceRow": 35
+    },
+    {
+      "date": "2026-08-21",
+      "weekday": "周五",
+      "week": 6,
+      "rateBasisPoints": -224,
+      "amountCents": -29700,
+      "sourceRow": 36
+    },
+    {
+      "date": "2026-08-24",
+      "weekday": "周一",
+      "week": 7,
+      "rateBasisPoints": -3,
+      "amountCents": -400,
+      "sourceRow": 37
+    },
+    {
+      "date": "2026-08-25",
+      "weekday": "周二",
+      "week": 7,
+      "rateBasisPoints": -4,
+      "amountCents": -500,
+      "sourceRow": 38
+    },
+    {
+      "date": "2026-08-26",
+      "weekday": "周三",
+      "week": 7,
+      "rateBasisPoints": -45,
+      "amountCents": -5900,
+      "sourceRow": 39
+    },
+    {
+      "date": "2026-08-27",
+      "weekday": "周四",
+      "week": 7,
+      "rateBasisPoints": 576,
+      "amountCents": 74400,
+      "sourceRow": 40
+    },
+    {
+      "date": "2026-08-28",
+      "weekday": "周五",
+      "week": 7,
+      "rateBasisPoints": -434,
+      "amountCents": -59200,
+      "sourceRow": 41
+    },
+    {
+      "date": "2026-08-31",
+      "weekday": "周一",
+      "week": 8,
+      "rateBasisPoints": -776,
+      "amountCents": -101400,
+      "sourceRow": 42
+    },
+    {
+      "date": "2026-09-01",
+      "weekday": "周二",
+      "week": 8,
+      "rateBasisPoints": 142,
+      "amountCents": 17200,
+      "sourceRow": 43
+    },
+    {
+      "date": "2026-09-02",
+      "weekday": "周三",
+      "week": 8,
+      "rateBasisPoints": -362,
+      "amountCents": -44300,
+      "sourceRow": 44
+    },
+    {
+      "date": "2026-09-03",
+      "weekday": "周四",
+      "week": 8,
+      "rateBasisPoints": -611,
+      "amountCents": -72000,
+      "sourceRow": 45
+    },
+    {
+      "date": "2026-09-04",
+      "weekday": "周五",
+      "week": 8,
+      "rateBasisPoints": 99,
+      "amountCents": 11000,
+      "sourceRow": 46
+    },
+    {
+      "date": "2026-09-07",
+      "weekday": "周一",
+      "week": 9,
+      "rateBasisPoints": -4,
+      "amountCents": -500,
+      "sourceRow": 47
+    },
+    {
+      "date": "2026-09-08",
+      "weekday": "周二",
+      "week": 9,
+      "rateBasisPoints": -9,
+      "amountCents": -1000,
+      "sourceRow": 48
+    },
+    {
+      "date": "2026-09-09",
+      "weekday": "周三",
+      "week": 9,
+      "rateBasisPoints": -527,
+      "amountCents": -58800,
+      "sourceRow": 49
+    },
+    {
+      "date": "2026-09-10",
+      "weekday": "周四",
+      "week": 9,
+      "rateBasisPoints": 75,
+      "amountCents": 7900,
+      "sourceRow": 50
+    },
+    {
+      "date": "2026-09-11",
+      "weekday": "周五",
+      "week": 9,
+      "rateBasisPoints": -719,
+      "amountCents": -76500,
+      "sourceRow": 51
+    },
+    {
+      "date": "2026-09-14",
+      "weekday": "周一",
+      "week": 10,
+      "rateBasisPoints": 741,
+      "amountCents": 73300,
+      "sourceRow": 52
+    },
+    {
+      "date": "2026-09-15",
+      "weekday": "周二",
+      "week": 10,
+      "rateBasisPoints": -175,
+      "amountCents": -18600,
+      "sourceRow": 53
+    },
+    {
+      "date": "2026-09-16",
+      "weekday": "周三",
+      "week": 10,
+      "rateBasisPoints": 483,
+      "amountCents": 50400,
+      "sourceRow": 54
+    },
+    {
+      "date": "2026-09-17",
+      "weekday": "周四",
+      "week": 10,
+      "rateBasisPoints": -881,
+      "amountCents": -96300,
+      "sourceRow": 55
+    },
+    {
+      "date": "2026-09-18",
+      "weekday": "周五",
+      "week": 10,
+      "rateBasisPoints": 53,
+      "amountCents": 5300,
+      "sourceRow": 56
+    },
+    {
+      "date": "2026-09-21",
+      "weekday": "周一",
+      "week": 11,
+      "rateBasisPoints": -15,
+      "amountCents": -1500,
+      "sourceRow": 57
+    },
+    {
+      "date": "2026-09-22",
+      "weekday": "周二",
+      "week": 11,
+      "rateBasisPoints": 352,
+      "amountCents": 35200,
+      "sourceRow": 58
+    },
+    {
+      "date": "2026-09-23",
+      "weekday": "周三",
+      "week": 11,
+      "rateBasisPoints": 3,
+      "amountCents": 300,
+      "sourceRow": 59
+    },
+    {
+      "date": "2026-09-24",
+      "weekday": "周四",
+      "week": 11,
+      "rateBasisPoints": 159,
+      "amountCents": 16500,
+      "sourceRow": 60
+    },
+    {
+      "date": "2026-09-28",
+      "weekday": "周一",
+      "week": 12,
+      "rateBasisPoints": -359,
+      "amountCents": -37800,
+      "sourceRow": 61
+    },
+    {
+      "date": "2026-09-29",
+      "weekday": "周二",
+      "week": 12,
+      "rateBasisPoints": 0,
+      "amountCents": 0,
+      "sourceRow": 62
+    },
+    {
+      "date": "2026-09-30",
+      "weekday": "周三",
+      "week": 12,
+      "rateBasisPoints": -5,
+      "amountCents": -500,
+      "sourceRow": 63
+    }
+  ],
+  "weeklyControls": [
+    {
+      "week": 1,
+      "start": "2026-07-13",
+      "end": "2026-07-17",
+      "count": 5,
+      "rateBasisPoints": 168,
+      "amountCents": 24300,
+      "sourceRow": 7
+    },
+    {
+      "week": 2,
+      "start": "2026-07-20",
+      "end": "2026-07-24",
+      "count": 5,
+      "rateBasisPoints": 1110,
+      "amountCents": 181000,
+      "sourceRow": 8
+    },
+    {
+      "week": 3,
+      "start": "2026-07-27",
+      "end": "2026-07-31",
+      "count": 5,
+      "rateBasisPoints": -2679,
+      "amountCents": -443400,
+      "sourceRow": 9
+    },
+    {
+      "week": 4,
+      "start": "2026-08-03",
+      "end": "2026-08-07",
+      "count": 5,
+      "rateBasisPoints": -844,
+      "amountCents": -113500,
+      "sourceRow": 10
+    },
+    {
+      "week": 5,
+      "start": "2026-08-10",
+      "end": "2026-08-14",
+      "count": 5,
+      "rateBasisPoints": 1263,
+      "amountCents": 151600,
+      "sourceRow": 11
+    },
+    {
+      "week": 6,
+      "start": "2026-08-17",
+      "end": "2026-08-21",
+      "count": 5,
+      "rateBasisPoints": -455,
+      "amountCents": -61100,
+      "sourceRow": 12
+    },
+    {
+      "week": 7,
+      "start": "2026-08-24",
+      "end": "2026-08-28",
+      "count": 5,
+      "rateBasisPoints": 90,
+      "amountCents": 8400,
+      "sourceRow": 13
+    },
+    {
+      "week": 8,
+      "start": "2026-08-31",
+      "end": "2026-09-04",
+      "count": 5,
+      "rateBasisPoints": -1508,
+      "amountCents": -189500,
+      "sourceRow": 14
+    },
+    {
+      "week": 9,
+      "start": "2026-09-07",
+      "end": "2026-09-11",
+      "count": 5,
+      "rateBasisPoints": -1184,
+      "amountCents": -128900,
+      "sourceRow": 15
+    },
+    {
+      "week": 10,
+      "start": "2026-09-14",
+      "end": "2026-09-18",
+      "count": 5,
+      "rateBasisPoints": 221,
+      "amountCents": 14100,
+      "sourceRow": 16
+    },
+    {
+      "week": 11,
+      "start": "2026-09-21",
+      "end": "2026-09-25",
+      "count": 4,
+      "rateBasisPoints": 499,
+      "amountCents": 50500,
+      "sourceRow": 17
+    },
+    {
+      "week": 12,
+      "start": "2026-09-28",
+      "end": "2026-09-30",
+      "count": 3,
+      "rateBasisPoints": -364,
+      "amountCents": -38300,
+      "sourceRow": 18
+    }
+  ]
+}

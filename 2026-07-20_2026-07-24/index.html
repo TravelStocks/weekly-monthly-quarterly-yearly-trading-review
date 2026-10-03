@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>2026.07.20 - 2026.07.24 周度交易复盘</title>
   <style>
     :root{--ink:#17202a;--muted:#667085;--line:#dfe4ea;--paper:#ffffff;--wash:#f5f7fa;--red:#c2412d;--green:#14845f;--blue:#1d4ed8;--amber:#b45309;--violet:#6d5bd0;--shadow:0 18px 44px rgba(23,32,42,.08);--radius:10px}
@@ -102,13 +101,13 @@
     @media(max-width:920px){.hero,.data-panel,.account-placeholder{grid-template-columns:1fr}.metrics,.summary-grid,.latest-summary,.account-summary,.stock-metrics,.mini-ledger,.mini-grid,.thesis-grid,.rules,.missing-list,.archive,.entrance-grid{grid-template-columns:1fr}.account-bars{grid-template-columns:repeat(2,minmax(0,1fr))}.day-grid-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.page-shell{width:min(calc(100vw - 16px),1180px);padding-top:22px}.hero,.panel{padding:20px}}
     @media(max-width:560px){.page-shell,.rail{width:calc(100% - 16px);max-width:100%;margin-left:auto;margin-right:auto}.rail{grid-template-columns:repeat(2,minmax(0,1fr))}.day-grid-cards,.account-bars,.account-strip{grid-template-columns:1fr}h1{font-size:34px}.metric strong{font-size:19px}}
   </style>
-</head>
+<style id="weekly-account-income-style">.workbook-account .account-summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px}.workbook-account .account-summary>span{border:1px solid var(--line);border-radius:8px;background:#f8fafc;padding:12px;color:var(--muted);font-size:13px}.workbook-account .account-summary b{display:block;margin-top:5px;font-size:17px;color:var(--ink)}.workbook-account .account-bars{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:12px;margin:18px 0}.workbook-account .account-day{min-width:0;border:1px solid var(--line);border-radius:8px;background:#fff;padding:12px;display:grid;gap:8px;align-content:start}.workbook-account .account-day-head{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--muted)}.workbook-account .account-bar-track{height:80px;background:#f1f5f9;display:flex;align-items:end;border-radius:6px;overflow:hidden}.workbook-account .account-bar-track i{display:block;width:100%;border-radius:6px 6px 0 0}.workbook-account .account-day>strong{font-size:20px}.workbook-account .account-day>small{color:var(--muted);line-height:1.6}.workbook-account .account-source{font-size:13px;color:var(--muted);overflow-wrap:anywhere}.workbook-account .is-profit{color:#c2412d!important}.workbook-account .is-loss{color:#14845f!important}.workbook-account .account-income-table{min-width:620px}.workbook-account .daily-trades{min-width:0}@media(max-width:560px){.workbook-account .account-summary,.workbook-account .account-bars{grid-template-columns:1fr}}</style></head>
 <body>
   <nav class="rail" aria-label="页面导航">
     <a href="../weekly-trading-review/">周度主页</a>
     <a href="../">总入口</a>
     <a href="#overview">总览</a>
-    <a href="#account">账户待补</a>
+    <a href="#account">账户收益</a>
     <a href="#stocks">标的</a>
     <a href="#daily">逐日</a>
     <a href="#rules">规则</a>
@@ -127,7 +126,7 @@
       </div>
       <div class="metrics">
         <article class="metric"><span>成交笔数</span><strong class="">22</strong><small>仅统计截图中“已成”记录</small></article>
-        <article class="metric"><span>账户日收益合计</span><strong class="is-profit">+1,816.40</strong><small>周五收益率 +7.10%</small></article>
+        <article class="metric"><span>账户日盈亏合计</span><strong class="is-profit">+1,810.00</strong><small>每日收益率相加 +11.10%</small></article>
         <article class="metric"><span>当前总金额</span><strong class="">17,648.65</strong><small>周五仓位 3.70%</small></article>
         <article class="metric"><span>可见已实现</span><strong class="is-profit">+1,931.40</strong><small>成交FIFO推演，未计手续费/税费</small></article>
       </div>
@@ -148,7 +147,7 @@
       <div>
         <span class="label">Data Scope</span>
         <h2>本版数据口径</h2>
-        <p>截图是委托/成交查询，不是完整交割单。本页先按“已成成交金额”复盘买卖动作；手续费、印花税、账户收益、资金余额、每日仓位均暂不硬算。</p>
+        <p>截图是委托/成交查询，不是完整交割单。本页先按“已成成交金额”复盘买卖动作；手续费、印花税、资金余额和每日仓位不据成交截图硬算；账户日盈亏与收益率另按每日收益明细记录。</p>
       </div>
       <div class="summary-grid">
         <span>买入笔数 <b>14</b></span>
@@ -160,94 +159,94 @@
       </div>
     </section>
 
-    <section class="panel account-panel" id="account">
+    <section class="panel account-panel workbook-account" id="account" data-account-source="每日收益明细_20260713-20260930.xlsx" data-account-amount-cents="181000" data-account-rate-basis-points="1110">
       <span class="label">Account Curve</span>
       <h2>账户收益与仓位</h2>
-      <p class="lead">这部分按你补充的账户日数据记录，和成交回报/FIFO推演分开看。周一总金额为空，先保留为空仓日，不强行补数。</p>
+      <p class="lead">2026-07-20 至 2026-07-24，共 5 条每日记录。日盈亏合计 +1,810.00 元，日收益率简单相加 +11.10%。金额为截图整数元之和，不等于现金余额变化或交割闭环盈亏；收益率不计复利。</p>
       <div class="account-summary">
-        <span>日收益合计 <b class="is-profit">+1,816.40</b></span>
+        <span data-account-field="amount">日盈亏合计（整数元） <b class="is-profit">+1,810.00</b></span>
         <span>期末总金额 <b>17,648.65</b></span>
         <span>周五收益率 <b class="is-profit">+7.10%</b></span>
         <span>平均仓位 <b>41.12%</b></span>
         <span>最高仓位 <b>100.00%</b></span>
-        <span>最佳单日 <b>周五 +1,170.00</b></span>
-      </div>
-      <div class="account-bars"><article class="account-day">
+        <span data-account-field="best">最赚日 <b class="is-profit">周五 07-24 +1,170.00</b></span>
+      <span data-account-field="rate">收益率（每日相加） <b class="is-profit">+11.10%</b></span><span data-account-field="count">每日记录 <b class="">5 天</b></span><span data-account-field="worst">最亏日 <b class="">周一 07-20 0.00</b></span></div>
+      <div class="account-bars"><article class="account-day" data-account-date="2026-07-20">
     <div class="account-day-head"><b>周一</b><span>07-20</span></div>
-    <div class="account-bar-track"><i style="height:6%"></i></div>
-    <strong class="is-profit">0.00</strong>
+    <div class="account-bar-track"><i style="height: 0%; background: rgb(203, 213, 225);"></i></div>
+    <strong class="">0.00</strong>
     <small>0.00% / 仓位 0.00%</small>
     <div class="position-meter" aria-label="周一 仓位 0.00%"><i style="width:0%"></i></div>
-  </article><article class="account-day">
+  </article><article class="account-day" data-account-date="2026-07-21">
     <div class="account-day-head"><b>周二</b><span>07-21</span></div>
-    <div class="account-bar-track"><i style="height:6%"></i></div>
+    <div class="account-bar-track"><i style="height: 6%; background: rgb(194, 65, 45);"></i></div>
     <strong class="is-profit">+24.00</strong>
     <small>+0.15% / 仓位 37.50%</small>
     <div class="position-meter" aria-label="周二 仓位 37.50%"><i style="width:37.5%"></i></div>
-  </article><article class="account-day">
+  </article><article class="account-day" data-account-date="2026-07-22">
     <div class="account-day-head"><b>周三</b><span>07-22</span></div>
-    <div class="account-bar-track"><i style="height:25%"></i></div>
-    <strong class="is-profit">+293.40</strong>
-    <small>+1.85% / 仓位 64.40%</small>
+    <div class="account-bar-track"><i style="height: 24.5299%; background: rgb(194, 65, 45);"></i></div>
+    <strong class="is-profit">+287.00</strong>
+    <small>+1.81% / 仓位 64.40%</small>
     <div class="position-meter" aria-label="周三 仓位 64.40%"><i style="width:64.4%"></i></div>
-  </article><article class="account-day">
+  </article><article class="account-day" data-account-date="2026-07-23">
     <div class="account-day-head"><b>周四</b><span>07-23</span></div>
-    <div class="account-bar-track"><i style="height:28%"></i></div>
+    <div class="account-bar-track"><i style="height: 28.1197%; background: rgb(194, 65, 45);"></i></div>
     <strong class="is-profit">+329.00</strong>
     <small>+2.04% / 仓位 100.00%</small>
     <div class="position-meter" aria-label="周四 仓位 100.00%"><i style="width:100%"></i></div>
-  </article><article class="account-day">
+  </article><article class="account-day" data-account-date="2026-07-24">
     <div class="account-day-head"><b>周五</b><span>07-24</span></div>
-    <div class="account-bar-track"><i style="height:100%"></i></div>
+    <div class="account-bar-track"><i style="height: 100%; background: rgb(194, 65, 45);"></i></div>
     <strong class="is-profit">+1,170.00</strong>
     <small>+7.10% / 仓位 3.70%</small>
     <div class="position-meter" aria-label="周五 仓位 3.70%"><i style="width:3.7%"></i></div>
   </article></div>
       <div class="table-wrap compact-table"><table>
-        <thead><tr><th>日期</th><th>星期</th><th>收益率</th><th>收益金额</th><th>仓位</th><th>当前总金额</th><th>个人反思</th></tr></thead>
-        <tbody><tr>
+        <thead><tr><th>日期</th><th>星期</th><th>日收益率</th><th>日盈亏金额（元）</th><th>仓位</th><th>当前总金额</th><th>个人反思</th></tr></thead>
+        <tbody><tr data-account-date="2026-07-20">
           <td>2026/07/20</td>
           <td>周一</td>
-          <td class="is-profit">0.00%</td>
-          <td class="is-profit">0.00</td>
+          <td class="" data-rate-basis-points="0">0.00%</td>
+          <td class="" data-amount-cents="0">0.00</td>
           <td>0.00%</td>
           <td>空仓 / 未填</td>
           <td class="reflection-cell">熊市不敢多操作，直接空仓</td>
-        </tr><tr>
+        </tr><tr data-account-date="2026-07-21">
           <td>2026/07/21</td>
           <td>周二</td>
-          <td class="is-profit">+0.15%</td>
-          <td class="is-profit">+24.00</td>
+          <td class="is-profit" data-rate-basis-points="15">+0.15%</td>
+          <td class="is-profit" data-amount-cents="2400">+24.00</td>
           <td>37.50%</td>
           <td>15,596.00</td>
           <td class="reflection-cell">空仓错过科技大反弹，小仓位继续试错龙头，应该追反弹的！</td>
-        </tr><tr>
+        </tr><tr data-account-date="2026-07-22">
           <td>2026/07/22</td>
           <td>周三</td>
-          <td class="is-profit">+1.85%</td>
-          <td class="is-profit">+293.40</td>
+          <td class="is-profit" data-rate-basis-points="181">+1.81%</td>
+          <td class="is-profit" data-amount-cents="28700">+287.00</td>
           <td>64.40%</td>
           <td>16,149.76</td>
           <td class="reflection-cell">小仓位做对龙头</td>
-        </tr><tr>
+        </tr><tr data-account-date="2026-07-23">
           <td>2026/07/23</td>
           <td>周四</td>
-          <td class="is-profit">+2.04%</td>
-          <td class="is-profit">+329.00</td>
+          <td class="is-profit" data-rate-basis-points="204">+2.04%</td>
+          <td class="is-profit" data-amount-cents="32900">+329.00</td>
           <td>100.00%</td>
           <td>16,149.76</td>
           <td class="reflection-cell">加仓龙头晚了一点，要不然更爽了；转强次日没有更早打上仓位！！！！！！！</td>
-        </tr><tr>
+        </tr><tr data-account-date="2026-07-24">
           <td>2026/07/24</td>
           <td>周五</td>
-          <td class="is-profit">+7.10%</td>
-          <td class="is-profit">+1,170.00</td>
+          <td class="is-profit" data-rate-basis-points="710">+7.10%</td>
+          <td class="is-profit" data-amount-cents="117000">+1,170.00</td>
           <td>3.70%</td>
           <td>17,648.65</td>
           <td class="reflection-cell">稍微出去早了一点，利润少了两个点，但总体上来说是没问题的！</td>
         </tr></tbody>
       </table></div>
-    </section>
+    <p class="account-source">来源：《每日收益明细_20260713-20260930.xlsx》的“每日明细”与“每周汇总”。每日金额按源表整数元录入，未提供的数据不反推。</p></section>
 
     <section class="panel" id="stocks">
       <span class="label">Stock Review</span>
@@ -844,6 +843,4 @@
         <article><b>4. 日度复盘</b><p>补充7/21、7/23、7/24日度复盘原文后，再把逐日复盘改成正式版。</p></article>
       </div>
     </section>
-  </main>
-</body>
-</html>
+  </main></body></html>

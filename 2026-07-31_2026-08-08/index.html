@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>2026.07.31 - 2026.08.08 周度交易复盘</title>
   <style>
     :root{--bg:#f5f7fa;--panel:#fff;--ink:#0f1b2a;--muted:#64748b;--line:#d9e1ea;--accent:#c2412d;--profit:#b91c1c;--loss:#047857;--blue:#1d4ed8;--soft:#f8fafc;--shadow:0 18px 45px rgba(15,27,42,.08)}
@@ -15,14 +14,14 @@
     .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:10px}.compact-table{margin-bottom:16px}table{width:100%;border-collapse:collapse;min-width:920px;background:#fff}th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}th:first-child,td:first-child,th:nth-child(4),td:nth-child(4){text-align:left}thead th{background:#f8fafc;color:#475569;font-size:13px}tbody tr:hover{background:#fff7ed}
     @media(max-width:920px){.hero,.metrics,.summary-grid,.stock-metrics,.account-placeholder,.account-strip,.thesis-grid,.stock-grid,.rules,.missing-list,.day-grid-cards,.stock-grid.tight{grid-template-columns:1fr}h1{font-size:36px}.panel,.hero{padding:20px}.page-shell,.rail{width:calc(100% - 16px)}}
   </style>
-</head>
+<style id="weekly-account-income-style">.workbook-account .account-summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px}.workbook-account .account-summary>span{border:1px solid var(--line);border-radius:8px;background:#f8fafc;padding:12px;color:var(--muted);font-size:13px}.workbook-account .account-summary b{display:block;margin-top:5px;font-size:17px;color:var(--ink)}.workbook-account .account-bars{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:12px;margin:18px 0}.workbook-account .account-day{min-width:0;border:1px solid var(--line);border-radius:8px;background:#fff;padding:12px;display:grid;gap:8px;align-content:start}.workbook-account .account-day-head{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--muted)}.workbook-account .account-bar-track{height:80px;background:#f1f5f9;display:flex;align-items:end;border-radius:6px;overflow:hidden}.workbook-account .account-bar-track i{display:block;width:100%;border-radius:6px 6px 0 0}.workbook-account .account-day>strong{font-size:20px}.workbook-account .account-day>small{color:var(--muted);line-height:1.6}.workbook-account .account-source{font-size:13px;color:var(--muted);overflow-wrap:anywhere}.workbook-account .is-profit{color:#c2412d!important}.workbook-account .is-loss{color:#14845f!important}.workbook-account .account-income-table{min-width:620px}.workbook-account .daily-trades{min-width:0}@media(max-width:560px){.workbook-account .account-summary,.workbook-account .account-bars{grid-template-columns:1fr}}</style></head>
 <body>
   <nav class="rail" aria-label="页面导航">
     <a href="../weekly-trading-review/">周度主页</a>
     <a href="../">总入口</a>
     <a href="#overview">总览</a>
     <a href="#profit-loss">盈亏票</a>
-    <a href="#account">账户</a>
+    <a href="#account">账户收益</a>
     <a href="#stocks">标的</a>
     <a href="#daily">逐日</a>
     <a href="#rules">规则</a>
@@ -33,7 +32,7 @@
       <div>
         <span class="label">补档草稿 / 截图成交口径</span>
         <h1><span class="date-range"><span>2026.07.31 -</span><span>2026.08.08</span></span>周度交易复盘</h1>
-        <p>本页基于 2026/7/31-8/8 成交截图补档生成。截图含 7/31 一鸣食品成本行，账户日收益、期末持仓、日度KISS与二次反思待补后再校准。</p>
+        <p>本页基于 2026/7/31-8/8 成交截图补档生成。截图含 7/31 一鸣食品成本行，账户日收益已补齐；期末持仓、日度KISS与二次反思待补后再校准。</p>
         <div class="button-row">
           <a class="button" href="../weekly-trading-review/">返回周度主页</a>
           <a class="button secondary" href="#missing">待补清单</a>
@@ -43,7 +42,7 @@
         <article class="metric"><span>成交笔数</span><strong class="">16</strong><small>仅统计截图可见已成记录</small></article>
         <article class="metric"><span>可见闭环盈亏</span><strong class="is-profit">+186.27</strong><small>FIFO / 只算截图内可配对买卖</small></article>
         <article class="metric"><span>期末可见成本</span><strong class="">12,918.13</strong><small>1 个未闭环标的</small></article>
-        <article class="metric"><span>账户收益</span><strong class="">待补</strong><small>需每日账户收益表</small></article>
+        <article class="metric"><span>账户日盈亏合计</span><strong class="is-loss">-1,135.00</strong><small>每日收益率相加 -8.44%</small></article>
       </div>
     </section>
 
@@ -53,7 +52,7 @@
       <p class="lead">这一周更像是轻量试错和仓位切换：一鸣食品跨周小赚卖出，半导体ETF/科创半导形成小赚闭环，8/6 集中买入风范股份形成期末待验证仓。核心缺口是风范股份期末市值与浮盈亏。</p>
       <div class="thesis-grid">
         <article><b>成交口径</b><p>本页按截图中可见的成交日期、价格、数量、手续费、印花税、发生金额重建；不发布合同号、成交编号等敏感字段。</p></article>
-        <article><b>账户口径</b><p>账户日收益、收益率、仓位、期末权益暂缺；本页只计算截图可闭环的成交贡献。</p></article>
+        <article><b>账户口径</b><p>账户日收益金额与收益率已补齐；每日仓位与券商确认权益仍待补；本页只计算截图可闭环的成交贡献。</p></article>
         <article><b>跨周提醒</b><p>截图中存在跨周成本行，已在对应标的里单独说明；未配对的历史卖出不强行计算盈亏。</p></article>
       </div>
     </section>
@@ -112,17 +111,12 @@
       </article>
     </div>
   </section>
-    <section class="panel" id="account">
+    <section class="panel workbook-account" id="account" data-account-source="每日收益明细_20260713-20260930.xlsx" data-account-amount-cents="-113500" data-account-rate-basis-points="-844">
     <span class="label">Account Curve</span>
     <h2>账户收益与仓位</h2>
-    <p class="lead">账户日收益、收益率、仓位、期末权益暂缺；本页只计算截图可闭环的成交贡献。</p>
-    <div class="account-placeholder">
-      <article><b>每日收益率</b><span>待补</span></article>
-      <article><b>每日收益金额</b><span>待补</span></article>
-      <article><b>每日仓位</b><span>待补</span></article>
-      <article><b>期末总金额</b><span>待补</span></article>
-    </div>
-  </section>
+    <p class="lead">2026-08-03 至 2026-08-07，共 5 条每日记录。日盈亏合计 -1,135.00 元，日收益率简单相加 -8.44%。金额为截图整数元之和，不等于现金余额变化或交割闭环盈亏；收益率不计复利。</p><div class="account-summary"><span data-account-field="amount">日盈亏合计（整数元） <b class="is-loss">-1,135.00</b></span><span data-account-field="rate">收益率（每日相加） <b class="is-loss">-8.44%</b></span><span data-account-field="count">每日记录 <b class="">5 天</b></span><span data-account-field="best">最赚日 <b class="is-profit">周二 08-04 +283.00</b></span><span data-account-field="worst">最亏日 <b class="is-loss">周五 08-07 -1,296.00</b></span><span data-account-field="position">平均仓位 <b class="">待补</b></span></div><div class="account-bars"><article class="account-day" data-account-date="2026-08-03"><div class="account-day-head"><b>周一</b><span>08-03</span></div><div class="account-bar-track"><i style="height: 7.09877%; background: rgb(20, 132, 95);"></i></div><strong class="is-loss">-92.00</strong><small>-0.69% / 仓位待补</small></article><article class="account-day" data-account-date="2026-08-04"><div class="account-day-head"><b>周二</b><span>08-04</span></div><div class="account-bar-track"><i style="height: 21.8364%; background: rgb(194, 65, 45);"></i></div><strong class="is-profit">+283.00</strong><small>+2.16% / 仓位待补</small></article><article class="account-day" data-account-date="2026-08-05"><div class="account-day-head"><b>周三</b><span>08-05</span></div><div class="account-bar-track"><i style="height: 0%; background: rgb(203, 213, 225);"></i></div><strong class="">0.00</strong><small>0.00% / 仓位待补</small></article><article class="account-day" data-account-date="2026-08-06"><div class="account-day-head"><b>周四</b><span>08-06</span></div><div class="account-bar-track"><i style="height: 6%; background: rgb(20, 132, 95);"></i></div><strong class="is-loss">-30.00</strong><small>-0.22% / 仓位待补</small></article><article class="account-day" data-account-date="2026-08-07"><div class="account-day-head"><b>周五</b><span>08-07</span></div><div class="account-bar-track"><i style="height: 100%; background: rgb(20, 132, 95);"></i></div><strong class="is-loss">-1,296.00</strong><small>-9.69% / 仓位待补</small></article></div>
+
+  <div class="table-wrap compact-table"><table class="account-income-table"><thead><tr><th>日期</th><th>星期</th><th>日收益率</th><th>日盈亏金额（元）</th><th>仓位</th><th>当前总金额</th></tr></thead><tbody><tr data-account-date="2026-08-03"><td>2026/08/03</td><td>周一</td><td class="is-loss" data-rate-basis-points="-69">-0.69%</td><td class="is-loss" data-amount-cents="-9200">-92.00</td><td>待补</td><td>待补</td></tr><tr data-account-date="2026-08-04"><td>2026/08/04</td><td>周二</td><td class="is-profit" data-rate-basis-points="216">+2.16%</td><td class="is-profit" data-amount-cents="28300">+283.00</td><td>待补</td><td>待补</td></tr><tr data-account-date="2026-08-05"><td>2026/08/05</td><td>周三</td><td class="" data-rate-basis-points="0">0.00%</td><td class="" data-amount-cents="0">0.00</td><td>待补</td><td>待补</td></tr><tr data-account-date="2026-08-06"><td>2026/08/06</td><td>周四</td><td class="is-loss" data-rate-basis-points="-22">-0.22%</td><td class="is-loss" data-amount-cents="-3000">-30.00</td><td>待补</td><td>待补</td></tr><tr data-account-date="2026-08-07"><td>2026/08/07</td><td>周五</td><td class="is-loss" data-rate-basis-points="-969">-9.69%</td><td class="is-loss" data-amount-cents="-129600">-1,296.00</td><td>待补</td><td>待补</td></tr></tbody></table></div><p class="account-source">来源：《每日收益明细_20260713-20260930.xlsx》的“每日明细”与“每周汇总”。每日金额按源表整数元录入，未提供的数据不反推。</p></section>
     <section class="panel" id="stocks">
     <span class="label">Stock Review</span>
     <h2>标的复盘与买卖点</h2>
@@ -534,8 +528,6 @@
     <section class="panel missing-panel" id="missing">
     <span class="label">To Fill</span>
     <h2>后续待补内容</h2>
-    <div class="missing-list"><article><b>1. 8/8 或该周最后交易日期的期末持仓截图</b><p>8/8 或该周最后交易日期的期末持仓截图，重点确认风范股份1800股成本、市价、市值、浮盈亏、账户总资产。</p></article><article><b>2. 本周每日账户收益率、收益金额、仓位、当前总金额。</b><p>本周每日账户收益率、收益金额、仓位、当前总金额。</p></article><article><b>3. 本周日度KISS复盘与二次反思。</b><p>本周日度KISS复盘与二次反思。</p></article><article><b>4. 若需要真实5分钟走势</b><p>若需要真实5分钟走势，请补券商/同花顺分时截图或确认使用行情接口可得数据。</p></article></div>
+    <div class="missing-list"><article><b>1. 8/8 或该周最后交易日期的期末持仓截图</b><p>8/8 或该周最后交易日期的期末持仓截图，重点确认风范股份1800股成本、市价、市值、浮盈亏、账户总资产。</p></article><article><b>2. 每日仓位与券商账户权益</b><p>每日收益金额与收益率已补齐。仍需每日仓位、券商确认总资产及期间出入金记录，用于核对仓位和每日权益回撤。</p></article><article><b>3. 本周日度KISS复盘与二次反思。</b><p>本周日度KISS复盘与二次反思。</p></article><article><b>4. 若需要真实5分钟走势</b><p>若需要真实5分钟走势，请补券商/同花顺分时截图或确认使用行情接口可得数据。</p></article></div>
   </section>
-  </main>
-</body>
-</html>
+  </main></body></html>

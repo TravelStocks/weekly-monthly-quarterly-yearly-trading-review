@@ -41,6 +41,7 @@ async function update() {
     fs.writeFileSync(file,result.html,"utf8");
     console.log("Updated "+result.count+" archive rates; removed the redundant standalone rate panel.");
   } finally {await browser.close();}
+  await require("./fill-weekly-account-income.cjs")();
 }
 if(require.main===module)update().catch(error=>{console.error(error);process.exitCode=1;});
 module.exports=update;
