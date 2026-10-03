@@ -1,0 +1,149 @@
+{
+  "range": "2026.09.21 - 2026.09.30",
+  "tradeCount": 21,
+  "stockCount": 7,
+  "sessions": [
+    "2026-09-21",
+    "2026-09-22",
+    "2026-09-23",
+    "2026-09-24",
+    "2026-09-28",
+    "2026-09-29",
+    "2026-09-30"
+  ],
+  "scope": "9/21-9/30合并7个交易日；9/14-9/18仅作期初成本参考",
+  "buyAmount": 17307,
+  "sellAmount": 25792,
+  "turnover": 43099,
+  "feeTotal": 105,
+  "taxTotal": 11.83,
+  "cashFees": 117.06,
+  "netCash": 8367.94,
+  "visibleRealized": -221.06,
+  "openingCost": 10303,
+  "openingCash": 67.38,
+  "closingCash": 8435.32,
+  "openCost": 1714,
+  "stocks": [
+    {
+      "code": "000993",
+      "name": "闽东电力",
+      "buyQty": 100,
+      "sellQty": 0,
+      "realized": 0,
+      "closedCost": 0,
+      "closedReturn": null,
+      "openQty": 100,
+      "openCost": 1714
+    },
+    {
+      "code": "600664",
+      "name": "哈药股份",
+      "buyQty": 100,
+      "sellQty": 100,
+      "realized": -100.39,
+      "closedCost": 838.01,
+      "closedReturn": -11.9796,
+      "openQty": 0,
+      "openCost": 0
+    },
+    {
+      "code": "002238",
+      "name": "天威视讯",
+      "buyQty": 100,
+      "sellQty": 100,
+      "realized": -94.38,
+      "closedCost": 848,
+      "closedReturn": -11.1297,
+      "openQty": 0,
+      "openCost": 0
+    },
+    {
+      "code": "000504",
+      "name": "南华生物",
+      "buyQty": 200,
+      "sellQty": 200,
+      "realized": -50.27,
+      "closedCost": 2584,
+      "closedReturn": -1.9454,
+      "openQty": 0,
+      "openCost": 0
+    },
+    {
+      "code": "603230",
+      "name": "内蒙新华",
+      "buyQty": 600,
+      "sellQty": 600,
+      "realized": 380.86,
+      "closedCost": 9443.1,
+      "closedReturn": 4.0332,
+      "openQty": 0,
+      "openCost": 0
+    },
+    {
+      "code": "588170",
+      "name": "科创半导",
+      "buyQty": 1900,
+      "sellQty": 2100,
+      "realized": -13,
+      "closedCost": 2144,
+      "closedReturn": -0.6063,
+      "openQty": 0,
+      "openCost": 0
+    },
+    {
+      "code": "002584",
+      "name": "西陇科学",
+      "buyQty": 0,
+      "sellQty": 1000,
+      "realized": -343.88,
+      "closedCost": 10094,
+      "closedReturn": -3.4068,
+      "openQty": 0,
+      "openCost": 0
+    }
+  ],
+  "realizedBySaleDate": [
+    {
+      "date": "20260921",
+      "realized": -353.88
+    },
+    {
+      "date": "20260922",
+      "realized": 15.2
+    },
+    {
+      "date": "20260923",
+      "realized": 362.66
+    },
+    {
+      "date": "20260924",
+      "realized": 0
+    },
+    {
+      "date": "20260928",
+      "realized": -245.04
+    },
+    {
+      "date": "20260929",
+      "realized": 0
+    },
+    {
+      "date": "20260930",
+      "realized": 0
+    }
+  ],
+  "accountStatus": "pending",
+  "sourceDates": [
+    "2026-09-29",
+    "2026-09-24",
+    "2026-09-23",
+    "2026-09-22"
+  ],
+  "missingSourceDates": [
+    "20260921",
+    "20260928",
+    "20260930"
+  ],
+  "warning": "完整持仓含费闭环不是账户期间收益，未计其他未知持仓或资金变动。"
+}
