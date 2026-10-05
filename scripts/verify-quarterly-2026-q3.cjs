@@ -19,6 +19,8 @@ async function main() {
   const income = require('./weekly-account-income.cjs');
   const money = require('./quarterly-2026-q3-content.cjs').money;
   assert.equal(summary.septemberReflection, 'integrated');
+  const decisionOrder = ['天时','地利','题材','阶段','个股','地位','模式','仓位（强天时还是弱天时）','买点（择日和分时）','卖点（择日和分时）'];
+  assert.deepEqual(review.decisionFramework.steps.map(step => step.label), decisionOrder);
   assert.equal(review.scope.accountTotalsVerified, false);
   assert.deepEqual(review.winningCases.map(c => c.pnlCents), [143394,205000,85503,111544,38086]);
   assert.deepEqual(review.contrasts.map(c => c.negativeCents), [-423439,-128364,-10039]);
@@ -66,6 +68,14 @@ async function main() {
         samples:document.querySelectorAll('.winning-sample').length,
         excluded:document.querySelectorAll('.excluded-samples article').length,
         matrix:document.querySelectorAll('.repeat-table tbody tr').length,
+        decisionLabels:[...document.querySelectorAll('.decision-steps>li h4')].map(element=>element.textContent),
+        decisionOrder:document.querySelector('.decision-order').textContent,
+        decisionOpen:document.querySelector('.decision-details').open,
+        timingLayers:['entry','exit'].map(id=>[...document.querySelectorAll('.decision-steps>li[data-step="'+id+'"] [data-timing]')].map(element=>element.dataset.timing)),
+        frameworkFits:[...document.querySelectorAll('.decision-steps>li')].every(element=>{
+          const row=element.getBoundingClientRect();
+          return [...element.children].every(child=>{const box=child.getBoundingClientRect();return box.left>=row.left-1&&box.right<=row.right+1;});
+        }),
         pairs:document.querySelectorAll('g[data-pair]').length,
         visibleBars:[...document.querySelectorAll('g[data-pair] rect')].filter(r=>r.getBoundingClientRect().width>1&&r.getBoundingClientRect().height>1).length,
         months:document.querySelectorAll('#months .month-snapshot').length,
@@ -82,6 +92,11 @@ async function main() {
       assert.deepEqual(check.duplicateIds,[]);
       assert.deepEqual(check.missingAnchors,[]);
       assert.equal(check.samples,5); assert.equal(check.excluded,3); assert.equal(check.matrix,5);
+      assert.deepEqual(check.decisionLabels,decisionOrder);
+      assert.equal(check.decisionOrder,decisionOrder.join(' → '));
+      assert.equal(check.decisionOpen,true);
+      assert.deepEqual(check.timingLayers,[['day','intraday'],['day','intraday']]);
+      assert.equal(check.frameworkFits,true,'Decision steps must fit at '+width);
       assert.equal(check.pairs,3); assert.equal(check.visibleBars,6); assert.equal(check.months,4);
       assert.equal(check.points,6); assert.equal(check.checklist,8); assert.equal(check.goals,3);
       assert.equal(check.reflection,'integrated'); assert.equal(check.badText,false);
@@ -109,6 +124,13 @@ async function main() {
         }
         await page.screenshot({path:path.join(output,id+'-'+width+'.png')});
       }
+      await page.locator('.decision-steps>li[data-step="position"]').screenshot({path:path.join(output,'position-'+width+'.png')});
+      await page.locator('.decision-steps>li[data-step="entry"]').screenshot({path:path.join(output,'entry-'+width+'.png')});
+      await page.locator('.decision-steps>li[data-step="exit"]').screenshot({path:path.join(output,'exit-'+width+'.png')});
+      await page.locator('.decision-details>summary').click();
+      assert.equal(await page.locator('.decision-details').evaluate(element=>element.open),false);
+      await page.locator('.decision-details>summary').click();
+      assert.equal(await page.locator('.decision-details').evaluate(element=>element.open),true);
       await page.locator('.sample-nav>summary').click();
       assert.equal(await page.locator('.sample-nav').evaluate(e=>e.open),true);
       await page.locator('.sample-nav a[href="#sample-baihua-first"]').click();
@@ -134,7 +156,7 @@ async function main() {
         await page.waitForFunction(()=>document.querySelector('.chapter-nav').open);
       }
       assert.deepEqual(errors,[]);
-      results.push({width,samples:check.samples,repeatCategories:check.matrix,weeklySources:check.weeks.length,svgBars:check.visibleBars,overflow:false,interactions:'pass'});
+      results.push({width,samples:check.samples,repeatCategories:check.matrix,decisionSteps:check.decisionLabels.length,weeklySources:check.weeks.length,svgBars:check.visibleBars,overflow:false,interactions:'pass'});
       await page.close();
     }
     const page=await browser.newPage();
