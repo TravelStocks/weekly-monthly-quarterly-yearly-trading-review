@@ -47,6 +47,10 @@ function daily() {
   </section>`;
 }
 
+function sourceRecords() {
+  return review.sourceRecords.map((record) => `<details class="record-source"><summary>${esc(record.title)}</summary><figure><a href="${esc(record.path)}" target="_blank" rel="noopener"><img src="${esc(record.path)}" width="${record.width}" height="${record.height}" alt="${esc(record.alt)}" loading="lazy"></a><figcaption>${esc(record.caption)}</figcaption></figure></details>`).join("");
+}
+
 function page() {
   return `<!DOCTYPE html>
 <html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -68,7 +72,7 @@ function page() {
     <section class="panel" id="holdings"><span class="label">Closing Positions</span><h2>期末持仓与资金核对</h2>${table(["证券代码", "名称", "持仓数量", "含费成本", "期末市值", "浮动盈亏"], '<tr><td class="empty-row" colspan="6">待补10月16日期末持仓、现金与账户总资产。</td></tr>')}<p class="status-line">期初以10月8日前账户记录为准，跨期成本和期间资金变动一并核对。</p></section>
     ${daily()}
     <section class="panel" id="trades"><span class="label">Transactions</span><h2>本期成交明细</h2>${table(["日期", "时间", "代码", "名称", "方向", "数量", "成交均价", "成交金额", "费用", "发生金额"], '<tr><td class="empty-row" colspan="10">待补2026.10.08-10.16交割单。</td></tr>')}</section>
-    <section class="panel" id="source-record"><span class="label">Source Record</span><h2>原始盘面记录</h2><details class="record-source"><summary>10月12日至13日盘面笔记截图</summary><figure><a href="assets/market-notes-2026-10-12-13.jpg" target="_blank" rel="noopener"><img src="assets/market-notes-2026-10-12-13.jpg" width="2772" height="1280" alt="用户提供的10月12日至13日盘面笔记，包含消费分化回流、九阳股份、丽人丽妆及冰雪经济观察" loading="lazy"></a><figcaption>保留用户提供的原图，作为心得的上下文记录。</figcaption></figure></details><p class="calendar-source">交易日期：10月8日、9日、12日至16日，共7个交易日。<a href="${esc(review.calendarSource)}" target="_blank" rel="noopener">上交所休市安排</a></p></section>
+    <section class="panel" id="source-record"><span class="label">Source Record</span><h2>原始盘面记录</h2>${sourceRecords()}<p class="calendar-source">交易日期：10月8日、9日、12日至16日，共7个交易日。<a href="${esc(review.calendarSource)}" target="_blank" rel="noopener">上交所休市安排</a></p></section>
     <section class="panel" id="missing"><span class="label">To Fill</span><h2>后续待补内容</h2><div class="pending-block"><h3>交割与账户资料</h3><ul class="pending-list"><li>10月8日至16日完整成交记录：日期、时间、代码、方向、数量、价格、成交额和费用。</li><li>七个交易日的收益金额、收益率、仓位、当前总金额，以及期间入金、出金等资金变动。</li><li>10月8日前期初持仓与成本、10月16日期末持仓、现金和总资产。</li><li>交割核对后再补重点标的真实走势与买卖点、逐日归因，以及利润兑现的具体时间。</li></ul></div><div class="pending-block"><h3>口述表述待核对</h3><ul class="pending-list">${review.pendingClarifications.map((text) => `<li>${esc(text)}</li>`).join("")}</ul></div></section>
     <nav class="page-foot" aria-label="周次导航"><a href="../2026-09-21_2026-09-30/">上一期 09.21-09.30</a><a href="../weekly-trading-review/">全部周报</a></nav>
   </main>
