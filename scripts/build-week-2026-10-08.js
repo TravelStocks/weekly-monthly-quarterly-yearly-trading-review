@@ -130,6 +130,15 @@ function transactions() {
   </section>`;
 }
 
+function priorityImprovement() {
+  const item = review.priorityImprovement;
+  return `<section class="panel priority-improvement" id="priority-improvement" aria-labelledby="priority-title">
+    <span class="label">本期首要改进 · 二次心得补充</span><h2 id="priority-title">${esc(item.title)}</h2>
+    <p>${esc(item.intro)}</p><ol class="priority-steps">${item.steps.map((step) => `<li><h3>${esc(step.title)}</h3><p>${esc(step.text)}</p></li>`).join("")}</ol>
+    <p class="priority-source">${esc(item.source)}</p><a href="#reflection-leader-execution">时代万恒：金字塔建仓与六板退出复盘</a>
+  </section>`;
+}
+
 function reflection() {
   return `<section class="panel" id="second-review" data-status="authored-reflection">
     <span class="label">Second Reflection</span><h2>本期心得总结</h2>
@@ -166,11 +175,13 @@ function page() {
   @media(max-width:920px){.reflection-index{grid-template-columns:repeat(2,minmax(0,1fr))}h1{font-size:36px}.hero,.panel{padding:22px}.kiss-list{grid-template-columns:1fr}.prose-table th:first-child,.prose-table td:first-child{width:130px}}
   @media(max-width:560px){h1{font-size:30px}h2{font-size:24px}h3{font-size:19px}.hero,.panel{padding:18px}.reflection-section{grid-template-columns:24px minmax(0,1fr);gap:8px}.reflection-index a{padding:10px 8px;gap:7px;font-size:12px}.metrics{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.metric{padding:12px;min-height:100px}.metric strong{font-size:20px}.period-strip{gap:14px 24px}.page-shell,.rail{width:calc(100% - 16px)}}
 ${extra.styles}.stock-card .source-line{display:block;font-weight:400;border:0;padding:0;margin:12px 0}.stock-card .source-line a{display:inline;font-weight:400}
+  .priority-improvement{border-top:3px solid var(--red)}.priority-improvement h2{max-width:900px}.priority-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin:22px 0;padding:0;list-style:none;counter-reset:priority}.priority-steps li{counter-increment:priority;border-top:1px solid var(--line);padding-top:14px;min-width:0}.priority-steps li:before{content:"0" counter(priority);color:var(--red);font-size:12px;font-weight:800}.priority-steps h3{font-size:18px;margin:8px 0}.priority-steps p{font-size:14px;margin:0}.priority-source{font-size:12px;color:var(--muted)}.priority-improvement>a{font-size:14px}@media(max-width:700px){.priority-steps{grid-template-columns:1fr;gap:16px}.priority-improvement h2{font-size:23px}}
 </style></head><body>
   <a class="skip-link" href="#main-content">跳到主要内容</a>
-  <nav class="rail" aria-label="页面导航"><a href="../weekly-trading-review/">周度主页</a><a href="../">总入口</a><a href="#account">账户与仓位</a><a href="#execution-summary">交割汇总</a><a href="#holdings">期末持仓</a><a href="#profit-loss">盈亏主因</a><a href="#stocks">5分钟买卖点</a><a href="#daily">逐日复盘</a><a href="#second-review">二次心得</a><a href="#patterns">模式边界</a><a href="#kiss">执行纪律</a><a href="#trades">成交明细</a><a href="#missing">资料核对</a></nav>
+  <nav class="rail" aria-label="页面导航"><a href="../weekly-trading-review/">周度主页</a><a href="../">总入口</a><a href="#priority-improvement">首要改进</a><a href="#account">账户与仓位</a><a href="#execution-summary">交割汇总</a><a href="#holdings">期末持仓</a><a href="#profit-loss">盈亏主因</a><a href="#stocks">5分钟买卖点</a><a href="#daily">逐日复盘</a><a href="#second-review">二次心得</a><a href="#patterns">模式边界</a><a href="#kiss">执行纪律</a><a href="#trades">成交明细</a><a href="#missing">资料核对</a></nav>
   <main class="page-shell" id="main-content">
     <section class="hero" id="overview"><div><span class="label">交割已核对 / 收盘估值</span><h1><span class="date-range"><span>2026.10.08 -</span><span>2026.10.16</span></span>两周交割复盘</h1><p>${esc(review.title)}</p><div class="button-row"><a class="button" href="#account">账户收益与仓位</a><a class="button secondary" href="#stocks">5分钟买卖点</a></div><div class="period-strip">${review.periods.map((period) => `<span>${period.label}<b>${period.range} / ${period.dates.length}个交易日</b></span>`).join("")}</div></div><div class="metrics">${metric("本期金额变化（估算）", signed(extra.account.pnl), "现金与持仓收盘市值核算")}${metric("期末权益（估算）", amount(extra.account.endingEquity), "等待券商账户表最终核对")}${metric("已平仓完整盈亏", signed(summary.realized), "含前期成本 / 非账户期间收益")}${metric("平均周仓位（估算）", percent(extra.account.averagePosition), "7个交易日收盘仓位平均")}</div></section>
+    ${priorityImprovement()}
     ${account()}
     ${executionSummary()}
     ${holdings()}

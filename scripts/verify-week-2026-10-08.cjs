@@ -54,17 +54,24 @@ async function main() {
         reflections:[...document.querySelectorAll('.reflection-section')].map(e=>({title:e.querySelector('h3').textContent,paragraphs:[...e.querySelectorAll('p')].map(p=>p.textContent)})),
         bad:/NaN|undefined/.test(document.querySelector('main').textContent),
         rawStatement:!!document.querySelector('img[src*="statement-"]'),
+        priority:{title:document.querySelector('#priority-title')?.textContent,steps:document.querySelectorAll('.priority-steps li').length,beforeAccount:!!(document.querySelector('#priority-improvement')?.compareDocumentPosition(document.querySelector('#account')) & Node.DOCUMENT_POSITION_FOLLOWING)},
       }));
       assert.equal(actual.width,width);assert.equal(actual.charts,4);assert.equal(actual.candles,1344);
       assert.equal(actual.markers.length,9);assert.equal(new Set(actual.ids).size,actual.ids.length);
       assert.deepEqual(actual.broken,[]);assert.equal(actual.bad,false);assert.equal(actual.rawStatement,false);
       assert.deepEqual(actual.reflections,review.reflections.map(s=>({title:s.title,paragraphs:s.paragraphs})));
+      assert.equal(actual.priority.title,review.priorityImprovement.title);
+      assert.equal(actual.priority.steps,3);assert.equal(actual.priority.beforeAccount,true);
+      assert.ok(review.kiss.some(k=>k.text.includes('三笔')));
+      assert.ok(review.reflections.find(s=>s.id==='leader-execution').paragraphs.some(p=>p.includes('弱天时一旦出现分歧，就全部退出')));
       for(const m of actual.markers) {
         const t=summary.transactions.find(t=>t.id===m.id);
         assert.equal(m.time,`${t.date} ${t.time}`);assert.equal(Number(m.price),t.price);
         assert.ok(m.bar+':00'>=m.time);assert.equal(m.bar.slice(0,10),t.date);
       }
       await page.screenshot({path:path.join(output,`overview-${width}.png`)});
+      await page.$eval('#priority-improvement',el=>el.scrollIntoView({block:'start'}));
+      await page.screenshot({path:path.join(output,`priority-${width}.png`)});
       await page.$eval('#account',el=>el.scrollIntoView({block:'start'}));
       await page.screenshot({path:path.join(output,`account-${width}.png`)});
       await page.$eval('#stocks',el=>el.scrollIntoView({block:'start'}));
@@ -74,6 +81,7 @@ async function main() {
         last:[...document.querySelectorAll('.weekly-data-table tbody tr')].at(-1)?.textContent,
         hero:document.querySelector('.hero')?.textContent}));
       assert.equal(hub.width,width);assert.ok(hub.card.includes('11,123.86'));assert.ok(hub.last.includes('38.01%'));
+      assert.ok(hub.card.includes('当晚准备次日隔夜排单'));assert.ok(hub.hero.includes('三板排单'));
       assert.ok(!hub.hero.includes('待补'));
       assert.ok(hub.last.includes('周一 10-12 +540.62'));assert.ok(hub.last.includes('周三 10-14 -5.00'));
       checks.push({width,charts:actual.charts,candles:actual.candles,markers:actual.markers.length,hub});
