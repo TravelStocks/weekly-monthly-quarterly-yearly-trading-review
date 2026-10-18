@@ -7,11 +7,11 @@ const {update, readTrades, renderTrades, folders} = require("./fill-weekly-daily
 
 async function main() {
   const root = path.resolve(__dirname, "..");
-  const selected = folders();
+  const selected = process.argv.slice(2).length ? process.argv.slice(2) : folders();
   const output = path.join(root, "output/weekly-daily-traded-stocks");
   fs.mkdirSync(output, {recursive:true});
   const before = selected.map(folder => fs.readFileSync(path.join(root,folder,"index.html"),"utf8"));
-  await update();
+  await update(selected);
   selected.forEach((folder,i) => assert.equal(fs.readFileSync(path.join(root,folder,"index.html"),"utf8"), before[i], "Non-idempotent update: " + folder));
   const fixtures = [
     {date:"2026-09-21",time:"09:31:00",code:"588170",name:"科创半导",side:"buy",qty:100},

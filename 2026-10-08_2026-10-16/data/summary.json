@@ -393,14 +393,13 @@
       "tax": 3.09,
       "other": 0,
       "net": 6171.85,
-      "cash": null,
-      "cashText": "10968.8…",
+      "cash": 10968.86,
       "market": "沪A",
       "settlementDate": "2026-10-12",
       "actualFees": 8.15,
       "feeDifference": 0.06,
       "reconciledCash": 10968.86,
-      "cashDerived": true,
+      "cashDerived": false,
       "allocatedRealized": 437.51
     },
     {
@@ -476,6 +475,312 @@
       "allocatedRealized": 0
     }
   ],
-  "scope": "截图可见交割及前期成本的含费闭环，不等于本期账户收益。未平仓数量由交割推算，期末持仓与市值待账户截图确认。",
-  "accountStatus": "pending"
+  "scope": "交割闭环按含费成本核算；账户按现金与真实不复权收盘价估算。闭环收益含跨期成本，不等于期间账户收益。",
+  "accountStatus": "estimated",
+  "account": {
+    "status": "estimated",
+    "basis": "用户确认本期交割完整。交割现金 + 持仓数量 × 不复权收盘价；无额外分红或出入金为估值前提，不是券商账户日表。无成交不自动等于空仓，已买未卖继续结转。",
+    "openingDate": "2026-09-30",
+    "openingEquity": 10144.32,
+    "openingFloating": -5,
+    "endingEquity": 11123.86,
+    "pnl": 979.54,
+    "returnRate": 9.656043973376233,
+    "dailyRateSum": 9.38018193884827,
+    "averagePosition": 38.00955008071501,
+    "maxDrawdown": -0.045583588449482626,
+    "best": {
+      "date": "2026-10-12",
+      "day": "周一",
+      "pnl": 540.62,
+      "returnRate": 5.184192155147945,
+      "position": 0,
+      "equity": 10968.86,
+      "cash": 10968.86,
+      "marketValue": 0,
+      "holdings": [],
+      "trades": [
+        "T03",
+        "T04",
+        "T05",
+        "T06"
+      ],
+      "status": "estimated",
+      "drawdown": 0
+    },
+    "worst": {
+      "date": "2026-10-14",
+      "day": "周三",
+      "pnl": -5,
+      "returnRate": -0.045583588449483355,
+      "position": 22.391748891357604,
+      "equity": 10963.86,
+      "cash": 8508.86,
+      "marketValue": 2455,
+      "holdings": [
+        {
+          "code": "000823",
+          "name": "超声电子",
+          "qty": 100,
+          "cost": 2460,
+          "price": 24.55,
+          "value": 2455
+        }
+      ],
+      "trades": [
+        "T07"
+      ],
+      "status": "estimated",
+      "drawdown": -0.045583588449482626
+    },
+    "floating": 155,
+    "days": [
+      {
+        "date": "2026-10-08",
+        "day": "周四",
+        "pnl": 59.98,
+        "returnRate": 0.5912668370082963,
+        "position": 38.33677959291671,
+        "equity": 10204.3,
+        "cash": 6292.3,
+        "marketValue": 3912,
+        "holdings": [
+          {
+            "code": "000993",
+            "name": "闽东电力",
+            "qty": 100,
+            "cost": 1714,
+            "price": 17.74,
+            "value": 1774
+          },
+          {
+            "code": "600241",
+            "name": "时代万恒",
+            "qty": 200,
+            "cost": 2143.02,
+            "price": 10.69,
+            "value": 2138
+          }
+        ],
+        "trades": [
+          "T01"
+        ],
+        "status": "estimated",
+        "drawdown": 0
+      },
+      {
+        "date": "2026-10-09",
+        "day": "周五",
+        "pnl": 223.94,
+        "returnRate": 2.194565036308223,
+        "position": 96.09483479474964,
+        "equity": 10428.24,
+        "cash": 407.24,
+        "marketValue": 10021,
+        "holdings": [
+          {
+            "code": "000993",
+            "name": "闽东电力",
+            "qty": 100,
+            "cost": 1714,
+            "price": 17.89,
+            "value": 1789
+          },
+          {
+            "code": "600241",
+            "name": "时代万恒",
+            "qty": 700,
+            "cost": 8028.08,
+            "price": 11.76,
+            "value": 8232
+          }
+        ],
+        "trades": [
+          "T02"
+        ],
+        "status": "estimated",
+        "drawdown": 0
+      },
+      {
+        "date": "2026-10-12",
+        "day": "周一",
+        "pnl": 540.62,
+        "returnRate": 5.184192155147945,
+        "position": 0,
+        "equity": 10968.86,
+        "cash": 10968.86,
+        "marketValue": 0,
+        "holdings": [],
+        "trades": [
+          "T03",
+          "T04",
+          "T05",
+          "T06"
+        ],
+        "status": "estimated",
+        "drawdown": 0
+      },
+      {
+        "date": "2026-10-13",
+        "day": "周二",
+        "pnl": 0,
+        "returnRate": 0,
+        "position": 0,
+        "equity": 10968.86,
+        "cash": 10968.86,
+        "marketValue": 0,
+        "holdings": [],
+        "trades": [],
+        "status": "estimated",
+        "drawdown": 0
+      },
+      {
+        "date": "2026-10-14",
+        "day": "周三",
+        "pnl": -5,
+        "returnRate": -0.045583588449483355,
+        "position": 22.391748891357604,
+        "equity": 10963.86,
+        "cash": 8508.86,
+        "marketValue": 2455,
+        "holdings": [
+          {
+            "code": "000823",
+            "name": "超声电子",
+            "qty": 100,
+            "cost": 2460,
+            "price": 24.55,
+            "value": 2455
+          }
+        ],
+        "trades": [
+          "T07"
+        ],
+        "status": "estimated",
+        "drawdown": -0.045583588449482626
+      },
+      {
+        "date": "2026-10-15",
+        "day": "周四",
+        "pnl": 125,
+        "returnRate": 1.1401094140202446,
+        "position": 54.55024231526053,
+        "equity": 11088.86,
+        "cash": 5039.86,
+        "marketValue": 6049,
+        "holdings": [
+          {
+            "code": "000823",
+            "name": "超声电子",
+            "qty": 100,
+            "cost": 2460,
+            "price": 25.87,
+            "value": 2587
+          },
+          {
+            "code": "002242",
+            "name": "九阳股份",
+            "qty": 200,
+            "cost": 3469,
+            "price": 17.31,
+            "value": 3462
+          }
+        ],
+        "trades": [
+          "T08",
+          "T09"
+        ],
+        "status": "estimated",
+        "drawdown": 0
+      },
+      {
+        "date": "2026-10-16",
+        "day": "周五",
+        "pnl": 35,
+        "returnRate": 0.3156320848130466,
+        "position": 54.69324497072059,
+        "equity": 11123.86,
+        "cash": 5039.86,
+        "marketValue": 6084,
+        "holdings": [
+          {
+            "code": "000823",
+            "name": "超声电子",
+            "qty": 100,
+            "cost": 2460,
+            "price": 25.26,
+            "value": 2526
+          },
+          {
+            "code": "002242",
+            "name": "九阳股份",
+            "qty": 200,
+            "cost": 3469,
+            "price": 17.79,
+            "value": 3558
+          }
+        ],
+        "trades": [],
+        "status": "estimated",
+        "drawdown": 0
+      }
+    ],
+    "holdings": [
+      {
+        "code": "000823",
+        "name": "超声电子",
+        "qty": 100,
+        "cost": 2460,
+        "price": 25.26,
+        "value": 2526,
+        "pnl": 66,
+        "returnRate": 2.682926829268293,
+        "position": 22.70794490401713
+      },
+      {
+        "code": "002242",
+        "name": "九阳股份",
+        "qty": 200,
+        "cost": 3469,
+        "price": 17.79,
+        "value": 3558,
+        "pnl": 89,
+        "returnRate": 2.5655808590371865,
+        "position": 31.985300066703466
+      }
+    ],
+    "weeks": [
+      {
+        "label": "第一周",
+        "range": "10.08-10.09",
+        "dates": [
+          "2026-10-08",
+          "2026-10-09"
+        ],
+        "openingEquity": 10144.32,
+        "endingEquity": 10428.24,
+        "pnl": 283.92,
+        "returnRate": 2.7988076085927904,
+        "dailyRateSum": 2.7858318733165195,
+        "averagePosition": 67.21580719383317
+      },
+      {
+        "label": "第二周",
+        "range": "10.12-10.16",
+        "dates": [
+          "2026-10-12",
+          "2026-10-13",
+          "2026-10-14",
+          "2026-10-15",
+          "2026-10-16"
+        ],
+        "openingEquity": 10428.24,
+        "endingEquity": 11123.86,
+        "pnl": 695.62,
+        "returnRate": 6.670540762391353,
+        "dailyRateSum": 6.594350065531752,
+        "averagePosition": 26.327047235467745
+      }
+    ]
+  }
 }

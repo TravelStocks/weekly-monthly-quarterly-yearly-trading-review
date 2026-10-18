@@ -106,6 +106,7 @@ function reconcileStatement() {
 }
 
 const summary = reconcileStatement();
+const extra = require('./week-2026-10-08-details.cjs')(review, summary, directory);
 
 function executionSummary() {
   const closed = summary.stocks.filter((stock) => stock.sellQty > 0);
@@ -114,22 +115,18 @@ function executionSummary() {
     ${table(["周次", "交易日期", "成交笔数", "买入成交额", "卖出成交额", "实际费用", "成交现金净变化"], summary.weeks.map((week) => row([week.label, week.range, `${week.tradeCount}（买${week.buyCount} / 卖${week.sellCount}）`, amount(week.buyAmount), amount(week.sellAmount), amount(week.fees), signed(week.netCash)])).join(""))}
     <h3>已平仓个股</h3>${table(["标的", "卖出股数", "对应含费成本", "卖出净回款", "完整闭环盈亏", "含费收益率", "成本范围"], closed.map((stock) => row([`${stock.name} ${stock.code}`, stock.sellQty, amount(stock.closedCost), amount(stock.proceeds), signed(stock.realized), percent(stock.returnRate), stock.openingQty ? "含9/30买入成本" : "10/8-10/12本期闭环"])).join(""))}
     <p class="scope-note">${esc(summary.scope)} 720.45元与99.09元分别是时代万恒、闽东电力完整持仓的盈亏，不填入每日账户收益表。</p>
-    <h3>资金与费用核对</h3><ul class="pending-list"><li>期初可见现金${amount(summary.openingCash)}元，加上成交现金净变化${signed(summary.netCash)}元，等于10月15日末笔成交后余额${amount(summary.closingCash)}元。所有可见完整余额逐笔吻合；此余额不等于期末总资产。</li><li>手续费${amount(summary.commission)}元、印花税${amount(summary.stampTax)}元、原列其他杂费${amount(summary.otherFees)}元；另有沪市成交未单列差额${amount(summary.feeDifference)}元。实际费用按成交金额与发生金额核算，不擅自将差额命名为某一税费。</li><li>10月12日10:28:20余额原图仅显示10968.8…；由4,797.01 + 6,171.85补算为10,968.86元，且与下一笔8,508.86元余额及2,460.00元支出相互吻合。明细中标为“补算”。</li></ul>
+    <h3>资金与费用核对</h3><ul class="pending-list"><li>期初可见现金${amount(summary.openingCash)}元，加上成交现金净变化${signed(summary.netCash)}元，等于10月15日末笔成交后余额${amount(summary.closingCash)}元。所有可见完整余额逐笔吻合；此余额不等于期末总资产。</li><li>手续费${amount(summary.commission)}元、印花税${amount(summary.stampTax)}元、原列其他杂费${amount(summary.otherFees)}元；另有沪市成交未单列差额${amount(summary.feeDifference)}元。实际费用按成交金额与发生金额核算，不擅自将差额命名为某一税费。</li><li>10月12日10:28:20余额已由本次新截图确认是10,968.86元，与原先相邻流水补算一致。</li></ul>
     <p class="calendar-source"><a href="data/review.json">原始录入数据</a> · <a href="data/summary.json">汇总与核对数据</a></p>
   </section>`;
 }
 
 function holdings() {
-  const open = summary.stocks.filter((stock) => stock.openQty > 0);
-  return `<section class="panel" id="holdings"><span class="label">Visible Positions</span><h2>交割推算的未平仓持仓</h2><p>按前期可见持仓和本次9笔成交推算，时代万恒、闽东电力已卖完；超声电子和九阳股份未见后续卖出。下表以没有漏单或其他持仓变动为前提，等待10月16日期末账户确认。</p>
-    ${table(["代码", "名称", "可见未平仓股数", "含费成本", "含费单位成本", "期末市值", "浮动盈亏"], open.map((stock) => row([stock.code, stock.name, stock.openQty, amount(stock.openCost), (stock.openCost / stock.openQty).toFixed(3), "待补", "待补"])).join(""))}
-    <p class="status-line">合计含费成本${amount(summary.openCost)}元。最新可见现金${amount(summary.closingCash)}元为10月15日成交后余额；期末总资产与仓位需使用持仓市值及账户记录核对，不能用买入成本代替市值。</p>
-  </section>`;
+  return extra.holdingsHtml();
 }
 
 function transactions() {
-  return `<section class="panel" id="trades"><span class="label">Transactions</span><h2>本期成交明细</h2><p>按成交时间升序排列，共${summary.tradeCount}笔；手续费、印花税、其他杂费为原图列值，“未单列差额”为发生金额核对差额。合同编号及成交编号在原图中被截断，保留在原图中。</p>
-    ${table(["日期", "时间", "代码", "名称", "方向", "股数", "成交均价", "成交金额", "手续费", "印花税", "其他杂费", "未单列差额", "发生金额", "资金余额", "市场", "交收日期"], summary.transactions.map((trade) => row([trade.date, trade.time, trade.code, trade.name, trade.side, trade.qty, trade.price.toFixed(3), amount(trade.amount), amount(trade.fee), amount(trade.tax), amount(trade.other), amount(trade.feeDifference), signed(trade.net), `${amount(trade.reconciledCash)}${trade.cashDerived ? "（补算）" : ""}`, trade.market, trade.settlementDate])).join(""))}
+  return `<section class="panel" id="trades"><span class="label">Transactions</span><h2>本期成交明细</h2><p>按成交时间升序排列，共${summary.tradeCount}笔；手续费、印花税、其他杂费为原图列值，“未单列差额”为发生金额核对差额。仅公开脱敏成交字段，不展示合同、成交编号和券商账户标识。</p>
+    ${table(["日期", "时间", "代码", "名称", "方向", "数量", "成交均价", "成交金额", "手续费", "印花税", "其他杂费", "未单列差额", "发生金额", "资金余额", "市场", "交收日期"], summary.transactions.map((trade) => row([trade.date, trade.time, trade.code, trade.name, trade.side, trade.qty, trade.price.toFixed(3), amount(trade.amount), amount(trade.fee), amount(trade.tax), amount(trade.other), amount(trade.feeDifference), signed(trade.net), `${amount(trade.reconciledCash)}${trade.cashDerived ? "（补算）" : ""}`, trade.market, trade.settlementDate])).join(""))}
   </section>`;
 }
 
@@ -149,28 +146,11 @@ function patterns() {
 }
 
 function account() {
-  return `<section class="panel" id="account"><span class="label">Account</span><h2>账户收益与仓位</h2><p>交割已录入；每日账户收益、仓位和权益尚未提供。已平仓完整盈亏与成交现金净变化均不代替账户期间收益。</p>
-    <div class="summary-grid">${["本期账户收益", "本期收益率", "平均仓位", "期末总资产", "最大盈利日", "最大亏损日"].map((label) => `<span>${label}<b>待补</b></span>`).join("")}</div>
-    ${table(["日期", "星期", "收益金额", "收益率", "仓位", "当前总金额"], review.accountDays.map((day) => row([day.date, day.day, amount(day.pnl), percent(day.returnRate), percent(day.position), amount(day.equity)])).join(""))}
-  </section>`;
+  return extra.accountHtml();
 }
 
 function daily() {
-  const notes = {
-    "2026-10-08": "对应时代万恒首笔参与，后续与首笔仓位反思对照。",
-    "2026-10-09": "对应时代万恒第二笔加仓；精确账户仓位待账户表。",
-    "2026-10-12": "时代、闽东退出日期已确认；六板对应关系与盘中最高浮盈仍待行情核验。",
-    "2026-10-14": "超声电子趋势抱团买入已确认，后续持有结果待补。",
-    "2026-10-15": "九阳两笔买入已确认；与此前高位退出心得分开记录。"
-  };
-  return `<section class="panel" id="daily"><span class="label">Daily Review</span><h2>逐日交割与心得对应</h2><p>按交割确认实际操作日期。截图没有成交行的日期标为“截图无成交记录”，不据此填写账户盈亏为零。</p>
-    ${table(["日期", "星期", "当日买卖", "成交现金净变化", "末笔成交后余额", "心得对应"], summary.days.map((day) => {
-      const trades = summary.transactions.filter((trade) => trade.date === day.date);
-      const detail = trades.map((trade) => `${trade.time} ${trade.name}${trade.side}${trade.qty}股 @ ${trade.price.toFixed(3)}`).join("；");
-      const last = trades.at(-1);
-      return row([day.date, day.day, detail || "截图无成交记录", signed(day.netCash), last ? `${amount(last.reconciledCash)}${last.cashDerived ? "（补算）" : ""}` : "无成交行", notes[day.date] || "心得仍按主题保留，未强行分配日期。"]);
-    }).join(""), "prose-table")}
-  </section>`;
+  return extra.dailyHtml();
 }
 
 function sourceRecords() {
@@ -185,22 +165,25 @@ function page() {
   @media(max-width:1400px){.rail{position:static;width:min(1180px,calc(100% - 28px));margin:18px auto 0;display:flex;flex-direction:row;flex-wrap:wrap}.rail a{width:auto;padding:8px 12px}}
   @media(max-width:920px){.reflection-index{grid-template-columns:repeat(2,minmax(0,1fr))}h1{font-size:36px}.hero,.panel{padding:22px}.kiss-list{grid-template-columns:1fr}.prose-table th:first-child,.prose-table td:first-child{width:130px}}
   @media(max-width:560px){h1{font-size:30px}h2{font-size:24px}h3{font-size:19px}.hero,.panel{padding:18px}.reflection-section{grid-template-columns:24px minmax(0,1fr);gap:8px}.reflection-index a{padding:10px 8px;gap:7px;font-size:12px}.metrics{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.metric{padding:12px;min-height:100px}.metric strong{font-size:20px}.period-strip{gap:14px 24px}.page-shell,.rail{width:calc(100% - 16px)}}
+${extra.styles}.stock-card .source-line{display:block;font-weight:400;border:0;padding:0;margin:12px 0}.stock-card .source-line a{display:inline;font-weight:400}
 </style></head><body>
   <a class="skip-link" href="#main-content">跳到主要内容</a>
-  <nav class="rail" aria-label="页面导航"><a href="../weekly-trading-review/">周度主页</a><a href="../">总入口</a><a href="#execution-summary">交割汇总</a><a href="#second-review">心得总结</a><a href="#patterns">模式边界</a><a href="#cases">标的回看</a><a href="#kiss">执行改进</a><a href="#account">账户</a><a href="#holdings">可见持仓</a><a href="#daily">逐日核对</a><a href="#trades">成交明细</a><a href="#missing">后续待补</a></nav>
+  <nav class="rail" aria-label="页面导航"><a href="../weekly-trading-review/">周度主页</a><a href="../">总入口</a><a href="#account">账户与仓位</a><a href="#execution-summary">交割汇总</a><a href="#holdings">期末持仓</a><a href="#profit-loss">盈亏主因</a><a href="#stocks">5分钟买卖点</a><a href="#daily">逐日复盘</a><a href="#second-review">二次心得</a><a href="#patterns">模式边界</a><a href="#kiss">执行纪律</a><a href="#trades">成交明细</a><a href="#missing">资料核对</a></nav>
   <main class="page-shell" id="main-content">
-    <section class="hero" id="overview"><div><span class="label">${esc(review.status)}</span><h1><span class="date-range"><span>2026.10.08 -</span><span>2026.10.16</span></span>两周交割复盘</h1><p>${esc(review.title)}</p><div class="button-row"><a class="button" href="#execution-summary">查看交割汇总</a><a class="button secondary" href="#second-review">心得总结</a></div><div class="period-strip">${review.periods.map((period) => `<span>${period.label}<b>${period.range} / ${period.dates.length}个交易日</b></span>`).join("")}</div></div><div class="metrics">${metric("心得状态", "已整理", `${review.reflections.length}个主题 / ${review.patterns.length}类模式`)}${metric("成交笔数", `${summary.tradeCount}笔`, `买${summary.buyCount}笔 / 卖${summary.sellCount}笔`)}${metric("已平仓完整盈亏", signed(summary.realized), "含前期成本 / 非账户期间收益")}${metric("最新成交后现金", amount(summary.closingCash), "截至10月15日 / 非总资产")}</div></section>
+    <section class="hero" id="overview"><div><span class="label">交割已核对 / 收盘估值</span><h1><span class="date-range"><span>2026.10.08 -</span><span>2026.10.16</span></span>两周交割复盘</h1><p>${esc(review.title)}</p><div class="button-row"><a class="button" href="#account">账户收益与仓位</a><a class="button secondary" href="#stocks">5分钟买卖点</a></div><div class="period-strip">${review.periods.map((period) => `<span>${period.label}<b>${period.range} / ${period.dates.length}个交易日</b></span>`).join("")}</div></div><div class="metrics">${metric("本期金额变化（估算）", signed(extra.account.pnl), "现金与持仓收盘市值核算")}${metric("期末权益（估算）", amount(extra.account.endingEquity), "等待券商账户表最终核对")}${metric("已平仓完整盈亏", signed(summary.realized), "含前期成本 / 非账户期间收益")}${metric("平均周仓位（估算）", percent(extra.account.averagePosition), "7个交易日收盘仓位平均")}</div></section>
+    ${account()}
     ${executionSummary()}
+    ${holdings()}
+    ${extra.profitHtml()}
+    ${extra.chartsHtml()}
+    ${daily()}
     ${reflection()}
     ${patterns()}
     <section class="panel" id="cases"><span class="label">Case Notes</span><h2>口述标的与交割核对</h2><p>以下是心得提及的标的及其讨论角色，候选观察与实际操作分别记录。</p>${table(["标的", "讨论角色", "心得要点", "交割状态"], review.cases.map((item) => row([item.name, item.role, item.note, item.status || "待核对"])).join(""), "prose-table")}</section>
     <section class="panel" id="kiss"><span class="label">KISS</span><h2>本期执行改进</h2><div class="kiss-list">${review.kiss.map((item) => `<article><h3>${esc(item.label)}</h3><p>${esc(item.text)}</p></article>`).join("")}</div></section>
-    ${account()}
-    ${holdings()}
-    ${daily()}
     ${transactions()}
     <section class="panel" id="source-record"><span class="label">Source Record</span><h2>原始交割与盘面记录</h2>${sourceRecords()}<p class="calendar-source">交易日期：10月8日、9日、12日至16日，共7个交易日。<a href="${esc(review.calendarSource)}" target="_blank" rel="noopener">上交所休市安排</a></p></section>
-    <section class="panel" id="missing"><span class="label">To Fill</span><h2>后续待补内容</h2><div class="pending-block"><h3>账户资料与盘面核对</h3><ul class="pending-list"><li>本次9笔交割已录入；闽东电力跨期成本已接上，所有可见完整资金余额核对一致。</li><li>七个交易日的收益金额、收益率、仓位、当前总金额，以及期间入金、出金等非成交资金变动记录。</li><li>10月16日期末账户截图，用于确认超声电子100股、九阳股份200股是否为全部持仓，以及期末市值、现金和总资产。</li><li>重点标的对应日期的真实走势、板位及盘面反馈，用于核对六板退出、卡位先后与利润回吐的具体时间。</li></ul></div><div class="pending-block"><h3>口述表述待核对</h3><ul class="pending-list">${review.pendingClarifications.map((text) => `<li>${esc(text)}</li>`).join("")}</ul></div></section>
+    ${extra.missingHtml()}
     <nav class="page-foot" aria-label="周次导航"><a href="../2026-09-21_2026-09-30/">上一期 09.21-09.30</a><a href="../weekly-trading-review/">全部周报</a></nav>
   </main>
 </body></html>`;
@@ -208,4 +191,4 @@ function page() {
 
 fs.writeFileSync(path.join(directory, "index.html"), page(), "utf8");
 fs.writeFileSync(path.join(directory, "data/summary.json"), `${JSON.stringify(summary, null, 2)}\n`, "utf8");
-console.log(`Wrote ${folder}/index.html and data/summary.json: ${summary.tradeCount} trades, realized ${amount(summary.realized)}, latest cash ${amount(summary.closingCash)}; daily account data remains pending.`);
+console.log(`Wrote ${folder}: ${summary.tradeCount} trades, realized ${amount(summary.realized)}, estimated equity ${amount(extra.account.endingEquity)}, PnL ${signed(extra.account.pnl)}.`);

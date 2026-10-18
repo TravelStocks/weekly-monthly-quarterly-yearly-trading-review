@@ -34,12 +34,22 @@ const weeks = equityLedger.rows.map(row => {
   };
 });
 
+// This period has a complete statement but no broker daily account export.
+const october = require('../2026-10-08_2026-10-16/data/summary.json').account;
+if (october?.status === 'estimated') {
+  const day = d => `${d.day} ${d.date.slice(5)} ${money(d.pnl)}`;
+  weeks.push({label:'10.08-10.16（合并）',href:'../2026-10-08_2026-10-16/',pnl:october.pnl,
+    equity:october.endingEquity,equityLabel:october.endingEquity.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}),
+    equityStatus:'交割收盘估算',equityNote:october.basis,avgPosition:october.averagePosition,
+    bestDay:day(october.best),worstDay:day(october.worst),estimatedWeekPct:october.dailyRateSum});
+}
+
 let peak = -Infinity;
 let previousEquity = null;
 for (const week of weeks) {
   const startEquity = previousEquity ?? (week.equity - week.pnl);
   const supplied = returnRates.forFolder(week.href.split("/").filter(part => part !== "..").find(Boolean));
-  week.weekPct = supplied ? supplied.points / 100 : startEquity ? (week.pnl / startEquity) * 100 : 0;
+  week.weekPct = week.estimatedWeekPct ?? (supplied ? supplied.points / 100 : startEquity ? (week.pnl / startEquity) * 100 : 0);
   peak = Math.max(peak, week.equity);
   week.drawdown = ((week.equity - peak) / peak) * 100;
   previousEquity = week.equity;
@@ -167,6 +177,7 @@ html = html.replace(/<\/section>\s*<section class="panel">\s*<span class="label"
 const equityCss = `<style id="weekly-equity-style">.equity-caption{display:block;margin-top:4px;color:var(--muted);font-size:11px}.equity-basis{display:block;color:var(--muted);line-height:1.6;overflow-wrap:anywhere}.weekly-chart{min-width:${Math.max(1080,weeks.length*110+180)}px}.weekly-data-table th{vertical-align:middle}.overview-panel .chart-head{display:grid;gap:12px}.overview-panel .legend-row{justify-content:flex-start}.legend-row span{white-space:nowrap}.legend-line.amount{border-top:3px solid var(--red)}</style>`;
 html = html.replace(/<style id="weekly-equity-style">[\s\S]*?<\/style>/, "");
 html = html.replace("</head>", `${equityCss}</head>`);
+if (october?.status === 'estimated') html = html.replace('7/13–9/30 的金额变化采用', '10/8–10/16 使用完整交割与真实收盘价估算，周收益率为估算日收益率之和；平均仓位按7个交易日收盘仓位平均，非期末仓位。<a href="../2026-10-08_2026-10-16/data/summary.json">本期计算明细</a>。7/13–9/30 的金额变化采用');
 const latestChartScript = `<script id="weekly-chart-latest">const weeklyChart = document.querySelector(".overview-panel .chart-wrap"); if (weeklyChart) weeklyChart.scrollLeft = weeklyChart.scrollWidth;</script>`;
 html = html.replace(/<script id="weekly-chart-latest">[\s\S]*?<\/script>/g, "");
 html = html.replace("</body>", `${latestChartScript}</body>`);
