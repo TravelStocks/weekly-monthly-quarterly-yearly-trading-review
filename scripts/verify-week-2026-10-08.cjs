@@ -20,6 +20,11 @@ assert.equal(round(summary.account.dailyRateSum),938);
 assert.equal(round(summary.account.returnRate),966);
 assert.equal(summary.account.days.find(d=>d.date==='2026-10-13').holdings.length,0);
 assert.equal(summary.account.days.find(d=>d.date==='2026-10-16').holdings.length,2);
+const themeSupport=review.reflections.find(s=>s.id==='theme-support').paragraphs.join('\n');
+assert.ok(themeSupport.includes('这些概念必须在同一个周期内实际发酵'));
+assert.ok(themeSupport.includes('时代万恒走的是经典题材龙头路径'));
+assert.ok(themeSupport.includes('九阳股份则更偏多概念混合的辨识度抱团'));
+assert.ok(themeSupport.includes('圣阳股份') && themeSupport.includes('不作为已验证的资金流向或收益保证'));
 for(const d of summary.account.days) {
   assert.equal(round(d.equity),round(d.cash)+d.holdings.reduce((n,p)=>n+round(p.qty*p.price),0));
   assert.equal(round(d.position),round(d.marketValue/d.equity*100));
@@ -76,6 +81,14 @@ async function main() {
       await page.screenshot({path:path.join(output,`account-${width}.png`)});
       await page.$eval('#stocks',el=>el.scrollIntoView({block:'start'}));
       await page.screenshot({path:path.join(output,`charts-${width}.png`)});
+      await page.$eval('#reflection-theme-support',el=>el.scrollIntoView({block:'start'}));
+      const reflectionBounds=await page.$eval('#reflection-theme-support',el=>{
+        const box=el.getBoundingClientRect();
+        return {left:box.left,right:box.right,width:el.clientWidth,scroll:el.scrollWidth};
+      });
+      assert.ok(reflectionBounds.left>=0 && reflectionBounds.right<=width);
+      assert.ok(reflectionBounds.scroll<=reflectionBounds.width);
+      await (await page.$('#reflection-theme-support')).screenshot({path:path.join(output,`theme-support-${width}.png`)});
       await page.goto(pathToFileURL(path.join(root,'weekly-trading-review/index.html')).href);
       const hub=await page.evaluate(()=>({width:document.documentElement.scrollWidth,card:document.querySelector('a.latest-link[href*="2026-10-08"]').textContent,
         last:[...document.querySelectorAll('.weekly-data-table tbody tr')].at(-1)?.textContent,
