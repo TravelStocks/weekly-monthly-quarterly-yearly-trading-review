@@ -19,6 +19,7 @@ async function main(){
   assert(!before.includes('仅本地更新'),'Publication copy must not claim local-only');
   for(const text of ['分化日与分歧日','择日先手','不适合后手追入','待执行研究','账户日表与费用待补']) assert(before.includes(text),`Missing consolidated note: ${text}`);
   for(const text of ['rotation-wave-comparison','一鸣食品 / 国芳集团 / 金健米业','轮动的时间尺度','不机械套用原连板量能模板','不新增本周实际成交']) assert(before.includes(text),`Missing wave comparison: ${text}`);
+  for(const text of ['jiuyang-notion-model','补涨反向助攻核心','不写成固定的资金拉升顺序','3fc7af2f574e806dad8cf571c7acc23d']) assert(before.includes(text),`Missing Notion material: ${text}`);
   const browser=await puppeteer.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true});
   const checks=[],errors=[];
   try{
@@ -40,6 +41,8 @@ async function main(){
       assert.equal(await page.$$eval('#crowding-support-expectation tbody tr',rows=>rows.length),5);
       assert.equal(await page.$$eval('#division-divergence-entry tbody tr',rows=>rows.length),2);
       assert.equal(await page.$$eval('#rotation-wave-comparison tbody tr',rows=>rows.length),4);
+      assert.equal(await page.$$eval('#jiuyang-notion-model tbody tr',rows=>rows.length),3);
+      await (await page.$('#jiuyang-notion-model')).screenshot({path:path.join(out,`jiuyang-notion-${width}.png`)});
       await (await page.$('#rotation-wave-comparison')).screenshot({path:path.join(out,`wave-comparison-${width}.png`)});
       await (await page.$('#division-divergence-entry')).screenshot({path:path.join(out,`entry-branches-${width}.png`)});
       await (await page.$('#crowding-crossing-first-move')).screenshot({path:path.join(out,`first-move-${width}.png`)});
