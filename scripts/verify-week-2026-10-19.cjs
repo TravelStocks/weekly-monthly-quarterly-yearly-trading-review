@@ -43,6 +43,10 @@ async function main(){
       assert.equal(await page.$$eval('#switching-entry-exit tbody tr',rows=>rows.length),4);
       const switching=await page.$eval('#switching-entry-exit',el=>el.textContent);
       for(const text of ['不是必须等满两天','宝龙科技','名称待核','分化次日','T+1']) assert(switching.includes(text));
+      const latest=await page.$eval('#leader-failure-crowding-repair',el=>el.textContent);
+      for(const text of ['龙头打法','至少一至两个','五分钟','起算点','约＋6%','不等于本人的账户收益','约－8%','题材归属待核']) assert(latest.includes(text),`Missing latest reflection: ${text}`);
+      assert.equal(await page.$$eval('#leader-failure-crowding-repair tbody tr',rows=>rows.length),4);
+      await (await page.$('#leader-failure-crowding-repair')).screenshot({path:path.join(out,`leader-failure-${width}.png`)});
       await (await page.$('#switching-entry-exit')).screenshot({path:path.join(out,`switching-exit-${width}.png`)});
       assert.equal(await page.$$eval('#rotation-wave-comparison tbody tr',rows=>rows.length),4);
       assert.equal(await page.$$eval('#jiuyang-notion-model tbody tr',rows=>rows.length),3);
