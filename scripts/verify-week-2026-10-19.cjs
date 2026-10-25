@@ -39,7 +39,11 @@ async function main(){
       assert(evidence.loaded,'Evidence screenshot missing');
       await (await page.$('#crowding-support-expectation')).screenshot({path:path.join(out,`support-expectation-${width}.png`)});
       assert.equal(await page.$$eval('#crowding-support-expectation tbody tr',rows=>rows.length),5);
-      assert.equal(await page.$$eval('#division-divergence-entry tbody tr',rows=>rows.length),2);
+      assert.equal(await page.$$eval('#division-divergence-entry > .table-wrap > table > tbody > tr',rows=>rows.length),2);
+      assert.equal(await page.$$eval('#switching-entry-exit tbody tr',rows=>rows.length),4);
+      const switching=await page.$eval('#switching-entry-exit',el=>el.textContent);
+      for(const text of ['不是必须等满两天','宝龙科技','名称待核','分化次日','T+1']) assert(switching.includes(text));
+      await (await page.$('#switching-entry-exit')).screenshot({path:path.join(out,`switching-exit-${width}.png`)});
       assert.equal(await page.$$eval('#rotation-wave-comparison tbody tr',rows=>rows.length),4);
       assert.equal(await page.$$eval('#jiuyang-notion-model tbody tr',rows=>rows.length),3);
       await (await page.$('#jiuyang-notion-model')).screenshot({path:path.join(out,`jiuyang-notion-${width}.png`)});
