@@ -44,6 +44,10 @@ async function main(){
       const switching=await page.$eval('#switching-entry-exit',el=>el.textContent);
       for(const text of ['不是必须等满两天','宝龙科技','名称待核','分化次日','T+1']) assert(switching.includes(text));
       const latest=await page.$eval('#leader-failure-crowding-repair',el=>el.textContent);
+      const focus=await page.$eval('#reduce-weak-theme-switching',el=>el.textContent);
+      for(const text of ['弱预期、弱强度','二十几家是示例','摊平成本','局部利润回拉不等于账户全天净盈利','不修改交易系统']) assert(focus.includes(text),`Missing mode focus: ${text}`);
+      assert.equal(s.days.at(-1).pnl,-13);
+      await (await page.$('#reduce-weak-theme-switching')).screenshot({path:path.join(out,`mode-focus-${width}.png`)});
       for(const text of ['龙头打法','至少一至两个','五分钟','起算点','约＋6%','不等于本人的账户收益','约－8%','题材归属待核']) assert(latest.includes(text),`Missing latest reflection: ${text}`);
       assert.equal(await page.$$eval('#leader-failure-crowding-repair tbody tr',rows=>rows.length),4);
       await (await page.$('#leader-failure-crowding-repair')).screenshot({path:path.join(out,`leader-failure-${width}.png`)});
