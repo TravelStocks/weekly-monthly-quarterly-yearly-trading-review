@@ -47,6 +47,10 @@ async function main(){
       const focus=await page.$eval('#reduce-weak-theme-switching',el=>el.textContent);
       for(const text of ['弱预期、弱强度','二十几家是示例','摊平成本','局部利润回拉不等于账户全天净盈利','不修改交易系统']) assert(focus.includes(text),`Missing mode focus: ${text}`);
       assert.equal(s.days.at(-1).pnl,-13);
+      const priorities=await page.$eval('#mode-priorities',el=>el.textContent);
+      for(const text of ['第三方动机的推测','题材仍在轮动','核心高位横住','金健米业、国芳集团、九阳股份、哈药股份','提前准备隔夜排单','不保证成交或收益']) assert(priorities.includes(text),`Missing priorities: ${text}`);
+      assert(await page.$('#rules a[href="#mode-priorities"]'));
+      await (await page.$('#mode-priorities')).screenshot({path:path.join(out,`mode-priorities-${width}.png`)});
       await (await page.$('#reduce-weak-theme-switching')).screenshot({path:path.join(out,`mode-focus-${width}.png`)});
       for(const text of ['龙头打法','至少一至两个','五分钟','起算点','约＋6%','不等于本人的账户收益','约－8%','题材归属待核']) assert(latest.includes(text),`Missing latest reflection: ${text}`);
       assert.equal(await page.$$eval('#leader-failure-crowding-repair tbody tr',rows=>rows.length),4);
