@@ -32,6 +32,11 @@ async function main(){
       assert.equal(result.overflow,false);assert.equal(result.charts,6);assert.deepEqual(result.candles,Array(6).fill(240));assert.equal(result.markers,12);assert.equal(result.tradeRows,13);assert.equal(result.accountRows,5);assert.deepEqual(result.missingAnchors,[]);
       for(const d of s.days){const line=await page.$eval(`#account tbody tr:nth-child(${s.days.indexOf(d)+1})`,el=>el.textContent);for(const t of d.trades)assert(line.includes(t.name),`${d.date} ${t.name} missing`);}
       await page.screenshot({path:path.join(out,`top-${width}.png`)});
+      const resonance=await page.$('#emotion-transmission > #emotion-sector-index-resonance');
+      assert(resonance,'Resonance image must be in reflection section 5');
+      await resonance.screenshot({path:path.join(out,`resonance-${width}.png`)});
+      const picture=await page.$eval('#emotion-sector-index-resonance img',img=>({loaded:img.complete&&img.naturalWidth===1307&&img.naturalHeight===1235,width:img.getBoundingClientRect().width,parent:img.parentElement.parentElement.getBoundingClientRect().width,link:img.parentElement.getAttribute('href'),src:img.getAttribute('src')}));
+      assert(picture.loaded);assert(picture.width<=picture.parent+1);assert.equal(picture.link,picture.src);
       await (await page.$('#stock-002242')).screenshot({path:path.join(out,`chart-${width}.png`)});
       await (await page.$('#account')).screenshot({path:path.join(out,`account-${width}.png`)});
       await (await page.$('#emotion-repair-sequence')).screenshot({path:path.join(out,`repair-sequence-${width}.png`)});
