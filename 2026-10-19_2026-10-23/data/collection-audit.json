@@ -1,0 +1,55 @@
+{
+  "retrievedAt": "2026-10-25T08:22:37.701Z",
+  "attemptedProviders": [
+    {
+      "name": "Eastmoney",
+      "status": "connection closed"
+    },
+    {
+      "name": "Tencent",
+      "status": "DNS failure"
+    },
+    {
+      "name": "Sina",
+      "status": "see per-code records"
+    }
+  ],
+  "results": [
+    {
+      "code": "002242",
+      "status": "ok",
+      "count": 288,
+      "source": "https://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData?symbol=sz002242&scale=5&ma=no&datalen=1023"
+    },
+    {
+      "code": "000823",
+      "status": "ok",
+      "count": 288,
+      "source": "https://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData?symbol=sz000823&scale=5&ma=no&datalen=1023"
+    },
+    {
+      "code": "002085",
+      "status": "ok",
+      "count": 288,
+      "source": "https://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData?symbol=sz002085&scale=5&ma=no&datalen=1023"
+    },
+    {
+      "code": "003029",
+      "status": "ok",
+      "count": 288,
+      "source": "https://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData?symbol=sz003029&scale=5&ma=no&datalen=1023"
+    },
+    {
+      "code": "002076",
+      "status": "ok",
+      "count": 288,
+      "source": "https://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData?symbol=sz002076&scale=5&ma=no&datalen=1023"
+    },
+    {
+      "code": "000530",
+      "status": "ok",
+      "count": 288,
+      "source": "https://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData?symbol=sz000530&scale=5&ma=no&datalen=1023"
+    }
+  ]
+}
