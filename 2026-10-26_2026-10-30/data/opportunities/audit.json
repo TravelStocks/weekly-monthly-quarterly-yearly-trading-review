@@ -1,0 +1,167 @@
+{
+  "scope": "用户2026-10-30月内机会回看，日期经本人补充确认；这是历史方案研究，不是当时预案或已实现账户收益。",
+  "items": [
+    {
+      "id": "era",
+      "code": "600241",
+      "candidates": [
+        [
+          "Q1",
+          {
+            "date": "2026-10-08",
+            "time": "09:35",
+            "price": 10.69,
+            "label": "候选首仓区间"
+          }
+        ],
+        [
+          "Q2",
+          {
+            "date": "2026-10-09",
+            "time": "09:35",
+            "price": 11.76,
+            "label": "五板延续观察"
+          }
+        ],
+        [
+          "Q3",
+          {
+            "date": "2026-10-12",
+            "time": "10:05",
+            "price": 12.94,
+            "label": "六板兑现参照"
+          }
+        ]
+      ],
+      "actualCount": 5,
+      "priceSpanPercent": 21.047708138447142,
+      "source": "https://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData?symbol=sh600241&scale=5&ma=no&datalen=1023"
+    },
+    {
+      "id": "jiuyang",
+      "code": "002242",
+      "candidates": [
+        [
+          "Q1",
+          {
+            "date": "2026-10-19",
+            "time": "09:40",
+            "price": 19.57,
+            "label": "上零轴区间结束确认"
+          }
+        ],
+        [
+          "Q3",
+          {
+            "date": "2026-10-20",
+            "time": "09:35",
+            "price": 20.56,
+            "label": "次日冲板兑现参照"
+          }
+        ]
+      ],
+      "actualCount": 0,
+      "priceSpanPercent": 5.058763413387823,
+      "source": "https://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData?symbol=sz002242&scale=5&ma=no&datalen=1023"
+    },
+    {
+      "id": "daye-first",
+      "code": "603278",
+      "candidates": [
+        [
+          "Q1",
+          {
+            "date": "2026-10-23",
+            "time": "09:50",
+            "price": 14.8,
+            "label": "首次收上零轴"
+          }
+        ],
+        [
+          "Q2",
+          {
+            "date": "2026-10-23",
+            "time": "13:10",
+            "price": 15.96,
+            "label": "午后封板确认（非必加）"
+          }
+        ],
+        [
+          "Q3",
+          {
+            "date": "2026-10-26",
+            "time": "09:35",
+            "price": 17.56,
+            "label": "次日冲板兑现参照"
+          }
+        ]
+      ],
+      "actualCount": 2,
+      "priceSpanPercent": 18.648648648648635,
+      "source": "https://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData?symbol=sh603278&scale=5&ma=no&datalen=1023"
+    },
+    {
+      "id": "xiangyang",
+      "code": "000678",
+      "candidates": [
+        [
+          "Q1",
+          {
+            "date": "2026-10-27",
+            "time": "14:40",
+            "price": 16.01,
+            "label": "实际首仓附近"
+          }
+        ],
+        [
+          "Q2",
+          {
+            "date": "2026-10-28",
+            "time": "09:35",
+            "price": 17.61,
+            "label": "实际加仓区间"
+          }
+        ],
+        [
+          "Q3",
+          {
+            "date": "2026-10-29",
+            "time": "09:55",
+            "price": 19.37,
+            "label": "真实卖出已在涨停价"
+          }
+        ]
+      ],
+      "actualCount": 5,
+      "priceSpanPercent": 20.986883198001237,
+      "source": "https://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData?symbol=sz000678&scale=5&ma=no&datalen=1023"
+    },
+    {
+      "id": "daye-second",
+      "code": "603278",
+      "candidates": [
+        [
+          "Q1",
+          {
+            "date": "2026-10-29",
+            "time": "15:00",
+            "price": 17.88,
+            "label": "尾盘参考价（非交割）"
+          }
+        ],
+        [
+          "Q3",
+          {
+            "date": "2026-10-30",
+            "time": "13:05",
+            "price": 19.67,
+            "label": "午后首次触板，非早盘"
+          }
+        ]
+      ],
+      "actualCount": 0,
+      "priceSpanPercent": 10.01118568232664,
+      "source": "https://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData?symbol=sh603278&scale=5&ma=no&datalen=1023"
+    }
+  ]
+}
