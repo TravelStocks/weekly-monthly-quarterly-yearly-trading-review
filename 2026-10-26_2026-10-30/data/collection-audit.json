@@ -1,0 +1,32 @@
+[
+  {
+    "code": "002535",
+    "status": "ok",
+    "count": 192,
+    "source": "https://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData?symbol=sz002535&scale=5&ma=no&datalen=1023"
+  },
+  {
+    "code": "603278",
+    "status": "ok",
+    "count": 192,
+    "source": "https://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData?symbol=sh603278&scale=5&ma=no&datalen=1023"
+  },
+  {
+    "code": "002242",
+    "status": "ok",
+    "count": 192,
+    "source": "https://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData?symbol=sz002242&scale=5&ma=no&datalen=1023"
+  },
+  {
+    "code": "000530",
+    "status": "ok",
+    "count": 192,
+    "source": "https://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData?symbol=sz000530&scale=5&ma=no&datalen=1023"
+  },
+  {
+    "code": "000678",
+    "status": "ok",
+    "count": 192,
+    "source": "https://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData?symbol=sz000678&scale=5&ma=no&datalen=1023"
+  }
+]
