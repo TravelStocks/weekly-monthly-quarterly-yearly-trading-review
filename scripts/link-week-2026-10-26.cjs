@@ -25,4 +25,5 @@ home=home.replace('<span>周报 <b>23 篇</b></span><span>最新 <b>10.19-10.23<
 fs.writeFileSync(path.join(root,'index.html'),home);
 home=home.replace('最新一期10.26至10.30：截至29日12笔成交，完整闭环含费盈亏+1,566.43元；周五交割、账户日表与心得待补。',`最新一期10.26至10.30：已补每日收益与仓位。周五无新增交易情景下，全周估算${signed(account.pnl)}元（${signed(account.weeklyReturnPct)}%），期末权益${fmt(account.endingEquity)}元；周五交易及资金变动仍待确认。`).replace('状态 <b>截至29日初稿</b>','状态 <b>收益已估算</b>');
 fs.writeFileSync(path.join(root,'index.html'),home);
-console.log('Linked new draft; historical account curves and previous weeks preserved.');
+require('./update-weekly-hub-chart.js');
+console.log('Weekly card, account curve, table and overview metrics synchronized.');
