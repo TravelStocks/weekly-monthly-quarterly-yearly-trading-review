@@ -1,6 +1,8 @@
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 const root=path.resolve(__dirname,'..');
-const card=`<a class="week-card latest-link" href="../2026-10-26_2026-10-30/"><div class="week-head"><h3>10.26-10.30</h3><span class="chip">截至29日 / 待补周五</span></div><p>已录入12笔本周成交，5只股票真实五分钟走势。完整闭环含费盈亏+1,566.43元；襄阳首轮平仓后同价买回600股，新仓与已实现利润分开核算。上周4笔仅作成本参考。</p><div class="mini-grid"><span>完整闭环 <b>+1,566.43</b></span><span>最新可见现金 <b>284.18</b></span><span>本周账户收益 <b>待补</b></span></div></a>`;
+const account=require('../2026-10-26_2026-10-30/data/account-estimate.json');
+const fmt=n=>n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}),signed=n=>(n>0?'+':'')+fmt(n);
+const card=`<a class="week-card latest-link" href="../2026-10-26_2026-10-30/"><div class="week-head"><h3>10.26-10.30</h3><span class="chip">收益已估算 / 周五交易待确认</span></div><p>已录入12笔成交；截至29日账户估算收益${signed(account.through29Pnl)}元。若30日无新增交易或出入金，襄阳600股持有至收盘，全周估算${signed(account.pnl)}元。已补每日收益、仓位及总资产，心得与海浪理论已整理。</p><div class="mini-grid"><span>周收益（条件估算） <b>${signed(account.pnl)}</b></span><span>周收益率（期初期末） <b>${signed(account.weeklyReturnPct)}%</b></span><span>期末权益（条件估算） <b>${fmt(account.endingEquity)}</b></span><span>平均日末仓位（估） <b>${fmt(account.averagePosition)}%</b></span><span>完整闭环含费盈亏 <b>+1,566.43</b></span><span>期末仓位（条件估算） <b>${fmt(account.endingPosition)}%</b></span></div><p class="equity-basis">期初权益10,413.75元；情景期末284.18现金＋600股×18.08＝11,132.18元。日收益率相加${signed(account.dailyRateSum)}%，与期初期末收益率分开。非券商确认数据；周五交易及资金变动可改变结果。</p></a>`;
 let hub=fs.readFileSync(path.join(root,'weekly-trading-review/index.html'),'utf8');
 if(!hub.includes('href="../2026-10-26_2026-10-30/"')){
  hub=hub.replaceAll('class="week-card latest-link"','class="week-card"');
@@ -14,8 +16,13 @@ if(!hub.includes('href="../2026-10-26_2026-10-30/"')){
  fs.writeFileSync(path.join(root,'weekly-trading-review/index.html'),hub);
 }
 let home=fs.readFileSync(path.join(root,'index.html'),'utf8');
+hub=hub.replace(/<a class="week-card latest-link" href="\.\.\/2026-10-26_2026-10-30\/">[\s\S]*?<\/a>/,card);
+hub=hub.replace('30日交割、账户日表及本周心得待补。','每日账户已还原，30日按无新增交易情景估算；心得已补，周五交割与账户确认待补。').replace('<strong class="">交割初稿</strong><small>周五交割、日表与心得待补</small>','<strong class="">收益已估算</strong><small>周五成交及账户数据待确认</small>');
+fs.writeFileSync(path.join(root,'weekly-trading-review/index.html'),hub);
 home=home.replace('href="./2026-10-19_2026-10-23/">最新周复盘','href="./2026-10-26_2026-10-30/">最新周复盘');
 home=home.replace('最新一期10.19至10.23：13条已成记录、6张真实五分钟K线、逐票归因与8个二次反思主题。新增分化/分歧参与区别、高位抱团先手与承接。','最新一期10.26至10.30：截至29日12笔成交，完整闭环含费盈亏+1,566.43元；周五交割、账户日表与心得待补。');
 home=home.replace('<span>周报 <b>23 篇</b></span><span>最新 <b>10.19-10.23</b></span><span>状态 <b>日表与费用待补</b></span>','<span>周报 <b>24 篇</b></span><span>最新 <b>10.26-10.30</b></span><span>状态 <b>截至29日初稿</b></span>');
+fs.writeFileSync(path.join(root,'index.html'),home);
+home=home.replace('最新一期10.26至10.30：截至29日12笔成交，完整闭环含费盈亏+1,566.43元；周五交割、账户日表与心得待补。',`最新一期10.26至10.30：已补每日收益与仓位。周五无新增交易情景下，全周估算${signed(account.pnl)}元（${signed(account.weeklyReturnPct)}%），期末权益${fmt(account.endingEquity)}元；周五交易及资金变动仍待确认。`).replace('状态 <b>截至29日初稿</b>','状态 <b>收益已估算</b>');
 fs.writeFileSync(path.join(root,'index.html'),home);
 console.log('Linked new draft; historical account curves and previous weeks preserved.');

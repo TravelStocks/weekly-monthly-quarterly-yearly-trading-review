@@ -1,0 +1,197 @@
+{
+  "status": "conditional-estimate",
+  "basis": "按已提供完整可见持仓、实际发生金额（含费）及不复权15:00五分钟收盘报价还原。假设无遗漏持仓、非交易现金变动；10/30额外假设没有新增成交、出入金或其他资金变动，沿用10/29襄阳600股。非券商确认收益。",
+  "opening": {
+    "date": "2026-10-23",
+    "cash": 7307.75,
+    "holdings": [
+      {
+        "code": "000530",
+        "name": "冰山冷热",
+        "qty": 100,
+        "close": 9.53
+      },
+      {
+        "code": "002242",
+        "name": "九阳股份",
+        "qty": 100,
+        "close": 21.53
+      }
+    ],
+    "marketValue": 3106,
+    "equity": 10413.75,
+    "position": 29.82595126635458
+  },
+  "days": [
+    {
+      "date": "2026-10-26",
+      "cash": 2135.18,
+      "holdings": [
+        {
+          "code": "002535",
+          "name": "林州重机",
+          "qty": 900,
+          "close": 3.33
+        },
+        {
+          "code": "603278",
+          "name": "大业股份",
+          "qty": 300,
+          "close": 17.25
+        }
+      ],
+      "marketValue": 8172,
+      "equity": 10307.18,
+      "position": 79.28453757477797,
+      "pnl": -106.57,
+      "returnPct": -1.0233585403913095,
+      "status": "交割与收盘估算"
+    },
+    {
+      "date": "2026-10-27",
+      "cash": 5587.99,
+      "holdings": [
+        {
+          "code": "000678",
+          "name": "襄阳轴承",
+          "qty": 300,
+          "close": 16.01
+        }
+      ],
+      "marketValue": 4803,
+      "equity": 10390.99,
+      "position": 46.22273719828428,
+      "pnl": 83.81,
+      "returnPct": 0.8131225029542513,
+      "status": "交割与收盘估算"
+    },
+    {
+      "date": "2026-10-28",
+      "cash": 299.99,
+      "holdings": [
+        {
+          "code": "000678",
+          "name": "襄阳轴承",
+          "qty": 600,
+          "close": 17.61
+        }
+      ],
+      "marketValue": 10566,
+      "equity": 10865.99,
+      "position": 97.23918391237247,
+      "pnl": 475,
+      "returnPct": 4.571267992751412,
+      "status": "交割与收盘估算"
+    },
+    {
+      "date": "2026-10-29",
+      "cash": 284.18,
+      "holdings": [
+        {
+          "code": "000678",
+          "name": "襄阳轴承",
+          "qty": 600,
+          "close": 18.75
+        }
+      ],
+      "marketValue": 11250,
+      "equity": 11534.18,
+      "position": 97.53619242980429,
+      "pnl": 668.19,
+      "returnPct": 6.149370650994525,
+      "status": "交割与收盘估算"
+    },
+    {
+      "date": "2026-10-30",
+      "cash": 284.18,
+      "holdings": [
+        {
+          "code": "000678",
+          "name": "襄阳轴承",
+          "qty": 600,
+          "close": 18.08
+        }
+      ],
+      "marketValue": 10848,
+      "equity": 11132.18,
+      "position": 97.44722058033557,
+      "pnl": -402,
+      "returnPct": -3.4852932761583397,
+      "status": "无新增交易情景估算"
+    }
+  ],
+  "endingEquity": 11132.18,
+  "pnl": 718.43,
+  "weeklyReturnPct": 6.898859680710598,
+  "dailyRateSum": 7.02510933015054,
+  "averagePosition": 83.5459743391149,
+  "endingPosition": 97.44722058033557,
+  "through29Pnl": 1120.43,
+  "through29ReturnPct": 10.759140559356627,
+  "sources": [
+    {
+      "code": "000530",
+      "date": "2026-10-23",
+      "close": 9.53,
+      "file": "2026-10-19_2026-10-23/data/000530-5m.json",
+      "source": "https://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData?symbol=sz000530&scale=5&ma=no&datalen=1023",
+      "retrievedAt": "2026-10-25T08:22:37.024Z"
+    },
+    {
+      "code": "002242",
+      "date": "2026-10-23",
+      "close": 21.53,
+      "file": "2026-10-19_2026-10-23/data/002242-5m.json",
+      "source": "https://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData?symbol=sz002242&scale=5&ma=no&datalen=1023",
+      "retrievedAt": "2026-10-25T08:22:36.577Z"
+    },
+    {
+      "code": "002535",
+      "date": "2026-10-26",
+      "close": 3.33,
+      "file": "2026-10-26_2026-10-30/data/002535-5m.json",
+      "source": "https://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData?symbol=sz002535&scale=5&ma=no&datalen=1023",
+      "retrievedAt": "2026-10-30T08:25:46.749Z"
+    },
+    {
+      "code": "603278",
+      "date": "2026-10-26",
+      "close": 17.25,
+      "file": "2026-10-26_2026-10-30/data/603278-5m.json",
+      "source": "https://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData?symbol=sh603278&scale=5&ma=no&datalen=1023",
+      "retrievedAt": "2026-10-30T08:25:46.868Z"
+    },
+    {
+      "code": "000678",
+      "date": "2026-10-27",
+      "close": 16.01,
+      "file": "2026-10-26_2026-10-30/data/000678-5m.json",
+      "source": "https://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData?symbol=sz000678&scale=5&ma=no&datalen=1023",
+      "retrievedAt": "2026-10-30T08:25:47.152Z"
+    },
+    {
+      "code": "000678",
+      "date": "2026-10-28",
+      "close": 17.61,
+      "file": "2026-10-26_2026-10-30/data/000678-5m.json",
+      "source": "https://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData?symbol=sz000678&scale=5&ma=no&datalen=1023",
+      "retrievedAt": "2026-10-30T08:25:47.152Z"
+    },
+    {
+      "code": "000678",
+      "date": "2026-10-29",
+      "close": 18.75,
+      "file": "2026-10-26_2026-10-30/data/000678-5m.json",
+      "source": "https://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData?symbol=sz000678&scale=5&ma=no&datalen=1023",
+      "retrievedAt": "2026-10-30T08:25:47.152Z"
+    },
+    {
+      "code": "000678",
+      "date": "2026-10-30",
+      "close": 18.08,
+      "file": "2026-10-26_2026-10-30/data/opportunities/000678.json",
+      "source": "https://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData?symbol=sz000678&scale=5&ma=no&datalen=1023",
+      "retrievedAt": "2026-10-30T09:20:48.677Z"
+    }
+  ]
+}
