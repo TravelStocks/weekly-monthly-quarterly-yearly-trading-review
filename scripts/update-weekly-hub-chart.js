@@ -39,10 +39,12 @@ const weeks = equityLedger.rows.map(row => {
 const cutoff=equityLedger.rows.at(-1).folder.slice(0,10);
 const recentFolders=fs.readdirSync(repo).filter(f=>/^\d{4}-\d{2}-\d{2}_\d{4}-\d{2}-\d{2}$/.test(f)&&f.slice(0,10)>cutoff).sort();
 const dayLabel=d=>`${d.day||['周日','周一','周二','周三','周四','周五','周六'][new Date(d.date+'T00:00:00Z').getUTCDay()]} ${d.date.slice(5)} ${money(d.pnl)}`;
+const reflectionOnly=[];
 for(const folder of recentFolders){
   const file=path.join(repo,folder,'data/summary.json');
   assert(fs.existsSync(file),`New report lacks account summary: ${folder}`);
   const summary=JSON.parse(fs.readFileSync(file,'utf8')),a=summary.account||summary;
+  if(summary.status==='reflection-only'){reflectionOnly.push({folder,date:summary.date,reason:summary.reason});continue;}
   const legacy=a.weekPnl!=null,conditional=a.status==='conditional-estimate';
   const pnl=legacy?a.weekPnl:a.pnl,rate=legacy?a.weekRate:(a.weeklyReturnPct??a.dailyRateSum);
   assert([pnl,rate,a.endingEquity,a.averagePosition].every(Number.isFinite),`Unsupported account summary: ${folder}`);
@@ -66,7 +68,7 @@ for (const week of weeks) {
   week.drawdown = ((week.equity - peak) / peak) * 100;
   previousEquity = week.equity;
 }
-const overview={periodCount:weeks.length,latest:weeks.at(-1).label,totalChange:Math.round(weeks.reduce((s,w)=>s+w.pnl,0)*100)/100,
+const overview={periodCount:weeks.length,archiveCount:weeks.length+reflectionOnly.length,reflectionOnly,latest:weeks.at(-1).label,totalChange:Math.round(weeks.reduce((s,w)=>s+w.pnl,0)*100)/100,
   latestDrawdown:weeks.at(-1).drawdown,maxDrawdown:Math.min(0,...weeks.map(w=>w.drawdown)),weeks};
 fs.writeFileSync(path.join(repo,'weekly-trading-review/overview-data.json'),JSON.stringify(overview,null,2)+'\n');
 
@@ -198,13 +200,15 @@ html = html.replace(/<script id="weekly-chart-latest">[\s\S]*?<\/script>/g, "");
 html = html.replace("</body>", `${latestChartScript}</body>`);
 fs.writeFileSync(hubPath, html, "utf8");
 const latest=weeks.at(-1),latestFolder=latest.href.split('/').filter(x=>x&&x!=='..')[0];
-const interval=`<span>最新区间</span><strong class="">${latestFolder.slice(5,10).replace('-','.')}</strong><small>至 ${latestFolder.slice(16).replace('-','.')} / ${latest.equityStatus}</small>`;
+const reportFolder=recentFolders.at(-1)||latestFolder,notesOnly=reflectionOnly.some(r=>r.folder===reportFolder);
+const interval=`<span>最新区间</span><strong class="">${reportFolder.slice(5,10).replace('-','.')}</strong><small>至 ${reportFolder.slice(16).replace('-','.')} / ${notesOnly?'仅个人心得':latest.equityStatus}</small>`;
 const intervalPattern=/<span>最新区间<\/span><strong[^>]*>[\s\S]*?<\/strong><small>[\s\S]*?<\/small>/;
 html=html.replace(intervalPattern,interval);
+html=html.replace(/<span>周报数量<\/span><strong[^>]*>\d+<\/strong>/,`<span>周报数量</span><strong class="">${overview.archiveCount}</strong>`);
 fs.writeFileSync(hubPath,html,'utf8');
 const homePath=path.join(repo,'index.html');
 let home=fs.readFileSync(homePath,'utf8');
-home=home.replace(/<span>周度归档<\/span><strong[^>]*>\d+<\/strong>/,`<span>周度归档</span><strong class="">${weeks.length}</strong>`).replace(intervalPattern,interval);
-home=home.replace(/<span>期末权益参考[^<]*<\/span><strong[^>]*>[\s\S]*?<\/strong><small>[\s\S]*?<\/small>/,`<span>期末权益参考（${latest.equityStatus}）</span><strong class="">${latest.equityLabel}</strong><small>与最新周报一致，非券商确认权益</small>`);
+home=home.replace(/<span>周度归档<\/span><strong[^>]*>\d+<\/strong>/,`<span>周度归档</span><strong class="">${overview.archiveCount}</strong>`).replace(intervalPattern,interval);
+home=home.replace(/<span>期末权益参考[^<]*<\/span><strong[^>]*>[\s\S]*?<\/strong><small>[\s\S]*?<\/small>/,`<span>期末权益参考（${latest.equityStatus}）</span><strong class="">${latest.equityLabel}</strong><small>账户数据截至${latest.label}，非券商确认权益</small>`);
 fs.writeFileSync(homePath,home,'utf8');
 console.log(JSON.stringify({periods:weeks.length,latest:latest.label,totalChange:overview.totalChange,latestDrawdown:latest.drawdown,equity:latest.equity}));

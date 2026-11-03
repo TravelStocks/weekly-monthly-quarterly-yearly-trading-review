@@ -1,5 +1,13 @@
 {
   "periodCount": 24,
+  "archiveCount": 25,
+  "reflectionOnly": [
+    {
+      "folder": "2026-11-02_2026-11-06",
+      "date": "2026-11-02",
+      "reason": "Only personal reflections requested; actual loss amount unavailable."
+    }
+  ],
   "latest": "10.26-10.30",
   "totalChange": -17805.81,
   "latestDrawdown": -64.12213617446699,
