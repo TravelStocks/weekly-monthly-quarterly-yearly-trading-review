@@ -111,7 +111,7 @@
     .week-card:hover{border-color:#c6d0dc;box-shadow:0 20px 48px rgba(23,32,42,.1);transform:translateY(-1px)}
     .latest-link{border-color:rgba(29,78,216,.28)}
     .entrance-grid,.dimension-grid.time{grid-template-columns:repeat(3,minmax(0,1fr))}
-    .dimension-grid.outcome{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .dimension-grid.outcome{grid-template-columns:repeat(3,minmax(0,1fr))}
     .dimension-head{display:flex;justify-content:space-between;gap:14px;align-items:end;margin-top:10px}
     .dimension-head h3{margin:0;font-size:20px}
     .dimension-head p{margin:0;max-width:620px;font-size:14px}
@@ -139,13 +139,14 @@
           <a class="button secondary" href="./yearly-trading-review/">年度主页</a>
           <a class="button secondary" href="./success-failure-trade-review/">成功与失败交割复盘</a>
           <a class="button secondary" href="./large-loss-review/">大亏损个股总结</a>
+          <a class="button secondary" href="./large-profit-review/">大利润个股总结</a>
         </div>
       </div>
       <div class="metrics">
         <article class="metric"><span>周度归档</span><strong class="">25</strong><small>已发布/草稿周复盘</small></article>
         <article class="metric"><span>最新区间</span><strong class="">11.02</strong><small>至 11.06 / 仅个人心得</small></article>
         <article class="metric"><span>期末权益参考（条件估算：周五不变仓）</span><strong class="">11,132.18</strong><small>账户数据截至10.26-10.30，非券商确认权益</small></article>
-        <article class="metric"><span>长期结构</span><strong class="">5 个主页</strong><small>周度 / 月季 / 年度 / 案例 / 大亏损总结</small></article>
+        <article class="metric"><span>长期结构</span><strong class="">6 个主页</strong><small>周度 / 月季 / 年度 / 案例 / 盈亏总结</small></article>
       </div>
     </section>
     <section class="loss-banner">
@@ -170,6 +171,7 @@
         </div>
         <div class="dimension-head"><div><span class="dimension-mark">成功与失败维度</span><h3>按结果拆成功周、失败周和关键标的</h3></div><p>单独沉淀大盈利、大回撤样本，把周级账户影响和个股/ETF买卖点分开复盘。</p></div>
         <div class="entrance-grid dimension-grid outcome">
+          <a class="week-card" href="./large-profit-review/"><div class="week-head"><h3>大利润个股总结</h3><span class="chip">结果 3</span></div><p>筛出单轮收益率高于 +2% 的个股，关联原复盘与反思，统计有效做法的频次，并保留盈利中的操作不足。</p><div class="mini-grid"><span>筛选 <b>收益超过 2%</b></span><span>反思 <b>逐笔对应原文</b></span><span>排行 <b>有效做法 / 重复盈利</b></span></div></a>
           <a class="week-card" href="./large-loss-review/"><div class="week-head"><h3>大亏损个股总结</h3><span class="chip">结果 2</span></div><p>筛出单轮收益率低于 −2% 的个股，逐笔关联原复盘与反思，按错误频次排榜，找到反复出现的问题。</p><div class="mini-grid"><span>筛选 <b>亏损超过 2%</b></span><span>反思 <b>逐笔对应原文</b></span><span>排行 <b>错误频次 / 重复亏损</b></span></div></a>
           <a class="week-card" href="./success-failure-trade-review/"><div class="week-head"><h3>成功与失败交割复盘</h3><span class="chip">结果 1</span></div><p>分成周维度和个股/ETF维度：周维度看成功/失败周，标的维度看大利润个股与大回撤个股的买卖点和交易思路。</p><div class="mini-grid"><span>周维度 <b>成功/失败周</b></span><span>标的维度 <b>个股/ETF</b></span><span>重点 <b>买卖点复盘</b></span></div></a>
         </div>

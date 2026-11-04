@@ -1,4 +1,4 @@
-"""Rebuild the loss archive from published reports. Requires beautifulsoup4.
+"""Rebuild loss/profit archives from published reports. Requires beautifulsoup4.
 
 Only parses local, already-public data; never copies account IDs or raw screenshots.
 Run from any directory: python scripts/build-large-loss-review.py
@@ -10,7 +10,6 @@ import re
 from bs4 import BeautifulSoup
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / 'large-loss-review'
 THRESHOLD = -2
 
 def read_json(path):
@@ -152,7 +151,12 @@ def extract_quotes(soup, path, name, code):
     seen = set()
     return [q for q in result if not (q['text'] in seen or seen.add(q['text']))]
 
-def build():
+def build(outcome='loss'):
+    assert outcome in ('loss', 'profit')
+    profit = outcome == 'profit'
+    out = ROOT / ('large-profit-review' if profit else 'large-loss-review')
+    threshold = 2 if profit else THRESHOLD
+    labels = 'factors' if profit else 'errors'
     pages, batches, scan = {}, [], []
     report_files = sorted(ROOT.glob('20*/index.html')) + [ROOT / f'monthly-quarterly-trading-review/{month}/index.html' for month in ['2026-05','2026-08']]
     for f in report_files:
@@ -205,7 +209,7 @@ def build():
                 end=(r['end'] or '2026-04-24')[:10], cost=r['buy_cash'] if r['status']=='closed' else r['open_cost'],
                 pnl=round(r['realized'] if r['status']=='closed' else r['floating'], 2),
                 status='closed' if r['status']=='closed' else 'floating',
-                basis='含费闭环' if r['status']=='closed' else '历史持仓浮亏 · 04/24收盘快照，后续平仓未知', sources=[april_path]))
+                basis='含费闭环' if r['status']=='closed' else ('历史持仓浮盈' if profit else '历史持仓浮亏')+' · 04/24收盘快照，后续平仓未知', sources=[april_path]))
     october = read_json('2026-10-26_2026-10-30/data/summary.json')
     # Last observed holdings, not the conditional October 30 unchanged-position scenario.
     for s in october['stocks']:
@@ -214,13 +218,13 @@ def build():
             holding = next(h for h in day['holdings'] if h['code']==s['code'])
             rounds.append(dict(code=s['code'], name=s['name'], start='2026-10-29', end='2026-10-29',
                 cost=s['openCost'], pnl=round(holding['qty']*holding['close']-s['openCost'],2), status='floating',
-                basis='新仓浮亏 · 10/29收盘快照；前一轮盈利独立核算', sources=['2026-10-26_2026-10-30/index.html']))
+                basis=('新仓浮盈' if profit else '新仓浮亏')+' · 10/29收盘快照；前一轮盈利独立核算', sources=['2026-10-26_2026-10-30/index.html']))
     candidates=[]
     for r in rounds:
         if r['cost'] <= 0:
             raise ValueError('Non-positive basis: '+str(r))
         r['rate'] = r['pnl']/r['cost']*100
-        if r['rate'] >= THRESHOLD:
+        if (r['rate'] <= threshold if profit else r['rate'] >= threshold):
             continue
         r['id'] = f"{r['code']}-{r['end']}-{r['status']}"
         r['instrument'] = 'ETF' if r['code'].startswith(('15','51','58')) else 'stock'
@@ -240,8 +244,8 @@ def build():
             if meta and r['code'] in meta:
                 for k,v in meta[r['code']].items():
                     if isinstance(v,str) and len(v)>15: quotes.append(dict(text=v,source=path))
-        # Dedicated failure case pages correspond to specific dated rounds only.
-        case=ROOT/'success-failure-trade-review'/f"stock-{r['code']}-failure"/'index.html'
+        # Dedicated case pages correspond to specific dated rounds only.
+        case=ROOT/'success-failure-trade-review'/f"stock-{r['code']}-{'profit' if profit else 'failure'}"/'index.html'
         if case.exists() and r['end']<'2026-08-15':
             path=case.relative_to(ROOT).as_posix(); soup=BeautifulSoup(case.read_text(encoding='utf-8'),'html.parser')
             for p in soup.select('p, li'):
@@ -263,25 +267,30 @@ def build():
         seen=set(); r['quotes']=[q for q in quotes if not(q['text'] in seen or seen.add(q['text']))]
         candidates.append(r)
     ids=[r['id'] for r in candidates]
-    assert len(ids)==len(set(ids)), 'Duplicate loss episodes: '+str([r for r in candidates if ids.count(r['id'])>1])
-    annotations_path=OUT/'annotations.json'
+    assert len(ids)==len(set(ids)), 'Duplicate episodes: '+str([r for r in candidates if ids.count(r['id'])>1])
+    annotations_path=out/'annotations.json'
     annotations=json.loads(annotations_path.read_text(encoding='utf-8')) if annotations_path.exists() else {}
     for r in candidates:
         note=annotations.get(r['id'],{})
         r['assessment']=note.get('assessment','待归因')
-        r['summary']=note.get('summary','尚无足够的个股错误归因，保留已有记录供回看。')
-        r['errors']=note.get('errors',[])
-        for error in r['errors']:
+        r['summary']=note.get('summary','尚无足够的个股盈利归因，保留已有记录供回看。' if profit else '尚无足够的个股错误归因，保留已有记录供回看。')
+        r[labels]=note.get(labels,[])
+        if profit:
+            r['caveat']=note.get('caveat','')
+            r['assessmentEvidence']=note.get('assessmentEvidence','')
+            if r['assessmentEvidence']:
+                assert any(r['assessmentEvidence'] in q['text'] for q in r['quotes']), r['id']
+        for error in r[labels]:
             # Each label must have a literal, traceable quote, not a keyword guess.
             assert any(error['evidence'] in q['text'] for q in r['quotes']), (r['id'],error)
-    candidates.sort(key=lambda r:r['rate'])
-    OUT.mkdir(exist_ok=True)
-    payload=dict(updated='2026-11-04',threshold=THRESHOLD,records=candidates,
+    candidates.sort(key=lambda r:r['rate'], reverse=profit)
+    out.mkdir(exist_ok=True)
+    payload=dict(updated='2026-11-04',threshold=threshold,records=candidates,
         audit=dict(scannedPages=scan, uniqueTrades=len(trades),unknownCostSales=[
             {k:t[k] for k in ['date','code','name','source']} for t in unknown],
             monthlySource=monthly_path, noDataThrough='2026-11-04'))
-    (OUT/'data.json').write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-    print(f'{len(candidates)} loss records; {len(trades)} unique fills; {len(unknown)} unmatched historical sales')
+    (out/'data.json').write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    print(f'{len(candidates)} {outcome} records; {len(trades)} unique fills; {len(unknown)} unmatched historical sales')
     for r in candidates:
         print(r['id'],r['name'],round(r['rate'],3),r['pnl'],r['cost'],len(r['quotes']),r['basis'])
     return payload

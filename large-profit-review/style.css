@@ -1,0 +1,14 @@
+@import url('../large-loss-review/style.css');
+/* Match the loss archive; red denotes positive A-share returns. */
+.profit-rate{font-size:22px;font-weight:800;color:var(--red);font-variant-numeric:tabular-nums}
+.profit-rate small{display:block;font-size:12px;color:var(--muted);font-weight:400}
+.stock-rank .amount{color:var(--red)}
+.insight{background:#f0f7f4;border-left-color:#37745c}
+.insight .eyebrow{color:#245d46}
+.tag{background:#eff7f2;border-color:#cee1d5;color:#245d46}
+.rank:hover,.rank[aria-pressed=true]{background:#eff7f2}
+.track i{background:#37745c}
+.rank:nth-child(n+4) .track i{background:#6f9480}
+.evidence{border-left-color:#b9d4c4}
+.evidence strong{color:#245d46}
+@media(max-width:560px){.profit-rate{font-size:20px}}

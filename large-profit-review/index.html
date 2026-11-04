@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="从历史交割复盘筛选盈利超过2%的交易，逐笔关联反思，按有据可查的有效做法分类统计频次。">
+  <title>大利润个股总结 · 有效做法频次与反思档案</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳到主要内容</a>
+  <div class="shell">
+    <nav aria-label="复盘导航"><a href="../index.html">← 复盘总览</a><a href="../large-loss-review/">大亏损个股总结</a><a href="../success-failure-trade-review/">成功与失败案例</a><a href="#ranking">有效做法排行榜</a><a href="#records">个股与反思</a></nav>
+    <main id="main">
+      <header class="hero">
+        <div><span class="eyebrow">PROFIT REVIEW / 盈利复盘</span><h1>大利润个股总结</h1><p class="intro">把每一次盈利，放回当时的判断。<br>找到做对的事，也保留赚钱时的不足。</p><p class="scope">筛选：单轮收益率 <strong>高于 +2%</strong> · 同一轮跨周、跨月只算一次</p></div>
+        <div class="hero-note"><span>统计边界</span><p>默认看已平仓个股。ETF、历史持仓浮盈可单独查看；盈利但不可复制与待归因样本仍保留在明细中。</p><a href="#method">查看计算与归类口径 ↗</a></div>
+      </header>
+      <div id="load-state" role="status">正在读取盈利档案…</div>
+      <div id="content" hidden>
+        <section class="controls" aria-label="筛选盈利记录">
+          <label>标的范围<select id="instrument"><option value="stock">个股</option><option value="ETF">ETF</option><option value="all">个股 + ETF</option></select></label>
+          <label>盈亏状态<select id="status"><option value="closed">已平仓</option><option value="floating">历史持仓浮盈</option><option value="all">已平仓 + 浮盈</option></select></label>
+          <label>结束 / 快照月份<select id="month"><option value="all">全部月份</option></select></label>
+          <label class="search-label">查找个股<input id="search" type="search" placeholder="股票名称或代码" autocomplete="off"></label>
+          <button id="reset" type="button">重置</button>
+        </section>
+        <section id="metrics" class="metrics" aria-label="筛选结果概览" aria-live="polite"></section>
+        <section class="insight" aria-labelledby="insight-title"><span class="eyebrow">反复出现的有效做法</span><h2 id="insight-title"></h2><p id="insight-copy"></p></section>
+        <div class="ranking-layout">
+          <section class="panel" id="ranking"><div class="section-head"><div><span class="eyebrow">01 / REPEATABLE ACTIONS</span><h2>有效做法频次排行榜</h2></div><span class="pill">按交易轮次计数</span></div><p class="subtle">一轮可有多类有效做法，每类只计一次。占比以当前范围全部盈利样本为分母；多标签占比不相加。点击分类查看对应个股。这里统计的是盈利样本中的出现频次，不是策略胜率。</p><div id="factor-ranks"></div></section>
+          <section class="panel" aria-labelledby="repeat-title"><span class="eyebrow">02 / REPEATED PROFITS</span><h2 id="repeat-title">个股重复盈利榜</h2><p class="subtle">先按盈利轮次，再按盈利金额排序。仅合计入选盈利轮次，不代表该股历史净收益。</p><div id="stock-ranks"></div></section>
+        </div>
+        <section class="panel" id="records"><div class="section-head"><div><span class="eyebrow">03 / EVIDENCE ARCHIVE</span><h2>盈利个股与对应反思</h2></div><span id="record-count" class="pill" role="status"></span></div>
+          <div class="detail-controls"><label>反思 / 有效做法分类<select id="category"><option value="all">全部记录</option><option value="nonrepeat">盈利但不可复制</option><option value="pending">待归因</option></select></label><label>明细排序<select id="sort"><option value="rate">收益率由大到小</option><option value="amount">盈利金额由大到小</option><option value="recent">最近发生优先</option></select></label><button id="clear-category" type="button" hidden>清除分类筛选</button></div>
+          <p class="subtle">摘要与分类为依据既有复盘的整理判断，原站分析与本人反思按来源区分。展开每条记录可查看归类依据、关联原文及成交来源。</p><div id="record-list"></div>
+        </section>
+        <section class="panel" id="method"><span class="eyebrow">04 / COUNTING RULES</span><h2>怎样算，哪些不算成功经验</h2>
+          <div class="method-grid">
+            <div><h3>按交易轮次，不按盈利日</h3><p>收益率 = 该轮盈亏 ÷ 对应买入成本。严格高于 +2% 入选，刚好 +2% 不入选。同票重新开仓另算一轮；分批成交、跨周月重复记载不重复计数。</p></div>
+            <div><h3>金额口径逐笔标注</h3><p>优先使用交割发生金额，包含费用；费用缺失时统一按整轮费用前口径计算。分批和做T轮次以全部买入金额为分母，不是最大占用资金回报率。各类金额不能当作账户总收益，收益率不能直接相加。</p></div>
+            <div><h3>盈利结果与操作质量分开</h3><p>每个有效做法标签都有对应原文。本人否定模式或明确称为运气盈利的样本，不计成功标签；其余交易只计有依据的局部做法，不代表整轮操作完美。后续明确反思优先，待归因不强行解释。</p></div>
+            <div><h3>持仓浮盈单独看</h3><p>浮盈是注明日期的历史快照，不代表现在持仓。已见后续完整平仓结果时优先使用闭环，避免重复计算途中浮盈。当前档案没有满足条件且未见后续闭环的浮盈快照，切换该范围会显示空结果。</p></div>
+          </div>
+          <p id="coverage" class="coverage"></p><details class="audit"><summary>查看已扫描档案与成本缺口</summary><div id="audit-details"></div></details>
+        </section>
+      </div>
+      <noscript><p>此模块需要启用 JavaScript 展示筛选与排行榜。可直接查看<a href="./data.json">完整数据</a>。</p></noscript>
+    </main><footer>交易复盘档案 · <span id="updated">2026-11-04</span> 整理更新</footer>
+  </div>
+</body>
+</html>
