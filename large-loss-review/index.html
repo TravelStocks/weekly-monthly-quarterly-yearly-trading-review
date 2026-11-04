@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="从历史交割复盘筛选亏损超过2%的交易，逐笔关联反思，按有据可查的错误分类统计频次。">
+  <title>大亏损个股总结 · 错误频次与反思档案</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳到主要内容</a>
+  <div class="shell">
+    <nav aria-label="复盘导航"><a href="../index.html">← 复盘总览</a><a href="../success-failure-trade-review/">成功与失败案例</a><a href="#ranking">错误排行榜</a><a href="#records">个股与反思</a></nav>
+    <main id="main">
+      <header class="hero">
+        <div><span class="eyebrow">LOSS REVIEW / 亏损复盘</span><h1>大亏损个股总结</h1><p class="intro">把每一次亏损，放回当时的判断。<br>先看反复犯的错，再逐笔回看反思。</p><p class="scope">筛选：单轮收益率 <strong>低于 −2%</strong> · 同一轮跨周、跨月只算一次</p></div>
+        <div class="hero-note"><span>统计边界</span><p>默认看已平仓个股。ETF、历史持仓浮亏可单独查看；正常试错与待归因样本仍保留在明细中。</p><a href="#method">查看计算与归类口径 ↗</a></div>
+      </header>
+      <div id="load-state" role="status">正在读取亏损档案…</div>
+      <div id="content" hidden>
+        <section class="controls" aria-label="筛选亏损记录">
+          <label>标的范围<select id="instrument"><option value="stock">个股</option><option value="ETF">ETF</option><option value="all">个股 + ETF</option></select></label>
+          <label>盈亏状态<select id="status"><option value="closed">已平仓</option><option value="floating">历史持仓浮亏</option><option value="all">已平仓 + 浮亏</option></select></label>
+          <label>结束 / 快照月份<select id="month"><option value="all">全部月份</option></select></label>
+          <label class="search-label">查找个股<input id="search" type="search" placeholder="股票名称或代码" autocomplete="off"></label>
+          <button id="reset" type="button">重置</button>
+        </section>
+        <section id="metrics" class="metrics" aria-label="筛选结果概览" aria-live="polite"></section>
+        <section class="insight" aria-labelledby="insight-title"><span class="eyebrow">反复出现的问题</span><h2 id="insight-title"></h2><p id="insight-copy"></p></section>
+        <div class="ranking-layout">
+          <section class="panel" id="ranking"><div class="section-head"><div><span class="eyebrow">01 / ERROR FREQUENCY</span><h2>错误频次排行榜</h2></div><span class="pill">按交易轮次计数</span></div><p class="subtle">一轮可有多类错误，每类只计一次。占比以当前范围全部亏损样本为分母；多标签占比不相加。点击分类查看对应个股。</p><div id="error-ranks"></div></section>
+          <section class="panel" aria-labelledby="repeat-title"><span class="eyebrow">02 / REPEATED LOSSES</span><h2 id="repeat-title">个股重复亏损榜</h2><p class="subtle">先按亏损轮次，再按亏损金额排序。仅合计入选亏损轮次，不代表该股历史净收益。</p><div id="stock-ranks"></div></section>
+        </div>
+        <section class="panel" id="records"><div class="section-head"><div><span class="eyebrow">03 / EVIDENCE ARCHIVE</span><h2>亏损个股与对应反思</h2></div><span id="record-count" class="pill" role="status"></span></div>
+          <div class="detail-controls"><label>反思 / 错误分类<select id="category"><option value="all">全部记录</option><option value="normal">正常试错</option><option value="pending">待归因</option></select></label><label>明细排序<select id="sort"><option value="rate">亏损率由大到小</option><option value="amount">亏损金额由大到小</option><option value="recent">最近发生优先</option></select></label><button id="clear-category" type="button" hidden>清除分类筛选</button></div>
+          <p class="subtle">摘要与分类为依据既有复盘的整理判断。展开每条记录可查看归类依据、关联原文及成交来源。</p><div id="record-list"></div>
+        </section>
+        <section class="panel" id="method"><span class="eyebrow">04 / COUNTING RULES</span><h2>怎样算，哪些不计错</h2>
+          <div class="method-grid">
+            <div><h3>按交易轮次，不按亏损日</h3><p>收益率 = 该轮盈亏 ÷ 对应买入成本。严格低于 −2% 入选，刚好 −2% 不入选。同票重新开仓另算一轮；分批成交、跨周月重复记载不重复计数。</p></div>
+            <div><h3>金额口径逐笔标注</h3><p>优先使用交割发生金额，包含费用；费用缺失时统一按整轮费用前口径计算。星光股份使用后补交割的含费结果。各类金额不能当作账户总回撤，收益率不能直接相加。</p></div>
+            <div><h3>亏损与错误分开</h3><p>每个错误标签都有对应原文。正常试错不计错，缺少明确归因不推测。已有初步复盘与本人二次反思同时保留，归类优先采用后续明确结论。</p></div>
+            <div><h3>持仓浮亏单独看</h3><p>浮亏是注明日期的历史快照，不代表现在持仓。已有完整亏损闭环时使用闭环结果，避免再把途中浮亏算一次。襄阳采用10/29已知新仓，不使用10/30假设不变仓的情景。</p></div>
+          </div>
+          <p id="coverage" class="coverage"></p><details class="audit"><summary>查看已扫描档案与成本缺口</summary><div id="audit-details"></div></details>
+        </section>
+      </div>
+      <noscript><p>此模块需要启用 JavaScript 展示筛选与排行榜。可直接查看<a href="./data.json">完整数据</a>。</p></noscript>
+    </main><footer>交易复盘档案 · <span id="updated">2026-11-04</span> 整理更新</footer>
+  </div>
+</body>
+</html>

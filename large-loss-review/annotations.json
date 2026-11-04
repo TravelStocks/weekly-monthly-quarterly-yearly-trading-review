@@ -1,0 +1,574 @@
+{
+  "001258-2026-07-29-closed": {
+    "assessment": "已有反思归类",
+    "summary": "主升三阶段无先手，未等回封便连续买入；越跌越补，把熟悉的旧龙头当成确定性。",
+    "errors": [
+      {
+        "category": "cycle",
+        "evidence": "7/28 是主升3分歧日"
+      },
+      {
+        "category": "entry",
+        "evidence": "应该等回封确认"
+      },
+      {
+        "category": "add",
+        "evidence": "一路越跌越买"
+      }
+    ]
+  },
+  "600721-2026-08-31-closed": {
+    "assessment": "已有反思归类",
+    "summary": "二波买点已错过仍参与，次日继续加仓摊低成本；跨两周只计一轮。",
+    "errors": [
+      {
+        "category": "entry",
+        "evidence": "错过二波严格买点"
+      },
+      {
+        "category": "add",
+        "evidence": "买点错与摊低成本是一条错误链"
+      }
+    ]
+  },
+  "600110-2026-06-24-closed": {
+    "assessment": "已有反思归类",
+    "summary": "旧核心不能继续证明强度，未及时降低预期并退出，跨周拖成大额止损。",
+    "errors": [
+      {
+        "category": "exit",
+        "evidence": "旧核心失效后没有及时降级"
+      }
+    ]
+  },
+  "600719-2026-05-14-closed": {
+    "assessment": "已有反思归类",
+    "summary": "月度复盘将其归入非第一、后排替代交易：题材热度不能替代个股地位。",
+    "errors": [
+      {
+        "category": "leader",
+        "evidence": "题材热不等于个股有地位，非第一没有核心预期"
+      }
+    ]
+  },
+  "600198-2026-05-14-closed": {
+    "assessment": "已有反思归类",
+    "summary": "月度复盘将其归入非第一、后排替代交易：题材热度不能替代个股地位。",
+    "errors": [
+      {
+        "category": "leader",
+        "evidence": "题材热不等于个股有地位，非第一没有核心预期"
+      }
+    ]
+  },
+  "600726-2026-05-11-closed": {
+    "assessment": "已有反思归类",
+    "summary": "月度复盘将其归入非第一、后排替代交易：题材热度不能替代个股地位。",
+    "errors": [
+      {
+        "category": "leader",
+        "evidence": "题材热不等于个股有地位，非第一没有核心预期"
+      }
+    ]
+  },
+  "600396-2026-05-15-closed": {
+    "assessment": "已有反思归类",
+    "summary": "月度复盘将其归入非第一、后排替代交易：题材热度不能替代个股地位。",
+    "errors": [
+      {
+        "category": "leader",
+        "evidence": "题材热不等于个股有地位，非第一没有核心预期"
+      }
+    ]
+  },
+  "600396-2026-05-18-closed": {
+    "assessment": "已有反思归类",
+    "summary": "止损后立刻买回同等仓位，继续做跟风标的；与5月15日结束的前一轮分别计算。",
+    "errors": [
+      {
+        "category": "emotion",
+        "evidence": "止损后立刻打回同等仓位"
+      },
+      {
+        "category": "leader",
+        "evidence": "选择跟风标的华电辽能"
+      }
+    ]
+  },
+  "600487-2026-06-29-closed": {
+    "assessment": "已有反思归类",
+    "summary": "科技趋势尾段继续参与个股，承接失效后未及时处理。",
+    "errors": [
+      {
+        "category": "cycle",
+        "evidence": "科技趋势尾段还去做个股"
+      },
+      {
+        "category": "exit",
+        "evidence": "6/26 失效后不能继续拖"
+      }
+    ]
+  },
+  "600226-2026-06-29-closed": {
+    "assessment": "已有反思归类",
+    "summary": "科技趋势尾段仍做个股；低价弹性票不能与趋势核心使用同一持有预期。",
+    "errors": [
+      {
+        "category": "cycle",
+        "evidence": "科技趋势尾段还去做个股"
+      }
+    ]
+  },
+  "002491-2026-08-14-closed": {
+    "assessment": "已有反思归类",
+    "summary": "老龙反抽买点偏急，又赋予它唯一核心的预期；次日止损是正确动作。",
+    "errors": [
+      {
+        "category": "entry",
+        "evidence": "买点偏急"
+      },
+      {
+        "category": "leader",
+        "evidence": "它不是当日唯一核心"
+      }
+    ]
+  },
+  "600664-2026-09-28-closed": {
+    "assessment": "已有反思归类",
+    "summary": "9月这轮深水反核既不熟悉，也不匹配市场节点；没有继续补仓值得保留。",
+    "errors": [
+      {
+        "category": "mode",
+        "evidence": "临盘选了不熟悉战法，属于随手试错"
+      },
+      {
+        "category": "cycle",
+        "evidence": "深水反核的模式和节点均不匹配"
+      }
+    ]
+  },
+  "000539-2026-06-03-closed": {
+    "assessment": "已有反思归类",
+    "summary": "中高位爆量弱转强缺乏唯一性，已经走弱却因承接继续加仓。",
+    "errors": [
+      {
+        "category": "leader",
+        "evidence": "它不具备唯一性"
+      },
+      {
+        "category": "entry",
+        "evidence": "爆量弱转强的左侧买点"
+      },
+      {
+        "category": "add",
+        "evidence": "粤电力A已经走弱，却因为看到承接继续加仓"
+      }
+    ]
+  },
+  "002238-2026-09-28-closed": {
+    "assessment": "正常试错",
+    "summary": "保留原复盘“有升位理由的试错”评价，亏损本身不能推出犯错；预案执行仍需核验。",
+    "errors": []
+  },
+  "002879-2026-07-28-closed": {
+    "assessment": "已有反思归类",
+    "summary": "试错退出及时；已有初步复盘提示买前未充分确认题材第一性。",
+    "errors": [
+      {
+        "category": "leader",
+        "evidence": "买前需要更明确它是否具备题材第一性"
+      }
+    ]
+  },
+  "600551-2026-09-03-closed": {
+    "assessment": "已有反思归类",
+    "summary": "传媒身位选择有逻辑，问题在未按既定分时触发入场；不再沿用早期选股存疑的归因。",
+    "errors": [
+      {
+        "category": "entry",
+        "evidence": "方向有逻辑，分时触发错误"
+      }
+    ]
+  },
+  "600313-2026-08-20-closed": {
+    "assessment": "正常试错",
+    "summary": "本人认可参与和退出处理，保留为模式内正常亏损，不计入错误频次。",
+    "errors": []
+  },
+  "002194-2026-04-24-closed": {
+    "assessment": "已有反思归类",
+    "summary": "弃强做弱，参与非核心、缺乏预期的跟风标的。",
+    "errors": [
+      {
+        "category": "leader",
+        "evidence": "非核心、无预期的杂毛标的（如武汉凡谷）"
+      }
+    ]
+  },
+  "000892-2026-09-04-closed": {
+    "assessment": "已有反思归类",
+    "summary": "同身位竞争尚未胜出就参与，单票一字强或换手健康不能替代唯一性确认。",
+    "errors": [
+      {
+        "category": "leader",
+        "evidence": "同身位PK未胜出便下注"
+      },
+      {
+        "category": "entry",
+        "evidence": "同身位唯一性尚未胜出"
+      }
+    ]
+  },
+  "600667-2026-07-02-closed": {
+    "assessment": "已有反思归类",
+    "summary": "科技趋势里的单票试错，没有先确认第一性和唯一性；退出及时值得保留。",
+    "errors": [
+      {
+        "category": "leader",
+        "evidence": "它不是当时最明确的唯一核心"
+      }
+    ]
+  },
+  "002076-2026-10-23-closed": {
+    "assessment": "已有反思归类",
+    "summary": "切换判断有误，环境转差后仍等待；10月后续交割已补齐费用，采用含费亏损94.49元。",
+    "errors": [
+      {
+        "category": "cycle",
+        "evidence": "切换判断不对"
+      },
+      {
+        "category": "exit",
+        "evidence": "形势转差后仍抱持等待"
+      }
+    ]
+  },
+  "600863-2026-05-29-closed": {
+    "assessment": "已有反思归类",
+    "summary": "分歧中未等最强确认就买入非核心，未证明强度又继续补仓。",
+    "errors": [
+      {
+        "category": "leader",
+        "evidence": "把非最强票越跌越补"
+      },
+      {
+        "category": "entry",
+        "evidence": "分歧里过早出手"
+      },
+      {
+        "category": "add",
+        "evidence": "早盘买入后没有证明强度，午后继续补仓"
+      }
+    ]
+  },
+  "600851-2026-06-25-closed": {
+    "assessment": "已有反思归类",
+    "summary": "轮动切仓的新方向强度不足，未充分区分轮动试错与确定性主线。",
+    "errors": [
+      {
+        "category": "cycle",
+        "evidence": "切仓后的新方向不够硬"
+      },
+      {
+        "category": "leader",
+        "evidence": "选股强度和题材地位不够硬"
+      }
+    ]
+  },
+  "601086-2026-09-15-closed": {
+    "assessment": "已有反思归类",
+    "summary": "旧龙尾端仍参与，个人监管缓冲空间不足；次日保护条件单也未落实。",
+    "errors": [
+      {
+        "category": "cycle",
+        "evidence": "旧龙尾端，监管空间不足仍参与"
+      },
+      {
+        "category": "execution",
+        "evidence": "国芳集团未设跌停/动态条件单"
+      }
+    ]
+  },
+  "002403-2026-09-09-closed": {
+    "assessment": "已有反思归类",
+    "summary": "农业补涨阶段改做弱机器人切换，仓位过重；弱走后退出和条件单均未及时执行。",
+    "errors": [
+      {
+        "category": "cycle",
+        "evidence": "补涨阶段做弱切换"
+      },
+      {
+        "category": "size",
+        "evidence": "仓位过重"
+      },
+      {
+        "category": "exit",
+        "evidence": "未及时处理弱走"
+      },
+      {
+        "category": "execution",
+        "evidence": "未执行条件单"
+      }
+    ]
+  },
+  "002081-2026-04-24-closed": {
+    "assessment": "已有反思归类",
+    "summary": "原反思认可打板逻辑，但记录了盘面恐慌导致的提前卖出；同票其他盈利轮次不相抵。",
+    "errors": [
+      {
+        "category": "emotion",
+        "evidence": "金螳螂因盘面恐慌提前跳空卖出"
+      }
+    ]
+  },
+  "600255-2026-06-08-closed": {
+    "assessment": "已有反思归类",
+    "summary": "未确认对应题材第一性和唯一性便参与；6月5日浮亏与6月8日平仓归为同一轮。",
+    "errors": [
+      {
+        "category": "leader",
+        "evidence": "它不是第一性，也不是唯一性"
+      }
+    ]
+  },
+  "000530-2026-10-26-closed": {
+    "assessment": "已有反思归类",
+    "summary": "按本人后续月度归因，抱团龙识别与时机分开评价，主要错在参与时机。",
+    "errors": [
+      {
+        "category": "entry",
+        "evidence": "这两只主要错在时机"
+      }
+    ]
+  },
+  "000936-2026-08-17-closed": {
+    "assessment": "已有反思归类",
+    "summary": "在非科技主导周期盲目切向科技；8月14日买入与17日卖出计一轮。",
+    "errors": [
+      {
+        "category": "cycle",
+        "evidence": "非科技主导周期盲目切换"
+      }
+    ]
+  },
+  "600127-2026-08-21-closed": {
+    "assessment": "已有反思归类",
+    "summary": "农业方向得到本人认可，需要改的是下冲时兑现和保护条件单。",
+    "errors": [
+      {
+        "category": "execution",
+        "evidence": "主要改进是下冲处理和条件单"
+      }
+    ]
+  },
+  "600500-2026-06-15-closed": {
+    "assessment": "已有反思归类",
+    "summary": "条件单未在开盘前复核，造成非主动计划成交；平仓本身属于遗留仓位处理。",
+    "errors": [
+      {
+        "category": "execution",
+        "evidence": "条件单没有开盘前复核，导致非主动计划成交"
+      }
+    ]
+  },
+  "002579-2026-06-04-closed": {
+    "assessment": "已有反思归类",
+    "summary": "混合概念第二层机会，既不是趋势第一，也不是情绪唯一，却给予了核心预期。",
+    "errors": [
+      {
+        "category": "leader",
+        "evidence": "它在趋势里不是第一，也不是情绪核心"
+      }
+    ]
+  },
+  "002242-2026-10-19-closed": {
+    "assessment": "已有反思归类",
+    "summary": "原复盘认为未理解轮动抱团的延续与修复；止损与重新参与是两次决策，不将后续踏空记为实际亏损。",
+    "errors": [
+      {
+        "category": "cycle",
+        "evidence": "没有理解四板后高位放量抗跌、题材主升转轮动的抱团延续"
+      }
+    ]
+  },
+  "003029-2026-10-21-closed": {
+    "assessment": "已有反思归类",
+    "summary": "属于龙头打法，唯一性并非主要问题；后排助攻不足时未利用已有溢价退出。",
+    "errors": [
+      {
+        "category": "exit",
+        "evidence": "认为应当借这一溢价退出，而不是继续等题材延续"
+      }
+    ]
+  },
+  "002584-2026-09-21-closed": {
+    "assessment": "已有反思归类",
+    "summary": "非唯一科技高标追高，跌后为降低成本追加；跨周只计一轮。",
+    "errors": [
+      {
+        "category": "leader",
+        "evidence": "非唯一科技"
+      },
+      {
+        "category": "add",
+        "evidence": "想降低成本而追加"
+      }
+    ]
+  },
+  "603687-2026-04-20-closed": {
+    "assessment": "已有反思归类",
+    "summary": "滞涨、长十字星与板块强个股弱出现后，未及时保护已有利润。",
+    "errors": [
+      {
+        "category": "exit",
+        "evidence": "避免拖至深跌（-8%）割肉"
+      }
+    ]
+  },
+  "603178-2026-04-21-closed": {
+    "assessment": "已有反思归类",
+    "summary": "反思批评入场时做名字跟风，也明确认可随后离场的理性；仅将入场定位列为问题。",
+    "errors": [
+      {
+        "category": "leader",
+        "evidence": "名字跟风（如圣龙股份）"
+      }
+    ]
+  },
+  "600378-2026-08-31-closed": {
+    "assessment": "已有反思归类",
+    "summary": "采用本人后续澄清：科技细分题材切换与当时阶段不匹配，不归为二波迟买。",
+    "errors": [
+      {
+        "category": "cycle",
+        "evidence": "科技细分题材切换错误"
+      }
+    ]
+  },
+  "603773-2026-04-22-closed": {
+    "assessment": "已有反思归类",
+    "summary": "把趋势票、断板反包当成连板接力来做，模式混用，买点也错位。",
+    "errors": [
+      {
+        "category": "mode",
+        "evidence": "沃格光电的操作属于核心模式错误"
+      },
+      {
+        "category": "entry",
+        "evidence": "上板反而是加速，这是卖点不是买点"
+      }
+    ]
+  },
+  "601700-2026-08-10-closed": {
+    "assessment": "已有反思归类",
+    "summary": "旧高标缺题材支撑，仍给了过大仓位；高度本身不能作为抱团确定性。",
+    "errors": [
+      {
+        "category": "cycle",
+        "evidence": "无题材支撑的旧高标抱团"
+      },
+      {
+        "category": "size",
+        "evidence": "错误之一是仓位过大"
+      }
+    ]
+  },
+  "600403-2026-06-09-closed": {
+    "assessment": "已有反思归类",
+    "summary": "龙头后段继续博弈，第二个爆量烂板还参与，未按弱板纪律保护利润。",
+    "errors": [
+      {
+        "category": "cycle",
+        "evidence": "不要吃满龙头最后一个板"
+      },
+      {
+        "category": "entry",
+        "evidence": "第二个爆量大烂板不再硬进"
+      },
+      {
+        "category": "exit",
+        "evidence": "说明利润保护失效"
+      }
+    ]
+  },
+  "002085-2026-10-21-closed": {
+    "assessment": "已有反思归类",
+    "summary": "高估新题材切换的持续性，并自述误操作；仅将有依据的切换判断和执行问题归类。",
+    "errors": [
+      {
+        "category": "cycle",
+        "evidence": "将低空经济切换的持续性预期抬得偏高"
+      },
+      {
+        "category": "execution",
+        "evidence": "并提到误操作买入"
+      }
+    ]
+  },
+  "002272-2026-05-21-closed": {
+    "assessment": "正常试错",
+    "summary": "原反思认可小仓进出和买卖点。虽有委托失败记录，尚不能确认与这笔亏损的因果，不强行计错。",
+    "errors": []
+  },
+  "159050-2026-07-07-closed": {
+    "assessment": "已有反思归类",
+    "summary": "高潮次日分歧入场偏早，带着回本和摊成本倾向补仓。",
+    "errors": [
+      {
+        "category": "entry",
+        "evidence": "高潮次日分歧还进早了"
+      },
+      {
+        "category": "add",
+        "evidence": "进早并补仓"
+      },
+      {
+        "category": "emotion",
+        "evidence": "心理上有着急回本和摊成本倾向"
+      }
+    ]
+  },
+  "159516-2026-07-13-closed": {
+    "assessment": "已有反思归类",
+    "summary": "资金被其他题材虹吸、承接失效后仍继续低吸摊平。",
+    "errors": [
+      {
+        "category": "add",
+        "evidence": "承接失效仍继续加仓"
+      },
+      {
+        "category": "exit",
+        "evidence": "错误不在第一次低吸，而在 -3% 后承接失效"
+      }
+    ]
+  },
+  "588890-2026-07-02-closed": {
+    "assessment": "已有反思归类",
+    "summary": "明知三高后的分歧，仍继续加仓，未将判断转为减仓动作。",
+    "errors": [
+      {
+        "category": "add",
+        "evidence": "三高后继续加仓"
+      },
+      {
+        "category": "exit",
+        "evidence": "没有把判断转成减仓动作"
+      }
+    ]
+  },
+  "588710-2026-07-02-closed": {
+    "assessment": "已有反思归类",
+    "summary": "入场偏晚且未等主线延续确认。",
+    "errors": [
+      {
+        "category": "entry",
+        "evidence": "进场偏晚且没有等到主线延续确认"
+      }
+    ]
+  },
+  "159506-2026-07-09-closed": {
+    "assessment": "正常试错",
+    "summary": "原复盘认可小仓试错与风险控制，不因较高百分比亏损直接判错。",
+    "errors": []
+  }
+}
