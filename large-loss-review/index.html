@@ -6,9 +6,9 @@
   <meta name="description" content="个股视角筛选单轮亏损超过2%的交易，日期视角用日历标记账户日收益低于-2%的日期，关联买卖个股、错误及反思。">
   <title>大亏损总结 · 个股与日期双视角</title>
   <link rel="stylesheet" href="./style.css">
-  <link rel="stylesheet" href="./calendar.css">
+  <link rel="stylesheet" href="./calendar.css?v=20261105-month-errors">
   <script src="./app.js" defer></script>
-  <script src="./calendar.js?v=20261105-estimates" defer></script>
+  <script src="./calendar.js?v=20261105-month-errors" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">跳到主要内容</a>
@@ -64,6 +64,12 @@
               <div class="calendar-weekdays" aria-hidden="true"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div>
               <div id="calendar-grid" class="calendar-grid" role="group" aria-label="当月日期"></div>
               <p id="calendar-month-note" class="subtle calendar-month-note" role="status"></p>
+              <section class="calendar-month-errors" aria-labelledby="calendar-month-errors-title">
+                <h3 id="calendar-month-errors-title" class="calendar-list-heading">本月错误总结</h3>
+                <p id="calendar-month-errors-note" class="subtle" role="status"></p>
+                <p class="subtle">按本月大亏日中的出现天数排序，同一天同一类只计1天。持仓问题跨日延续会计多天，不代表独立犯错次数。点击日期回看对应反思。</p>
+                <div id="calendar-month-errors"></div>
+              </section>
               <h3 class="calendar-list-heading">本月大亏日</h3><div id="calendar-loss-list" class="calendar-loss-list"></div>
             </section>
             <section id="calendar-day-detail" class="panel calendar-detail" tabindex="-1" aria-live="polite" aria-label="选中日期的操作与反思"></section>
