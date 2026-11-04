@@ -21,7 +21,7 @@
     el('view-stock').setAttribute('aria-pressed',String(!dateView));
     el('view-date').setAttribute('aria-pressed',String(dateView));
     heroScope.innerHTML=dateView?'筛选：账户当日收益率 <strong>低于 −2%</strong> · 点击日历回看当天操作与反思':stockScope;
-    heroNote.textContent=dateView?'日收益记录与交割按日期对应。默认不含估算；当天买卖、此前持仓风险和未确认归因分别展示。':stockNote;
+    heroNote.textContent=dateView?'日收益记录与交割按日期对应，默认包含估算并单独标记；当天买卖、此前持仓风险和未确认归因分别展示。':stockNote;
   }
   function selectDate(date, focus=false) {
     if(!dates.has(date))return;
@@ -53,7 +53,7 @@
   function render() {
     const active=archive.days.filter(activeIncome), flagged=archive.days.filter(isLoss);
     const missing=archive.days.filter(d=>d.tradeCount && !d.income).length;
-    const metrics=[['已收录日收益',active.length,el('calendar-estimates').checked?'含估算记录 · 单独标记':'默认已有账户记录 · 不含估算'],['账户大亏日',flagged.length,'日收益率严格低于 −2%'],['已有错误归类',flagged.filter(d=>d.errors.length).length,'按日关联 · 不等于独立犯错次数'],['缺日收益的成交日',missing,'已列买卖 · 不判定是否大亏']];
+    const metrics=[['已收录日收益',active.length,el('calendar-estimates').checked?'含估算记录 · 单独标记':'仅已有账户记录 · 不含估算'],['账户大亏日',flagged.length,'日收益率严格低于 −2%'],['已有错误归类',flagged.filter(d=>d.errors.length).length,'按日关联 · 不等于独立犯错次数'],['缺日收益的成交日',missing,'已列买卖 · 不判定是否大亏']];
     el('calendar-metrics').innerHTML=metrics.map(([label,value,note])=>`<article class="metric"><span>${label}</span><strong>${value}</strong><small>${note}</small></article>`).join('');
     el('calendar-loss-picker').innerHTML='<option value="">选择大亏日期</option>'+flagged.map(d=>`<option value="${d.date}">${d.date} · ${rateText(d.income.rate)}${d.income.kind==='estimated'?'（估）':''}</option>`).join('');
     el('calendar-loss-picker').value=flagged.some(d=>d.date===selected)?selected:'';
@@ -94,7 +94,7 @@
       months=[];let current=archive.start.slice(0,7),end=archive.end.slice(0,7);
       while(current<=end){months.push(current);let [y,m]=current.split('-').map(Number);m++;if(m===13){m=1;y++;}current=y+'-'+String(m).padStart(2,'0');}
       el('calendar-month').innerHTML=months.map(m=>`<option value="${m}">${m.replace('-','年')}月</option>`).join('');
-      selected=archive.days.filter(d=>d.income?.kind==='recorded'&&d.income.rate<archive.threshold).at(-1)?.date||archive.days.at(-1).date;
+      selected=archive.days.filter(isLoss).at(-1)?.date||archive.days.at(-1).date;
       month=selected.slice(0,7);
       el('calendar-month').addEventListener('change',e=>changeMonth(e.target.value));
       el('calendar-prev').addEventListener('click',()=>changeMonth(months[months.indexOf(month)-1]));
