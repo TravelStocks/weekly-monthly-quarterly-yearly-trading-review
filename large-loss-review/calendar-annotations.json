@@ -1,0 +1,1109 @@
+{
+  "2026-04-24": {
+    "summary": "当天处理武汉凡谷、顺灏股份等，并买入苏州高新、神剑股份。已有关联反思涉及非核心选择和金螳螂的恐慌卖出；周级反思未精确定位全部动作，不把所有当日交易都判错。",
+    "assessment": "已有反思归类",
+    "errors": [
+      {
+        "category": "leader",
+        "scope": "本轮回看",
+        "stocks": [
+          {
+            "code": "002194",
+            "name": "武汉凡谷"
+          }
+        ],
+        "evidence": "非核心、无预期的杂毛标的（如武汉凡谷）",
+        "source": "2026-04-20_2026-04-24/index.html#reflection-section"
+      },
+      {
+        "category": "emotion",
+        "scope": "本轮回看",
+        "stocks": [
+          {
+            "code": "002081",
+            "name": "金螳螂"
+          }
+        ],
+        "evidence": "金螳螂因盘面恐慌提前跳空卖出",
+        "source": "2026-04-20_2026-04-24/index.html#reflection-section"
+      }
+    ]
+  },
+  "2026-05-08": {
+    "summary": "当天卖宝光股份、买华电能源和通鼎互联。原日记另提业绩风险，但缺少完整当日损益归因；这里只列华电能源这轮后续反思，不把通鼎互联的盈利交易判错。",
+    "assessment": "已有反思归类",
+    "errors": [
+      {
+        "category": "leader",
+        "scope": "本轮回看",
+        "stocks": [
+          {
+            "code": "600726",
+            "name": "华电能源"
+          }
+        ],
+        "evidence": "题材热不等于个股有地位，非第一没有核心预期",
+        "source": "monthly-quarterly-trading-review/2026-05/index.html#verdict"
+      }
+    ]
+  },
+  "2026-05-14": {
+    "summary": "卖出大连热电、大唐电信，买入华电辽能和大唐发电。既有复盘把多笔问题归于题材地位与核心识别；不能用整轮亏损金额拆分当天账户亏损。",
+    "assessment": "已有反思归类",
+    "errors": [
+      {
+        "category": "leader",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "600719",
+            "name": "大连热电"
+          }
+        ],
+        "evidence": "题材热不等于个股有地位，非第一没有核心预期",
+        "source": "monthly-quarterly-trading-review/2026-05/index.html#verdict"
+      },
+      {
+        "category": "leader",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "600198",
+            "name": "大唐电信"
+          }
+        ],
+        "evidence": "题材热不等于个股有地位，非第一没有核心预期",
+        "source": "monthly-quarterly-trading-review/2026-05/index.html#verdict"
+      },
+      {
+        "category": "leader",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "600396",
+            "name": "华电辽能"
+          }
+        ],
+        "evidence": "题材热不等于个股有地位，非第一没有核心预期",
+        "source": "monthly-quarterly-trading-review/2026-05/index.html#verdict"
+      }
+    ]
+  },
+  "2026-05-15": {
+    "summary": "华电辽能止损后又买回同等仓位。反思中的问题是情绪化回补及跟风标的选择，早盘止损动作与后续回补分开评价。",
+    "assessment": "已有反思归类",
+    "errors": [
+      {
+        "category": "emotion",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "600396",
+            "name": "华电辽能"
+          }
+        ],
+        "evidence": "止损后立刻打回同等仓位",
+        "source": "2026-05-08_2026-05-16/index.html"
+      },
+      {
+        "category": "leader",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "600396",
+            "name": "华电辽能"
+          }
+        ],
+        "evidence": "选择跟风标的华电辽能",
+        "source": "2026-05-15_2026-05-22/index.html#reflection2"
+      }
+    ]
+  },
+  "2026-05-18": {
+    "summary": "处理华电辽能和ST万邦旧仓，买滨化股份、大唐发电。原文肯定风险信号出现时及时处理；关联问题主要来自此前跟风与止损后回补，并非当天所有动作都错。",
+    "assessment": "已有反思归类",
+    "errors": [
+      {
+        "category": "leader",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "600396",
+            "name": "华电辽能"
+          }
+        ],
+        "evidence": "选择跟风标的华电辽能",
+        "source": "2026-05-15_2026-05-22/index.html#reflection2"
+      },
+      {
+        "category": "emotion",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "600396",
+            "name": "华电辽能"
+          }
+        ],
+        "evidence": "止损后立刻打回同等仓位",
+        "source": "2026-05-08_2026-05-16/index.html"
+      }
+    ]
+  },
+  "2026-05-21": {
+    "summary": "达实智能先卖4,000股再买回4,200股，另卖川润股份。账户当日亏损7.14%，但达实最终整轮仍盈利；原站明确当天操作与情绪原文缺失，暂不由大亏结果判定回补错误。",
+    "assessment": "待归因",
+    "errors": []
+  },
+  "2026-06-03": {
+    "summary": "卖出粤电力A并切入大有能源。亏损关联此前非唯一核心选择和走弱后加仓；当天大有能源的核心识别在后续复盘中得到认可。",
+    "assessment": "已有反思归类",
+    "errors": [
+      {
+        "category": "leader",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "000539",
+            "name": "粤电力A"
+          }
+        ],
+        "evidence": "它不具备唯一性",
+        "source": "2026-06-01_2026-06-05/index.html#ticket-analysis"
+      },
+      {
+        "category": "add",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "000539",
+            "name": "粤电力A"
+          }
+        ],
+        "evidence": "粤电力A已经走弱，却因为看到承接继续加仓",
+        "source": "2026-06-01_2026-06-05/index.html#weekly-reflection"
+      },
+      {
+        "category": "leader",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "002579",
+            "name": "中京电子"
+          }
+        ],
+        "evidence": "它在趋势里不是第一，也不是情绪核心",
+        "source": "2026-06-01_2026-06-05/index.html#ticket-analysis"
+      }
+    ]
+  },
+  "2026-06-09": {
+    "summary": "卖出大有能源2,800股。大亏日涉及之前尾段参与与利润保护不足；复盘强调按板强弱处理，弱板减仓，强势板或一字板不机械减仓。",
+    "assessment": "已有反思归类",
+    "errors": [
+      {
+        "category": "cycle",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "600403",
+            "name": "大有能源"
+          }
+        ],
+        "evidence": "不要吃满龙头最后一个板",
+        "source": "success-failure-trade-review/stock-600403-failure/index.html"
+      },
+      {
+        "category": "entry",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "600403",
+            "name": "大有能源"
+          }
+        ],
+        "evidence": "第二个爆量大烂板不再硬进",
+        "source": "success-failure-trade-review/stock-600403-failure/index.html"
+      },
+      {
+        "category": "exit",
+        "scope": "本轮回看",
+        "stocks": [
+          {
+            "code": "600403",
+            "name": "大有能源"
+          }
+        ],
+        "evidence": "说明利润保护失效",
+        "source": "2026-06-08_2026-06-12/index.html#ticket-analysis"
+      }
+    ]
+  },
+  "2026-06-11": {
+    "summary": "天娱数科按条件单止损，康强电子100股轻仓试错。原日记明确肯定止损执行；账户亏损超过2%本身不证明当天止损犯错，暂不另加错误标签。",
+    "assessment": "纪律执行 / 不新增错误",
+    "errors": []
+  },
+  "2026-06-15": {
+    "summary": "当天只卖出中化国际。已有反思指出的是此前条件单未复核导致非主动计划成交；当天离场与先前入场问题分开。",
+    "assessment": "已有反思归类",
+    "errors": [
+      {
+        "category": "execution",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "600500",
+            "name": "中化国际"
+          }
+        ],
+        "evidence": "条件单没有开盘前复核，导致非主动计划成交",
+        "source": "2026-06-08_2026-06-12/index.html#ticket-analysis"
+      }
+    ]
+  },
+  "2026-06-23": {
+    "summary": "新交割单当天没有成交记录。日收益为原站市值估算；诺德股份此前持仓延续，反思重点是旧核心失效后未及时降级。",
+    "assessment": "已有反思归类",
+    "errors": [
+      {
+        "category": "exit",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "600110",
+            "name": "诺德股份"
+          }
+        ],
+        "evidence": "旧核心失效后没有及时降级",
+        "source": "success-failure-trade-review/stock-600110-failure/index.html"
+      }
+    ]
+  },
+  "2026-06-24": {
+    "summary": "卖出诺德股份，买入海欣股份、大唐发电。旧核心退出和新方向选择分别评价；该日日收益为估算，不能与成交闭环亏损混算。",
+    "assessment": "已有反思归类",
+    "errors": [
+      {
+        "category": "exit",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "600110",
+            "name": "诺德股份"
+          }
+        ],
+        "evidence": "旧核心失效后没有及时降级",
+        "source": "success-failure-trade-review/stock-600110-failure/index.html"
+      },
+      {
+        "category": "cycle",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "600851",
+            "name": "海欣股份"
+          }
+        ],
+        "evidence": "切仓后的新方向不够硬",
+        "source": "2026-06-22_2026-06-26/index.html#ticket-analysis"
+      },
+      {
+        "category": "leader",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "600851",
+            "name": "海欣股份"
+          }
+        ],
+        "evidence": "选股强度和题材地位不够硬",
+        "source": "2026-06-22_2026-06-26/index.html#stocks"
+      }
+    ]
+  },
+  "2026-06-26": {
+    "summary": "新交割单当天无成交，原站按亨通系收盘市值估算账户下跌。问题对应前一日趋势尾段介入，以及后续复盘指出的失效后未及时退出。",
+    "assessment": "已有反思归类",
+    "errors": [
+      {
+        "category": "cycle",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "600487",
+            "name": "亨通光电"
+          }
+        ],
+        "evidence": "科技趋势尾段还去做个股",
+        "source": "2026-06-29_2026-07-04/index.html"
+      },
+      {
+        "category": "exit",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "600487",
+            "name": "亨通光电"
+          }
+        ],
+        "evidence": "6/26 失效后不能继续拖",
+        "source": "success-failure-trade-review/stock-600487-failure/index.html#five-minute-k"
+      }
+    ]
+  },
+  "2026-06-29": {
+    "summary": "清仓亨通光电、亨通股份。日记肯定破位止损后空仓；亏损主要关联前期趋势尾段介入与退出偏迟，不将当天清仓本身判错。",
+    "assessment": "已有反思归类",
+    "errors": [
+      {
+        "category": "cycle",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "600487",
+            "name": "亨通光电"
+          }
+        ],
+        "evidence": "科技趋势尾段还去做个股",
+        "source": "2026-06-29_2026-07-04/index.html"
+      },
+      {
+        "category": "exit",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "600487",
+            "name": "亨通光电"
+          }
+        ],
+        "evidence": "6/26 失效后不能继续拖",
+        "source": "success-failure-trade-review/stock-600487-failure/index.html#five-minute-k"
+      }
+    ]
+  },
+  "2026-07-02": {
+    "summary": "集中卖出芯片/半导体ETF和太极实业，并买海南海药。反思指向前期趋势后手、未把三高判断转成减仓及继续加仓；当日账户跌幅与各票整轮收益率不同。",
+    "assessment": "已有反思归类",
+    "errors": [
+      {
+        "category": "exit",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "588890",
+            "name": "科创芯片ETF南方"
+          }
+        ],
+        "evidence": "没有把判断转成减仓动作",
+        "source": "2026-06-29_2026-07-04/index.html#stocks"
+      },
+      {
+        "category": "add",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "588890",
+            "name": "科创芯片ETF南方"
+          }
+        ],
+        "evidence": "三高后继续加仓",
+        "source": "2026-06-29_2026-07-04/index.html#stocks"
+      },
+      {
+        "category": "entry",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "588710",
+            "name": "科创半导体设备ETF华泰柏瑞"
+          }
+        ],
+        "evidence": "进场偏晚且没有等到主线延续确认",
+        "source": "2026-06-29_2026-07-04/index.html#stocks"
+      },
+      {
+        "category": "leader",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "600667",
+            "name": "太极实业"
+          }
+        ],
+        "evidence": "它不是当时最明确的唯一核心",
+        "source": "2026-06-29_2026-07-04/index.html#stocks"
+      }
+    ]
+  },
+  "2026-07-06": {
+    "summary": "处理科创新材ETF旧仓，分批买机器人ETF。原文明确买入过早、板块确认不足，阴跌后继续补仓，并有急于回本和摊成本倾向。",
+    "assessment": "已有反思归类",
+    "errors": [
+      {
+        "category": "entry",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "159050",
+            "name": "机器人ETF广发"
+          }
+        ],
+        "evidence": "高潮次日分歧还进早了",
+        "source": "2026-07-06_2026-07-10/index.html#ticket-analysis"
+      },
+      {
+        "category": "add",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "159050",
+            "name": "机器人ETF广发"
+          }
+        ],
+        "evidence": "进早并补仓",
+        "source": "2026-07-06_2026-07-10/index.html#stocks"
+      },
+      {
+        "category": "emotion",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "159050",
+            "name": "机器人ETF广发"
+          }
+        ],
+        "evidence": "心理上有着急回本和摊成本倾向",
+        "source": "2026-07-06_2026-07-10/index.html#ticket-analysis"
+      }
+    ]
+  },
+  "2026-07-10": {
+    "summary": "早盘ETF兑现得到肯定，午后科技承接失效后又买回/加仓。日记明确问题在预案已失效仍继续摊成本。",
+    "assessment": "已有反思归类",
+    "errors": [
+      {
+        "category": "add",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "159516",
+            "name": "半导体设备ETF国泰"
+          }
+        ],
+        "evidence": "承接失效仍继续加仓",
+        "source": "2026-07-06_2026-07-10/index.html#ticket-analysis"
+      },
+      {
+        "category": "exit",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "159516",
+            "name": "半导体设备ETF国泰"
+          }
+        ],
+        "evidence": "错误不在第一次低吸，而在 -3% 后承接失效",
+        "source": "2026-07-06_2026-07-10/index.html#ticket-analysis"
+      }
+    ]
+  },
+  "2026-07-13": {
+    "summary": "卖出半导体设备与科创半导ETF旧仓。关联错误来自7月10日承接失效后的加仓；当天退出不自动认定为新错误。",
+    "assessment": "已有反思归类",
+    "errors": [
+      {
+        "category": "add",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "159516",
+            "name": "半导体设备ETF国泰"
+          }
+        ],
+        "evidence": "承接失效仍继续加仓",
+        "source": "2026-07-06_2026-07-10/index.html#ticket-analysis"
+      },
+      {
+        "category": "exit",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "159516",
+            "name": "半导体设备ETF国泰"
+          }
+        ],
+        "evidence": "错误不在第一次低吸，而在 -3% 后承接失效",
+        "source": "2026-07-06_2026-07-10/index.html#ticket-analysis"
+      }
+    ]
+  },
+  "2026-07-28": {
+    "summary": "卖出长缆科技，11笔买入立新能源。既有反思明确指出主升3分歧日买急、未等回封确认、一路越跌越买。",
+    "assessment": "已有反思归类",
+    "errors": [
+      {
+        "category": "cycle",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "001258",
+            "name": "立新能源"
+          }
+        ],
+        "evidence": "7/28 是主升3分歧日",
+        "source": "success-failure-trade-review/stock-001258-failure/index.html"
+      },
+      {
+        "category": "entry",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "001258",
+            "name": "立新能源"
+          }
+        ],
+        "evidence": "应该等回封确认",
+        "source": "success-failure-trade-review/stock-001258-failure/index.html"
+      },
+      {
+        "category": "add",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "001258",
+            "name": "立新能源"
+          }
+        ],
+        "evidence": "一路越跌越买",
+        "source": "success-failure-trade-review/stock-001258-failure/index.html"
+      }
+    ]
+  },
+  "2026-07-29": {
+    "summary": "卖出立新能源1,100股。日记认可止损执行，亏损根源在前一天的买点、阶段定位与亏损加仓；这里作为同轮风险延续标记。",
+    "assessment": "已有反思归类",
+    "errors": [
+      {
+        "category": "cycle",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "001258",
+            "name": "立新能源"
+          }
+        ],
+        "evidence": "7/28 是主升3分歧日",
+        "source": "success-failure-trade-review/stock-001258-failure/index.html"
+      },
+      {
+        "category": "entry",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "001258",
+            "name": "立新能源"
+          }
+        ],
+        "evidence": "应该等回封确认",
+        "source": "success-failure-trade-review/stock-001258-failure/index.html"
+      },
+      {
+        "category": "add",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "001258",
+            "name": "立新能源"
+          }
+        ],
+        "evidence": "一路越跌越买",
+        "source": "success-failure-trade-review/stock-001258-failure/index.html"
+      }
+    ]
+  },
+  "2026-08-07": {
+    "summary": "当天交割单无买卖记录，风范股份仍处于8月6日至10日的持仓周期。大亏可发生在无成交日，关联反思指出题材支撑不足和仓位偏大。",
+    "assessment": "已有反思归类",
+    "errors": [
+      {
+        "category": "cycle",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "601700",
+            "name": "风范股份"
+          }
+        ],
+        "evidence": "无题材支撑的旧高标抱团",
+        "source": "success-failure-trade-review/stock-601700-failure/index.html"
+      },
+      {
+        "category": "size",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "601700",
+            "name": "风范股份"
+          }
+        ],
+        "evidence": "错误之一是仓位过大",
+        "source": "success-failure-trade-review/stock-601700-failure/index.html"
+      }
+    ]
+  },
+  "2026-08-13": {
+    "summary": "卖亨通光电、风华高科，买通鼎互联。日度反思肯定科技旧仓处理，问题在老龙反抽买点偏急且未确认当日唯一核心。",
+    "assessment": "已有反思归类",
+    "errors": [
+      {
+        "category": "entry",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "002491",
+            "name": "通鼎互联"
+          }
+        ],
+        "evidence": "买点偏急",
+        "source": "2026-08-10_2026-08-15/index.html#stock-002491"
+      },
+      {
+        "category": "leader",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "002491",
+            "name": "通鼎互联"
+          }
+        ],
+        "evidence": "它不是当日唯一核心",
+        "source": "2026-08-10_2026-08-15/index.html#stock-002491"
+      }
+    ]
+  },
+  "2026-08-14": {
+    "summary": "通鼎互联止损后买入华西股份。当天新问题是华西买急、核心地位未确认；通鼎前日入场问题另作为持仓延续回看。",
+    "assessment": "已有反思归类",
+    "errors": [
+      {
+        "category": "entry",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "002491",
+            "name": "通鼎互联"
+          }
+        ],
+        "evidence": "买点偏急",
+        "source": "2026-08-10_2026-08-15/index.html#stock-002491"
+      },
+      {
+        "category": "entry",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "000936",
+            "name": "华西股份"
+          }
+        ],
+        "evidence": "华西股份买入过急，虽有承接但不是唯一核心",
+        "source": "2026-08-10_2026-08-15/index.html#daily"
+      },
+      {
+        "category": "leader",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "000936",
+            "name": "华西股份"
+          }
+        ],
+        "evidence": "华西有承接但不是唯一核心",
+        "source": "2026-08-10_2026-08-15/index.html#daily"
+      }
+    ]
+  },
+  "2026-08-17": {
+    "summary": "处理华西股份与秦安股份，买入金螳螂。后续月度反思指出科技方向与阶段不匹配；金螳螂后来小赚，也没有被认定为可复制模式。",
+    "assessment": "已有反思归类",
+    "errors": [
+      {
+        "category": "cycle",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "000936",
+            "name": "华西股份"
+          }
+        ],
+        "evidence": "先判断科技是否为当前主导，不能用个股形态代替阶段识别。",
+        "source": "monthly-quarterly-trading-review/2026-09/index.html#stock-000936"
+      },
+      {
+        "category": "mode",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "002081",
+            "name": "金螳螂"
+          }
+        ],
+        "evidence": "暂无完整买前预案；本次明确非模式。",
+        "source": "monthly-quarterly-trading-review/2026-09/index.html#stock-002081"
+      }
+    ]
+  },
+  "2026-08-21": {
+    "summary": "卖出金健米业、买入哈药股份。本人认可农业方向，反思主要落在金健米业下冲处理及条件单；没有充分证据把当天全部操作都认定为错。",
+    "assessment": "已有反思归类",
+    "errors": [
+      {
+        "category": "execution",
+        "scope": "本轮回看",
+        "stocks": [
+          {
+            "code": "600127",
+            "name": "金健米业"
+          }
+        ],
+        "evidence": "主要改进是下冲处理和条件单",
+        "source": "monthly-quarterly-trading-review/2026-09/index.html#stock-600127"
+      }
+    ]
+  },
+  "2026-08-28": {
+    "summary": "买入昊华科技，并加仓百花医药。后续明确反思将昊华归为科技细分切换错误，百花归为二波买点偏差后继续摊低成本。",
+    "assessment": "已有反思归类",
+    "errors": [
+      {
+        "category": "cycle",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "600378",
+            "name": "昊华科技"
+          }
+        ],
+        "evidence": "科技细分题材切换错误",
+        "source": "monthly-quarterly-trading-review/2026-09/index.html#stock-600378"
+      },
+      {
+        "category": "entry",
+        "scope": "本轮回看",
+        "stocks": [
+          {
+            "code": "600721",
+            "name": "百花医药"
+          }
+        ],
+        "evidence": "错过二波严格买点",
+        "source": "monthly-quarterly-trading-review/2026-09/index.html#stock-600721"
+      },
+      {
+        "category": "add",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "600721",
+            "name": "百花医药"
+          }
+        ],
+        "evidence": "买点错与摊低成本是一条错误链",
+        "source": "monthly-quarterly-trading-review/2026-09/index.html#stock-600721"
+      }
+    ]
+  },
+  "2026-08-31": {
+    "summary": "卖出昊华科技、百花医药，转向敦煌种业和金健米业。主要已确认问题来自前期持仓；新买入的农业两票仍须分别评价，不一并视为错误。",
+    "assessment": "已有反思归类",
+    "errors": [
+      {
+        "category": "cycle",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "600378",
+            "name": "昊华科技"
+          }
+        ],
+        "evidence": "科技细分题材切换错误",
+        "source": "monthly-quarterly-trading-review/2026-09/index.html#stock-600378"
+      },
+      {
+        "category": "entry",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "600721",
+            "name": "百花医药"
+          }
+        ],
+        "evidence": "错过二波严格买点",
+        "source": "monthly-quarterly-trading-review/2026-09/index.html#stock-600721"
+      },
+      {
+        "category": "add",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "600721",
+            "name": "百花医药"
+          }
+        ],
+        "evidence": "买点错与摊低成本是一条错误链",
+        "source": "monthly-quarterly-trading-review/2026-09/index.html#stock-600721"
+      }
+    ]
+  },
+  "2026-09-02": {
+    "summary": "买入时代出版。本人后续认可方向有逻辑，但明确指出分时触发有问题；归因采用后续澄清，不停留在初版待补判断。",
+    "assessment": "已有反思归类",
+    "errors": [
+      {
+        "category": "entry",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "600551",
+            "name": "时代出版"
+          }
+        ],
+        "evidence": "方向有逻辑，分时触发错误",
+        "source": "monthly-quarterly-trading-review/2026-09/index.html#reflection-cases"
+      }
+    ]
+  },
+  "2026-09-03": {
+    "summary": "卖出时代出版，再买欢瑞世纪。时代出版是前日买点问题延续；欢瑞是在同身位竞争尚未胜出时下注。",
+    "assessment": "已有反思归类",
+    "errors": [
+      {
+        "category": "entry",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "600551",
+            "name": "时代出版"
+          }
+        ],
+        "evidence": "方向有逻辑，分时触发错误",
+        "source": "monthly-quarterly-trading-review/2026-09/index.html#reflection-cases"
+      },
+      {
+        "category": "leader",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "000892",
+            "name": "欢瑞世纪"
+          }
+        ],
+        "evidence": "同身位PK未胜出便下注",
+        "source": "monthly-quarterly-trading-review/2026-09/index.html#reflection-cases"
+      },
+      {
+        "category": "entry",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "000892",
+            "name": "欢瑞世纪"
+          }
+        ],
+        "evidence": "同身位唯一性尚未胜出",
+        "source": "monthly-quarterly-trading-review/2026-09/index.html#stock-000892"
+      }
+    ]
+  },
+  "2026-09-09": {
+    "summary": "爱仕达止损后切换百大集团。爱仕达关联此前补涨阶段做弱切换、仓位偏大及保护未执行；不因当日大亏把百大的买入直接归错。",
+    "assessment": "已有反思归类",
+    "errors": [
+      {
+        "category": "cycle",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "002403",
+            "name": "爱仕达"
+          }
+        ],
+        "evidence": "补涨阶段做弱切换",
+        "source": "monthly-quarterly-trading-review/2026-09/index.html#reflection-cases"
+      },
+      {
+        "category": "size",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "002403",
+            "name": "爱仕达"
+          }
+        ],
+        "evidence": "仓位过重",
+        "source": "monthly-quarterly-trading-review/2026-09/index.html#reflection-cases"
+      },
+      {
+        "category": "execution",
+        "scope": "本轮回看",
+        "stocks": [
+          {
+            "code": "002403",
+            "name": "爱仕达"
+          }
+        ],
+        "evidence": "未执行条件单",
+        "source": "monthly-quarterly-trading-review/2026-09/index.html#stock-002403"
+      }
+    ]
+  },
+  "2026-09-11": {
+    "summary": "桂林旅游卖出旧仓500股后新买1,000股。本人认可消费补涨方向；加大新仓的动机和确认条件未完整提供，保留事实与待核对项，不自动判为情绪化回补。",
+    "assessment": "方向认可 / 回补待核对",
+    "errors": []
+  },
+  "2026-09-17": {
+    "summary": "卖出闽东电力、买西陇科学。闽东的问题是此前高度压力下利润保护不足；西陇新仓缺少科技唯一性。9月18日才发生追加，不写成17日当天加仓。",
+    "assessment": "已有反思归类",
+    "errors": [
+      {
+        "category": "leader",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "002584",
+            "name": "西陇科学"
+          }
+        ],
+        "evidence": "非唯一科技",
+        "source": "2026-09-21_2026-09-30/index.html#profit-loss"
+      },
+      {
+        "category": "exit",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "000993",
+            "name": "闽东电力"
+          }
+        ],
+        "evidence": "新节点切换正确，弱环境兑现不足",
+        "source": "monthly-quarterly-trading-review/2026-09/index.html"
+      }
+    ]
+  },
+  "2026-09-28": {
+    "summary": "南华生物、天威视讯和哈药股份全部退出，此后停止新开仓。本人将哈药归为不熟悉的反核试错，天威属于正常试错；当天退出不新增错误标签。",
+    "assessment": "已有反思归类",
+    "errors": [
+      {
+        "category": "mode",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "600664",
+            "name": "哈药股份"
+          }
+        ],
+        "evidence": "临盘选了不熟悉战法，属于随手试错",
+        "source": "2026-09-21_2026-09-30/index.html#profit-loss"
+      },
+      {
+        "category": "cycle",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "600664",
+            "name": "哈药股份"
+          }
+        ],
+        "evidence": "深水反核的模式和节点均不匹配",
+        "source": "2026-09-21_2026-09-30/index.html#profit-loss"
+      }
+    ]
+  },
+  "2026-10-19": {
+    "summary": "日收益率为原站费用前估算。卖出九阳、超声电子并买万丰奥威；后续反思指出万丰切换预期偏高且有误操作，九阳需按自身抱团逻辑回看。",
+    "assessment": "已有反思归类",
+    "errors": [
+      {
+        "category": "cycle",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "002085",
+            "name": "万丰奥威"
+          }
+        ],
+        "evidence": "将低空经济切换的持续性预期抬得偏高",
+        "source": "2026-10-19_2026-10-23/index.html#ticket-review"
+      },
+      {
+        "category": "execution",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "002085",
+            "name": "万丰奥威"
+          }
+        ],
+        "evidence": "并提到误操作买入",
+        "source": "2026-10-19_2026-10-23/index.html#ticket-review"
+      },
+      {
+        "category": "cycle",
+        "scope": "本轮回看",
+        "stocks": [
+          {
+            "code": "002242",
+            "name": "九阳股份"
+          }
+        ],
+        "evidence": "没有理解四板后高位放量抗跌、题材主升转轮动的抱团延续",
+        "source": "2026-10-19_2026-10-23/index.html#ticket-review"
+      }
+    ]
+  },
+  "2026-10-21": {
+    "summary": "日收益率为原站费用前估算。卖出万丰奥威和吉大正元；万丰涉及此前切换/误操作，吉大反思指出取得应有溢价时未及时退出。",
+    "assessment": "已有反思归类",
+    "errors": [
+      {
+        "category": "exit",
+        "scope": "本轮回看",
+        "stocks": [
+          {
+            "code": "003029",
+            "name": "吉大正元"
+          }
+        ],
+        "evidence": "认为应当借这一溢价退出，而不是继续等题材延续",
+        "source": "2026-10-19_2026-10-23/index.html#leader-failure-crowding-repair"
+      },
+      {
+        "category": "cycle",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "002085",
+            "name": "万丰奥威"
+          }
+        ],
+        "evidence": "将低空经济切换的持续性预期抬得偏高",
+        "source": "2026-10-19_2026-10-23/index.html#ticket-review"
+      },
+      {
+        "category": "execution",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "002085",
+            "name": "万丰奥威"
+          }
+        ],
+        "evidence": "并提到误操作买入",
+        "source": "2026-10-19_2026-10-23/index.html#ticket-review"
+      }
+    ]
+  }
+}

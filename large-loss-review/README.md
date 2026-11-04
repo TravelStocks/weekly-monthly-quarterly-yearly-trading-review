@@ -2,6 +2,24 @@
 
 静态 GitHub Pages 模块，入口为 `large-loss-review/index.html`。首页及成功/失败案例页均有入口。
 
+页面提供个股与日期两种视角；`#calendar` 直达日期日历，`#day=2026-07-28` 可链接到指定日期。
+
+## 日期视角
+
+按用户确认的账户当日收益率严格低于 -2% 筛选。收益率来自原站账户记录，其中 `weekly-trading-review/daily-income.json` 优先于旧周报；估算默认不纳入，可手动显示。缺记录不补零，不用交割现金流或各股交易收益拼接账户日收益。10月30日旧估算所依赖的持仓不变前提被新交割否定，故排除。
+
+`calendar-trades.json` 从用户交割单提取日期、时间、代码、名称、方向、数量及原表行号，保留逐笔成交，只在展示时按日/代码/方向合并。禁止提交原交割单、资金余额、合同编号及成交编号。当前附件为 GB18030 编码的制表符文本，虽然后缀为 `.xls`。
+
+```sh
+# 首次导入或用户提供更新的交割单
+python scripts/build-loss-calendar.py --trades /path/to/table.xls
+# 使用已净化输入重建
+python scripts/build-loss-calendar.py
+python scripts/verify-loss-calendar.py
+```
+
+`calendar-annotations.json` 保存逐日核对的反思与来源片段，明确标注“当日操作 / 持仓延续 / 本轮回看”。日历中的关联亏损交易周期只提供上下文，不自动把完整周期错误复制成当天错误；没有明确证据时保留待归因，正常止损不判错。连续日期呈现相同持仓问题不代表独立犯错次数，错误排行榜仍按个股交易轮次计数。更新后须核对来源锚点、原文证据，以及桌面/手机的月份切换、估算开关、日期详情和个股跳转。
+
 ## 更新
 
 使用 Python 3 与 `beautifulsoup4`：
