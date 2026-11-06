@@ -3,6 +3,129 @@
   "date": "2026-11-02",
   "coveredThrough": "2026-11-04",
   "account": null,
+  "partialAccount": {
+    "status": "partial-statement-close-estimate",
+    "coveredThrough": "2026-11-04",
+    "opening": {
+      "date": "2026-10-30",
+      "cash": 7896.36,
+      "holdings": [
+        {
+          "code": "603278",
+          "name": "大业股份",
+          "qty": 200,
+          "close": 19.52
+        }
+      ],
+      "marketValue": 3904,
+      "equity": 11800.36,
+      "position": 33.08373642838015,
+      "pnl": 266.18,
+      "returnPct": 2.307749662308027,
+      "status": "交割与收盘估算"
+    },
+    "days": [
+      {
+        "date": "2026-11-02",
+        "cash": 7526.53,
+        "holdings": [
+          {
+            "code": "603131",
+            "name": "上海沪工",
+            "qty": 200,
+            "close": 17.3
+          }
+        ],
+        "marketValue": 3460,
+        "equity": 10986.53,
+        "pnl": -813.83,
+        "returnPct": -6.896654000386429,
+        "position": 31.493110199489738,
+        "status": "交割与收盘估算"
+      },
+      {
+        "date": "2026-11-03",
+        "cash": 10639.94,
+        "holdings": [],
+        "marketValue": 0,
+        "equity": 10639.94,
+        "pnl": -346.59,
+        "returnPct": -3.1546812323818347,
+        "position": 0,
+        "status": "交割与收盘估算"
+      },
+      {
+        "date": "2026-11-04",
+        "cash": 8461.92,
+        "holdings": [
+          {
+            "code": "600715",
+            "name": "文投控股",
+            "qty": 800,
+            "close": 2.47
+          }
+        ],
+        "marketValue": 1976,
+        "equity": 10437.92,
+        "pnl": -202.02,
+        "returnPct": -1.898694917452542,
+        "position": 18.930974753590753,
+        "status": "交割与收盘估算"
+      }
+    ],
+    "pnl": -1362.44,
+    "returnPct": -11.545749451711643,
+    "endingEquity": 10437.92,
+    "averagePosition": 16.8080283176935,
+    "endingPosition": 18.930974753590753,
+    "fullWeekPnl": null,
+    "fullWeekReturnPct": null,
+    "fullWeekAveragePosition": null,
+    "fridayPositionPct": 0,
+    "basis": "按10/30实际成交及大业收盘价19.52元还原期初权益11,800.36元；逐日使用实际发生金额与不复权收盘价估值，假设无遗漏持仓或非交易出入金。仅计算11/2至11/4，不外推周四、周五账户收益。周五0%仓位来自本人确认。",
+    "sources": [
+      {
+        "code": "603131",
+        "source": "https://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData?symbol=sh603131&scale=240&ma=no&datalen=20",
+        "retrievedAt": "2026-11-06T23:34:39.728Z",
+        "adjustment": "unadjusted",
+        "bars": [
+          {
+            "date": "2026-11-02",
+            "close": 17.3
+          },
+          {
+            "date": "2026-11-03",
+            "close": 15.57
+          },
+          {
+            "date": "2026-11-04",
+            "close": 16.56
+          }
+        ]
+      },
+      {
+        "code": "600715",
+        "source": "https://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData?symbol=sh600715&scale=240&ma=no&datalen=20",
+        "retrievedAt": "2026-11-06T23:34:39.967Z",
+        "adjustment": "unadjusted",
+        "bars": [
+          {
+            "date": "2026-11-02",
+            "close": 2.24
+          },
+          {
+            "date": "2026-11-03",
+            "close": 2.46
+          },
+          {
+            "date": "2026-11-04",
+            "close": 2.47
+          }
+        ]
+      }
+    ]
+  },
   "tradeCount": 7,
   "referenceCount": 5,
   "buyAmount": 6030,
@@ -39,5 +162,5 @@
     "equity": null,
     "pnl": null
   },
-  "reason": "已录入11月2日至4日成交；11月5日待补，11月6日用户确认空仓。缺少完整账户权益与出入金，不计算全周收益。"
+  "reason": "已录入11月2日至4日成交；11月5日待补，11月6日用户确认空仓。已计算前三日收盘估算；缺少周四成交及期末资产，不计算全周收益。"
 }

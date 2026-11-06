@@ -1,0 +1,42 @@
+[
+  {
+    "code": "603131",
+    "source": "https://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData?symbol=sh603131&scale=240&ma=no&datalen=20",
+    "retrievedAt": "2026-11-06T23:34:39.728Z",
+    "adjustment": "unadjusted",
+    "bars": [
+      {
+        "date": "2026-11-02",
+        "close": 17.3
+      },
+      {
+        "date": "2026-11-03",
+        "close": 15.57
+      },
+      {
+        "date": "2026-11-04",
+        "close": 16.56
+      }
+    ]
+  },
+  {
+    "code": "600715",
+    "source": "https://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData?symbol=sh600715&scale=240&ma=no&datalen=20",
+    "retrievedAt": "2026-11-06T23:34:39.967Z",
+    "adjustment": "unadjusted",
+    "bars": [
+      {
+        "date": "2026-11-02",
+        "close": 2.24
+      },
+      {
+        "date": "2026-11-03",
+        "close": 2.46
+      },
+      {
+        "date": "2026-11-04",
+        "close": 2.47
+      }
+    ]
+  }
+]

@@ -160,7 +160,7 @@
           }
         ]
       ],
-      "actualCount": 0,
+      "actualCount": 2,
       "priceSpanPercent": 10.01118568232664,
       "source": "https://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData?symbol=sh603278&scale=5&ma=no&datalen=1023"
     }

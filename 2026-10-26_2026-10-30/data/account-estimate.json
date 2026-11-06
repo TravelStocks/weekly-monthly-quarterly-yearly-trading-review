@@ -1,6 +1,6 @@
 {
-  "status": "conditional-estimate",
-  "basis": "按已提供完整可见持仓、实际发生金额（含费）及不复权15:00五分钟收盘报价还原。假设无遗漏持仓、非交易现金变动；10/30额外假设没有新增成交、出入金或其他资金变动，沿用10/29襄阳600股。非券商确认收益。",
+  "status": "statement-close-estimate",
+  "basis": "按已提供完整可见持仓、实际发生金额（含费）及不复权15:00五分钟收盘报价还原。已补10/30实际成交：襄阳卖出600股，大业买入200股；期末现金7896.36元，大业200股按19.52元收盘估值。假设无遗漏持仓或非交易现金变动。非券商确认收益。",
   "opening": {
     "date": "2026-10-23",
     "cash": 7307.75,
@@ -103,29 +103,29 @@
     },
     {
       "date": "2026-10-30",
-      "cash": 284.18,
+      "cash": 7896.36,
       "holdings": [
         {
-          "code": "000678",
-          "name": "襄阳轴承",
-          "qty": 600,
-          "close": 18.08
+          "code": "603278",
+          "name": "大业股份",
+          "qty": 200,
+          "close": 19.52
         }
       ],
-      "marketValue": 10848,
-      "equity": 11132.18,
-      "position": 97.44722058033557,
-      "pnl": -402,
-      "returnPct": -3.4852932761583397,
-      "status": "无新增交易情景估算"
+      "marketValue": 3904,
+      "equity": 11800.36,
+      "position": 33.08373642838015,
+      "pnl": 266.18,
+      "returnPct": 2.307749662308027,
+      "status": "交割与收盘估算"
     }
   ],
-  "endingEquity": 11132.18,
-  "pnl": 718.43,
-  "weeklyReturnPct": 6.898859680710598,
-  "dailyRateSum": 7.02510933015054,
-  "averagePosition": 83.5459743391149,
-  "endingPosition": 97.44722058033557,
+  "endingEquity": 11800.36,
+  "pnl": 1386.61,
+  "weeklyReturnPct": 13.315184251590445,
+  "dailyRateSum": 12.818152268616906,
+  "averagePosition": 70.67327750872383,
+  "endingPosition": 33.08373642838015,
   "through29Pnl": 1120.43,
   "through29ReturnPct": 10.759140559356627,
   "sources": [
@@ -186,12 +186,12 @@
       "retrievedAt": "2026-10-30T08:25:47.152Z"
     },
     {
-      "code": "000678",
+      "code": "603278",
       "date": "2026-10-30",
-      "close": 18.08,
-      "file": "2026-10-26_2026-10-30/data/opportunities/000678.json",
-      "source": "https://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData?symbol=sz000678&scale=5&ma=no&datalen=1023",
-      "retrievedAt": "2026-10-30T09:20:48.677Z"
+      "close": 19.52,
+      "file": "2026-10-26_2026-10-30/data/opportunities/603278.json",
+      "source": "https://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData?symbol=sh603278&scale=5&ma=no&datalen=1023",
+      "retrievedAt": "2026-10-30T09:20:48.579Z"
     }
   ]
 }

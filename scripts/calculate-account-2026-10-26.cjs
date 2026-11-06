@@ -17,7 +17,7 @@ module.exports=function(root){
  const ending=days.at(-1),pnl=round(ending.equity-opening.equity),dailyRateSum=days.reduce((n,d)=>n+d.returnPct,0);
  assert.equal(cents(days.reduce((n,d)=>n+d.pnl,0)),cents(pnl));
  assert(Math.abs((days.reduce((n,d)=>n*(1+d.returnPct/100),1)-1)*100-pnl/opening.equity*100)<1e-8);
- const result={status:'conditional-estimate',basis:'按已提供完整可见持仓、实际发生金额（含费）及不复权15:00五分钟收盘报价还原。假设无遗漏持仓、非交易现金变动；10/30额外假设没有新增成交、出入金或其他资金变动，沿用10/29襄阳600股。非券商确认收益。',opening,days,endingEquity:ending.equity,pnl,weeklyReturnPct:pnl/opening.equity*100,dailyRateSum,averagePosition:days.reduce((n,d)=>n+d.position,0)/days.length,endingPosition:ending.position,through29Pnl:round(days[3].equity-opening.equity),through29ReturnPct:(days[3].equity/opening.equity-1)*100,sources};
+ const result={status:'statement-close-estimate',basis:'按已提供完整可见持仓、实际发生金额（含费）及不复权15:00五分钟收盘报价还原。已补10/30实际成交：襄阳卖出600股，大业买入200股；期末现金7896.36元，大业200股按19.52元收盘估值。假设无遗漏持仓或非交易现金变动。非券商确认收益。',opening,days,endingEquity:ending.equity,pnl,weeklyReturnPct:pnl/opening.equity*100,dailyRateSum,averagePosition:days.reduce((n,d)=>n+d.position,0)/days.length,endingPosition:ending.position,through29Pnl:round(days[3].equity-opening.equity),through29ReturnPct:(days[3].equity/opening.equity-1)*100,sources};
  fs.writeFileSync(path.join(dir,'data/account-estimate.json'),JSON.stringify(result,null,2)+'\n');return result;
 };
 if(require.main===module)console.log(JSON.stringify(module.exports(path.resolve(__dirname,'..')),null,2));
