@@ -1,11 +1,12 @@
 {
   "periodCount": 24,
   "archiveCount": 25,
-  "reflectionOnly": [
+  "reflectionOnly": [],
+  "incompleteReports": [
     {
       "folder": "2026-11-02_2026-11-06",
       "date": "2026-11-02",
-      "reason": "Only personal reflections requested; actual loss amount unavailable."
+      "reason": "已录入11月2日至4日成交；11月5日待补，11月6日用户确认空仓。缺少完整账户权益与出入金，不计算全周收益。"
     }
   ],
   "latest": "10.26-10.30",

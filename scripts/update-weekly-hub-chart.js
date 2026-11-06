@@ -39,12 +39,13 @@ const weeks = equityLedger.rows.map(row => {
 const cutoff=equityLedger.rows.at(-1).folder.slice(0,10);
 const recentFolders=fs.readdirSync(repo).filter(f=>/^\d{4}-\d{2}-\d{2}_\d{4}-\d{2}-\d{2}$/.test(f)&&f.slice(0,10)>cutoff).sort();
 const dayLabel=d=>`${d.day||['周日','周一','周二','周三','周四','周五','周六'][new Date(d.date+'T00:00:00Z').getUTCDay()]} ${d.date.slice(5)} ${money(d.pnl)}`;
-const reflectionOnly=[];
+const reflectionOnly=[],incompleteReports=[];
 for(const folder of recentFolders){
   const file=path.join(repo,folder,'data/summary.json');
   assert(fs.existsSync(file),`New report lacks account summary: ${folder}`);
   const summary=JSON.parse(fs.readFileSync(file,'utf8')),a=summary.account||summary;
   if(summary.status==='reflection-only'){reflectionOnly.push({folder,date:summary.date,reason:summary.reason});continue;}
+  if(summary.status==='partial-trades'){incompleteReports.push({folder,date:summary.date,reason:summary.reason});continue;}
   const legacy=a.weekPnl!=null,conditional=a.status==='conditional-estimate';
   const pnl=legacy?a.weekPnl:a.pnl,rate=legacy?a.weekRate:(a.weeklyReturnPct??a.dailyRateSum);
   assert([pnl,rate,a.endingEquity,a.averagePosition].every(Number.isFinite),`Unsupported account summary: ${folder}`);
@@ -68,7 +69,7 @@ for (const week of weeks) {
   week.drawdown = ((week.equity - peak) / peak) * 100;
   previousEquity = week.equity;
 }
-const overview={periodCount:weeks.length,archiveCount:weeks.length+reflectionOnly.length,reflectionOnly,latest:weeks.at(-1).label,totalChange:Math.round(weeks.reduce((s,w)=>s+w.pnl,0)*100)/100,
+const overview={periodCount:weeks.length,archiveCount:weeks.length+reflectionOnly.length+incompleteReports.length,reflectionOnly,incompleteReports,latest:weeks.at(-1).label,totalChange:Math.round(weeks.reduce((s,w)=>s+w.pnl,0)*100)/100,
   latestDrawdown:weeks.at(-1).drawdown,maxDrawdown:Math.min(0,...weeks.map(w=>w.drawdown)),weeks};
 fs.writeFileSync(path.join(repo,'weekly-trading-review/overview-data.json'),JSON.stringify(overview,null,2)+'\n');
 
@@ -192,6 +193,9 @@ if (!html.includes(".cycle-motto{")) {
 const overviewPattern=/<section class="panel overview-panel">[\s\S]*?<\/section>/;
 assert(overviewPattern.test(html),'Weekly overview target missing; refusing a silent stale rebuild');
 html=html.replace(overviewPattern,renderPanel());
+if(incompleteReports.some(r=>r.folder==='2026-11-02_2026-11-06')){
+  html=html.replace('<section class="panel overview-panel">','<section class="panel overview-panel"><p class="equity-basis"><strong>口径更新待办：</strong>新交割已证实10月30日有襄阳卖出及大业买入，下面10.26–10.30的旧条件情景已不成立，历史曲线数字暂保留待重算，不作为最新实际权益或本周期初依据。11.02–11.06已补前三日成交，因周四及完整账户数据未齐，尚不入曲线。<a href="../2026-11-02_2026-11-06/#trade-records">查看新增交割依据</a></p>');
+}
 const equityCss = `<style id="weekly-equity-style">.equity-caption{display:block;margin-top:4px;color:var(--muted);font-size:11px}.equity-basis{display:block;color:var(--muted);line-height:1.6;overflow-wrap:anywhere}.weekly-chart{min-width:${Math.max(1080,weeks.length*110+180)}px}.weekly-data-table th{vertical-align:middle}.overview-panel .chart-head{display:grid;gap:12px}.overview-panel .legend-row{justify-content:flex-start}.legend-row span{white-space:nowrap}.legend-line.amount{border-top:3px solid var(--red)}</style>`;
 html = html.replace(/<style id="weekly-equity-style">[\s\S]*?<\/style>/, "");
 html = html.replace("</head>", `${equityCss}</head>`);
@@ -201,7 +205,8 @@ html = html.replace("</body>", `${latestChartScript}</body>`);
 fs.writeFileSync(hubPath, html, "utf8");
 const latest=weeks.at(-1),latestFolder=latest.href.split('/').filter(x=>x&&x!=='..')[0];
 const reportFolder=recentFolders.at(-1)||latestFolder,notesOnly=reflectionOnly.some(r=>r.folder===reportFolder);
-const interval=`<span>最新区间</span><strong class="">${reportFolder.slice(5,10).replace('-','.')}</strong><small>至 ${reportFolder.slice(16).replace('-','.')} / ${notesOnly?'仅个人心得':latest.equityStatus}</small>`;
+const partial=incompleteReports.some(r=>r.folder===reportFolder);
+const interval=`<span>最新区间</span><strong class="">${reportFolder.slice(5,10).replace('-','.')}</strong><small>至 ${reportFolder.slice(16).replace('-','.')} / ${partial?'前三日成交已补':notesOnly?'仅个人心得':latest.equityStatus}</small>`;
 const intervalPattern=/<span>最新区间<\/span><strong[^>]*>[\s\S]*?<\/strong><small>[\s\S]*?<\/small>/;
 html=html.replace(intervalPattern,interval);
 html=html.replace(/<span>周报数量<\/span><strong[^>]*>\d+<\/strong>/,`<span>周报数量</span><strong class="">${overview.archiveCount}</strong>`);

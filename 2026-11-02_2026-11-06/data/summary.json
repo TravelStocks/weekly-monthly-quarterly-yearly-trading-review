@@ -1,6 +1,43 @@
 {
-  "status": "reflection-only",
+  "status": "partial-trades",
   "date": "2026-11-02",
+  "coveredThrough": "2026-11-04",
   "account": null,
-  "reason": "Only personal reflections requested; actual loss amount unavailable."
+  "tradeCount": 7,
+  "referenceCount": 5,
+  "buyAmount": 6030,
+  "sellAmount": 6634,
+  "fees": 38.44,
+  "netCash": 565.56,
+  "lastCash": 8461.92,
+  "closed": [
+    {
+      "code": "603278",
+      "name": "大业股份",
+      "qty": 200,
+      "cost": 3928.04,
+      "proceeds": 3502.21,
+      "pnl": -425.83,
+      "returnPct": -10.840775552183786
+    },
+    {
+      "code": "603131",
+      "name": "上海沪工",
+      "qty": 200,
+      "cost": 3872.04,
+      "proceeds": 3113.41,
+      "pnl": -758.63,
+      "returnPct": -19.592514540139046
+    }
+  ],
+  "closedPnl": -1184.46,
+  "friday": {
+    "date": "2026-11-06",
+    "positionPct": 0,
+    "source": "用户确认第五天空仓",
+    "cash": null,
+    "equity": null,
+    "pnl": null
+  },
+  "reason": "已录入11月2日至4日成交；11月5日待补，11月6日用户确认空仓。缺少完整账户权益与出入金，不计算全周收益。"
 }
