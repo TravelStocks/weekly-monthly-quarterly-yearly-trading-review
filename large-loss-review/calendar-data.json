@@ -8384,18 +8384,14 @@
           "code": "601700",
           "start": "2026-08-06",
           "end": "2026-08-10",
-          "summary": "旧高标缺题材支撑，仍给了过大仓位；高度本身不能作为抱团确定性。",
+          "summary": "按本人最新补充，风范股份这轮主因改归“题材走弱、梯队负反馈仍做龙头”：题材与梯队支撑已经转弱，仍沿用原有龙头预期继续持有。8月7日没有成交，为8月6日至10日这一轮的持仓延续；原阶段与仓位反思保留在历史原文中，主分类采用本次明确归因。",
           "errors": [
             {
-              "category": "cycle",
-              "evidence": "无题材支撑的旧高标抱团"
-            },
-            {
-              "category": "size",
-              "evidence": "错误之一是仓位过大"
+              "category": "theme_support",
+              "evidence": "题材走弱、梯队负反馈仍做龙头"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         }
       ],
       "summary": "",
@@ -8421,25 +8417,21 @@
           "code": "601700",
           "start": "2026-08-06",
           "end": "2026-08-10",
-          "summary": "旧高标缺题材支撑，仍给了过大仓位；高度本身不能作为抱团确定性。",
+          "summary": "按本人最新补充，风范股份这轮主因改归“题材走弱、梯队负反馈仍做龙头”：题材与梯队支撑已经转弱，仍沿用原有龙头预期继续持有。8月7日没有成交，为8月6日至10日这一轮的持仓延续；原阶段与仓位反思保留在历史原文中，主分类采用本次明确归因。",
           "errors": [
             {
-              "category": "cycle",
-              "evidence": "无题材支撑的旧高标抱团"
-            },
-            {
-              "category": "size",
-              "evidence": "错误之一是仓位过大"
+              "category": "theme_support",
+              "evidence": "题材走弱、梯队负反馈仍做龙头"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         }
       ],
-      "summary": "当天交割单无买卖记录，风范股份仍处于8月6日至10日的持仓周期。大亏可发生在无成交日，关联反思指出题材支撑不足和仓位偏大。",
-      "assessment": "已有反思归类",
+      "summary": "当天交割单无买卖记录，风范股份处于8月6日至10日的持仓周期。按本人最新反思改归“题材走弱、梯队负反馈仍做龙头”：题材与梯队支撑已转弱，仍继续持有。标为持仓延续，不新增成交或独立犯错次数；账户当日损益与个股整轮损益分别计算。",
+      "assessment": "本人最新反思归类",
       "errors": [
         {
-          "category": "cycle",
+          "category": "theme_support",
           "scope": "持仓延续",
           "stocks": [
             {
@@ -8447,20 +8439,8 @@
               "name": "风范股份"
             }
           ],
-          "evidence": "无题材支撑的旧高标抱团",
-          "source": "success-failure-trade-review/stock-601700-failure/index.html"
-        },
-        {
-          "category": "size",
-          "scope": "持仓延续",
-          "stocks": [
-            {
-              "code": "601700",
-              "name": "风范股份"
-            }
-          ],
-          "evidence": "错误之一是仓位过大",
-          "source": "success-failure-trade-review/stock-601700-failure/index.html"
+          "evidence": "题材走弱、梯队负反馈仍做龙头",
+          "source": "large-loss-review/index.html#theme-support-review"
         }
       ]
     },
@@ -8507,18 +8487,14 @@
           "code": "601700",
           "start": "2026-08-06",
           "end": "2026-08-10",
-          "summary": "旧高标缺题材支撑，仍给了过大仓位；高度本身不能作为抱团确定性。",
+          "summary": "按本人最新补充，风范股份这轮主因改归“题材走弱、梯队负反馈仍做龙头”：题材与梯队支撑已经转弱，仍沿用原有龙头预期继续持有。8月7日没有成交，为8月6日至10日这一轮的持仓延续；原阶段与仓位反思保留在历史原文中，主分类采用本次明确归因。",
           "errors": [
             {
-              "category": "cycle",
-              "evidence": "无题材支撑的旧高标抱团"
-            },
-            {
-              "category": "size",
-              "evidence": "错误之一是仓位过大"
+              "category": "theme_support",
+              "evidence": "题材走弱、梯队负反馈仍做龙头"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         }
       ],
       "summary": "",

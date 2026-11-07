@@ -574,11 +574,11 @@
     ]
   },
   "2026-08-07": {
-    "summary": "当天交割单无买卖记录，风范股份仍处于8月6日至10日的持仓周期。大亏可发生在无成交日，关联反思指出题材支撑不足和仓位偏大。",
-    "assessment": "已有反思归类",
+    "summary": "当天交割单无买卖记录，风范股份处于8月6日至10日的持仓周期。按本人最新反思改归“题材走弱、梯队负反馈仍做龙头”：题材与梯队支撑已转弱，仍继续持有。标为持仓延续，不新增成交或独立犯错次数；账户当日损益与个股整轮损益分别计算。",
+    "assessment": "本人最新反思归类",
     "errors": [
       {
-        "category": "cycle",
+        "category": "theme_support",
         "scope": "持仓延续",
         "stocks": [
           {
@@ -586,20 +586,8 @@
             "name": "风范股份"
           }
         ],
-        "evidence": "无题材支撑的旧高标抱团",
-        "source": "success-failure-trade-review/stock-601700-failure/index.html"
-      },
-      {
-        "category": "size",
-        "scope": "持仓延续",
-        "stocks": [
-          {
-            "code": "601700",
-            "name": "风范股份"
-          }
-        ],
-        "evidence": "错误之一是仓位过大",
-        "source": "success-failure-trade-review/stock-601700-failure/index.html"
+        "evidence": "题材走弱、梯队负反馈仍做龙头",
+        "source": "large-loss-review/index.html#theme-support-review"
       }
     ]
   },
