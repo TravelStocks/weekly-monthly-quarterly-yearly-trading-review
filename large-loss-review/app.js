@@ -47,7 +47,7 @@ function renderRecord(r) {
     const q=r.quotes.find(q=>q.text.includes(e.evidence));
     return `<div class="evidence"><strong>${escape(CATEGORIES[e.category].name)} · 归类依据</strong><blockquote>“${escape(e.evidence)}”</blockquote><a href="${escape(link(q.source))}">查看对应原文 ↗</a></div>`;
   }).join('');
-  return `<details class="record" id="${r.id}"><summary><span class="stock-name">${escape(r.name)}<small>${r.code} · ${escape(r.start)} → ${r.end}${r.status==='floating'?' · 浮亏快照':''}</small></span><span class="loss-rate">${r.rate.toFixed(2)}%<small>${money(r.pnl)} 元 · ${r.basis.startsWith('费用前')?'费用前':'含费成本'}</small></span><span class="tags">${tags}</span></summary>
+  return `<details class="record" id="${r.id}"><summary><span class="stock-name">${escape(r.name)}<small>${r.instrument==='ETF'?'ETF · ':''}${r.code} · ${escape(r.start)} → ${r.end}${r.status==='floating'?' · 浮亏快照':''}</small></span><span class="loss-rate">${r.rate.toFixed(2)}%<small>${money(r.pnl)} 元 · ${r.basis.startsWith('费用前')?'费用前':'含费成本'}</small></span><span class="tags">${tags}</span></summary>
     <div class="record-body"><p>${escape(r.summary)}</p><div class="numbers"><span>对应成本<b>${money(r.cost)} 元</b></span><span>${r.status==='closed'?'该轮亏损':'快照浮亏'}<b>${money(r.pnl)} 元</b></span><span>计算口径<b>${escape(r.basis)}</b></span></div>${evidence}
     ${r.assessment==='正常试错'?'<p class="coverage">保留在亏损明细中，不纳入错误排行榜。</p>':''}
     <div class="source-links">${r.sources.map((s,i)=>`<a href="${escape(link(s))}">成交 / 核算来源 ${i+1} ↗</a>`).join('')}<a href="#${r.id}">此轮固定链接</a></div>
@@ -88,7 +88,7 @@ async function init() {
     [...new Set(DATA.records.map(r=>r.end.slice(0,7)))].sort().reverse().forEach(m=>$('month').insertAdjacentHTML('beforeend',`<option value="${m}">${m}</option>`));
     for(const id of ['instrument','status','month','category','sort'])$(id).addEventListener('change',render);
     $('search').addEventListener('input',render);
-    $('reset').addEventListener('click',()=>{for(const [id,value] of Object.entries({instrument:'stock',status:'closed',month:'all',category:'all',sort:'rate',search:''}))$(id).value=value;render();});
+    $('reset').addEventListener('click',()=>{for(const [id,value] of Object.entries({instrument:'all',status:'closed',month:'all',category:'all',sort:'rate',search:''}))$(id).value=value;render();});
     $('clear-category').addEventListener('click',()=>{$('category').value='all';render();});
     $('error-ranks').addEventListener('click',e=>{const b=e.target.closest('[data-category]');if(b){$('category').value=b.dataset.category;render();$('records').scrollIntoView();$('category').focus({preventScroll:true});}});
     $('stock-ranks').addEventListener('click',e=>{const b=e.target.closest('[data-stock]');if(b){$('search').value=b.dataset.stock;$('category').value='all';render();$('records').scrollIntoView();}});

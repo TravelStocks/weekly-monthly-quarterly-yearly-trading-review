@@ -7,7 +7,7 @@
   <title>大亏损总结 · 个股与日期双视角</title>
   <link rel="stylesheet" href="./style.css">
   <link rel="stylesheet" href="./calendar.css?v=20261105-month-errors">
-  <script src="./app.js?v=20261106-zhongjing" defer></script>
+  <script src="./app.js?v=20261106-etf-ranking" defer></script>
   <script src="./calendar.js?v=20261106-zhongjing" defer></script>
 </head>
 <body>
@@ -17,26 +17,26 @@
     <main id="main">
       <header class="hero">
         <div><span class="eyebrow">LOSS REVIEW / 亏损复盘</span><h1>大亏损个股总结</h1><p class="intro">把每一次亏损，放回当时的判断。<br>先看反复犯的错，再逐笔回看反思。</p><p class="scope">筛选：单轮收益率 <strong>低于 −2%</strong> · 同一轮跨周、跨月只算一次</p></div>
-        <div class="hero-note"><span>统计边界</span><p>默认看已平仓个股。ETF、历史持仓浮亏可单独查看；正常试错与待归因样本仍保留在明细中。</p><a href="#method">查看计算与归类口径 ↗</a></div>
+        <div class="hero-note"><span>统计边界</span><p>默认统计已平仓的个股和 ETF，可筛选单一类型或查看历史持仓浮亏。正常试错与待归因样本仍保留在明细中。</p><a href="#method">查看计算与归类口径 ↗</a></div>
       </header>
       <div class="view-switch" role="group" aria-label="复盘视角"><button id="view-stock" type="button" aria-pressed="true" aria-controls="stock-view">个股视角<span>单轮交易与错误排行榜</span></button><button id="view-date" type="button" aria-pressed="false" aria-controls="date-view">日期视角<span>账户大亏日历与当天操作</span></button></div>
       <div id="stock-view">
       <div id="load-state" role="status">正在读取亏损档案…</div>
       <div id="content" hidden>
         <section class="controls" aria-label="筛选亏损记录">
-          <label>标的范围<select id="instrument"><option value="stock">个股</option><option value="ETF">ETF</option><option value="all">个股 + ETF</option></select></label>
+          <label>标的范围<select id="instrument"><option value="all">个股 + ETF</option><option value="stock">仅个股</option><option value="ETF">仅 ETF</option></select></label>
           <label>盈亏状态<select id="status"><option value="closed">已平仓</option><option value="floating">历史持仓浮亏</option><option value="all">已平仓 + 浮亏</option></select></label>
           <label>结束 / 快照月份<select id="month"><option value="all">全部月份</option></select></label>
-          <label class="search-label">查找个股<input id="search" type="search" placeholder="股票名称或代码" autocomplete="off"></label>
+          <label class="search-label">查找标的<input id="search" type="search" placeholder="名称或代码" autocomplete="off"></label>
           <button id="reset" type="button">重置</button>
         </section>
         <section id="metrics" class="metrics" aria-label="筛选结果概览" aria-live="polite"></section>
         <section class="insight" aria-labelledby="insight-title"><span class="eyebrow">反复出现的问题</span><h2 id="insight-title"></h2><p id="insight-copy"></p></section>
         <div class="ranking-layout">
-          <section class="panel" id="ranking"><div class="section-head"><div><span class="eyebrow">01 / ERROR FREQUENCY</span><h2>错误频次排行榜</h2></div><span class="pill">按交易轮次计数</span></div><p class="subtle">一轮可有多类错误，每类只计一次。占比以当前范围全部亏损样本为分母；多标签占比不相加。点击分类查看对应个股。</p><div id="error-ranks"></div></section>
-          <section class="panel" aria-labelledby="repeat-title"><span class="eyebrow">02 / REPEATED LOSSES</span><h2 id="repeat-title">个股重复亏损榜</h2><p class="subtle">先按亏损轮次，再按亏损金额排序。仅合计入选亏损轮次，不代表该股历史净收益。</p><div id="stock-ranks"></div></section>
+          <section class="panel" id="ranking"><div class="section-head"><div><span class="eyebrow">01 / ERROR FREQUENCY</span><h2>错误频次排行榜</h2></div><span class="pill">按交易轮次计数</span></div><p class="subtle">一轮可有多类错误，每类只计一次。占比以当前范围全部亏损样本为分母；多标签占比不相加。点击分类查看对应的个股和 ETF。</p><div id="error-ranks"></div></section>
+          <section class="panel" aria-labelledby="repeat-title"><span class="eyebrow">02 / REPEATED LOSSES</span><h2 id="repeat-title">标的重复亏损榜</h2><p class="subtle">先按亏损轮次，再按亏损金额排序。仅合计入选亏损轮次，不代表该标的历史净收益。</p><div id="stock-ranks"></div></section>
         </div>
-        <section class="panel" id="records"><div class="section-head"><div><span class="eyebrow">03 / EVIDENCE ARCHIVE</span><h2>亏损个股与对应反思</h2></div><span id="record-count" class="pill" role="status"></span></div>
+        <section class="panel" id="records"><div class="section-head"><div><span class="eyebrow">03 / EVIDENCE ARCHIVE</span><h2>亏损标的与对应反思</h2></div><span id="record-count" class="pill" role="status"></span></div>
           <div class="detail-controls"><label>反思 / 错误分类<select id="category"><option value="all">全部记录</option><option value="normal">正常试错</option><option value="pending">待归因</option></select></label><label>明细排序<select id="sort"><option value="rate">亏损率由大到小</option><option value="amount">亏损金额由大到小</option><option value="recent">最近发生优先</option></select></label><button id="clear-category" type="button" hidden>清除分类筛选</button></div>
           <p class="subtle">摘要与分类为依据既有复盘的整理判断。展开每条记录可查看归类依据、关联原文及成交来源。</p><div id="record-list"></div>
         </section>
