@@ -5893,22 +5893,13 @@
           "code": "600851",
           "start": "2026-06-24",
           "end": "2026-06-25",
-          "summary": "轮动切仓的新方向强度不足，未充分区分轮动试错与确定性主线。",
-          "errors": [
-            {
-              "category": "cycle",
-              "evidence": "切仓后的新方向不够硬"
-            },
-            {
-              "category": "leader",
-              "evidence": "选股强度和题材地位不够硬"
-            }
-          ],
-          "assessment": "已有反思归类"
+          "summary": "海欣股份属于正常龙头试错。结合龙头七维等因素判断时，也可能看错。按本人复盘，后续要提高选股审美，降低误判概率。6月24日买入、25日卖出，整轮亏损278.53元。",
+          "errors": [],
+          "assessment": "正常试错"
         }
       ],
-      "summary": "卖出诺德股份，买入海欣股份、大唐发电。旧核心退出和新方向选择分别评价；该日日收益为估算，不能与成交闭环亏损混算。",
-      "assessment": "已有反思归类",
+      "summary": "买入大唐发电2,000股，归为龙头二波买点错误。买入海欣股份300股，归为正常龙头试错。结合龙头七维等因素判断时，也可能看错。按本人复盘，后续要提高选股审美，降低误判概率。同日卖出诺德股份1,100股，关联此前的退出问题。",
+      "assessment": "本人最新反思归类",
       "errors": [
         {
           "category": "exit",
@@ -5923,28 +5914,16 @@
           "source": "success-failure-trade-review/stock-600110-failure/index.html"
         },
         {
-          "category": "cycle",
+          "category": "second_wave_entry",
           "scope": "当日操作",
           "stocks": [
             {
-              "code": "600851",
-              "name": "海欣股份"
+              "code": "601991",
+              "name": "大唐发电"
             }
           ],
-          "evidence": "切仓后的新方向不够硬",
-          "source": "2026-06-22_2026-06-26/index.html#ticket-analysis"
-        },
-        {
-          "category": "leader",
-          "scope": "当日操作",
-          "stocks": [
-            {
-              "code": "600851",
-              "name": "海欣股份"
-            }
-          ],
-          "evidence": "选股强度和题材地位不够硬",
-          "source": "2026-06-22_2026-06-26/index.html#stocks"
+          "evidence": "6.24的大唐发电是”龙头二波买点错误“",
+          "source": "large-loss-review/index.html#june24-leader-review"
         }
       ]
     },
@@ -6064,18 +6043,9 @@
           "code": "600851",
           "start": "2026-06-24",
           "end": "2026-06-25",
-          "summary": "轮动切仓的新方向强度不足，未充分区分轮动试错与确定性主线。",
-          "errors": [
-            {
-              "category": "cycle",
-              "evidence": "切仓后的新方向不够硬"
-            },
-            {
-              "category": "leader",
-              "evidence": "选股强度和题材地位不够硬"
-            }
-          ],
-          "assessment": "已有反思归类"
+          "summary": "海欣股份属于正常龙头试错。结合龙头七维等因素判断时，也可能看错。按本人复盘，后续要提高选股审美，降低误判概率。6月24日买入、25日卖出，整轮亏损278.53元。",
+          "errors": [],
+          "assessment": "正常试错"
         }
       ],
       "summary": "",
