@@ -299,7 +299,7 @@
     "errors": []
   },
   "2026-06-03": {
-    "summary": "卖出粤电力A 800股，买入大有能源1,100股。粤电力A这轮主因归为补涨龙高度错误。本人纪律是补涨龙只能在三板做。",
+    "summary": "卖出粤电力A 800股，买入大有能源1,100股。粤电力A这轮主因归为补涨龙高度错误。本人纪律是补涨龙只能在三板做。 中京电子当天继续持有，本轮归为切换模式错误。",
     "assessment": "本人最新反思归类",
     "errors": [
       {
@@ -315,7 +315,7 @@
         "source": "large-loss-review/index.html#yuedian-catch-up"
       },
       {
-        "category": "leader",
+        "category": "switch_mode",
         "scope": "持仓延续",
         "stocks": [
           {
@@ -323,8 +323,8 @@
             "name": "中京电子"
           }
         ],
-        "evidence": "它在趋势里不是第一，也不是情绪核心",
-        "source": "2026-06-01_2026-06-05/index.html#ticket-analysis"
+        "evidence": "切换模式错误",
+        "source": "large-loss-review/index.html#zhongjing-switch"
       }
     ]
   },

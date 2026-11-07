@@ -6527,14 +6527,14 @@
           "code": "002579",
           "start": "2026-06-02",
           "end": "2026-06-04",
-          "summary": "混合概念第二层机会，既不是趋势第一，也不是情绪唯一，却给予了核心预期。",
+          "summary": "6月3日延续持有中京电子，本人将这轮交易归为切换模式错误。",
           "errors": [
             {
-              "category": "leader",
-              "evidence": "它在趋势里不是第一，也不是情绪核心"
+              "category": "switch_mode",
+              "evidence": "切换模式错误"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         }
       ],
       "summary": "粤电力A加仓300股，延续同一轮补涨龙交易。当天还买入中京电子400股。",
@@ -6654,17 +6654,17 @@
           "code": "002579",
           "start": "2026-06-02",
           "end": "2026-06-04",
-          "summary": "混合概念第二层机会，既不是趋势第一，也不是情绪唯一，却给予了核心预期。",
+          "summary": "6月3日延续持有中京电子，本人将这轮交易归为切换模式错误。",
           "errors": [
             {
-              "category": "leader",
-              "evidence": "它在趋势里不是第一，也不是情绪核心"
+              "category": "switch_mode",
+              "evidence": "切换模式错误"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         }
       ],
-      "summary": "卖出粤电力A 800股，买入大有能源1,100股。粤电力A这轮主因归为补涨龙高度错误。本人纪律是补涨龙只能在三板做。",
+      "summary": "卖出粤电力A 800股，买入大有能源1,100股。粤电力A这轮主因归为补涨龙高度错误。本人纪律是补涨龙只能在三板做。 中京电子当天继续持有，本轮归为切换模式错误。",
       "assessment": "本人最新反思归类",
       "errors": [
         {
@@ -6680,7 +6680,7 @@
           "source": "large-loss-review/index.html#yuedian-catch-up"
         },
         {
-          "category": "leader",
+          "category": "switch_mode",
           "scope": "持仓延续",
           "stocks": [
             {
@@ -6688,8 +6688,8 @@
               "name": "中京电子"
             }
           ],
-          "evidence": "它在趋势里不是第一，也不是情绪核心",
-          "source": "2026-06-01_2026-06-05/index.html#ticket-analysis"
+          "evidence": "切换模式错误",
+          "source": "large-loss-review/index.html#zhongjing-switch"
         }
       ]
     },
@@ -6803,14 +6803,14 @@
           "code": "002579",
           "start": "2026-06-02",
           "end": "2026-06-04",
-          "summary": "混合概念第二层机会，既不是趋势第一，也不是情绪唯一，却给予了核心预期。",
+          "summary": "6月3日延续持有中京电子，本人将这轮交易归为切换模式错误。",
           "errors": [
             {
-              "category": "leader",
-              "evidence": "它在趋势里不是第一，也不是情绪核心"
+              "category": "switch_mode",
+              "evidence": "切换模式错误"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         }
       ],
       "summary": "",

@@ -4359,14 +4359,18 @@
         {
           "text": "周二买入、周四早盘卖出，闭环亏损主要来自买点偏高后隔日走弱。",
           "source": "2026-06-01_2026-06-05/index.html"
+        },
+        {
+          "text": "本人将这轮持仓归为“切换模式错误”。",
+          "source": "large-loss-review/index.html#zhongjing-switch"
         }
       ],
-      "assessment": "已有反思归类",
-      "summary": "混合概念第二层机会，既不是趋势第一，也不是情绪唯一，却给予了核心预期。",
+      "assessment": "本人最新反思归类",
+      "summary": "6月3日延续持有中京电子，本人将这轮交易归为切换模式错误。",
       "errors": [
         {
-          "category": "leader",
-          "evidence": "它在趋势里不是第一，也不是情绪核心"
+          "category": "switch_mode",
+          "evidence": "切换模式错误"
         }
       ]
     },
