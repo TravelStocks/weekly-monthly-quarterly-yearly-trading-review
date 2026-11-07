@@ -100,14 +100,14 @@ for month,count in [('2026-08',5),('2026-09',1),('2026-10',2)]:
     assert sum(d['date'].startswith(month) and d['income'] and d['income']['rate'] < -2 and any(e['category']=='switch_mode' for e in d['errors']) for d in days.values())==count
 
 # Latest theme-support attribution must preserve other stocks and daily returns.
-for date,code,scope,rate in [('2026-08-07','601700','持仓延续',-9.69),('2026-09-09','002403','持仓延续',-5.27),('2026-10-21','003029','本轮回看',-2.13)]:
+for date,code,scope,rate in [('2026-08-07','601700','持仓延续',-9.69),('2026-08-21','600127','本轮回看',-2.24),('2026-09-09','002403','持仓延续',-5.27),('2026-10-21','003029','本轮回看',-2.13)]:
     errors=[e for e in days[date]['errors'] if any(t['code']==code for t in e['stocks'])]
     assert len(errors)==1 and errors[0]['category']=='theme_support' and errors[0]['scope']==scope
     assert days[date]['income']['rate']==rate
-assert sum(any(e['category']=='theme_support' for e in d['errors']) for d in days.values())==3
+assert sum(any(e['category']=='theme_support' for e in d['errors']) for d in days.values())==4
 assert days['2026-08-07']['income']['amount']==-1296
-for month in ['2026-08','2026-09','2026-10']:
-    assert sum(d['date'].startswith(month) and d['income'] and d['income']['rate'] < -2 and any(e['category']=='theme_support' for e in d['errors']) for d in days.values())==1
+for month,count in [('2026-08',2),('2026-09',1),('2026-10',1)]:
+    assert sum(d['date'].startswith(month) and d['income'] and d['income']['rate'] < -2 and any(e['category']=='theme_support' for e in d['errors']) for d in days.values())==count
 
 # Calendar links now include November closed episodes and the dated WENTOU snapshot.
 assert any(r['id']=='603131-2026-11-03-closed' for r in days['2026-11-02']['relatedEpisodes'])

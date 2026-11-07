@@ -84,7 +84,8 @@ assert sum(any(e['category']=='switch_mode' for e in r['errors']) for r in recor
 assert {e['category'] for e in by_id['002403-2026-09-09-closed']['errors']}=={'theme_support'}
 assert {e['category'] for e in by_id['601700-2026-08-10-closed']['errors']}=={'theme_support'}
 assert by_id['601700-2026-08-10-closed']['pnl']==-327.55
-assert sum(any(e['category']=='theme_support' for e in r['errors']) for r in records)==3
+assert [e['category'] for e in by_id['600127-2026-08-21-closed']['errors']]==['theme_support']
+assert sum(any(e['category']=='theme_support' for e in r['errors']) for r in records)==4
 
 # Overlapping documents must not duplicate fills; real identical fills survive.
 sample=dict(date='2026-01-01',time='09:30:00',code='000001',name='测试',side='buy',qty=100,gross=1000,cash=1005,source='one')
