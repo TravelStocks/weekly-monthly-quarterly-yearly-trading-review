@@ -41,7 +41,11 @@
     if(!d){el('calendar-day-detail').innerHTML='<h2>选择一个日期</h2><p>点击有账户或交割记录的日期查看操作与反思。</p>';return;}
     const income=d.income, shown=activeIncome(d), flagged=isLoss(d);
     const calc=income?.calculation;
-    const calculation=calc?`<details class="quote-archive"><summary>查看当日损益估算过程</summary><p>收盘总资产：现金 ${money(calc.cash)} + 持仓市值 ${money(calc.marketValue)} = ${money(calc.equity)} 元。</p><p>当日损益：${money(calc.equity)} − 上一交易日总资产 ${money(calc.previousEquity)} = ${money(income.amount)} 元。</p><p>日收益率：${money(income.amount)} ÷ ${money(calc.previousEquity)} × 100% = ${rateText(income.rate)}。</p><p class="subtle">含交易费用；假设没有遗漏持仓或额外出入金。<a href="${esc(sourceLink(calc.source))}">查看逐日核算与收盘价依据 ↗</a></p></details>`:'';
+    const holdings=calc?.positions;
+    const contributions=holdings?.length ? '<p><strong>各标的当日损益</strong></p><ul>'+holdings.map(h=>
+      `<li>${esc(h.name)} ${esc(h.code)} · ${money(h.pnl)} 元<br><small>持仓 ${h.openingQty} → ${h.closingQty}，收盘价 ${money(h.close)} 元${h.quoteDate!==d.date?'（停牌，沿用 '+esc(h.quoteDate)+' 收盘价）':''}</small></li>`
+    ).join('')+'</ul>' : holdings ? '<p>全天空仓且没有成交，持仓损益为0元。</p>' : '';
+    const calculation=calc?`<details class="quote-archive"><summary>查看当日损益估算过程</summary><p>收盘总资产：现金 ${money(calc.cash)} + 持仓市值 ${money(calc.marketValue)} = ${money(calc.equity)} 元。</p><p>当日损益：${money(calc.equity)} − 上一交易日总资产 ${money(calc.previousEquity)} = ${money(income.amount)} 元。</p><p>日收益率：${money(income.amount)} ÷ ${money(calc.previousEquity)} × 100% = ${rateText(income.rate)}。</p>${contributions}<p class="subtle">含交易费用；假设没有遗漏持仓或额外出入金。<a href="${esc(sourceLink(calc.source))}">查看逐日核算与收盘价依据 ↗</a></p></details>`:'';
     const status=flagged?(income.kind==='estimated'?'估算大亏日':'大亏日'):income?(income.kind==='estimated'?(shown?'估算记录 · 未低于 −2%':'估算记录 · 尚未计入当前筛选'):'日收益未低于 −2%'):'日收益率未提供';
     const trades=['buy','sell'].map(side=>{
       const group=d.trades.filter(t=>t.side===side);
@@ -110,7 +114,7 @@
   window.addEventListener('hashchange',route);route();
   async function init() {
     try {
-      const response=await fetch('./calendar-data.json?v=20261106-yuedian');if(!response.ok)throw new Error('HTTP '+response.status);
+      const response=await fetch('./calendar-data.json?v=20261106-spring-holdings');if(!response.ok)throw new Error('HTTP '+response.status);
       archive=await response.json();dates=new Map(archive.days.map(d=>[d.date,d]));
       archive.days.forEach(d=>d.relatedEpisodes.forEach(r=>names.set(r.code,r.name)));
       months=[];let current=archive.start.slice(0,7),end=archive.end.slice(0,7);

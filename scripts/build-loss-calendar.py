@@ -168,6 +168,16 @@ def build():
             add_rate(day['date'], day['returnPct'], day['pnl'], source, 'estimated',
                 '实际交割（含费）与收盘持仓估算；假设无遗漏持仓或额外出入金，非券商确认', calculation)
             previous = equity
+    spring_source = 'large-loss-review/spring-holding-estimates.json'
+    for valuation in read(spring_source)['days']:
+        date = valuation['date']
+        if date in rates:
+            continue
+        calculation = {key: valuation[key] for key in
+                       ('previousEquity', 'cash', 'marketValue', 'equity', 'positions')}
+        calculation['source'] = spring_source
+        add_rate(date, valuation['rate'], valuation['amount'], spring_source, 'estimated',
+                 '交割持仓与不复权收盘价估算，含交易费用', calculation)
     by_date=defaultdict(list)
     for t in imported['rows']:by_date[t['date']].append(t)
     loss=read('large-loss-review/data.json')['records']

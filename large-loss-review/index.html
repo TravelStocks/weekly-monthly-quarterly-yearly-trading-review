@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="./style.css">
   <link rel="stylesheet" href="./calendar.css?v=20261105-month-errors">
   <script src="./app.js?v=20261106-yuedian" defer></script>
-  <script src="./calendar.js?v=20261106-yuedian" defer></script>
+  <script src="./calendar.js?v=20261106-spring-holdings" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">跳到主要内容</a>
@@ -54,7 +54,7 @@
       <section id="date-view" hidden aria-label="日期视角">
         <div id="calendar-loading" role="status">正在读取每日账户记录与交割…</div>
         <div id="calendar-content" hidden>
-          <p class="calendar-intro">按<strong>账户当日收益率低于 −2%</strong>标记大亏日。点击日期查看当天买卖、持仓延续问题及对应反思。金额与收益率来自原站每日账户记录，个股操作来自本次交割单。</p>
+          <p class="calendar-intro">按<strong>账户当日收益率低于 −2%</strong>标记大亏日。点击日期查看当天买卖、持仓延续问题及对应反思。已有日收益取自账户记录。4月、5月缺少的交易日按每日持仓和收盘价估算。</p>
           <div id="calendar-metrics" class="metrics" aria-live="polite"></div>
           <div class="calendar-controls"><label>查看月份<select id="calendar-month"></select></label><label class="calendar-jump">跳转大亏日<select id="calendar-loss-picker"></select></label><label class="estimate-toggle"><input id="calendar-estimates" type="checkbox" checked>同时显示估算日收益<span>默认全部显示，估算单独标记</span></label></div>
           <div class="calendar-layout">
@@ -74,7 +74,7 @@
             </section>
             <section id="calendar-day-detail" class="panel calendar-detail" tabindex="-1" aria-live="polite" aria-label="选中日期的操作与反思"></section>
           </div>
-          <section class="panel calendar-method" id="calendar-method"><h2>日期与个股，分别回答两个问题</h2><div class="method-grid"><div><h3>日期看账户，个股看一轮交易</h3><p>账户日收益包含持仓当日波动，不能用当天买卖现金流、各票完整交易盈亏或涨跌幅相加替代。一天没有买卖，也可能因持仓下跌成为大亏日。</p></div><div><h3>错误按发生范围标注</h3><p>“当日操作”对应当天动作；“持仓延续”来自此前风险；“本轮回看”表示反思未精确定位到一天。同一问题连续几天出现，不代表每天都重新犯了一次。</p></div><div><h3>未知日期保留空白</h3><p>没有日收益记录且缺少可靠估算依据时显示“未提供”，不写成0。交割覆盖3月11日至11月4日，日期空白也不据此推断休市。低于 −2% 才入选，刚好 −2% 不入选。</p></div><div><h3>估算与原记录分开</h3><p>默认显示并统计全部已收录日收益，包含估算；估算保留独立标记，不等同于券商确认。10月30日已按实际成交和收盘持仓重算，替换旧持仓不变情景，并衔接11月2日至4日估算。7月13日至9月30日以已归档每日收益源表为准。</p></div></div><p id="calendar-source-note" class="coverage"></p></section>
+          <section class="panel calendar-method" id="calendar-method"><h2>日期与个股，分别回答两个问题</h2><div class="method-grid"><div><h3>日期看账户，个股看一轮交易</h3><p>账户日收益包含持仓当日波动，不能用当天买卖现金流、各票完整交易盈亏或涨跌幅相加替代。一天没有买卖，也可能因持仓下跌成为大亏日。</p></div><div><h3>错误按发生范围标注</h3><p>“当日操作”对应当天动作；“持仓延续”来自此前风险；“本轮回看”表示反思未精确定位到一天。同一问题连续几天出现，不代表每天都重新犯了一次。</p></div><div><h3>未知日期保留空白</h3><p>没有日收益记录且缺少可靠估算依据时显示“未提供”，不写成0。交割覆盖3月11日至11月4日，日期空白也不据此推断休市。低于 −2% 才入选，刚好 −2% 不入选。</p></div><div><h3>估算与原记录分开</h3><p>默认显示并统计全部已收录日收益，包含估算；估算保留独立标记，不等同于券商确认。4月、5月缺失的日收益按交割还原持仓，以收盘市值变化及当日含费交易净额计算。无成交日按持仓涨跌计算，停牌沿用最近收盘价。10月30日已按实际成交和收盘持仓重算，替换旧持仓不变情景，并衔接11月2日至4日估算。7月13日至9月30日以已归档每日收益源表为准。</p></div></div><p id="calendar-source-note" class="coverage"></p></section>
         </div>
       </section>
       <section class="panel" id="pk-reclassification" aria-labelledby="pk-reclassification-title">

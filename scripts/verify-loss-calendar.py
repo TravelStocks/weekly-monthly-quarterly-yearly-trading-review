@@ -16,7 +16,7 @@ categories=set(re.findall(r'^  ([a-z_]+):', (ROOT/'large-loss-review/app.js').re
 data = read('large-loss-review/calendar-data.json')
 trades = read('large-loss-review/calendar-trades.json')['rows']
 days = {d['date']: d for d in data['days']}
-assert len(days) == len(data['days']) == 159
+assert len(days) == len(data['days']) == 160
 assert data['threshold'] == -2
 assert len(trades) == data['tradeCount'] == sum(d['tradeCount'] for d in days.values()) == 720
 assert {t['sourceRow'] for t in trades} == set(range(2, 722))
@@ -50,10 +50,24 @@ if attachment.exists():
 
 recorded = [d for d in days.values() if d['income'] and d['income']['kind']=='recorded']
 estimated = [d for d in days.values() if d['income'] and d['income']['kind']=='estimated']
-assert len(recorded)==97 and len(estimated)==25
+assert len(recorded)==97 and len(estimated)==48
 assert len([d for d in recorded if d['income']['rate'] < -2])==30
-assert len([d for d in estimated if d['income']['rate'] < -2])==7
-assert sum(d['tradeCount']>0 and not d['income'] for d in days.values())==37
+assert len([d for d in estimated if d['income']['rate'] < -2])==15
+assert sum(d['tradeCount']>0 and not d['income'] for d in days.values())==15
+spring = read('large-loss-review/spring-holding-estimates.json')['days']
+assert Counter(v['date'][:7] for v in spring) == {'2026-04':21,'2026-05':18}
+for v in spring:
+    assert days[v['date']]['income']
+    contributions = Decimal(0)
+    for h in v['positions']:
+        closing_value = h['closingQty'] * Decimal(str(h['close']))
+        pnl = closing_value - Decimal(str(h['openingValue'])) + Decimal(str(h['netTradeCash']))
+        assert pnl == Decimal(str(h['pnl']))
+        contributions += pnl
+    assert contributions == Decimal(str(v['amount']))
+assert days['2026-05-27']['tradeCount']==0 and days['2026-05-27']['income']['amount']==1108
+halted = next(h for h in days['2026-04-30']['income']['calculation']['positions'] if h['code']=='002082')
+assert halted['quoteDate']=='2026-04-29' and halted['pnl']==0
 for r in read('weekly-trading-review/daily-income.json')['rows']:
     actual = days[r['date']]['income']
     assert actual['rate']==r['rateBasisPoints']/100
@@ -176,4 +190,4 @@ for filename in ['calendar-data.json','calendar-trades.json','calendar-annotatio
 html=BeautifulSoup((ROOT/'large-loss-review/index.html').read_text(encoding='utf-8'),'html.parser')
 ids=[n['id'] for n in html.select('[id]')]
 assert len(ids)==len(set(ids))
-print('PASS: 720 source rows reconciled, 30 recorded + 7 estimated loss days; November account bridge, provenance, missing data, attribution, privacy, HTML IDs')
+print('PASS: 720 source rows reconciled, 30 recorded + 15 estimated loss days; spring holdings, November account bridge, provenance, missing data, attribution, privacy, HTML IDs')

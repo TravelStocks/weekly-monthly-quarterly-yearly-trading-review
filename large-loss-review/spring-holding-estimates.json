@@ -1,0 +1,2395 @@
+{
+  "method": "逐股日损益 = 今收持仓市值 − 昨收持仓市值 + 当日含费买卖净发生额；账户日收益率 = 日损益合计 ÷ 昨收账户权益。",
+  "priceSource": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get",
+  "priceBasis": "腾讯行情不复权日收盘价；交易日按上证指数日线。",
+  "haltNotice": "https://disc.static.szse.cn/disc/disk03/finalpage/2026-04-30/5f3a7fa5-3b97-4709-9958-37d1cf208676.PDF",
+  "days": [
+    {
+      "date": "2026-04-01",
+      "amount": -941.83,
+      "rate": -2.442080862505737,
+      "previousEquity": 38566.7,
+      "equity": 37624.87,
+      "cash": 22723.87,
+      "marketValue": 14901.0,
+      "positions": [
+        {
+          "code": "000592",
+          "name": "平潭发展",
+          "openingQty": 200,
+          "closingQty": 0,
+          "close": 12.02,
+          "quoteDate": "2026-04-01",
+          "openingValue": 2556.0,
+          "netTradeCash": 2389.8,
+          "pnl": -166.2
+        },
+        {
+          "code": "000631",
+          "name": "顺发恒能",
+          "openingQty": 0,
+          "closingQty": 300,
+          "close": 3.95,
+          "quoteDate": "2026-04-01",
+          "openingValue": 0.0,
+          "netTradeCash": -1367.0,
+          "pnl": -182.0
+        },
+        {
+          "code": "002160",
+          "name": "常铝股份",
+          "openingQty": 900,
+          "closingQty": 0,
+          "close": 5.11,
+          "quoteDate": "2026-04-01",
+          "openingValue": 4842.0,
+          "netTradeCash": 4591.7,
+          "pnl": -250.3
+        },
+        {
+          "code": "002560",
+          "name": "通达股份",
+          "openingQty": 0,
+          "closingQty": 400,
+          "close": 11.87,
+          "quoteDate": "2026-04-01",
+          "openingValue": 0.0,
+          "netTradeCash": -4753.0,
+          "pnl": -5.0
+        },
+        {
+          "code": "002578",
+          "name": "闽发铝业",
+          "openingQty": 1000,
+          "closingQty": 0,
+          "close": 4.37,
+          "quoteDate": "2026-04-01",
+          "openingValue": 4690.0,
+          "netTradeCash": 4322.83,
+          "pnl": -367.17
+        },
+        {
+          "code": "002634",
+          "name": "棒杰股份",
+          "openingQty": 700,
+          "closingQty": 0,
+          "close": 9.17,
+          "quoteDate": "2026-04-01",
+          "openingValue": 6258.0,
+          "netTradeCash": 6452.77,
+          "pnl": 194.77
+        },
+        {
+          "code": "600184",
+          "name": "光电股份",
+          "openingQty": 0,
+          "closingQty": 200,
+          "close": 19.3,
+          "quoteDate": "2026-04-01",
+          "openingValue": 0.0,
+          "netTradeCash": -4034.04,
+          "pnl": -174.04
+        },
+        {
+          "code": "600666",
+          "name": "奥瑞德",
+          "openingQty": 200,
+          "closingQty": 0,
+          "close": 6.27,
+          "quoteDate": "2026-04-01",
+          "openingValue": 1140.0,
+          "netTradeCash": 1160.41,
+          "pnl": 20.41
+        },
+        {
+          "code": "603601",
+          "name": "再升科技",
+          "openingQty": 400,
+          "closingQty": 0,
+          "close": 14.87,
+          "quoteDate": "2026-04-01",
+          "openingValue": 6196.0,
+          "netTradeCash": 6207.83,
+          "pnl": 11.83
+        },
+        {
+          "code": "605162",
+          "name": "新中港",
+          "openingQty": 0,
+          "closingQty": 400,
+          "close": 12.77,
+          "quoteDate": "2026-04-01",
+          "openingValue": 0.0,
+          "netTradeCash": -5118.05,
+          "pnl": -10.05
+        },
+        {
+          "code": "605299",
+          "name": "舒华体育",
+          "openingQty": 100,
+          "closingQty": 0,
+          "close": 21.6,
+          "quoteDate": "2026-04-01",
+          "openingValue": 2133.0,
+          "netTradeCash": 2118.92,
+          "pnl": -14.08
+        }
+      ]
+    },
+    {
+      "date": "2026-04-02",
+      "amount": -56.01,
+      "rate": -0.1488643017238332,
+      "previousEquity": 37624.87,
+      "equity": 37568.86,
+      "cash": 15445.86,
+      "marketValue": 22123.0,
+      "positions": [
+        {
+          "code": "000631",
+          "name": "顺发恒能",
+          "openingQty": 300,
+          "closingQty": 0,
+          "close": 3.56,
+          "quoteDate": "2026-04-02",
+          "openingValue": 1185.0,
+          "netTradeCash": 1116.44,
+          "pnl": -68.56
+        },
+        {
+          "code": "002361",
+          "name": "神剑股份",
+          "openingQty": 0,
+          "closingQty": 200,
+          "close": 17.29,
+          "quoteDate": "2026-04-02",
+          "openingValue": 0.0,
+          "netTradeCash": -3479.0,
+          "pnl": -21.0
+        },
+        {
+          "code": "002560",
+          "name": "通达股份",
+          "openingQty": 400,
+          "closingQty": 0,
+          "close": 13.06,
+          "quoteDate": "2026-04-02",
+          "openingValue": 4748.0,
+          "netTradeCash": 5188.4,
+          "pnl": 440.4
+        },
+        {
+          "code": "600184",
+          "name": "光电股份",
+          "openingQty": 200,
+          "closingQty": 0,
+          "close": 18.46,
+          "quoteDate": "2026-04-02",
+          "openingValue": 3860.0,
+          "netTradeCash": 3747.08,
+          "pnl": -112.92
+        },
+        {
+          "code": "600249",
+          "name": "两面针",
+          "openingQty": 0,
+          "closingQty": 800,
+          "close": 7.14,
+          "quoteDate": "2026-04-02",
+          "openingValue": 0.0,
+          "netTradeCash": -6124.06,
+          "pnl": -412.06
+        },
+        {
+          "code": "601872",
+          "name": "招商轮船",
+          "openingQty": 0,
+          "closingQty": 300,
+          "close": 19.47,
+          "quoteDate": "2026-04-02",
+          "openingValue": 0.0,
+          "netTradeCash": -5935.06,
+          "pnl": -94.06
+        },
+        {
+          "code": "601975",
+          "name": "招商南油",
+          "openingQty": 0,
+          "closingQty": 600,
+          "close": 4.8,
+          "quoteDate": "2026-04-02",
+          "openingValue": 0.0,
+          "netTradeCash": -2903.03,
+          "pnl": -23.03
+        },
+        {
+          "code": "603538",
+          "name": "美诺华",
+          "openingQty": 0,
+          "closingQty": 100,
+          "close": 42.32,
+          "quoteDate": "2026-04-02",
+          "openingValue": 0.0,
+          "netTradeCash": -4241.04,
+          "pnl": -9.04
+        },
+        {
+          "code": "605162",
+          "name": "新中港",
+          "openingQty": 400,
+          "closingQty": 0,
+          "close": 14.05,
+          "quoteDate": "2026-04-02",
+          "openingValue": 5108.0,
+          "netTradeCash": 5352.26,
+          "pnl": 244.26
+        }
+      ]
+    },
+    {
+      "date": "2026-04-03",
+      "amount": -732.26,
+      "rate": -1.949114239825217,
+      "previousEquity": 37568.86,
+      "equity": 36836.6,
+      "cash": 11944.6,
+      "marketValue": 24892.0,
+      "positions": [
+        {
+          "code": "000586",
+          "name": "汇源通信",
+          "openingQty": 0,
+          "closingQty": 100,
+          "close": 18.87,
+          "quoteDate": "2026-04-03",
+          "openingValue": 0.0,
+          "netTradeCash": -1892.0,
+          "pnl": -5.0
+        },
+        {
+          "code": "000720",
+          "name": "新能泰山",
+          "openingQty": 0,
+          "closingQty": 300,
+          "close": 5.94,
+          "quoteDate": "2026-04-03",
+          "openingValue": 0.0,
+          "netTradeCash": -1787.0,
+          "pnl": -5.0
+        },
+        {
+          "code": "002361",
+          "name": "神剑股份",
+          "openingQty": 200,
+          "closingQty": 300,
+          "close": 15.74,
+          "quoteDate": "2026-04-03",
+          "openingValue": 3458.0,
+          "netTradeCash": -1572.7,
+          "pnl": -308.7
+        },
+        {
+          "code": "600249",
+          "name": "两面针",
+          "openingQty": 800,
+          "closingQty": 0,
+          "close": 6.43,
+          "quoteDate": "2026-04-03",
+          "openingValue": 5712.0,
+          "netTradeCash": 5336.28,
+          "pnl": -375.72
+        },
+        {
+          "code": "601872",
+          "name": "招商轮船",
+          "openingQty": 300,
+          "closingQty": 0,
+          "close": 20.39,
+          "quoteDate": "2026-04-03",
+          "openingValue": 5841.0,
+          "netTradeCash": 6240.82,
+          "pnl": 399.82
+        },
+        {
+          "code": "601975",
+          "name": "招商南油",
+          "openingQty": 600,
+          "closingQty": 0,
+          "close": 5.09,
+          "quoteDate": "2026-04-03",
+          "openingValue": 2880.0,
+          "netTradeCash": 2987.47,
+          "pnl": 107.47
+        },
+        {
+          "code": "603538",
+          "name": "美诺华",
+          "openingQty": 100,
+          "closingQty": 200,
+          "close": 40.0,
+          "quoteDate": "2026-04-03",
+          "openingValue": 4232.0,
+          "netTradeCash": -4295.04,
+          "pnl": -527.04
+        },
+        {
+          "code": "603618",
+          "name": "杭电股份",
+          "openingQty": 0,
+          "closingQty": 100,
+          "close": 27.65,
+          "quoteDate": "2026-04-03",
+          "openingValue": 0.0,
+          "netTradeCash": -2854.03,
+          "pnl": -89.03
+        },
+        {
+          "code": "603778",
+          "name": "国晟科技",
+          "openingQty": 0,
+          "closingQty": 200,
+          "close": 28.68,
+          "quoteDate": "2026-04-03",
+          "openingValue": 0.0,
+          "netTradeCash": -5665.06,
+          "pnl": 70.94
+        }
+      ]
+    },
+    {
+      "date": "2026-04-07",
+      "amount": 832.87,
+      "rate": 2.2609849986155073,
+      "previousEquity": 36836.6,
+      "equity": 37669.47,
+      "cash": 19615.47,
+      "marketValue": 18054.0,
+      "positions": [
+        {
+          "code": "000586",
+          "name": "汇源通信",
+          "openingQty": 100,
+          "closingQty": 100,
+          "close": 20.76,
+          "quoteDate": "2026-04-07",
+          "openingValue": 1887.0,
+          "netTradeCash": 0.0,
+          "pnl": 189.0
+        },
+        {
+          "code": "000720",
+          "name": "新能泰山",
+          "openingQty": 300,
+          "closingQty": 0,
+          "close": 6.53,
+          "quoteDate": "2026-04-07",
+          "openingValue": 1782.0,
+          "netTradeCash": 1944.02,
+          "pnl": 162.02
+        },
+        {
+          "code": "002082",
+          "name": "万邦德",
+          "openingQty": 0,
+          "closingQty": 100,
+          "close": 36.24,
+          "quoteDate": "2026-04-07",
+          "openingValue": 0.0,
+          "netTradeCash": -3629.0,
+          "pnl": -5.0
+        },
+        {
+          "code": "002361",
+          "name": "神剑股份",
+          "openingQty": 300,
+          "closingQty": 0,
+          "close": 15.25,
+          "quoteDate": "2026-04-07",
+          "openingValue": 4722.0,
+          "netTradeCash": 4714.64,
+          "pnl": -7.36
+        },
+        {
+          "code": "600488",
+          "name": "津药药业",
+          "openingQty": 0,
+          "closingQty": 600,
+          "close": 7.67,
+          "quoteDate": "2026-04-07",
+          "openingValue": 0.0,
+          "netTradeCash": -4518.04,
+          "pnl": 83.96
+        },
+        {
+          "code": "603123",
+          "name": "翠微股份",
+          "openingQty": 0,
+          "closingQty": 200,
+          "close": 13.16,
+          "quoteDate": "2026-04-07",
+          "openingValue": 0.0,
+          "netTradeCash": -2623.03,
+          "pnl": 8.97
+        },
+        {
+          "code": "603538",
+          "name": "美诺华",
+          "openingQty": 200,
+          "closingQty": 0,
+          "close": 39.31,
+          "quoteDate": "2026-04-07",
+          "openingValue": 8000.0,
+          "netTradeCash": 8253.78,
+          "pnl": 253.78
+        },
+        {
+          "code": "603585",
+          "name": "苏利股份",
+          "openingQty": 0,
+          "closingQty": 200,
+          "close": 25.6,
+          "quoteDate": "2026-04-07",
+          "openingValue": 0.0,
+          "netTradeCash": -5175.05,
+          "pnl": -55.05
+        },
+        {
+          "code": "603618",
+          "name": "杭电股份",
+          "openingQty": 100,
+          "closingQty": 0,
+          "close": 26.89,
+          "quoteDate": "2026-04-07",
+          "openingValue": 2765.0,
+          "netTradeCash": 2767.58,
+          "pnl": 2.58
+        },
+        {
+          "code": "603778",
+          "name": "国晟科技",
+          "openingQty": 200,
+          "closingQty": 0,
+          "close": 31.55,
+          "quoteDate": "2026-04-07",
+          "openingValue": 5736.0,
+          "netTradeCash": 5935.97,
+          "pnl": 199.97
+        }
+      ]
+    },
+    {
+      "date": "2026-04-08",
+      "amount": -1901.82,
+      "rate": -5.048703897347109,
+      "previousEquity": 37669.47,
+      "equity": 35767.65,
+      "cash": 2827.65,
+      "marketValue": 32940.0,
+      "positions": [
+        {
+          "code": "000586",
+          "name": "汇源通信",
+          "openingQty": 100,
+          "closingQty": 100,
+          "close": 22.84,
+          "quoteDate": "2026-04-08",
+          "openingValue": 2076.0,
+          "netTradeCash": 0.0,
+          "pnl": 208.0
+        },
+        {
+          "code": "000919",
+          "name": "金陵药业",
+          "openingQty": 0,
+          "closingQty": 1000,
+          "close": 8.91,
+          "quoteDate": "2026-04-08",
+          "openingValue": 0.0,
+          "netTradeCash": -8862.0,
+          "pnl": 48.0
+        },
+        {
+          "code": "002082",
+          "name": "万邦德",
+          "openingQty": 100,
+          "closingQty": 100,
+          "close": 34.82,
+          "quoteDate": "2026-04-08",
+          "openingValue": 3624.0,
+          "netTradeCash": 0.0,
+          "pnl": -142.0
+        },
+        {
+          "code": "002348",
+          "name": "高乐股份",
+          "openingQty": 0,
+          "closingQty": 400,
+          "close": 8.86,
+          "quoteDate": "2026-04-08",
+          "openingValue": 0.0,
+          "netTradeCash": -3521.0,
+          "pnl": 23.0
+        },
+        {
+          "code": "600488",
+          "name": "津药药业",
+          "openingQty": 600,
+          "closingQty": 2000,
+          "close": 7.36,
+          "quoteDate": "2026-04-08",
+          "openingValue": 4602.0,
+          "netTradeCash": -11635.11,
+          "pnl": -1517.11
+        },
+        {
+          "code": "603123",
+          "name": "翠微股份",
+          "openingQty": 200,
+          "closingQty": 0,
+          "close": 13.33,
+          "quoteDate": "2026-04-08",
+          "openingValue": 2632.0,
+          "netTradeCash": 2629.65,
+          "pnl": -2.35
+        },
+        {
+          "code": "603585",
+          "name": "苏利股份",
+          "openingQty": 200,
+          "closingQty": 0,
+          "close": 23.35,
+          "quoteDate": "2026-04-08",
+          "openingValue": 5120.0,
+          "netTradeCash": 4600.64,
+          "pnl": -519.36
+        }
+      ]
+    },
+    {
+      "date": "2026-04-09",
+      "amount": 36.25,
+      "rate": 0.10134856497421553,
+      "previousEquity": 35767.65,
+      "equity": 35803.9,
+      "cash": 28729.9,
+      "marketValue": 7074.0,
+      "positions": [
+        {
+          "code": "000586",
+          "name": "汇源通信",
+          "openingQty": 100,
+          "closingQty": 0,
+          "close": 25.12,
+          "quoteDate": "2026-04-09",
+          "openingValue": 2284.0,
+          "netTradeCash": 2480.76,
+          "pnl": 196.76
+        },
+        {
+          "code": "000889",
+          "name": "中嘉博创",
+          "openingQty": 0,
+          "closingQty": 800,
+          "close": 3.95,
+          "quoteDate": "2026-04-09",
+          "openingValue": 0.0,
+          "netTradeCash": -3165.0,
+          "pnl": -5.0
+        },
+        {
+          "code": "000919",
+          "name": "金陵药业",
+          "openingQty": 1000,
+          "closingQty": 0,
+          "close": 8.58,
+          "quoteDate": "2026-04-09",
+          "openingValue": 8910.0,
+          "netTradeCash": 9380.3,
+          "pnl": 470.3
+        },
+        {
+          "code": "002051",
+          "name": "中工国际",
+          "openingQty": 0,
+          "closingQty": 200,
+          "close": 11.5,
+          "quoteDate": "2026-04-09",
+          "openingValue": 0.0,
+          "netTradeCash": -2505.0,
+          "pnl": -205.0
+        },
+        {
+          "code": "002082",
+          "name": "万邦德",
+          "openingQty": 100,
+          "closingQty": 0,
+          "close": 32.26,
+          "quoteDate": "2026-04-09",
+          "openingValue": 3482.0,
+          "netTradeCash": 3152.42,
+          "pnl": -329.58
+        },
+        {
+          "code": "002348",
+          "name": "高乐股份",
+          "openingQty": 400,
+          "closingQty": 0,
+          "close": 9.21,
+          "quoteDate": "2026-04-09",
+          "openingValue": 3544.0,
+          "netTradeCash": 3717.14,
+          "pnl": 173.14
+        },
+        {
+          "code": "002491",
+          "name": "通鼎互联",
+          "openingQty": 0,
+          "closingQty": 100,
+          "close": 16.14,
+          "quoteDate": "2026-04-09",
+          "openingValue": 0.0,
+          "netTradeCash": -1626.0,
+          "pnl": -12.0
+        },
+        {
+          "code": "600488",
+          "name": "津药药业",
+          "openingQty": 2000,
+          "closingQty": 0,
+          "close": 7.08,
+          "quoteDate": "2026-04-09",
+          "openingValue": 14720.0,
+          "netTradeCash": 14467.63,
+          "pnl": -252.37
+        }
+      ]
+    },
+    {
+      "date": "2026-04-10",
+      "amount": 125.08,
+      "rate": 0.3493474174601091,
+      "previousEquity": 35803.9,
+      "equity": 35928.98,
+      "cash": 20570.98,
+      "marketValue": 15358.0,
+      "positions": [
+        {
+          "code": "000889",
+          "name": "中嘉博创",
+          "openingQty": 800,
+          "closingQty": 1700,
+          "close": 4.35,
+          "quoteDate": "2026-04-10",
+          "openingValue": 3160.0,
+          "netTradeCash": -3920.0,
+          "pnl": 315.0
+        },
+        {
+          "code": "002051",
+          "name": "中工国际",
+          "openingQty": 200,
+          "closingQty": 0,
+          "close": 10.73,
+          "quoteDate": "2026-04-10",
+          "openingValue": 2300.0,
+          "netTradeCash": 2193.9,
+          "pnl": -106.1
+        },
+        {
+          "code": "002491",
+          "name": "通鼎互联",
+          "openingQty": 100,
+          "closingQty": 0,
+          "close": 14.59,
+          "quoteDate": "2026-04-10",
+          "openingValue": 1614.0,
+          "netTradeCash": 1540.23,
+          "pnl": -73.77
+        },
+        {
+          "code": "002824",
+          "name": "和胜股份",
+          "openingQty": 0,
+          "closingQty": 100,
+          "close": 25.27,
+          "quoteDate": "2026-04-10",
+          "openingValue": 0.0,
+          "netTradeCash": -2532.0,
+          "pnl": -5.0
+        },
+        {
+          "code": "600345",
+          "name": "长江通信",
+          "openingQty": 0,
+          "closingQty": 100,
+          "close": 54.36,
+          "quoteDate": "2026-04-10",
+          "openingValue": 0.0,
+          "netTradeCash": -5441.05,
+          "pnl": -5.05
+        }
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "amount": -1075.48,
+      "rate": -2.993349658131124,
+      "previousEquity": 35928.98,
+      "equity": 34853.5,
+      "cash": 23061.5,
+      "marketValue": 11792.0,
+      "positions": [
+        {
+          "code": "000889",
+          "name": "中嘉博创",
+          "openingQty": 1700,
+          "closingQty": 0,
+          "close": 3.92,
+          "quoteDate": "2026-04-13",
+          "openingValue": 7395.0,
+          "netTradeCash": 6672.66,
+          "pnl": -722.34
+        },
+        {
+          "code": "002328",
+          "name": "新朋股份",
+          "openingQty": 0,
+          "closingQty": 300,
+          "close": 10.76,
+          "quoteDate": "2026-04-13",
+          "openingValue": 0.0,
+          "netTradeCash": -3328.0,
+          "pnl": -100.0
+        },
+        {
+          "code": "002418",
+          "name": "康盛股份",
+          "openingQty": 0,
+          "closingQty": 900,
+          "close": 6.26,
+          "quoteDate": "2026-04-13",
+          "openingValue": 0.0,
+          "netTradeCash": -5617.0,
+          "pnl": 17.0
+        },
+        {
+          "code": "002824",
+          "name": "和胜股份",
+          "openingQty": 100,
+          "closingQty": 0,
+          "close": 27.1,
+          "quoteDate": "2026-04-13",
+          "openingValue": 2527.0,
+          "netTradeCash": 2624.68,
+          "pnl": 97.68
+        },
+        {
+          "code": "600345",
+          "name": "长江通信",
+          "openingQty": 100,
+          "closingQty": 0,
+          "close": 55.0,
+          "quoteDate": "2026-04-13",
+          "openingValue": 5436.0,
+          "netTradeCash": 5463.21,
+          "pnl": 27.21
+        },
+        {
+          "code": "600713",
+          "name": "南京医药",
+          "openingQty": 0,
+          "closingQty": 500,
+          "close": 5.86,
+          "quoteDate": "2026-04-13",
+          "openingValue": 0.0,
+          "netTradeCash": -3325.03,
+          "pnl": -395.03
+        }
+      ]
+    },
+    {
+      "date": "2026-04-14",
+      "amount": -197.84,
+      "rate": -0.5676330928027314,
+      "previousEquity": 34853.5,
+      "equity": 34655.66,
+      "cash": 33466.66,
+      "marketValue": 1189.0,
+      "positions": [
+        {
+          "code": "002328",
+          "name": "新朋股份",
+          "openingQty": 300,
+          "closingQty": 0,
+          "close": 11.84,
+          "quoteDate": "2026-04-14",
+          "openingValue": 3228.0,
+          "netTradeCash": 3329.33,
+          "pnl": 101.33
+        },
+        {
+          "code": "002418",
+          "name": "康盛股份",
+          "openingQty": 900,
+          "closingQty": 0,
+          "close": 6.1,
+          "quoteDate": "2026-04-14",
+          "openingValue": 5634.0,
+          "netTradeCash": 5383.3,
+          "pnl": -250.7
+        },
+        {
+          "code": "600152",
+          "name": "维科技术",
+          "openingQty": 0,
+          "closingQty": 100,
+          "close": 11.89,
+          "quoteDate": "2026-04-14",
+          "openingValue": 0.0,
+          "netTradeCash": -1156.01,
+          "pnl": 32.99
+        },
+        {
+          "code": "600713",
+          "name": "南京医药",
+          "openingQty": 500,
+          "closingQty": 0,
+          "close": 5.97,
+          "quoteDate": "2026-04-14",
+          "openingValue": 2930.0,
+          "netTradeCash": 2848.54,
+          "pnl": -81.46
+        }
+      ]
+    },
+    {
+      "date": "2026-04-15",
+      "amount": -512.68,
+      "rate": -1.4793543103781603,
+      "previousEquity": 34655.66,
+      "equity": 34142.98,
+      "cash": 22257.98,
+      "marketValue": 11885.0,
+      "positions": [
+        {
+          "code": "002023",
+          "name": "海特高新",
+          "openingQty": 0,
+          "closingQty": 400,
+          "close": 12.72,
+          "quoteDate": "2026-04-15",
+          "openingValue": 0.0,
+          "netTradeCash": -5065.0,
+          "pnl": 23.0
+        },
+        {
+          "code": "600152",
+          "name": "维科技术",
+          "openingQty": 100,
+          "closingQty": 0,
+          "close": 12.07,
+          "quoteDate": "2026-04-15",
+          "openingValue": 1189.0,
+          "netTradeCash": 1203.39,
+          "pnl": 14.39
+        },
+        {
+          "code": "600605",
+          "name": "汇通能源",
+          "openingQty": 0,
+          "closingQty": 100,
+          "close": 32.33,
+          "quoteDate": "2026-04-15",
+          "openingValue": 0.0,
+          "netTradeCash": -3238.03,
+          "pnl": -5.03
+        },
+        {
+          "code": "601588",
+          "name": "北辰实业",
+          "openingQty": 0,
+          "closingQty": 1800,
+          "close": 1.98,
+          "quoteDate": "2026-04-15",
+          "openingValue": 0.0,
+          "netTradeCash": -4109.04,
+          "pnl": -545.04
+        }
+      ]
+    },
+    {
+      "date": "2026-04-16",
+      "amount": 176.01,
+      "rate": 0.5155086052828429,
+      "previousEquity": 34142.98,
+      "equity": 34318.99,
+      "cash": 5149.99,
+      "marketValue": 29169.0,
+      "positions": [
+        {
+          "code": "002023",
+          "name": "海特高新",
+          "openingQty": 400,
+          "closingQty": 400,
+          "close": 12.28,
+          "quoteDate": "2026-04-16",
+          "openingValue": 5088.0,
+          "netTradeCash": 0.0,
+          "pnl": -176.0
+        },
+        {
+          "code": "002589",
+          "name": "瑞康医药",
+          "openingQty": 0,
+          "closingQty": 900,
+          "close": 3.64,
+          "quoteDate": "2026-04-16",
+          "openingValue": 0.0,
+          "netTradeCash": -3560.0,
+          "pnl": -284.0
+        },
+        {
+          "code": "600605",
+          "name": "汇通能源",
+          "openingQty": 100,
+          "closingQty": 100,
+          "close": 31.25,
+          "quoteDate": "2026-04-16",
+          "openingValue": 3233.0,
+          "netTradeCash": 0.0,
+          "pnl": -108.0
+        },
+        {
+          "code": "601588",
+          "name": "北辰实业",
+          "openingQty": 1800,
+          "closingQty": 0,
+          "close": 1.94,
+          "quoteDate": "2026-04-16",
+          "openingValue": 3564.0,
+          "netTradeCash": 3557.18,
+          "pnl": -6.82
+        },
+        {
+          "code": "603687",
+          "name": "大胜达",
+          "openingQty": 0,
+          "closingQty": 900,
+          "close": 19.84,
+          "quoteDate": "2026-04-16",
+          "openingValue": 0.0,
+          "netTradeCash": -17105.17,
+          "pnl": 750.83
+        }
+      ]
+    },
+    {
+      "date": "2026-04-17",
+      "amount": -110.25,
+      "rate": -0.3212507127977834,
+      "previousEquity": 34318.99,
+      "equity": 34208.74,
+      "cash": 7404.74,
+      "marketValue": 26804.0,
+      "positions": [
+        {
+          "code": "002023",
+          "name": "海特高新",
+          "openingQty": 400,
+          "closingQty": 0,
+          "close": 12.93,
+          "quoteDate": "2026-04-17",
+          "openingValue": 4912.0,
+          "netTradeCash": 5032.48,
+          "pnl": 120.48
+        },
+        {
+          "code": "002589",
+          "name": "瑞康医药",
+          "openingQty": 900,
+          "closingQty": 0,
+          "close": 3.43,
+          "quoteDate": "2026-04-17",
+          "openingValue": 3276.0,
+          "netTradeCash": 3152.42,
+          "pnl": -123.58
+        },
+        {
+          "code": "002771",
+          "name": "真视通",
+          "openingQty": 0,
+          "closingQty": 200,
+          "close": 18.52,
+          "quoteDate": "2026-04-17",
+          "openingValue": 0.0,
+          "netTradeCash": -4047.0,
+          "pnl": -343.0
+        },
+        {
+          "code": "600605",
+          "name": "汇通能源",
+          "openingQty": 100,
+          "closingQty": 0,
+          "close": 30.84,
+          "quoteDate": "2026-04-17",
+          "openingValue": 3125.0,
+          "netTradeCash": 3124.4,
+          "pnl": -0.6
+        },
+        {
+          "code": "603687",
+          "name": "大胜达",
+          "openingQty": 900,
+          "closingQty": 1200,
+          "close": 19.25,
+          "quoteDate": "2026-04-17",
+          "openingValue": 17856.0,
+          "netTradeCash": -5007.55,
+          "pnl": 236.45
+        }
+      ]
+    },
+    {
+      "date": "2026-04-20",
+      "amount": 535.55,
+      "rate": 1.5655355911968696,
+      "previousEquity": 34208.74,
+      "equity": 34744.29,
+      "cash": 764.29,
+      "marketValue": 33980.0,
+      "positions": [
+        {
+          "code": "002217",
+          "name": "合力泰",
+          "openingQty": 0,
+          "closingQty": 1300,
+          "close": 2.95,
+          "quoteDate": "2026-04-20",
+          "openingValue": 0.0,
+          "netTradeCash": -3840.0,
+          "pnl": -5.0
+        },
+        {
+          "code": "002361",
+          "name": "神剑股份",
+          "openingQty": 0,
+          "closingQty": 1200,
+          "close": 20.63,
+          "quoteDate": "2026-04-20",
+          "openingValue": 0.0,
+          "netTradeCash": -23730.0,
+          "pnl": 1026.0
+        },
+        {
+          "code": "002771",
+          "name": "真视通",
+          "openingQty": 200,
+          "closingQty": 0,
+          "close": 18.35,
+          "quoteDate": "2026-04-20",
+          "openingValue": 3704.0,
+          "netTradeCash": 3773.11,
+          "pnl": 69.11
+        },
+        {
+          "code": "603178",
+          "name": "圣龙股份",
+          "openingQty": 0,
+          "closingQty": 200,
+          "close": 19.16,
+          "quoteDate": "2026-04-20",
+          "openingValue": 0.0,
+          "netTradeCash": -3837.04,
+          "pnl": -5.04
+        },
+        {
+          "code": "603601",
+          "name": "再升科技",
+          "openingQty": 0,
+          "closingQty": 100,
+          "close": 15.57,
+          "quoteDate": "2026-04-20",
+          "openingValue": 0.0,
+          "netTradeCash": -1562.02,
+          "pnl": -5.02
+        },
+        {
+          "code": "603687",
+          "name": "大胜达",
+          "openingQty": 1200,
+          "closingQty": 0,
+          "close": 19.09,
+          "quoteDate": "2026-04-20",
+          "openingValue": 23100.0,
+          "netTradeCash": 22555.5,
+          "pnl": -544.5
+        }
+      ]
+    },
+    {
+      "date": "2026-04-21",
+      "amount": 2098.28,
+      "rate": 6.039208169169668,
+      "previousEquity": 34744.29,
+      "equity": 36842.57,
+      "cash": 3763.57,
+      "marketValue": 33079.0,
+      "positions": [
+        {
+          "code": "002217",
+          "name": "合力泰",
+          "openingQty": 1300,
+          "closingQty": 0,
+          "close": 2.98,
+          "quoteDate": "2026-04-21",
+          "openingValue": 3835.0,
+          "netTradeCash": 3841.08,
+          "pnl": 6.08
+        },
+        {
+          "code": "002361",
+          "name": "神剑股份",
+          "openingQty": 1200,
+          "closingQty": 1200,
+          "close": 22.69,
+          "quoteDate": "2026-04-21",
+          "openingValue": 24756.0,
+          "netTradeCash": 0.0,
+          "pnl": 2472.0
+        },
+        {
+          "code": "603178",
+          "name": "圣龙股份",
+          "openingQty": 200,
+          "closingQty": 0,
+          "close": 21.08,
+          "quoteDate": "2026-04-21",
+          "openingValue": 3832.0,
+          "netTradeCash": 3723.09,
+          "pnl": -108.91
+        },
+        {
+          "code": "603601",
+          "name": "再升科技",
+          "openingQty": 100,
+          "closingQty": 0,
+          "close": 16.26,
+          "quoteDate": "2026-04-21",
+          "openingValue": 1557.0,
+          "netTradeCash": 1614.17,
+          "pnl": 57.17
+        },
+        {
+          "code": "603773",
+          "name": "沃格光电",
+          "openingQty": 0,
+          "closingQty": 100,
+          "close": 58.51,
+          "quoteDate": "2026-04-21",
+          "openingValue": 0.0,
+          "netTradeCash": -6179.06,
+          "pnl": -328.06
+        }
+      ]
+    },
+    {
+      "date": "2026-04-22",
+      "amount": 973.96,
+      "rate": 2.6435723675085643,
+      "previousEquity": 36842.57,
+      "equity": 37816.53,
+      "cash": 237.53,
+      "marketValue": 37579.0,
+      "positions": [
+        {
+          "code": "002081",
+          "name": "金 螳 螂",
+          "openingQty": 0,
+          "closingQty": 700,
+          "close": 4.94,
+          "quoteDate": "2026-04-22",
+          "openingValue": 0.0,
+          "netTradeCash": -3463.0,
+          "pnl": -5.0
+        },
+        {
+          "code": "002328",
+          "name": "新朋股份",
+          "openingQty": 0,
+          "closingQty": 500,
+          "close": 11.81,
+          "quoteDate": "2026-04-22",
+          "openingValue": 0.0,
+          "netTradeCash": -5970.0,
+          "pnl": -65.0
+        },
+        {
+          "code": "002361",
+          "name": "神剑股份",
+          "openingQty": 1200,
+          "closingQty": 1000,
+          "close": 23.65,
+          "quoteDate": "2026-04-22",
+          "openingValue": 27228.0,
+          "netTradeCash": 4468.08,
+          "pnl": 890.08
+        },
+        {
+          "code": "600736",
+          "name": "苏州高新",
+          "openingQty": 0,
+          "closingQty": 600,
+          "close": 7.61,
+          "quoteDate": "2026-04-22",
+          "openingValue": 0.0,
+          "netTradeCash": -4571.05,
+          "pnl": -5.05
+        },
+        {
+          "code": "603773",
+          "name": "沃格光电",
+          "openingQty": 100,
+          "closingQty": 0,
+          "close": 64.36,
+          "quoteDate": "2026-04-22",
+          "openingValue": 5851.0,
+          "netTradeCash": 6009.93,
+          "pnl": 158.93
+        }
+      ]
+    },
+    {
+      "date": "2026-04-23",
+      "amount": 241.53,
+      "rate": 0.6386889542747576,
+      "previousEquity": 37816.53,
+      "equity": 38058.06,
+      "cash": 4142.06,
+      "marketValue": 33916.0,
+      "positions": [
+        {
+          "code": "002081",
+          "name": "金 螳 螂",
+          "openingQty": 700,
+          "closingQty": 100,
+          "close": 5.43,
+          "quoteDate": "2026-04-23",
+          "openingValue": 3458.0,
+          "netTradeCash": 3190.13,
+          "pnl": 275.13
+        },
+        {
+          "code": "002194",
+          "name": "武汉凡谷",
+          "openingQty": 0,
+          "closingQty": 300,
+          "close": 12.36,
+          "quoteDate": "2026-04-23",
+          "openingValue": 0.0,
+          "netTradeCash": -3878.0,
+          "pnl": -170.0
+        },
+        {
+          "code": "002328",
+          "name": "新朋股份",
+          "openingQty": 500,
+          "closingQty": 0,
+          "close": 11.24,
+          "quoteDate": "2026-04-23",
+          "openingValue": 5905.0,
+          "netTradeCash": 5618.19,
+          "pnl": -286.81
+        },
+        {
+          "code": "002361",
+          "name": "神剑股份",
+          "openingQty": 1000,
+          "closingQty": 900,
+          "close": 22.99,
+          "quoteDate": "2026-04-23",
+          "openingValue": 23650.0,
+          "netTradeCash": 3063.21,
+          "pnl": 104.21
+        },
+        {
+          "code": "002565",
+          "name": "顺灏股份",
+          "openingQty": 0,
+          "closingQty": 200,
+          "close": 19.76,
+          "quoteDate": "2026-04-23",
+          "openingValue": 0.0,
+          "netTradeCash": -4089.0,
+          "pnl": -137.0
+        },
+        {
+          "code": "600736",
+          "name": "苏州高新",
+          "openingQty": 600,
+          "closingQty": 600,
+          "close": 8.37,
+          "quoteDate": "2026-04-23",
+          "openingValue": 4566.0,
+          "netTradeCash": 0.0,
+          "pnl": 456.0
+        }
+      ]
+    },
+    {
+      "date": "2026-04-24",
+      "amount": -2507.26,
+      "rate": -6.587986881096935,
+      "previousEquity": 38058.06,
+      "equity": 35550.8,
+      "cash": 936.8,
+      "marketValue": 34614.0,
+      "positions": [
+        {
+          "code": "002081",
+          "name": "金 螳 螂",
+          "openingQty": 100,
+          "closingQty": 0,
+          "close": 4.89,
+          "quoteDate": "2026-04-24",
+          "openingValue": 543.0,
+          "netTradeCash": 509.74,
+          "pnl": -33.26
+        },
+        {
+          "code": "002194",
+          "name": "武汉凡谷",
+          "openingQty": 300,
+          "closingQty": 0,
+          "close": 11.27,
+          "quoteDate": "2026-04-24",
+          "openingValue": 3708.0,
+          "netTradeCash": 3515.24,
+          "pnl": -192.76
+        },
+        {
+          "code": "002361",
+          "name": "神剑股份",
+          "openingQty": 900,
+          "closingQty": 900,
+          "close": 21.46,
+          "quoteDate": "2026-04-24",
+          "openingValue": 20691.0,
+          "netTradeCash": 43.78,
+          "pnl": -1333.22
+        },
+        {
+          "code": "002565",
+          "name": "顺灏股份",
+          "openingQty": 200,
+          "closingQty": 0,
+          "close": 19.8,
+          "quoteDate": "2026-04-24",
+          "openingValue": 3952.0,
+          "netTradeCash": 3789.1,
+          "pnl": -162.9
+        },
+        {
+          "code": "600736",
+          "name": "苏州高新",
+          "openingQty": 600,
+          "closingQty": 1800,
+          "close": 8.5,
+          "quoteDate": "2026-04-24",
+          "openingValue": 5022.0,
+          "netTradeCash": -11063.12,
+          "pnl": -785.12
+        }
+      ]
+    },
+    {
+      "date": "2026-04-27",
+      "amount": -1468.8,
+      "rate": -4.131552595159603,
+      "previousEquity": 35550.8,
+      "equity": 34082.0,
+      "cash": 31200.0,
+      "marketValue": 2882.0,
+      "positions": [
+        {
+          "code": "002361",
+          "name": "神剑股份",
+          "openingQty": 900,
+          "closingQty": 0,
+          "close": 21.66,
+          "quoteDate": "2026-04-27",
+          "openingValue": 19314.0,
+          "netTradeCash": 19398.28,
+          "pnl": 84.28
+        },
+        {
+          "code": "002580",
+          "name": "圣阳股份",
+          "openingQty": 0,
+          "closingQty": 100,
+          "close": 28.82,
+          "quoteDate": "2026-04-27",
+          "openingValue": 0.0,
+          "netTradeCash": -3001.0,
+          "pnl": -119.0
+        },
+        {
+          "code": "600736",
+          "name": "苏州高新",
+          "openingQty": 1800,
+          "closingQty": 0,
+          "close": 7.65,
+          "quoteDate": "2026-04-27",
+          "openingValue": 15300.0,
+          "netTradeCash": 13865.92,
+          "pnl": -1434.08
+        }
+      ]
+    },
+    {
+      "date": "2026-04-28",
+      "amount": -1468.44,
+      "rate": -4.308549967724899,
+      "previousEquity": 34082.0,
+      "equity": 32613.56,
+      "cash": 5285.56,
+      "marketValue": 27328.0,
+      "positions": [
+        {
+          "code": "000925",
+          "name": "众合科技",
+          "openingQty": 0,
+          "closingQty": 2800,
+          "close": 9.76,
+          "quoteDate": "2026-04-28",
+          "openingValue": 0.0,
+          "netTradeCash": -28789.0,
+          "pnl": -1461.0
+        },
+        {
+          "code": "002580",
+          "name": "圣阳股份",
+          "openingQty": 100,
+          "closingQty": 0,
+          "close": 29.5,
+          "quoteDate": "2026-04-28",
+          "openingValue": 2882.0,
+          "netTradeCash": 2874.56,
+          "pnl": -7.44
+        }
+      ]
+    },
+    {
+      "date": "2026-04-29",
+      "amount": 568.87,
+      "rate": 1.7442744674301118,
+      "previousEquity": 32613.56,
+      "equity": 33182.43,
+      "cash": 16431.43,
+      "marketValue": 16751.0,
+      "positions": [
+        {
+          "code": "000925",
+          "name": "众合科技",
+          "openingQty": 2800,
+          "closingQty": 0,
+          "close": 9.76,
+          "quoteDate": "2026-04-29",
+          "openingValue": 27328.0,
+          "netTradeCash": 28077.95,
+          "pnl": 749.95
+        },
+        {
+          "code": "002082",
+          "name": "万邦德",
+          "openingQty": 0,
+          "closingQty": 300,
+          "close": 28.49,
+          "quoteDate": "2026-04-29",
+          "openingValue": 0.0,
+          "netTradeCash": -8571.0,
+          "pnl": -24.0
+        },
+        {
+          "code": "600488",
+          "name": "津药药业",
+          "openingQty": 0,
+          "closingQty": 1400,
+          "close": 5.86,
+          "quoteDate": "2026-04-29",
+          "openingValue": 0.0,
+          "netTradeCash": -8361.08,
+          "pnl": -157.08
+        }
+      ]
+    },
+    {
+      "date": "2026-04-30",
+      "amount": -243.12,
+      "rate": -0.732676901601239,
+      "previousEquity": 33182.43,
+      "equity": 32939.31,
+      "cash": 4502.31,
+      "marketValue": 28437.0,
+      "positions": [
+        {
+          "code": "002082",
+          "name": "万邦德",
+          "openingQty": 300,
+          "closingQty": 300,
+          "close": 28.49,
+          "quoteDate": "2026-04-29",
+          "openingValue": 8547.0,
+          "netTradeCash": 0.0,
+          "pnl": 0.0
+        },
+        {
+          "code": "600488",
+          "name": "津药药业",
+          "openingQty": 1400,
+          "closingQty": 1400,
+          "close": 5.7,
+          "quoteDate": "2026-04-30",
+          "openingValue": 8204.0,
+          "netTradeCash": 0.0,
+          "pnl": -224.0
+        },
+        {
+          "code": "603256",
+          "name": "宏和科技",
+          "openingQty": 0,
+          "closingQty": 100,
+          "close": 119.1,
+          "quoteDate": "2026-04-30",
+          "openingValue": 0.0,
+          "netTradeCash": -11929.12,
+          "pnl": -19.12
+        }
+      ]
+    },
+    {
+      "date": "2026-05-06",
+      "amount": 334.36,
+      "rate": 1.0150789436694332,
+      "previousEquity": 32939.31,
+      "equity": 33273.67,
+      "cash": 14076.67,
+      "marketValue": 19197.0,
+      "positions": [
+        {
+          "code": "002082",
+          "name": "万邦德",
+          "openingQty": 300,
+          "closingQty": 300,
+          "close": 27.07,
+          "quoteDate": "2026-05-06",
+          "openingValue": 8547.0,
+          "netTradeCash": 0.0,
+          "pnl": -426.0
+        },
+        {
+          "code": "600379",
+          "name": "宝光股份",
+          "openingQty": 0,
+          "closingQty": 600,
+          "close": 18.46,
+          "quoteDate": "2026-05-06",
+          "openingValue": 0.0,
+          "netTradeCash": -11044.11,
+          "pnl": 31.89
+        },
+        {
+          "code": "600488",
+          "name": "津药药业",
+          "openingQty": 1400,
+          "closingQty": 0,
+          "close": 5.9,
+          "quoteDate": "2026-05-06",
+          "openingValue": 7980.0,
+          "netTradeCash": 7928.95,
+          "pnl": -51.05
+        },
+        {
+          "code": "603256",
+          "name": "宏和科技",
+          "openingQty": 100,
+          "closingQty": 0,
+          "close": 131.01,
+          "quoteDate": "2026-05-06",
+          "openingValue": 11910.0,
+          "netTradeCash": 12689.52,
+          "pnl": 779.52
+        }
+      ]
+    },
+    {
+      "date": "2026-05-07",
+      "amount": -2252.12,
+      "rate": -6.768474893211359,
+      "previousEquity": 33273.67,
+      "equity": 31021.55,
+      "cash": 1885.55,
+      "marketValue": 29136.0,
+      "positions": [
+        {
+          "code": "002082",
+          "name": "万邦德",
+          "openingQty": 300,
+          "closingQty": 300,
+          "close": 25.72,
+          "quoteDate": "2026-05-07",
+          "openingValue": 8121.0,
+          "netTradeCash": 0.0,
+          "pnl": -405.0
+        },
+        {
+          "code": "600379",
+          "name": "宝光股份",
+          "openingQty": 600,
+          "closingQty": 1200,
+          "close": 17.85,
+          "quoteDate": "2026-05-07",
+          "openingValue": 11076.0,
+          "netTradeCash": -12191.12,
+          "pnl": -1847.12
+        }
+      ]
+    },
+    {
+      "date": "2026-05-08",
+      "amount": -1047.81,
+      "rate": -3.377684222741933,
+      "previousEquity": 31021.55,
+      "equity": 29973.74,
+      "cash": 8559.74,
+      "marketValue": 21414.0,
+      "positions": [
+        {
+          "code": "002082",
+          "name": "万邦德",
+          "openingQty": 300,
+          "closingQty": 300,
+          "close": 24.43,
+          "quoteDate": "2026-05-08",
+          "openingValue": 7716.0,
+          "netTradeCash": 0.0,
+          "pnl": -387.0
+        },
+        {
+          "code": "002491",
+          "name": "通鼎互联",
+          "openingQty": 0,
+          "closingQty": 500,
+          "close": 20.66,
+          "quoteDate": "2026-05-08",
+          "openingValue": 0.0,
+          "netTradeCash": -10335.0,
+          "pnl": -5.0
+        },
+        {
+          "code": "600379",
+          "name": "宝光股份",
+          "openingQty": 1200,
+          "closingQty": 0,
+          "close": 16.75,
+          "quoteDate": "2026-05-08",
+          "openingValue": 21420.0,
+          "netTradeCash": 21104.23,
+          "pnl": -315.77
+        },
+        {
+          "code": "600726",
+          "name": "华电能源",
+          "openingQty": 0,
+          "closingQty": 500,
+          "close": 7.51,
+          "quoteDate": "2026-05-08",
+          "openingValue": 0.0,
+          "netTradeCash": -4095.04,
+          "pnl": -340.04
+        }
+      ]
+    },
+    {
+      "date": "2026-05-11",
+      "amount": 593.98,
+      "rate": 1.9816679533484978,
+      "previousEquity": 29973.74,
+      "equity": 30567.72,
+      "cash": 6896.72,
+      "marketValue": 23671.0,
+      "positions": [
+        {
+          "code": "002082",
+          "name": "万邦德",
+          "openingQty": 300,
+          "closingQty": 300,
+          "close": 23.21,
+          "quoteDate": "2026-05-11",
+          "openingValue": 7329.0,
+          "netTradeCash": 0.0,
+          "pnl": -366.0
+        },
+        {
+          "code": "002491",
+          "name": "通鼎互联",
+          "openingQty": 500,
+          "closingQty": 600,
+          "close": 22.73,
+          "quoteDate": "2026-05-11",
+          "openingValue": 10330.0,
+          "netTradeCash": -2266.0,
+          "pnl": 1042.0
+        },
+        {
+          "code": "600726",
+          "name": "华电能源",
+          "openingQty": 500,
+          "closingQty": 0,
+          "close": 7.8,
+          "quoteDate": "2026-05-11",
+          "openingValue": 3755.0,
+          "netTradeCash": 3888.01,
+          "pnl": 133.01
+        },
+        {
+          "code": "603278",
+          "name": "大业股份",
+          "openingQty": 0,
+          "closingQty": 200,
+          "close": 15.35,
+          "quoteDate": "2026-05-11",
+          "openingValue": 0.0,
+          "netTradeCash": -3285.03,
+          "pnl": -215.03
+        }
+      ]
+    },
+    {
+      "date": "2026-05-12",
+      "amount": -616.88,
+      "rate": -2.018076585365215,
+      "previousEquity": 30567.72,
+      "equity": 29950.84,
+      "cash": 7175.84,
+      "marketValue": 22775.0,
+      "positions": [
+        {
+          "code": "002082",
+          "name": "万邦德",
+          "openingQty": 300,
+          "closingQty": 300,
+          "close": 22.05,
+          "quoteDate": "2026-05-12",
+          "openingValue": 6963.0,
+          "netTradeCash": 0.0,
+          "pnl": -348.0
+        },
+        {
+          "code": "002491",
+          "name": "通鼎互联",
+          "openingQty": 600,
+          "closingQty": 0,
+          "close": 25.0,
+          "quoteDate": "2026-05-12",
+          "openingValue": 13638.0,
+          "netTradeCash": 14201.89,
+          "pnl": 563.89
+        },
+        {
+          "code": "600198",
+          "name": "大唐电信",
+          "openingQty": 0,
+          "closingQty": 1600,
+          "close": 10.1,
+          "quoteDate": "2026-05-12",
+          "openingValue": 0.0,
+          "netTradeCash": -17046.17,
+          "pnl": -886.17
+        },
+        {
+          "code": "603278",
+          "name": "大业股份",
+          "openingQty": 200,
+          "closingQty": 0,
+          "close": 15.78,
+          "quoteDate": "2026-05-12",
+          "openingValue": 3070.0,
+          "netTradeCash": 3123.4,
+          "pnl": 53.4
+        }
+      ]
+    },
+    {
+      "date": "2026-05-13",
+      "amount": -499.07,
+      "rate": -1.6662971722996751,
+      "previousEquity": 29950.84,
+      "equity": 29451.77,
+      "cash": 1135.77,
+      "marketValue": 28316.0,
+      "positions": [
+        {
+          "code": "002082",
+          "name": "万邦德",
+          "openingQty": 300,
+          "closingQty": 300,
+          "close": 20.95,
+          "quoteDate": "2026-05-13",
+          "openingValue": 6615.0,
+          "netTradeCash": 0.0,
+          "pnl": -330.0
+        },
+        {
+          "code": "600198",
+          "name": "大唐电信",
+          "openingQty": 1600,
+          "closingQty": 1600,
+          "close": 10.16,
+          "quoteDate": "2026-05-13",
+          "openingValue": 16160.0,
+          "netTradeCash": 0.0,
+          "pnl": 96.0
+        },
+        {
+          "code": "600719",
+          "name": "大连热电",
+          "openingQty": 0,
+          "closingQty": 300,
+          "close": 10.83,
+          "quoteDate": "2026-05-13",
+          "openingValue": 0.0,
+          "netTradeCash": -3509.04,
+          "pnl": -260.04
+        },
+        {
+          "code": "603007",
+          "name": "花王股份",
+          "openingQty": 0,
+          "closingQty": 300,
+          "close": 8.42,
+          "quoteDate": "2026-05-13",
+          "openingValue": 0.0,
+          "netTradeCash": -2531.03,
+          "pnl": -5.03
+        }
+      ]
+    },
+    {
+      "date": "2026-05-14",
+      "amount": -2043.88,
+      "rate": -6.939752687189938,
+      "previousEquity": 29451.77,
+      "equity": 27407.89,
+      "cash": 2243.89,
+      "marketValue": 25164.0,
+      "positions": [
+        {
+          "code": "002082",
+          "name": "万邦德",
+          "openingQty": 300,
+          "closingQty": 300,
+          "close": 19.9,
+          "quoteDate": "2026-05-14",
+          "openingValue": 6285.0,
+          "netTradeCash": 0.0,
+          "pnl": -315.0
+        },
+        {
+          "code": "600198",
+          "name": "大唐电信",
+          "openingQty": 1600,
+          "closingQty": 0,
+          "close": 9.5,
+          "quoteDate": "2026-05-14",
+          "openingValue": 16256.0,
+          "netTradeCash": 15906.88,
+          "pnl": -349.12
+        },
+        {
+          "code": "600396",
+          "name": "华电辽能",
+          "openingQty": 0,
+          "closingQty": 900,
+          "close": 16.64,
+          "quoteDate": "2026-05-14",
+          "openingValue": 0.0,
+          "netTradeCash": -16231.18,
+          "pnl": -1255.18
+        },
+        {
+          "code": "600719",
+          "name": "大连热电",
+          "openingQty": 300,
+          "closingQty": 0,
+          "close": 9.75,
+          "quoteDate": "2026-05-14",
+          "openingValue": 3249.0,
+          "netTradeCash": 3059.44,
+          "pnl": -189.56
+        },
+        {
+          "code": "601991",
+          "name": "大唐发电",
+          "openingQty": 0,
+          "closingQty": 200,
+          "close": 7.2,
+          "quoteDate": "2026-05-14",
+          "openingValue": 0.0,
+          "netTradeCash": -1627.02,
+          "pnl": -187.02
+        },
+        {
+          "code": "603007",
+          "name": "花王股份",
+          "openingQty": 300,
+          "closingQty": 300,
+          "close": 9.26,
+          "quoteDate": "2026-05-14",
+          "openingValue": 2526.0,
+          "netTradeCash": 0.0,
+          "pnl": 252.0
+        }
+      ]
+    },
+    {
+      "date": "2026-05-15",
+      "amount": -973.83,
+      "rate": -3.5531009501278645,
+      "previousEquity": 27407.89,
+      "equity": 26434.06,
+      "cash": 5074.06,
+      "marketValue": 21360.0,
+      "positions": [
+        {
+          "code": "002082",
+          "name": "万邦德",
+          "openingQty": 300,
+          "closingQty": 300,
+          "close": 18.91,
+          "quoteDate": "2026-05-15",
+          "openingValue": 5970.0,
+          "netTradeCash": 0.0,
+          "pnl": -297.0
+        },
+        {
+          "code": "600396",
+          "name": "华电辽能",
+          "openingQty": 900,
+          "closingQty": 900,
+          "close": 17.43,
+          "quoteDate": "2026-05-15",
+          "openingValue": 14976.0,
+          "netTradeCash": -1121.81,
+          "pnl": -410.81
+        },
+        {
+          "code": "601991",
+          "name": "大唐发电",
+          "openingQty": 200,
+          "closingQty": 0,
+          "close": 7.92,
+          "quoteDate": "2026-05-15",
+          "openingValue": 1440.0,
+          "netTradeCash": 1459.25,
+          "pnl": 19.25
+        },
+        {
+          "code": "603007",
+          "name": "花王股份",
+          "openingQty": 300,
+          "closingQty": 0,
+          "close": 8.37,
+          "quoteDate": "2026-05-15",
+          "openingValue": 2778.0,
+          "netTradeCash": 2492.73,
+          "pnl": -285.27
+        }
+      ]
+    },
+    {
+      "date": "2026-05-18",
+      "amount": -1491.02,
+      "rate": -5.6405258972704155,
+      "previousEquity": 26434.06,
+      "equity": 24943.04,
+      "cash": 18091.04,
+      "marketValue": 6852.0,
+      "positions": [
+        {
+          "code": "002082",
+          "name": "万邦德",
+          "openingQty": 300,
+          "closingQty": 0,
+          "close": 17.96,
+          "quoteDate": "2026-05-18",
+          "openingValue": 5673.0,
+          "netTradeCash": 5380.31,
+          "pnl": -292.69
+        },
+        {
+          "code": "600396",
+          "name": "华电辽能",
+          "openingQty": 900,
+          "closingQty": 0,
+          "close": 15.69,
+          "quoteDate": "2026-05-18",
+          "openingValue": 15687.0,
+          "netTradeCash": 14225.74,
+          "pnl": -1461.26
+        },
+        {
+          "code": "601678",
+          "name": "滨化股份",
+          "openingQty": 0,
+          "closingQty": 700,
+          "close": 6.39,
+          "quoteDate": "2026-05-18",
+          "openingValue": 0.0,
+          "netTradeCash": -4205.04,
+          "pnl": 267.96
+        },
+        {
+          "code": "601991",
+          "name": "大唐发电",
+          "openingQty": 0,
+          "closingQty": 300,
+          "close": 7.93,
+          "quoteDate": "2026-05-18",
+          "openingValue": 0.0,
+          "netTradeCash": -2384.03,
+          "pnl": -5.03
+        }
+      ]
+    },
+    {
+      "date": "2026-05-19",
+      "amount": -227.38,
+      "rate": -0.9115969825650763,
+      "previousEquity": 24943.04,
+      "equity": 24715.66,
+      "cash": 22203.66,
+      "marketValue": 2512.0,
+      "positions": [
+        {
+          "code": "002208",
+          "name": "合肥城建",
+          "openingQty": 0,
+          "closingQty": 100,
+          "close": 25.12,
+          "quoteDate": "2026-05-19",
+          "openingValue": 0.0,
+          "netTradeCash": -2517.0,
+          "pnl": -5.0
+        },
+        {
+          "code": "601678",
+          "name": "滨化股份",
+          "openingQty": 700,
+          "closingQty": 0,
+          "close": 6.19,
+          "quoteDate": "2026-05-19",
+          "openingValue": 4473.0,
+          "netTradeCash": 4199.86,
+          "pnl": -273.14
+        },
+        {
+          "code": "601991",
+          "name": "大唐发电",
+          "openingQty": 300,
+          "closingQty": 0,
+          "close": 8.38,
+          "quoteDate": "2026-05-19",
+          "openingValue": 2379.0,
+          "netTradeCash": 2429.76,
+          "pnl": 50.76
+        }
+      ]
+    },
+    {
+      "date": "2026-05-20",
+      "amount": 224.72,
+      "rate": 0.9092211172997201,
+      "previousEquity": 24715.66,
+      "equity": 24940.38,
+      "cash": 5366.38,
+      "marketValue": 19574.0,
+      "positions": [
+        {
+          "code": "002208",
+          "name": "合肥城建",
+          "openingQty": 100,
+          "closingQty": 0,
+          "close": 25.88,
+          "quoteDate": "2026-05-20",
+          "openingValue": 2512.0,
+          "netTradeCash": 2561.72,
+          "pnl": 49.72
+        },
+        {
+          "code": "002272",
+          "name": "川润股份",
+          "openingQty": 0,
+          "closingQty": 100,
+          "close": 24.94,
+          "quoteDate": "2026-05-20",
+          "openingValue": 0.0,
+          "netTradeCash": -2498.0,
+          "pnl": -4.0
+        },
+        {
+          "code": "002421",
+          "name": "达实智能",
+          "openingQty": 0,
+          "closingQty": 4000,
+          "close": 4.27,
+          "quoteDate": "2026-05-20",
+          "openingValue": 0.0,
+          "netTradeCash": -16901.0,
+          "pnl": 179.0
+        }
+      ]
+    },
+    {
+      "date": "2026-05-21",
+      "amount": -1779.76,
+      "rate": -7.136058071288408,
+      "previousEquity": 24940.38,
+      "equity": 23160.62,
+      "cash": 6528.62,
+      "marketValue": 16632.0,
+      "positions": [
+        {
+          "code": "002272",
+          "name": "川润股份",
+          "openingQty": 100,
+          "closingQty": 0,
+          "close": 22.45,
+          "quoteDate": "2026-05-21",
+          "openingValue": 2494.0,
+          "netTradeCash": 2444.77,
+          "pnl": -49.23
+        },
+        {
+          "code": "002421",
+          "name": "达实智能",
+          "openingQty": 4000,
+          "closingQty": 4200,
+          "close": 3.96,
+          "quoteDate": "2026-05-21",
+          "openingValue": 17080.0,
+          "netTradeCash": -1282.53,
+          "pnl": -1730.53
+        }
+      ]
+    },
+    {
+      "date": "2026-05-22",
+      "amount": 1680.0,
+      "rate": 7.253691826902734,
+      "previousEquity": 23160.62,
+      "equity": 24840.62,
+      "cash": 6528.62,
+      "marketValue": 18312.0,
+      "positions": [
+        {
+          "code": "002421",
+          "name": "达实智能",
+          "openingQty": 4200,
+          "closingQty": 4200,
+          "close": 4.36,
+          "quoteDate": "2026-05-22",
+          "openingValue": 16632.0,
+          "netTradeCash": 0.0,
+          "pnl": 1680.0
+        }
+      ]
+    },
+    {
+      "date": "2026-05-25",
+      "amount": 1187.23,
+      "rate": 4.779389564350648,
+      "previousEquity": 24840.62,
+      "equity": 26027.85,
+      "cash": 16973.85,
+      "marketValue": 9054.0,
+      "positions": [
+        {
+          "code": "000725",
+          "name": "京东方Ａ",
+          "openingQty": 0,
+          "closingQty": 800,
+          "close": 5.27,
+          "quoteDate": "2026-05-25",
+          "openingValue": 0.0,
+          "netTradeCash": -4221.0,
+          "pnl": -5.0
+        },
+        {
+          "code": "002421",
+          "name": "达实智能",
+          "openingQty": 4200,
+          "closingQty": 0,
+          "close": 4.8,
+          "quoteDate": "2026-05-25",
+          "openingValue": 18312.0,
+          "netTradeCash": 19515.23,
+          "pnl": 1203.23
+        },
+        {
+          "code": "002580",
+          "name": "圣阳股份",
+          "openingQty": 0,
+          "closingQty": 200,
+          "close": 24.19,
+          "quoteDate": "2026-05-25",
+          "openingValue": 0.0,
+          "netTradeCash": -4849.0,
+          "pnl": -11.0
+        }
+      ]
+    },
+    {
+      "date": "2026-05-26",
+      "amount": -706.33,
+      "rate": -2.7137470056112973,
+      "previousEquity": 26027.85,
+      "equity": 25321.52,
+      "cash": 483.52,
+      "marketValue": 24838.0,
+      "positions": [
+        {
+          "code": "000725",
+          "name": "京东方Ａ",
+          "openingQty": 800,
+          "closingQty": 0,
+          "close": 5.77,
+          "quoteDate": "2026-05-26",
+          "openingValue": 4216.0,
+          "netTradeCash": 4208.89,
+          "pnl": -7.11
+        },
+        {
+          "code": "002580",
+          "name": "圣阳股份",
+          "openingQty": 200,
+          "closingQty": 200,
+          "close": 23.32,
+          "quoteDate": "2026-05-26",
+          "openingValue": 4838.0,
+          "netTradeCash": 0.0,
+          "pnl": -174.0
+        },
+        {
+          "code": "600578",
+          "name": "京能电力",
+          "openingQty": 0,
+          "closingQty": 2200,
+          "close": 9.17,
+          "quoteDate": "2026-05-26",
+          "openingValue": 0.0,
+          "netTradeCash": -20699.22,
+          "pnl": -525.22
+        }
+      ]
+    },
+    {
+      "date": "2026-05-27",
+      "amount": 1108.0,
+      "rate": 4.375724680035006,
+      "previousEquity": 25321.52,
+      "equity": 26429.52,
+      "cash": 483.52,
+      "marketValue": 25946.0,
+      "positions": [
+        {
+          "code": "002580",
+          "name": "圣阳股份",
+          "openingQty": 200,
+          "closingQty": 200,
+          "close": 23.03,
+          "quoteDate": "2026-05-27",
+          "openingValue": 4664.0,
+          "netTradeCash": 0.0,
+          "pnl": -58.0
+        },
+        {
+          "code": "600578",
+          "name": "京能电力",
+          "openingQty": 2200,
+          "closingQty": 2200,
+          "close": 9.7,
+          "quoteDate": "2026-05-27",
+          "openingValue": 20174.0,
+          "netTradeCash": 0.0,
+          "pnl": 1166.0
+        }
+      ]
+    },
+    {
+      "date": "2026-05-28",
+      "amount": -2650.95,
+      "rate": -10.030261616556032,
+      "previousEquity": 26429.52,
+      "equity": 23778.57,
+      "cash": 1866.57,
+      "marketValue": 21912.0,
+      "positions": [
+        {
+          "code": "002580",
+          "name": "圣阳股份",
+          "openingQty": 200,
+          "closingQty": 0,
+          "close": 23.45,
+          "quoteDate": "2026-05-28",
+          "openingValue": 4606.0,
+          "netTradeCash": 4652.67,
+          "pnl": 46.67
+        },
+        {
+          "code": "600578",
+          "name": "京能电力",
+          "openingQty": 2200,
+          "closingQty": 0,
+          "close": 9.21,
+          "quoteDate": "2026-05-28",
+          "openingValue": 21340.0,
+          "netTradeCash": 20356.61,
+          "pnl": -983.39
+        },
+        {
+          "code": "600863",
+          "name": "华能蒙电",
+          "openingQty": 0,
+          "closingQty": 3300,
+          "close": 6.64,
+          "quoteDate": "2026-05-28",
+          "openingValue": 0.0,
+          "netTradeCash": -23626.23,
+          "pnl": -1714.23
+        }
+      ]
+    },
+    {
+      "date": "2026-05-29",
+      "amount": -346.01,
+      "rate": -1.4551337611975825,
+      "previousEquity": 23778.57,
+      "equity": 23432.56,
+      "cash": 23432.56,
+      "marketValue": 0.0,
+      "positions": [
+        {
+          "code": "600863",
+          "name": "华能蒙电",
+          "openingQty": 3300,
+          "closingQty": 0,
+          "close": 7.3,
+          "quoteDate": "2026-05-29",
+          "openingValue": 21912.0,
+          "netTradeCash": 21565.99,
+          "pnl": -346.01
+        }
+      ]
+    }
+  ]
+}
