@@ -1,5 +1,6 @@
 'use strict';
 const CATEGORIES = {
+  board_ceiling: {name:'连板高度压制', rule:'遇到连板高度压制，提前卖出，不大仓位博弈未来溢价。'},
   regulatory_timing: {name:'监管反核节奏错误（首日上板、次日退出）', rule:'本人纪律：监管首日反核必须上板确认才参与，只有首日这一次参与窗口；次日必须卖出，不在次日新开仓或继续反复博弈。'},
   catch_up_height: {name:'补涨龙高度错误（仅三板参与）', rule:'本人纪律：补涨龙只能在三板做；先确认补涨龙地位与题材支撑，三板也不自动构成买点。更高位置不再新开仓，避免高度有限、题材走弱时连续承受大亏。'},
   theme_support: {name:'题材走弱、梯队负反馈仍做龙头', rule:'先看题材与梯队是否仍有支撑；分歧延续、集体负反馈时降低预期，按既定退出条件处理，不因仍是龙头而继续做。'},
@@ -75,7 +76,7 @@ function openHash() {
 }
 async function init() {
   try {
-    const response=await fetch('./data.json?v=20261106-huaxi');
+    const response=await fetch('./data.json?v=20261106-mindong');
     if(!response.ok)throw new Error('HTTP '+response.status);
     DATA=await response.json();
     Object.entries(CATEGORIES).forEach(([id,c])=>$('category').insertAdjacentHTML('beforeend',`<option value="${id}">${c.name}</option>`));

@@ -10432,11 +10432,11 @@
           "assessment": "本人最新反思归类"
         }
       ],
-      "summary": "卖出闽东电力、买入西陇科学。西陇归入切换模式错误：本人不熟悉低位接力切换，不应大仓位参与，尽量避免、最多小仓试错。闽东此前利润保护问题单独保留；西陇追加发生在18日，不计为17日加仓。",
+      "summary": "卖出闽东电力300股。按本人反思，这轮持仓遇到连板高度压制，应提前卖出，不大仓位博弈未来溢价。同日买入西陇科学400股，归为切换模式错误。西陇的追加买入发生在18日。",
       "assessment": "本人最新反思归类",
       "errors": [
         {
-          "category": "exit",
+          "category": "board_ceiling",
           "scope": "持仓延续",
           "stocks": [
             {
@@ -10444,8 +10444,8 @@
               "name": "闽东电力"
             }
           ],
-          "evidence": "新节点切换正确，弱环境兑现不足",
-          "source": "monthly-quarterly-trading-review/2026-09/index.html"
+          "evidence": "应在高度压制下提前卖出，不大仓位博弈未来溢价",
+          "source": "large-loss-review/index.html#board-ceiling-review"
         },
         {
           "category": "switch_mode",
