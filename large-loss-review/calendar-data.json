@@ -6788,14 +6788,14 @@
           "code": "600255",
           "start": "2026-06-04",
           "end": "2026-06-08",
-          "summary": "未确认对应题材第一性和唯一性便参与；6月5日浮亏与6月8日平仓归为同一轮。",
+          "summary": "6月4日买入鑫科材料800股，6月8日全部卖出。本人将这轮入场归为切换模式错误。",
           "errors": [
             {
-              "category": "leader",
-              "evidence": "它不是第一性，也不是唯一性"
+              "category": "switch_mode",
+              "evidence": "切换模式错误"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         },
         {
           "id": "002579-2026-06-04-closed",
@@ -6813,9 +6813,22 @@
           "assessment": "本人最新反思归类"
         }
       ],
-      "summary": "",
-      "assessment": "待归因",
-      "errors": []
+      "summary": "买入鑫科材料800股，本轮入场归为切换模式错误。",
+      "assessment": "本人最新反思归类",
+      "errors": [
+        {
+          "category": "switch_mode",
+          "evidence": "切换模式错误",
+          "scope": "当日操作",
+          "stocks": [
+            {
+              "code": "600255",
+              "name": "鑫科材料"
+            }
+          ],
+          "source": "large-loss-review/index.html#xinke-switch"
+        }
+      ]
     },
     {
       "date": "2026-06-05",
@@ -6902,14 +6915,14 @@
           "code": "600255",
           "start": "2026-06-04",
           "end": "2026-06-08",
-          "summary": "未确认对应题材第一性和唯一性便参与；6月5日浮亏与6月8日平仓归为同一轮。",
+          "summary": "6月4日买入鑫科材料800股，6月8日全部卖出。本人将这轮入场归为切换模式错误。",
           "errors": [
             {
-              "category": "leader",
-              "evidence": "它不是第一性，也不是唯一性"
+              "category": "switch_mode",
+              "evidence": "切换模式错误"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         },
         {
           "id": "600403-2026-06-09-closed",
@@ -6927,9 +6940,22 @@
           "assessment": "本人最新反思归类"
         }
       ],
-      "summary": "",
-      "assessment": "待归因",
-      "errors": []
+      "summary": "继续持有鑫科材料800股，延续6月4日入场的切换模式错误。",
+      "assessment": "本人最新反思归类",
+      "errors": [
+        {
+          "category": "switch_mode",
+          "evidence": "切换模式错误",
+          "scope": "持仓延续",
+          "stocks": [
+            {
+              "code": "600255",
+              "name": "鑫科材料"
+            }
+          ],
+          "source": "large-loss-review/index.html#xinke-switch"
+        }
+      ]
     },
     {
       "date": "2026-06-08",
@@ -6996,14 +7022,14 @@
           "code": "600255",
           "start": "2026-06-04",
           "end": "2026-06-08",
-          "summary": "未确认对应题材第一性和唯一性便参与；6月5日浮亏与6月8日平仓归为同一轮。",
+          "summary": "6月4日买入鑫科材料800股，6月8日全部卖出。本人将这轮入场归为切换模式错误。",
           "errors": [
             {
-              "category": "leader",
-              "evidence": "它不是第一性，也不是唯一性"
+              "category": "switch_mode",
+              "evidence": "切换模式错误"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         },
         {
           "id": "600403-2026-06-09-closed",
@@ -7021,9 +7047,22 @@
           "assessment": "本人最新反思归类"
         }
       ],
-      "summary": "",
-      "assessment": "待归因",
-      "errors": []
+      "summary": "卖出鑫科材料800股，本轮入场归为切换模式错误。",
+      "assessment": "本人最新反思归类",
+      "errors": [
+        {
+          "category": "switch_mode",
+          "evidence": "切换模式错误",
+          "scope": "本轮回看",
+          "stocks": [
+            {
+              "code": "600255",
+              "name": "鑫科材料"
+            }
+          ],
+          "source": "large-loss-review/index.html#xinke-switch"
+        }
+      ]
     },
     {
       "date": "2026-06-09",

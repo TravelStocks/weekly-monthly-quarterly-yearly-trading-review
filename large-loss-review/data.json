@@ -3424,14 +3424,18 @@
         {
           "text": "卖出鑫科材料，买入大有能源 400 股，继续围绕煤炭龙处理。",
           "source": "2026-06-08_2026-06-12/index.html#daily"
+        },
+        {
+          "text": "鑫科材料是“切换模式错误“。",
+          "source": "large-loss-review/index.html#xinke-switch"
         }
       ],
-      "assessment": "已有反思归类",
-      "summary": "未确认对应题材第一性和唯一性便参与；6月5日浮亏与6月8日平仓归为同一轮。",
+      "assessment": "本人最新反思归类",
+      "summary": "6月4日买入鑫科材料800股，6月8日全部卖出。本人将这轮入场归为切换模式错误。",
       "errors": [
         {
-          "category": "leader",
-          "evidence": "它不是第一性，也不是唯一性"
+          "category": "switch_mode",
+          "evidence": "切换模式错误"
         }
       ]
     },

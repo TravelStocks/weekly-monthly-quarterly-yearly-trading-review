@@ -1444,5 +1444,59 @@
         "source": "large-loss-review/index.html#changlan-review"
       }
     ]
+  },
+  "2026-06-04": {
+    "summary": "买入鑫科材料800股，本轮入场归为切换模式错误。",
+    "assessment": "本人最新反思归类",
+    "errors": [
+      {
+        "category": "switch_mode",
+        "evidence": "切换模式错误",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "600255",
+            "name": "鑫科材料"
+          }
+        ],
+        "source": "large-loss-review/index.html#xinke-switch"
+      }
+    ]
+  },
+  "2026-06-05": {
+    "summary": "继续持有鑫科材料800股，延续6月4日入场的切换模式错误。",
+    "assessment": "本人最新反思归类",
+    "errors": [
+      {
+        "category": "switch_mode",
+        "evidence": "切换模式错误",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "600255",
+            "name": "鑫科材料"
+          }
+        ],
+        "source": "large-loss-review/index.html#xinke-switch"
+      }
+    ]
+  },
+  "2026-06-08": {
+    "summary": "卖出鑫科材料800股，本轮入场归为切换模式错误。",
+    "assessment": "本人最新反思归类",
+    "errors": [
+      {
+        "category": "switch_mode",
+        "evidence": "切换模式错误",
+        "scope": "本轮回看",
+        "stocks": [
+          {
+            "code": "600255",
+            "name": "鑫科材料"
+          }
+        ],
+        "source": "large-loss-review/index.html#xinke-switch"
+      }
+    ]
   }
 }
