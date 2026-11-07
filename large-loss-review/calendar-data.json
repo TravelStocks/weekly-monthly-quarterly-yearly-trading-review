@@ -10086,26 +10086,14 @@
           "code": "002403",
           "start": "2026-09-08",
           "end": "2026-09-09",
-          "summary": "农业补涨阶段改做弱机器人切换，仓位过重；弱走后退出和条件单均未及时执行。",
+          "summary": "题材已经分歧延续、持续走弱，梯队集体出现负反馈，却仍沿用原有龙头预期继续参与。题材支撑已不足，龙头可能领涨也领跌；不能只看龙头身份而忽略整个梯队。",
           "errors": [
             {
-              "category": "cycle",
-              "evidence": "补涨阶段做弱切换"
-            },
-            {
-              "category": "size",
-              "evidence": "仓位过重"
-            },
-            {
-              "category": "exit",
-              "evidence": "未及时处理弱走"
-            },
-            {
-              "category": "execution",
-              "evidence": "未执行条件单"
+              "category": "theme_support",
+              "evidence": "题材龙头在题材已经分歧延续走弱情况下未看清梯队集体已出现负反馈仍然继续做"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         }
       ],
       "summary": "",
@@ -10199,33 +10187,21 @@
           "code": "002403",
           "start": "2026-09-08",
           "end": "2026-09-09",
-          "summary": "农业补涨阶段改做弱机器人切换，仓位过重；弱走后退出和条件单均未及时执行。",
+          "summary": "题材已经分歧延续、持续走弱，梯队集体出现负反馈，却仍沿用原有龙头预期继续参与。题材支撑已不足，龙头可能领涨也领跌；不能只看龙头身份而忽略整个梯队。",
           "errors": [
             {
-              "category": "cycle",
-              "evidence": "补涨阶段做弱切换"
-            },
-            {
-              "category": "size",
-              "evidence": "仓位过重"
-            },
-            {
-              "category": "exit",
-              "evidence": "未及时处理弱走"
-            },
-            {
-              "category": "execution",
-              "evidence": "未执行条件单"
+              "category": "theme_support",
+              "evidence": "题材龙头在题材已经分歧延续走弱情况下未看清梯队集体已出现负反馈仍然继续做"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         }
       ],
-      "summary": "爱仕达止损后切换百大集团。爱仕达关联此前补涨阶段做弱切换、仓位偏大及保护未执行；不因当日大亏把百大的买入直接归错。",
-      "assessment": "已有反思归类",
+      "summary": "卖出爱仕达，买入百大集团。爱仕达按本人最新反思归为：题材分歧延续、梯队集体负反馈时仍继续做龙头，忽略题材已不足以支撑上涨。此为此前持仓问题的延续，止损卖出不另算新错误；不因账户当日大亏直接将百大买入归错。",
+      "assessment": "本人最新反思归类",
       "errors": [
         {
-          "category": "cycle",
+          "category": "theme_support",
           "scope": "持仓延续",
           "stocks": [
             {
@@ -10233,32 +10209,8 @@
               "name": "爱仕达"
             }
           ],
-          "evidence": "补涨阶段做弱切换",
-          "source": "monthly-quarterly-trading-review/2026-09/index.html#reflection-cases"
-        },
-        {
-          "category": "size",
-          "scope": "持仓延续",
-          "stocks": [
-            {
-              "code": "002403",
-              "name": "爱仕达"
-            }
-          ],
-          "evidence": "仓位过重",
-          "source": "monthly-quarterly-trading-review/2026-09/index.html#reflection-cases"
-        },
-        {
-          "category": "execution",
-          "scope": "本轮回看",
-          "stocks": [
-            {
-              "code": "002403",
-              "name": "爱仕达"
-            }
-          ],
-          "evidence": "未执行条件单",
-          "source": "monthly-quarterly-trading-review/2026-09/index.html#stock-002403"
+          "evidence": "题材龙头在题材已经分歧延续走弱情况下未看清梯队集体已出现负反馈仍然继续做",
+          "source": "large-loss-review/index.html#theme-support-review"
         }
       ]
     },
@@ -11819,14 +11771,14 @@
           "code": "003029",
           "start": "2026-10-20",
           "end": "2026-10-21",
-          "summary": "属于龙头打法，唯一性并非主要问题；后排助攻不足时未利用已有溢价退出。",
+          "summary": "题材已经分歧延续、持续走弱，梯队集体出现负反馈，却仍沿用原有龙头预期继续参与。题材支撑已不足，龙头可能领涨也领跌；不能只看龙头身份而忽略整个梯队。",
           "errors": [
             {
-              "category": "exit",
-              "evidence": "认为应当借这一溢价退出，而不是继续等题材延续"
+              "category": "theme_support",
+              "evidence": "题材龙头在题材已经分歧延续走弱情况下未看清梯队集体已出现负反馈仍然继续做"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         },
         {
           "id": "002085-2026-10-21-closed",
@@ -11905,14 +11857,14 @@
           "code": "003029",
           "start": "2026-10-20",
           "end": "2026-10-21",
-          "summary": "属于龙头打法，唯一性并非主要问题；后排助攻不足时未利用已有溢价退出。",
+          "summary": "题材已经分歧延续、持续走弱，梯队集体出现负反馈，却仍沿用原有龙头预期继续参与。题材支撑已不足，龙头可能领涨也领跌；不能只看龙头身份而忽略整个梯队。",
           "errors": [
             {
-              "category": "exit",
-              "evidence": "认为应当借这一溢价退出，而不是继续等题材延续"
+              "category": "theme_support",
+              "evidence": "题材龙头在题材已经分歧延续走弱情况下未看清梯队集体已出现负反馈仍然继续做"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         },
         {
           "id": "002085-2026-10-21-closed",
@@ -11930,21 +11882,9 @@
           "assessment": "本人最新反思归类"
         }
       ],
-      "summary": "卖出万丰奥威和吉大正元。万丰为10月19日切换模式错误的持仓延续，退出不另算一次新错误；吉大的利润保护问题单独保留。日收益为原站费用前估算。",
+      "summary": "卖出万丰奥威和吉大正元。吉大按本人最新反思归为题材走弱、梯队集体负反馈仍继续做龙头，忽略题材支撑不足；万丰仍归为10月19日切换模式错误的持仓延续。当天退出不另算一次新错误，日收益仍为原站费用前估算。",
       "assessment": "本人最新反思归类",
       "errors": [
-        {
-          "category": "exit",
-          "scope": "本轮回看",
-          "stocks": [
-            {
-              "code": "003029",
-              "name": "吉大正元"
-            }
-          ],
-          "evidence": "认为应当借这一溢价退出，而不是继续等题材延续",
-          "source": "2026-10-19_2026-10-23/index.html#leader-failure-crowding-repair"
-        },
         {
           "category": "switch_mode",
           "scope": "持仓延续",
@@ -11956,6 +11896,18 @@
           ],
           "evidence": "我个人在切换这个低位接力上的模式不熟悉不会，所以不应该大仓位的去做，最多小仓位去试错",
           "source": "large-loss-review/index.html#switch-mode-review"
+        },
+        {
+          "category": "theme_support",
+          "scope": "本轮回看",
+          "stocks": [
+            {
+              "code": "003029",
+              "name": "吉大正元"
+            }
+          ],
+          "evidence": "题材龙头在题材已经分歧延续走弱情况下未看清梯队集体已出现负反馈仍然继续做",
+          "source": "large-loss-review/index.html#theme-support-review"
         }
       ]
     },

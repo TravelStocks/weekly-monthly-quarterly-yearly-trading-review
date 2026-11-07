@@ -12,6 +12,6 @@ for date, code, scope in [
     assert len(errors) == 1 and errors[0]['category'] == 'pk', date
     assert errors[0]['scope'] == scope
 assert any(e['category'] != 'pk' and e['stocks'][0]['code'] == '600551' for e in days['2026-09-03']['errors'])
-assert any(e['category'] == 'exit' and e['stocks'][0]['code'] == '003029' for e in days['2026-10-21']['errors'])
+assert any(e['category'] == 'theme_support' and e['stocks'][0]['code'] == '003029' for e in days['2026-10-21']['errors'])
 assert sum(any(e['category'] == 'pk' for e in d['errors']) for d in days.values() if d['date'].startswith('2026-10')) == 0  # Wanfeng superseded by later switch-mode clarification.
 print('PASS: two stocks, two dates; unresolved PK unified, carry-over and other stocks preserved.')

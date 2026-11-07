@@ -95,6 +95,13 @@ assert '2026-08-29' not in days
 for month,count in [('2026-08',2),('2026-09',1),('2026-10',2)]:
     assert sum(d['date'].startswith(month) and d['income'] and d['income']['rate'] < -2 and any(e['category']=='switch_mode' for e in d['errors']) for d in days.values())==count
 
+# Latest theme-support attribution must preserve other stocks and daily returns.
+for date,code,scope,rate in [('2026-09-09','002403','持仓延续',-5.27),('2026-10-21','003029','本轮回看',-2.13)]:
+    errors=[e for e in days[date]['errors'] if any(t['code']==code for t in e['stocks'])]
+    assert len(errors)==1 and errors[0]['category']=='theme_support' and errors[0]['scope']==scope
+    assert days[date]['income']['rate']==rate
+assert sum(any(e['category']=='theme_support' for e in d['errors']) for d in days.values())==2
+
 # An account loss may arise from an existing position without any new trade.
 assert days['2026-08-07']['tradeCount']==0
 assert any(r['code']=='601700' for r in days['2026-08-07']['relatedEpisodes'])
