@@ -77,6 +77,16 @@ hub=fs.readFileSync(hubPath,'utf8')
   .replace(/<a class="week-card latest-link" href="\.\.\/2026-11-02_2026-11-06\/">[\s\S]*?<\/a>/,tradeReport.hubCard)
   .replace(/最新一期2026\.11\.02–11\.06：[^<]+/,'最新一期2026.11.02–11.06：全周8笔成交，周四清仓，周五空仓，已纳入资金曲线。')
   .replace('<strong class="">前三日交割已补</strong><small>周四待补 / 周五空仓</small>','<strong class="">全周交割已补</strong><small>周四清仓 / 周五空仓</small>');
+const account = tradeReport.summary.account;
+const thursday = account.days.find(d=>d.date==='2026-11-05');
+const recentPanel = `<section class="panel"><span class="label">Latest Review</span><h2>最新周：11.02–11.06</h2><div class="latest-summary"><span>全周成交 <b>${tradeReport.summary.tradeCount}笔</b></span><span>周收益（估） <b class="trade-down">${account.pnl.toLocaleString('en-US')}元</b></span><span>收益率（估） <b class="trade-down">${account.returnPct.toFixed(2)}%</b></span><span>期末仓位 <b>0%</b></span></div><p>周四卖清文投，日收益 ${thursday.pnl.toFixed(2)}元（${thursday.returnPct.toFixed(2)}%）；周五空仓，无成交。<a href="../${folder}/#week-fills">查看周四成交与日收益</a></p></section>`;
+hub=hub.replace(/<section class="panel">\s*<span class="label">Latest Review<\/span>[\s\S]*?<\/section>/,recentPanel);
+hub=hub.replace(/(<div class="archive">)([\s\S]*?)(<\/div>\s*<\/section>)/,(_,start,body,end)=>{
+  const cards=[...body.matchAll(/<a class="week-card[^"]*" href="\.\.\/(\d{4}-\d{2}-\d{2}_[^"]+)\/">[\s\S]*?<\/a>/g)];
+  if(!cards.length || body.replace(/<a class="week-card[^"]*"[^>]*>[\s\S]*?<\/a>/g,'').trim())throw Error('Unrecognized weekly archive markup');
+  return start+cards.sort((a,b)=>b[1].localeCompare(a[1])).map(m=>m[0].replace(/<b>([+-][\d,.]+%?)<\/b>/g,(_,v)=>`<b class="${v[0]==='+'?'is-profit':'is-loss'}">${v}</b>`)).join('\n')+end;
+});
+if(!hub.includes('href="archive.css"'))hub=hub.replace('</head>','<link rel="stylesheet" href="archive.css"></head>');
 fs.writeFileSync(hubPath,hub);
 home=fs.readFileSync(homePath,'utf8').replace(/最新一期11\.02至11\.06：[^<]+/,'最新一期11.02至11.06：全周8笔成交，周收益估算-1,480.39元（-12.55%），期末空仓。').replace('状态 <b>前三日交割已补</b>','状态 <b>全周交割已补</b>');
 fs.writeFileSync(homePath,home);
