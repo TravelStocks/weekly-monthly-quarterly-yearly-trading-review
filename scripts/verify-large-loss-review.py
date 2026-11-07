@@ -45,6 +45,8 @@ assert data['audit']['snapshotThrough']=='2026-11-04'
 for id,cost,pnl in [('603278-2026-11-02-closed',3928.04,-425.83),('603131-2026-11-03-closed',3872.04,-758.63),('600715-2026-11-04-floating',2178.02,-202.02)]:
     assert by_id[id]['cost']==cost and by_id[id]['pnl']==pnl
     assert by_id[id]['errors']
+assert [e['category'] for e in by_id['603131-2026-11-03-closed']['errors']]==['catch_up_height']
+assert sum(any(e['category']=='catch_up_height' for e in r['errors']) for r in records)==1
 # Partial sales must reduce snapshot cost, not leave all purchases as the denominator.
 position={'qty':100,'trades':[{'side':'buy','qty':200,'cash':2010,'gross':2000},{'side':'sell','qty':100,'cash':1100,'gross':1105}]}
 assert builder.remaining_cost(position)==(1005,True)

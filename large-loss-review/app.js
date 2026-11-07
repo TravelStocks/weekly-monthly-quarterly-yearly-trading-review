@@ -1,5 +1,6 @@
 'use strict';
 const CATEGORIES = {
+  catch_up_height: {name:'补涨龙高度错误（仅三板参与）', rule:'本人纪律：补涨龙只能在三板做；先确认补涨龙地位与题材支撑，三板也不自动构成买点。更高位置不再新开仓，避免高度有限、题材走弱时连续承受大亏。'},
   theme_support: {name:'题材走弱、梯队负反馈仍做龙头', rule:'先看题材与梯队是否仍有支撑；分歧延续、集体负反馈时降低预期，按既定退出条件处理，不因仍是龙头而继续做。'},
   switch_mode: {name:'切换模式错误', rule:'尽量避免不熟悉的低位接力切换；如参与，最多小仓位试错，不用大仓位押注尚未掌握的模式。'},
   board_confirm: {name:'低卡高未定，未等上板确认', rule:'领先身位下方仅低一板且有多只有辨识度个股时，先等领先身位上板确认龙头卡位；高开不能代替上板确认，不半路抢入。'},
@@ -73,7 +74,7 @@ function openHash() {
 }
 async function init() {
   try {
-    const response=await fetch('./data.json?v=20261106-complete');
+    const response=await fetch('./data.json?v=20261106-catchup');
     if(!response.ok)throw new Error('HTTP '+response.status);
     DATA=await response.json();
     Object.entries(CATEGORIES).forEach(([id,c])=>$('category').insertAdjacentHTML('beforeend',`<option value="${id}">${c.name}</option>`));

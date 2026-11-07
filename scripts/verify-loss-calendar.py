@@ -108,7 +108,10 @@ assert any(r['id']=='603278-2026-11-02-closed' for r in days['2026-11-02']['rela
 assert any(r['id']=='600715-2026-11-04-floating' for r in days['2026-11-04']['relatedEpisodes'])
 assert not any(r['id']=='000678-2026-10-29-floating' for d in days.values() for r in d['relatedEpisodes'])
 for date in ['2026-11-02','2026-11-03']:
-    assert {'leader','emotion','add','size'} <= {e['category'] for e in days[date]['errors'] if any(s['code']=='603131' for s in e['stocks'])}
+    errors=[e for e in days[date]['errors'] if any(s['code']=='603131' for s in e['stocks'])]
+    assert len(errors)==1 and errors[0]['category']=='catch_up_height'
+    assert errors[0]['scope']==('当日操作' if date=='2026-11-02' else '持仓延续')
+assert sum(any(e['category']=='catch_up_height' for e in d['errors']) for d in days.values())==2
 
 # An account loss may arise from an existing position without any new trade.
 assert days['2026-08-07']['tradeCount']==0

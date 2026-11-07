@@ -1065,33 +1065,9 @@
     ]
   },
   "2026-11-02": {
-    "summary": "当天两笔买入上海沪工200股，分两笔卖出大业股份200股。账户日亏损按10月30日收盘权益衔接，包含大业相对前收盘的卖出损益及上海沪工当日浮亏。本人反思为非主模式仓位偏大、第二笔缺少新增确认，并带有扳回上一笔的动机。 已归档的后续反思还确认了沪工未定龙抢板、试图扳回大业上一笔错误的动机，均归回这轮交易。",
-    "assessment": "已有反思归类",
+    "summary": "两笔买入上海沪工200股，分两笔卖出大业股份200股。沪工按本人最新反思归为补涨龙参与高度错误：只在三板研究已确认地位的机会，更高位置不再开仓；高度有限且题材走弱时，可能从入场日到次日连续大亏。大业此前非主模式仓位过重的问题单独保留。账户日损益与个股整轮损益分别计算。",
+    "assessment": "本人最新反思归类",
     "errors": [
-      {
-        "category": "add",
-        "scope": "当日操作",
-        "stocks": [
-          {
-            "code": "603131",
-            "name": "上海沪工"
-          }
-        ],
-        "evidence": "第二笔没有新增唯一性依据，不应扩大仓位",
-        "source": "2026-11-02_2026-11-06/index.html#operations"
-      },
-      {
-        "category": "size",
-        "scope": "当日操作",
-        "stocks": [
-          {
-            "code": "603131",
-            "name": "上海沪工"
-          }
-        ],
-        "evidence": "本人判断其补涨质量不足，不是应该重仓的题材龙",
-        "source": "2026-11-02_2026-11-06/index.html#operations"
-      },
       {
         "category": "mode",
         "scope": "持仓延续",
@@ -1117,7 +1093,7 @@
         "source": "2026-11-02_2026-11-06/index.html#operations"
       },
       {
-        "category": "leader",
+        "category": "catch_up_height",
         "scope": "当日操作",
         "stocks": [
           {
@@ -1125,29 +1101,17 @@
             "name": "上海沪工"
           }
         ],
-        "evidence": "未定龙抢板",
-        "source": "2026-11-02_2026-11-06/index.html#ticket-pnl"
-      },
-      {
-        "category": "emotion",
-        "scope": "当日操作",
-        "stocks": [
-          {
-            "code": "603131",
-            "name": "上海沪工"
-          }
-        ],
-        "evidence": "存在想弥补大业股份上一笔错误的动机",
-        "source": "2026-11-02_2026-11-06/index.html#operations"
+        "evidence": "补涨龙只能在三板做",
+        "source": "large-loss-review/index.html#catch-up-height-review"
       }
     ]
   },
   "2026-11-03": {
-    "summary": "卖出上海沪工200股，按已提供成交收盘为空仓。日亏损相对于11月2日收盘权益计算；保留此前无新增确认加仓和仓位问题，本日退出不另判为新错误。 已归档的后续反思还确认了沪工未定龙抢板、试图扳回大业上一笔错误的动机，均归回这轮交易。",
-    "assessment": "已有反思归类",
+    "summary": "卖出上海沪工200股，按可见交割收盘为空仓。本轮主因归为“补涨龙只能在三板做”：补涨高度有限，题材走弱时，高位参与容易出现连续大亏。本日标为11月2日入场问题的持仓延续，正常退出不另判为新错误。账户当日预估亏损346.59元（-3.15%），与整轮含费亏损758.63元（-19.59%）分开。",
+    "assessment": "本人最新反思归类",
     "errors": [
       {
-        "category": "add",
+        "category": "catch_up_height",
         "scope": "持仓延续",
         "stocks": [
           {
@@ -1155,44 +1119,8 @@
             "name": "上海沪工"
           }
         ],
-        "evidence": "第二笔没有新增唯一性依据，不应扩大仓位",
-        "source": "2026-11-02_2026-11-06/index.html#operations"
-      },
-      {
-        "category": "size",
-        "scope": "持仓延续",
-        "stocks": [
-          {
-            "code": "603131",
-            "name": "上海沪工"
-          }
-        ],
-        "evidence": "本人判断其补涨质量不足，不是应该重仓的题材龙",
-        "source": "2026-11-02_2026-11-06/index.html#operations"
-      },
-      {
-        "category": "leader",
-        "scope": "持仓延续",
-        "stocks": [
-          {
-            "code": "603131",
-            "name": "上海沪工"
-          }
-        ],
-        "evidence": "未定龙抢板",
-        "source": "2026-11-02_2026-11-06/index.html#ticket-pnl"
-      },
-      {
-        "category": "emotion",
-        "scope": "持仓延续",
-        "stocks": [
-          {
-            "code": "603131",
-            "name": "上海沪工"
-          }
-        ],
-        "evidence": "存在想弥补大业股份上一笔错误的动机",
-        "source": "2026-11-02_2026-11-06/index.html#operations"
+        "evidence": "补涨龙只能在三板做",
+        "source": "large-loss-review/index.html#catch-up-height-review"
       }
     ]
   }
