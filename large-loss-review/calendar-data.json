@@ -4818,9 +4818,22 @@
           "code": "601991",
           "start": "2026-05-14",
           "end": "2026-05-15",
-          "summary": "尚无足够的个股错误归因，保留已有记录供回看。",
-          "errors": [],
-          "assessment": "待归因"
+          "summary": "14日买入200股，15日卖出。本人归因为龙头二波买点错误，并确认同时有亏损想要摊平成本、想要快速扳平亏损两种动机。",
+          "errors": [
+            {
+              "category": "second_wave_entry",
+              "evidence": "龙头二波买点错误"
+            },
+            {
+              "category": "add",
+              "evidence": "亏损想要摊平成本"
+            },
+            {
+              "category": "recoup",
+              "evidence": "想要快速扳平亏损"
+            }
+          ],
+          "assessment": "本人最新反思归类"
         },
         {
           "id": "600396-2026-05-15-closed",
@@ -4828,14 +4841,22 @@
           "code": "600396",
           "start": "2026-05-14",
           "end": "2026-05-15",
-          "summary": "月度复盘将其归入非第一、后排替代交易：题材热度不能替代个股地位。",
+          "summary": "14日买入900股，15日卖出。本人归因为龙头二波买点错误，并确认同时有亏损想要摊平成本、想要快速扳平亏损两种动机。",
           "errors": [
             {
-              "category": "leader",
-              "evidence": "题材热不等于个股有地位，非第一没有核心预期"
+              "category": "second_wave_entry",
+              "evidence": "龙头二波买点错误"
+            },
+            {
+              "category": "add",
+              "evidence": "亏损想要摊平成本"
+            },
+            {
+              "category": "recoup",
+              "evidence": "想要快速扳平亏损"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         },
         {
           "id": "600198-2026-05-14-closed",
@@ -4853,8 +4874,8 @@
           "assessment": "已有反思归类"
         }
       ],
-      "summary": "卖出大连热电、大唐电信，买入华电辽能和大唐发电。既有复盘把多笔问题归于题材地位与核心识别；不能用整轮亏损金额拆分当天账户亏损。",
-      "assessment": "已有反思归类",
+      "summary": "买入华电辽能900股、大唐发电200股；同日卖出大连热电和大唐电信。按本人反思，华电辽能和大唐发电的二波买点错误叠加了想摊平成本和急于扳平亏损的动机。",
+      "assessment": "本人最新反思归类",
       "errors": [
         {
           "category": "leader",
@@ -4881,16 +4902,52 @@
           "source": "monthly-quarterly-trading-review/2026-05/index.html#verdict"
         },
         {
-          "category": "leader",
+          "category": "second_wave_entry",
+          "evidence": "龙头二波买点错误",
           "scope": "当日操作",
           "stocks": [
             {
               "code": "600396",
               "name": "华电辽能"
+            },
+            {
+              "code": "601991",
+              "name": "大唐发电"
             }
           ],
-          "evidence": "题材热不等于个股有地位，非第一没有核心预期",
-          "source": "monthly-quarterly-trading-review/2026-05/index.html#verdict"
+          "source": "large-loss-review/index.html#may-power-review"
+        },
+        {
+          "category": "add",
+          "evidence": "亏损想要摊平成本",
+          "scope": "当日操作",
+          "stocks": [
+            {
+              "code": "600396",
+              "name": "华电辽能"
+            },
+            {
+              "code": "601991",
+              "name": "大唐发电"
+            }
+          ],
+          "source": "large-loss-review/index.html#may-power-review"
+        },
+        {
+          "category": "recoup",
+          "evidence": "想要快速扳平亏损",
+          "scope": "当日操作",
+          "stocks": [
+            {
+              "code": "600396",
+              "name": "华电辽能"
+            },
+            {
+              "code": "601991",
+              "name": "大唐发电"
+            }
+          ],
+          "source": "large-loss-review/index.html#may-power-review"
         }
       ]
     },
@@ -4967,18 +5024,22 @@
           "code": "600396",
           "start": "2026-05-15",
           "end": "2026-05-18",
-          "summary": "止损后立刻买回同等仓位，继续做跟风标的；与5月15日结束的前一轮分别计算。",
+          "summary": "15日平仓后买回900股，18日退出。本人归因为龙头二波买点错误，并确认同时有亏损想要摊平成本、想要快速扳平亏损两种动机。",
           "errors": [
             {
-              "category": "emotion",
-              "evidence": "止损后立刻打回同等仓位"
+              "category": "second_wave_entry",
+              "evidence": "龙头二波买点错误"
             },
             {
-              "category": "leader",
-              "evidence": "选择跟风标的华电辽能"
+              "category": "add",
+              "evidence": "亏损想要摊平成本"
+            },
+            {
+              "category": "recoup",
+              "evidence": "想要快速扳平亏损"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         },
         {
           "id": "601991-2026-05-15-closed",
@@ -4986,9 +5047,22 @@
           "code": "601991",
           "start": "2026-05-14",
           "end": "2026-05-15",
-          "summary": "尚无足够的个股错误归因，保留已有记录供回看。",
-          "errors": [],
-          "assessment": "待归因"
+          "summary": "14日买入200股，15日卖出。本人归因为龙头二波买点错误，并确认同时有亏损想要摊平成本、想要快速扳平亏损两种动机。",
+          "errors": [
+            {
+              "category": "second_wave_entry",
+              "evidence": "龙头二波买点错误"
+            },
+            {
+              "category": "add",
+              "evidence": "亏损想要摊平成本"
+            },
+            {
+              "category": "recoup",
+              "evidence": "想要快速扳平亏损"
+            }
+          ],
+          "assessment": "本人最新反思归类"
         },
         {
           "id": "600396-2026-05-15-closed",
@@ -4996,21 +5070,30 @@
           "code": "600396",
           "start": "2026-05-14",
           "end": "2026-05-15",
-          "summary": "月度复盘将其归入非第一、后排替代交易：题材热度不能替代个股地位。",
+          "summary": "14日买入900股，15日卖出。本人归因为龙头二波买点错误，并确认同时有亏损想要摊平成本、想要快速扳平亏损两种动机。",
           "errors": [
             {
-              "category": "leader",
-              "evidence": "题材热不等于个股有地位，非第一没有核心预期"
+              "category": "second_wave_entry",
+              "evidence": "龙头二波买点错误"
+            },
+            {
+              "category": "add",
+              "evidence": "亏损想要摊平成本"
+            },
+            {
+              "category": "recoup",
+              "evidence": "想要快速扳平亏损"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         }
       ],
-      "summary": "华电辽能止损后又买回同等仓位。反思中的问题是情绪化回补及跟风标的选择，早盘止损动作与后续回补分开评价。",
-      "assessment": "已有反思归类",
+      "summary": "华电辽能卖出900股后买回900股。大唐发电卖出200股，回看前日的入场。按本人反思，华电辽能和大唐发电的二波买点错误叠加了想摊平成本和急于扳平亏损的动机。",
+      "assessment": "本人最新反思归类",
       "errors": [
         {
-          "category": "emotion",
+          "category": "second_wave_entry",
+          "evidence": "龙头二波买点错误",
           "scope": "当日操作",
           "stocks": [
             {
@@ -5018,11 +5101,23 @@
               "name": "华电辽能"
             }
           ],
-          "evidence": "止损后立刻打回同等仓位",
-          "source": "2026-05-08_2026-05-16/index.html"
+          "source": "large-loss-review/index.html#may-power-review"
         },
         {
-          "category": "leader",
+          "category": "second_wave_entry",
+          "evidence": "龙头二波买点错误",
+          "scope": "持仓延续",
+          "stocks": [
+            {
+              "code": "601991",
+              "name": "大唐发电"
+            }
+          ],
+          "source": "large-loss-review/index.html#may-power-review"
+        },
+        {
+          "category": "add",
+          "evidence": "亏损想要摊平成本",
           "scope": "当日操作",
           "stocks": [
             {
@@ -5030,8 +5125,43 @@
               "name": "华电辽能"
             }
           ],
-          "evidence": "选择跟风标的华电辽能",
-          "source": "2026-05-15_2026-05-22/index.html#reflection2"
+          "source": "large-loss-review/index.html#may-power-review"
+        },
+        {
+          "category": "add",
+          "evidence": "亏损想要摊平成本",
+          "scope": "持仓延续",
+          "stocks": [
+            {
+              "code": "601991",
+              "name": "大唐发电"
+            }
+          ],
+          "source": "large-loss-review/index.html#may-power-review"
+        },
+        {
+          "category": "recoup",
+          "evidence": "想要快速扳平亏损",
+          "scope": "当日操作",
+          "stocks": [
+            {
+              "code": "600396",
+              "name": "华电辽能"
+            }
+          ],
+          "source": "large-loss-review/index.html#may-power-review"
+        },
+        {
+          "category": "recoup",
+          "evidence": "想要快速扳平亏损",
+          "scope": "持仓延续",
+          "stocks": [
+            {
+              "code": "601991",
+              "name": "大唐发电"
+            }
+          ],
+          "source": "large-loss-review/index.html#may-power-review"
         }
       ]
     },
@@ -5112,25 +5242,30 @@
           "code": "600396",
           "start": "2026-05-15",
           "end": "2026-05-18",
-          "summary": "止损后立刻买回同等仓位，继续做跟风标的；与5月15日结束的前一轮分别计算。",
+          "summary": "15日平仓后买回900股，18日退出。本人归因为龙头二波买点错误，并确认同时有亏损想要摊平成本、想要快速扳平亏损两种动机。",
           "errors": [
             {
-              "category": "emotion",
-              "evidence": "止损后立刻打回同等仓位"
+              "category": "second_wave_entry",
+              "evidence": "龙头二波买点错误"
             },
             {
-              "category": "leader",
-              "evidence": "选择跟风标的华电辽能"
+              "category": "add",
+              "evidence": "亏损想要摊平成本"
+            },
+            {
+              "category": "recoup",
+              "evidence": "想要快速扳平亏损"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         }
       ],
-      "summary": "处理华电辽能和ST万邦旧仓，买滨化股份、大唐发电。原文肯定风险信号出现时及时处理；关联问题主要来自此前跟风与止损后回补，并非当天所有动作都错。",
-      "assessment": "已有反思归类",
+      "summary": "卖出华电辽能900股，买入大唐发电300股。当天还卖出ST万邦、买入滨化股份。按本人反思，华电辽能和大唐发电的二波买点错误叠加了想摊平成本和急于扳平亏损的动机。",
+      "assessment": "本人最新反思归类",
       "errors": [
         {
-          "category": "leader",
+          "category": "second_wave_entry",
+          "evidence": "龙头二波买点错误",
           "scope": "持仓延续",
           "stocks": [
             {
@@ -5138,11 +5273,23 @@
               "name": "华电辽能"
             }
           ],
-          "evidence": "选择跟风标的华电辽能",
-          "source": "2026-05-15_2026-05-22/index.html#reflection2"
+          "source": "large-loss-review/index.html#may-power-review"
         },
         {
-          "category": "emotion",
+          "category": "second_wave_entry",
+          "evidence": "龙头二波买点错误",
+          "scope": "当日操作",
+          "stocks": [
+            {
+              "code": "601991",
+              "name": "大唐发电"
+            }
+          ],
+          "source": "large-loss-review/index.html#may-power-review"
+        },
+        {
+          "category": "add",
+          "evidence": "亏损想要摊平成本",
           "scope": "持仓延续",
           "stocks": [
             {
@@ -5150,8 +5297,43 @@
               "name": "华电辽能"
             }
           ],
-          "evidence": "止损后立刻打回同等仓位",
-          "source": "2026-05-08_2026-05-16/index.html"
+          "source": "large-loss-review/index.html#may-power-review"
+        },
+        {
+          "category": "add",
+          "evidence": "亏损想要摊平成本",
+          "scope": "当日操作",
+          "stocks": [
+            {
+              "code": "601991",
+              "name": "大唐发电"
+            }
+          ],
+          "source": "large-loss-review/index.html#may-power-review"
+        },
+        {
+          "category": "recoup",
+          "evidence": "想要快速扳平亏损",
+          "scope": "持仓延续",
+          "stocks": [
+            {
+              "code": "600396",
+              "name": "华电辽能"
+            }
+          ],
+          "source": "large-loss-review/index.html#may-power-review"
+        },
+        {
+          "category": "recoup",
+          "evidence": "想要快速扳平亏损",
+          "scope": "当日操作",
+          "stocks": [
+            {
+              "code": "601991",
+              "name": "大唐发电"
+            }
+          ],
+          "source": "large-loss-review/index.html#may-power-review"
         }
       ]
     },

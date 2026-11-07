@@ -2,6 +2,7 @@
 const CATEGORIES = {
   trend_nonleader: {name:'趋势行情下参与非龙头连板', rule:'趋势行情下，连板只做已确认的唯一龙头。非龙头连板加速时放弃参与。慢趋势更合我的节奏，可以空仓，也可以小仓位参与，趋势交易合计最多两成。'},
   trend_mode: {name:'趋势模式不熟悉', rule:'科技处于下降趋势时，我容易踏错反弹节奏。趋势模式最多用账户两成仓位。大仓位只留给熟悉的龙头模式。'},
+  recoup: {name:'想要快速扳平亏损', rule:'亏损后先停下来。下一笔交易重新核对模式和买点，不能用急于回本作为入场理由。'},
   second_wave_entry: {name:'龙头二波买点错误', rule:'做龙头二波，等股价突破新高再买入。提前下注，容易在下杀时被洗出，也容易影响心态。'},
   board_ceiling: {name:'连板高度压制', rule:'遇到连板高度压制，提前卖出，不大仓位博弈未来溢价。'},
   regulatory_timing: {name:'监管反核节奏错误（首日上板、次日退出）', rule:'本人纪律：监管首日反核必须上板确认才参与，只有首日这一次参与窗口；次日必须卖出，不在次日新开仓或继续反复博弈。'},
@@ -14,7 +15,7 @@ const CATEGORIES = {
   leader: {name:'非核心 / 唯一性未确认', rule:'参与前确认第一性与唯一性；竞争尚未胜出，不提前赋予核心预期。'},
   entry: {name:'入场过早 / 买点不合规', rule:'把可执行的分时触发写清楚；窗口错过或确认未到，放弃参与。'},
   exit: {name:'失效未退 / 利润保护不足', rule:'把原有失效条件、利润保护和兑现步骤写进预案，出现负反馈时执行。'},
-  add: {name:'亏损加仓 / 摊低成本', rule:'区分强度确认后加仓与为降低成本而补仓；后者是需要反复检查的错误。'},
+  add: {name:'亏损想要摊平成本', rule:'区分强度确认后加仓与为降低成本而补仓；后者是需要反复检查的错误。'},
   size: {name:'仓位超过确定性', rule:'仓位服从已确认的题材强度、个股地位与风险预算。'},
   execution: {name:'条件单 / 下单执行问题', rule:'开盘前复核条件单，提交前核对方向、数量和有效期。'},
   mode: {name:'模式外交易 / 临盘随手单', rule:'不熟悉的模式先研究，不用临盘一时兴起替代交易计划。'},
@@ -79,7 +80,7 @@ function openHash() {
 }
 async function init() {
   try {
-    const response=await fetch('./data.json?v=20261106-yuedian');
+    const response=await fetch('./data.json?v=20261106-may-power');
     if(!response.ok)throw new Error('HTTP '+response.status);
     DATA=await response.json();
     Object.entries(CATEGORIES).forEach(([id,c])=>$('category').insertAdjacentHTML('beforeend',`<option value="${id}">${c.name}</option>`));

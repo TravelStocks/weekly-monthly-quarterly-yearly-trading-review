@@ -78,26 +78,50 @@
     ]
   },
   "600396-2026-05-15-closed": {
-    "assessment": "已有反思归类",
-    "summary": "月度复盘将其归入非第一、后排替代交易：题材热度不能替代个股地位。",
+    "assessment": "本人最新反思归类",
+    "summary": "14日买入900股，15日卖出。本人归因为龙头二波买点错误，并确认同时有亏损想要摊平成本、想要快速扳平亏损两种动机。",
     "errors": [
       {
-        "category": "leader",
-        "evidence": "题材热不等于个股有地位，非第一没有核心预期"
+        "category": "second_wave_entry",
+        "evidence": "龙头二波买点错误"
+      },
+      {
+        "category": "add",
+        "evidence": "亏损想要摊平成本"
+      },
+      {
+        "category": "recoup",
+        "evidence": "想要快速扳平亏损"
+      }
+    ],
+    "quotes": [
+      {
+        "text": "5.14，5.15和5.18的华电辽能和大唐发电是属于“龙头二波买点错误”，还有叠加了“亏损想要摊平成本”“想要快速扳平亏损”的这两个大的错误。",
+        "source": "large-loss-review/index.html#may-power-review"
       }
     ]
   },
   "600396-2026-05-18-closed": {
-    "assessment": "已有反思归类",
-    "summary": "止损后立刻买回同等仓位，继续做跟风标的；与5月15日结束的前一轮分别计算。",
+    "assessment": "本人最新反思归类",
+    "summary": "15日平仓后买回900股，18日退出。本人归因为龙头二波买点错误，并确认同时有亏损想要摊平成本、想要快速扳平亏损两种动机。",
     "errors": [
       {
-        "category": "emotion",
-        "evidence": "止损后立刻打回同等仓位"
+        "category": "second_wave_entry",
+        "evidence": "龙头二波买点错误"
       },
       {
-        "category": "leader",
-        "evidence": "选择跟风标的华电辽能"
+        "category": "add",
+        "evidence": "亏损想要摊平成本"
+      },
+      {
+        "category": "recoup",
+        "evidence": "想要快速扳平亏损"
+      }
+    ],
+    "quotes": [
+      {
+        "text": "5.14，5.15和5.18的华电辽能和大唐发电是属于“龙头二波买点错误”，还有叠加了“亏损想要摊平成本”“想要快速扳平亏损”的这两个大的错误。",
+        "source": "large-loss-review/index.html#may-power-review"
       }
     ]
   },
@@ -757,6 +781,30 @@
       {
         "text": "7.2，7.10，7.6和7.13还有6.26和6.29都是因为做了科技的趋势行情所以才亏损的，这应该属于”趋势模式不熟悉“的错误，本质上是因为我在下降趋势做反弹踩错了节奏所以导致的大亏损，本质上这种趋势的模式我也应该小仓位参与，不能那么大仓位，只有龙头我才能大仓位参与。",
         "source": "large-loss-review/index.html#trend-mode-review"
+      }
+    ]
+  },
+  "601991-2026-05-15-closed": {
+    "assessment": "本人最新反思归类",
+    "summary": "14日买入200股，15日卖出。本人归因为龙头二波买点错误，并确认同时有亏损想要摊平成本、想要快速扳平亏损两种动机。",
+    "errors": [
+      {
+        "category": "second_wave_entry",
+        "evidence": "龙头二波买点错误"
+      },
+      {
+        "category": "add",
+        "evidence": "亏损想要摊平成本"
+      },
+      {
+        "category": "recoup",
+        "evidence": "想要快速扳平亏损"
+      }
+    ],
+    "quotes": [
+      {
+        "text": "5.14，5.15和5.18的华电辽能和大唐发电是属于“龙头二波买点错误”，还有叠加了“亏损想要摊平成本”“想要快速扳平亏损”的这两个大的错误。",
+        "source": "large-loss-review/index.html#may-power-review"
       }
     ]
   }
