@@ -322,218 +322,146 @@
     ]
   },
   "2026-06-26": {
-    "summary": "新交割单当天无成交，原站按亨通系收盘市值估算账户下跌。问题对应前一日趋势尾段介入，以及后续复盘指出的失效后未及时退出。",
-    "assessment": "已有反思归类",
+    "summary": "当天无成交，亨通光电、亨通股份仍在持仓中。当天账户损益为估算值。本人把这天的大亏主因归为“趋势模式不熟悉”。科技处于下降趋势时，我容易踏错反弹节奏。趋势模式最多用账户两成仓位。大仓位只留给熟悉的龙头模式。",
+    "assessment": "本人最新反思归类",
     "errors": [
       {
-        "category": "cycle",
+        "category": "trend_mode",
+        "evidence": "我在下降趋势做反弹踩错了节奏所以导致的大亏损",
         "scope": "持仓延续",
         "stocks": [
           {
-            "code": "600487",
-            "name": "亨通光电"
-          }
-        ],
-        "evidence": "科技趋势尾段还去做个股",
-        "source": "2026-06-29_2026-07-04/index.html"
-      },
-      {
-        "category": "exit",
-        "scope": "持仓延续",
-        "stocks": [
+            "name": "亨通光电",
+            "code": "600487"
+          },
           {
-            "code": "600487",
-            "name": "亨通光电"
+            "name": "亨通股份",
+            "code": "600226"
           }
         ],
-        "evidence": "6/26 失效后不能继续拖",
-        "source": "success-failure-trade-review/stock-600487-failure/index.html#five-minute-k"
+        "source": "large-loss-review/index.html#trend-mode-review"
       }
     ]
   },
   "2026-06-29": {
-    "summary": "清仓亨通光电、亨通股份。日记肯定破位止损后空仓；亏损主要关联前期趋势尾段介入与退出偏迟，不将当天清仓本身判错。",
-    "assessment": "已有反思归类",
+    "summary": "卖出亨通光电和亨通股份，结束此前的趋势交易。本人把这天的大亏主因归为“趋势模式不熟悉”。科技处于下降趋势时，我容易踏错反弹节奏。趋势模式最多用账户两成仓位。大仓位只留给熟悉的龙头模式。",
+    "assessment": "本人最新反思归类",
     "errors": [
       {
-        "category": "cycle",
+        "category": "trend_mode",
+        "evidence": "我在下降趋势做反弹踩错了节奏所以导致的大亏损",
         "scope": "持仓延续",
         "stocks": [
           {
-            "code": "600487",
-            "name": "亨通光电"
-          }
-        ],
-        "evidence": "科技趋势尾段还去做个股",
-        "source": "2026-06-29_2026-07-04/index.html"
-      },
-      {
-        "category": "exit",
-        "scope": "持仓延续",
-        "stocks": [
+            "name": "亨通光电",
+            "code": "600487"
+          },
           {
-            "code": "600487",
-            "name": "亨通光电"
+            "name": "亨通股份",
+            "code": "600226"
           }
         ],
-        "evidence": "6/26 失效后不能继续拖",
-        "source": "success-failure-trade-review/stock-600487-failure/index.html#five-minute-k"
+        "source": "large-loss-review/index.html#trend-mode-review"
       }
     ]
   },
   "2026-07-02": {
-    "summary": "集中卖出芯片/半导体ETF和太极实业，并买海南海药。反思指向前期趋势后手、未把三高判断转成减仓及继续加仓；当日账户跌幅与各票整轮收益率不同。",
-    "assessment": "已有反思归类",
+    "summary": "卖出太极实业及五只芯片、半导体ETF。当天另买入海南海药。本人把这天的大亏主因归为“趋势模式不熟悉”。科技处于下降趋势时，我容易踏错反弹节奏。趋势模式最多用账户两成仓位。大仓位只留给熟悉的龙头模式。",
+    "assessment": "本人最新反思归类",
     "errors": [
       {
-        "category": "exit",
+        "category": "trend_mode",
+        "evidence": "我在下降趋势做反弹踩错了节奏所以导致的大亏损",
         "scope": "持仓延续",
         "stocks": [
           {
-            "code": "588890",
-            "name": "科创芯片ETF南方"
-          }
-        ],
-        "evidence": "没有把判断转成减仓动作",
-        "source": "2026-06-29_2026-07-04/index.html#stocks"
-      },
-      {
-        "category": "add",
-        "scope": "持仓延续",
-        "stocks": [
+            "name": "科创芯片ETF南方",
+            "code": "588890"
+          },
           {
-            "code": "588890",
-            "name": "科创芯片ETF南方"
-          }
-        ],
-        "evidence": "三高后继续加仓",
-        "source": "2026-06-29_2026-07-04/index.html#stocks"
-      },
-      {
-        "category": "entry",
-        "scope": "持仓延续",
-        "stocks": [
+            "name": "太极实业",
+            "code": "600667"
+          },
           {
-            "code": "588710",
-            "name": "科创半导体设备ETF华泰柏瑞"
-          }
-        ],
-        "evidence": "进场偏晚且没有等到主线延续确认",
-        "source": "2026-06-29_2026-07-04/index.html#stocks"
-      },
-      {
-        "category": "leader",
-        "scope": "持仓延续",
-        "stocks": [
+            "name": "科创芯片设计ETF国泰",
+            "code": "589260"
+          },
           {
-            "code": "600667",
-            "name": "太极实业"
+            "name": "芯片ETF国泰",
+            "code": "512760"
+          },
+          {
+            "name": "科创半导体设备ETF华泰柏瑞",
+            "code": "588710"
+          },
+          {
+            "name": "科创半导体ETF华夏",
+            "code": "588170"
           }
         ],
-        "evidence": "它不是当时最明确的唯一核心",
-        "source": "2026-06-29_2026-07-04/index.html#stocks"
+        "source": "large-loss-review/index.html#trend-mode-review"
       }
     ]
   },
   "2026-07-06": {
-    "summary": "处理科创新材ETF旧仓，分批买机器人ETF。原文明确买入过早、板块确认不足，阴跌后继续补仓，并有急于回本和摊成本倾向。",
-    "assessment": "已有反思归类",
+    "summary": "卖出科创新材ETF后分批买入机器人ETF，本次反思关联机器人的反弹买入和补仓。本人把这天的大亏主因归为“趋势模式不熟悉”。科技处于下降趋势时，我容易踏错反弹节奏。趋势模式最多用账户两成仓位。大仓位只留给熟悉的龙头模式。",
+    "assessment": "本人最新反思归类",
     "errors": [
       {
-        "category": "entry",
+        "category": "trend_mode",
+        "evidence": "我在下降趋势做反弹踩错了节奏所以导致的大亏损",
         "scope": "当日操作",
         "stocks": [
           {
-            "code": "159050",
-            "name": "机器人ETF广发"
+            "name": "机器人ETF广发",
+            "code": "159050"
           }
         ],
-        "evidence": "高潮次日分歧还进早了",
-        "source": "2026-07-06_2026-07-10/index.html#ticket-analysis"
-      },
-      {
-        "category": "add",
-        "scope": "当日操作",
-        "stocks": [
-          {
-            "code": "159050",
-            "name": "机器人ETF广发"
-          }
-        ],
-        "evidence": "进早并补仓",
-        "source": "2026-07-06_2026-07-10/index.html#stocks"
-      },
-      {
-        "category": "emotion",
-        "scope": "当日操作",
-        "stocks": [
-          {
-            "code": "159050",
-            "name": "机器人ETF广发"
-          }
-        ],
-        "evidence": "心理上有着急回本和摊成本倾向",
-        "source": "2026-07-06_2026-07-10/index.html#ticket-analysis"
+        "source": "large-loss-review/index.html#trend-mode-review"
       }
     ]
   },
   "2026-07-10": {
-    "summary": "早盘ETF兑现得到肯定，午后科技承接失效后又买回/加仓。日记明确问题在预案已失效仍继续摊成本。",
-    "assessment": "已有反思归类",
+    "summary": "早盘兑现部分ETF，午后在承接走弱时又买回科创半导ETF和半导体设备ETF。本人把这天的大亏主因归为“趋势模式不熟悉”。科技处于下降趋势时，我容易踏错反弹节奏。趋势模式最多用账户两成仓位。大仓位只留给熟悉的龙头模式。",
+    "assessment": "本人最新反思归类",
     "errors": [
       {
-        "category": "add",
+        "category": "trend_mode",
+        "evidence": "我在下降趋势做反弹踩错了节奏所以导致的大亏损",
         "scope": "当日操作",
         "stocks": [
           {
-            "code": "159516",
-            "name": "半导体设备ETF国泰"
-          }
-        ],
-        "evidence": "承接失效仍继续加仓",
-        "source": "2026-07-06_2026-07-10/index.html#ticket-analysis"
-      },
-      {
-        "category": "exit",
-        "scope": "当日操作",
-        "stocks": [
+            "name": "科创半导ETF华夏",
+            "code": "588170"
+          },
           {
-            "code": "159516",
-            "name": "半导体设备ETF国泰"
+            "name": "半导体设备ETF国泰",
+            "code": "159516"
           }
         ],
-        "evidence": "错误不在第一次低吸，而在 -3% 后承接失效",
-        "source": "2026-07-06_2026-07-10/index.html#ticket-analysis"
+        "source": "large-loss-review/index.html#trend-mode-review"
       }
     ]
   },
   "2026-07-13": {
-    "summary": "卖出半导体设备与科创半导ETF旧仓。关联错误来自7月10日承接失效后的加仓；当天退出不自动认定为新错误。",
-    "assessment": "已有反思归类",
+    "summary": "卖出上周买回的科创半导ETF和半导体设备ETF，回看7月10日参与反弹的节奏。本人把这天的大亏主因归为“趋势模式不熟悉”。科技处于下降趋势时，我容易踏错反弹节奏。趋势模式最多用账户两成仓位。大仓位只留给熟悉的龙头模式。",
+    "assessment": "本人最新反思归类",
     "errors": [
       {
-        "category": "add",
+        "category": "trend_mode",
+        "evidence": "我在下降趋势做反弹踩错了节奏所以导致的大亏损",
         "scope": "持仓延续",
         "stocks": [
           {
-            "code": "159516",
-            "name": "半导体设备ETF国泰"
-          }
-        ],
-        "evidence": "承接失效仍继续加仓",
-        "source": "2026-07-06_2026-07-10/index.html#ticket-analysis"
-      },
-      {
-        "category": "exit",
-        "scope": "持仓延续",
-        "stocks": [
+            "name": "科创半导ETF华夏",
+            "code": "588170"
+          },
           {
-            "code": "159516",
-            "name": "半导体设备ETF国泰"
+            "name": "半导体设备ETF国泰",
+            "code": "159516"
           }
         ],
-        "evidence": "错误不在第一次低吸，而在 -3% 后承接失效",
-        "source": "2026-07-06_2026-07-10/index.html#ticket-analysis"
+        "source": "large-loss-review/index.html#trend-mode-review"
       }
     ]
   },
