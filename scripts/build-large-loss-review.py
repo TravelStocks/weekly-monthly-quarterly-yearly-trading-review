@@ -214,7 +214,8 @@ def build(outcome='loss'):
     unknown = [t for t in unknown if t['date'] > '2026-04-24']
     # The monthly archive has explicitly reconciled FIFO rounds and personal
     # classifications. It replaces overlapping Aug/Sep reconstructions entirely.
-    rounds = [r for r in rounds if r['end'] > '2026-04-24' and not '2026-08-15' <= r['end'] <= '2026-09-30']
+    statement_rounds = rounds
+    rounds = [r for r in statement_rounds if r['end'] > '2026-04-24' and not '2026-08-15' <= r['end'] <= '2026-09-30']
     monthly_path = 'monthly-quarterly-trading-review/2026-09/index.html'
     pages[monthly_path] = BeautifulSoup((ROOT/monthly_path).read_text(encoding='utf-8'),'html.parser')
     monthly = read_json('monthly-quarterly-trading-review/2026-09/data/summary.json')
@@ -222,9 +223,17 @@ def build(outcome='loss'):
         for r in s['rounds']:
             if not r.get('end'):
                 continue
-            rounds.append(dict(code=s['code'], name=s['name'], start=r['start'], end=r['end'],
+            start = r['start']
+            sources = [monthly_path]
+            if start == '期初持仓':
+                matches = [trade for trade in statement_rounds if trade['code'] == s['code']
+                           and all(trade[key] == r[key] for key in ('end', 'cost', 'pnl'))]
+                if len(matches) == 1:
+                    start = matches[0]['start']
+                    sources.extend(path for path in matches[0]['sources'] if path != monthly_path)
+            rounds.append(dict(code=s['code'], name=s['name'], start=start, end=r['end'],
                 cost=r['cost'], pnl=r['pnl'], status='closed', basis='含费闭环（月度已核对）',
-                originalClassification=s['classification'], sources=[monthly_path]))
+                originalClassification=s['classification'], sources=sources))
     april_path = '2026-04-20_2026-04-24/index.html'
     april = embedded((ROOT/april_path).read_text(encoding='utf-8'), 'REPORT_DATA')
     for stock in april['stocks']:

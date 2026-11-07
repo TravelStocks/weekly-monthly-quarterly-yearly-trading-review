@@ -8795,10 +8795,25 @@
             }
           ],
           "assessment": "已有反思归类"
+        },
+        {
+          "id": "000936-2026-08-17-closed",
+          "name": "华西股份",
+          "code": "000936",
+          "start": "2026-08-14",
+          "end": "2026-08-17",
+          "summary": "8月14日分8笔买入华西股份800股。按本人最新反思，这笔从原方向切向科技的交易归为“切换模式错误”。8月17日卖出800股，与14日的买入合计一轮。",
+          "errors": [
+            {
+              "category": "switch_mode",
+              "evidence": "8.14的华西也是”切换模式错误“。"
+            }
+          ],
+          "assessment": "本人最新反思归类"
         }
       ],
-      "summary": "通鼎互联止损后买入华西股份。当天新问题是华西买急、核心地位未确认；通鼎前日入场问题另作为持仓延续回看。",
-      "assessment": "已有反思归类",
+      "summary": "卖出通鼎互联300股后，分8笔买入华西股份800股。按本人最新反思，华西这次买入归为切换模式错误。通鼎互联关联前一交易日的入场问题。",
+      "assessment": "本人最新反思归类",
       "errors": [
         {
           "category": "entry",
@@ -8813,7 +8828,8 @@
           "source": "2026-08-10_2026-08-15/index.html#stock-002491"
         },
         {
-          "category": "entry",
+          "category": "switch_mode",
+          "evidence": "8.14的华西也是”切换模式错误“。",
           "scope": "当日操作",
           "stocks": [
             {
@@ -8821,20 +8837,7 @@
               "name": "华西股份"
             }
           ],
-          "evidence": "华西股份买入过急，虽有承接但不是唯一核心",
-          "source": "2026-08-10_2026-08-15/index.html#daily"
-        },
-        {
-          "category": "leader",
-          "scope": "当日操作",
-          "stocks": [
-            {
-              "code": "000936",
-              "name": "华西股份"
-            }
-          ],
-          "evidence": "华西有承接但不是唯一核心",
-          "source": "2026-08-10_2026-08-15/index.html#daily"
+          "source": "large-loss-review/index.html#switch-mode-review"
         }
       ]
     },
@@ -8882,22 +8885,26 @@
       ],
       "tradeCount": 4,
       "notes": [],
-      "relatedEpisodes": [],
-      "summary": "处理华西股份与秦安股份，买入金螳螂。后续月度反思指出科技方向与阶段不匹配；金螳螂后来小赚，也没有被认定为可复制模式。",
-      "assessment": "已有反思归类",
-      "errors": [
+      "relatedEpisodes": [
         {
-          "category": "cycle",
-          "scope": "持仓延续",
-          "stocks": [
+          "id": "000936-2026-08-17-closed",
+          "name": "华西股份",
+          "code": "000936",
+          "start": "2026-08-14",
+          "end": "2026-08-17",
+          "summary": "8月14日分8笔买入华西股份800股。按本人最新反思，这笔从原方向切向科技的交易归为“切换模式错误”。8月17日卖出800股，与14日的买入合计一轮。",
+          "errors": [
             {
-              "code": "000936",
-              "name": "华西股份"
+              "category": "switch_mode",
+              "evidence": "8.14的华西也是”切换模式错误“。"
             }
           ],
-          "evidence": "先判断科技是否为当前主导，不能用个股形态代替阶段识别。",
-          "source": "monthly-quarterly-trading-review/2026-09/index.html#stock-000936"
-        },
+          "assessment": "本人最新反思归类"
+        }
+      ],
+      "summary": "卖出华西股份800股，结束8月14日买入的这轮交易。切换模式错误在当天记为持仓延续。同日还卖出秦安股份、买入金螳螂，金螳螂沿用原有的模式外交易归类。",
+      "assessment": "本人最新反思归类",
+      "errors": [
         {
           "category": "mode",
           "scope": "当日操作",
@@ -8909,6 +8916,18 @@
           ],
           "evidence": "暂无完整买前预案；本次明确非模式。",
           "source": "monthly-quarterly-trading-review/2026-09/index.html#stock-002081"
+        },
+        {
+          "category": "switch_mode",
+          "evidence": "8.14的华西也是”切换模式错误“。",
+          "scope": "持仓延续",
+          "stocks": [
+            {
+              "code": "000936",
+              "name": "华西股份"
+            }
+          ],
+          "source": "large-loss-review/index.html#switch-mode-review"
         }
       ]
     },

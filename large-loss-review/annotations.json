@@ -342,12 +342,18 @@
     ]
   },
   "000936-2026-08-17-closed": {
-    "assessment": "已有反思归类",
-    "summary": "在非科技主导周期盲目切向科技；8月14日买入与17日卖出计一轮。",
+    "assessment": "本人最新反思归类",
+    "summary": "8月14日分8笔买入华西股份800股。按本人最新反思，这笔从原方向切向科技的交易归为“切换模式错误”。8月17日卖出800股，与14日的买入合计一轮。",
     "errors": [
       {
-        "category": "cycle",
-        "evidence": "非科技主导周期盲目切换"
+        "category": "switch_mode",
+        "evidence": "8.14的华西也是”切换模式错误“。"
+      }
+    ],
+    "quotes": [
+      {
+        "text": "8.14的华西也是”切换模式错误“。",
+        "source": "large-loss-review/index.html#switch-mode-review"
       }
     ]
   },

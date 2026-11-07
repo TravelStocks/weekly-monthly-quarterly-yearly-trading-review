@@ -75,7 +75,10 @@ assert by_id['600551-2026-09-03-closed']['pnl']==-576.63
 
 assert {e['category'] for e in by_id['002085-2026-10-21-closed']['errors']}=={'switch_mode'}
 assert {e['category'] for e in by_id['002584-2026-09-21-closed']['errors']}=={'switch_mode','add'}
-assert sum(any(e['category']=='switch_mode' for e in r['errors']) for r in records)==3
+huaxi = by_id['000936-2026-08-17-closed']
+assert (huaxi['start'], huaxi['cost'], huaxi['pnl']) == ('2026-08-14', 5605, -340.64)
+assert [e['category'] for e in huaxi['errors']] == ['switch_mode']
+assert sum(any(e['category']=='switch_mode' for e in r['errors']) for r in records)==4
 
 assert {e['category'] for e in by_id['002403-2026-09-09-closed']['errors']}=={'theme_support'}
 assert {e['category'] for e in by_id['601700-2026-08-10-closed']['errors']}=={'theme_support'}
