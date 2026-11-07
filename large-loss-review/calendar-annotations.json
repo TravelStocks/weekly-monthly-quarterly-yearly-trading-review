@@ -696,23 +696,12 @@
     ]
   },
   "2026-08-28": {
-    "summary": "买入昊华科技，并加仓百花医药。昊华按本人最新反思归入切换模式错误：不熟悉低位接力切换，尽量避免，最多小仓试错。百花的二波买点偏差与摊低成本问题单独保留。",
+    "summary": "百花医药加仓100股，归为龙头二波买点错误。当天也买入昊华科技100股，归为切换模式错误。",
     "assessment": "本人最新反思归类",
     "errors": [
       {
-        "category": "entry",
-        "scope": "本轮回看",
-        "stocks": [
-          {
-            "code": "600721",
-            "name": "百花医药"
-          }
-        ],
-        "evidence": "错过二波严格买点",
-        "source": "monthly-quarterly-trading-review/2026-09/index.html#stock-600721"
-      },
-      {
-        "category": "add",
+        "category": "second_wave_entry",
+        "evidence": "8.28的百花医药是“龙头二波买点错误”。",
         "scope": "当日操作",
         "stocks": [
           {
@@ -720,8 +709,7 @@
             "name": "百花医药"
           }
         ],
-        "evidence": "买点错与摊低成本是一条错误链",
-        "source": "monthly-quarterly-trading-review/2026-09/index.html#stock-600721"
+        "source": "large-loss-review/index.html#second-wave-entry-review"
       },
       {
         "category": "switch_mode",
@@ -738,11 +726,12 @@
     ]
   },
   "2026-08-31": {
-    "summary": "卖出昊华科技和百花医药，买入敦煌种业和金健米业。昊华是8月28日切换模式错误的持仓延续，卖出不另算新错误；百花及农业两票分别评价。8月29日无成交。",
+    "summary": "卖出百花医药500股及昊华科技100股，买入敦煌种业和金健米业。百花的二波买点错误和昊华的切换模式错误均为此前持仓延续。",
     "assessment": "本人最新反思归类",
     "errors": [
       {
-        "category": "entry",
+        "category": "second_wave_entry",
+        "evidence": "8.28的百花医药是“龙头二波买点错误”。",
         "scope": "持仓延续",
         "stocks": [
           {
@@ -750,20 +739,7 @@
             "name": "百花医药"
           }
         ],
-        "evidence": "错过二波严格买点",
-        "source": "monthly-quarterly-trading-review/2026-09/index.html#stock-600721"
-      },
-      {
-        "category": "add",
-        "scope": "持仓延续",
-        "stocks": [
-          {
-            "code": "600721",
-            "name": "百花医药"
-          }
-        ],
-        "evidence": "买点错与摊低成本是一条错误链",
-        "source": "monthly-quarterly-trading-review/2026-09/index.html#stock-600721"
+        "source": "large-loss-review/index.html#second-wave-entry-review"
       },
       {
         "category": "switch_mode",
@@ -1105,6 +1081,24 @@
         ],
         "evidence": "随手单，不明确模式下的随意下单",
         "source": "large-loss-review/index.html#unplanned-september-orders"
+      }
+    ]
+  },
+  "2026-08-27": {
+    "assessment": "本人最新反思归类",
+    "summary": "买入百花医药400股。这轮归为龙头二波买点错误，28日继续加仓。",
+    "errors": [
+      {
+        "category": "second_wave_entry",
+        "evidence": "8.28的百花医药是“龙头二波买点错误”。",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "600721",
+            "name": "百花医药"
+          }
+        ],
+        "source": "large-loss-review/index.html#second-wave-entry-review"
       }
     ]
   }
