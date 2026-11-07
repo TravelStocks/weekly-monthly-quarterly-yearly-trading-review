@@ -1236,22 +1236,18 @@
         {
           "text": "周一、周二建仓，周三卖出，闭环亏损较大，属于本周主要负贡献。",
           "source": "2026-06-01_2026-06-05/index.html"
+        },
+        {
+          "text": "6.3号的粤电力A是”是”补涨龙只能在三板做“。",
+          "source": "large-loss-review/index.html#yuedian-catch-up"
         }
       ],
-      "assessment": "已有反思归类",
-      "summary": "中高位爆量弱转强缺乏唯一性，已经走弱却因承接继续加仓。",
+      "assessment": "本人最新反思归类",
+      "summary": "本人把粤电力A这轮归为补涨龙高度错误，个人纪律是补涨龙只能在三板做。6月1日买入500股，2日加仓300股，3日全部卖出，整轮亏损902.36元。",
       "errors": [
         {
-          "category": "leader",
-          "evidence": "它不具备唯一性"
-        },
-        {
-          "category": "entry",
-          "evidence": "爆量弱转强的左侧买点"
-        },
-        {
-          "category": "add",
-          "evidence": "粤电力A已经走弱，却因为看到承接继续加仓"
+          "category": "catch_up_height",
+          "evidence": "6.3号的粤电力A是”是”补涨龙只能在三板做“。"
         }
       ]
     },

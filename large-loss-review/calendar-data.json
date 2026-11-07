@@ -4435,27 +4435,32 @@
           "code": "000539",
           "start": "2026-06-01",
           "end": "2026-06-03",
-          "summary": "中高位爆量弱转强缺乏唯一性，已经走弱却因承接继续加仓。",
+          "summary": "本人把粤电力A这轮归为补涨龙高度错误，个人纪律是补涨龙只能在三板做。6月1日买入500股，2日加仓300股，3日全部卖出，整轮亏损902.36元。",
           "errors": [
             {
-              "category": "leader",
-              "evidence": "它不具备唯一性"
-            },
-            {
-              "category": "entry",
-              "evidence": "爆量弱转强的左侧买点"
-            },
-            {
-              "category": "add",
-              "evidence": "粤电力A已经走弱，却因为看到承接继续加仓"
+              "category": "catch_up_height",
+              "evidence": "6.3号的粤电力A是”是”补涨龙只能在三板做“。"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         }
       ],
-      "summary": "",
-      "assessment": "待归因",
-      "errors": []
+      "summary": "买入粤电力A 500股。本人回看这轮入场，归为补涨龙高度错误。",
+      "assessment": "本人最新反思归类",
+      "errors": [
+        {
+          "category": "catch_up_height",
+          "evidence": "6.3号的粤电力A是”是”补涨龙只能在三板做“。",
+          "scope": "当日操作",
+          "stocks": [
+            {
+              "code": "000539",
+              "name": "粤电力A"
+            }
+          ],
+          "source": "large-loss-review/index.html#yuedian-catch-up"
+        }
+      ]
     },
     {
       "date": "2026-06-02",
@@ -4547,22 +4552,14 @@
           "code": "000539",
           "start": "2026-06-01",
           "end": "2026-06-03",
-          "summary": "中高位爆量弱转强缺乏唯一性，已经走弱却因承接继续加仓。",
+          "summary": "本人把粤电力A这轮归为补涨龙高度错误，个人纪律是补涨龙只能在三板做。6月1日买入500股，2日加仓300股，3日全部卖出，整轮亏损902.36元。",
           "errors": [
             {
-              "category": "leader",
-              "evidence": "它不具备唯一性"
-            },
-            {
-              "category": "entry",
-              "evidence": "爆量弱转强的左侧买点"
-            },
-            {
-              "category": "add",
-              "evidence": "粤电力A已经走弱，却因为看到承接继续加仓"
+              "category": "catch_up_height",
+              "evidence": "6.3号的粤电力A是”是”补涨龙只能在三板做“。"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         },
         {
           "id": "002579-2026-06-04-closed",
@@ -4580,9 +4577,22 @@
           "assessment": "已有反思归类"
         }
       ],
-      "summary": "",
-      "assessment": "待归因",
-      "errors": []
+      "summary": "粤电力A加仓300股，延续同一轮补涨龙交易。当天还买入中京电子400股。",
+      "assessment": "本人最新反思归类",
+      "errors": [
+        {
+          "category": "catch_up_height",
+          "evidence": "6.3号的粤电力A是”是”补涨龙只能在三板做“。",
+          "scope": "当日操作",
+          "stocks": [
+            {
+              "code": "000539",
+              "name": "粤电力A"
+            }
+          ],
+          "source": "large-loss-review/index.html#yuedian-catch-up"
+        }
+      ]
     },
     {
       "date": "2026-06-03",
@@ -4669,22 +4679,14 @@
           "code": "000539",
           "start": "2026-06-01",
           "end": "2026-06-03",
-          "summary": "中高位爆量弱转强缺乏唯一性，已经走弱却因承接继续加仓。",
+          "summary": "本人把粤电力A这轮归为补涨龙高度错误，个人纪律是补涨龙只能在三板做。6月1日买入500股，2日加仓300股，3日全部卖出，整轮亏损902.36元。",
           "errors": [
             {
-              "category": "leader",
-              "evidence": "它不具备唯一性"
-            },
-            {
-              "category": "entry",
-              "evidence": "爆量弱转强的左侧买点"
-            },
-            {
-              "category": "add",
-              "evidence": "粤电力A已经走弱，却因为看到承接继续加仓"
+              "category": "catch_up_height",
+              "evidence": "6.3号的粤电力A是”是”补涨龙只能在三板做“。"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         },
         {
           "id": "002579-2026-06-04-closed",
@@ -4702,11 +4704,12 @@
           "assessment": "已有反思归类"
         }
       ],
-      "summary": "卖出粤电力A并切入大有能源。亏损关联此前非唯一核心选择和走弱后加仓；当天大有能源的核心识别在后续复盘中得到认可。",
-      "assessment": "已有反思归类",
+      "summary": "卖出粤电力A 800股，买入大有能源1,100股。粤电力A这轮主因归为补涨龙高度错误。本人纪律是补涨龙只能在三板做。",
+      "assessment": "本人最新反思归类",
       "errors": [
         {
-          "category": "leader",
+          "category": "catch_up_height",
+          "evidence": "6.3号的粤电力A是”是”补涨龙只能在三板做“。",
           "scope": "持仓延续",
           "stocks": [
             {
@@ -4714,20 +4717,7 @@
               "name": "粤电力A"
             }
           ],
-          "evidence": "它不具备唯一性",
-          "source": "2026-06-01_2026-06-05/index.html#ticket-analysis"
-        },
-        {
-          "category": "add",
-          "scope": "持仓延续",
-          "stocks": [
-            {
-              "code": "000539",
-              "name": "粤电力A"
-            }
-          ],
-          "evidence": "粤电力A已经走弱，却因为看到承接继续加仓",
-          "source": "2026-06-01_2026-06-05/index.html#weekly-reflection"
+          "source": "large-loss-review/index.html#yuedian-catch-up"
         },
         {
           "category": "leader",

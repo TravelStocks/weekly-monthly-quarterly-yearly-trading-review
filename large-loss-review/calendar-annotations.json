@@ -155,11 +155,12 @@
     "errors": []
   },
   "2026-06-03": {
-    "summary": "卖出粤电力A并切入大有能源。亏损关联此前非唯一核心选择和走弱后加仓；当天大有能源的核心识别在后续复盘中得到认可。",
-    "assessment": "已有反思归类",
+    "summary": "卖出粤电力A 800股，买入大有能源1,100股。粤电力A这轮主因归为补涨龙高度错误。本人纪律是补涨龙只能在三板做。",
+    "assessment": "本人最新反思归类",
     "errors": [
       {
-        "category": "leader",
+        "category": "catch_up_height",
+        "evidence": "6.3号的粤电力A是”是”补涨龙只能在三板做“。",
         "scope": "持仓延续",
         "stocks": [
           {
@@ -167,20 +168,7 @@
             "name": "粤电力A"
           }
         ],
-        "evidence": "它不具备唯一性",
-        "source": "2026-06-01_2026-06-05/index.html#ticket-analysis"
-      },
-      {
-        "category": "add",
-        "scope": "持仓延续",
-        "stocks": [
-          {
-            "code": "000539",
-            "name": "粤电力A"
-          }
-        ],
-        "evidence": "粤电力A已经走弱，却因为看到承接继续加仓",
-        "source": "2026-06-01_2026-06-05/index.html#weekly-reflection"
+        "source": "large-loss-review/index.html#yuedian-catch-up"
       },
       {
         "category": "leader",
@@ -1009,6 +997,42 @@
           }
         ],
         "source": "large-loss-review/index.html#trend-nonleader-review"
+      }
+    ]
+  },
+  "2026-06-01": {
+    "assessment": "本人最新反思归类",
+    "summary": "买入粤电力A 500股。本人回看这轮入场，归为补涨龙高度错误。",
+    "errors": [
+      {
+        "category": "catch_up_height",
+        "evidence": "6.3号的粤电力A是”是”补涨龙只能在三板做“。",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "000539",
+            "name": "粤电力A"
+          }
+        ],
+        "source": "large-loss-review/index.html#yuedian-catch-up"
+      }
+    ]
+  },
+  "2026-06-02": {
+    "assessment": "本人最新反思归类",
+    "summary": "粤电力A加仓300股，延续同一轮补涨龙交易。当天还买入中京电子400股。",
+    "errors": [
+      {
+        "category": "catch_up_height",
+        "evidence": "6.3号的粤电力A是”是”补涨龙只能在三板做“。",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "000539",
+            "name": "粤电力A"
+          }
+        ],
+        "source": "large-loss-review/index.html#yuedian-catch-up"
       }
     ]
   }
