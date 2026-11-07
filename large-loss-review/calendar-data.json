@@ -3357,19 +3357,32 @@
           "code": "603178",
           "start": "2026-04-20",
           "end": "2026-04-21",
-          "summary": "反思批评入场时做名字跟风，也明确认可随后离场的理性；仅将入场定位列为问题。",
+          "summary": "4月20日买入圣龙股份200股，21日全部卖出。本轮归为补涨龙高度错误，纪律是补涨龙只能在三板做。",
           "errors": [
             {
-              "category": "leader",
-              "evidence": "名字跟风（如圣龙股份）"
+              "category": "catch_up_height",
+              "evidence": "补涨龙只能在三板做"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         }
       ],
-      "summary": "",
-      "assessment": "待归因",
-      "errors": []
+      "summary": "买入圣龙股份200股，本轮入场归为补涨龙高度错误。复盘纪律是补涨龙只能在三板做。",
+      "assessment": "本人最新反思归类",
+      "errors": [
+        {
+          "category": "catch_up_height",
+          "evidence": "补涨龙只能在三板做",
+          "scope": "当日操作",
+          "stocks": [
+            {
+              "code": "603178",
+              "name": "圣龙股份"
+            }
+          ],
+          "source": "large-loss-review/index.html#shenglong-review"
+        }
+      ]
     },
     {
       "date": "2026-04-21",
@@ -3431,14 +3444,14 @@
           "code": "603178",
           "start": "2026-04-20",
           "end": "2026-04-21",
-          "summary": "反思批评入场时做名字跟风，也明确认可随后离场的理性；仅将入场定位列为问题。",
+          "summary": "4月20日买入圣龙股份200股，21日全部卖出。本轮归为补涨龙高度错误，纪律是补涨龙只能在三板做。",
           "errors": [
             {
-              "category": "leader",
-              "evidence": "名字跟风（如圣龙股份）"
+              "category": "catch_up_height",
+              "evidence": "补涨龙只能在三板做"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         },
         {
           "id": "603773-2026-04-22-closed",
@@ -3460,9 +3473,22 @@
           "assessment": "已有反思归类"
         }
       ],
-      "summary": "",
-      "assessment": "待归因",
-      "errors": []
+      "summary": "卖出圣龙股份200股，本轮回看归为补涨龙高度错误。复盘纪律是补涨龙只能在三板做。",
+      "assessment": "本人最新反思归类",
+      "errors": [
+        {
+          "category": "catch_up_height",
+          "evidence": "补涨龙只能在三板做",
+          "scope": "本轮回看",
+          "stocks": [
+            {
+              "code": "603178",
+              "name": "圣龙股份"
+            }
+          ],
+          "source": "large-loss-review/index.html#shenglong-review"
+        }
+      ]
     },
     {
       "date": "2026-04-22",

@@ -551,12 +551,18 @@
     ]
   },
   "603178-2026-04-21-closed": {
-    "assessment": "已有反思归类",
-    "summary": "反思批评入场时做名字跟风，也明确认可随后离场的理性；仅将入场定位列为问题。",
+    "assessment": "本人最新反思归类",
+    "summary": "4月20日买入圣龙股份200股，21日全部卖出。本轮归为补涨龙高度错误，纪律是补涨龙只能在三板做。",
     "errors": [
       {
-        "category": "leader",
-        "evidence": "名字跟风（如圣龙股份）"
+        "category": "catch_up_height",
+        "evidence": "补涨龙只能在三板做"
+      }
+    ],
+    "quotes": [
+      {
+        "text": "补涨龙只能在三板做",
+        "source": "large-loss-review/index.html#shenglong-review"
       }
     ]
   },

@@ -114,7 +114,7 @@
   window.addEventListener('hashchange',route);route();
   async function init() {
     try {
-      const response=await fetch('./calendar-data.json?v=20261106-xinke');if(!response.ok)throw new Error('HTTP '+response.status);
+      const response=await fetch('./calendar-data.json?v=20261106-shenglong');if(!response.ok)throw new Error('HTTP '+response.status);
       archive=await response.json();dates=new Map(archive.days.map(d=>[d.date,d]));
       archive.days.forEach(d=>d.relatedEpisodes.forEach(r=>names.set(r.code,r.name)));
       months=[];let current=archive.start.slice(0,7),end=archive.end.slice(0,7);

@@ -46,7 +46,7 @@ for id,cost,pnl in [('603278-2026-11-02-closed',3928.04,-425.83),('603131-2026-1
     assert by_id[id]['cost']==cost and by_id[id]['pnl']==pnl
     assert by_id[id]['errors']
 assert [e['category'] for e in by_id['603131-2026-11-03-closed']['errors']]==['catch_up_height']
-assert sum(any(e['category']=='catch_up_height' for e in r['errors']) for r in records)==3
+assert sum(any(e['category']=='catch_up_height' for e in r['errors']) for r in records)==4
 for id in ['001258-2026-07-29-closed','603278-2026-11-02-closed']:
     assert [e['category'] for e in by_id[id]['errors']]==['regulatory_timing']
 assert sum(any(e['category']=='regulatory_timing' for e in r['errors']) for r in records)==2

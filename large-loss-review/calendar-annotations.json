@@ -1498,5 +1498,41 @@
         "source": "large-loss-review/index.html#xinke-switch"
       }
     ]
+  },
+  "2026-04-20": {
+    "assessment": "本人最新反思归类",
+    "summary": "买入圣龙股份200股，本轮入场归为补涨龙高度错误。复盘纪律是补涨龙只能在三板做。",
+    "errors": [
+      {
+        "category": "catch_up_height",
+        "evidence": "补涨龙只能在三板做",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "603178",
+            "name": "圣龙股份"
+          }
+        ],
+        "source": "large-loss-review/index.html#shenglong-review"
+      }
+    ]
+  },
+  "2026-04-21": {
+    "assessment": "本人最新反思归类",
+    "summary": "卖出圣龙股份200股，本轮回看归为补涨龙高度错误。复盘纪律是补涨龙只能在三板做。",
+    "errors": [
+      {
+        "category": "catch_up_height",
+        "evidence": "补涨龙只能在三板做",
+        "scope": "本轮回看",
+        "stocks": [
+          {
+            "code": "603178",
+            "name": "圣龙股份"
+          }
+        ],
+        "source": "large-loss-review/index.html#shenglong-review"
+      }
+    ]
   }
 }

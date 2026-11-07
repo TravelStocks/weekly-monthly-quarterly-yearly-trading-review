@@ -132,7 +132,7 @@ for date in ['2026-11-02','2026-11-03']:
     errors=[e for e in days[date]['errors'] if any(s['code']=='603131' for s in e['stocks'])]
     assert len(errors)==1 and errors[0]['category']=='catch_up_height'
     assert errors[0]['scope']==('当日操作' if date=='2026-11-02' else '持仓延续')
-assert sum(any(e['category']=='catch_up_height' for e in d['errors']) for d in days.values())==8
+assert sum(any(e['category']=='catch_up_height' for e in d['errors']) for d in days.values())==10
 
 # One regulatory-timing attribution per round; exits are carry-over, not new mistakes.
 for date,code,scope in [('2026-07-28','001258','当日操作'),('2026-07-29','001258','持仓延续'),('2026-10-30','603278','当日操作'),('2026-11-02','603278','持仓延续')]:
