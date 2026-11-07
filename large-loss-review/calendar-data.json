@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-05",
+  "updated": "2026-11-06",
   "threshold": -2,
   "start": "2026-03-11",
   "end": "2026-11-04",
@@ -9445,31 +9445,19 @@
           "code": "600378",
           "start": "2026-08-28",
           "end": "2026-08-31",
-          "summary": "采用本人后续澄清：科技细分题材切换与当时阶段不匹配，不归为二波迟买。",
+          "summary": "切换模式错误：低位接力切换不熟悉，仓位不应超过小仓试错。尽量避免不熟悉的低位接力切换；如参与，最多小仓位试错，不用大仓位押注尚未掌握的模式。买入与后续退出合并为同一轮。",
           "errors": [
             {
-              "category": "cycle",
-              "evidence": "科技细分题材切换错误"
+              "category": "switch_mode",
+              "evidence": "我个人在切换这个低位接力上的模式不熟悉不会，所以不应该大仓位的去做，最多小仓位去试错"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         }
       ],
-      "summary": "买入昊华科技，并加仓百花医药。后续明确反思将昊华归为科技细分切换错误，百花归为二波买点偏差后继续摊低成本。",
-      "assessment": "已有反思归类",
+      "summary": "买入昊华科技，并加仓百花医药。昊华按本人最新反思归入切换模式错误：不熟悉低位接力切换，尽量避免，最多小仓试错。百花的二波买点偏差与摊低成本问题单独保留。",
+      "assessment": "本人最新反思归类",
       "errors": [
-        {
-          "category": "cycle",
-          "scope": "当日操作",
-          "stocks": [
-            {
-              "code": "600378",
-              "name": "昊华科技"
-            }
-          ],
-          "evidence": "科技细分题材切换错误",
-          "source": "monthly-quarterly-trading-review/2026-09/index.html#stock-600378"
-        },
         {
           "category": "entry",
           "scope": "本轮回看",
@@ -9493,6 +9481,18 @@
           ],
           "evidence": "买点错与摊低成本是一条错误链",
           "source": "monthly-quarterly-trading-review/2026-09/index.html#stock-600721"
+        },
+        {
+          "category": "switch_mode",
+          "scope": "当日操作",
+          "stocks": [
+            {
+              "code": "600378",
+              "name": "昊华科技"
+            }
+          ],
+          "evidence": "我个人在切换这个低位接力上的模式不熟悉不会，所以不应该大仓位的去做，最多小仓位去试错",
+          "source": "large-loss-review/index.html#switch-mode-review"
         }
       ]
     },
@@ -9594,31 +9594,19 @@
           "code": "600378",
           "start": "2026-08-28",
           "end": "2026-08-31",
-          "summary": "采用本人后续澄清：科技细分题材切换与当时阶段不匹配，不归为二波迟买。",
+          "summary": "切换模式错误：低位接力切换不熟悉，仓位不应超过小仓试错。尽量避免不熟悉的低位接力切换；如参与，最多小仓位试错，不用大仓位押注尚未掌握的模式。买入与后续退出合并为同一轮。",
           "errors": [
             {
-              "category": "cycle",
-              "evidence": "科技细分题材切换错误"
+              "category": "switch_mode",
+              "evidence": "我个人在切换这个低位接力上的模式不熟悉不会，所以不应该大仓位的去做，最多小仓位去试错"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         }
       ],
-      "summary": "卖出昊华科技、百花医药，转向敦煌种业和金健米业。主要已确认问题来自前期持仓；新买入的农业两票仍须分别评价，不一并视为错误。",
-      "assessment": "已有反思归类",
+      "summary": "卖出昊华科技和百花医药，买入敦煌种业和金健米业。昊华是8月28日切换模式错误的持仓延续，卖出不另算新错误；百花及农业两票分别评价。8月29日无成交。",
+      "assessment": "本人最新反思归类",
       "errors": [
-        {
-          "category": "cycle",
-          "scope": "持仓延续",
-          "stocks": [
-            {
-              "code": "600378",
-              "name": "昊华科技"
-            }
-          ],
-          "evidence": "科技细分题材切换错误",
-          "source": "monthly-quarterly-trading-review/2026-09/index.html#stock-600378"
-        },
         {
           "category": "entry",
           "scope": "持仓延续",
@@ -9642,6 +9630,18 @@
           ],
           "evidence": "买点错与摊低成本是一条错误链",
           "source": "monthly-quarterly-trading-review/2026-09/index.html#stock-600721"
+        },
+        {
+          "category": "switch_mode",
+          "scope": "持仓延续",
+          "stocks": [
+            {
+              "code": "600378",
+              "name": "昊华科技"
+            }
+          ],
+          "evidence": "我个人在切换这个低位接力上的模式不熟悉不会，所以不应该大仓位的去做，最多小仓位去试错",
+          "source": "large-loss-review/index.html#switch-mode-review"
         }
       ]
     },
@@ -9742,21 +9742,21 @@
           "code": "600551",
           "start": "2026-09-02",
           "end": "2026-09-03",
-          "summary": "传媒身位选择有逻辑，问题在未按既定分时触发入场；不再沿用早期选股存疑的归因。",
+          "summary": "当领先身位下方仅差一板、同时有多只有辨识度的个股时，存在低位反卡高位的龙头竞争风险。此情形需等领先身位上板、龙头与买点得到确认，高开不能代替上板确认。9月2日时代出版的问题是未等板上确认，便半路买入。",
           "errors": [
             {
-              "category": "entry",
-              "evidence": "方向有逻辑，分时触发错误"
+              "category": "board_confirm",
+              "evidence": "高开都不能确认买点，所以当时这个亏损就是没有在板上买而是半路买了"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         }
       ],
-      "summary": "买入时代出版。本人后续认可方向有逻辑，但明确指出分时触发有问题；归因采用后续澄清，不停留在初版待补判断。",
-      "assessment": "已有反思归类",
+      "summary": "当领先身位下方仅差一板、同时有多只有辨识度的个股时，存在低位反卡高位的龙头竞争风险。此情形需等领先身位上板、龙头与买点得到确认，高开不能代替上板确认。9月2日时代出版的问题是未等板上确认，便半路买入。",
+      "assessment": "本人最新反思归类",
       "errors": [
         {
-          "category": "entry",
+          "category": "board_confirm",
           "scope": "当日操作",
           "stocks": [
             {
@@ -9764,8 +9764,8 @@
               "name": "时代出版"
             }
           ],
-          "evidence": "方向有逻辑，分时触发错误",
-          "source": "monthly-quarterly-trading-review/2026-09/index.html#reflection-cases"
+          "evidence": "高开都不能确认买点，所以当时这个亏损就是没有在板上买而是半路买了",
+          "source": "large-loss-review/index.html#board-confirmation-review"
         }
       ]
     },
@@ -9819,14 +9819,14 @@
           "code": "600551",
           "start": "2026-09-02",
           "end": "2026-09-03",
-          "summary": "传媒身位选择有逻辑，问题在未按既定分时触发入场；不再沿用早期选股存疑的归因。",
+          "summary": "当领先身位下方仅差一板、同时有多只有辨识度的个股时，存在低位反卡高位的龙头竞争风险。此情形需等领先身位上板、龙头与买点得到确认，高开不能代替上板确认。9月2日时代出版的问题是未等板上确认，便半路买入。",
           "errors": [
             {
-              "category": "entry",
-              "evidence": "方向有逻辑，分时触发错误"
+              "category": "board_confirm",
+              "evidence": "高开都不能确认买点，所以当时这个亏损就是没有在板上买而是半路买了"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         },
         {
           "id": "000892-2026-09-04-closed",
@@ -9860,7 +9860,7 @@
           "source": "large-loss-review/index.html#pk-reclassification"
         },
         {
-          "category": "entry",
+          "category": "board_confirm",
           "scope": "持仓延续",
           "stocks": [
             {
@@ -9868,8 +9868,8 @@
               "name": "时代出版"
             }
           ],
-          "evidence": "方向有逻辑，分时触发错误",
-          "source": "monthly-quarterly-trading-review/2026-09/index.html#reflection-cases"
+          "evidence": "高开都不能确认买点，所以当时这个亏损就是没有在板上买而是半路买了",
+          "source": "large-loss-review/index.html#board-confirmation-review"
         }
       ]
     },
@@ -10535,35 +10535,23 @@
           "code": "002584",
           "start": "2026-09-17",
           "end": "2026-09-21",
-          "summary": "非唯一科技高标追高，跌后为降低成本追加；跨周只计一轮。",
+          "summary": "切换模式错误：低位接力切换不熟悉，仓位不应超过小仓试错。尽量避免不熟悉的低位接力切换；如参与，最多小仓位试错，不用大仓位押注尚未掌握的模式。9月18日为降低成本而追加的错误另列，跨周仍只计一轮。",
           "errors": [
             {
-              "category": "leader",
-              "evidence": "非唯一科技"
+              "category": "switch_mode",
+              "evidence": "我个人在切换这个低位接力上的模式不熟悉不会，所以不应该大仓位的去做，最多小仓位去试错"
             },
             {
               "category": "add",
               "evidence": "想降低成本而追加"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         }
       ],
-      "summary": "卖出闽东电力、买西陇科学。闽东的问题是此前高度压力下利润保护不足；西陇新仓缺少科技唯一性。9月18日才发生追加，不写成17日当天加仓。",
-      "assessment": "已有反思归类",
+      "summary": "卖出闽东电力、买入西陇科学。西陇归入切换模式错误：本人不熟悉低位接力切换，不应大仓位参与，尽量避免、最多小仓试错。闽东此前利润保护问题单独保留；西陇追加发生在18日，不计为17日加仓。",
+      "assessment": "本人最新反思归类",
       "errors": [
-        {
-          "category": "leader",
-          "scope": "当日操作",
-          "stocks": [
-            {
-              "code": "002584",
-              "name": "西陇科学"
-            }
-          ],
-          "evidence": "非唯一科技",
-          "source": "2026-09-21_2026-09-30/index.html#profit-loss"
-        },
         {
           "category": "exit",
           "scope": "持仓延续",
@@ -10575,6 +10563,18 @@
           ],
           "evidence": "新节点切换正确，弱环境兑现不足",
           "source": "monthly-quarterly-trading-review/2026-09/index.html"
+        },
+        {
+          "category": "switch_mode",
+          "scope": "当日操作",
+          "stocks": [
+            {
+              "code": "002584",
+              "name": "西陇科学"
+            }
+          ],
+          "evidence": "我个人在切换这个低位接力上的模式不熟悉不会，所以不应该大仓位的去做，最多小仓位去试错",
+          "source": "large-loss-review/index.html#switch-mode-review"
         }
       ]
     },
@@ -10628,18 +10628,18 @@
           "code": "002584",
           "start": "2026-09-17",
           "end": "2026-09-21",
-          "summary": "非唯一科技高标追高，跌后为降低成本追加；跨周只计一轮。",
+          "summary": "切换模式错误：低位接力切换不熟悉，仓位不应超过小仓试错。尽量避免不熟悉的低位接力切换；如参与，最多小仓位试错，不用大仓位押注尚未掌握的模式。9月18日为降低成本而追加的错误另列，跨周仍只计一轮。",
           "errors": [
             {
-              "category": "leader",
-              "evidence": "非唯一科技"
+              "category": "switch_mode",
+              "evidence": "我个人在切换这个低位接力上的模式不熟悉不会，所以不应该大仓位的去做，最多小仓位去试错"
             },
             {
               "category": "add",
               "evidence": "想降低成本而追加"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         }
       ],
       "summary": "",
@@ -10733,18 +10733,18 @@
           "code": "002584",
           "start": "2026-09-17",
           "end": "2026-09-21",
-          "summary": "非唯一科技高标追高，跌后为降低成本追加；跨周只计一轮。",
+          "summary": "切换模式错误：低位接力切换不熟悉，仓位不应超过小仓试错。尽量避免不熟悉的低位接力切换；如参与，最多小仓位试错，不用大仓位押注尚未掌握的模式。9月18日为降低成本而追加的错误另列，跨周仍只计一轮。",
           "errors": [
             {
-              "category": "leader",
-              "evidence": "非唯一科技"
+              "category": "switch_mode",
+              "evidence": "我个人在切换这个低位接力上的模式不熟悉不会，所以不应该大仓位的去做，最多小仓位去试错"
             },
             {
               "category": "add",
               "evidence": "想降低成本而追加"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         }
       ],
       "summary": "",
@@ -11716,31 +11716,19 @@
           "code": "002085",
           "start": "2026-10-19",
           "end": "2026-10-21",
-          "summary": "同身位PK尚未完成、龙头唯一性未确定就抢先手押注。一字或换手均不代表胜出，须让市场决定胜者，再按计划参与。",
+          "summary": "切换模式错误：低位接力切换不熟悉，仓位不应超过小仓试错。尽量避免不熟悉的低位接力切换；如参与，最多小仓位试错，不用大仓位押注尚未掌握的模式。买入与后续退出合并为同一轮。",
           "errors": [
             {
-              "category": "pk",
-              "evidence": "同身位中还有其他个股正在PK龙头唯一性，没有决出胜负之前，一字或者换手都不能随便进去。让市场决定谁是胜者，而不是主观臆断。"
+              "category": "switch_mode",
+              "evidence": "我个人在切换这个低位接力上的模式不熟悉不会，所以不应该大仓位的去做，最多小仓位去试错"
             }
           ],
           "assessment": "本人最新反思归类"
         }
       ],
-      "summary": "卖出九阳、超声电子并买入万丰奥威。本人重新确认万丰的主因为同身位PK未完成、龙头唯一性尚未确立就抢先手；不再以题材判断或下单执行作为该轮主分类。九阳的抱团反思单独保留。日收益仍为原站费用前估算。",
+      "summary": "卖出九阳、超声电子并买入万丰奥威。万丰按本人最新澄清归入切换模式错误：不熟悉低位接力切换，应尽量避免、最多小仓试错。九阳的抱团反思单独保留。日收益为原站费用前估算。",
       "assessment": "本人最新反思归类",
       "errors": [
-        {
-          "category": "pk",
-          "scope": "当日操作",
-          "stocks": [
-            {
-              "code": "002085",
-              "name": "万丰奥威"
-            }
-          ],
-          "evidence": "同身位中还有其他个股正在PK龙头唯一性，没有决出胜负之前，一字或者换手都不能随便进去。让市场决定谁是胜者，而不是主观臆断。",
-          "source": "large-loss-review/index.html#pk-reclassification"
-        },
         {
           "category": "cycle",
           "scope": "本轮回看",
@@ -11752,6 +11740,18 @@
           ],
           "evidence": "没有理解四板后高位放量抗跌、题材主升转轮动的抱团延续",
           "source": "2026-10-19_2026-10-23/index.html#ticket-review"
+        },
+        {
+          "category": "switch_mode",
+          "scope": "当日操作",
+          "stocks": [
+            {
+              "code": "002085",
+              "name": "万丰奥威"
+            }
+          ],
+          "evidence": "我个人在切换这个低位接力上的模式不熟悉不会，所以不应该大仓位的去做，最多小仓位去试错",
+          "source": "large-loss-review/index.html#switch-mode-review"
         }
       ]
     },
@@ -11834,11 +11834,11 @@
           "code": "002085",
           "start": "2026-10-19",
           "end": "2026-10-21",
-          "summary": "同身位PK尚未完成、龙头唯一性未确定就抢先手押注。一字或换手均不代表胜出，须让市场决定胜者，再按计划参与。",
+          "summary": "切换模式错误：低位接力切换不熟悉，仓位不应超过小仓试错。尽量避免不熟悉的低位接力切换；如参与，最多小仓位试错，不用大仓位押注尚未掌握的模式。买入与后续退出合并为同一轮。",
           "errors": [
             {
-              "category": "pk",
-              "evidence": "同身位中还有其他个股正在PK龙头唯一性，没有决出胜负之前，一字或者换手都不能随便进去。让市场决定谁是胜者，而不是主观臆断。"
+              "category": "switch_mode",
+              "evidence": "我个人在切换这个低位接力上的模式不熟悉不会，所以不应该大仓位的去做，最多小仓位去试错"
             }
           ],
           "assessment": "本人最新反思归类"
@@ -11920,31 +11920,19 @@
           "code": "002085",
           "start": "2026-10-19",
           "end": "2026-10-21",
-          "summary": "同身位PK尚未完成、龙头唯一性未确定就抢先手押注。一字或换手均不代表胜出，须让市场决定胜者，再按计划参与。",
+          "summary": "切换模式错误：低位接力切换不熟悉，仓位不应超过小仓试错。尽量避免不熟悉的低位接力切换；如参与，最多小仓位试错，不用大仓位押注尚未掌握的模式。买入与后续退出合并为同一轮。",
           "errors": [
             {
-              "category": "pk",
-              "evidence": "同身位中还有其他个股正在PK龙头唯一性，没有决出胜负之前，一字或者换手都不能随便进去。让市场决定谁是胜者，而不是主观臆断。"
+              "category": "switch_mode",
+              "evidence": "我个人在切换这个低位接力上的模式不熟悉不会，所以不应该大仓位的去做，最多小仓位去试错"
             }
           ],
           "assessment": "本人最新反思归类"
         }
       ],
-      "summary": "卖出万丰奥威和吉大正元。万丰归入10月19日同身位PK未决抢先手的持仓延续，不算第二次独立押注；吉大的退出问题单独保留。日收益仍为原站费用前估算。",
+      "summary": "卖出万丰奥威和吉大正元。万丰为10月19日切换模式错误的持仓延续，退出不另算一次新错误；吉大的利润保护问题单独保留。日收益为原站费用前估算。",
       "assessment": "本人最新反思归类",
       "errors": [
-        {
-          "category": "pk",
-          "scope": "持仓延续",
-          "stocks": [
-            {
-              "code": "002085",
-              "name": "万丰奥威"
-            }
-          ],
-          "evidence": "同身位中还有其他个股正在PK龙头唯一性，没有决出胜负之前，一字或者换手都不能随便进去。让市场决定谁是胜者，而不是主观臆断。",
-          "source": "large-loss-review/index.html#pk-reclassification"
-        },
         {
           "category": "exit",
           "scope": "本轮回看",
@@ -11956,6 +11944,18 @@
           ],
           "evidence": "认为应当借这一溢价退出，而不是继续等题材延续",
           "source": "2026-10-19_2026-10-23/index.html#leader-failure-crowding-repair"
+        },
+        {
+          "category": "switch_mode",
+          "scope": "持仓延续",
+          "stocks": [
+            {
+              "code": "002085",
+              "name": "万丰奥威"
+            }
+          ],
+          "evidence": "我个人在切换这个低位接力上的模式不熟悉不会，所以不应该大仓位的去做，最多小仓位去试错",
+          "source": "large-loss-review/index.html#switch-mode-review"
         }
       ]
     },
@@ -12131,11 +12131,18 @@
     {
       "date": "2026-10-26",
       "income": {
-        "rate": -1.02,
+        "rate": -1.0233585403913095,
         "amount": -106.57,
         "source": "2026-10-26_2026-10-30/index.html#account",
         "kind": "estimated",
-        "basis": "原站账户估算 · 日收益率（非券商确认）"
+        "basis": "实际交割（含费）与收盘持仓估算；假设无遗漏持仓或额外出入金，非券商确认",
+        "calculation": {
+          "previousEquity": 10413.75,
+          "equity": 10307.18,
+          "cash": 2135.18,
+          "marketValue": 8172,
+          "source": "2026-10-26_2026-10-30/data/account-estimate.json"
+        }
       },
       "trades": [
         {
@@ -12206,11 +12213,18 @@
     {
       "date": "2026-10-27",
       "income": {
-        "rate": 0.81,
+        "rate": 0.8131225029542513,
         "amount": 83.81,
         "source": "2026-10-26_2026-10-30/index.html#account",
         "kind": "estimated",
-        "basis": "原站账户估算 · 日收益率（非券商确认）"
+        "basis": "实际交割（含费）与收盘持仓估算；假设无遗漏持仓或额外出入金，非券商确认",
+        "calculation": {
+          "previousEquity": 10307.18,
+          "equity": 10390.99,
+          "cash": 5587.99,
+          "marketValue": 4803,
+          "source": "2026-10-26_2026-10-30/data/account-estimate.json"
+        }
       },
       "trades": [
         {
@@ -12255,11 +12269,18 @@
     {
       "date": "2026-10-28",
       "income": {
-        "rate": 4.57,
-        "amount": 475.0,
+        "rate": 4.571267992751412,
+        "amount": 475,
         "source": "2026-10-26_2026-10-30/index.html#account",
         "kind": "estimated",
-        "basis": "原站账户估算 · 日收益率（非券商确认）"
+        "basis": "实际交割（含费）与收盘持仓估算；假设无遗漏持仓或额外出入金，非券商确认",
+        "calculation": {
+          "previousEquity": 10390.99,
+          "equity": 10865.99,
+          "cash": 299.99,
+          "marketValue": 10566,
+          "source": "2026-10-26_2026-10-30/data/account-estimate.json"
+        }
       },
       "trades": [
         {
@@ -12283,11 +12304,18 @@
     {
       "date": "2026-10-29",
       "income": {
-        "rate": 6.15,
+        "rate": 6.149370650994525,
         "amount": 668.19,
         "source": "2026-10-26_2026-10-30/index.html#account",
         "kind": "estimated",
-        "basis": "原站账户估算 · 日收益率（非券商确认）"
+        "basis": "实际交割（含费）与收盘持仓估算；假设无遗漏持仓或额外出入金，非券商确认",
+        "calculation": {
+          "previousEquity": 10865.99,
+          "equity": 11534.18,
+          "cash": 284.18,
+          "marketValue": 11250,
+          "source": "2026-10-26_2026-10-30/data/account-estimate.json"
+        }
       },
       "trades": [
         {
@@ -12331,7 +12359,20 @@
     },
     {
       "date": "2026-10-30",
-      "income": null,
+      "income": {
+        "rate": 2.307749662308027,
+        "amount": 266.18,
+        "source": "2026-10-26_2026-10-30/index.html#account",
+        "kind": "estimated",
+        "basis": "实际交割（含费）与收盘持仓估算；假设无遗漏持仓或额外出入金，非券商确认",
+        "calculation": {
+          "previousEquity": 11534.18,
+          "equity": 11800.36,
+          "cash": 7896.36,
+          "marketValue": 3904,
+          "source": "2026-10-26_2026-10-30/data/account-estimate.json"
+        }
+      },
       "trades": [
         {
           "code": "000678",
@@ -12366,7 +12407,20 @@
     },
     {
       "date": "2026-11-02",
-      "income": null,
+      "income": {
+        "rate": -6.896654000386429,
+        "amount": -813.83,
+        "source": "2026-11-02_2026-11-06/index.html#trade-records",
+        "kind": "estimated",
+        "basis": "实际交割（含费）与收盘持仓估算；假设无遗漏持仓或额外出入金，非券商确认",
+        "calculation": {
+          "previousEquity": 11800.36,
+          "equity": 10986.53,
+          "cash": 7526.53,
+          "marketValue": 3460,
+          "source": "2026-11-02_2026-11-06/data/summary.json"
+        }
+      },
       "trades": [
         {
           "code": "603131",
@@ -12394,13 +12448,75 @@
       "tradeCount": 4,
       "notes": [],
       "relatedEpisodes": [],
-      "summary": "",
-      "assessment": "待归因",
-      "errors": []
+      "summary": "当天两笔买入上海沪工200股，分两笔卖出大业股份200股。账户日亏损按10月30日收盘权益衔接，包含大业相对前收盘的卖出损益及上海沪工当日浮亏。本人反思为非主模式仓位偏大、第二笔缺少新增确认，并带有扳回上一笔的动机。",
+      "assessment": "已有反思归类",
+      "errors": [
+        {
+          "category": "add",
+          "scope": "当日操作",
+          "stocks": [
+            {
+              "code": "603131",
+              "name": "上海沪工"
+            }
+          ],
+          "evidence": "第二笔没有新增唯一性依据，不应扩大仓位",
+          "source": "2026-11-02_2026-11-06/index.html#operations"
+        },
+        {
+          "category": "size",
+          "scope": "当日操作",
+          "stocks": [
+            {
+              "code": "603131",
+              "name": "上海沪工"
+            }
+          ],
+          "evidence": "本人判断其补涨质量不足，不是应该重仓的题材龙",
+          "source": "2026-11-02_2026-11-06/index.html#operations"
+        },
+        {
+          "category": "cycle",
+          "scope": "持仓延续",
+          "stocks": [
+            {
+              "code": "603278",
+              "name": "大业股份"
+            }
+          ],
+          "evidence": "把绕异动博弈与主升题材龙混为一谈",
+          "source": "2026-11-02_2026-11-06/index.html#operations"
+        },
+        {
+          "category": "size",
+          "scope": "持仓延续",
+          "stocks": [
+            {
+              "code": "603278",
+              "name": "大业股份"
+            }
+          ],
+          "evidence": "给了不匹配的仓位",
+          "source": "2026-11-02_2026-11-06/index.html#operations"
+        }
+      ]
     },
     {
       "date": "2026-11-03",
-      "income": null,
+      "income": {
+        "rate": -3.1546812323818347,
+        "amount": -346.59,
+        "source": "2026-11-02_2026-11-06/index.html#trade-records",
+        "kind": "estimated",
+        "basis": "实际交割（含费）与收盘持仓估算；假设无遗漏持仓或额外出入金，非券商确认",
+        "calculation": {
+          "previousEquity": 10986.53,
+          "equity": 10639.94,
+          "cash": 10639.94,
+          "marketValue": 0,
+          "source": "2026-11-02_2026-11-06/data/summary.json"
+        }
+      },
       "trades": [
         {
           "code": "603131",
@@ -12416,13 +12532,51 @@
       "tradeCount": 1,
       "notes": [],
       "relatedEpisodes": [],
-      "summary": "",
-      "assessment": "待归因",
-      "errors": []
+      "summary": "卖出上海沪工200股，按已提供成交收盘为空仓。日亏损相对于11月2日收盘权益计算；保留此前无新增确认加仓和仓位问题，本日退出不另判为新错误。",
+      "assessment": "已有反思归类",
+      "errors": [
+        {
+          "category": "add",
+          "scope": "持仓延续",
+          "stocks": [
+            {
+              "code": "603131",
+              "name": "上海沪工"
+            }
+          ],
+          "evidence": "第二笔没有新增唯一性依据，不应扩大仓位",
+          "source": "2026-11-02_2026-11-06/index.html#operations"
+        },
+        {
+          "category": "size",
+          "scope": "持仓延续",
+          "stocks": [
+            {
+              "code": "603131",
+              "name": "上海沪工"
+            }
+          ],
+          "evidence": "本人判断其补涨质量不足，不是应该重仓的题材龙",
+          "source": "2026-11-02_2026-11-06/index.html#operations"
+        }
+      ]
     },
     {
       "date": "2026-11-04",
-      "income": null,
+      "income": {
+        "rate": -1.898694917452542,
+        "amount": -202.02,
+        "source": "2026-11-02_2026-11-06/index.html#trade-records",
+        "kind": "estimated",
+        "basis": "实际交割（含费）与收盘持仓估算；假设无遗漏持仓或额外出入金，非券商确认",
+        "calculation": {
+          "previousEquity": 10639.94,
+          "equity": 10437.92,
+          "cash": 8461.92,
+          "marketValue": 1976,
+          "source": "2026-11-02_2026-11-06/data/summary.json"
+        }
+      },
       "trades": [
         {
           "code": "600715",
@@ -12460,10 +12614,14 @@
   "audit": {
     "incomeSource": "每日收益明细_20260713-20260930.xlsx",
     "conflicts": [],
+    "calculatedIncomeSources": [
+      "2026-10-26_2026-10-30/data/account-estimate.json",
+      "2026-11-02_2026-11-06/data/summary.json"
+    ],
     "excludedEstimates": [
       {
         "date": "2026-10-30",
-        "reason": "原站以10/29持仓不变为前提的估算，与新交割单10/30实际买卖不符，未用于筛选。"
+        "reason": "旧持仓不变情景已停用；现已按实际卖出襄阳、买入大业及大业收盘价重新估算，衔接11月期初权益。"
       }
     ]
   },

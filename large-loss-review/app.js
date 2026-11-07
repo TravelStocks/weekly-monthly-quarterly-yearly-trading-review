@@ -1,5 +1,7 @@
 'use strict';
 const CATEGORIES = {
+  switch_mode: {name:'切换模式错误', rule:'尽量避免不熟悉的低位接力切换；如参与，最多小仓位试错，不用大仓位押注尚未掌握的模式。'},
+  board_confirm: {name:'低卡高未定，未等上板确认', rule:'领先身位下方仅低一板且有多只有辨识度个股时，先等领先身位上板确认龙头卡位；高开不能代替上板确认，不半路抢入。'},
   pk: {name:'同身位PK未决，抢先手押注', rule:'同题材、同身位尚未决出龙头唯一性时，一字板和换手板都不能替代确认；让市场决定胜者，先定龙，再参与。'},
   cycle: {name:'阶段 / 题材判断错位', rule:'先判断题材所处阶段及持续性，再选择龙头、补涨、二波或切换模式。'},
   leader: {name:'非核心 / 唯一性未确认', rule:'参与前确认第一性与唯一性；竞争尚未胜出，不提前赋予核心预期。'},
@@ -70,7 +72,7 @@ function openHash() {
 }
 async function init() {
   try {
-    const response=await fetch('./data.json?v=20261106-pk');
+    const response=await fetch('./data.json?v=20261106-switch');
     if(!response.ok)throw new Error('HTTP '+response.status);
     DATA=await response.json();
     Object.entries(CATEGORIES).forEach(([id,c])=>$('category').insertAdjacentHTML('beforeend',`<option value="${id}">${c.name}</option>`));
@@ -84,7 +86,7 @@ async function init() {
     const closed=DATA.records.filter(r=>r.status==='closed'), floating=DATA.records.filter(r=>r.status==='floating');
     $('coverage').textContent=`已扫描 ${DATA.audit.scannedPages.length} 份周/月档案，并以9月已核对逐轮数据和独立失败案例补充；覆盖最早4月归档至11月4日已有心得。共有 ${closed.length} 轮可核算亏损、${floating.length} 条未见后续平仓结果的浮亏快照（含ETF）。11月心得暂无完整个股损益，未强行换算。后续新增交割可重新生成；新增错误归类须有反思依据。`;
     $('audit-details').innerHTML=`<h3>已扫描档案</h3><ul>${DATA.audit.scannedPages.map(p=>`<li><a href="${escape(link(p.source))}">${escape(p.source.replace('/index.html',''))}</a> · ${escape(p.kind)}</li>`).join('')}</ul><h3>未配齐成本的历史卖出</h3><p class="subtle">以下卖出不凭现金流计算亏损率。4月独立报告已核算的轮次另行使用其已补成本。</p><ul>${DATA.audit.unknownCostSales.map(t=>`<li>${t.date} · ${escape(t.name)} ${t.code} · <a href="${escape(link(t.source))}">来源</a></li>`).join('')||'<li>无</li>'}</ul>`;
-    $('updated').textContent=DATA.updated;$('load-state').hidden=true;$('content').hidden=false;render();openHash();
+    $('updated').textContent=DATA.reflectionUpdated||DATA.updated;$('load-state').hidden=true;$('content').hidden=false;render();openHash();
     window.addEventListener('hashchange',openHash);
   } catch(error) {
     $('load-state').textContent='档案暂未加载成功，请刷新重试。';

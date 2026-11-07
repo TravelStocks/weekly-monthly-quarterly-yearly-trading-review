@@ -772,21 +772,9 @@
     ]
   },
   "2026-08-28": {
-    "summary": "买入昊华科技，并加仓百花医药。后续明确反思将昊华归为科技细分切换错误，百花归为二波买点偏差后继续摊低成本。",
-    "assessment": "已有反思归类",
+    "summary": "买入昊华科技，并加仓百花医药。昊华按本人最新反思归入切换模式错误：不熟悉低位接力切换，尽量避免，最多小仓试错。百花的二波买点偏差与摊低成本问题单独保留。",
+    "assessment": "本人最新反思归类",
     "errors": [
-      {
-        "category": "cycle",
-        "scope": "当日操作",
-        "stocks": [
-          {
-            "code": "600378",
-            "name": "昊华科技"
-          }
-        ],
-        "evidence": "科技细分题材切换错误",
-        "source": "monthly-quarterly-trading-review/2026-09/index.html#stock-600378"
-      },
       {
         "category": "entry",
         "scope": "本轮回看",
@@ -810,25 +798,25 @@
         ],
         "evidence": "买点错与摊低成本是一条错误链",
         "source": "monthly-quarterly-trading-review/2026-09/index.html#stock-600721"
-      }
-    ]
-  },
-  "2026-08-31": {
-    "summary": "卖出昊华科技、百花医药，转向敦煌种业和金健米业。主要已确认问题来自前期持仓；新买入的农业两票仍须分别评价，不一并视为错误。",
-    "assessment": "已有反思归类",
-    "errors": [
+      },
       {
-        "category": "cycle",
-        "scope": "持仓延续",
+        "category": "switch_mode",
+        "scope": "当日操作",
         "stocks": [
           {
             "code": "600378",
             "name": "昊华科技"
           }
         ],
-        "evidence": "科技细分题材切换错误",
-        "source": "monthly-quarterly-trading-review/2026-09/index.html#stock-600378"
-      },
+        "evidence": "我个人在切换这个低位接力上的模式不熟悉不会，所以不应该大仓位的去做，最多小仓位去试错",
+        "source": "large-loss-review/index.html#switch-mode-review"
+      }
+    ]
+  },
+  "2026-08-31": {
+    "summary": "卖出昊华科技和百花医药，买入敦煌种业和金健米业。昊华是8月28日切换模式错误的持仓延续，卖出不另算新错误；百花及农业两票分别评价。8月29日无成交。",
+    "assessment": "本人最新反思归类",
+    "errors": [
       {
         "category": "entry",
         "scope": "持仓延续",
@@ -852,15 +840,27 @@
         ],
         "evidence": "买点错与摊低成本是一条错误链",
         "source": "monthly-quarterly-trading-review/2026-09/index.html#stock-600721"
+      },
+      {
+        "category": "switch_mode",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "600378",
+            "name": "昊华科技"
+          }
+        ],
+        "evidence": "我个人在切换这个低位接力上的模式不熟悉不会，所以不应该大仓位的去做，最多小仓位去试错",
+        "source": "large-loss-review/index.html#switch-mode-review"
       }
     ]
   },
   "2026-09-02": {
-    "summary": "买入时代出版。本人后续认可方向有逻辑，但明确指出分时触发有问题；归因采用后续澄清，不停留在初版待补判断。",
-    "assessment": "已有反思归类",
+    "summary": "当领先身位下方仅差一板、同时有多只有辨识度的个股时，存在低位反卡高位的龙头竞争风险。此情形需等领先身位上板、龙头与买点得到确认，高开不能代替上板确认。9月2日时代出版的问题是未等板上确认，便半路买入。",
+    "assessment": "本人最新反思归类",
     "errors": [
       {
-        "category": "entry",
+        "category": "board_confirm",
         "scope": "当日操作",
         "stocks": [
           {
@@ -868,8 +868,8 @@
             "name": "时代出版"
           }
         ],
-        "evidence": "方向有逻辑，分时触发错误",
-        "source": "monthly-quarterly-trading-review/2026-09/index.html#reflection-cases"
+        "evidence": "高开都不能确认买点，所以当时这个亏损就是没有在板上买而是半路买了",
+        "source": "large-loss-review/index.html#board-confirmation-review"
       }
     ]
   },
@@ -890,7 +890,7 @@
         "source": "large-loss-review/index.html#pk-reclassification"
       },
       {
-        "category": "entry",
+        "category": "board_confirm",
         "scope": "持仓延续",
         "stocks": [
           {
@@ -898,8 +898,8 @@
             "name": "时代出版"
           }
         ],
-        "evidence": "方向有逻辑，分时触发错误",
-        "source": "monthly-quarterly-trading-review/2026-09/index.html#reflection-cases"
+        "evidence": "高开都不能确认买点，所以当时这个亏损就是没有在板上买而是半路买了",
+        "source": "large-loss-review/index.html#board-confirmation-review"
       }
     ]
   },
@@ -951,21 +951,9 @@
     "errors": []
   },
   "2026-09-17": {
-    "summary": "卖出闽东电力、买西陇科学。闽东的问题是此前高度压力下利润保护不足；西陇新仓缺少科技唯一性。9月18日才发生追加，不写成17日当天加仓。",
-    "assessment": "已有反思归类",
+    "summary": "卖出闽东电力、买入西陇科学。西陇归入切换模式错误：本人不熟悉低位接力切换，不应大仓位参与，尽量避免、最多小仓试错。闽东此前利润保护问题单独保留；西陇追加发生在18日，不计为17日加仓。",
+    "assessment": "本人最新反思归类",
     "errors": [
-      {
-        "category": "leader",
-        "scope": "当日操作",
-        "stocks": [
-          {
-            "code": "002584",
-            "name": "西陇科学"
-          }
-        ],
-        "evidence": "非唯一科技",
-        "source": "2026-09-21_2026-09-30/index.html#profit-loss"
-      },
       {
         "category": "exit",
         "scope": "持仓延续",
@@ -977,6 +965,18 @@
         ],
         "evidence": "新节点切换正确，弱环境兑现不足",
         "source": "monthly-quarterly-trading-review/2026-09/index.html"
+      },
+      {
+        "category": "switch_mode",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "002584",
+            "name": "西陇科学"
+          }
+        ],
+        "evidence": "我个人在切换这个低位接力上的模式不熟悉不会，所以不应该大仓位的去做，最多小仓位去试错",
+        "source": "large-loss-review/index.html#switch-mode-review"
       }
     ]
   },
@@ -1011,21 +1011,9 @@
     ]
   },
   "2026-10-19": {
-    "summary": "卖出九阳、超声电子并买入万丰奥威。本人重新确认万丰的主因为同身位PK未完成、龙头唯一性尚未确立就抢先手；不再以题材判断或下单执行作为该轮主分类。九阳的抱团反思单独保留。日收益仍为原站费用前估算。",
+    "summary": "卖出九阳、超声电子并买入万丰奥威。万丰按本人最新澄清归入切换模式错误：不熟悉低位接力切换，应尽量避免、最多小仓试错。九阳的抱团反思单独保留。日收益为原站费用前估算。",
     "assessment": "本人最新反思归类",
     "errors": [
-      {
-        "category": "pk",
-        "scope": "当日操作",
-        "stocks": [
-          {
-            "code": "002085",
-            "name": "万丰奥威"
-          }
-        ],
-        "evidence": "同身位中还有其他个股正在PK龙头唯一性，没有决出胜负之前，一字或者换手都不能随便进去。让市场决定谁是胜者，而不是主观臆断。",
-        "source": "large-loss-review/index.html#pk-reclassification"
-      },
       {
         "category": "cycle",
         "scope": "本轮回看",
@@ -1037,25 +1025,25 @@
         ],
         "evidence": "没有理解四板后高位放量抗跌、题材主升转轮动的抱团延续",
         "source": "2026-10-19_2026-10-23/index.html#ticket-review"
-      }
-    ]
-  },
-  "2026-10-21": {
-    "summary": "卖出万丰奥威和吉大正元。万丰归入10月19日同身位PK未决抢先手的持仓延续，不算第二次独立押注；吉大的退出问题单独保留。日收益仍为原站费用前估算。",
-    "assessment": "本人最新反思归类",
-    "errors": [
+      },
       {
-        "category": "pk",
-        "scope": "持仓延续",
+        "category": "switch_mode",
+        "scope": "当日操作",
         "stocks": [
           {
             "code": "002085",
             "name": "万丰奥威"
           }
         ],
-        "evidence": "同身位中还有其他个股正在PK龙头唯一性，没有决出胜负之前，一字或者换手都不能随便进去。让市场决定谁是胜者，而不是主观臆断。",
-        "source": "large-loss-review/index.html#pk-reclassification"
-      },
+        "evidence": "我个人在切换这个低位接力上的模式不熟悉不会，所以不应该大仓位的去做，最多小仓位去试错",
+        "source": "large-loss-review/index.html#switch-mode-review"
+      }
+    ]
+  },
+  "2026-10-21": {
+    "summary": "卖出万丰奥威和吉大正元。万丰为10月19日切换模式错误的持仓延续，退出不另算一次新错误；吉大的利润保护问题单独保留。日收益为原站费用前估算。",
+    "assessment": "本人最新反思归类",
+    "errors": [
       {
         "category": "exit",
         "scope": "本轮回看",
@@ -1067,6 +1055,18 @@
         ],
         "evidence": "认为应当借这一溢价退出，而不是继续等题材延续",
         "source": "2026-10-19_2026-10-23/index.html#leader-failure-crowding-repair"
+      },
+      {
+        "category": "switch_mode",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "002085",
+            "name": "万丰奥威"
+          }
+        ],
+        "evidence": "我个人在切换这个低位接力上的模式不熟悉不会，所以不应该大仓位的去做，最多小仓位去试错",
+        "source": "large-loss-review/index.html#switch-mode-review"
       }
     ]
   },
@@ -1085,6 +1085,90 @@
         ],
         "evidence": "同身位中还有其他个股正在PK龙头唯一性，没有决出胜负之前，一字或者换手都不能随便进去。让市场决定谁是胜者，而不是主观臆断。",
         "source": "large-loss-review/index.html#pk-reclassification"
+      }
+    ]
+  },
+  "2026-11-02": {
+    "summary": "当天两笔买入上海沪工200股，分两笔卖出大业股份200股。账户日亏损按10月30日收盘权益衔接，包含大业相对前收盘的卖出损益及上海沪工当日浮亏。本人反思为非主模式仓位偏大、第二笔缺少新增确认，并带有扳回上一笔的动机。",
+    "assessment": "已有反思归类",
+    "errors": [
+      {
+        "category": "add",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "603131",
+            "name": "上海沪工"
+          }
+        ],
+        "evidence": "第二笔没有新增唯一性依据，不应扩大仓位",
+        "source": "2026-11-02_2026-11-06/index.html#operations"
+      },
+      {
+        "category": "size",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "603131",
+            "name": "上海沪工"
+          }
+        ],
+        "evidence": "本人判断其补涨质量不足，不是应该重仓的题材龙",
+        "source": "2026-11-02_2026-11-06/index.html#operations"
+      },
+      {
+        "category": "cycle",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "603278",
+            "name": "大业股份"
+          }
+        ],
+        "evidence": "把绕异动博弈与主升题材龙混为一谈",
+        "source": "2026-11-02_2026-11-06/index.html#operations"
+      },
+      {
+        "category": "size",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "603278",
+            "name": "大业股份"
+          }
+        ],
+        "evidence": "给了不匹配的仓位",
+        "source": "2026-11-02_2026-11-06/index.html#operations"
+      }
+    ]
+  },
+  "2026-11-03": {
+    "summary": "卖出上海沪工200股，按已提供成交收盘为空仓。日亏损相对于11月2日收盘权益计算；保留此前无新增确认加仓和仓位问题，本日退出不另判为新错误。",
+    "assessment": "已有反思归类",
+    "errors": [
+      {
+        "category": "add",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "603131",
+            "name": "上海沪工"
+          }
+        ],
+        "evidence": "第二笔没有新增唯一性依据，不应扩大仓位",
+        "source": "2026-11-02_2026-11-06/index.html#operations"
+      },
+      {
+        "category": "size",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "code": "603131",
+            "name": "上海沪工"
+          }
+        ],
+        "evidence": "本人判断其补涨质量不足，不是应该重仓的题材龙",
+        "source": "2026-11-02_2026-11-06/index.html#operations"
       }
     ]
   }

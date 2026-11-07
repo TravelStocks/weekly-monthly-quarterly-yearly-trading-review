@@ -56,10 +56,12 @@ def build():
     imported = read('large-loss-review/calendar-trades.json')
     rates, notes, pages = {}, defaultdict(list), {}
     conflicts = []
-    def add_rate(date, rate, amount, source, kind='recorded', basis='原站每日账户记录'):
+    def add_rate(date, rate, amount, source, kind='recorded', basis='原站每日账户记录', calculation=None):
         if date is None or rate is None:
             return
         candidate = dict(rate=rate, amount=amount, source=source, kind=kind, basis=basis)
+        if calculation is not None:
+            candidate['calculation'] = calculation
         if date in rates and rates[date]['kind']=='recorded':
             if abs(rate-rates[date]['rate']) > .005:
                 conflicts.append(dict(date=date, selected=rates[date], alternative=candidate))
@@ -99,8 +101,8 @@ def build():
                     cells = [n.get_text(' ',strip=True) for n in row.select('td')]
                     if len(cells)!=len(headers):continue
                     date = date_in(cells[headers.index('日期')])
-                    # October 30 was a conditional unchanged-position scenario. The new
-                    # statement has actual trades that day, so this stale estimate is excluded.
+                    # Never reuse the old unchanged-position scenario for October 30.
+                    # The verified structured account below supplies the actual-trade estimate.
                     if date == '2026-10-30':continue
                     kind = 'estimated' if file.parent.name.startswith('2026-10') else 'recorded'
                     add_rate(date, numeric(cells[ri]), numeric(cells[ai]) if ai is not None else None,
@@ -141,6 +143,31 @@ def build():
             source=file.parent.parent.relative_to(ROOT).as_posix()+'/index.html#daily'
             for text in r.get('reflections',[]):
                 if isinstance(text,str):notes[date].append(dict(text=text,source=source))
+    # Structured account calculations retain precision and work with the November
+    # partial-week template, whose account table lives under #trade-records.
+    calculated_sources = [
+        ('2026-10-26_2026-10-30/data/account-estimate.json', None,
+         '2026-10-26_2026-10-30/index.html#account'),
+        ('2026-11-02_2026-11-06/data/summary.json', 'partialAccount',
+         '2026-11-02_2026-11-06/index.html#trade-records'),
+    ]
+    for path, key, source in calculated_sources:
+        payload = read(path)
+        account = payload[key] if key else payload
+        assert account['status'] in ['statement-close-estimate', 'partial-statement-close-estimate']
+        previous = Decimal(str(account['opening']['equity']))
+        for day in account['days']:
+            assert day['date'] <= account.get('coveredThrough', imported['end'])
+            equity = Decimal(str(day['equity']))
+            pnl = Decimal(str(day['pnl']))
+            assert equity == Decimal(str(day['cash'])) + Decimal(str(day['marketValue']))
+            assert equity - previous == pnl and previous > 0
+            assert abs(float(pnl / previous * 100) - day['returnPct']) < 1e-9
+            calculation = dict(previousEquity=float(previous), equity=day['equity'],
+                cash=day['cash'], marketValue=day['marketValue'], source=path)
+            add_rate(day['date'], day['returnPct'], day['pnl'], source, 'estimated',
+                '实际交割（含费）与收盘持仓估算；假设无遗漏持仓或额外出入金，非券商确认', calculation)
+            previous = equity
     by_date=defaultdict(list)
     for t in imported['rows']:by_date[t['date']].append(t)
     loss=read('large-loss-review/data.json')['records']
@@ -172,10 +199,11 @@ def build():
         days.append(dict(date=date,income=rates.get(date),trades=list(grouped.values()),
             tradeCount=len(by_date[date]),notes=day_notes,relatedEpisodes=related,
             summary=a.get('summary',''),assessment=a.get('assessment','待归因'),errors=errors))
-    payload=dict(updated='2026-11-05',threshold=-2,start=imported['start'],end=imported['end'],
+    payload=dict(updated='2026-11-06',threshold=-2,start=imported['start'],end=imported['end'],
         tradeSource=imported['source'],tradeCount=len(imported['rows']),days=days,
         audit=dict(incomeSource=income['source'],conflicts=conflicts,
-            excludedEstimates=[dict(date='2026-10-30',reason='原站以10/29持仓不变为前提的估算，与新交割单10/30实际买卖不符，未用于筛选。')]))
+            calculatedIncomeSources=[s[0] for s in calculated_sources],
+            excludedEstimates=[dict(date='2026-10-30',reason='旧持仓不变情景已停用；现已按实际卖出襄阳、买入大业及大业收盘价重新估算，衔接11月期初权益。')]))
     write(OUT/'calendar-data.json',payload)
     flagged=[d for d in days if d['income'] and d['income']['rate'] < -2]
     print('days',len(days),'rates',len(rates),'recorded',sum(r['kind']=='recorded' for r in rates.values()),'flagged',len(flagged))

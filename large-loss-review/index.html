@@ -7,8 +7,8 @@
   <title>大亏损总结 · 个股与日期双视角</title>
   <link rel="stylesheet" href="./style.css">
   <link rel="stylesheet" href="./calendar.css?v=20261105-month-errors">
-  <script src="./app.js?v=20261106-pk" defer></script>
-  <script src="./calendar.js?v=20261105-month-errors" defer></script>
+  <script src="./app.js?v=20261106-switch" defer></script>
+  <script src="./calendar.js?v=20261106-switch" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">跳到主要内容</a>
@@ -74,7 +74,7 @@
             </section>
             <section id="calendar-day-detail" class="panel calendar-detail" tabindex="-1" aria-live="polite" aria-label="选中日期的操作与反思"></section>
           </div>
-          <section class="panel calendar-method" id="calendar-method"><h2>日期与个股，分别回答两个问题</h2><div class="method-grid"><div><h3>日期看账户，个股看一轮交易</h3><p>账户日收益包含持仓当日波动，不能用当天买卖现金流、各票完整交易盈亏或涨跌幅相加替代。一天没有买卖，也可能因持仓下跌成为大亏日。</p></div><div><h3>错误按发生范围标注</h3><p>“当日操作”对应当天动作；“持仓延续”来自此前风险；“本轮回看”表示反思未精确定位到一天。同一问题连续几天出现，不代表每天都重新犯了一次。</p></div><div><h3>未知日期保留空白</h3><p>原站没有日收益率时显示“未提供”，不写成0。交割覆盖3月11日至11月4日，日期空白也不据此推断休市。低于 −2% 才入选，刚好 −2% 不入选。</p></div><div><h3>估算与原记录分开</h3><p>默认显示并统计全部已收录日收益，包含估算；估算保留独立标记，不等同于券商确认。10月30日旧估算假设持仓不变，与新交割单实际买卖不符，已排除。7月13日至9月30日以已归档每日收益源表为准。</p></div></div><p id="calendar-source-note" class="coverage"></p></section>
+          <section class="panel calendar-method" id="calendar-method"><h2>日期与个股，分别回答两个问题</h2><div class="method-grid"><div><h3>日期看账户，个股看一轮交易</h3><p>账户日收益包含持仓当日波动，不能用当天买卖现金流、各票完整交易盈亏或涨跌幅相加替代。一天没有买卖，也可能因持仓下跌成为大亏日。</p></div><div><h3>错误按发生范围标注</h3><p>“当日操作”对应当天动作；“持仓延续”来自此前风险；“本轮回看”表示反思未精确定位到一天。同一问题连续几天出现，不代表每天都重新犯了一次。</p></div><div><h3>未知日期保留空白</h3><p>没有日收益记录且缺少可靠估算依据时显示“未提供”，不写成0。交割覆盖3月11日至11月4日，日期空白也不据此推断休市。低于 −2% 才入选，刚好 −2% 不入选。</p></div><div><h3>估算与原记录分开</h3><p>默认显示并统计全部已收录日收益，包含估算；估算保留独立标记，不等同于券商确认。10月30日已按实际成交和收盘持仓重算，替换旧持仓不变情景，并衔接11月2日至4日估算。7月13日至9月30日以已归档每日收益源表为准。</p></div></div><p id="calendar-source-note" class="coverage"></p></section>
         </div>
       </section>
       <section class="panel" id="pk-reclassification" aria-labelledby="pk-reclassification-title">
@@ -84,10 +84,30 @@
         <p>这不是单纯的放量板、买点或下单问题，而是在地位尚未确定时，提前押注自己选中的竞争者。先定龙，再参与；追求确认，而不是纯先手。</p>
         <ul>
           <li><a href="#day=2026-09-03">09-03 欢瑞世纪</a>：同身位PK未完成就买入；当天时代出版的旧仓买点问题仍单独保留。</li>
-          <li><a href="#day=2026-10-19">10-19 万丰奥威</a>、<a href="#day=2026-10-21">10-21 万丰奥威</a>：同一轮未定龙抢先手，分别标注入场与持仓延续，不视作两次独立押注。</li>
+          <li>万丰奥威已按本人后续澄清改为<a href="#switch-mode-review">切换模式错误</a>，不再计入同身位PK分类。</li>
           <li><a href="#day=2026-11-04">11-04 文投控股</a>：本人明确确认同类错误；错误归类与账户日收益是否达到大亏筛选阈值分开判断。</li>
         </ul>
         <p class="subtle">本次按本人最新反思修订主因。原周复盘中的题材预期、误操作等旧描述保留作历史依据，不再将同一主因拆成多个标签。错误归类不代表整天账户亏损均由该股造成。</p>
+      </section>
+      <section class="panel" id="board-confirmation-review" aria-labelledby="board-confirmation-title">
+        <span class="eyebrow">本人反思修订 · 2026-11-06</span>
+        <h2 id="board-confirmation-title">时代出版：低卡高未定，未等上板确认</h2>
+        <p>按本人最新反思整理：当领先身位下方仅差一板、同时有多只有辨识度的个股时，存在低位反卡高位的龙头竞争风险。此情形需等领先身位上板、龙头与买点得到确认，高开不能代替上板确认。9月2日时代出版的问题是未等板上确认，便半路买入。</p>
+        <p><strong>适用情形：</strong>领先身位下方仅低一个板，同时存在多只有辨识度的竞争个股。<strong>确认条件：</strong>等领先身位上板、卡位得到确认；高开和半路拉升不等于买点确认。</p>
+        <p><a href="#day=2026-09-02">9月2日</a>标注为当日入场错误；<a href="#day=2026-09-03">9月3日</a>标注为同一问题的持仓延续，个股排行榜仍只计一轮，不将卖出另判为新错误。</p>
+        <details class="quote-archive"><summary>本次反思原话</summary><p>9.2的时代出版，应该归类为 仅低一个板下有多只个股的时候低卡高存在龙头卡位时未在板上确定龙头，因为在一个梯队存在一个身位板以及若干个低一个身位的中位辨识度的时候，很有可能会出现低位卡高位的龙头反卡，这个时候必须需要最先身位的上板才能确认买点，高开都不能确认买点，所以当时这个亏损就是没有在板上买而是半路买了。</p></details>
+      </section>
+      <section class="panel" id="switch-mode-review" aria-labelledby="switch-mode-title">
+        <p class="eyebrow">本人反思修订 · 2026-11-06</p>
+        <h2 id="switch-mode-title">切换模式错误</h2>
+        <p>对低位接力切换模式不熟悉，却以较大仓位参与。重点是个人能力边界与仓位约束：尽量避免不熟悉的低位接力切换；如参与，最多小仓位试错，不用大仓位押注尚未掌握的模式。</p>
+        <ul>
+          <li><a href="#day=2026-10-19">10月19日</a>、<a href="#day=2026-10-21">10月21日 · 万丰奥威</a>：同一轮切换模式错误，21日为持仓延续。</li>
+          <li><a href="#day=2026-09-17">9月17日 · 西陇科学</a>：买入归入切换模式错误；18日降低成本加仓的既有反思单独保留，不写成17日当天加仓。</li>
+          <li><a href="#day=2026-08-28">8月28日</a>、<a href="#day=2026-08-31">8月31日 · 昊华科技</a>：交割为28日买入、31日卖出；口述中的29日为周六，没有成交，不新增交易或日损益。</li>
+        </ul>
+        <p class="note">个股排行榜计3轮；大亏日历按出现日期统计：8月2天、9月1天、10月2天。持仓延续不代表重新犯错，整天账户亏损也不全部归于该股。</p>
+        <details class="quote-archive"><summary>本次反思原话</summary><blockquote>10.19和10.21的万丰奥威，9.17的西龙科学，8.28和8.29的昊华科技，应该归类为“切换模式错误“，因为我个人在切换这个低位接力上的模式不熟悉不会，所以不应该大仓位的去做，最多小仓位去试错，所以这个错误应该归类为这个，我要尽量避免去做切换。</blockquote></details>
       </section>
       <noscript><p>此模块需要启用 JavaScript 展示筛选与排行榜。可直接查看<a href="./data.json">完整数据</a>。</p></noscript>
     </main><footer>交易复盘档案 · <span id="updated">2026-11-04</span> 整理更新</footer>

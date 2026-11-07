@@ -2,6 +2,7 @@
 import csv
 import io
 import json
+import re
 from collections import Counter
 from decimal import Decimal
 from pathlib import Path
@@ -11,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 def read(path):
     return json.loads((ROOT/path).read_text(encoding='utf-8-sig'))
 
+categories=set(re.findall(r'^  ([a-z_]+):', (ROOT/'large-loss-review/app.js').read_text(encoding='utf-8'), re.M))
 data = read('large-loss-review/calendar-data.json')
 trades = read('large-loss-review/calendar-trades.json')['rows']
 days = {d['date']: d for d in data['days']}
@@ -48,10 +50,10 @@ if attachment.exists():
 
 recorded = [d for d in days.values() if d['income'] and d['income']['kind']=='recorded']
 estimated = [d for d in days.values() if d['income'] and d['income']['kind']=='estimated']
-assert len(recorded)==97 and len(estimated)==21
+assert len(recorded)==97 and len(estimated)==25
 assert len([d for d in recorded if d['income']['rate'] < -2])==30
-assert len([d for d in estimated if d['income']['rate'] < -2])==5
-assert sum(d['tradeCount']>0 and not d['income'] for d in days.values())==41
+assert len([d for d in estimated if d['income']['rate'] < -2])==7
+assert sum(d['tradeCount']>0 and not d['income'] for d in days.values())==37
 for r in read('weekly-trading-review/daily-income.json')['rows']:
     actual = days[r['date']]['income']
     assert actual['rate']==r['rateBasisPoints']/100
@@ -63,9 +65,35 @@ assert days['2026-07-29']['income']['rate']==-9.76
 assert days['2026-08-14']['income']['rate']==-2.84  # newer source overrides -2.78
 assert days['2026-09-29']['income']['rate']==0
 assert '2026-09-25' not in days  # unknown is never filled with zero
-assert days['2026-10-30']['income'] is None  # stale conditional estimate excluded
-assert days['2026-11-04']['income'] is None
+# Actual October 30 trades replace the stale unchanged-position scenario.
+assert days['2026-10-30']['income']['amount']==266.18
+assert days['2026-10-30']['income']['calculation']['equity']==11800.36
+november=read('2026-11-02_2026-11-06/data/summary.json')['partialAccount']
+for date,amount in [('2026-11-02',-813.83),('2026-11-03',-346.59),('2026-11-04',-202.02)]:
+    actual=days[date]['income']
+    expected=next(d for d in november['days'] if d['date']==date)
+    assert actual['kind']=='estimated' and actual['amount']==amount==expected['pnl']
+    assert actual['rate']==expected['returnPct']
+    assert actual['source']=='2026-11-02_2026-11-06/index.html#trade-records'
+assert days['2026-11-02']['income']['calculation']['previousEquity']==11800.36
+assert days['2026-11-04']['income']['rate'] > -2  # stock loss does not imply a >2% account loss
+assert '2026-11-05' not in days and '2026-11-06' not in days  # no invented later-day income
 assert sum(t['qty'] for t in days['2026-11-04']['trades'] if t['code']=='600715' and t['side']=='buy')==800
+
+# Latest user attribution applies to entry day and its next-day carry-over only.
+assert days['2026-09-02']['income']['rate']==-3.62
+assert days['2026-09-03']['income']['rate']==-6.11
+for date,scope in [('2026-09-02','当日操作'),('2026-09-03','持仓延续')]:
+    errors=[e for e in days[date]['errors'] if any(t['code']=='600551' for t in e['stocks'])]
+    assert len(errors)==1 and errors[0]['category']=='board_confirm' and errors[0]['scope']==scope
+
+# Later personal clarification replaces only the named stock's classification.
+for date,code,scope in [('2026-08-28','600378','当日操作'),('2026-08-31','600378','持仓延续'),('2026-09-17','002584','当日操作'),('2026-10-19','002085','当日操作'),('2026-10-21','002085','持仓延续')]:
+    errors=[e for e in days[date]['errors'] if any(t['code']==code for t in e['stocks'])]
+    assert len(errors)==1 and errors[0]['category']=='switch_mode' and errors[0]['scope']==scope
+assert '2026-08-29' not in days
+for month,count in [('2026-08',2),('2026-09',1),('2026-10',2)]:
+    assert sum(d['date'].startswith(month) and d['income'] and d['income']['rate'] < -2 and any(e['category']=='switch_mode' for e in d['errors']) for d in days.values())==count
 
 # An account loss may arise from an existing position without any new trade.
 assert days['2026-08-07']['tradeCount']==0
@@ -93,9 +121,18 @@ def source_text(source):
 
 for d in days.values():
     if d['income']: source_text(d['income']['source'])
+    calculation=d['income'].get('calculation') if d['income'] else None
+    if calculation:
+        source_text(calculation['source'])
+        previous=Decimal(str(calculation['previousEquity']))
+        equity=Decimal(str(calculation['equity']))
+        pnl=Decimal(str(d['income']['amount']))
+        assert equity-previous==pnl
+        assert Decimal(str(calculation['cash']))+Decimal(str(calculation['marketValue']))==equity
+        assert abs(float(pnl/previous*100)-d['income']['rate'])<1e-9
     for note in d['notes']: source_text(note['source'])
     for e in d['errors']:
-        assert e['category'] in ['pk','cycle','leader','entry','exit','add','size','execution','mode','emotion']
+        assert e['category'] in categories
         assert e['scope'] in ['当日操作','持仓延续','本轮回看']
         raw,soup=source_text(e['source'])
         assert e['evidence'] in raw or e['evidence'] in soup.get_text(' ',strip=True)
@@ -106,4 +143,4 @@ for filename in ['calendar-data.json','calendar-trades.json','calendar-annotatio
 html=BeautifulSoup((ROOT/'large-loss-review/index.html').read_text(encoding='utf-8'),'html.parser')
 ids=[n['id'] for n in html.select('[id]')]
 assert len(ids)==len(set(ids))
-print('PASS: 720 source rows reconciled, 30 recorded + 5 estimated loss days; provenance, missing data, carry-over attribution, privacy, HTML IDs')
+print('PASS: 720 source rows reconciled, 30 recorded + 7 estimated loss days; November account bridge, provenance, missing data, attribution, privacy, HTML IDs')
