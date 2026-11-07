@@ -33,7 +33,7 @@ for r in records:
 # Cross-period FIFO and different episodes must not be collapsed into net stock PnL.
 expected = {
     '000678-2026-10-29-closed': (10101, 1510.19),
-    '001258-2026-07-24-closed': (18051, 2050),
+    '001258-2026-07-24-closed': (18096, 1964.95),
     '600403-2026-06-05-closed': (14073.14, 1433.94),
     '002421-2026-05-25-closed': (35250, 1331.70),
     '000993-2026-10-12-closed': (1714, 99.09),
@@ -41,7 +41,7 @@ expected = {
 }
 for key, (cost, pnl) in expected.items():
     assert (by_id[key]['cost'], by_id[key]['pnl']) == (cost, pnl), key
-assert by_id['001258-2026-07-24-closed']['basis'].startswith('费用前')
+assert by_id['001258-2026-07-24-closed']['basis'].startswith('含费闭环')
 assert by_id['002412-2026-08-27-closed']['assessment'] == '盈利但不可复制'
 assert by_id['603758-2026-08-17-closed']['assessment'] == '盈利但不可复制'
 assert by_id['000678-2026-10-29-closed']['assessment'] == '待归因'
@@ -59,6 +59,17 @@ for stock in monthly['stocks']:
             actual = by_id[f"{stock['code']}-{r['end']}-closed"]
             assert actual['pnl'] == r['pnl'] and actual['cost'] == r['cost']
 
+# Assert the entire eligible statement set, including repeated entries in one stock.
+statement = json.loads((ROOT/'large-profit-review/statement-rounds.json').read_text(encoding='utf8'))
+expected_rounds = {(r['code'],r['start'],r['end'],r['cost'],r['pnl']) for r in statement['profits']}
+actual_rounds = {(r['code'],r['start'],r['end'],r['cost'],r['pnl']) for r in records
+                 if r['status']=='closed' and statement['start'] <= r['end'] <= statement['end']}
+assert actual_rounds == expected_rounds
+assert len(expected_rounds) == len(statement['profits'])
+assert data['audit']['statement']['fills'] == sum(d['tradeCount'] for d in
+    json.loads((ROOT/'large-loss-review/calendar-data.json').read_text(encoding='utf8'))['days']
+    if statement['start'] <= d['date'] <= statement['end'])
+assert by_id['159516-2026-07-10-closed']['pnl'] == 341.7
 # Verify links, literal quote evidence, and navigation without external resources.
 sources = {s for r in records for s in r['sources']} | {q['source'] for r in records for q in r['quotes']}
 cache = {}

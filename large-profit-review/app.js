@@ -66,7 +66,7 @@ function openHash() {
   $('instrument').value=record.instrument;$('status').value=record.status;$('month').value='all';$('search').value='';$('category').value='all';render();
   const target=$(id);target.open=true;target.scrollIntoView();
 }
-const profitArchive = fetch('./data.json?v=20261106-dashi').then(response => {
+const profitArchive = fetch('./data.json?v=full-profit-statement').then(response => {
   if (!response.ok) throw new Error('HTTP '+response.status);
   return response.json();
 });
@@ -77,13 +77,14 @@ async function init() {
     [...new Set(DATA.records.map(r=>r.end.slice(0,7)))].sort().reverse().forEach(m=>$('month').insertAdjacentHTML('beforeend',`<option value="${m}">${m}</option>`));
     for(const id of ['instrument','status','month','category','sort'])$(id).addEventListener('change',render);
     $('search').addEventListener('input',render);
-    $('reset').addEventListener('click',()=>{for(const [id,value] of Object.entries({instrument:'stock',status:'closed',month:'all',category:'all',sort:'rate',search:''}))$(id).value=value;render();});
+    $('reset').addEventListener('click',()=>{for(const [id,value] of Object.entries({instrument:'all',status:'closed',month:'all',category:'all',sort:'rate',search:''}))$(id).value=value;render();});
     $('clear-category').addEventListener('click',()=>{$('category').value='all';render();});
     $('factor-ranks').addEventListener('click',e=>{const b=e.target.closest('[data-category]');if(b){$('category').value=b.dataset.category;render();$('records').scrollIntoView();$('category').focus({preventScroll:true});}});
     $('stock-ranks').addEventListener('click',e=>{const b=e.target.closest('[data-stock]');if(b){$('search').value=b.dataset.stock;$('category').value='all';render();$('records').scrollIntoView();}});
     const closed=DATA.records.filter(r=>r.status==='closed'), floating=DATA.records.filter(r=>r.status==='floating');
-    $('coverage').textContent=`已扫描 ${DATA.audit.scannedPages.length} 份周/月档案，成交覆盖至 ${DATA.audit.tradesThrough}；共有 ${closed.length} 轮可核算盈利、${floating.length} 条历史浮盈快照（含ETF）。已核对最新成交，未新增满足高于2%阈值的已平仓盈利轮次。没有成本或退出记录的部分不补造收益；分类采用有原文依据的最新反思。`;
-    $('audit-details').innerHTML=`<h3>已扫描档案</h3><ul>${DATA.audit.scannedPages.map(p=>`<li><a href="${escape(link(p.source))}">${escape(p.source.replace('/index.html',''))}</a> · ${escape(p.kind)}</li>`).join('')}</ul><h3>未配齐成本的历史卖出</h3><p class="subtle">以下卖出不凭现金流计算盈利率。4月独立报告已核算的轮次另行使用其已补成本。</p><ul>${DATA.audit.unknownCostSales.map(t=>`<li>${t.date} · ${escape(t.name)} ${t.code} · <a href="${escape(link(t.source))}">来源</a></li>`).join('')||'<li>无</li>'}</ul>`;
+    const statement=DATA.audit.statement;
+    $('coverage').textContent=`完整交割单覆盖 ${statement.start} 至 ${statement.end}，共 ${statement.fills} 笔成交，核对了 ${statement.closed} 轮已平仓交易。含费收益率超过 2% 的有 ${closed.filter(r=>r.instrument==='stock').length} 轮个股、${closed.filter(r=>r.instrument==='ETF').length} 轮 ETF。历史浮盈快照 ${floating.length} 条。`;
+    $('audit-details').innerHTML=`<h3>已扫描档案</h3><ul>${DATA.audit.scannedPages.map(p=>`<li><a href="${escape(link(p.source))}">${escape(p.source.replace('/index.html',''))}</a> · ${escape(p.kind)}</li>`).join('')}</ul><h3>未配齐成本的历史卖出</h3><p class="subtle">以下卖出不凭现金流计算盈利率。完整交割单内按逐轮实际发生金额核算。</p><ul>${DATA.audit.unknownCostSales.map(t=>`<li>${t.date} · ${escape(t.name)} ${t.code} · <a href="${escape(link(t.source))}">来源</a></li>`).join('')||'<li>无</li>'}</ul>`;
     $('updated').textContent=DATA.updated;$('load-state').hidden=true;$('content').hidden=false;render();openHash();
     window.addEventListener('hashchange',openHash);
   } catch(error) {

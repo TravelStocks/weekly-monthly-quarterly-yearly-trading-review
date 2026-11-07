@@ -4,17 +4,42 @@
   "threshold": 2,
   "records": [
     {
+      "code": "000586",
+      "name": "汇源通信",
+      "start": "2026-04-03",
+      "end": "2026-04-09",
+      "cost": 1892.0,
+      "pnl": 588.76,
+      "fills": 2,
+      "sources": [
+        "large-profit-review/statement-rounds.json"
+      ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
+      "rate": 31.118393234672304,
+      "id": "000586-2026-04-09-closed",
+      "instrument": "stock",
+      "quotes": [],
+      "assessment": "待归因",
+      "summary": "尚无足够的个股盈利归因，保留已有记录供回看。",
+      "factors": [],
+      "caveat": "",
+      "assessmentEvidence": ""
+    },
+    {
       "code": "002361",
       "name": "神剑股份",
       "start": "2026-04-20",
       "end": "2026-04-22",
       "cost": 23730.0,
       "pnl": 4088.08,
-      "status": "closed",
-      "basis": "含费闭环",
+      "fills": 8,
       "sources": [
-        "2026-04-20_2026-04-24/index.html"
+        "2026-04-20_2026-04-24/index.html",
+        "large-profit-review/statement-rounds.json"
       ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
       "rate": 17.22747576906869,
       "id": "002361-2026-04-22-closed",
       "instrument": "stock",
@@ -58,11 +83,13 @@
       "end": "2026-10-29",
       "cost": 10101.0,
       "pnl": 1510.19,
-      "status": "closed",
-      "basis": "含费闭环",
+      "fills": 4,
       "sources": [
-        "2026-10-26_2026-10-30/index.html"
+        "2026-10-26_2026-10-30/index.html",
+        "large-profit-review/statement-rounds.json"
       ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
       "rate": 14.950895950895951,
       "id": "000678-2026-10-29-closed",
       "instrument": "stock",
@@ -113,12 +140,14 @@
       "end": "2026-05-12",
       "cost": 12601.0,
       "pnl": 1600.89,
-      "status": "closed",
-      "basis": "含费闭环",
+      "fills": 3,
       "sources": [
         "2026-05-08_2026-05-16/index.html",
+        "large-profit-review/statement-rounds.json",
         "monthly-quarterly-trading-review/2026-05/index.html"
       ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
       "rate": 12.704467899373068,
       "id": "002491-2026-05-12-closed",
       "instrument": "stock",
@@ -172,19 +201,67 @@
       "assessmentEvidence": ""
     },
     {
+      "code": "600726",
+      "name": "华电能源",
+      "start": "2026-03-26",
+      "end": "2026-03-27",
+      "cost": 594.01,
+      "pnl": 70.64,
+      "fills": 2,
+      "sources": [
+        "large-profit-review/statement-rounds.json"
+      ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
+      "rate": 11.89205568929816,
+      "id": "600726-2026-03-27-closed",
+      "instrument": "stock",
+      "quotes": [],
+      "assessment": "待归因",
+      "summary": "尚无足够的个股盈利归因，保留已有记录供回看。",
+      "factors": [],
+      "caveat": "",
+      "assessmentEvidence": ""
+    },
+    {
+      "code": "605299",
+      "name": "舒华体育",
+      "start": "2026-03-25",
+      "end": "2026-03-26",
+      "cost": 5234.05,
+      "pnl": 610.96,
+      "fills": 2,
+      "sources": [
+        "large-profit-review/statement-rounds.json"
+      ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
+      "rate": 11.672796400492928,
+      "id": "605299-2026-03-26-closed",
+      "instrument": "stock",
+      "quotes": [],
+      "assessment": "待归因",
+      "summary": "尚无足够的个股盈利归因，保留已有记录供回看。",
+      "factors": [],
+      "caveat": "",
+      "assessmentEvidence": ""
+    },
+    {
       "code": "001258",
       "name": "立新能源",
       "start": "2026-07-21",
       "end": "2026-07-24",
-      "cost": 18051.0,
-      "pnl": 2050.0,
-      "status": "closed",
-      "basis": "费用前闭环（费用未完整提供）",
+      "cost": 18096.0,
+      "pnl": 1964.95,
+      "fills": 15,
       "sources": [
         "2026-07-20_2026-07-24/index.html",
-        "2026-07-24_2026-08-01/index.html"
+        "2026-07-24_2026-08-01/index.html",
+        "large-profit-review/statement-rounds.json"
       ],
-      "rate": 11.356711539526897,
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
+      "rate": 10.858477011494253,
       "id": "001258-2026-07-24-closed",
       "instrument": "stock",
       "quotes": [
@@ -363,12 +440,14 @@
       "end": "2026-06-05",
       "cost": 14073.14,
       "pnl": 1433.94,
-      "status": "closed",
-      "basis": "含费闭环",
+      "fills": 3,
       "sources": [
         "2026-06-01_2026-06-05/index.html",
+        "large-profit-review/statement-rounds.json",
         "monthly-quarterly-trading-review/2026-05/index.html"
       ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
       "rate": 10.189197293567748,
       "id": "600403-2026-06-05-closed",
       "instrument": "stock",
@@ -508,12 +587,14 @@
       "end": "2026-08-12",
       "cost": 11490.12,
       "pnl": 1115.44,
-      "status": "closed",
-      "basis": "含费闭环",
+      "fills": 6,
       "sources": [
         "2026-08-10_2026-08-15/index.html",
+        "large-profit-review/statement-rounds.json",
         "monthly-quarterly-trading-review/2026-08/index.html"
       ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
       "rate": 9.707818543235405,
       "id": "600721-2026-08-12-closed",
       "instrument": "stock",
@@ -635,17 +716,42 @@
       "assessmentEvidence": ""
     },
     {
+      "code": "002560",
+      "name": "通达股份",
+      "start": "2026-04-01",
+      "end": "2026-04-02",
+      "cost": 4753.0,
+      "pnl": 435.4,
+      "fills": 2,
+      "sources": [
+        "large-profit-review/statement-rounds.json"
+      ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
+      "rate": 9.160530191458026,
+      "id": "002560-2026-04-02-closed",
+      "instrument": "stock",
+      "quotes": [],
+      "assessment": "待归因",
+      "summary": "尚无足够的个股盈利归因，保留已有记录供回看。",
+      "factors": [],
+      "caveat": "",
+      "assessmentEvidence": ""
+    },
+    {
       "code": "600241",
       "name": "时代万恒",
       "start": "2026-10-08",
       "end": "2026-10-12",
       "cost": 8028.08,
       "pnl": 720.45,
-      "status": "closed",
-      "basis": "含费闭环",
+      "fills": 5,
       "sources": [
-        "2026-10-08_2026-10-16/index.html"
+        "2026-10-08_2026-10-16/index.html",
+        "large-profit-review/statement-rounds.json"
       ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
       "rate": 8.974125818377496,
       "id": "600241-2026-10-12-closed",
       "instrument": "stock",
@@ -803,17 +909,42 @@
       "assessmentEvidence": ""
     },
     {
+      "code": "000720",
+      "name": "新能泰山",
+      "start": "2026-04-03",
+      "end": "2026-04-07",
+      "cost": 1787.0,
+      "pnl": 157.02,
+      "fills": 2,
+      "sources": [
+        "large-profit-review/statement-rounds.json"
+      ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
+      "rate": 8.786793508673755,
+      "id": "000720-2026-04-07-closed",
+      "instrument": "stock",
+      "quotes": [],
+      "assessment": "待归因",
+      "summary": "尚无足够的个股盈利归因，保留已有记录供回看。",
+      "factors": [],
+      "caveat": "",
+      "assessmentEvidence": ""
+    },
+    {
       "code": "002081",
       "name": "金螳螂",
       "start": "2026-04-22",
       "end": "2026-04-23",
       "cost": 3463.0,
       "pnl": 275.13,
-      "status": "closed",
-      "basis": "含费闭环",
+      "fills": 2,
       "sources": [
-        "2026-04-20_2026-04-24/index.html"
+        "2026-04-20_2026-04-24/index.html",
+        "large-profit-review/statement-rounds.json"
       ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
       "rate": 7.9448455096736925,
       "id": "002081-2026-04-23-closed",
       "instrument": "stock",
@@ -869,11 +1000,13 @@
       "end": "2026-06-12",
       "cost": 3125.0,
       "pnl": 240.31,
-      "status": "closed",
-      "basis": "含费闭环",
+      "fills": 2,
       "sources": [
-        "2026-06-08_2026-06-12/index.html"
+        "2026-06-08_2026-06-12/index.html",
+        "large-profit-review/statement-rounds.json"
       ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
       "rate": 7.68992,
       "id": "002119-2026-06-12-closed",
       "instrument": "stock",
@@ -939,18 +1072,43 @@
       "assessmentEvidence": ""
     },
     {
+      "code": "002733",
+      "name": "雄韬股份",
+      "start": "2026-03-16",
+      "end": "2026-03-17",
+      "cost": 5297.0,
+      "pnl": 399.15,
+      "fills": 2,
+      "sources": [
+        "large-profit-review/statement-rounds.json"
+      ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
+      "rate": 7.535397394751746,
+      "id": "002733-2026-03-17-closed",
+      "instrument": "stock",
+      "quotes": [],
+      "assessment": "待归因",
+      "summary": "尚无足够的个股盈利归因，保留已有记录供回看。",
+      "factors": [],
+      "caveat": "",
+      "assessmentEvidence": ""
+    },
+    {
       "code": "588170",
       "name": "科创半导体ETF华夏",
       "start": "2026-07-09",
       "end": "2026-07-10",
       "cost": 4353.2,
       "pnl": 291.5,
-      "status": "closed",
-      "basis": "含费闭环",
+      "fills": 6,
       "sources": [
         "2026-07-06_2026-07-10/index.html",
-        "2026-07-10_2026-07-18/index.html"
+        "2026-07-10_2026-07-18/index.html",
+        "large-profit-review/statement-rounds.json"
       ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
       "rate": 6.696223467793808,
       "id": "588170-2026-07-10-closed",
       "instrument": "ETF",
@@ -1000,17 +1158,88 @@
       "assessmentEvidence": ""
     },
     {
+      "code": "603687",
+      "name": "大胜达",
+      "start": "2026-04-16",
+      "end": "2026-04-17",
+      "cost": 17105.17,
+      "pnl": 1141.52,
+      "fills": 2,
+      "sources": [
+        "large-profit-review/statement-rounds.json"
+      ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
+      "rate": 6.67353788357555,
+      "id": "603687-2026-04-17-closed",
+      "instrument": "stock",
+      "quotes": [],
+      "assessment": "待归因",
+      "summary": "尚无足够的个股盈利归因，保留已有记录供回看。",
+      "factors": [],
+      "caveat": "",
+      "assessmentEvidence": ""
+    },
+    {
+      "code": "002310",
+      "name": "东方新能",
+      "start": "2026-03-20",
+      "end": "2026-03-23",
+      "cost": 5881.0,
+      "pnl": 383.86,
+      "fills": 3,
+      "sources": [
+        "large-profit-review/statement-rounds.json"
+      ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
+      "rate": 6.527121237884714,
+      "id": "002310-2026-03-23-closed",
+      "instrument": "stock",
+      "quotes": [],
+      "assessment": "待归因",
+      "summary": "尚无足够的个股盈利归因，保留已有记录供回看。",
+      "factors": [],
+      "caveat": "",
+      "assessmentEvidence": ""
+    },
+    {
+      "code": "603256",
+      "name": "宏和科技",
+      "start": "2026-04-30",
+      "end": "2026-05-06",
+      "cost": 11929.12,
+      "pnl": 760.4,
+      "fills": 2,
+      "sources": [
+        "large-profit-review/statement-rounds.json"
+      ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
+      "rate": 6.374317636170983,
+      "id": "603256-2026-05-06-closed",
+      "instrument": "stock",
+      "quotes": [],
+      "assessment": "待归因",
+      "summary": "尚无足够的个股盈利归因，保留已有记录供回看。",
+      "factors": [],
+      "caveat": "",
+      "assessmentEvidence": ""
+    },
+    {
       "code": "600664",
       "name": "哈药股份",
       "start": "2026-07-14",
       "end": "2026-07-17",
       "cost": 14539.14,
       "pnl": 855.03,
-      "status": "closed",
-      "basis": "含费闭环",
+      "fills": 5,
       "sources": [
-        "2026-07-10_2026-07-18/index.html"
+        "2026-07-10_2026-07-18/index.html",
+        "large-profit-review/statement-rounds.json"
       ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
       "rate": 5.880884288891916,
       "id": "600664-2026-07-17-closed",
       "instrument": "stock",
@@ -1068,18 +1297,43 @@
       "assessmentEvidence": ""
     },
     {
+      "code": "000919",
+      "name": "金陵药业",
+      "start": "2026-04-08",
+      "end": "2026-04-09",
+      "cost": 8862.0,
+      "pnl": 518.3,
+      "fills": 3,
+      "sources": [
+        "large-profit-review/statement-rounds.json"
+      ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
+      "rate": 5.848566914917625,
+      "id": "000919-2026-04-09-closed",
+      "instrument": "stock",
+      "quotes": [],
+      "assessment": "待归因",
+      "summary": "尚无足够的个股盈利归因，保留已有记录供回看。",
+      "factors": [],
+      "caveat": "",
+      "assessmentEvidence": ""
+    },
+    {
       "code": "000993",
       "name": "闽东电力",
       "start": "2026-09-30",
       "end": "2026-10-12",
       "cost": 1714.0,
       "pnl": 99.09,
-      "status": "closed",
-      "basis": "含费闭环",
+      "fills": 2,
       "sources": [
         "2026-09-21_2026-09-30/index.html",
-        "2026-10-08_2026-10-16/index.html"
+        "2026-10-08_2026-10-16/index.html",
+        "large-profit-review/statement-rounds.json"
       ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
       "rate": 5.781213535589265,
       "id": "000993-2026-10-12-closed",
       "instrument": "stock",
@@ -1209,18 +1463,54 @@
       "assessmentEvidence": ""
     },
     {
+      "code": "159516",
+      "name": "半导设备",
+      "start": "2026-07-09",
+      "end": "2026-07-10",
+      "cost": 6013.1,
+      "pnl": 341.7,
+      "fills": 14,
+      "sources": [
+        "2026-07-06_2026-07-10/index.html",
+        "2026-07-10_2026-07-18/index.html",
+        "large-profit-review/statement-rounds.json"
+      ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
+      "rate": 5.682593005271823,
+      "id": "159516-2026-07-10-closed",
+      "instrument": "ETF",
+      "quotes": [
+        {
+          "text": "卖出大名城、恒生医疗、部分半导设备；买入半导设备ETF、科创半导体ETF、芯片ETF；账户 +605，仓位 80.30%。",
+          "source": "2026-07-06_2026-07-10/index.html#daily"
+        },
+        {
+          "text": "早盘高抛 159516、588170、512760，午后重新买入半导设备ETF与科创半导体ETF；账户 -514.40，仓位 88.50%。",
+          "source": "2026-07-06_2026-07-10/index.html#daily"
+        }
+      ],
+      "assessment": "待归因",
+      "summary": "尚无足够的个股盈利归因，保留已有记录供回看。",
+      "factors": [],
+      "caveat": "",
+      "assessmentEvidence": ""
+    },
+    {
       "code": "512760",
       "name": "芯片ETF国泰",
       "start": "2026-07-09",
       "end": "2026-07-10",
       "cost": 2067.4,
       "pnl": 117.2,
-      "status": "closed",
-      "basis": "含费闭环",
+      "fills": 3,
       "sources": [
         "2026-07-06_2026-07-10/index.html",
-        "2026-07-10_2026-07-18/index.html"
+        "2026-07-10_2026-07-18/index.html",
+        "large-profit-review/statement-rounds.json"
       ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
       "rate": 5.668956176840475,
       "id": "512760-2026-07-10-closed",
       "instrument": "ETF",
@@ -1253,25 +1543,103 @@
       "assessmentEvidence": ""
     },
     {
+      "code": "002348",
+      "name": "高乐股份",
+      "start": "2026-04-08",
+      "end": "2026-04-09",
+      "cost": 3521.0,
+      "pnl": 196.14,
+      "fills": 2,
+      "sources": [
+        "large-profit-review/statement-rounds.json"
+      ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
+      "rate": 5.570576540755467,
+      "id": "002348-2026-04-09-closed",
+      "instrument": "stock",
+      "quotes": [],
+      "assessment": "待归因",
+      "summary": "尚无足够的个股盈利归因，保留已有记录供回看。",
+      "factors": [],
+      "caveat": "",
+      "assessmentEvidence": ""
+    },
+    {
+      "code": "601872",
+      "name": "招商轮船",
+      "start": "2026-04-02",
+      "end": "2026-04-03",
+      "cost": 5935.06,
+      "pnl": 305.76,
+      "fills": 4,
+      "sources": [
+        "large-profit-review/statement-rounds.json"
+      ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
+      "rate": 5.151759207152075,
+      "id": "601872-2026-04-03-closed",
+      "instrument": "stock",
+      "quotes": [],
+      "assessment": "待归因",
+      "summary": "尚无足够的个股盈利归因，保留已有记录供回看。",
+      "factors": [],
+      "caveat": "",
+      "assessmentEvidence": ""
+    },
+    {
       "code": "603758",
       "name": "秦安股份",
-      "start": "期初持仓",
+      "start": "2026-08-11",
       "end": "2026-08-17",
       "cost": 1273.01,
       "pnl": 64.31,
-      "status": "closed",
-      "basis": "含费闭环（月度已核对）",
-      "originalClassification": "赚钱但不可复制",
+      "fills": 2,
       "sources": [
+        "2026-08-10_2026-08-15/index.html",
+        "2026-08-16_2026-08-23/index.html",
+        "large-profit-review/statement-rounds.json",
+        "monthly-quarterly-trading-review/2026-08/index.html",
         "monthly-quarterly-trading-review/2026-09/index.html"
       ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
       "rate": 5.051806348732532,
       "id": "603758-2026-08-17-closed",
       "instrument": "stock",
       "quotes": [
         {
+          "text": "秦安股份周二买入100股，发生金额约1,273.01。截图里没有卖出记录，是否仍持有、是否属于机器人/汽车方向试错，需要期末持仓确认。",
+          "source": "2026-08-10_2026-08-15/index.html#stock-603758"
+        },
+        {
+          "text": "华西股份800股、秦安股份100股和风范股份历史成本都缺期末/历史口径，下周处理计划需要你补材料后定稿。",
+          "source": "2026-08-10_2026-08-15/index.html"
+        },
+        {
+          "text": "华西股份周五分8笔买入800股，属于回流低吸但不是唯一核心；秦安股份周二买入100股，截图未见卖出。两者都需要期末持仓、成本、市值、下周处理计划后才能定稿。",
+          "source": "2026-08-10_2026-08-15/index.html#profit-loss"
+        },
+        {
+          "text": "操作： 竞价买入百花医药900股，另买入秦安股份100股。",
+          "source": "2026-08-10_2026-08-15/index.html#daily"
+        },
+        {
+          "text": "复盘： 轮动行情中，确定性不够时管住手是对的。百花医药属于创新药方向试错并在次日形成闭环；秦安股份期末是否仍持有待截图确认。",
+          "source": "2026-08-10_2026-08-15/index.html#daily"
+        },
+        {
+          "text": "重点确认华西股份800股、秦安股份100股是否仍持有，以及成本价、市价、市值、浮盈亏、总资产。",
+          "source": "2026-08-10_2026-08-15/index.html#missing"
+        },
+        {
           "text": "已实现盈亏按卖出发生金额减去 FIFO 配对买入成本计算，计入实际扣费。华西股份、秦安股份的期初成本来自 08.10-08.15 周报 ，其余跨周成本按这五周成交连续结转。",
           "source": "2026-08-16_2026-08-23/index.html#summary"
+        },
+        {
+          "text": "补齐秦安股份100股、风华高科100股的后续卖出或期末估值；当前仅能确认截图内买入成本。",
+          "source": "monthly-quarterly-trading-review/2026-08/index.html#pending"
         },
         {
           "text": "秦安股份 603758 赚但不可复制 期初仓盈利，操作不合模式 不继续做错误样本。",
@@ -1313,14 +1681,16 @@
       "name": "汉森制药",
       "start": "2026-08-25",
       "end": "2026-08-27",
-      "cost": 11845,
+      "cost": 11845.0,
       "pnl": 597.77,
-      "status": "closed",
-      "basis": "含费闭环（月度已核对）",
-      "originalClassification": "运气盈利",
+      "fills": 5,
       "sources": [
+        "2026-08-23_2026-08-30/index.html",
+        "large-profit-review/statement-rounds.json",
         "monthly-quarterly-trading-review/2026-09/index.html"
       ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
       "rate": 5.046601941747573,
       "id": "002412-2026-08-27-closed",
       "instrument": "stock",
@@ -1365,18 +1735,113 @@
       "assessmentEvidence": "本人明确当时未理解补涨与高唯一性加持，不能把盈利包装为成熟可复制执行。"
     },
     {
+      "code": "002634",
+      "name": "棒杰股份",
+      "start": "2026-03-31",
+      "end": "2026-04-01",
+      "cost": 6148.0,
+      "pnl": 304.77,
+      "fills": 3,
+      "sources": [
+        "large-profit-review/statement-rounds.json"
+      ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
+      "rate": 4.957221860767729,
+      "id": "002634-2026-04-01-closed",
+      "instrument": "stock",
+      "quotes": [],
+      "assessment": "待归因",
+      "summary": "尚无足够的个股盈利归因，保留已有记录供回看。",
+      "factors": [],
+      "caveat": "",
+      "assessmentEvidence": ""
+    },
+    {
+      "code": "603778",
+      "name": "国晟科技",
+      "start": "2026-04-03",
+      "end": "2026-04-07",
+      "cost": 5665.06,
+      "pnl": 270.91,
+      "fills": 2,
+      "sources": [
+        "large-profit-review/statement-rounds.json"
+      ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
+      "rate": 4.782120577716741,
+      "id": "603778-2026-04-07-closed",
+      "instrument": "stock",
+      "quotes": [],
+      "assessment": "待归因",
+      "summary": "尚无足够的个股盈利归因，保留已有记录供回看。",
+      "factors": [],
+      "caveat": "",
+      "assessmentEvidence": ""
+    },
+    {
+      "code": "605299",
+      "name": "舒华体育",
+      "start": "2026-03-30",
+      "end": "2026-04-01",
+      "cost": 2023.02,
+      "pnl": 95.9,
+      "fills": 2,
+      "sources": [
+        "large-profit-review/statement-rounds.json"
+      ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
+      "rate": 4.740437563642475,
+      "id": "605299-2026-04-01-closed",
+      "instrument": "stock",
+      "quotes": [],
+      "assessment": "待归因",
+      "summary": "尚无足够的个股盈利归因，保留已有记录供回看。",
+      "factors": [],
+      "caveat": "",
+      "assessmentEvidence": ""
+    },
+    {
+      "code": "605162",
+      "name": "新中港",
+      "start": "2026-04-01",
+      "end": "2026-04-02",
+      "cost": 5118.05,
+      "pnl": 234.21,
+      "fills": 3,
+      "sources": [
+        "large-profit-review/statement-rounds.json"
+      ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
+      "rate": 4.576156934770078,
+      "id": "605162-2026-04-02-closed",
+      "instrument": "stock",
+      "quotes": [],
+      "assessment": "待归因",
+      "summary": "尚无足够的个股盈利归因，保留已有记录供回看。",
+      "factors": [],
+      "caveat": "",
+      "assessmentEvidence": ""
+    },
+    {
       "code": "600127",
       "name": "金健米业",
       "start": "2026-08-31",
       "end": "2026-09-01",
       "cost": 3617.04,
       "pnl": 156.03,
-      "status": "closed",
-      "basis": "含费闭环（月度已核对）",
-      "originalClassification": "可避免部分 + 模式内损益",
+      "fills": 2,
       "sources": [
+        "2026-08-30_2026-09-06/index.html",
+        "2026-08-31_2026-09-04/index.html",
+        "large-profit-review/statement-rounds.json",
         "monthly-quarterly-trading-review/2026-09/index.html"
       ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
       "rate": 4.313748258244311,
       "id": "600127-2026-09-01-closed",
       "instrument": "stock",
@@ -1482,18 +1947,66 @@
       "assessmentEvidence": ""
     },
     {
+      "code": "603421",
+      "name": "鼎信通讯",
+      "start": "2026-03-17",
+      "end": "2026-03-19",
+      "cost": 7981.08,
+      "pnl": 329.68,
+      "fills": 2,
+      "sources": [
+        "large-profit-review/statement-rounds.json"
+      ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
+      "rate": 4.130769269321947,
+      "id": "603421-2026-03-19-closed",
+      "instrument": "stock",
+      "quotes": [],
+      "assessment": "待归因",
+      "summary": "尚无足够的个股盈利归因，保留已有记录供回看。",
+      "factors": [],
+      "caveat": "",
+      "assessmentEvidence": ""
+    },
+    {
+      "code": "600152",
+      "name": "维科技术",
+      "start": "2026-04-14",
+      "end": "2026-04-15",
+      "cost": 1156.01,
+      "pnl": 47.38,
+      "fills": 2,
+      "sources": [
+        "large-profit-review/statement-rounds.json"
+      ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
+      "rate": 4.09858046210673,
+      "id": "600152-2026-04-15-closed",
+      "instrument": "stock",
+      "quotes": [],
+      "assessment": "待归因",
+      "summary": "尚无足够的个股盈利归因，保留已有记录供回看。",
+      "factors": [],
+      "caveat": "",
+      "assessmentEvidence": ""
+    },
+    {
       "code": "603230",
       "name": "内蒙新华",
       "start": "2026-09-21",
       "end": "2026-09-23",
       "cost": 9443.1,
       "pnl": 380.86,
-      "status": "closed",
-      "basis": "含费闭环（月度已核对）",
-      "originalClassification": "值得复制",
+      "fills": 6,
       "sources": [
+        "2026-09-21_2026-09-30/index.html",
+        "large-profit-review/statement-rounds.json",
         "monthly-quarterly-trading-review/2026-09/index.html"
       ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
       "rate": 4.033209433342864,
       "id": "603230-2026-09-23-closed",
       "instrument": "stock",
@@ -1645,13 +2158,15 @@
       "end": "2026-05-25",
       "cost": 35250.0,
       "pnl": 1331.7,
-      "status": "closed",
-      "basis": "含费闭环",
+      "fills": 14,
       "sources": [
         "2026-05-15_2026-05-22/index.html",
         "2026-05-25_2026-05-29/index.html",
+        "large-profit-review/statement-rounds.json",
         "monthly-quarterly-trading-review/2026-05/index.html"
       ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
       "rate": 3.7778723404255325,
       "id": "002421-2026-05-25-closed",
       "instrument": "stock",
@@ -1781,18 +2296,43 @@
       "assessmentEvidence": ""
     },
     {
+      "code": "002824",
+      "name": "和胜股份",
+      "start": "2026-04-10",
+      "end": "2026-04-13",
+      "cost": 2532.0,
+      "pnl": 92.68,
+      "fills": 2,
+      "sources": [
+        "large-profit-review/statement-rounds.json"
+      ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
+      "rate": 3.660347551342812,
+      "id": "002824-2026-04-13-closed",
+      "instrument": "stock",
+      "quotes": [],
+      "assessment": "待归因",
+      "summary": "尚无足够的个股盈利归因，保留已有记录供回看。",
+      "factors": [],
+      "caveat": "",
+      "assessmentEvidence": ""
+    },
+    {
       "code": "159516",
       "name": "半导设备",
       "start": "2026-08-03",
       "end": "2026-08-04",
       "cost": 3075.0,
       "pnl": 105.4,
-      "status": "closed",
-      "basis": "含费闭环",
+      "fills": 4,
       "sources": [
         "2026-07-31_2026-08-08/index.html",
+        "large-profit-review/statement-rounds.json",
         "monthly-quarterly-trading-review/2026-08/index.html"
       ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
       "rate": 3.4276422764227648,
       "id": "159516-2026-08-04-closed",
       "instrument": "ETF",
@@ -1815,11 +2355,13 @@
       "end": "2026-04-21",
       "cost": 1562.02,
       "pnl": 52.15,
-      "status": "closed",
-      "basis": "含费闭环",
+      "fills": 2,
       "sources": [
-        "2026-04-20_2026-04-24/index.html"
+        "2026-04-20_2026-04-24/index.html",
+        "large-profit-review/statement-rounds.json"
       ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
       "rate": 3.3386256257922438,
       "id": "603601-2026-04-21-closed",
       "instrument": "stock",
@@ -1848,17 +2390,65 @@
       "assessmentEvidence": ""
     },
     {
+      "code": "601975",
+      "name": "招商南油",
+      "start": "2026-04-02",
+      "end": "2026-04-03",
+      "cost": 2903.03,
+      "pnl": 84.44,
+      "fills": 2,
+      "sources": [
+        "large-profit-review/statement-rounds.json"
+      ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
+      "rate": 2.908685063537063,
+      "id": "601975-2026-04-03-closed",
+      "instrument": "stock",
+      "quotes": [],
+      "assessment": "待归因",
+      "summary": "尚无足够的个股盈利归因，保留已有记录供回看。",
+      "factors": [],
+      "caveat": "",
+      "assessmentEvidence": ""
+    },
+    {
+      "code": "603803",
+      "name": "瑞斯康达",
+      "start": "2026-03-12",
+      "end": "2026-03-16",
+      "cost": 11255.11,
+      "pnl": 325.97,
+      "fills": 2,
+      "sources": [
+        "large-profit-review/statement-rounds.json"
+      ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
+      "rate": 2.8961955947120908,
+      "id": "603803-2026-03-16-closed",
+      "instrument": "stock",
+      "quotes": [],
+      "assessment": "待归因",
+      "summary": "尚无足够的个股盈利归因，保留已有记录供回看。",
+      "factors": [],
+      "caveat": "",
+      "assessmentEvidence": ""
+    },
+    {
       "code": "002741",
       "name": "光华科技",
       "start": "2026-06-17",
       "end": "2026-06-18",
       "cost": 7893.0,
       "pnl": 213.94,
-      "status": "closed",
-      "basis": "含费闭环",
+      "fills": 2,
       "sources": [
-        "2026-06-15_2026-06-20/index.html"
+        "2026-06-15_2026-06-20/index.html",
+        "large-profit-review/statement-rounds.json"
       ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
       "rate": 2.7105029773216773,
       "id": "002741-2026-06-18-closed",
       "instrument": "stock",
@@ -1896,6 +2486,93 @@
       "summary": "光华科技隔日平仓盈利213.94元。档案确认科技链方向，但关于趋势第一、抗跌与回拉的内容主要是后续筛选要求，不能倒填为本轮已做到。",
       "factors": [],
       "caveat": "盈利幅度和方向信息不足以证明核心识别或买点纪律。",
+      "assessmentEvidence": ""
+    },
+    {
+      "code": "600396",
+      "name": "华电辽能",
+      "start": "2026-03-26",
+      "end": "2026-03-27",
+      "cost": 15392.17,
+      "pnl": 387.77,
+      "fills": 7,
+      "sources": [
+        "large-profit-review/statement-rounds.json"
+      ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
+      "rate": 2.5192679134910803,
+      "id": "600396-2026-03-27-closed",
+      "instrument": "stock",
+      "quotes": [],
+      "assessment": "待归因",
+      "summary": "尚无足够的个股盈利归因，保留已有记录供回看。",
+      "factors": [],
+      "caveat": "",
+      "assessmentEvidence": ""
+    },
+    {
+      "code": "002636",
+      "name": "金安国纪",
+      "start": "2026-03-17",
+      "end": "2026-03-18",
+      "cost": 6473.0,
+      "pnl": 160.68,
+      "fills": 2,
+      "sources": [
+        "large-profit-review/statement-rounds.json"
+      ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
+      "rate": 2.4823111385756222,
+      "id": "002636-2026-03-18-closed",
+      "instrument": "stock",
+      "quotes": [],
+      "assessment": "待归因",
+      "summary": "尚无足够的个股盈利归因，保留已有记录供回看。",
+      "factors": [],
+      "caveat": "",
+      "assessmentEvidence": ""
+    },
+    {
+      "code": "588170",
+      "name": "科创半导",
+      "start": "2026-08-03",
+      "end": "2026-08-04",
+      "cost": 3047.0,
+      "pnl": 64.9,
+      "fills": 4,
+      "sources": [
+        "2026-07-31_2026-08-08/index.html",
+        "large-profit-review/statement-rounds.json"
+      ],
+      "status": "closed",
+      "basis": "含费闭环（完整交割单）",
+      "rate": 2.1299638989169676,
+      "id": "588170-2026-08-04-closed",
+      "instrument": "ETF",
+      "quotes": [
+        {
+          "text": "科创半导ETF华夏 8/3 买入3600份，8/4 分三笔卖出3600份，截图内小赚。它和半导设备ETF一起验证科技线弹性，但不能在不确认主升时升级仓位。",
+          "source": "2026-07-31_2026-08-08/index.html#profit-loss"
+        },
+        {
+          "text": "这一周更像是轻量试错和仓位切换：一鸣食品跨周小赚卖出，半导体ETF/科创半导形成小赚闭环，8/6 集中买入风范股份形成期末待验证仓。核心缺口是风范股份期末市值与浮盈亏。",
+          "source": "2026-07-31_2026-08-08/index.html"
+        },
+        {
+          "text": "卖出一鸣食品200股；买入半导体设备ETF国泰5000份、科创半导ETF华夏3600份。",
+          "source": "2026-07-31_2026-08-08/index.html#daily"
+        },
+        {
+          "text": "卖出半导体设备ETF国泰5000份、科创半导ETF华夏3600份。",
+          "source": "2026-07-31_2026-08-08/index.html#daily"
+        }
+      ],
+      "assessment": "待归因",
+      "summary": "尚无足够的个股盈利归因，保留已有记录供回看。",
+      "factors": [],
+      "caveat": "",
       "assessmentEvidence": ""
     }
   ],
@@ -2044,55 +2721,30 @@
         "source": "monthly-quarterly-trading-review/2026-08/index.html",
         "trades": 42,
         "kind": "公开成交明细"
+      },
+      {
+        "source": "large-loss-review/supplemental-trades.json",
+        "trades": 4,
+        "kind": "交割单补充成交"
       }
     ],
-    "uniqueTrades": 480,
-    "unknownCostSales": [
-      {
-        "date": "2026-05-08",
-        "code": "600379",
-        "name": "宝光股份",
-        "source": "monthly-quarterly-trading-review/2026-05/index.html"
-      },
-      {
-        "date": "2026-05-18",
-        "code": "002082",
-        "name": "ST万邦",
-        "source": "monthly-quarterly-trading-review/2026-05/index.html"
-      },
-      {
-        "date": "2026-07-10",
-        "code": "159516",
-        "name": "半导体设备ETF国泰",
-        "source": "2026-07-10_2026-07-18/index.html"
-      },
-      {
-        "date": "2026-07-10",
-        "code": "159516",
-        "name": "半导体设备ETF国泰",
-        "source": "2026-07-10_2026-07-18/index.html"
-      },
-      {
-        "date": "2026-07-10",
-        "code": "159516",
-        "name": "半导体设备ETF国泰",
-        "source": "2026-07-10_2026-07-18/index.html"
-      },
-      {
-        "date": "2026-07-10",
-        "code": "159516",
-        "name": "半导体设备ETF国泰",
-        "source": "2026-07-10_2026-07-18/index.html"
-      },
-      {
-        "date": "2026-08-04",
-        "code": "588170",
-        "name": "科创半导",
-        "source": "monthly-quarterly-trading-review/2026-08/index.html"
-      }
-    ],
+    "uniqueTrades": 483,
+    "unknownCostSales": [],
     "monthlySource": "monthly-quarterly-trading-review/2026-09/index.html",
     "tradesThrough": "2026-11-04",
-    "snapshotThrough": "2026-11-04"
+    "snapshotThrough": "2026-11-04",
+    "statement": {
+      "start": "2026-03-11",
+      "end": "2026-11-04",
+      "fills": 720,
+      "closed": 215,
+      "openPositions": [
+        {
+          "code": "600715",
+          "qty": 800,
+          "start": "2026-11-04"
+        }
+      ]
+    }
   }
 }

@@ -271,6 +271,24 @@ def build(outcome='loss'):
                 cost=cost, pnl=round(holding['qty'] * holding['close'] - cost, 2), status='floating',
                 basis=('含费成本' if fee_known else '费用前成本') + ' · ' + day['date'] + '历史收盘快照，非当前持仓；后续退出记录未齐',
                 sources=sorted({source} | {p for t in position['trades'] for p in t['sources']})))
+    if profit:
+        statement_source = 'large-profit-review/statement-rounds.json'
+        statement = read_json(statement_source)
+        prior = {(r['code'], r['end']): r for r in rounds if r['status'] == 'closed'}
+        # The statement covers all trades in this interval, including periods without a weekly page.
+        rounds = [r for r in rounds if r['end'] < statement['start'] or r['end'] > statement['end']
+                  or (r['status'] == 'floating' and any(p['code'] == r['code'] and p['start'] == r['start']
+                      for p in statement['openPositions']))]
+        for item in statement['profits']:
+            historical = prior.get((item['code'], item['end']), {})
+            item = {**item, 'name': historical.get('name', item['name'])}
+            sources = set(historical.get('sources', []))
+            for path in pages:
+                span = re.match(r'^(\d{4}-\d{2}-\d{2})_(\d{4}-\d{2}-\d{2})/', path)
+                if span and span[1] <= item['end'] and item['start'] <= span[2]:
+                    sources.add(path)
+            rounds.append(dict(**item, sources=sorted(sources | {statement_source}), status='closed',
+                               basis='含费闭环（完整交割单）'))
     candidates=[]
     for r in rounds:
         if r['cost'] <= 0:
@@ -290,6 +308,8 @@ def build(outcome='loss'):
                     source_pages.add(path)
         quotes=[]
         for path in sorted(source_pages):
+            if not path.endswith('.html'):
+                continue
             soup=pages.get(path) or BeautifulSoup((ROOT/path).read_text(encoding='utf-8'),'html.parser')
             quotes += extract_quotes(soup,path,r['name'],r['code'])
             meta=embedded((ROOT/path).read_text(encoding='utf-8'), 'stockMeta') if path.startswith(('2026-05-25','2026-06-01')) else None
@@ -303,7 +323,7 @@ def build(outcome='loss'):
             for p in soup.select('p, li'):
                 text=p.get_text(' ',strip=True)
                 if len(text)>18 and not p.find_parent(['table','svg','nav']): quotes.append(dict(text=text,source=nearest_link(p,path)))
-        if r['end'] <= '2026-04-24':
+        if april_path in source_pages and r['end'] <= '2026-04-24' and any(s['code']==r['code'] for s in april['stocks']):
             # Only text from the reflection payload, never account/source paths.
             def walk(v):
                 if isinstance(v,dict):
@@ -349,6 +369,11 @@ def build(outcome='loss'):
             {k:t[k] for k in ['date','code','name','source']} for t in unknown],
             monthlySource=monthly_path, tradesThrough=max(t['date'] for t in trades),
             snapshotThrough=max((d['date'] for d, _ in snapshots), default=None)))
+    if profit:
+        payload['audit']['statement'] = {key:statement[key] for key in ('start','end','fills','closed','openPositions')}
+        payload['audit']['unknownCostSales'] = [t for t in payload['audit']['unknownCostSales']
+                                                 if not statement['start'] <= t['date'] <= statement['end']]
+        payload['audit']['tradesThrough'] = max(payload['audit']['tradesThrough'], statement['end'])
     (out/'data.json').write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(f'{len(candidates)} {outcome} records; {len(trades)} unique fills; {len(unknown)} unmatched historical sales')
     for r in candidates:
