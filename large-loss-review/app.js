@@ -19,7 +19,7 @@ const CATEGORIES = {
 const $ = id => document.getElementById(id);
 const escape = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const money = value => Number(value).toLocaleString('zh-CN',{minimumFractionDigits:2,maximumFractionDigits:2});
-const link = path => '../' + path;
+const link = path => path.startsWith('large-loss-review/index.html#') ? path.slice(path.indexOf('#')) : '../' + path;
 let DATA;
 
 function scopedRecords() {

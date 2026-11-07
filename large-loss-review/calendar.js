@@ -4,7 +4,7 @@
   const esc = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const money = value => Number(value).toLocaleString('zh-CN',{minimumFractionDigits:2,maximumFractionDigits:2});
   const rateText = value => (value>0?'+':'')+value.toFixed(2)+'%';
-  const sourceLink = path => '../'+path;
+  const sourceLink = path => path.startsWith('large-loss-review/index.html#') ? path.slice(path.indexOf('#')) : '../'+path;
   let archive, dates, months, selected, month;
   const names = new Map();
   const methodLink = document.querySelector('.hero-note a');
