@@ -8061,22 +8061,14 @@
           "code": "001258",
           "start": "2026-07-28",
           "end": "2026-07-29",
-          "summary": "主升三阶段无先手，未等回封便连续买入；越跌越补，把熟悉的旧龙头当成确定性。",
+          "summary": "按本人最新反思，主因归为监管反核节奏错误：只有监管首日上板确认后的参与窗口，次日必须退出，不在次日新开仓。本人认为首日盈亏比高但胜率低，错过窗口再参与可能连续两天大亏。7月28日分11笔买入1,100股，29日全部卖出，计同一轮；卖出本身不另判为新错误。",
           "errors": [
             {
-              "category": "cycle",
-              "evidence": "7/28 是主升3分歧日"
-            },
-            {
-              "category": "entry",
-              "evidence": "应该等回封确认"
-            },
-            {
-              "category": "add",
-              "evidence": "一路越跌越买"
+              "category": "regulatory_timing",
+              "evidence": "监管第一天反核必须上板才是机会，只有第一天能参与而且第二天必须出来"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         },
         {
           "id": "002879-2026-07-28-closed",
@@ -8094,11 +8086,11 @@
           "assessment": "已有反思归类"
         }
       ],
-      "summary": "卖出长缆科技，11笔买入立新能源。既有反思明确指出主升3分歧日买急、未等回封确认、一路越跌越买。",
-      "assessment": "已有反思归类",
+      "summary": "卖出长缆科技100股，分11笔买入立新能源1,100股。立新能源按本人最新反思改归监管反核节奏错误：只有监管首日、上板确认后才参与，次日必须退出；晚一天参与或未等上板，可能连续两天承受大亏。原有阶段、加仓等反思保留在历史原文中。",
+      "assessment": "本人最新反思归类",
       "errors": [
         {
-          "category": "cycle",
+          "category": "regulatory_timing",
           "scope": "当日操作",
           "stocks": [
             {
@@ -8106,32 +8098,8 @@
               "name": "立新能源"
             }
           ],
-          "evidence": "7/28 是主升3分歧日",
-          "source": "success-failure-trade-review/stock-001258-failure/index.html"
-        },
-        {
-          "category": "entry",
-          "scope": "当日操作",
-          "stocks": [
-            {
-              "code": "001258",
-              "name": "立新能源"
-            }
-          ],
-          "evidence": "应该等回封确认",
-          "source": "success-failure-trade-review/stock-001258-failure/index.html"
-        },
-        {
-          "category": "add",
-          "scope": "当日操作",
-          "stocks": [
-            {
-              "code": "001258",
-              "name": "立新能源"
-            }
-          ],
-          "evidence": "一路越跌越买",
-          "source": "success-failure-trade-review/stock-001258-failure/index.html"
+          "evidence": "监管第一天反核必须上板才是机会，只有第一天能参与而且第二天必须出来",
+          "source": "large-loss-review/index.html#regulatory-timing-review"
         }
       ]
     },
@@ -8170,29 +8138,21 @@
           "code": "001258",
           "start": "2026-07-28",
           "end": "2026-07-29",
-          "summary": "主升三阶段无先手，未等回封便连续买入；越跌越补，把熟悉的旧龙头当成确定性。",
+          "summary": "按本人最新反思，主因归为监管反核节奏错误：只有监管首日上板确认后的参与窗口，次日必须退出，不在次日新开仓。本人认为首日盈亏比高但胜率低，错过窗口再参与可能连续两天大亏。7月28日分11笔买入1,100股，29日全部卖出，计同一轮；卖出本身不另判为新错误。",
           "errors": [
             {
-              "category": "cycle",
-              "evidence": "7/28 是主升3分歧日"
-            },
-            {
-              "category": "entry",
-              "evidence": "应该等回封确认"
-            },
-            {
-              "category": "add",
-              "evidence": "一路越跌越买"
+              "category": "regulatory_timing",
+              "evidence": "监管第一天反核必须上板才是机会，只有第一天能参与而且第二天必须出来"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         }
       ],
-      "summary": "卖出立新能源1,100股。日记认可止损执行，亏损根源在前一天的买点、阶段定位与亏损加仓；这里作为同轮风险延续标记。",
-      "assessment": "已有反思归类",
+      "summary": "卖出立新能源1,100股。本轮主因按本人最新反思改为监管反核节奏错误：首日上板确认才参与，次日必须退出。今天标为7月28日入场问题的持仓延续，卖出本身不另算新错误；账户当日损益与个股整轮损益分别核算。",
+      "assessment": "本人最新反思归类",
       "errors": [
         {
-          "category": "cycle",
+          "category": "regulatory_timing",
           "scope": "持仓延续",
           "stocks": [
             {
@@ -8200,32 +8160,8 @@
               "name": "立新能源"
             }
           ],
-          "evidence": "7/28 是主升3分歧日",
-          "source": "success-failure-trade-review/stock-001258-failure/index.html"
-        },
-        {
-          "category": "entry",
-          "scope": "持仓延续",
-          "stocks": [
-            {
-              "code": "001258",
-              "name": "立新能源"
-            }
-          ],
-          "evidence": "应该等回封确认",
-          "source": "success-failure-trade-review/stock-001258-failure/index.html"
-        },
-        {
-          "category": "add",
-          "scope": "持仓延续",
-          "stocks": [
-            {
-              "code": "001258",
-              "name": "立新能源"
-            }
-          ],
-          "evidence": "一路越跌越买",
-          "source": "success-failure-trade-review/stock-001258-failure/index.html"
+          "evidence": "监管第一天反核必须上板才是机会，只有第一天能参与而且第二天必须出来",
+          "source": "large-loss-review/index.html#regulatory-timing-review"
         }
       ]
     },
@@ -12348,23 +12284,32 @@
           "code": "603278",
           "start": "2026-10-30",
           "end": "2026-11-02",
-          "summary": "绕异动博弈仓位过重，把非主模式当作主模式处理。10月30日买入、11月2日退出，合并为一轮跨周含费亏损；不把整轮亏损当作11月2日账户日损益。",
+          "summary": "按本人最新反思，主因归为监管反核节奏错误：监管首日反核必须上板确认才参与，次日必须卖出，不能延后新开仓或反复博弈。本人强调踏错节奏可能从入场日到次日连续大亏。10月30日买入200股、11月2日全部卖出，计一轮跨周含费亏损；不将整轮损失当作11月2日账户日损益。",
           "errors": [
             {
-              "category": "mode",
-              "evidence": "把绕异动博弈与主升题材龙混为一谈"
-            },
-            {
-              "category": "size",
-              "evidence": "给了不匹配的仓位"
+              "category": "regulatory_timing",
+              "evidence": "监管第一天反核必须上板才是机会，只有第一天能参与而且第二天必须出来"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         }
       ],
-      "summary": "",
-      "assessment": "待归因",
-      "errors": []
+      "summary": "卖出襄阳轴承600股，分2笔买入大业股份200股。大业这轮按本人最新反思归为监管反核节奏错误，关联实际入场日；纪律为监管首日上板确认才参与、次日必须退出，不把机会延伸为后续新开仓。当天账户估算收益为正，不计入大亏日排名。",
+      "assessment": "本人最新反思归类",
+      "errors": [
+        {
+          "category": "regulatory_timing",
+          "scope": "当日操作",
+          "stocks": [
+            {
+              "code": "603278",
+              "name": "大业股份"
+            }
+          ],
+          "evidence": "监管第一天反核必须上板才是机会，只有第一天能参与而且第二天必须出来",
+          "source": "large-loss-review/index.html#regulatory-timing-review"
+        }
+      ]
     },
     {
       "date": "2026-11-02",
@@ -12430,25 +12375,21 @@
           "code": "603278",
           "start": "2026-10-30",
           "end": "2026-11-02",
-          "summary": "绕异动博弈仓位过重，把非主模式当作主模式处理。10月30日买入、11月2日退出，合并为一轮跨周含费亏损；不把整轮亏损当作11月2日账户日损益。",
+          "summary": "按本人最新反思，主因归为监管反核节奏错误：监管首日反核必须上板确认才参与，次日必须卖出，不能延后新开仓或反复博弈。本人强调踏错节奏可能从入场日到次日连续大亏。10月30日买入200股、11月2日全部卖出，计一轮跨周含费亏损；不将整轮损失当作11月2日账户日损益。",
           "errors": [
             {
-              "category": "mode",
-              "evidence": "把绕异动博弈与主升题材龙混为一谈"
-            },
-            {
-              "category": "size",
-              "evidence": "给了不匹配的仓位"
+              "category": "regulatory_timing",
+              "evidence": "监管第一天反核必须上板才是机会，只有第一天能参与而且第二天必须出来"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         }
       ],
-      "summary": "两笔买入上海沪工200股，分两笔卖出大业股份200股。沪工按本人最新反思归为补涨龙参与高度错误：只在三板研究已确认地位的机会，更高位置不再开仓；高度有限且题材走弱时，可能从入场日到次日连续大亏。大业此前非主模式仓位过重的问题单独保留。账户日损益与个股整轮损益分别计算。",
+      "summary": "两笔买入上海沪工200股，分两笔卖出大业股份200股。大业主因改为监管反核节奏错误：首日反核上板确认才参与，次日必须卖出；本日标为10月30日入场问题的持仓延续，不把退出另算新错误。沪工仍归为补涨龙高度错误：只在三板研究已确认地位的机会，更高位置不再开仓。账户日损益与个股整轮损益分别计算。",
       "assessment": "本人最新反思归类",
       "errors": [
         {
-          "category": "mode",
+          "category": "regulatory_timing",
           "scope": "持仓延续",
           "stocks": [
             {
@@ -12456,20 +12397,8 @@
               "name": "大业股份"
             }
           ],
-          "evidence": "把绕异动博弈与主升题材龙混为一谈",
-          "source": "2026-11-02_2026-11-06/index.html#operations"
-        },
-        {
-          "category": "size",
-          "scope": "持仓延续",
-          "stocks": [
-            {
-              "code": "603278",
-              "name": "大业股份"
-            }
-          ],
-          "evidence": "给了不匹配的仓位",
-          "source": "2026-11-02_2026-11-06/index.html#operations"
+          "evidence": "监管第一天反核必须上板才是机会，只有第一天能参与而且第二天必须出来",
+          "source": "large-loss-review/index.html#regulatory-timing-review"
         },
         {
           "category": "catch_up_height",

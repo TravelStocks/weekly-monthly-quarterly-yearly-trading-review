@@ -113,6 +113,14 @@ for date in ['2026-11-02','2026-11-03']:
     assert errors[0]['scope']==('当日操作' if date=='2026-11-02' else '持仓延续')
 assert sum(any(e['category']=='catch_up_height' for e in d['errors']) for d in days.values())==2
 
+# One regulatory-timing attribution per round; exits are carry-over, not new mistakes.
+for date,code,scope in [('2026-07-28','001258','当日操作'),('2026-07-29','001258','持仓延续'),('2026-10-30','603278','当日操作'),('2026-11-02','603278','持仓延续')]:
+    errors=[e for e in days[date]['errors'] if any(s['code']==code for s in e['stocks'])]
+    assert len(errors)==1 and errors[0]['category']=='regulatory_timing' and errors[0]['scope']==scope
+for month,count in [('2026-07',2),('2026-10',0),('2026-11',1)]:
+    assert sum(d['date'].startswith(month) and d['income'] and d['income']['rate'] < -2 and any(e['category']=='regulatory_timing' for e in d['errors']) for d in days.values())==count
+assert sum(any(e['category']=='regulatory_timing' for e in d['errors']) for d in days.values())==4
+
 # An account loss may arise from an existing position without any new trade.
 assert days['2026-08-07']['tradeCount']==0
 assert any(r['code']=='601700' for r in days['2026-08-07']['relatedEpisodes'])
