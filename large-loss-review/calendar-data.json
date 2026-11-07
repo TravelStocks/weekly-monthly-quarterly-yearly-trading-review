@@ -5676,19 +5676,32 @@
           "code": "600110",
           "start": "2026-06-18",
           "end": "2026-06-24",
-          "summary": "旧核心不能继续证明强度，未及时降低预期并退出，跨周拖成大额止损。",
+          "summary": "按本人反思，诺德股份这轮的主要错误是在趋势行情下参与非龙头连板。趋势行情下，连板只做已确认的唯一龙头。非龙头连板加速时放弃参与。慢趋势更合我的节奏，可以空仓，也可以小仓位参与，趋势交易合计最多两成。",
           "errors": [
             {
-              "category": "exit",
-              "evidence": "旧核心失效后没有及时降级"
+              "category": "trend_nonleader",
+              "evidence": "趋势行情下不能做连扳非龙头，这是大错误"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         }
       ],
-      "summary": "",
-      "assessment": "待归因",
-      "errors": []
+      "summary": "分9笔买入诺德股份1,100股。本人认定这轮的入场错误是趋势行情下参与非龙头连板。",
+      "assessment": "本人最新反思归类",
+      "errors": [
+        {
+          "category": "trend_nonleader",
+          "evidence": "趋势行情下不能做连扳非龙头，这是大错误",
+          "scope": "当日操作",
+          "stocks": [
+            {
+              "code": "600110",
+              "name": "诺德股份"
+            }
+          ],
+          "source": "large-loss-review/index.html#trend-nonleader-review"
+        }
+      ]
     },
     {
       "date": "2026-06-22",
@@ -5726,14 +5739,14 @@
           "code": "600110",
           "start": "2026-06-18",
           "end": "2026-06-24",
-          "summary": "旧核心不能继续证明强度，未及时降低预期并退出，跨周拖成大额止损。",
+          "summary": "按本人反思，诺德股份这轮的主要错误是在趋势行情下参与非龙头连板。趋势行情下，连板只做已确认的唯一龙头。非龙头连板加速时放弃参与。慢趋势更合我的节奏，可以空仓，也可以小仓位参与，趋势交易合计最多两成。",
           "errors": [
             {
-              "category": "exit",
-              "evidence": "旧核心失效后没有及时降级"
+              "category": "trend_nonleader",
+              "evidence": "趋势行情下不能做连扳非龙头，这是大错误"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         }
       ],
       "summary": "",
@@ -5780,21 +5793,22 @@
           "code": "600110",
           "start": "2026-06-18",
           "end": "2026-06-24",
-          "summary": "旧核心不能继续证明强度，未及时降低预期并退出，跨周拖成大额止损。",
+          "summary": "按本人反思，诺德股份这轮的主要错误是在趋势行情下参与非龙头连板。趋势行情下，连板只做已确认的唯一龙头。非龙头连板加速时放弃参与。慢趋势更合我的节奏，可以空仓，也可以小仓位参与，趋势交易合计最多两成。",
           "errors": [
             {
-              "category": "exit",
-              "evidence": "旧核心失效后没有及时降级"
+              "category": "trend_nonleader",
+              "evidence": "趋势行情下不能做连扳非龙头，这是大错误"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         }
       ],
-      "summary": "新交割单当天没有成交记录。日收益为原站市值估算；诺德股份此前持仓延续，反思重点是旧核心失效后未及时降级。",
-      "assessment": "已有反思归类",
+      "summary": "当天无成交。诺德股份仍在持仓中，账户估算收益为−8.51%。按本人反思，大亏关联此前在趋势行情下参与非龙头连板。趋势行情下，连板只做已确认的唯一龙头。非龙头连板加速时放弃参与。慢趋势更合我的节奏，可以空仓，也可以小仓位参与，趋势交易合计最多两成。",
+      "assessment": "本人最新反思归类",
       "errors": [
         {
-          "category": "exit",
+          "category": "trend_nonleader",
+          "evidence": "趋势行情下不能做连扳非龙头，这是大错误",
           "scope": "持仓延续",
           "stocks": [
             {
@@ -5802,8 +5816,7 @@
               "name": "诺德股份"
             }
           ],
-          "evidence": "旧核心失效后没有及时降级",
-          "source": "success-failure-trade-review/stock-600110-failure/index.html"
+          "source": "large-loss-review/index.html#trend-nonleader-review"
         }
       ]
     },
@@ -5878,14 +5891,14 @@
           "code": "600110",
           "start": "2026-06-18",
           "end": "2026-06-24",
-          "summary": "旧核心不能继续证明强度，未及时降低预期并退出，跨周拖成大额止损。",
+          "summary": "按本人反思，诺德股份这轮的主要错误是在趋势行情下参与非龙头连板。趋势行情下，连板只做已确认的唯一龙头。非龙头连板加速时放弃参与。慢趋势更合我的节奏，可以空仓，也可以小仓位参与，趋势交易合计最多两成。",
           "errors": [
             {
-              "category": "exit",
-              "evidence": "旧核心失效后没有及时降级"
+              "category": "trend_nonleader",
+              "evidence": "趋势行情下不能做连扳非龙头，这是大错误"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         },
         {
           "id": "600851-2026-06-25-closed",
@@ -5898,11 +5911,12 @@
           "assessment": "正常试错"
         }
       ],
-      "summary": "买入大唐发电2,000股，归为龙头二波买点错误。买入海欣股份300股，归为正常龙头试错。结合龙头七维等因素判断时，也可能看错。按本人复盘，后续要提高选股审美，降低误判概率。同日卖出诺德股份1,100股，关联此前的退出问题。",
+      "summary": "买入大唐发电2,000股，归为龙头二波买点错误。买入海欣股份300股，归为正常龙头试错。结合龙头七维等因素判断时，也可能看错。按本人复盘，后续要提高选股审美，降低误判概率。同日卖出诺德股份1,100股，关联此前在趋势行情下参与非龙头连板的问题。",
       "assessment": "本人最新反思归类",
       "errors": [
         {
-          "category": "exit",
+          "category": "trend_nonleader",
+          "evidence": "趋势行情下不能做连扳非龙头，这是大错误",
           "scope": "持仓延续",
           "stocks": [
             {
@@ -5910,8 +5924,7 @@
               "name": "诺德股份"
             }
           ],
-          "evidence": "旧核心失效后没有及时降级",
-          "source": "success-failure-trade-review/stock-600110-failure/index.html"
+          "source": "large-loss-review/index.html#trend-nonleader-review"
         },
         {
           "category": "second_wave_entry",

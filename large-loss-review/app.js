@@ -1,5 +1,6 @@
 'use strict';
 const CATEGORIES = {
+  trend_nonleader: {name:'趋势行情下参与非龙头连板', rule:'趋势行情下，连板只做已确认的唯一龙头。非龙头连板加速时放弃参与。慢趋势更合我的节奏，可以空仓，也可以小仓位参与，趋势交易合计最多两成。'},
   trend_mode: {name:'趋势模式不熟悉', rule:'科技处于下降趋势时，我容易踏错反弹节奏。趋势模式最多用账户两成仓位。大仓位只留给熟悉的龙头模式。'},
   second_wave_entry: {name:'龙头二波买点错误', rule:'做龙头二波，等股价突破新高再买入。提前下注，容易在下杀时被洗出，也容易影响心态。'},
   board_ceiling: {name:'连板高度压制', rule:'遇到连板高度压制，提前卖出，不大仓位博弈未来溢价。'},
@@ -78,7 +79,7 @@ function openHash() {
 }
 async function init() {
   try {
-    const response=await fetch('./data.json?v=20261106-june24');
+    const response=await fetch('./data.json?v=20261106-nuode');
     if(!response.ok)throw new Error('HTTP '+response.status);
     DATA=await response.json();
     Object.entries(CATEGORIES).forEach(([id,c])=>$('category').insertAdjacentHTML('beforeend',`<option value="${id}">${c.name}</option>`));
