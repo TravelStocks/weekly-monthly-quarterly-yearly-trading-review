@@ -60,11 +60,11 @@
     ]
   },
   "2026-05-14": {
-    "summary": "买入华电辽能900股、大唐发电200股；同日卖出大连热电和大唐电信。按本人反思，华电辽能和大唐发电的二波买点错误叠加了想摊平成本和急于扳平亏损的动机。",
+    "summary": "买入华电辽能900股、大唐发电200股；同日卖出大连热电和大唐电信。按本人反思，华电辽能和大唐发电的二波买点错误叠加了想摊平成本和急于扳平亏损的动机。 大连热电、大唐电信两轮入场均属随手单，14日卖出。",
     "assessment": "本人最新反思归类",
     "errors": [
       {
-        "category": "leader",
+        "category": "mode",
         "scope": "持仓延续",
         "stocks": [
           {
@@ -72,11 +72,11 @@
             "name": "大连热电"
           }
         ],
-        "evidence": "题材热不等于个股有地位，非第一没有核心预期",
-        "source": "monthly-quarterly-trading-review/2026-05/index.html#verdict"
+        "evidence": "随手单",
+        "source": "large-loss-review/index.html#may-impulse-orders"
       },
       {
-        "category": "leader",
+        "category": "mode",
         "scope": "持仓延续",
         "stocks": [
           {
@@ -84,8 +84,8 @@
             "name": "大唐电信"
           }
         ],
-        "evidence": "题材热不等于个股有地位，非第一没有核心预期",
-        "source": "monthly-quarterly-trading-review/2026-05/index.html#verdict"
+        "evidence": "随手单",
+        "source": "large-loss-review/index.html#may-impulse-orders"
       },
       {
         "category": "second_wave_entry",

@@ -48,22 +48,34 @@
     ]
   },
   "600719-2026-05-14-closed": {
-    "assessment": "已有反思归类",
-    "summary": "月度复盘将其归入非第一、后排替代交易：题材热度不能替代个股地位。",
+    "assessment": "本人最新反思归类",
+    "summary": "大连热电本轮入场归为随手单，5月14日卖出结束本轮。",
     "errors": [
       {
-        "category": "leader",
-        "evidence": "题材热不等于个股有地位，非第一没有核心预期"
+        "category": "mode",
+        "evidence": "随手单"
+      }
+    ],
+    "quotes": [
+      {
+        "text": "这个是”随手单“。",
+        "source": "large-loss-review/index.html#may-impulse-orders"
       }
     ]
   },
   "600198-2026-05-14-closed": {
-    "assessment": "已有反思归类",
-    "summary": "月度复盘将其归入非第一、后排替代交易：题材热度不能替代个股地位。",
+    "assessment": "本人最新反思归类",
+    "summary": "大唐电信本轮入场归为随手单，5月14日卖出结束本轮。",
     "errors": [
       {
-        "category": "leader",
-        "evidence": "题材热不等于个股有地位，非第一没有核心预期"
+        "category": "mode",
+        "evidence": "随手单"
+      }
+    ],
+    "quotes": [
+      {
+        "text": "这个是”随手单“。",
+        "source": "large-loss-review/index.html#may-impulse-orders"
       }
     ]
   },

@@ -570,14 +570,18 @@
         {
           "text": "华电辽能、大唐电信、大连热电、华电能源、华能蒙电反复证明：题材热不等于个股有地位。",
           "source": "monthly-quarterly-trading-review/2026-05/index.html#patterns"
+        },
+        {
+          "text": "这个是”随手单“。",
+          "source": "large-loss-review/index.html#may-impulse-orders"
         }
       ],
-      "assessment": "已有反思归类",
-      "summary": "月度复盘将其归入非第一、后排替代交易：题材热度不能替代个股地位。",
+      "assessment": "本人最新反思归类",
+      "summary": "大连热电本轮入场归为随手单，5月14日卖出结束本轮。",
       "errors": [
         {
-          "category": "leader",
-          "evidence": "题材热不等于个股有地位，非第一没有核心预期"
+          "category": "mode",
+          "evidence": "随手单"
         }
       ]
     },
@@ -3524,14 +3528,18 @@
         {
           "text": "05.08-05.16 周复盘贡献 -1,139.29。；大唐电信买入 1600 股后 5/14 全部卖出，闭环亏损较大。",
           "source": "monthly-quarterly-trading-review/2026-05/index.html#stock-600198"
+        },
+        {
+          "text": "这个是”随手单“。",
+          "source": "large-loss-review/index.html#may-impulse-orders"
         }
       ],
-      "assessment": "已有反思归类",
-      "summary": "月度复盘将其归入非第一、后排替代交易：题材热度不能替代个股地位。",
+      "assessment": "本人最新反思归类",
+      "summary": "大唐电信本轮入场归为随手单，5月14日卖出结束本轮。",
       "errors": [
         {
-          "category": "leader",
-          "evidence": "题材热不等于个股有地位，非第一没有核心预期"
+          "category": "mode",
+          "evidence": "随手单"
         }
       ]
     },

@@ -4728,14 +4728,14 @@
           "code": "600198",
           "start": "2026-05-12",
           "end": "2026-05-14",
-          "summary": "月度复盘将其归入非第一、后排替代交易：题材热度不能替代个股地位。",
+          "summary": "大唐电信本轮入场归为随手单，5月14日卖出结束本轮。",
           "errors": [
             {
-              "category": "leader",
-              "evidence": "题材热不等于个股有地位，非第一没有核心预期"
+              "category": "mode",
+              "evidence": "随手单"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         },
         {
           "id": "603278-2026-05-12-closed",
@@ -4797,14 +4797,14 @@
           "code": "600719",
           "start": "2026-05-13",
           "end": "2026-05-14",
-          "summary": "月度复盘将其归入非第一、后排替代交易：题材热度不能替代个股地位。",
+          "summary": "大连热电本轮入场归为随手单，5月14日卖出结束本轮。",
           "errors": [
             {
-              "category": "leader",
-              "evidence": "题材热不等于个股有地位，非第一没有核心预期"
+              "category": "mode",
+              "evidence": "随手单"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         },
         {
           "id": "600198-2026-05-14-closed",
@@ -4812,14 +4812,14 @@
           "code": "600198",
           "start": "2026-05-12",
           "end": "2026-05-14",
-          "summary": "月度复盘将其归入非第一、后排替代交易：题材热度不能替代个股地位。",
+          "summary": "大唐电信本轮入场归为随手单，5月14日卖出结束本轮。",
           "errors": [
             {
-              "category": "leader",
-              "evidence": "题材热不等于个股有地位，非第一没有核心预期"
+              "category": "mode",
+              "evidence": "随手单"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         }
       ],
       "summary": "",
@@ -4901,14 +4901,14 @@
           "code": "600719",
           "start": "2026-05-13",
           "end": "2026-05-14",
-          "summary": "月度复盘将其归入非第一、后排替代交易：题材热度不能替代个股地位。",
+          "summary": "大连热电本轮入场归为随手单，5月14日卖出结束本轮。",
           "errors": [
             {
-              "category": "leader",
-              "evidence": "题材热不等于个股有地位，非第一没有核心预期"
+              "category": "mode",
+              "evidence": "随手单"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         },
         {
           "id": "601991-2026-05-15-closed",
@@ -4962,21 +4962,21 @@
           "code": "600198",
           "start": "2026-05-12",
           "end": "2026-05-14",
-          "summary": "月度复盘将其归入非第一、后排替代交易：题材热度不能替代个股地位。",
+          "summary": "大唐电信本轮入场归为随手单，5月14日卖出结束本轮。",
           "errors": [
             {
-              "category": "leader",
-              "evidence": "题材热不等于个股有地位，非第一没有核心预期"
+              "category": "mode",
+              "evidence": "随手单"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         }
       ],
-      "summary": "买入华电辽能900股、大唐发电200股；同日卖出大连热电和大唐电信。按本人反思，华电辽能和大唐发电的二波买点错误叠加了想摊平成本和急于扳平亏损的动机。",
+      "summary": "买入华电辽能900股、大唐发电200股；同日卖出大连热电和大唐电信。按本人反思，华电辽能和大唐发电的二波买点错误叠加了想摊平成本和急于扳平亏损的动机。 大连热电、大唐电信两轮入场均属随手单，14日卖出。",
       "assessment": "本人最新反思归类",
       "errors": [
         {
-          "category": "leader",
+          "category": "mode",
           "scope": "持仓延续",
           "stocks": [
             {
@@ -4984,11 +4984,11 @@
               "name": "大连热电"
             }
           ],
-          "evidence": "题材热不等于个股有地位，非第一没有核心预期",
-          "source": "monthly-quarterly-trading-review/2026-05/index.html#verdict"
+          "evidence": "随手单",
+          "source": "large-loss-review/index.html#may-impulse-orders"
         },
         {
-          "category": "leader",
+          "category": "mode",
           "scope": "持仓延续",
           "stocks": [
             {
@@ -4996,8 +4996,8 @@
               "name": "大唐电信"
             }
           ],
-          "evidence": "题材热不等于个股有地位，非第一没有核心预期",
-          "source": "monthly-quarterly-trading-review/2026-05/index.html#verdict"
+          "evidence": "随手单",
+          "source": "large-loss-review/index.html#may-impulse-orders"
         },
         {
           "category": "second_wave_entry",
