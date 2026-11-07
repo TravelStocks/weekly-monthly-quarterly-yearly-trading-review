@@ -10,6 +10,8 @@ records = data['records']
 by_id = {r['id']: r for r in records}
 assert len(by_id) == len(records)
 assert data['threshold'] == 2
+assert data['audit']['tradesThrough']=='2026-11-04'
+assert data['audit']['snapshotThrough']=='2026-11-04'
 categories = {'leader', 'entry', 'exit', 'cycle', 'size', 'holding'}
 for r in records:
     assert r['cost'] > 0 and r['pnl'] > 0 and r['rate'] > 2

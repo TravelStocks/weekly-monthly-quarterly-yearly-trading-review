@@ -118,6 +118,24 @@ def close_rounds(trades):
                 del active[code]
     return closed, active, unknown
 
+def remaining_cost(position):
+    """FIFO cost of the shares still held, using one consistent fee basis."""
+    field = 'cash' if all(t['cash'] is not None for t in position['trades']) else 'gross'
+    lots = []
+    for t in position['trades']:
+        if t['side'] == 'buy':
+            lots.append([t['qty'], t[field] / t['qty']])
+        else:
+            quantity = t['qty']
+            while quantity:
+                used = min(quantity, lots[0][0])
+                quantity -= used
+                lots[0][0] -= used
+                if not lots[0][0]:
+                    lots.pop(0)
+    assert sum(q for q, _ in lots) == position['qty']
+    return round(sum(q * price for q, price in lots), 2), field == 'cash'
+
 def nearest_link(node, path):
     anchor = node.get('id') or next((p.get('id') for p in node.parents if p.get('id')), None)
     return path + ('#' + anchor if anchor else '')
@@ -174,6 +192,12 @@ def build(outcome='loss'):
                 trades = [dict(date=iso(t['date']), time=t['time'], code=t['code'], name=t['name'],
                     side='buy' if '买入' in t['side'] else 'sell', qty=t['qty'], gross=t['gross'],
                     cash=abs(t['net']), source=path) for t in raw]
+        structured = f.parent / 'data/trades-partial.json'
+        if not trades and structured.exists():
+            raw = json.loads(structured.read_text(encoding='utf-8-sig'))
+            trades = [dict(date=iso(t['date']), time=t['time'], code=t['code'], name=t['name'],
+                side='buy' if '买入' in t['side'] else 'sell', qty=t['qty'], gross=t['amount'],
+                cash=abs(t['net']), source=path) for t in raw['trades'] + raw.get('reference', [])]
         batches.append(trades)
         scan.append(dict(source=path, trades=len(trades), kind='公开成交明细' if trades else '心得归档，无成交数据'))
     trades = deduplicate(batches)
@@ -210,15 +234,30 @@ def build(outcome='loss'):
                 pnl=round(r['realized'] if r['status']=='closed' else r['floating'], 2),
                 status='closed' if r['status']=='closed' else 'floating',
                 basis='含费闭环' if r['status']=='closed' else ('历史持仓浮盈' if profit else '历史持仓浮亏')+' · 04/24收盘快照，后续平仓未知', sources=[april_path]))
-    october = read_json('2026-10-26_2026-10-30/data/summary.json')
-    # Last observed holdings, not the conditional October 30 unchanged-position scenario.
-    for s in october['stocks']:
-        if s['openQty']:
-            day = next(d for d in october['account']['days'] if d['date']=='2026-10-29')
-            holding = next(h for h in day['holdings'] if h['code']==s['code'])
-            rounds.append(dict(code=s['code'], name=s['name'], start='2026-10-29', end='2026-10-29',
-                cost=s['openCost'], pnl=round(holding['qty']*holding['close']-s['openCost'],2), status='floating',
-                basis=('新仓浮盈' if profit else '新仓浮亏')+' · 10/29收盘快照；前一轮盈利独立核算', sources=['2026-10-26_2026-10-30/index.html']))
+    # Use the latest reconciled holding snapshot. Closed rounds must never retain
+    # an earlier floating result, even when the final return falls below the filter.
+    snapshots = []
+    for file in sorted(ROOT.glob('20*/data/summary.json')):
+        summary = json.loads(file.read_text(encoding='utf-8-sig'))
+        if not isinstance(summary, dict):
+            continue
+        account = summary.get('partialAccount') or summary.get('account')
+        if not isinstance(account, dict) or account.get('status') not in ['statement-close-estimate', 'partial-statement-close-estimate']:
+            continue
+        source = file.parent.parent.relative_to(ROOT).as_posix() + '/index.html'
+        snapshots.extend((d, source) for d in account['days'] if isinstance(d.get('holdings'), list))
+    if snapshots:
+        day, source = max(snapshots, key=lambda item: item[0]['date'])
+        for holding in day['holdings']:
+            position = active.get(holding['code'])
+            if not position:
+                continue  # No supported cost; never infer it from current market value.
+            assert position['qty'] == holding['qty'], holding['code']
+            cost, fee_known = remaining_cost(position)
+            rounds.append(dict(code=holding['code'], name=holding['name'], start=position['start'], end=day['date'],
+                cost=cost, pnl=round(holding['qty'] * holding['close'] - cost, 2), status='floating',
+                basis=('含费成本' if fee_known else '费用前成本') + ' · ' + day['date'] + '历史收盘快照，非当前持仓；后续退出记录未齐',
+                sources=sorted({source} | {p for t in position['trades'] for p in t['sources']})))
     candidates=[]
     for r in rounds:
         if r['cost'] <= 0:
@@ -292,10 +331,11 @@ def build(outcome='loss'):
             assert any(error['evidence'] in q['text'] for q in r['quotes']), (r['id'],error)
     candidates.sort(key=lambda r:r['rate'], reverse=profit)
     out.mkdir(exist_ok=True)
-    payload=dict(updated='2026-11-04',threshold=threshold,records=candidates,
+    payload=dict(updated='2026-11-06',reflectionUpdated='2026-11-06',threshold=threshold,records=candidates,
         audit=dict(scannedPages=scan, uniqueTrades=len(trades),unknownCostSales=[
             {k:t[k] for k in ['date','code','name','source']} for t in unknown],
-            monthlySource=monthly_path, noDataThrough='2026-11-04'))
+            monthlySource=monthly_path, tradesThrough=max(t['date'] for t in trades),
+            snapshotThrough=max((d['date'] for d, _ in snapshots), default=None)))
     (out/'data.json').write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(f'{len(candidates)} {outcome} records; {len(trades)} unique fills; {len(unknown)} unmatched historical sales')
     for r in candidates:

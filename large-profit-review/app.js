@@ -62,13 +62,13 @@ function render() {
 }
 function openHash() {
   const id=location.hash.slice(1), record=DATA.records.find(r=>r.id===id);
-  if(!record)return;
+  if(!record){const target=$(id);if(target)target.scrollIntoView();return;}
   $('instrument').value=record.instrument;$('status').value=record.status;$('month').value='all';$('search').value='';$('category').value='all';render();
   const target=$(id);target.open=true;target.scrollIntoView();
 }
 async function init() {
   try {
-    const response=await fetch('./data.json');
+    const response=await fetch('./data.json?v=20261106-complete');
     if(!response.ok)throw new Error('HTTP '+response.status);
     DATA=await response.json();
     Object.entries(CATEGORIES).forEach(([id,c])=>$('category').insertAdjacentHTML('beforeend',`<option value="${id}">${c.name}</option>`));
@@ -80,7 +80,7 @@ async function init() {
     $('factor-ranks').addEventListener('click',e=>{const b=e.target.closest('[data-category]');if(b){$('category').value=b.dataset.category;render();$('records').scrollIntoView();$('category').focus({preventScroll:true});}});
     $('stock-ranks').addEventListener('click',e=>{const b=e.target.closest('[data-stock]');if(b){$('search').value=b.dataset.stock;$('category').value='all';render();$('records').scrollIntoView();}});
     const closed=DATA.records.filter(r=>r.status==='closed'), floating=DATA.records.filter(r=>r.status==='floating');
-    $('coverage').textContent=`已扫描 ${DATA.audit.scannedPages.length} 份周/月档案，并以9月已核对逐轮数据和独立盈利案例补充；覆盖最早4月归档至11月4日已有心得。共有 ${closed.length} 轮可核算盈利、${floating.length} 条未见后续平仓结果的浮盈快照（含ETF）。仅使用有完整成本的轮次；历史浮盈仅保留未见后续闭环的已知快照。11月心得暂无完整个股损益，未强行换算。后续新增交割可重新生成；新增有效做法归类须有反思依据。`;
+    $('coverage').textContent=`已扫描 ${DATA.audit.scannedPages.length} 份周/月档案，成交覆盖至 ${DATA.audit.tradesThrough}；共有 ${closed.length} 轮可核算盈利、${floating.length} 条历史浮盈快照（含ETF）。已核对最新成交，未新增满足高于2%阈值的已平仓盈利轮次。没有成本或退出记录的部分不补造收益；分类采用有原文依据的最新反思。`;
     $('audit-details').innerHTML=`<h3>已扫描档案</h3><ul>${DATA.audit.scannedPages.map(p=>`<li><a href="${escape(link(p.source))}">${escape(p.source.replace('/index.html',''))}</a> · ${escape(p.kind)}</li>`).join('')}</ul><h3>未配齐成本的历史卖出</h3><p class="subtle">以下卖出不凭现金流计算盈利率。4月独立报告已核算的轮次另行使用其已补成本。</p><ul>${DATA.audit.unknownCostSales.map(t=>`<li>${t.date} · ${escape(t.name)} ${t.code} · <a href="${escape(link(t.source))}">来源</a></li>`).join('')||'<li>无</li>'}</ul>`;
     $('updated').textContent=DATA.updated;$('load-state').hidden=true;$('content').hidden=false;render();openHash();
     window.addEventListener('hashchange',openHash);

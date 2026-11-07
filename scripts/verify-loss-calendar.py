@@ -102,6 +102,14 @@ for date,code,scope,rate in [('2026-09-09','002403','持仓延续',-5.27),('2026
     assert days[date]['income']['rate']==rate
 assert sum(any(e['category']=='theme_support' for e in d['errors']) for d in days.values())==2
 
+# Calendar links now include November closed episodes and the dated WENTOU snapshot.
+assert any(r['id']=='603131-2026-11-03-closed' for r in days['2026-11-02']['relatedEpisodes'])
+assert any(r['id']=='603278-2026-11-02-closed' for r in days['2026-11-02']['relatedEpisodes'])
+assert any(r['id']=='600715-2026-11-04-floating' for r in days['2026-11-04']['relatedEpisodes'])
+assert not any(r['id']=='000678-2026-10-29-floating' for d in days.values() for r in d['relatedEpisodes'])
+for date in ['2026-11-02','2026-11-03']:
+    assert {'leader','emotion','add','size'} <= {e['category'] for e in days[date]['errors'] if any(s['code']=='603131' for s in e['stocks'])}
+
 # An account loss may arise from an existing position without any new trade.
 assert days['2026-08-07']['tradeCount']==0
 assert any(r['code']=='601700' for r in days['2026-08-07']['relatedEpisodes'])

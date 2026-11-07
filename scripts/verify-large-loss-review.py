@@ -37,8 +37,20 @@ assert by_id['002076-2026-10-23-closed']['cost']==1077
 # Do not mix partial fees with fee-free sales.
 assert by_id['002242-2026-10-19-closed']['pnl']==-125
 assert by_id['002242-2026-10-19-closed']['cost']==3459
-assert by_id['000678-2026-10-29-floating']['pnl']==-377
+assert not any(r['code']=='000678' and r['status']=='floating' for r in records)
 assert all(r['end']!='2026-10-30' for r in records if r['status']=='floating')
+# The latest settled trades and historical snapshot share the calendar cutoff.
+assert data['audit']['tradesThrough']=='2026-11-04'
+assert data['audit']['snapshotThrough']=='2026-11-04'
+for id,cost,pnl in [('603278-2026-11-02-closed',3928.04,-425.83),('603131-2026-11-03-closed',3872.04,-758.63),('600715-2026-11-04-floating',2178.02,-202.02)]:
+    assert by_id[id]['cost']==cost and by_id[id]['pnl']==pnl
+    assert by_id[id]['errors']
+# Partial sales must reduce snapshot cost, not leave all purchases as the denominator.
+position={'qty':100,'trades':[{'side':'buy','qty':200,'cash':2010,'gross':2000},{'side':'sell','qty':100,'cash':1100,'gross':1105}]}
+assert builder.remaining_cost(position)==(1005,True)
+position['trades'][1]['cash']=None
+assert builder.remaining_cost(position)==(1000,False)
+
 # Reconciled monthly rounds, including smaller losses and acceptable failures.
 monthly=json.loads((ROOT/'monthly-quarterly-trading-review/2026-09/data/summary.json').read_text(encoding='utf-8'))
 for s in monthly['stocks']:
