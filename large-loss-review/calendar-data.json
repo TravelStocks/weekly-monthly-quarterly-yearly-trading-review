@@ -9834,23 +9834,31 @@
           "code": "000892",
           "start": "2026-09-03",
           "end": "2026-09-04",
-          "summary": "同身位竞争尚未胜出就参与，单票一字强或换手健康不能替代唯一性确认。",
+          "summary": "同身位PK尚未完成、龙头唯一性未确定就抢先手押注。一字或换手均不代表胜出，须让市场决定胜者，再按计划参与。",
           "errors": [
             {
-              "category": "leader",
-              "evidence": "同身位PK未胜出便下注"
-            },
-            {
-              "category": "entry",
-              "evidence": "同身位唯一性尚未胜出"
+              "category": "pk",
+              "evidence": "同身位中还有其他个股正在PK龙头唯一性，没有决出胜负之前，一字或者换手都不能随便进去。让市场决定谁是胜者，而不是主观臆断。"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         }
       ],
-      "summary": "卖出时代出版，再买欢瑞世纪。时代出版是前日买点问题延续；欢瑞是在同身位竞争尚未胜出时下注。",
-      "assessment": "已有反思归类",
+      "summary": "卖出时代出版并买入欢瑞世纪。时代出版延续9月2日低卡高竞争未定、未等上板确认就半路买入的问题；9月3日卖出不另算一次新错误。欢瑞的同身位PK未决抢先手归因单独保留。",
+      "assessment": "本人最新反思归类",
       "errors": [
+        {
+          "category": "pk",
+          "scope": "当日操作",
+          "stocks": [
+            {
+              "code": "000892",
+              "name": "欢瑞世纪"
+            }
+          ],
+          "evidence": "同身位中还有其他个股正在PK龙头唯一性，没有决出胜负之前，一字或者换手都不能随便进去。让市场决定谁是胜者，而不是主观臆断。",
+          "source": "large-loss-review/index.html#pk-reclassification"
+        },
         {
           "category": "entry",
           "scope": "持仓延续",
@@ -9862,30 +9870,6 @@
           ],
           "evidence": "方向有逻辑，分时触发错误",
           "source": "monthly-quarterly-trading-review/2026-09/index.html#reflection-cases"
-        },
-        {
-          "category": "leader",
-          "scope": "当日操作",
-          "stocks": [
-            {
-              "code": "000892",
-              "name": "欢瑞世纪"
-            }
-          ],
-          "evidence": "同身位PK未胜出便下注",
-          "source": "monthly-quarterly-trading-review/2026-09/index.html#reflection-cases"
-        },
-        {
-          "category": "entry",
-          "scope": "当日操作",
-          "stocks": [
-            {
-              "code": "000892",
-              "name": "欢瑞世纪"
-            }
-          ],
-          "evidence": "同身位唯一性尚未胜出",
-          "source": "monthly-quarterly-trading-review/2026-09/index.html#stock-000892"
         }
       ]
     },
@@ -9928,18 +9912,14 @@
           "code": "000892",
           "start": "2026-09-03",
           "end": "2026-09-04",
-          "summary": "同身位竞争尚未胜出就参与，单票一字强或换手健康不能替代唯一性确认。",
+          "summary": "同身位PK尚未完成、龙头唯一性未确定就抢先手押注。一字或换手均不代表胜出，须让市场决定胜者，再按计划参与。",
           "errors": [
             {
-              "category": "leader",
-              "evidence": "同身位PK未胜出便下注"
-            },
-            {
-              "category": "entry",
-              "evidence": "同身位唯一性尚未胜出"
+              "category": "pk",
+              "evidence": "同身位中还有其他个股正在PK龙头唯一性，没有决出胜负之前，一字或者换手都不能随便进去。让市场决定谁是胜者，而不是主观臆断。"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         }
       ],
       "summary": "",
@@ -11736,25 +11716,21 @@
           "code": "002085",
           "start": "2026-10-19",
           "end": "2026-10-21",
-          "summary": "高估新题材切换的持续性，并自述误操作；仅将有依据的切换判断和执行问题归类。",
+          "summary": "同身位PK尚未完成、龙头唯一性未确定就抢先手押注。一字或换手均不代表胜出，须让市场决定胜者，再按计划参与。",
           "errors": [
             {
-              "category": "cycle",
-              "evidence": "将低空经济切换的持续性预期抬得偏高"
-            },
-            {
-              "category": "execution",
-              "evidence": "并提到误操作买入"
+              "category": "pk",
+              "evidence": "同身位中还有其他个股正在PK龙头唯一性，没有决出胜负之前，一字或者换手都不能随便进去。让市场决定谁是胜者，而不是主观臆断。"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         }
       ],
-      "summary": "日收益率为原站费用前估算。卖出九阳、超声电子并买万丰奥威；后续反思指出万丰切换预期偏高且有误操作，九阳需按自身抱团逻辑回看。",
-      "assessment": "已有反思归类",
+      "summary": "卖出九阳、超声电子并买入万丰奥威。本人重新确认万丰的主因为同身位PK未完成、龙头唯一性尚未确立就抢先手；不再以题材判断或下单执行作为该轮主分类。九阳的抱团反思单独保留。日收益仍为原站费用前估算。",
+      "assessment": "本人最新反思归类",
       "errors": [
         {
-          "category": "cycle",
+          "category": "pk",
           "scope": "当日操作",
           "stocks": [
             {
@@ -11762,20 +11738,8 @@
               "name": "万丰奥威"
             }
           ],
-          "evidence": "将低空经济切换的持续性预期抬得偏高",
-          "source": "2026-10-19_2026-10-23/index.html#ticket-review"
-        },
-        {
-          "category": "execution",
-          "scope": "当日操作",
-          "stocks": [
-            {
-              "code": "002085",
-              "name": "万丰奥威"
-            }
-          ],
-          "evidence": "并提到误操作买入",
-          "source": "2026-10-19_2026-10-23/index.html#ticket-review"
+          "evidence": "同身位中还有其他个股正在PK龙头唯一性，没有决出胜负之前，一字或者换手都不能随便进去。让市场决定谁是胜者，而不是主观臆断。",
+          "source": "large-loss-review/index.html#pk-reclassification"
         },
         {
           "category": "cycle",
@@ -11870,18 +11834,14 @@
           "code": "002085",
           "start": "2026-10-19",
           "end": "2026-10-21",
-          "summary": "高估新题材切换的持续性，并自述误操作；仅将有依据的切换判断和执行问题归类。",
+          "summary": "同身位PK尚未完成、龙头唯一性未确定就抢先手押注。一字或换手均不代表胜出，须让市场决定胜者，再按计划参与。",
           "errors": [
             {
-              "category": "cycle",
-              "evidence": "将低空经济切换的持续性预期抬得偏高"
-            },
-            {
-              "category": "execution",
-              "evidence": "并提到误操作买入"
+              "category": "pk",
+              "evidence": "同身位中还有其他个股正在PK龙头唯一性，没有决出胜负之前，一字或者换手都不能随便进去。让市场决定谁是胜者，而不是主观臆断。"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         }
       ],
       "summary": "",
@@ -11960,23 +11920,31 @@
           "code": "002085",
           "start": "2026-10-19",
           "end": "2026-10-21",
-          "summary": "高估新题材切换的持续性，并自述误操作；仅将有依据的切换判断和执行问题归类。",
+          "summary": "同身位PK尚未完成、龙头唯一性未确定就抢先手押注。一字或换手均不代表胜出，须让市场决定胜者，再按计划参与。",
           "errors": [
             {
-              "category": "cycle",
-              "evidence": "将低空经济切换的持续性预期抬得偏高"
-            },
-            {
-              "category": "execution",
-              "evidence": "并提到误操作买入"
+              "category": "pk",
+              "evidence": "同身位中还有其他个股正在PK龙头唯一性，没有决出胜负之前，一字或者换手都不能随便进去。让市场决定谁是胜者，而不是主观臆断。"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         }
       ],
-      "summary": "日收益率为原站费用前估算。卖出万丰奥威和吉大正元；万丰涉及此前切换/误操作，吉大反思指出取得应有溢价时未及时退出。",
-      "assessment": "已有反思归类",
+      "summary": "卖出万丰奥威和吉大正元。万丰归入10月19日同身位PK未决抢先手的持仓延续，不算第二次独立押注；吉大的退出问题单独保留。日收益仍为原站费用前估算。",
+      "assessment": "本人最新反思归类",
       "errors": [
+        {
+          "category": "pk",
+          "scope": "持仓延续",
+          "stocks": [
+            {
+              "code": "002085",
+              "name": "万丰奥威"
+            }
+          ],
+          "evidence": "同身位中还有其他个股正在PK龙头唯一性，没有决出胜负之前，一字或者换手都不能随便进去。让市场决定谁是胜者，而不是主观臆断。",
+          "source": "large-loss-review/index.html#pk-reclassification"
+        },
         {
           "category": "exit",
           "scope": "本轮回看",
@@ -11988,30 +11956,6 @@
           ],
           "evidence": "认为应当借这一溢价退出，而不是继续等题材延续",
           "source": "2026-10-19_2026-10-23/index.html#leader-failure-crowding-repair"
-        },
-        {
-          "category": "cycle",
-          "scope": "持仓延续",
-          "stocks": [
-            {
-              "code": "002085",
-              "name": "万丰奥威"
-            }
-          ],
-          "evidence": "将低空经济切换的持续性预期抬得偏高",
-          "source": "2026-10-19_2026-10-23/index.html#ticket-review"
-        },
-        {
-          "category": "execution",
-          "scope": "持仓延续",
-          "stocks": [
-            {
-              "code": "002085",
-              "name": "万丰奥威"
-            }
-          ],
-          "evidence": "并提到误操作买入",
-          "source": "2026-10-19_2026-10-23/index.html#ticket-review"
         }
       ]
     },
@@ -12495,9 +12439,22 @@
       "tradeCount": 2,
       "notes": [],
       "relatedEpisodes": [],
-      "summary": "",
-      "assessment": "待归因",
-      "errors": []
+      "summary": "两笔买入文投控股共800股。本人重新确认主因是同身位PK未决、龙头唯一性尚未确立就抢先手；一字或换手都不能替代确认。账户日收益按已收录估算单独展示，不以个股错误直接推断是否属于账户大亏日。",
+      "assessment": "本人最新反思归类",
+      "errors": [
+        {
+          "category": "pk",
+          "scope": "当日操作",
+          "stocks": [
+            {
+              "code": "600715",
+              "name": "文投控股"
+            }
+          ],
+          "evidence": "同身位中还有其他个股正在PK龙头唯一性，没有决出胜负之前，一字或者换手都不能随便进去。让市场决定谁是胜者，而不是主观臆断。",
+          "source": "large-loss-review/index.html#pk-reclassification"
+        }
+      ]
     }
   ],
   "audit": {
@@ -12509,5 +12466,6 @@
         "reason": "原站以10/29持仓不变为前提的估算，与新交割单10/30实际买卖不符，未用于筛选。"
       }
     ]
-  }
+  },
+  "reflectionUpdated": "2026-11-06"
 }

@@ -1920,18 +1920,18 @@
         {
           "text": "一、今日操作结果 - 关注欢瑞世纪等反包辨识度，但没有把个股回封直接定义为题材主升。 二、核心失误 - 高位反包的撤单与卖出节奏仍需更快，题材无带动时必须主动降预期。 三、核心反思 - 周一按指数、养殖板块、核心票三级确认，只做前排转强，不追后排。",
           "source": "monthly-quarterly-trading-review/2026-09/index.html#reflection-archive"
-        }
-      ],
-      "assessment": "已有反思归类",
-      "summary": "同身位竞争尚未胜出就参与，单票一字强或换手健康不能替代唯一性确认。",
-      "errors": [
-        {
-          "category": "leader",
-          "evidence": "同身位PK未胜出便下注"
         },
         {
-          "category": "entry",
-          "evidence": "同身位唯一性尚未胜出"
+          "text": "同身位中还有其他个股正在PK龙头唯一性，没有决出胜负之前，一字或者换手都不能随便进去。让市场决定谁是胜者，而不是主观臆断。",
+          "source": "large-loss-review/index.html#pk-reclassification"
+        }
+      ],
+      "assessment": "本人最新反思归类",
+      "summary": "同身位PK尚未完成、龙头唯一性未确定就抢先手押注。一字或换手均不代表胜出，须让市场决定胜者，再按计划参与。",
+      "errors": [
+        {
+          "category": "pk",
+          "evidence": "同身位中还有其他个股正在PK龙头唯一性，没有决出胜负之前，一字或者换手都不能随便进去。让市场决定谁是胜者，而不是主观臆断。"
         }
       ]
     },
@@ -5232,18 +5232,18 @@
         {
           "text": "本周新增反思： 万丰奥威属于新题材切换试错；本人最新明确吉大正元属于龙头打法。两者共享的教训是关联题材助攻没有延续，却仍按原有成功预期持有，不能因此把两笔归为同一入场模式。原口述“吉大振华”按本周成交中的吉大正元整理；这是本人对交易背景的复盘，不补造当日板块统计。",
           "source": "2026-10-19_2026-10-23/index.html#switching-entry-exit"
-        }
-      ],
-      "assessment": "已有反思归类",
-      "summary": "高估新题材切换的持续性，并自述误操作；仅将有依据的切换判断和执行问题归类。",
-      "errors": [
-        {
-          "category": "cycle",
-          "evidence": "将低空经济切换的持续性预期抬得偏高"
         },
         {
-          "category": "execution",
-          "evidence": "并提到误操作买入"
+          "text": "同身位中还有其他个股正在PK龙头唯一性，没有决出胜负之前，一字或者换手都不能随便进去。让市场决定谁是胜者，而不是主观臆断。",
+          "source": "large-loss-review/index.html#pk-reclassification"
+        }
+      ],
+      "assessment": "本人最新反思归类",
+      "summary": "同身位PK尚未完成、龙头唯一性未确定就抢先手押注。一字或换手均不代表胜出，须让市场决定胜者，再按计划参与。",
+      "errors": [
+        {
+          "category": "pk",
+          "evidence": "同身位中还有其他个股正在PK龙头唯一性，没有决出胜负之前，一字或者换手都不能随便进去。让市场决定谁是胜者，而不是主观臆断。"
         }
       ]
     },
@@ -5549,5 +5549,6 @@
     ],
     "monthlySource": "monthly-quarterly-trading-review/2026-09/index.html",
     "noDataThrough": "2026-11-04"
-  }
+  },
+  "reflectionUpdated": "2026-11-06"
 }

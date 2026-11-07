@@ -1,5 +1,6 @@
 'use strict';
 const CATEGORIES = {
+  pk: {name:'同身位PK未决，抢先手押注', rule:'同题材、同身位尚未决出龙头唯一性时，一字板和换手板都不能替代确认；让市场决定胜者，先定龙，再参与。'},
   cycle: {name:'阶段 / 题材判断错位', rule:'先判断题材所处阶段及持续性，再选择龙头、补涨、二波或切换模式。'},
   leader: {name:'非核心 / 唯一性未确认', rule:'参与前确认第一性与唯一性；竞争尚未胜出，不提前赋予核心预期。'},
   entry: {name:'入场过早 / 买点不合规', rule:'把可执行的分时触发写清楚；窗口错过或确认未到，放弃参与。'},
@@ -69,7 +70,7 @@ function openHash() {
 }
 async function init() {
   try {
-    const response=await fetch('./data.json');
+    const response=await fetch('./data.json?v=20261106-pk');
     if(!response.ok)throw new Error('HTTP '+response.status);
     DATA=await response.json();
     Object.entries(CATEGORIES).forEach(([id,c])=>$('category').insertAdjacentHTML('beforeend',`<option value="${id}">${c.name}</option>`));

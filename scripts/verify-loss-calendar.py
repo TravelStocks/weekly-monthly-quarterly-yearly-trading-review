@@ -95,7 +95,7 @@ for d in days.values():
     if d['income']: source_text(d['income']['source'])
     for note in d['notes']: source_text(note['source'])
     for e in d['errors']:
-        assert e['category'] in ['cycle','leader','entry','exit','add','size','execution','mode','emotion']
+        assert e['category'] in ['pk','cycle','leader','entry','exit','add','size','execution','mode','emotion']
         assert e['scope'] in ['当日操作','持仓延续','本轮回看']
         raw,soup=source_text(e['source'])
         assert e['evidence'] in raw or e['evidence'] in soup.get_text(' ',strip=True)

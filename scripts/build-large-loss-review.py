@@ -272,6 +272,13 @@ def build(outcome='loss'):
     annotations=json.loads(annotations_path.read_text(encoding='utf-8')) if annotations_path.exists() else {}
     for r in candidates:
         note=annotations.get(r['id'],{})
+        for quote in note.get('quotes', []):
+            path, _, anchor = quote['source'].partition('#')
+            soup = BeautifulSoup((ROOT/path).read_text(encoding='utf-8'), 'html.parser')
+            assert not anchor or soup.find(id=anchor), quote['source']
+            assert quote['text'] in soup.get_text(' ', strip=True), quote
+            if quote not in r['quotes']:
+                r['quotes'].append(quote)
         r['assessment']=note.get('assessment','待归因')
         r['summary']=note.get('summary','尚无足够的个股盈利归因，保留已有记录供回看。' if profit else '尚无足够的个股错误归因，保留已有记录供回看。')
         r[labels]=note.get(labels,[])

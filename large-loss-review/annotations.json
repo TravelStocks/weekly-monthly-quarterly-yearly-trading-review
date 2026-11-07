@@ -206,16 +206,18 @@
     ]
   },
   "000892-2026-09-04-closed": {
-    "assessment": "已有反思归类",
-    "summary": "同身位竞争尚未胜出就参与，单票一字强或换手健康不能替代唯一性确认。",
+    "assessment": "本人最新反思归类",
+    "summary": "同身位PK尚未完成、龙头唯一性未确定就抢先手押注。一字或换手均不代表胜出，须让市场决定胜者，再按计划参与。",
     "errors": [
       {
-        "category": "leader",
-        "evidence": "同身位PK未胜出便下注"
-      },
+        "category": "pk",
+        "evidence": "同身位中还有其他个股正在PK龙头唯一性，没有决出胜负之前，一字或者换手都不能随便进去。让市场决定谁是胜者，而不是主观臆断。"
+      }
+    ],
+    "quotes": [
       {
-        "category": "entry",
-        "evidence": "同身位唯一性尚未胜出"
+        "text": "同身位中还有其他个股正在PK龙头唯一性，没有决出胜负之前，一字或者换手都不能随便进去。让市场决定谁是胜者，而不是主观臆断。",
+        "source": "large-loss-review/index.html#pk-reclassification"
       }
     ]
   },
@@ -492,16 +494,18 @@
     ]
   },
   "002085-2026-10-21-closed": {
-    "assessment": "已有反思归类",
-    "summary": "高估新题材切换的持续性，并自述误操作；仅将有依据的切换判断和执行问题归类。",
+    "assessment": "本人最新反思归类",
+    "summary": "同身位PK尚未完成、龙头唯一性未确定就抢先手押注。一字或换手均不代表胜出，须让市场决定胜者，再按计划参与。",
     "errors": [
       {
-        "category": "cycle",
-        "evidence": "将低空经济切换的持续性预期抬得偏高"
-      },
+        "category": "pk",
+        "evidence": "同身位中还有其他个股正在PK龙头唯一性，没有决出胜负之前，一字或者换手都不能随便进去。让市场决定谁是胜者，而不是主观臆断。"
+      }
+    ],
+    "quotes": [
       {
-        "category": "execution",
-        "evidence": "并提到误操作买入"
+        "text": "同身位中还有其他个股正在PK龙头唯一性，没有决出胜负之前，一字或者换手都不能随便进去。让市场决定谁是胜者，而不是主观臆断。",
+        "source": "large-loss-review/index.html#pk-reclassification"
       }
     ]
   },
