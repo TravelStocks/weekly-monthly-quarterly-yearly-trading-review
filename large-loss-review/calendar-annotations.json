@@ -915,11 +915,12 @@
     ]
   },
   "2026-10-19": {
-    "summary": "卖出九阳、超声电子并买入万丰奥威。万丰按本人最新澄清归入切换模式错误：不熟悉低位接力切换，应尽量避免、最多小仓试错。九阳的抱团反思单独保留。日收益为原站费用前估算。",
+    "summary": "卖出九阳股份200股、超声电子100股，买入万丰奥威400股。九阳回看15日的龙头二波买点，应等突破新高再参与。万丰奥威归为切换模式错误。",
     "assessment": "本人最新反思归类",
     "errors": [
       {
-        "category": "cycle",
+        "category": "second_wave_entry",
+        "evidence": "龙头二波应该遵循突破新高的买入，而不是抢先下注",
         "scope": "本轮回看",
         "stocks": [
           {
@@ -927,8 +928,7 @@
             "name": "九阳股份"
           }
         ],
-        "evidence": "没有理解四板后高位放量抗跌、题材主升转轮动的抱团延续",
-        "source": "2026-10-19_2026-10-23/index.html#ticket-review"
+        "source": "large-loss-review/index.html#second-wave-entry-review"
       },
       {
         "category": "switch_mode",
@@ -1055,6 +1055,24 @@
         ],
         "evidence": "监管第一天反核必须上板才是机会，只有第一天能参与而且第二天必须出来",
         "source": "large-loss-review/index.html#regulatory-timing-review"
+      }
+    ]
+  },
+  "2026-10-15": {
+    "assessment": "本人最新反思归类",
+    "summary": "分两笔买入九阳股份200股。按本人反思，这次龙头二波买入抢在突破新高之前。",
+    "errors": [
+      {
+        "category": "second_wave_entry",
+        "evidence": "龙头二波应该遵循突破新高的买入，而不是抢先下注",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "002242",
+            "name": "九阳股份"
+          }
+        ],
+        "source": "large-loss-review/index.html#second-wave-entry-review"
       }
     ]
   }
