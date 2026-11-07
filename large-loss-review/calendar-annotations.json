@@ -197,51 +197,40 @@
     ]
   },
   "2026-06-09": {
-    "summary": "卖出大有能源2,800股。大亏日涉及之前尾段参与与利润保护不足；复盘强调按板强弱处理，弱板减仓，强势板或一字板不机械减仓。",
-    "assessment": "已有反思归类",
+    "summary": "卖出大有能源2,800股。本人回看这轮持仓，将主要错误归为题材走弱、梯队负反馈仍做龙头。",
+    "assessment": "本人最新反思归类",
     "errors": [
       {
-        "category": "cycle",
+        "category": "theme_support",
+        "evidence": "6.11的天娱数科和6.9的大有能源是属于题材走弱、梯队负反馈仍做龙头",
         "scope": "持仓延续",
         "stocks": [
           {
-            "code": "600403",
-            "name": "大有能源"
+            "name": "大有能源",
+            "code": "600403"
           }
         ],
-        "evidence": "不要吃满龙头最后一个板",
-        "source": "success-failure-trade-review/stock-600403-failure/index.html"
-      },
-      {
-        "category": "entry",
-        "scope": "持仓延续",
-        "stocks": [
-          {
-            "code": "600403",
-            "name": "大有能源"
-          }
-        ],
-        "evidence": "第二个爆量大烂板不再硬进",
-        "source": "success-failure-trade-review/stock-600403-failure/index.html"
-      },
-      {
-        "category": "exit",
-        "scope": "本轮回看",
-        "stocks": [
-          {
-            "code": "600403",
-            "name": "大有能源"
-          }
-        ],
-        "evidence": "说明利润保护失效",
-        "source": "2026-06-08_2026-06-12/index.html#ticket-analysis"
+        "source": "large-loss-review/index.html#theme-support-review"
       }
     ]
   },
   "2026-06-11": {
-    "summary": "天娱数科按条件单止损，康强电子100股轻仓试错。原日记明确肯定止损执行；账户亏损超过2%本身不证明当天止损犯错，暂不另加错误标签。",
-    "assessment": "纪律执行 / 不新增错误",
-    "errors": []
+    "summary": "卖出天娱数科1,800股，同日买入康强电子100股。按本人最新反思，天娱数科这轮持仓属于题材走弱、梯队负反馈仍做龙头。当天按条件单止损，原日记认可这次退出。",
+    "assessment": "本人最新反思归类",
+    "errors": [
+      {
+        "category": "theme_support",
+        "evidence": "6.11的天娱数科和6.9的大有能源是属于题材走弱、梯队负反馈仍做龙头",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "name": "天娱数科",
+            "code": "002354"
+          }
+        ],
+        "source": "large-loss-review/index.html#theme-support-review"
+      }
+    ]
   },
   "2026-06-15": {
     "summary": "当天卖出中化国际1,900股，结束6月12日买入的这轮交易。本人认定为正常龙头试错。",

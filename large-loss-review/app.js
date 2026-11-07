@@ -79,7 +79,7 @@ function openHash() {
 }
 async function init() {
   try {
-    const response=await fetch('./data.json?v=20261106-sinochem');
+    const response=await fetch('./data.json?v=20261106-june-theme');
     if(!response.ok)throw new Error('HTTP '+response.status);
     DATA=await response.json();
     Object.entries(CATEGORIES).forEach(([id,c])=>$('category').insertAdjacentHTML('beforeend',`<option value="${id}">${c.name}</option>`));

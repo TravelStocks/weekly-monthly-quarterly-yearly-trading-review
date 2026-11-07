@@ -100,13 +100,13 @@ for month,count in [('2026-08',5),('2026-09',1),('2026-10',2)]:
     assert sum(d['date'].startswith(month) and d['income'] and d['income']['rate'] < -2 and any(e['category']=='switch_mode' for e in d['errors']) for d in days.values())==count
 
 # Latest theme-support attribution must preserve other stocks and daily returns.
-for date,code,scope,rate in [('2026-08-07','601700','持仓延续',-9.69),('2026-08-21','600127','本轮回看',-2.24),('2026-09-09','002403','持仓延续',-5.27),('2026-10-21','003029','本轮回看',-2.13)]:
+for date,code,scope,rate in [('2026-06-09','600403','持仓延续',-9.83),('2026-06-11','002354','持仓延续',-4.43),('2026-08-07','601700','持仓延续',-9.69),('2026-08-21','600127','本轮回看',-2.24),('2026-09-09','002403','持仓延续',-5.27),('2026-10-21','003029','本轮回看',-2.13)]:
     errors=[e for e in days[date]['errors'] if any(t['code']==code for t in e['stocks'])]
     assert len(errors)==1 and errors[0]['category']=='theme_support' and errors[0]['scope']==scope
     assert days[date]['income']['rate']==rate
-assert sum(any(e['category']=='theme_support' for e in d['errors']) for d in days.values())==4
+assert sum(any(e['category']=='theme_support' for e in d['errors']) for d in days.values())==6
 assert days['2026-08-07']['income']['amount']==-1296
-for month,count in [('2026-08',2),('2026-09',1),('2026-10',1)]:
+for month,count in [('2026-06',2),('2026-08',2),('2026-09',1),('2026-10',1)]:
     assert sum(d['date'].startswith(month) and d['income'] and d['income']['rate'] < -2 and any(e['category']=='theme_support' for e in d['errors']) for d in days.values())==count
 
 # Calendar links now include November closed episodes and the dated WENTOU snapshot.
@@ -136,7 +136,7 @@ assert all(e['scope']=='当日操作' for e in days['2026-07-28']['errors'])
 assert all(e['scope']=='持仓延续' for e in days['2026-07-29']['errors'])
 assert not any(e['category']=='add' for e in days['2026-09-17']['errors'])  # add was next day
 assert not days['2026-05-21']['errors']  # missing attribution
-assert not days['2026-06-11']['errors']  # disciplined stop
+assert len(days['2026-06-11']['errors'])==1  # Attribution belongs to the prior holding.
 assert not days['2026-09-11']['errors']  # later reflection corrected initial suspicion
 guilin={t['side']:t['qty'] for t in days['2026-09-11']['trades'] if t['code']=='000978'}
 assert guilin=={'buy':1000,'sell':500}
