@@ -96,7 +96,7 @@ for date,scope in [('2026-08-14','当日操作'),('2026-08-17','持仓延续')]:
     huaxi_errors=[e for e in days[date]['errors'] if any(s['code']=='000936' for s in e['stocks'])]
     assert [(e['category'],e['scope']) for e in huaxi_errors]==[('switch_mode',scope)]
     assert any(r['id']=='000936-2026-08-17-closed' for r in days[date]['relatedEpisodes'])
-for month,count in [('2026-08',4),('2026-09',1),('2026-10',2)]:
+for month,count in [('2026-08',5),('2026-09',1),('2026-10',2)]:
     assert sum(d['date'].startswith(month) and d['income'] and d['income']['rate'] < -2 and any(e['category']=='switch_mode' for e in d['errors']) for d in days.values())==count
 
 # Latest theme-support attribution must preserve other stocks and daily returns.

@@ -118,16 +118,18 @@
     ]
   },
   "002491-2026-08-14-closed": {
-    "assessment": "已有反思归类",
-    "summary": "老龙反抽买点偏急，又赋予它唯一核心的预期；次日止损是正确动作。",
+    "assessment": "本人最新反思归类",
+    "summary": "8月13日买入通鼎互联300股，14日全部卖出。按本人补充反思，这轮归为切换模式错误。",
     "errors": [
       {
-        "category": "entry",
-        "evidence": "买点偏急"
-      },
+        "category": "switch_mode",
+        "evidence": "8.13的这三个交易以及8.14的都是属于“切换模式错误”。"
+      }
+    ],
+    "quotes": [
       {
-        "category": "leader",
-        "evidence": "它不是当日唯一核心"
+        "text": "8.13的这三个交易以及8.14的都是属于“切换模式错误”。",
+        "source": "large-loss-review/index.html#switch-mode-review"
       }
     ]
   },

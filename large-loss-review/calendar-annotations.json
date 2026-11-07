@@ -592,11 +592,12 @@
     ]
   },
   "2026-08-13": {
-    "summary": "卖亨通光电、风华高科，买通鼎互联。日度反思肯定科技旧仓处理，问题在老龙反抽买点偏急且未确认当日唯一核心。",
-    "assessment": "已有反思归类",
+    "summary": "买入通鼎互联300股，卖出亨通光电、风华高科各100股。本人将三只都归为切换模式错误。通鼎是当日入场，亨通与风华是此前持仓的退出。",
+    "assessment": "本人最新反思归类",
     "errors": [
       {
-        "category": "entry",
+        "category": "switch_mode",
+        "evidence": "8.13的这三个交易以及8.14的都是属于“切换模式错误”。",
         "scope": "当日操作",
         "stocks": [
           {
@@ -604,29 +605,33 @@
             "name": "通鼎互联"
           }
         ],
-        "evidence": "买点偏急",
-        "source": "2026-08-10_2026-08-15/index.html#stock-002491"
+        "source": "large-loss-review/index.html#switch-mode-review"
       },
       {
-        "category": "leader",
-        "scope": "当日操作",
+        "category": "switch_mode",
+        "evidence": "8.13的这三个交易以及8.14的都是属于“切换模式错误”。",
+        "scope": "持仓延续",
         "stocks": [
           {
-            "code": "002491",
-            "name": "通鼎互联"
+            "code": "600487",
+            "name": "亨通光电"
+          },
+          {
+            "code": "000636",
+            "name": "风华高科"
           }
         ],
-        "evidence": "它不是当日唯一核心",
-        "source": "2026-08-10_2026-08-15/index.html#stock-002491"
+        "source": "large-loss-review/index.html#switch-mode-review"
       }
     ]
   },
   "2026-08-14": {
-    "summary": "卖出通鼎互联300股后，分8笔买入华西股份800股。按本人最新反思，华西这次买入归为切换模式错误。通鼎互联关联前一交易日的入场问题。",
+    "summary": "卖出通鼎互联300股，分8笔买入华西股份800股，两只均归为切换模式错误。通鼎延续13日的交易，华西是当日入场。",
     "assessment": "本人最新反思归类",
     "errors": [
       {
-        "category": "entry",
+        "category": "switch_mode",
+        "evidence": "8.13的这三个交易以及8.14的都是属于“切换模式错误”。",
         "scope": "持仓延续",
         "stocks": [
           {
@@ -634,8 +639,7 @@
             "name": "通鼎互联"
           }
         ],
-        "evidence": "买点偏急",
-        "source": "2026-08-10_2026-08-15/index.html#stock-002491"
+        "source": "large-loss-review/index.html#switch-mode-review"
       },
       {
         "category": "switch_mode",

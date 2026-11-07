@@ -843,18 +843,18 @@
         {
           "text": "通鼎互联这类老龙反抽只能当小仓试错，不能给龙头预期；买入后承接不足要迅速止损。",
           "source": "2026-08-10_2026-08-15/index.html#rules"
-        }
-      ],
-      "assessment": "已有反思归类",
-      "summary": "老龙反抽买点偏急，又赋予它唯一核心的预期；次日止损是正确动作。",
-      "errors": [
-        {
-          "category": "entry",
-          "evidence": "买点偏急"
         },
         {
-          "category": "leader",
-          "evidence": "它不是当日唯一核心"
+          "text": "8.13的这三个交易以及8.14的都是属于“切换模式错误”。",
+          "source": "large-loss-review/index.html#switch-mode-review"
+        }
+      ],
+      "assessment": "本人最新反思归类",
+      "summary": "8月13日买入通鼎互联300股，14日全部卖出。按本人补充反思，这轮归为切换模式错误。",
+      "errors": [
+        {
+          "category": "switch_mode",
+          "evidence": "8.13的这三个交易以及8.14的都是属于“切换模式错误”。"
         }
       ]
     },
