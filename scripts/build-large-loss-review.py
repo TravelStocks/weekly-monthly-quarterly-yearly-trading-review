@@ -200,6 +200,10 @@ def build(outcome='loss'):
                 cash=abs(t['net']), source=path) for t in raw['trades'] + raw.get('reference', [])]
         batches.append(trades)
         scan.append(dict(source=path, trades=len(trades), kind='公开成交明细' if trades else '心得归档，无成交数据'))
+    supplement = 'large-loss-review/supplemental-trades.json'
+    extra = [dict(row, source=supplement) for row in read_json(supplement)['rows']]
+    batches.append(extra)
+    scan.append(dict(source=supplement, trades=len(extra), kind='交割单补充成交'))
     trades = deduplicate(batches)
     # October's later settlement statement supplies exact cash for four earlier
     # order-history rows. Match only unambiguous economic fills, not nearby times.

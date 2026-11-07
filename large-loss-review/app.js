@@ -81,7 +81,7 @@ function openHash() {
 }
 async function init() {
   try {
-    const response=await fetch('./data.json?v=20261106-guilin');
+    const response=await fetch('./data.json?v=20261106-may-cases');
     if(!response.ok)throw new Error('HTTP '+response.status);
     DATA=await response.json();
     Object.entries(CATEGORIES).forEach(([id,c])=>$('category').insertAdjacentHTML('beforeend',`<option value="${id}">${c.name}</option>`));

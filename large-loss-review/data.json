@@ -2386,6 +2386,62 @@
       ]
     },
     {
+      "code": "600379",
+      "name": "宝光股份",
+      "start": "2026-05-06",
+      "end": "2026-05-08",
+      "cost": 23235.23,
+      "pnl": -2131.0,
+      "status": "closed",
+      "basis": "含费闭环",
+      "sources": [
+        "2026-05-08_2026-05-16/index.html",
+        "large-loss-review/supplemental-trades.json",
+        "monthly-quarterly-trading-review/2026-05/index.html"
+      ],
+      "rate": -9.171417713532424,
+      "id": "600379-2026-05-08-closed",
+      "instrument": "stock",
+      "quotes": [
+        {
+          "text": "宝光股份 5/8 卖出 1200 股，但周前成本不在本周交割单内，未纳入闭环盈亏。",
+          "source": "2026-05-08_2026-05-16/index.html#stocks"
+        },
+        {
+          "text": "本周交割单共 37 笔，涉及 9 只。账户实盘口径累计 -4,482.26，复利收益 -14.49%，平均仓位 79.1%。交割单可闭环部分为 -1,830.54，但宝光股份属于周前持仓卖出，缺少周前成本，未纳入已闭环盈亏。",
+          "source": "2026-05-08_2026-05-16/index.html#top"
+        },
+        {
+          "text": "宝光股份卖出无法精确归因，因为本周交割单缺周前成本；后续每周最好补充周初持仓成本。",
+          "source": "2026-05-08_2026-05-16/index.html"
+        },
+        {
+          "text": "宝光股份早盘第一时间止盈、部分标的能果断处理，说明关键时刻有执行力。",
+          "source": "2026-05-08_2026-05-16/index.html#kiss"
+        },
+        {
+          "text": "Keep 宝光股份早盘止盈，通鼎互联板上介入贴合题材、竞价和量能逻辑。",
+          "source": "2026-05-08_2026-05-16/index.html#kiss"
+        },
+        {
+          "text": "宝光股份 5/8 卖出 1200 股缺周前成本，本页只展示卖出事实，不把它纳入闭环盈亏。",
+          "source": "2026-05-08_2026-05-16/index.html#method"
+        },
+        {
+          "text": "5.7和5.8的宝光股份属于“趋势行情下不能做连扳非龙头，这是大错误”。",
+          "source": "large-loss-review/index.html#may-baoguang"
+        }
+      ],
+      "assessment": "本人最新反思归类",
+      "summary": "5月6日、7日买入，8日清仓。按本人复盘，这轮的错误是在趋势行情下参与非龙头连板。",
+      "errors": [
+        {
+          "category": "trend_nonleader",
+          "evidence": "5.7和5.8的宝光股份属于“趋势行情下不能做连扳非龙头，这是大错误”。"
+        }
+      ]
+    },
+    {
       "code": "600667",
       "name": "太极实业",
       "start": "2026-07-01",
@@ -2656,22 +2712,18 @@
         {
           "text": "冲高回落、题材同步走弱、不能重新证明强度时，先保护账户，不把幻想留到隔日。",
           "source": "success-failure-trade-review/stock-600863-failure/index.html"
+        },
+        {
+          "text": "5.26和5.28的华能蒙电和京能电力都是”补涨龙只能在三板做“的错误。",
+          "source": "large-loss-review/index.html#may-catch-up"
         }
       ],
-      "assessment": "已有反思归类",
-      "summary": "分歧中未等最强确认就买入非核心，未证明强度又继续补仓。",
+      "assessment": "本人最新反思归类",
+      "summary": "5月28日买入、29日卖出。按本人最新反思，这轮归为补涨龙高度错误，补涨龙只能在三板做。",
       "errors": [
         {
-          "category": "leader",
-          "evidence": "把非最强票越跌越补"
-        },
-        {
-          "category": "entry",
-          "evidence": "分歧里过早出手"
-        },
-        {
-          "category": "add",
-          "evidence": "早盘买入后没有证明强度，午后继续补仓"
+          "category": "catch_up_height",
+          "evidence": "5.26和5.28的华能蒙电和京能电力都是”补涨龙只能在三板做“的错误。"
         }
       ]
     },
@@ -5917,16 +5969,15 @@
         "source": "monthly-quarterly-trading-review/2026-08/index.html",
         "trades": 42,
         "kind": "公开成交明细"
+      },
+      {
+        "source": "large-loss-review/supplemental-trades.json",
+        "trades": 4,
+        "kind": "交割单补充成交"
       }
     ],
-    "uniqueTrades": 480,
+    "uniqueTrades": 483,
     "unknownCostSales": [
-      {
-        "date": "2026-05-08",
-        "code": "600379",
-        "name": "宝光股份",
-        "source": "monthly-quarterly-trading-review/2026-05/index.html"
-      },
       {
         "date": "2026-05-18",
         "code": "002082",

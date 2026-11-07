@@ -4346,10 +4346,39 @@
       ],
       "tradeCount": 4,
       "notes": [],
-      "relatedEpisodes": [],
-      "summary": "",
-      "assessment": "待归因",
-      "errors": []
+      "relatedEpisodes": [
+        {
+          "id": "600379-2026-05-08-closed",
+          "name": "宝光股份",
+          "code": "600379",
+          "start": "2026-05-06",
+          "end": "2026-05-08",
+          "summary": "5月6日、7日买入，8日清仓。按本人复盘，这轮的错误是在趋势行情下参与非龙头连板。",
+          "errors": [
+            {
+              "category": "trend_nonleader",
+              "evidence": "5.7和5.8的宝光股份属于“趋势行情下不能做连扳非龙头，这是大错误”。"
+            }
+          ],
+          "assessment": "本人最新反思归类"
+        }
+      ],
+      "summary": "宝光股份买入600股，归为趋势行情下参与非龙头连板。",
+      "assessment": "本人最新反思归类",
+      "errors": [
+        {
+          "category": "trend_nonleader",
+          "evidence": "5.7和5.8的宝光股份属于“趋势行情下不能做连扳非龙头，这是大错误”。",
+          "scope": "当日操作",
+          "stocks": [
+            {
+              "code": "600379",
+              "name": "宝光股份"
+            }
+          ],
+          "source": "large-loss-review/index.html#may-baoguang"
+        }
+      ]
     },
     {
       "date": "2026-05-07",
@@ -4405,10 +4434,39 @@
       ],
       "tradeCount": 1,
       "notes": [],
-      "relatedEpisodes": [],
-      "summary": "",
-      "assessment": "待归因",
-      "errors": []
+      "relatedEpisodes": [
+        {
+          "id": "600379-2026-05-08-closed",
+          "name": "宝光股份",
+          "code": "600379",
+          "start": "2026-05-06",
+          "end": "2026-05-08",
+          "summary": "5月6日、7日买入，8日清仓。按本人复盘，这轮的错误是在趋势行情下参与非龙头连板。",
+          "errors": [
+            {
+              "category": "trend_nonleader",
+              "evidence": "5.7和5.8的宝光股份属于“趋势行情下不能做连扳非龙头，这是大错误”。"
+            }
+          ],
+          "assessment": "本人最新反思归类"
+        }
+      ],
+      "summary": "宝光股份再买600股，延续趋势行情下参与非龙头连板的问题。",
+      "assessment": "本人最新反思归类",
+      "errors": [
+        {
+          "category": "trend_nonleader",
+          "evidence": "5.7和5.8的宝光股份属于“趋势行情下不能做连扳非龙头，这是大错误”。",
+          "scope": "当日操作",
+          "stocks": [
+            {
+              "code": "600379",
+              "name": "宝光股份"
+            }
+          ],
+          "source": "large-loss-review/index.html#may-baoguang"
+        }
+      ]
     },
     {
       "date": "2026-05-08",
@@ -4460,6 +4518,21 @@
       ],
       "relatedEpisodes": [
         {
+          "id": "600379-2026-05-08-closed",
+          "name": "宝光股份",
+          "code": "600379",
+          "start": "2026-05-06",
+          "end": "2026-05-08",
+          "summary": "5月6日、7日买入，8日清仓。按本人复盘，这轮的错误是在趋势行情下参与非龙头连板。",
+          "errors": [
+            {
+              "category": "trend_nonleader",
+              "evidence": "5.7和5.8的宝光股份属于“趋势行情下不能做连扳非龙头，这是大错误”。"
+            }
+          ],
+          "assessment": "本人最新反思归类"
+        },
+        {
           "id": "600726-2026-05-11-closed",
           "name": "华电能源",
           "code": "600726",
@@ -4475,7 +4548,7 @@
           "assessment": "本人最新反思归类"
         }
       ],
-      "summary": "当天卖出宝光股份，买入华电能源和通鼎互联。本人将华电能源500股的入场归为龙头二波买点错误。",
+      "summary": "宝光股份卖出1,200股，回看此前在趋势行情下参与非龙头连板的问题。当天买入华电能源500股，归为龙头二波买点错误，另买入通鼎互联。",
       "assessment": "本人最新反思归类",
       "errors": [
         {
@@ -4489,6 +4562,18 @@
             }
           ],
           "source": "large-loss-review/index.html#may8-huadian-energy"
+        },
+        {
+          "category": "trend_nonleader",
+          "evidence": "5.7和5.8的宝光股份属于“趋势行情下不能做连扳非龙头，这是大错误”。",
+          "scope": "持仓延续",
+          "stocks": [
+            {
+              "code": "600379",
+              "name": "宝光股份"
+            }
+          ],
+          "source": "large-loss-review/index.html#may-baoguang"
         }
       ]
     },
@@ -5710,9 +5795,22 @@
           "assessment": "待归因"
         }
       ],
-      "summary": "",
-      "assessment": "待归因",
-      "errors": []
+      "summary": "买入京东方A 800股，归为趋势模式不熟悉。当天另卖达实智能、买入圣阳股份。",
+      "assessment": "本人最新反思归类",
+      "errors": [
+        {
+          "category": "trend_mode",
+          "evidence": "5.26的京东方A则是””趋势模式不熟悉“。",
+          "scope": "当日操作",
+          "stocks": [
+            {
+              "code": "000725",
+              "name": "京东方A"
+            }
+          ],
+          "source": "large-loss-review/index.html#may-boe"
+        }
+      ]
     },
     {
       "date": "2026-05-26",
@@ -5834,9 +5932,34 @@
           "assessment": "待归因"
         }
       ],
-      "summary": "",
-      "assessment": "待归因",
-      "errors": []
+      "summary": "买入京能电力2,200股，归为补涨龙高度错误。卖出京东方A 800股，关联此前的趋势模式不熟悉。",
+      "assessment": "本人最新反思归类",
+      "errors": [
+        {
+          "category": "catch_up_height",
+          "evidence": "5.26和5.28的华能蒙电和京能电力都是”补涨龙只能在三板做“的错误。",
+          "scope": "当日操作",
+          "stocks": [
+            {
+              "code": "600578",
+              "name": "京能电力"
+            }
+          ],
+          "source": "large-loss-review/index.html#may-catch-up"
+        },
+        {
+          "category": "trend_mode",
+          "evidence": "5.26的京东方A则是””趋势模式不熟悉“。",
+          "scope": "持仓延续",
+          "stocks": [
+            {
+              "code": "000725",
+              "name": "京东方A"
+            }
+          ],
+          "source": "large-loss-review/index.html#may-boe"
+        }
+      ]
     },
     {
       "date": "2026-05-27",
@@ -6042,22 +6165,14 @@
           "code": "600863",
           "start": "2026-05-28",
           "end": "2026-05-29",
-          "summary": "分歧中未等最强确认就买入非核心，未证明强度又继续补仓。",
+          "summary": "5月28日买入、29日卖出。按本人最新反思，这轮归为补涨龙高度错误，补涨龙只能在三板做。",
           "errors": [
             {
-              "category": "leader",
-              "evidence": "把非最强票越跌越补"
-            },
-            {
-              "category": "entry",
-              "evidence": "分歧里过早出手"
-            },
-            {
-              "category": "add",
-              "evidence": "早盘买入后没有证明强度，午后继续补仓"
+              "category": "catch_up_height",
+              "evidence": "5.26和5.28的华能蒙电和京能电力都是”补涨龙只能在三板做“的错误。"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         },
         {
           "id": "002580-2026-05-28-closed",
@@ -6070,9 +6185,34 @@
           "assessment": "待归因"
         }
       ],
-      "summary": "",
-      "assessment": "待归因",
-      "errors": []
+      "summary": "卖出京能电力2,200股、买入华能蒙电3,300股，两轮均归为补涨龙高度错误。当天还卖出圣阳股份。",
+      "assessment": "本人最新反思归类",
+      "errors": [
+        {
+          "category": "catch_up_height",
+          "evidence": "5.26和5.28的华能蒙电和京能电力都是”补涨龙只能在三板做“的错误。",
+          "scope": "持仓延续",
+          "stocks": [
+            {
+              "code": "600578",
+              "name": "京能电力"
+            }
+          ],
+          "source": "large-loss-review/index.html#may-catch-up"
+        },
+        {
+          "category": "catch_up_height",
+          "evidence": "5.26和5.28的华能蒙电和京能电力都是”补涨龙只能在三板做“的错误。",
+          "scope": "当日操作",
+          "stocks": [
+            {
+              "code": "600863",
+              "name": "华能蒙电"
+            }
+          ],
+          "source": "large-loss-review/index.html#may-catch-up"
+        }
+      ]
     },
     {
       "date": "2026-05-29",
@@ -6149,27 +6289,32 @@
           "code": "600863",
           "start": "2026-05-28",
           "end": "2026-05-29",
-          "summary": "分歧中未等最强确认就买入非核心，未证明强度又继续补仓。",
+          "summary": "5月28日买入、29日卖出。按本人最新反思，这轮归为补涨龙高度错误，补涨龙只能在三板做。",
           "errors": [
             {
-              "category": "leader",
-              "evidence": "把非最强票越跌越补"
-            },
-            {
-              "category": "entry",
-              "evidence": "分歧里过早出手"
-            },
-            {
-              "category": "add",
-              "evidence": "早盘买入后没有证明强度，午后继续补仓"
+              "category": "catch_up_height",
+              "evidence": "5.26和5.28的华能蒙电和京能电力都是”补涨龙只能在三板做“的错误。"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         }
       ],
-      "summary": "",
-      "assessment": "待归因",
-      "errors": []
+      "summary": "卖出华能蒙电3,300股，回看28日的补涨龙参与高度。",
+      "assessment": "本人最新反思归类",
+      "errors": [
+        {
+          "category": "catch_up_height",
+          "evidence": "5.26和5.28的华能蒙电和京能电力都是”补涨龙只能在三板做“的错误。",
+          "scope": "持仓延续",
+          "stocks": [
+            {
+              "code": "600863",
+              "name": "华能蒙电"
+            }
+          ],
+          "source": "large-loss-review/index.html#may-catch-up"
+        }
+      ]
     },
     {
       "date": "2026-06-01",
