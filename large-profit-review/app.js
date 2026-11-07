@@ -66,11 +66,13 @@ function openHash() {
   $('instrument').value=record.instrument;$('status').value=record.status;$('month').value='all';$('search').value='';$('category').value='all';render();
   const target=$(id);target.open=true;target.scrollIntoView();
 }
+const profitArchive = fetch('./data.json?v=20261106-dashi').then(response => {
+  if (!response.ok) throw new Error('HTTP '+response.status);
+  return response.json();
+});
 async function init() {
   try {
-    const response=await fetch('./data.json?v=20261106-dashi');
-    if(!response.ok)throw new Error('HTTP '+response.status);
-    DATA=await response.json();
+    DATA=await profitArchive;
     Object.entries(CATEGORIES).forEach(([id,c])=>$('category').insertAdjacentHTML('beforeend',`<option value="${id}">${c.name}</option>`));
     [...new Set(DATA.records.map(r=>r.end.slice(0,7)))].sort().reverse().forEach(m=>$('month').insertAdjacentHTML('beforeend',`<option value="${m}">${m}</option>`));
     for(const id of ['instrument','status','month','category','sort'])$(id).addEventListener('change',render);

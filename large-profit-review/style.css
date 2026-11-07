@@ -12,3 +12,7 @@
 .evidence{border-left-color:#b9d4c4}
 .evidence strong{color:#245d46}
 @media(max-width:560px){.profit-rate{font-size:20px}}
+
+#date-view .calendar-day.is-gain{background-color:#fff0e9;border-color:#d99b89}
+#date-view .calendar-day.is-gain .day-rate,#date-view .loss-mark,#date-view .calendar-loss-list button strong{color:var(--red)}
+#date-view .legend-loss{background:#fff0e9!important;border-color:#d99b89!important}

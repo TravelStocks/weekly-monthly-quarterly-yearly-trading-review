@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="从历史交割复盘筛选盈利超过2%的交易，逐笔关联反思，按有据可查的有效做法分类统计频次。">
   <title>大利润个股总结 · 有效做法频次与反思档案</title>
-  <link rel="stylesheet" href="./style.css">
-  <script src="./app.js?v=20261106-dashi" defer></script>
+  <link rel="stylesheet" href="./style.css?v=profit-calendar">
+  <link rel="stylesheet" href="../large-loss-review/calendar.css">
+  <script src="./app.js?v=profit-calendar" defer></script>
+  <script src="./calendar.js?v=profit-calendar" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">跳到主要内容</a>
@@ -17,6 +19,8 @@
         <div><span class="eyebrow">PROFIT REVIEW / 盈利复盘</span><h1>大利润个股总结</h1><p class="intro">把每一次盈利，放回当时的判断。<br>找到做对的事，也保留赚钱时的不足。</p><p class="scope">筛选：单轮收益率 <strong>高于 +2%</strong> · 同一轮跨周、跨月只算一次</p></div>
         <div class="hero-note"><span>统计边界</span><p>默认看已平仓个股。ETF、历史持仓浮盈可单独查看；盈利但不可复制与待归因样本仍保留在明细中。</p><a href="#method">查看计算与归类口径 ↗</a></div>
       </header>
+      <div class="view-switch" role="group" aria-label="复盘视角"><button id="view-stock" type="button" aria-pressed="true" aria-controls="stock-view">个股视角<span>单轮交易与有效做法排行</span></button><button id="view-date" type="button" aria-pressed="false" aria-controls="date-view">日期视角<span>账户盈利日历与当天操作</span></button></div>
+      <div id="stock-view">
       <div id="load-state" role="status">正在读取盈利档案…</div>
       <div id="content" hidden>
         <section class="controls" aria-label="筛选盈利记录">
@@ -46,6 +50,33 @@
           <p id="coverage" class="coverage"></p><details class="audit"><summary>查看已扫描档案与成本缺口</summary><div id="audit-details"></div></details>
         </section>
       </div>
+      </div>
+      <section id="date-view" hidden aria-label="日期视角">
+        <div id="calendar-loading" role="status">正在读取每日账户记录与交割…</div>
+        <div id="calendar-content" hidden>
+          <p class="calendar-intro">按<strong>账户当日收益率高于 +2%</strong>标记大赚日。点击日期查看当天买卖、关联盈利交易及对应反思。已有日收益取自账户记录。4月、5月缺少的交易日按每日持仓和收盘价估算。</p>
+          <div id="calendar-metrics" class="metrics" aria-live="polite"></div>
+          <div class="calendar-controls"><label>查看月份<select id="calendar-month"></select></label><label class="calendar-jump">跳转大赚日<select id="calendar-loss-picker"></select></label><label class="estimate-toggle"><input id="calendar-estimates" type="checkbox" checked>同时显示估算日收益<span>默认全部显示，估算单独标记</span></label></div>
+          <div class="calendar-layout">
+            <section class="panel calendar-panel" aria-labelledby="calendar-heading">
+              <div class="calendar-heading"><button id="calendar-prev" type="button" aria-label="上个月">←</button><h2 id="calendar-heading"></h2><button id="calendar-next" type="button" aria-label="下个月">→</button></div>
+              <div class="calendar-legend"><span><i class="legend-loss"></i>大赚日 &gt; +2%</span><span><i class="legend-estimate"></i>估算</span><span><i class="legend-missing"></i>无日收益记录</span></div>
+              <div class="calendar-weekdays" aria-hidden="true"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div>
+              <div id="calendar-grid" class="calendar-grid" role="group" aria-label="当月日期"></div>
+              <p id="calendar-month-note" class="subtle calendar-month-note" role="status"></p>
+              <section class="calendar-month-errors" aria-labelledby="calendar-month-errors-title">
+                <h3 id="calendar-month-errors-title" class="calendar-list-heading">本月有效做法</h3>
+                <p id="calendar-month-errors-note" class="subtle" role="status"></p>
+                <p class="subtle">按大赚日关联盈利交易的整轮复盘汇总，同一天同一做法只计一天。点击日期查看对应标的。</p>
+                <div id="calendar-month-errors"></div>
+              </section>
+              <h3 class="calendar-list-heading">本月大赚日</h3><div id="calendar-loss-list" class="calendar-loss-list"></div>
+            </section>
+            <section id="calendar-day-detail" class="panel calendar-detail" tabindex="-1" aria-live="polite" aria-label="选中日期的操作与反思"></section>
+          </div>
+          <section class="panel calendar-method" id="calendar-method"><h2>日期统计口径</h2><p>账户日收益严格超过 +2% 才计入大赚日。估算默认计入，可单独关闭。无成交日也可能有持仓收益，缺少账户收益的日期标为未提供。</p><p>当天反思来自当日日记。关联交易按持仓日期匹配，做法来自该轮复盘，不能据此分摊当天的账户利润。期初持仓日期未知的轮次只关联已确认的成交日。</p><p id="calendar-source-note" class="coverage"></p></section>
+        </div>
+      </section>
       <noscript><p>此模块需要启用 JavaScript 展示筛选与排行榜。可直接查看<a href="./data.json">完整数据</a>。</p></noscript>
     </main><footer>交易复盘档案 · <span id="updated">2026-11-04</span> 整理更新</footer>
   </div>
