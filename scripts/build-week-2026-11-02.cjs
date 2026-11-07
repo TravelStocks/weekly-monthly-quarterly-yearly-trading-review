@@ -8,6 +8,13 @@ const tradeReport=require('./render-week-2026-11-02-trades.cjs');
 const tradeSections=tradeReport.render({section,table,esc});
 const nav=[['weekly-verdict','三个错误，一个错过'],['trade-records','成交与每日记录'],['ticket-pnl','逐票闭环盈亏'],['missing-records','待补材料'],['mode-boundaries','补涨与监管边界'],['auction-gap','竞价缺口与定龙'],['leader-queue-training','超重点：龙头排单'],['minfa-missed','闽发五板错过机会'],['jinyao-turnover','津药板上换手'],['three-mistakes','三大交易禁忌'],['pre-buy-gate','买入前必答'],['profit-effect','赚钱效应超重点'],['expectation-management','预期管理与竞价'],['key-points','重点结论'],['pk-confirmation','先定龙再参与'],['confirmation-entry','定龙与先手'],['small-theme-support','小题材托举案例'],['theme-cases','题材规模案例'],['second-wave','龙头二波买卖点'],['learning','11月3日学习心得'],['operations','个人操作'],['reflection','核心反思'],['kiss','KISS'],['rules','规则修订'],['lessons','经验心得'],['loss','损失记录']];
 const weeklyVerdict=section('weekly-verdict','三个错误，一个错过',`
+<div class="key-conclusion" id="premarket-four"><span>下周盘前四问</span><h3>没定龙不抢，定龙后符合预案不等。</h3>
+<ol>
+<li><strong>监管反核：</strong>我等的是监管函首日第一次反核上板确认，还是错过最后买点后又想做反弹？</li>
+<li><strong>补涨地位：</strong>这只票是在三板确认了补涨龙地位，还是我只看见题材进入补涨阶段，就想在四板追进去？</li>
+<li><strong>同身位竞争：</strong>是市场已经在板上选出了唯一龙头，还是胜负未分，我就想替市场押一个赢家？</li>
+<li><strong>五板回封：</strong>龙头已定、量能达标，大单开始回封触发预案时，我能否按计划及时排单，而不等封死才动手？</li>
+</ol></div>
 <p class="key-source">11月2日–6日 · 我的周总结</p>
 <ol class="key-rules">
 <li><h3>监管反核：错过首日窗口，还在做反弹预期</h3><p>回看大业股份，我把监管后的反弹当成了可以反复做的机会。按我的预案，<strong>监管函首日第一次反核上板确认，就是最后的买点</strong>；次日是退出日，不是再找一次买点。严重异动不套用这个规则。<a href="#mode-boundaries">监管参与边界</a></p></li>
