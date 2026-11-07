@@ -1,11 +1,10 @@
 {
-  "status": "partial-trades",
+  "status": "complete-trades",
   "date": "2026-11-02",
-  "coveredThrough": "2026-11-04",
-  "account": null,
-  "partialAccount": {
-    "status": "partial-statement-close-estimate",
-    "coveredThrough": "2026-11-04",
+  "coveredThrough": "2026-11-06",
+  "account": {
+    "status": "statement-close-estimate",
+    "coveredThrough": "2026-11-06",
     "opening": {
       "date": "2026-10-30",
       "cash": 7896.36,
@@ -71,18 +70,38 @@
         "returnPct": -1.898694917452542,
         "position": 18.930974753590753,
         "status": "交割与收盘估算"
+      },
+      {
+        "date": "2026-11-05",
+        "cash": 10319.97,
+        "holdings": [],
+        "marketValue": 0,
+        "equity": 10319.97,
+        "pnl": -117.95,
+        "returnPct": -1.130014409001027,
+        "position": 0,
+        "status": "交割与收盘估算"
+      },
+      {
+        "date": "2026-11-06",
+        "cash": 10319.97,
+        "holdings": [],
+        "marketValue": 0,
+        "equity": 10319.97,
+        "pnl": 0,
+        "returnPct": 0,
+        "position": 0,
+        "status": "交割与收盘估算"
       }
     ],
-    "pnl": -1362.44,
-    "returnPct": -11.545749451711643,
-    "endingEquity": 10437.92,
-    "averagePosition": 16.8080283176935,
-    "endingPosition": 18.930974753590753,
-    "fullWeekPnl": null,
-    "fullWeekReturnPct": null,
-    "fullWeekAveragePosition": null,
+    "pnl": -1480.39,
+    "returnPct": -12.545295228281173,
+    "endingEquity": 10319.97,
+    "averagePosition": 10.0848169906161,
+    "endingPosition": 0,
+    "weeklyReturnPct": -12.545295228281173,
     "fridayPositionPct": 0,
-    "basis": "按10/30实际成交及大业收盘价19.52元还原期初权益11,800.36元；逐日使用实际发生金额与不复权收盘价估值，假设无遗漏持仓或非交易出入金。仅计算11/2至11/4，不外推周四、周五账户收益。周五0%仓位来自本人确认。",
+    "basis": "按10/30实际成交及大业收盘价19.52元还原期初权益11,800.36元；逐日使用实际发生金额与不复权收盘价估值，假设无遗漏持仓或非交易出入金。11/5卖出文投后全部清仓；周五无成交、空仓，按无额外出入金延续前日现金。",
     "sources": [
       {
         "code": "603131",
@@ -126,13 +145,13 @@
       }
     ]
   },
-  "tradeCount": 7,
+  "tradeCount": 8,
   "referenceCount": 5,
   "buyAmount": 6030,
-  "sellAmount": 6634,
-  "fees": 38.44,
-  "netCash": 565.56,
-  "lastCash": 8461.92,
+  "sellAmount": 8498,
+  "fees": 44.39,
+  "netCash": 2423.61,
+  "lastCash": 10319.97,
   "closed": [
     {
       "code": "603278",
@@ -151,16 +170,25 @@
       "proceeds": 3113.41,
       "pnl": -758.63,
       "returnPct": -19.592514540139046
+    },
+    {
+      "code": "600715",
+      "name": "文投控股",
+      "qty": 800,
+      "cost": 2178.02,
+      "proceeds": 1858.05,
+      "pnl": -319.97,
+      "returnPct": -14.690866015922719
     }
   ],
-  "closedPnl": -1184.46,
+  "closedPnl": -1504.43,
   "friday": {
     "date": "2026-11-06",
     "positionPct": 0,
     "source": "用户确认第五天空仓",
-    "cash": null,
-    "equity": null,
-    "pnl": null
+    "cash": 10319.97,
+    "equity": 10319.97,
+    "pnl": 0
   },
-  "reason": "已录入11月2日至4日成交；11月5日待补，11月6日用户确认空仓。已计算前三日收盘估算；缺少周四成交及期末资产，不计算全周收益。"
+  "reason": "全周成交已核实，账户按无额外出入金估算。"
 }

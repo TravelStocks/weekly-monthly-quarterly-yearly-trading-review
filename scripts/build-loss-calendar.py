@@ -148,7 +148,7 @@ def build():
     calculated_sources = [
         ('2026-10-26_2026-10-30/data/account-estimate.json', None,
          '2026-10-26_2026-10-30/index.html#account'),
-        ('2026-11-02_2026-11-06/data/summary.json', 'partialAccount',
+        ('2026-11-02_2026-11-06/data/summary.json', 'account',
          '2026-11-02_2026-11-06/index.html#trade-records'),
     ]
     for path, key, source in calculated_sources:
@@ -157,6 +157,8 @@ def build():
         assert account['status'] in ['statement-close-estimate', 'partial-statement-close-estimate']
         previous = Decimal(str(account['opening']['equity']))
         for day in account['days']:
+            if day['date'] > imported['end']:
+                continue  # Calendar coverage follows its own trade import.
             assert day['date'] <= account.get('coveredThrough', imported['end'])
             equity = Decimal(str(day['equity']))
             pnl = Decimal(str(day['pnl']))

@@ -1,21 +1,21 @@
 {
-  "source": "table-这周.xlsx / table",
-  "importedAt": "2026-11-06",
+  "source": "本周交割表与近一周成交截图（逐笔核对）",
+  "importedAt": "2026-11-07",
   "weekStart": "2026-11-02",
   "weekEnd": "2026-11-06",
   "coveredDates": [
     "2026-11-02",
     "2026-11-03",
-    "2026-11-04"
+    "2026-11-04", "2026-11-05", "2026-11-06"
   ],
-  "missingDate": "2026-11-05",
+  "missingDate": null,
   "friday": {
     "date": "2026-11-06",
     "positionPct": 0,
     "source": "用户确认第五天空仓",
-    "cash": null,
-    "equity": null,
-    "pnl": null
+    "cash": 10319.97,
+    "equity": 10319.97,
+    "pnl": 0
   },
   "trades": [
     {
@@ -122,6 +122,12 @@
       "other": 0,
       "net": -1089.01,
       "cash": 8461.92
+    },
+    {
+      "date": "2026-11-05", "time": "09:38:02", "code": "600715", "name": "文投控股",
+      "side": "卖出", "qty": 800, "price": 2.33, "amount": 1864,
+      "fee": 5, "tax": 0.93, "other": 0, "net": 1858.05, "cash": 10319.97,
+      "cashBasis": "截图余额末位未完整显示，以前笔现金加实际净回款还原。"
     }
   ],
   "reference": [

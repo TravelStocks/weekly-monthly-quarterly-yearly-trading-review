@@ -1,17 +1,11 @@
 {
-  "periodCount": 24,
+  "periodCount": 25,
   "archiveCount": 25,
   "reflectionOnly": [],
-  "incompleteReports": [
-    {
-      "folder": "2026-11-02_2026-11-06",
-      "date": "2026-11-02",
-      "reason": "已录入11月2日至4日成交；11月5日待补，11月6日用户确认空仓。已计算前三日收盘估算；缺少周四成交及期末资产，不计算全周收益。"
-    }
-  ],
-  "latest": "10.26-10.30",
-  "totalChange": -17137.63,
-  "latestDrawdown": -61.9686611991302,
+  "incompleteReports": [],
+  "latest": "11.02-11.06",
+  "totalChange": -18618.02,
+  "latestDrawdown": -66.73980493096718,
   "maxDrawdown": -68.15385076506729,
   "weeks": [
     {
@@ -384,6 +378,24 @@
       "conditional": false,
       "weekPct": 13.315184251590445,
       "drawdown": -61.9686611991302
+    },
+    {
+      "label": "11.02-11.06",
+      "href": "../2026-11-02_2026-11-06/",
+      "pnl": -1480.39,
+      "equity": 10319.97,
+      "equityLabel": "10,319.97",
+      "equityStatus": "交割收盘估算",
+      "equityNote": "按10/30实际成交及大业收盘价19.52元还原期初权益11,800.36元；逐日使用实际发生金额与不复权收盘价估值，假设无遗漏持仓或非交易出入金。11/5卖出文投后全部清仓；周五无成交、空仓，按无额外出入金延续前日现金。",
+      "avgPosition": 10.0848169906161,
+      "bestDay": "周五 11-06 0.00",
+      "worstDay": "周一 11-02 -813.83",
+      "estimatedWeekPct": -12.545295228281173,
+      "rateBasis": "期初期末口径",
+      "source": "../2026-11-02_2026-11-06/data/summary.json",
+      "conditional": false,
+      "weekPct": -12.545295228281173,
+      "drawdown": -66.73980493096718
     }
   ]
 }

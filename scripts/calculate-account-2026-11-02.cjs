@@ -26,7 +26,8 @@ for(const date of statement.coveredDates){
   previous=equity;
 }
 const ending=days.at(-1),pnl=(cents(ending.equity)-cents(opening.equity))/100;
-assert.equal(pnl,-1362.44);
+assert.equal(pnl,-1480.39);
+assert.equal(ending.marketValue,0);
 assert.equal(days.reduce((s,d)=>s+cents(d.pnl),0),cents(pnl));
 assert(Math.abs(days.reduce((s,d)=>s*(1+d.returnPct/100),1)-ending.equity/opening.equity)<1e-10);
-module.exports={status:'partial-statement-close-estimate',coveredThrough:'2026-11-04',opening,days,pnl,returnPct:pnl/opening.equity*100,endingEquity:ending.equity,averagePosition:days.reduce((s,d)=>s+d.position,0)/days.length,endingPosition:ending.position,fullWeekPnl:null,fullWeekReturnPct:null,fullWeekAveragePosition:null,fridayPositionPct:0,basis:'按10/30实际成交及大业收盘价19.52元还原期初权益11,800.36元；逐日使用实际发生金额与不复权收盘价估值，假设无遗漏持仓或非交易出入金。仅计算11/2至11/4，不外推周四、周五账户收益。周五0%仓位来自本人确认。',sources:quotes};
+module.exports={status:'statement-close-estimate',coveredThrough:statement.weekEnd,opening,days,pnl,returnPct:pnl/opening.equity*100,endingEquity:ending.equity,averagePosition:days.reduce((s,d)=>s+d.position,0)/days.length,endingPosition:ending.position,weeklyReturnPct:pnl/opening.equity*100,fridayPositionPct:0,basis:'按10/30实际成交及大业收盘价19.52元还原期初权益11,800.36元；逐日使用实际发生金额与不复权收盘价估值，假设无遗漏持仓或非交易出入金。11/5卖出文投后全部清仓；周五无成交、空仓，按无额外出入金延续前日现金。',sources:quotes};

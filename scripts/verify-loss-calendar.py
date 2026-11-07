@@ -82,7 +82,7 @@ assert '2026-09-25' not in days  # unknown is never filled with zero
 # Actual October 30 trades replace the stale unchanged-position scenario.
 assert days['2026-10-30']['income']['amount']==266.18
 assert days['2026-10-30']['income']['calculation']['equity']==11800.36
-november=read('2026-11-02_2026-11-06/data/summary.json')['partialAccount']
+november=read('2026-11-02_2026-11-06/data/summary.json')['account']
 for date,amount in [('2026-11-02',-813.83),('2026-11-03',-346.59),('2026-11-04',-202.02)]:
     actual=days[date]['income']
     expected=next(d for d in november['days'] if d['date']==date)
