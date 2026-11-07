@@ -9802,19 +9802,32 @@
           "code": "002879",
           "start": "2026-07-27",
           "end": "2026-07-28",
-          "summary": "试错退出及时；已有初步复盘提示买前未充分确认题材第一性。",
+          "summary": "同题材龙头刚结束时，放弃中位股。长缆科技当时既不是龙头，也不是补涨龙，不符合切换模式。",
           "errors": [
             {
-              "category": "leader",
-              "evidence": "买前需要更明确它是否具备题材第一性"
+              "category": "mid_after_leader",
+              "evidence": "同题材龙头刚结束的中位非补涨"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         }
       ],
-      "summary": "",
-      "assessment": "待归因",
-      "errors": []
+      "summary": "买入长缆科技100股。同题材龙头刚结束时，放弃中位股。长缆科技当时既不是龙头，也不是补涨龙，不符合切换模式。",
+      "assessment": "本人最新反思归类",
+      "errors": [
+        {
+          "category": "mid_after_leader",
+          "scope": "当日操作",
+          "stocks": [
+            {
+              "code": "002879",
+              "name": "长缆科技"
+            }
+          ],
+          "evidence": "同题材龙头刚结束的中位非补涨",
+          "source": "large-loss-review/index.html#changlan-review"
+        }
+      ]
     },
     {
       "date": "2026-07-28",
@@ -9890,17 +9903,17 @@
           "code": "002879",
           "start": "2026-07-27",
           "end": "2026-07-28",
-          "summary": "试错退出及时；已有初步复盘提示买前未充分确认题材第一性。",
+          "summary": "同题材龙头刚结束时，放弃中位股。长缆科技当时既不是龙头，也不是补涨龙，不符合切换模式。",
           "errors": [
             {
-              "category": "leader",
-              "evidence": "买前需要更明确它是否具备题材第一性"
+              "category": "mid_after_leader",
+              "evidence": "同题材龙头刚结束的中位非补涨"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         }
       ],
-      "summary": "卖出长缆科技100股，分11笔买入立新能源1,100股。立新能源按本人最新反思改归监管反核节奏错误：只有监管首日、上板确认后才参与，次日必须退出；晚一天参与或未等上板，可能连续两天承受大亏。原有阶段、加仓等反思保留在历史原文中。",
+      "summary": "卖出长缆科技100股，分11笔买入立新能源1,100股。立新能源按本人最新反思改归监管反核节奏错误：只有监管首日、上板确认后才参与，次日必须退出；晚一天参与或未等上板，可能连续两天承受大亏。原有阶段、加仓等反思保留在历史原文中。长缆科技本轮入场归为「同题材龙头刚结束的中位非补涨」。",
       "assessment": "本人最新反思归类",
       "errors": [
         {
@@ -9914,6 +9927,18 @@
           ],
           "evidence": "监管第一天反核必须上板才是机会，只有第一天能参与而且第二天必须出来",
           "source": "large-loss-review/index.html#regulatory-timing-review"
+        },
+        {
+          "category": "mid_after_leader",
+          "scope": "本轮回看",
+          "stocks": [
+            {
+              "code": "002879",
+              "name": "长缆科技"
+            }
+          ],
+          "evidence": "同题材龙头刚结束的中位非补涨",
+          "source": "large-loss-review/index.html#changlan-review"
         }
       ]
     },

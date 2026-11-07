@@ -146,7 +146,7 @@ assert sum(any(e['category']=='regulatory_timing' for e in d['errors']) for d in
 assert days['2026-08-07']['tradeCount']==0
 assert any(r['code']=='601700' for r in days['2026-08-07']['relatedEpisodes'])
 assert all(e['scope']=='持仓延续' for e in days['2026-08-07']['errors'])
-assert all(e['scope']=='当日操作' for e in days['2026-07-28']['errors'])
+assert {(s['code'], e['scope']) for e in days['2026-07-28']['errors'] for s in e['stocks']} == {('001258', '当日操作'), ('002879', '本轮回看')}
 assert all(e['scope']=='持仓延续' for e in days['2026-07-29']['errors'])
 assert not any(e['category']=='add' for e in days['2026-09-17']['errors'])  # add was next day
 assert not days['2026-05-21']['errors']  # missing attribution

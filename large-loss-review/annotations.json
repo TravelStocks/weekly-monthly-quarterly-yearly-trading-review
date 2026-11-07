@@ -240,12 +240,18 @@
     ]
   },
   "002879-2026-07-28-closed": {
-    "assessment": "已有反思归类",
-    "summary": "试错退出及时；已有初步复盘提示买前未充分确认题材第一性。",
+    "assessment": "本人最新反思归类",
+    "summary": "同题材龙头刚结束时，放弃中位股。长缆科技当时既不是龙头，也不是补涨龙，不符合切换模式。",
     "errors": [
       {
-        "category": "leader",
-        "evidence": "买前需要更明确它是否具备题材第一性"
+        "category": "mid_after_leader",
+        "evidence": "同题材龙头刚结束的中位非补涨"
+      }
+    ],
+    "quotes": [
+      {
+        "text": "长缆科技这个错误属于“同题材龙头刚结束的中位非补涨”，这种千万不能做，既不是龙头也不是补涨龙也不是切换，这种最容易亏损的。",
+        "source": "large-loss-review/index.html#changlan-review"
       }
     ]
   },
