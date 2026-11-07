@@ -656,32 +656,24 @@
     ]
   },
   "2026-08-17": {
-    "summary": "卖出华西股份800股，结束8月14日买入的这轮交易。切换模式错误在当天记为持仓延续。同日还卖出秦安股份、买入金螳螂，金螳螂沿用原有的模式外交易归类。",
+    "summary": "卖出华西股份800股、秦安股份100股，两笔退出都关联此前的切换模式错误。按交割核算，华西整轮亏损340.64元，秦安整轮盈利64.31元。当天分两笔买入金螳螂400股，本人确认是正确的龙头模式买入。",
     "assessment": "本人最新反思归类",
     "errors": [
       {
-        "category": "mode",
-        "scope": "当日操作",
-        "stocks": [
-          {
-            "code": "002081",
-            "name": "金螳螂"
-          }
-        ],
-        "evidence": "暂无完整买前预案；本次明确非模式。",
-        "source": "monthly-quarterly-trading-review/2026-09/index.html#stock-002081"
-      },
-      {
         "category": "switch_mode",
-        "evidence": "8.14的华西也是”切换模式错误“。",
         "scope": "持仓延续",
         "stocks": [
           {
             "code": "000936",
             "name": "华西股份"
+          },
+          {
+            "code": "603758",
+            "name": "秦安股份"
           }
         ],
-        "source": "large-loss-review/index.html#switch-mode-review"
+        "evidence": "8.17也是“切换模式错误”",
+        "source": "large-loss-review/index.html#aug17-switch-review"
       }
     ]
   },
