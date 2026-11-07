@@ -30,20 +30,20 @@
     ]
   },
   "2026-05-08": {
-    "summary": "当天卖宝光股份、买华电能源和通鼎互联。原日记另提业绩风险，但缺少完整当日损益归因；这里只列华电能源这轮后续反思，不把通鼎互联的盈利交易判错。",
-    "assessment": "已有反思归类",
+    "summary": "当天卖出宝光股份，买入华电能源和通鼎互联。本人将华电能源500股的入场归为龙头二波买点错误。",
+    "assessment": "本人最新反思归类",
     "errors": [
       {
-        "category": "leader",
-        "scope": "本轮回看",
+        "category": "second_wave_entry",
+        "evidence": "5.8号的华电能源是”“龙头二波买点错误”。",
+        "scope": "当日操作",
         "stocks": [
           {
-            "code": "600726",
-            "name": "华电能源"
+            "name": "华电能源",
+            "code": "600726"
           }
         ],
-        "evidence": "题材热不等于个股有地位，非第一没有核心预期",
-        "source": "monthly-quarterly-trading-review/2026-05/index.html#verdict"
+        "source": "large-loss-review/index.html#may8-huadian-energy"
       }
     ]
   },
@@ -1165,6 +1165,24 @@
           }
         ],
         "source": "large-loss-review/index.html#yuedian-catch-up"
+      }
+    ]
+  },
+  "2026-05-11": {
+    "assessment": "本人最新反思归类",
+    "summary": "卖出华电能源500股，结束5月8日买入的这轮交易。反思回看8日的龙头二波买点。当天另买入通鼎互联和大业股份。",
+    "errors": [
+      {
+        "category": "second_wave_entry",
+        "evidence": "5.8号的华电能源是”“龙头二波买点错误”。",
+        "scope": "持仓延续",
+        "stocks": [
+          {
+            "name": "华电能源",
+            "code": "600726"
+          }
+        ],
+        "source": "large-loss-review/index.html#may8-huadian-energy"
       }
     ]
   }
