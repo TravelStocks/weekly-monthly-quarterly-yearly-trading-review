@@ -64,7 +64,8 @@ for s in monthly['stocks']:
             actual=by_id[f"{s['code']}-{r['end']}-closed"]
             assert actual['pnl']==r['pnl'] and actual['cost']==r['cost']
 assert not by_id['600313-2026-08-20-closed']['errors']
-assert not by_id['002238-2026-09-28-closed']['errors']
+for code in ['002238', '600664']:
+    assert [e['category'] for e in by_id[f'{code}-2026-09-28-closed']['errors']] == ['mode']
 assert {e['category'] for e in by_id['600378-2026-08-31-closed']['errors']}=={'switch_mode'}
 assert {e['category'] for e in by_id['003029-2026-10-21-closed']['errors']}=={'theme_support'}
 for id in ['000892-2026-09-04-closed']:

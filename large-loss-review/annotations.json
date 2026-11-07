@@ -132,16 +132,18 @@
     ]
   },
   "600664-2026-09-28-closed": {
-    "assessment": "已有反思归类",
-    "summary": "9月这轮深水反核既不熟悉，也不匹配市场节点；没有继续补仓值得保留。",
+    "assessment": "本人最新反思归类",
+    "summary": "按本人最新反思，9月24日买入哈药股份时没有明确交易模式，属于随手单。9月28日卖出。下次入场前须能说清交易模式，否则放弃下单。",
     "errors": [
       {
         "category": "mode",
-        "evidence": "临盘选了不熟悉战法，属于随手试错"
-      },
+        "evidence": "随手单，不明确模式下的随意下单"
+      }
+    ],
+    "quotes": [
       {
-        "category": "cycle",
-        "evidence": "深水反核的模式和节点均不匹配"
+        "text": "9.28的南华生物，天威视讯和哈药股份，都属于“随手单，不明确模式下的随意下单”，亏损盈利天注定，这种一定要避免。",
+        "source": "large-loss-review/index.html#unplanned-september-orders"
       }
     ]
   },
@@ -164,9 +166,20 @@
     ]
   },
   "002238-2026-09-28-closed": {
-    "assessment": "正常试错",
-    "summary": "保留原复盘“有升位理由的试错”评价，亏损本身不能推出犯错；预案执行仍需核验。",
-    "errors": []
+    "assessment": "本人最新反思归类",
+    "summary": "按本人最新反思，9月24日买入天威视讯时没有明确交易模式，属于随手单。9月28日卖出。下次入场前须能说清交易模式，否则放弃下单。",
+    "errors": [
+      {
+        "category": "mode",
+        "evidence": "随手单，不明确模式下的随意下单"
+      }
+    ],
+    "quotes": [
+      {
+        "text": "9.28的南华生物，天威视讯和哈药股份，都属于“随手单，不明确模式下的随意下单”，亏损盈利天注定，这种一定要避免。",
+        "source": "large-loss-review/index.html#unplanned-september-orders"
+      }
+    ]
   },
   "002879-2026-07-28-closed": {
     "assessment": "已有反思归类",

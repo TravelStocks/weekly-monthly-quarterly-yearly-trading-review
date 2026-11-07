@@ -885,32 +885,28 @@
     ]
   },
   "2026-09-28": {
-    "summary": "南华生物、天威视讯和哈药股份全部退出，此后停止新开仓。本人将哈药归为不熟悉的反核试错，天威属于正常试错；当天退出不新增错误标签。",
-    "assessment": "已有反思归类",
+    "summary": "南华生物卖出200股，天威视讯、哈药股份各卖出100股。按本人最新反思，三只的入场都属于没有明确模式的随手单。当天全部退出，回看此前的下单问题。",
+    "assessment": "本人最新反思归类",
     "errors": [
       {
         "category": "mode",
         "scope": "持仓延续",
         "stocks": [
           {
-            "code": "600664",
-            "name": "哈药股份"
-          }
-        ],
-        "evidence": "临盘选了不熟悉战法，属于随手试错",
-        "source": "2026-09-21_2026-09-30/index.html#profit-loss"
-      },
-      {
-        "category": "cycle",
-        "scope": "持仓延续",
-        "stocks": [
+            "code": "000504",
+            "name": "南华生物"
+          },
+          {
+            "code": "002238",
+            "name": "天威视讯"
+          },
           {
             "code": "600664",
             "name": "哈药股份"
           }
         ],
-        "evidence": "深水反核的模式和节点均不匹配",
-        "source": "2026-09-21_2026-09-30/index.html#profit-loss"
+        "evidence": "随手单，不明确模式下的随意下单",
+        "source": "large-loss-review/index.html#unplanned-september-orders"
       }
     ]
   },
@@ -1073,6 +1069,46 @@
           }
         ],
         "source": "large-loss-review/index.html#second-wave-entry-review"
+      }
+    ]
+  },
+  "2026-09-23": {
+    "assessment": "本人最新反思归类",
+    "summary": "买入南华生物200股。本人确认这次入场没有明确模式，属于应避免的随手单。",
+    "errors": [
+      {
+        "category": "mode",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "000504",
+            "name": "南华生物"
+          }
+        ],
+        "evidence": "随手单，不明确模式下的随意下单",
+        "source": "large-loss-review/index.html#unplanned-september-orders"
+      }
+    ]
+  },
+  "2026-09-24": {
+    "assessment": "本人最新反思归类",
+    "summary": "买入天威视讯、哈药股份各100股。本人将两笔入场均归为模式不明确时的随手单。",
+    "errors": [
+      {
+        "category": "mode",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "002238",
+            "name": "天威视讯"
+          },
+          {
+            "code": "600664",
+            "name": "哈药股份"
+          }
+        ],
+        "evidence": "随手单，不明确模式下的随意下单",
+        "source": "large-loss-review/index.html#unplanned-september-orders"
       }
     ]
   }
