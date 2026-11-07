@@ -3665,14 +3665,18 @@
         {
           "text": "星光股份本轮含费亏损94.49元，属于10/22–10/23，不计入本周1,479.65元。本图冰山冷热时间为实际成交13:52:10，上期13:52:01为委托时间，两者分别保留。",
           "source": "2026-10-26_2026-10-30/index.html#reference"
+        },
+        {
+          "text": "这两个都属于”模式外交易“。",
+          "source": "large-loss-review/index.html#woge-bingshan-mode"
         }
       ],
-      "assessment": "已有反思归类",
-      "summary": "按本人后续月度归因，抱团龙识别与时机分开评价，主要错在参与时机。",
+      "assessment": "本人最新反思归类",
+      "summary": "冰山冷热这轮入场按本人复盘归为模式外交易。",
       "errors": [
         {
-          "category": "entry",
-          "evidence": "这两只主要错在时机"
+          "category": "mode",
+          "evidence": "模式外交易"
         }
       ]
     },
@@ -5169,18 +5173,18 @@
         {
           "text": "原站个股分析（非本人反思原话）：本周可精确核算部分合计 -169.13，其中已实现 -169.13。",
           "source": "2026-04-20_2026-04-24/index.html"
+        },
+        {
+          "text": "这两个都属于”模式外交易“。",
+          "source": "large-loss-review/index.html#woge-bingshan-mode"
         }
       ],
-      "assessment": "已有反思归类",
-      "summary": "把趋势票、断板反包当成连板接力来做，模式混用，买点也错位。",
+      "assessment": "本人最新反思归类",
+      "summary": "沃格光电这轮入场按本人复盘归为模式外交易。",
       "errors": [
         {
           "category": "mode",
-          "evidence": "沃格光电的操作属于核心模式错误"
-        },
-        {
-          "category": "entry",
-          "evidence": "上板反而是加速，这是卖点不是买点"
+          "evidence": "模式外交易"
         }
       ]
     },

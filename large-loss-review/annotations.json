@@ -420,12 +420,18 @@
     ]
   },
   "000530-2026-10-26-closed": {
-    "assessment": "已有反思归类",
-    "summary": "按本人后续月度归因，抱团龙识别与时机分开评价，主要错在参与时机。",
+    "assessment": "本人最新反思归类",
+    "summary": "冰山冷热这轮入场按本人复盘归为模式外交易。",
     "errors": [
       {
-        "category": "entry",
-        "evidence": "这两只主要错在时机"
+        "category": "mode",
+        "evidence": "模式外交易"
+      }
+    ],
+    "quotes": [
+      {
+        "text": "这两个都属于”模式外交易“。",
+        "source": "large-loss-review/index.html#woge-bingshan-mode"
       }
     ]
   },
@@ -583,16 +589,18 @@
     ]
   },
   "603773-2026-04-22-closed": {
-    "assessment": "已有反思归类",
-    "summary": "把趋势票、断板反包当成连板接力来做，模式混用，买点也错位。",
+    "assessment": "本人最新反思归类",
+    "summary": "沃格光电这轮入场按本人复盘归为模式外交易。",
     "errors": [
       {
         "category": "mode",
-        "evidence": "沃格光电的操作属于核心模式错误"
-      },
+        "evidence": "模式外交易"
+      }
+    ],
+    "quotes": [
       {
-        "category": "entry",
-        "evidence": "上板反而是加速，这是卖点不是买点"
+        "text": "这两个都属于”模式外交易“。",
+        "source": "large-loss-review/index.html#woge-bingshan-mode"
       }
     ]
   },

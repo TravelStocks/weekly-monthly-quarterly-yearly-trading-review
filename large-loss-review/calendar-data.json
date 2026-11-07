@@ -3459,21 +3459,17 @@
           "code": "603773",
           "start": "2026-04-21",
           "end": "2026-04-22",
-          "summary": "把趋势票、断板反包当成连板接力来做，模式混用，买点也错位。",
+          "summary": "沃格光电这轮入场按本人复盘归为模式外交易。",
           "errors": [
             {
               "category": "mode",
-              "evidence": "沃格光电的操作属于核心模式错误"
-            },
-            {
-              "category": "entry",
-              "evidence": "上板反而是加速，这是卖点不是买点"
+              "evidence": "模式外交易"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         }
       ],
-      "summary": "卖出圣龙股份200股，本轮回看归为补涨龙高度错误。复盘纪律是补涨龙只能在三板做。",
+      "summary": "卖出圣龙股份200股，本轮回看归为补涨龙高度错误。复盘纪律是补涨龙只能在三板做。买入沃格光电100股，本轮入场归为模式外交易。",
       "assessment": "本人最新反思归类",
       "errors": [
         {
@@ -3487,6 +3483,18 @@
             }
           ],
           "source": "large-loss-review/index.html#shenglong-review"
+        },
+        {
+          "category": "mode",
+          "evidence": "模式外交易",
+          "scope": "当日操作",
+          "stocks": [
+            {
+              "code": "603773",
+              "name": "沃格光电"
+            }
+          ],
+          "source": "large-loss-review/index.html#woge-bingshan-mode"
         }
       ]
     },
@@ -3590,18 +3598,14 @@
           "code": "603773",
           "start": "2026-04-21",
           "end": "2026-04-22",
-          "summary": "把趋势票、断板反包当成连板接力来做，模式混用，买点也错位。",
+          "summary": "沃格光电这轮入场按本人复盘归为模式外交易。",
           "errors": [
             {
               "category": "mode",
-              "evidence": "沃格光电的操作属于核心模式错误"
-            },
-            {
-              "category": "entry",
-              "evidence": "上板反而是加速，这是卖点不是买点"
+              "evidence": "模式外交易"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         },
         {
           "id": "600736-2026-04-24-floating",
@@ -3614,9 +3618,22 @@
           "assessment": "待归因"
         }
       ],
-      "summary": "",
-      "assessment": "待归因",
-      "errors": []
+      "summary": "卖出沃格光电100股，本轮入场归为模式外交易。",
+      "assessment": "本人最新反思归类",
+      "errors": [
+        {
+          "category": "mode",
+          "evidence": "模式外交易",
+          "scope": "本轮回看",
+          "stocks": [
+            {
+              "code": "603773",
+              "name": "沃格光电"
+            }
+          ],
+          "source": "large-loss-review/index.html#woge-bingshan-mode"
+        }
+      ]
     },
     {
       "date": "2026-04-23",
@@ -13943,17 +13960,17 @@
           "code": "000530",
           "start": "2026-10-23",
           "end": "2026-10-26",
-          "summary": "按本人后续月度归因，抱团龙识别与时机分开评价，主要错在参与时机。",
+          "summary": "冰山冷热这轮入场按本人复盘归为模式外交易。",
           "errors": [
             {
-              "category": "entry",
-              "evidence": "这两只主要错在时机"
+              "category": "mode",
+              "evidence": "模式外交易"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         }
       ],
-      "summary": "星光股份于10-22买入400股，10-23卖出，本轮归为切换模式错误。",
+      "summary": "星光股份于10-22买入400股，10-23卖出，本轮归为切换模式错误。买入冰山冷热100股，本轮入场归为模式外交易。",
       "assessment": "本人最新反思归类",
       "errors": [
         {
@@ -13967,6 +13984,18 @@
           ],
           "evidence": "切换模式错误",
           "source": "large-loss-review/index.html#guofang-xingguang"
+        },
+        {
+          "category": "mode",
+          "evidence": "模式外交易",
+          "scope": "当日操作",
+          "stocks": [
+            {
+              "code": "000530",
+              "name": "冰山冷热"
+            }
+          ],
+          "source": "large-loss-review/index.html#woge-bingshan-mode"
         }
       ]
     },
@@ -14038,19 +14067,32 @@
           "code": "000530",
           "start": "2026-10-23",
           "end": "2026-10-26",
-          "summary": "按本人后续月度归因，抱团龙识别与时机分开评价，主要错在参与时机。",
+          "summary": "冰山冷热这轮入场按本人复盘归为模式外交易。",
           "errors": [
             {
-              "category": "entry",
-              "evidence": "这两只主要错在时机"
+              "category": "mode",
+              "evidence": "模式外交易"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         }
       ],
-      "summary": "",
-      "assessment": "待归因",
-      "errors": []
+      "summary": "卖出冰山冷热100股，本轮入场归为模式外交易。",
+      "assessment": "本人最新反思归类",
+      "errors": [
+        {
+          "category": "mode",
+          "evidence": "模式外交易",
+          "scope": "本轮回看",
+          "stocks": [
+            {
+              "code": "000530",
+              "name": "冰山冷热"
+            }
+          ],
+          "source": "large-loss-review/index.html#woge-bingshan-mode"
+        }
+      ]
     },
     {
       "date": "2026-10-27",
