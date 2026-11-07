@@ -11873,9 +11873,22 @@
         }
       ],
       "relatedEpisodes": [],
-      "summary": "桂林旅游卖出旧仓500股后新买1,000股。本人认可消费补涨方向；加大新仓的动机和确认条件未完整提供，保留事实与待核对项，不自动判为情绪化回补。",
-      "assessment": "方向认可 / 回补待核对",
-      "errors": []
+      "summary": "桂林旅游当天买入3笔共1,000股，卖出2笔共500股。按本人最新反思，当天出现买卖方向按错的偶发性操作失误。",
+      "assessment": "本人最新反思归类",
+      "errors": [
+        {
+          "category": "wrong_side",
+          "scope": "当日操作",
+          "stocks": [
+            {
+              "name": "桂林旅游",
+              "code": "000978"
+            }
+          ],
+          "evidence": "操作失误，买卖按错",
+          "source": "large-loss-review/index.html#guilin-order-side"
+        }
+      ]
     },
     {
       "date": "2026-09-14",

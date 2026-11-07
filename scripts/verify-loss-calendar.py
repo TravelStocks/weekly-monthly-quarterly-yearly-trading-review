@@ -151,7 +151,7 @@ assert all(e['scope']=='持仓延续' for e in days['2026-07-29']['errors'])
 assert not any(e['category']=='add' for e in days['2026-09-17']['errors'])  # add was next day
 assert not days['2026-05-21']['errors']  # missing attribution
 assert len(days['2026-06-11']['errors'])==1  # Attribution belongs to the prior holding.
-assert not days['2026-09-11']['errors']  # later reflection corrected initial suspicion
+assert [(e['category'],e['scope']) for e in days['2026-09-11']['errors']] == [('wrong_side','当日操作')]
 guilin={t['side']:t['qty'] for t in days['2026-09-11']['trades'] if t['code']=='000978'}
 assert guilin=={'buy':1000,'sell':500}
 
