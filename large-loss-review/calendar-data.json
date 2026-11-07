@@ -12076,23 +12076,32 @@
           "code": "601086",
           "start": "2026-09-14",
           "end": "2026-09-15",
-          "summary": "旧龙尾端仍参与，个人监管缓冲空间不足；次日保护条件单也未落实。",
+          "summary": "国芳集团于09-14买入100股，09-15卖出，本轮归为龙头二波买点错误。",
           "errors": [
             {
-              "category": "cycle",
-              "evidence": "旧龙尾端，监管空间不足仍参与"
-            },
-            {
-              "category": "execution",
-              "evidence": "国芳集团未设跌停/动态条件单"
+              "category": "second_wave_entry",
+              "evidence": "龙头二波买点错误"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         }
       ],
-      "summary": "",
-      "assessment": "待归因",
-      "errors": []
+      "summary": "国芳集团于09-14买入100股，09-15卖出，本轮归为龙头二波买点错误。",
+      "assessment": "本人最新反思归类",
+      "errors": [
+        {
+          "category": "second_wave_entry",
+          "scope": "当日操作",
+          "stocks": [
+            {
+              "code": "601086",
+              "name": "国芳集团"
+            }
+          ],
+          "evidence": "龙头二波买点错误",
+          "source": "large-loss-review/index.html#guofang-xingguang"
+        }
+      ]
     },
     {
       "date": "2026-09-15",
@@ -12135,23 +12144,32 @@
           "code": "601086",
           "start": "2026-09-14",
           "end": "2026-09-15",
-          "summary": "旧龙尾端仍参与，个人监管缓冲空间不足；次日保护条件单也未落实。",
+          "summary": "国芳集团于09-14买入100股，09-15卖出，本轮归为龙头二波买点错误。",
           "errors": [
             {
-              "category": "cycle",
-              "evidence": "旧龙尾端，监管空间不足仍参与"
-            },
-            {
-              "category": "execution",
-              "evidence": "国芳集团未设跌停/动态条件单"
+              "category": "second_wave_entry",
+              "evidence": "龙头二波买点错误"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         }
       ],
-      "summary": "",
-      "assessment": "待归因",
-      "errors": []
+      "summary": "国芳集团于09-14买入100股，09-15卖出，本轮归为龙头二波买点错误。",
+      "assessment": "本人最新反思归类",
+      "errors": [
+        {
+          "category": "second_wave_entry",
+          "scope": "本轮回看",
+          "stocks": [
+            {
+              "code": "601086",
+              "name": "国芳集团"
+            }
+          ],
+          "evidence": "龙头二波买点错误",
+          "source": "large-loss-review/index.html#guofang-xingguang"
+        }
+      ]
     },
     {
       "date": "2026-09-16",
@@ -13722,23 +13740,32 @@
           "code": "002076",
           "start": "2026-10-22",
           "end": "2026-10-23",
-          "summary": "切换判断有误，环境转差后仍等待；10月后续交割已补齐费用，采用含费亏损94.49元。",
+          "summary": "星光股份于10-22买入400股，10-23卖出，本轮归为切换模式错误。",
           "errors": [
             {
-              "category": "cycle",
-              "evidence": "切换判断不对"
-            },
-            {
-              "category": "exit",
-              "evidence": "形势转差后仍抱持等待"
+              "category": "switch_mode",
+              "evidence": "切换模式错误"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         }
       ],
-      "summary": "",
-      "assessment": "待归因",
-      "errors": []
+      "summary": "星光股份于10-22买入400股，10-23卖出，本轮归为切换模式错误。",
+      "assessment": "本人最新反思归类",
+      "errors": [
+        {
+          "category": "switch_mode",
+          "scope": "当日操作",
+          "stocks": [
+            {
+              "code": "002076",
+              "name": "星光股份"
+            }
+          ],
+          "evidence": "切换模式错误",
+          "source": "large-loss-review/index.html#guofang-xingguang"
+        }
+      ]
     },
     {
       "date": "2026-10-23",
@@ -13811,18 +13838,14 @@
           "code": "002076",
           "start": "2026-10-22",
           "end": "2026-10-23",
-          "summary": "切换判断有误，环境转差后仍等待；10月后续交割已补齐费用，采用含费亏损94.49元。",
+          "summary": "星光股份于10-22买入400股，10-23卖出，本轮归为切换模式错误。",
           "errors": [
             {
-              "category": "cycle",
-              "evidence": "切换判断不对"
-            },
-            {
-              "category": "exit",
-              "evidence": "形势转差后仍抱持等待"
+              "category": "switch_mode",
+              "evidence": "切换模式错误"
             }
           ],
-          "assessment": "已有反思归类"
+          "assessment": "本人最新反思归类"
         },
         {
           "id": "000530-2026-10-26-closed",
@@ -13840,9 +13863,22 @@
           "assessment": "已有反思归类"
         }
       ],
-      "summary": "",
-      "assessment": "待归因",
-      "errors": []
+      "summary": "星光股份于10-22买入400股，10-23卖出，本轮归为切换模式错误。",
+      "assessment": "本人最新反思归类",
+      "errors": [
+        {
+          "category": "switch_mode",
+          "scope": "本轮回看",
+          "stocks": [
+            {
+              "code": "002076",
+              "name": "星光股份"
+            }
+          ],
+          "evidence": "切换模式错误",
+          "source": "large-loss-review/index.html#guofang-xingguang"
+        }
+      ]
     },
     {
       "date": "2026-10-26",

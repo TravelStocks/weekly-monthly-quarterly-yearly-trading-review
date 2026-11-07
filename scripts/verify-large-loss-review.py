@@ -80,7 +80,7 @@ huaxi = by_id['000936-2026-08-17-closed']
 assert (huaxi['start'], huaxi['cost'], huaxi['pnl']) == ('2026-08-14', 5605, -340.64)
 assert [e['category'] for e in huaxi['errors']] == ['switch_mode']
 assert [e['category'] for e in by_id['002579-2026-06-04-closed']['errors']] == ['switch_mode']
-assert sum(any(e['category']=='switch_mode' for e in r['errors']) for r in records)==6
+assert sum(any(e['category']=='switch_mode' for e in r['errors']) for r in records)==7
 
 assert {e['category'] for e in by_id['002403-2026-09-09-closed']['errors']}=={'theme_support'}
 assert {e['category'] for e in by_id['601700-2026-08-10-closed']['errors']}=={'theme_support'}
