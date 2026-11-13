@@ -43,19 +43,23 @@ const reflectionOnly=[],incompleteReports=[];
 for(const folder of recentFolders){
   const file=path.join(repo,folder,'data/summary.json');
   assert(fs.existsSync(file),`New report lacks account summary: ${folder}`);
-  const summary=JSON.parse(fs.readFileSync(file,'utf8')),a=summary.account||summary;
+  const summary=JSON.parse(fs.readFileSync(file,'utf8')),partialWeek=summary.status==='partial-trades',a=partialWeek?summary.partialAccount:(summary.account||summary);
   if(summary.status==='reflection-only'){reflectionOnly.push({folder,date:summary.date,reason:summary.reason});continue;}
-  if(summary.status==='partial-trades'){incompleteReports.push({folder,date:summary.date,reason:summary.reason});continue;}
+  if(partialWeek){
+    incompleteReports.push({folder,date:summary.date,reason:summary.reason});
+    if(!a?.days?.length || ![a.pnl,a.returnPct,a.endingEquity,a.averagePosition].every(Number.isFinite))continue;
+    assert.equal(a.coveredThrough,a.days.at(-1).date);
+  }
   const legacy=a.weekPnl!=null,conditional=a.status==='conditional-estimate';
-  const pnl=legacy?a.weekPnl:a.pnl,rate=legacy?a.weekRate:(a.weeklyReturnPct??a.dailyRateSum);
+  const pnl=legacy?a.weekPnl:a.pnl,rate=legacy?a.weekRate:partialWeek?a.returnPct:(a.weeklyReturnPct??a.dailyRateSum);
   assert([pnl,rate,a.endingEquity,a.averagePosition].every(Number.isFinite),`Unsupported account summary: ${folder}`);
   const days=a.days;assert(days?.length,`Missing daily account: ${folder}`);
   const best=days.reduce((x,y)=>y.pnl>x.pnl?y:x),worst=days.reduce((x,y)=>y.pnl<x.pnl?y:x);
   weeks.push({label:folder.slice(5,10).replace('-','.')+'-'+folder.slice(16).replace('-','.')+(days.length>5?'（合并）':''),href:`../${folder}/`,
     pnl,equity:a.endingEquity,equityLabel:a.endingEquity.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}),
-    equityStatus:conditional?'条件估算：周五不变仓':legacy?'费用前估算':'交割收盘估算',equityNote:a.basis,
+    ...(partialWeek?{provisional:true,coveredThrough:a.coveredThrough}:{}),equityStatus:partialWeek?'截至'+a.coveredThrough.slice(5)+'估算':conditional?'条件估算：周五不变仓':legacy?'费用前估算':'交割收盘估算',equityNote:a.basis||summary.reason||'',
     avgPosition:a.averagePosition,bestDay:dayLabel(best),worstDay:dayLabel(worst),estimatedWeekPct:rate,
-    rateBasis:legacy||a.weeklyReturnPct!=null?'期初期末口径':'日收益率相加',source:`../${folder}/data/summary.json`,conditional});
+    rateBasis:partialWeek?'截至'+a.coveredThrough.slice(5)+'区间收益':legacy||a.weeklyReturnPct!=null?'期初期末口径':'日收益率相加',source:`../${folder}/data/summary.json`,conditional});
 }
 assert.equal(new Set(weeks.map(w=>w.href)).size,weeks.length,'Duplicate curve period');
 
@@ -69,7 +73,7 @@ for (const week of weeks) {
   week.drawdown = ((week.equity - peak) / peak) * 100;
   previousEquity = week.equity;
 }
-const overview={periodCount:weeks.length,archiveCount:weeks.length+reflectionOnly.length+incompleteReports.length,reflectionOnly,incompleteReports,latest:weeks.at(-1).label,totalChange:Math.round(weeks.reduce((s,w)=>s+w.pnl,0)*100)/100,
+const overview={periodCount:weeks.length,archiveCount:weeks.filter(w=>!w.provisional).length+reflectionOnly.length+incompleteReports.length,reflectionOnly,incompleteReports,latest:weeks.at(-1).label,totalChange:Math.round(weeks.reduce((s,w)=>s+w.pnl,0)*100)/100,
   latestDrawdown:weeks.at(-1).drawdown,maxDrawdown:Math.min(0,...weeks.map(w=>w.drawdown)),weeks};
 fs.writeFileSync(path.join(repo,'weekly-trading-review/overview-data.json'),JSON.stringify(overview,null,2)+'\n');
 
@@ -131,7 +135,7 @@ function renderChart() {
   }).join("");
   const xLabels = weeks.map((week, i) => {
     const xx = x(i);
-    return `<g><line x1="${xx.toFixed(1)}" x2="${xx.toFixed(1)}" y1="${top}" y2="${height - bottom}" stroke="rgba(28,37,48,.08)"></line><text x="${xx.toFixed(1)}" y="${height - 34}" text-anchor="middle" class="axis-label">${week.label}</text></g>`;
+    return `<g><line x1="${xx.toFixed(1)}" x2="${xx.toFixed(1)}" y1="${top}" y2="${height - bottom}" stroke="rgba(28,37,48,.08)"></line><text x="${xx.toFixed(1)}" y="${height - 34}" text-anchor="middle" class="axis-label">${week.label}${week.provisional?'<tspan x="'+xx.toFixed(1)+'" dy="15">暂估至'+week.coveredThrough.slice(5)+'</tspan>':''}</text></g>`;
   }).join("");
   const amountDots = amountPoints.map((point) => {
     const color = point.week.pnl >= 0 ? "#c2412d" : "#14845f";
@@ -159,12 +163,13 @@ function renderChart() {
 
 function renderPanel() {
   const cumulative = weeks.reduce((sum, week) => sum + week.pnl, 0);
-  const best = weeks.reduce((a, b) => (b.pnl > a.pnl ? b : a), weeks[0]);
-  const worst = weeks.reduce((a, b) => (b.pnl < a.pnl ? b : a), weeks[0]);
+  const completed=weeks.filter(w=>!w.provisional);
+  const best = completed.reduce((a, b) => (b.pnl > a.pnl ? b : a), completed[0]);
+  const worst = completed.reduce((a, b) => (b.pnl < a.pnl ? b : a), completed[0]);
   const latest = weeks[weeks.length - 1];
   const maxDrawdown = weeks.reduce((min, week) => Math.min(min, week.drawdown), 0);
   const rows = weeks.map((week) => `<tr><td><a href="${week.href}">${week.label}</a></td><td class="${trendClass(week.pnl)}">${money(week.pnl)}${week.dailySource ? '<small class="equity-caption">日盈亏合计（整数元）</small>' : week.closedOnly ? '<small class="equity-caption">已平仓口径</small>' : ''}</td><td class="${trendClass(week.weekPct)}">${pct(week.weekPct)}${week.rateBasis?`<small class="equity-caption">${week.rateBasis}</small>`:''}</td><td>${week.avgPosition == null ? '待补' : week.avgPosition.toFixed(2)+'%'}</td><td title="${week.equityNote}">${week.equityLabel}<small class="equity-caption">${week.equityStatus}</small>${week.source?`<small><a href="${week.source}">计算依据</a></small>`:''}</td><td class="${trendClass(week.drawdown)}">${pct(week.drawdown)}</td><td class="trade-up">${week.bestDay || '待补'}</td><td class="trade-down">${week.worstDay || '待补'}</td></tr>`).join("");
-  return `<section class="panel overview-panel"><div class="chart-head"><div><h2>每周资金曲线</h2><p>已同步至${weeks.at(-1).label}，共${weeks.length}期。10/8–10/16沿用估算日收益率相加；10/19–10/23沿用原周报费用前估算；10/26–10/30已补周五实际卖出襄阳、买入大业的成交，按含费交割和实际持仓收盘估值还原，周收益率按期初期末计算。10/23新交割核实权益10,413.75元与上一期费用前估算10,487.86元差74.11元，属于跨口径衔接差，不额外计为10/26周亏损。金额变化合计是各期归档口径之和，不是已核实的累计投资收益；未按资金流调整的权益回撤也不等同于净值回撤。<a href="overview-data.json">完整曲线数据与来源</a>。</p><p>7/13–9/30 的金额变化采用每日收益明细中日盈亏整数元之和，收益率按每日相加；它们与交割闭环盈亏、现金净流入独立记录，不用于反推账户余额。<a href="daily-income.json">每日收益来源</a>。期末权益＝期末现金＋持仓数量×当期最后交易日不复权收盘价（多只标的分别相加）；已有账户总金额优先保留。估值以交割单可见现金、持仓及无额外资金变动为前提，不等于券商已确认资产，也不再累计已平仓盈亏替代权益。累计回撤按归档期末权益计算（含估值），并非每日最大回撤。各期收益率口径见表格标注，其余早期周沿用原口径；平均周仓位按已提供交易日仓位简单平均。<a href="equity-inputs.json">现金与持仓依据</a> · <a href="equity-quotes.json">历史收盘价来源</a></p></div><div class="legend-row"><span><i class="legend-line amount"></i>金额变化</span><span><i class="legend-line drawdown"></i>累计回撤（含估值）</span><span><i class="legend-line weekly"></i>周收益率</span></div></div>${renderChart()}<div class="weekly-data-wrap"><table class="weekly-data-table"><thead><tr><th>周区间</th><th>金额变化</th><th>周收益率</th><th>平均周仓位</th><th>期末权益</th><th>累计回撤<br>（含估值）</th><th>最赚日</th><th>最亏日</th></tr></thead><tbody>${rows}</tbody></table></div><div class="mini-grid chart-summary"><span>金额变化合计 <b class="${cumulative >= 0 ? "pos" : "neg"}">${money(cumulative)}</b></span><span>最大单周盈利 <b class="pos">${best.label} ${money(best.pnl)}</b></span><span>最大单周亏损 <b class="neg">${worst.label} ${money(worst.pnl)}</b></span><span>最新入曲线 <b class="${latest.weekPct >= 0 ? "pos" : "neg"}">${latest.label} ${pct(latest.weekPct)}</b></span><span>最新累计回撤（含估值） <b class="neg">${pct(latest.drawdown)}</b></span><span>最大累计回撤（含估值） <b class="neg">${pct(maxDrawdown)}</b></span><span>最新权益（${latest.equityStatus}） <b>${latest.equityLabel}</b></span></div></section>`;
+  return `<section class="panel overview-panel"><div class="chart-head"><div><h2 id="weekly-equity-curve">每周资金曲线</h2><p>已同步至${weeks.at(-1).label}，共${weeks.length}期。${latest.provisional?'本期仅算至'+latest.coveredThrough+'，未提供的交易日不计零；合计及回撤含阶段估算，最大单周盈亏只比较完整周。':''}10/8–10/16沿用估算日收益率相加；10/19–10/23沿用原周报费用前估算；10/26–10/30已补周五实际卖出襄阳、买入大业的成交，按含费交割和实际持仓收盘估值还原，周收益率按期初期末计算。10/23新交割核实权益10,413.75元与上一期费用前估算10,487.86元差74.11元，属于跨口径衔接差，不额外计为10/26周亏损。金额变化合计是各期归档口径之和，不是已核实的累计投资收益；未按资金流调整的权益回撤也不等同于净值回撤。<a href="overview-data.json">完整曲线数据与来源</a>。</p><p>7/13–9/30 的金额变化采用每日收益明细中日盈亏整数元之和，收益率按每日相加；它们与交割闭环盈亏、现金净流入独立记录，不用于反推账户余额。<a href="daily-income.json">每日收益来源</a>。期末权益＝期末现金＋持仓数量×当期最后交易日不复权收盘价（多只标的分别相加）；已有账户总金额优先保留。估值以交割单可见现金、持仓及无额外资金变动为前提，不等于券商已确认资产，也不再累计已平仓盈亏替代权益。累计回撤按归档期末权益计算（含估值），并非每日最大回撤。各期收益率口径见表格标注，其余早期周沿用原口径；平均周仓位按已提供交易日仓位简单平均。<a href="equity-inputs.json">现金与持仓依据</a> · <a href="equity-quotes.json">历史收盘价来源</a></p></div><div class="legend-row"><span><i class="legend-line amount"></i>金额变化</span><span><i class="legend-line drawdown"></i>累计回撤（含估值）</span><span><i class="legend-line weekly"></i>周收益率</span></div></div>${renderChart()}<div class="weekly-data-wrap"><table class="weekly-data-table"><thead><tr><th>周区间</th><th>金额变化</th><th>周收益率</th><th>平均周仓位</th><th>期末权益</th><th>累计回撤<br>（含估值）</th><th>最赚日</th><th>最亏日</th></tr></thead><tbody>${rows}</tbody></table></div><div class="mini-grid chart-summary"><span>金额变化合计${latest.provisional?'（含暂估）':''} <b class="${cumulative >= 0 ? "pos" : "neg"}">${money(cumulative)}</b></span><span>最大单周盈利 <b class="pos">${best.label} ${money(best.pnl)}</b></span><span>最大单周亏损 <b class="neg">${worst.label} ${money(worst.pnl)}</b></span><span>最新入曲线${latest.provisional?'（至'+latest.coveredThrough.slice(5)+'）':''} <b class="${latest.weekPct >= 0 ? "pos" : "neg"}">${latest.label} ${pct(latest.weekPct)}</b></span><span>最新累计回撤（含估值） <b class="neg">${pct(latest.drawdown)}</b></span><span>最大累计回撤（含估值） <b class="neg">${pct(maxDrawdown)}</b></span><span>最新权益（${latest.equityStatus}） <b>${latest.equityLabel}</b></span></div></section>`;
 }
 
 function renderMotto() {
@@ -193,9 +198,6 @@ if (!html.includes(".cycle-motto{")) {
 const overviewPattern=/<section class="panel overview-panel">[\s\S]*?<\/section>/;
 assert(overviewPattern.test(html),'Weekly overview target missing; refusing a silent stale rebuild');
 html=html.replace(overviewPattern,renderPanel());
-if(incompleteReports.some(r=>r.folder==='2026-11-02_2026-11-06')){
-  html=html.replace('<section class="panel overview-panel">','<section class="panel overview-panel"><p class="equity-basis"><strong>口径已更新：</strong>10.26–10.30已按周五真实成交重算，期末权益估算11,800.36元，周收益估算+1,386.61元。11.02–11.06已计算截至周三的账户收益-1,362.44元，因周四及完整期末数据未齐，暂不入完整周曲线。<a href="../2026-11-02_2026-11-06/#trade-records">查看新增交割依据</a></p>');
-}
 const equityCss = `<style id="weekly-equity-style">.equity-caption{display:block;margin-top:4px;color:var(--muted);font-size:11px}.equity-basis{display:block;color:var(--muted);line-height:1.6;overflow-wrap:anywhere}.weekly-chart{min-width:${Math.max(1080,weeks.length*110+180)}px}.weekly-data-table th{vertical-align:middle}.overview-panel .chart-head{display:grid;gap:12px}.overview-panel .legend-row{justify-content:flex-start}.legend-row span{white-space:nowrap}.legend-line.amount{border-top:3px solid var(--red)}</style>`;
 html = html.replace(/<style id="weekly-equity-style">[\s\S]*?<\/style>/, "");
 html = html.replace("</head>", `${equityCss}</head>`);

@@ -1,22 +1,22 @@
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 const root=path.resolve(__dirname,'..'),read=f=>fs.readFileSync(path.join(root,f),'utf8');
 const data=JSON.parse(read('weekly-trading-review/overview-data.json'));
-const weeks=data.weeks,latest=weeks.at(-1),recent=JSON.parse(read('2026-10-26_2026-10-30/data/account-estimate.json'));
+const weeks=data.weeks,latest=weeks.at(-2),recent=JSON.parse(read('2026-10-26_2026-10-30/data/account-estimate.json'));
 assert.equal(data.archiveCount,26);assert.equal(data.reflectionOnly.length,0);
-assert.equal(weeks.length,25);assert.equal(new Set(weeks.map(w=>w.href)).size,weeks.length);
+assert.equal(weeks.length,26);assert.equal(new Set(weeks.map(w=>w.href)).size,weeks.length);
 assert.deepEqual(data.incompleteReports.map(r=>r.folder),['2026-11-09_2026-11-13']);
-assert.equal(weeks.at(-3).pnl,-636);assert.equal(weeks.at(-3).equity,10487.86);
-assert.equal(latest.label,'11.02-11.06');assert.equal(latest.pnl,-1480.39);assert.equal(latest.equity,10319.97);assert.equal(weeks.at(-2).equity,recent.endingEquity);
+assert.equal(weeks.at(-4).pnl,-636);assert.equal(weeks.at(-4).equity,10487.86);
+assert.equal(latest.label,'11.02-11.06');assert.equal(latest.pnl,-1480.39);assert.equal(latest.equity,10319.97);assert.equal(weeks.at(-3).equity,recent.endingEquity);
 assert.equal(latest.avgPosition.toFixed(2),'10.08');assert(!latest.conditional);
 assert.equal(data.totalChange,Math.round(weeks.reduce((s,w)=>s+w.pnl,0)*100)/100);
 let peak=-Infinity;for(const w of weeks){peak=Math.max(peak,w.equity);assert(Math.abs(w.drawdown-(w.equity/peak-1)*100)<1e-9);}
-for(const f of ['weekly-trading-review/index.html','index.html']){const html=read(f);assert(html.includes('10,319.97'));assert(!html.includes('NaN'));}
+for(const f of ['weekly-trading-review/index.html','index.html']){const html=read(f);assert(html.includes('10,195.13'));assert(!html.includes('NaN'));}
 const html=read('weekly-trading-review/index.html'),table=html.match(/<table class="weekly-data-table">([\s\S]*?)<\/table>/)[1];
-assert.equal((table.match(/<tr>/g)||[]).length,26);
+assert.equal((table.match(/<tr>/g)||[]).length,27);
 for(const w of weeks)assert(table.includes(`href="${w.href}"`),`Missing table period ${w.label}`);
-assert(html.includes('-18,618.02'));assert(html.includes('-66.74%'));assert(html.includes('期初期末口径'));
+assert(html.includes('-18,742.86'));assert(html.includes('-67.14%'));assert(html.includes('期初期末口径'));
 assert.equal((html.match(/class="panel overview-panel"/g)||[]).length,1);
-console.log('25 periods verified: latest account, fee basis, totals, drawdowns, table coverage and homepage.');
+console.log('26 periods verified: latest account, fee basis, totals, drawdowns, table coverage and homepage.');
 const report=JSON.parse(read('2026-11-02_2026-11-06/data/summary.json')),account=report.account;
 assert.equal(report.tradeCount,8);assert.equal(report.closed.length,3);assert.equal(report.closedPnl,-1504.43);
 assert.equal(account.opening.equity,11800.36);assert.deepEqual(account.days.map(d=>d.pnl),[-813.83,-346.59,-202.02,-117.95,0]);
@@ -28,3 +28,12 @@ const draft=JSON.parse(read('2026-11-09_2026-11-13/data/summary.json'));
 assert.equal(draft.account,null);assert.equal(draft.tradeCount,12);assert.equal(draft.closedPnl,235.18);
 assert.equal(draft.partialAccount.days.at(-1).cash,4414.13);
 assert.equal(draft.partialAccount.endingEquity,10195.13);assert.equal(draft.partialAccount.pnl,-124.84);
+const point=weeks.at(-1),a=draft.partialAccount;
+assert(point.provisional && point.coveredThrough===a.coveredThrough);
+assert.equal(point.pnl,a.pnl);assert.equal(point.weekPct,a.returnPct);assert.equal(point.avgPosition,a.averagePosition);
+const svg=html.match(/<svg class="weekly-chart"[\s\S]*?<\/svg>/)[0];
+for(const value of ['11.09-11.13','暂估至11-12','-124.84','-1.21%','-67.14%'])assert(svg.includes(value));
+const lastRow=table.match(/<tr>[^]*?<\/tr>/g).at(-1);
+for(const value of [point.label,'-124.84','-1.21%','48.27%','10,195.13','-67.14%',point.bestDay,point.worstDay,'截至11-12'])assert(lastRow.includes(value));
+const footer=html.match(/<div class="mini-grid chart-summary">([\s\S]*?)<\/div>/)[1];
+for(const value of ['-18,742.86','+1,810.00','-4,839.42','11.09-11.13 -1.21%','-67.14%','-68.15%','10,195.13'])assert(footer.includes(value));
