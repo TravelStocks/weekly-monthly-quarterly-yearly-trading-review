@@ -1,8 +1,9 @@
 {
   "date": "2026-11-09",
-  "status": "partial-trades",
-  "reason": "11月9–12日已录入，11月13日成交及期末资产待补。",
-  "tradeCount": 12,
+  "status": "account-complete-fills-partial",
+  "reason": "全周账户已核算；周五清仓已确认，逐笔卖价、时间及笔数未提供。",
+  "tradeCount": null,
+  "itemizedTradeCount": 12,
   "closed": [
     {
       "code": "002578",
@@ -21,10 +22,50 @@
       "cost": 1412.01,
       "proceeds": 1428.27,
       "pnl": 16.26
+    },
+    {
+      "code": "601599",
+      "name": "浙文影业",
+      "date": "2026-11-13",
+      "qty": 400,
+      "cost": 2188.02,
+      "pnl": -50.11,
+      "proceeds": 2137.91,
+      "source": "清仓截图盈亏；净回款按成本加盈亏推算"
+    },
+    {
+      "code": "000530",
+      "name": "冰山冷热",
+      "date": "2026-11-13",
+      "qty": 100,
+      "cost": 1090,
+      "pnl": -86.5,
+      "proceeds": 1003.5,
+      "source": "清仓截图盈亏；净回款按成本加盈亏推算"
+    },
+    {
+      "code": "002313",
+      "name": "日海智能",
+      "date": "2026-11-13",
+      "qty": 200,
+      "cost": 2246,
+      "pnl": -355.95,
+      "proceeds": 1890.05,
+      "source": "清仓截图盈亏；净回款按成本加盈亏推算"
+    },
+    {
+      "code": "002578",
+      "name": "闽发铝业",
+      "date": "2026-11-13",
+      "qty": 100,
+      "cost": 617,
+      "pnl": -78.27,
+      "proceeds": 538.73,
+      "source": "清仓截图盈亏；净回款按成本加盈亏推算"
     }
   ],
-  "closedPnl": 235.18,
-  "partialAccount": {
+  "closedPnl": -335.65,
+  "account": {
     "opening": {
       "equity": 10319.97
     },
@@ -156,13 +197,27 @@
         "pnl": -401.74,
         "returnPct": -3.791119453197034,
         "position": 56.70354375079082
+      },
+      {
+        "date": "2026-11-13",
+        "count": null,
+        "cash": 9984.32,
+        "holdings": [],
+        "marketValue": 0,
+        "equity": 9984.32,
+        "pnl": -210.81,
+        "returnPct": -2.0677519560809876,
+        "position": 0
       }
     ],
-    "pnl": -124.84,
-    "returnPct": -1.2096934390313152,
-    "endingEquity": 10195.13,
-    "averagePosition": 48.26862068575449,
-    "coveredThrough": "2026-11-12"
-  },
-  "account": null
+    "pnl": -335.65,
+    "returnPct": -3.252431935364153,
+    "endingEquity": 9984.32,
+    "averagePosition": 38.614896548603596,
+    "coveredThrough": "2026-11-13",
+    "weeklyReturnPct": -3.252431935364153,
+    "endingPosition": 0,
+    "equityStatus": "期末资产截图",
+    "basis": "周五期末资产截图与周四交割收盘估值对照，假设无额外出入金。"
+  }
 }

@@ -57,7 +57,7 @@ for(const folder of recentFolders){
   const best=days.reduce((x,y)=>y.pnl>x.pnl?y:x),worst=days.reduce((x,y)=>y.pnl<x.pnl?y:x);
   weeks.push({label:folder.slice(5,10).replace('-','.')+'-'+folder.slice(16).replace('-','.')+(days.length>5?'（合并）':''),href:`../${folder}/`,
     pnl,equity:a.endingEquity,equityLabel:a.endingEquity.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}),
-    ...(partialWeek?{provisional:true,coveredThrough:a.coveredThrough}:{}),equityStatus:partialWeek?'截至'+a.coveredThrough.slice(5)+'估算':conditional?'条件估算：周五不变仓':legacy?'费用前估算':'交割收盘估算',equityNote:a.basis||summary.reason||'',
+    ...(partialWeek?{provisional:true,coveredThrough:a.coveredThrough}:{}),equityStatus:partialWeek?'截至'+a.coveredThrough.slice(5)+'估算':conditional?'条件估算：周五不变仓':legacy?'费用前估算':(a.equityStatus||'交割收盘估算'),equityNote:a.basis||summary.reason||'',
     avgPosition:a.averagePosition,bestDay:dayLabel(best),worstDay:dayLabel(worst),estimatedWeekPct:rate,
     rateBasis:partialWeek?'截至'+a.coveredThrough.slice(5)+'区间收益':legacy||a.weeklyReturnPct!=null?'期初期末口径':'日收益率相加',source:`../${folder}/data/summary.json`,conditional});
 }

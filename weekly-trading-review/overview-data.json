@@ -2,16 +2,10 @@
   "periodCount": 26,
   "archiveCount": 26,
   "reflectionOnly": [],
-  "incompleteReports": [
-    {
-      "folder": "2026-11-09_2026-11-13",
-      "date": "2026-11-09",
-      "reason": "11月9–12日已录入，11月13日成交及期末资产待补。"
-    }
-  ],
+  "incompleteReports": [],
   "latest": "11.09-11.13",
-  "totalChange": -18742.86,
-  "latestDrawdown": -67.14215132852628,
+  "totalChange": -18953.67,
+  "latestDrawdown": -67.82157013715681,
   "maxDrawdown": -68.15385076506729,
   "weeks": [
     {
@@ -406,22 +400,20 @@
     {
       "label": "11.09-11.13",
       "href": "../2026-11-09_2026-11-13/",
-      "pnl": -124.84,
-      "equity": 10195.13,
-      "equityLabel": "10,195.13",
-      "provisional": true,
-      "coveredThrough": "2026-11-12",
-      "equityStatus": "截至11-12估算",
-      "equityNote": "11月9–12日已录入，11月13日成交及期末资产待补。",
-      "avgPosition": 48.26862068575449,
+      "pnl": -335.65,
+      "equity": 9984.32,
+      "equityLabel": "9,984.32",
+      "equityStatus": "期末资产截图",
+      "equityNote": "周五期末资产截图与周四交割收盘估值对照，假设无额外出入金。",
+      "avgPosition": 38.614896548603596,
       "bestDay": "周二 11-10 +223.92",
       "worstDay": "周四 11-12 -401.74",
-      "estimatedWeekPct": -1.2096934390313152,
-      "rateBasis": "截至11-12区间收益",
+      "estimatedWeekPct": -3.252431935364153,
+      "rateBasis": "期初期末口径",
       "source": "../2026-11-09_2026-11-13/data/summary.json",
       "conditional": false,
-      "weekPct": -1.2096934390313152,
-      "drawdown": -67.14215132852628
+      "weekPct": -3.252431935364153,
+      "drawdown": -67.82157013715681
     }
   ]
 }

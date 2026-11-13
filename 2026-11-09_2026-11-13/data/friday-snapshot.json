@@ -1,0 +1,6 @@
+{
+  "date": "2026-11-13", "source": "本人确认周五卖清且没有买入；期末资产与清仓盈亏取自资金持仓截图，非逐笔交割单。",
+  "cash": 9984.32, "equity": 9984.32, "marketValue": 0, "todayBought": 0, "displayedDayPnl": 0,
+  "clearedPnl": {"000530": -86.50, "002313": -355.95, "002578": -78.27, "601599": -50.11},
+  "displayedPositionPnl": -570.83
+}
