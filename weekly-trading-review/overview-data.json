@@ -1,8 +1,14 @@
 {
   "periodCount": 25,
-  "archiveCount": 25,
+  "archiveCount": 26,
   "reflectionOnly": [],
-  "incompleteReports": [],
+  "incompleteReports": [
+    {
+      "folder": "2026-11-09_2026-11-13",
+      "date": "2026-11-09",
+      "reason": "11月9–12日已录入，11月13日成交及期末资产待补。"
+    }
+  ],
   "latest": "11.02-11.06",
   "totalChange": -18618.02,
   "latestDrawdown": -66.73980493096718,

@@ -206,7 +206,7 @@ fs.writeFileSync(hubPath, html, "utf8");
 const latest=weeks.at(-1),latestFolder=latest.href.split('/').filter(x=>x&&x!=='..')[0];
 const reportFolder=recentFolders.at(-1)||latestFolder,notesOnly=reflectionOnly.some(r=>r.folder===reportFolder);
 const partial=incompleteReports.some(r=>r.folder===reportFolder);
-const interval=`<span>最新区间</span><strong class="">${reportFolder.slice(5,10).replace('-','.')}</strong><small>至 ${reportFolder.slice(16).replace('-','.')} / ${partial?'前三日成交已补':notesOnly?'仅个人心得':latest.equityStatus}</small>`;
+const interval=`<span>最新区间</span><strong class="">${reportFolder.slice(5,10).replace('-','.')}</strong><small>至 ${reportFolder.slice(16).replace('-','.')} / ${partial?'交割部分已补':notesOnly?'仅个人心得':latest.equityStatus}</small>`;
 const intervalPattern=/<span>最新区间<\/span><strong[^>]*>[\s\S]*?<\/strong><small>[\s\S]*?<\/small>/;
 html=html.replace(intervalPattern,interval);
 html=html.replace(/<span>周报数量<\/span><strong[^>]*>\d+<\/strong>/,`<span>周报数量</span><strong class="">${overview.archiveCount}</strong>`);

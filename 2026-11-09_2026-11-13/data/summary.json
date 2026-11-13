@@ -1,0 +1,168 @@
+{
+  "date": "2026-11-09",
+  "status": "partial-trades",
+  "reason": "11月9–12日已录入，11月13日成交及期末资产待补。",
+  "tradeCount": 12,
+  "closed": [
+    {
+      "code": "002578",
+      "name": "闽发铝业",
+      "date": "2026-11-10",
+      "qty": 1800,
+      "cost": 9923,
+      "proceeds": 10141.92,
+      "pnl": 218.92
+    },
+    {
+      "code": "600825",
+      "name": "新华传媒",
+      "date": "2026-11-12",
+      "qty": 100,
+      "cost": 1412.01,
+      "proceeds": 1428.27,
+      "pnl": 16.26
+    }
+  ],
+  "closedPnl": 235.18,
+  "partialAccount": {
+    "opening": {
+      "equity": 10319.97
+    },
+    "days": [
+      {
+        "date": "2026-11-09",
+        "count": 1,
+        "cash": 396.97,
+        "holdings": [
+          {
+            "code": "002578",
+            "name": "闽发铝业",
+            "qty": 1800,
+            "cost": 9923,
+            "close": 5.51,
+            "marketValue": 9918,
+            "pnl": -5
+          }
+        ],
+        "marketValue": 9918,
+        "equity": 10314.97,
+        "pnl": -5,
+        "returnPct": -0.04844975324540535,
+        "position": 96.15151570969184
+      },
+      {
+        "date": "2026-11-10",
+        "count": 3,
+        "cash": 10538.89,
+        "holdings": [],
+        "marketValue": 0,
+        "equity": 10538.89,
+        "pnl": 223.92,
+        "returnPct": 2.1708255089447626,
+        "position": 0
+      },
+      {
+        "date": "2026-11-11",
+        "count": 4,
+        "cash": 6334.87,
+        "holdings": [
+          {
+            "code": "601599",
+            "name": "浙文影业",
+            "qty": 200,
+            "cost": 1085.01,
+            "close": 5.55,
+            "marketValue": 1110,
+            "pnl": 24.99
+          },
+          {
+            "code": "000530",
+            "name": "冰山冷热",
+            "qty": 100,
+            "cost": 1090,
+            "close": 11.28,
+            "marketValue": 1128,
+            "pnl": 38
+          },
+          {
+            "code": "600825",
+            "name": "新华传媒",
+            "qty": 100,
+            "cost": 1412.01,
+            "close": 14.16,
+            "marketValue": 1416,
+            "pnl": 3.99
+          },
+          {
+            "code": "002578",
+            "name": "闽发铝业",
+            "qty": 100,
+            "cost": 617,
+            "close": 6.08,
+            "marketValue": 608,
+            "pnl": -9
+          }
+        ],
+        "marketValue": 4262,
+        "equity": 10596.87,
+        "pnl": 57.98,
+        "returnPct": 0.5501528149548962,
+        "position": 40.21942328253532
+      },
+      {
+        "date": "2026-11-12",
+        "count": 4,
+        "cash": 4414.13,
+        "holdings": [
+          {
+            "code": "601599",
+            "name": "浙文影业",
+            "qty": 400,
+            "cost": 2188.02,
+            "close": 5.4,
+            "marketValue": 2160,
+            "pnl": -28.02
+          },
+          {
+            "code": "000530",
+            "name": "冰山冷热",
+            "qty": 100,
+            "cost": 1090,
+            "close": 10.95,
+            "marketValue": 1095,
+            "pnl": 5
+          },
+          {
+            "code": "002578",
+            "name": "闽发铝业",
+            "qty": 100,
+            "cost": 617,
+            "close": 6.04,
+            "marketValue": 604,
+            "pnl": -13
+          },
+          {
+            "code": "002313",
+            "name": "日海智能",
+            "qty": 200,
+            "cost": 2246,
+            "close": 9.61,
+            "marketValue": 1922,
+            "pnl": -324
+          }
+        ],
+        "marketValue": 5781,
+        "equity": 10195.13,
+        "pnl": -401.74,
+        "returnPct": -3.791119453197034,
+        "position": 56.70354375079082
+      }
+    ],
+    "pnl": -124.84,
+    "returnPct": -1.2096934390313152,
+    "endingEquity": 10195.13,
+    "averagePosition": 48.26862068575449,
+    "coveredThrough": "2026-11-12"
+  },
+  "account": null
+}
