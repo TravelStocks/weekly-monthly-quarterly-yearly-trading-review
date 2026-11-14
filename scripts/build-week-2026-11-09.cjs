@@ -38,8 +38,16 @@ const table=(hs,rows)=>'<div class="table-wrap"><table><thead><tr>'+hs.map(x=>'<
 const tone=n=>n>0?'is-profit':n<0?'is-loss':'',color=n=>'<b class="'+tone(n)+'">'+signed(n)+'</b>';
 const metrics=[['全周账户收益',signed(pnl),tone(pnl)],['周收益率',signed(account.returnPct)+'%',tone(pnl)],['期末权益（截图）',money(end.equity),''],['五日平均日末仓位',pct(account.averagePosition),''],['六轮闭环合计',signed(closedPnl),tone(closedPnl)],['期末仓位',pct(end.position),'']];
 const tiles=metrics.map(([k,v,c])=>'<span>'+k+' <b class="'+c+'">'+v+'</b></span>').join('');
-const period='11.09–11.13',status='周五清仓 · 全周已核算',headline='前四日12笔逐笔交割；周五卖清4只股票，无买入。周五大分歧选择空仓。本周复盘龙二波，周一只观察北纬科技能否带动板块。';
+const period='11.09–11.13',status='周五清仓 · 全周已核算',headline='前四日12笔逐笔交割；周五卖清4只股票，无买入。周五大分歧选择空仓。二次反思：减少切换、练主升龙回封、提前筛龙二波。周一只观察北纬科技能否带动板块。';
 const chapters=[
+ ['second-review','本周二次反思',`<p><strong>这一周最值得保留的是周五清仓后没有再买；最该改的不是周五卖出，而是周四为什么要切换。</strong>相比上周的−12.55%，我认可本周把亏损收窄了。但“全周小亏”和“从高点回撤不超过5%”是两件事。</p>
+ <h3>回看五天：哪一步开始把利润还回去？</h3><p>周一才参与闽发铝业，周二卖清，首轮含费赚218.92元（按成本约+2.21%）。周三分仓做抱团，四只合计日末仓位40.22%，当天账户赚57.98元。我看重的是组合的综合溢价，不要求每只都涨，也不能从一天盈利推断分仓就一定有效。周四我判断抱团开始瓦解，却继续做切换，收盘仓位反而升到56.70%；周五清掉四只、不再开新仓，才把敞口降到零。</p>
+ <p><strong>账户核对：</strong>全周−335.65元（−3.25%）；周五单日−210.81元（−2.07%）。按日末权益，周三10,596.87元到周五9,984.32元回落612.55元，周内最大收盘回撤为5.78%，已超过5%。这不是盘中最大回撤。日海智能周四新开、周五清掉，整轮−355.95元，约占期初权益3.45%；周四至周五的其余变动不能一并归给这笔交易。</p>
+ <h3>三件要改的事</h3><ol>
+ <li><strong>切换：默认不做。</strong>我还没有一套能重复执行的切换模式。非要试，切换仓位上限改成半成（账户的5%），不是一成或两成。这个修订只针对切换，不是抱团龙的分仓标准。</li>
+ <li><strong>主升龙：定龙别抢，分歧回流别慢。</strong>上周五闽发铝业从四板晋级五板，题材和择日看对，T字回封排慢、没有成交。本周一的买入是另一笔。练习回放时先停在封板前：下方连续进攻大单达到上方剩余压单的1/4，只是准备排单；还要看龙头地位、量能、题材回流和进攻能否压过抛压。记录信号何时出现，我何时反应，而不是拿尾盘结果倒推。</li>
+ <li><strong>龙二波：把观察提前到突破之前。</strong>每天过一遍曾连续三板及以上的标的，也留意走过一波的趋势龙。分别记录平台上沿或前高、是否横得住，以及断板后有没有主动反包。我的买点是首次主动突破新高，卖点是不再创新高；错过突破日，不因后来又涨了才追。抱团按单只约一成分仓观察，几只同时走弱时看组合总仓位，不把分仓当作没有风险。</li></ol>
+ <p><strong>下周只精进两种模式：</strong>主升二阶段龙头的分歧回流、龙头二波的首次突破。盘前写超预期、符合预期、不及预期三个剧本。事后设想的周收益+10%至+15%，以及“上周五排到，周一就可能多赚”的推演，都不是实际收益，也不当成下周目标。</p>`],
  ['daily-account','每日账户与仓位', '<p>期初现金及权益均为'+money(opening.endingEquity)+'元，持仓为零。按发生金额滚动现金、持仓数量乘当日收盘价估值，假设无出入金或漏单。周五截图的“当日盈亏”为0；本表按相邻日末权益计算，9,984.32－10,195.13＝-210.81元（-2.07%）。</p>'+table(['日期','笔数','现金','持仓市值','权益（估）','日收益（估）','日收益率','日末仓位'],days.map((d,i)=>[d.date.slice(5)+' 周'+'一二三四五'[i],d.count??'清仓4只，笔数待补',money(d.cash),money(d.marketValue),money(d.equity),color(d.pnl),signed(d.returnPct)+'%',pct(d.position)]))],
  ['ticket-pnl','闭环交易与损益','<p>前两轮按交割发生金额，周五四轮按清仓截图的盈亏列示，周五净回款为成本加盈亏倒算，并非逐笔成交额。闽发周二卖清后，周三买回的100股是新仓，不与上一轮合并。</p>'+table(['标的','卖清日','闭环数量','含费成本','净回款','含费损益'],closed.map(t=>[t.name,t.date,t.qty,money(t.cost),money(t.proceeds),color(t.pnl)]))],
  ['holdings','周五期末持仓','<p>现金及总资产均为9,984.32元，股票市值为0，期末空仓。周四现金4,414.13元，加上清仓净回款5,570.19元，与截图余额一致。</p><p>四只清仓标的合计亏损570.83元是各自整轮结果，不是周五单日亏损。加上此前两轮盈利235.18元，全周合计亏损335.65元。</p>'],
@@ -61,7 +69,7 @@ const chapters=[
   ['符合预期：北纬平稳开出，有修复，但尚未表现出领涨。','先等第一次有承接的上攻。若北纬先动、前排随后转强，再比较回落后的强弱；若别人先拉、北纬才跟，它是跟随者。','竞价不抢。看清“北纬先动、板块跟上”再评估；先后分不清，或跟随只维持一瞬，就空仓。'],
   ['不及预期：北纬竞价走弱，或原有强度临近开盘消失。','开盘反抽时，题材是否仍然分散？只有北纬自己拉一下，或它被其他强票带起，都不能验证它是新周期龙头。','原计划不触发，不抄底、不换后排；继续空仓。']
  ])+'<p><strong>盘后复核：</strong>分别记下北纬第一次主动上攻、同题材前排开始响应、第一次分歧后的表现。只有第一个时点，最多说明个股强；三个时点都有证据，才保留“可能开启新周期”的判断。</p>'],
- ['pending','待补材料','<p>周五个人复盘已补。周五卖单的准确时间、价格、笔数和费用仍待逐笔交割核实；当前四只清仓标的不等于四笔卖单。</p><p><a href="data/closing-quotes.json">前四日收盘价及来源</a> · <a href="data/summary.json">逐日核算</a></p>']
+ ['pending','待补材料','<p>周五个人复盘和本周二次反思均已补。周五卖单的准确时间、价格、笔数和费用仍待逐笔交割核实；当前四只清仓标的不等于四笔卖单。</p><p>策略归因还需本人确认：周四日海智能的新开仓、浙文影业的加仓，哪些属于切换，哪些仍属抱团？同一股票不同批次不可重复归因。风控也要写明：5%约束的是单日亏损、整周亏损，还是周内高点回撤？这两项不影响现有账户核算。</p><p><a href="data/closing-quotes.json">前四日收盘价及来源</a> · <a href="data/summary.json">逐日核算</a></p>']
 ];
 const css=read(prior+'/index.html').match(/<style>([\s\S]*?)<\/style>/)[1];
 write(folder+'/index.html','<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+period+' 周度交割复盘</title><style>'+css+'.is-profit{color:#bc382b}.is-loss{color:#127759}.numbers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.numbers span{padding:8px;border-bottom:1px solid var(--line)}.numbers b{display:block;font-variant-numeric:tabular-nums}@media(max-width:650px){.numbers{grid-template-columns:1fr 1fr}}</style></head><body><div class="shell"><aside class="side"><h2>周度交割复盘</h2><a href="../weekly-trading-review/">返回周度归档</a><nav>'+chapters.map(([id,title])=>'<a href="#'+id+'">'+title+'</a>').join('')+'</nav></aside><main class="page"><header class="hero"><div><span class="eyebrow">TRADING REVIEW · 2026</span><h1>'+period+'<br>周度交割复盘</h1><p>'+headline+'</p><span class="status">'+status+'</span></div><div class="numbers">'+tiles+'</div></header>'+chapters.map(([id,title,body])=>'<section class="panel" id="'+id+'"><h2>'+title+'</h2>'+body+'</section>').join('')+'<footer><a href="../'+prior+'/">上一期：11.02–11.06</a></footer></main></div></body></html>');
