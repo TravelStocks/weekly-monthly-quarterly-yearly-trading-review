@@ -4,14 +4,18 @@
   "trades": [
     {"date":"2026-11-16","time":"09:31:46","code":"002148","name":"北纬科技","side":"买入","qty":1100,"price":8.75,"amount":9625,"fee":5,"tax":0,"net":-9630,"cash":354.32},
     {"date":"2026-11-17","time":"14:56:47","code":"002148","name":"北纬科技","side":"卖出","qty":1100,"price":8.16,"amount":8976,"fee":5,"tax":4.49,"net":8966.51,"cash":9320.83},
-    {"date":"2026-11-19","time":"09:30:00","code":"002685","name":"华东重机","side":"买入","qty":1100,"price":8.11,"amount":8921,"fee":5,"tax":0,"net":-8926,"cash":394.83}
+    {"date":"2026-11-19","time":"09:30:00","code":"002685","name":"华东重机","side":"买入","qty":1100,"price":8.11,"amount":8921,"fee":5,"tax":0,"net":-8926,"cash":394.83},
+    {"date":"2026-11-20","time":"09:36:02","code":"002685","name":"华东重机","side":"卖出","qty":500,"price":7.40,"amount":3700,"fee":null,"tax":null,"net":null,"cash":null},
+    {"date":"2026-11-20","time":"09:37:19","code":"002685","name":"华东重机","side":"卖出","qty":300,"price":7.31,"amount":2193,"fee":null,"tax":null,"net":null,"cash":null},
+    {"date":"2026-11-20","time":"09:38:03","code":"002685","name":"华东重机","side":"卖出","qty":100,"price":7.33,"amount":733,"fee":null,"tax":null,"net":null,"cash":null},
+    {"date":"2026-11-20","time":"09:39:10","code":"002685","name":"华东重机","side":"卖出","qty":200,"price":7.31,"amount":1462,"fee":null,"tax":null,"net":null,"cash":null}
   ],
   "snapshot": {
-    "date":"2026-11-20","time":null,"status":"盘中快照，非全周收盘",
+    "date":"2026-11-20","time":null,"status":"本人确认按本次清仓资产作为周终稿；不改称截图为收盘采集",
     "totalAssets":8458.78,"available":8457.78,"cashField":394.83,
     "marketValue":0,"displayedPnl":-349,"displayedReturnPct":-3.96,
     "clearedCode":"002685","clearedQty":1100,"clearedPnl":-862.05,
-    "userConfirmed":"本人确认11月20日已全部卖出，卖出逐笔明细后补。",
+    "userConfirmed":"本人确认按终稿；11月20日四笔卖单已补齐，09:39:10全部清仓。逐笔费用未展示，不作分摊。",
     "conflicts":["可用金额与总资产相差1.00元。","资金余额394.83元、冻结数量1100股与本人确认已卖清未同步；不据此重建持仓。","7.490为截图市价，不是成交均价；不用于推断卖价。"]
   }
 }

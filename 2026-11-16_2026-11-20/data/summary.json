@@ -1,9 +1,15 @@
 {
   "date": "2026-11-20",
-  "status": "partial-trades",
-  "reason": "盘中初稿：周五已清仓，逐笔卖单、收盘账户和个人反思待补。",
-  "tradeCount": null,
-  "itemizedTradeCount": 3,
+  "status": "complete",
+  "reason": "本人确认终稿；全周7笔成交已补齐，周五卖出费用按总资产衔接，个人反思可后续补充。",
+  "tradeCount": 7,
+  "itemizedTradeCount": 7,
+  "fridaySettlement": {
+    "gross": 8088,
+    "net": 8063.95,
+    "costs": 24.05,
+    "costBasis": "总资产衔接所得总费用，非逐笔费税明细"
+  },
   "closed": [
     {
       "code": "002148",
@@ -21,11 +27,11 @@
       "cost": 8926,
       "net": 8063.95,
       "pnl": -862.05,
-      "source": "本人确认已卖清；截图盈亏与资产衔接，非逐笔成交"
+      "source": "四笔成交已核；总费用24.05元按总资产衔接，未分摊逐笔费用"
     }
   ],
   "closedPnl": -1525.54,
-  "partialAccount": {
+  "account": {
     "opening": {
       "equity": 9984.32
     },
@@ -90,16 +96,16 @@
       },
       {
         "date": "2026-11-20",
-        "count": null,
-        "cash": null,
+        "count": 4,
+        "cash": 8458.78,
         "held": null,
         "marketValue": 0,
         "equity": 8458.78,
         "pnl": -373.05,
         "returnPct": -4.2239264116270325,
         "position": 0,
-        "finalized": false,
-        "basis": "本人确认清仓；总资产快照，不是收盘"
+        "finalized": true,
+        "basis": "本人确认以清仓资产作为周终稿；非收盘采集，按周五后续无资产变动"
       }
     ],
     "pnl": -1525.54,
@@ -107,9 +113,9 @@
     "weeklyReturnPct": -15.279358033396365,
     "endingEquity": 8458.78,
     "endingPosition": 0,
-    "averagePosition": null,
+    "averagePosition": 38.395784611762124,
     "coveredThrough": "2026-11-20",
-    "equityStatus": "11-20盘中截图，非收盘",
-    "basis": "无额外出入金假设；前四日按交割与实际收盘估值，周五按本人确认清仓及总资产截图。可用金额差1元、当日盈亏口径差24.05元待核。"
+    "equityStatus": "本人确认终稿资产",
+    "basis": "本人确认周终稿，无额外出入金且清仓后无资产变动。周五四笔卖出8088元、净回款8063.95元；费用24.05元由资产衔接得出。可用金额差1元保留原截图口径。"
   }
 }

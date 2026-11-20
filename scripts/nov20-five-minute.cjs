@@ -18,7 +18,7 @@ async function collect(){
  }
 }
 function charts(){
- return '<p>真实五分钟OHLC，红涨绿跌。买点圆标、卖点方标；周五成交时间与价格待补，不以截图市价画卖点。周五仅展示已取得行情，不冒充全天。</p><div class="chart-list">'+codes.map(code=>{
+ return '<p>真实五分钟OHLC，红涨绿跌。买点圆标、卖点方标；四笔周五卖出已按实际时间与价格标记。周五仅展示已取得行情，完整覆盖成交时段，不冒充全天。</p><div class="chart-list">'+codes.map(code=>{
   const {source,bars}=JSON.parse(fs.readFileSync(path.join(dir,code+'-5m.json')));validate(bars);
   const ts=trades.filter(t=>t.code===code),prices=bars.flatMap(b=>[b.low,b.high]).concat(ts.map(t=>t.price)),lo=Math.min(...prices),hi=Math.max(...prices);
   const x=i=>52+i*3.52,y=p=>236-196*(p-lo)/(hi-lo||1);
@@ -31,7 +31,7 @@ function charts(){
    const i=bars.findIndex(b=>b.day.startsWith(t.date)&&minutes(b.day.slice(11))===end);assert(i>=0);
    return (t.side==='买入'?'<circle cx="'+x(i)+'" cy="'+y(t.price)+'" r="4" fill="#ad2919"':'<rect x="'+(x(i)-4)+'" y="'+(y(t.price)-4)+'" width="8" height="8" fill="#2354a4"')+' class="fill-marker" stroke="white"><title>'+describe(t)+'</title></'+(t.side==='买入'?'circle':'rect')+'>';
   }).join('');
-  return '<article class="chart-card"><h3>'+ts[0].name+' '+code+'</h3><div class="chart-scroll"><svg viewBox="0 0 920 280" role="img" aria-label="'+ts[0].name+'五分钟K线">'+grid+labels+candles+markers+'</svg></div><p>行情截至 '+bars.at(-1).day+' · '+bars.length+' 根 · <a href="data/'+code+'-5m.json">本期原始行情</a> · <a href="'+source.replaceAll('&','&amp;')+'">新浪来源</a></p><ul>'+ts.map(t=>'<li>'+describe(t)+'</li>').join('')+'</ul>'+(code==='002685'?'<p>11-20 已清仓（本人确认），卖点待逐笔交割补齐。</p>':'')+'</article>';
+  return '<article class="chart-card"><h3>'+ts[0].name+' '+code+'</h3><div class="chart-scroll"><svg viewBox="0 0 920 280" role="img" aria-label="'+ts[0].name+'五分钟K线">'+grid+labels+candles+markers+'</svg></div><p>行情截至 '+bars.at(-1).day+' · '+bars.length+' 根 · <a href="data/'+code+'-5m.json">本期原始行情</a> · <a href="'+source.replaceAll('&','&amp;')+'">新浪来源</a></p><ul>'+ts.map(t=>'<li>'+describe(t)+'</li>').join('')+'</ul>'+(code==='002685'?'<p>11-20 09:39:10 已清仓；四笔卖点已核实。</p>':'')+'</article>';
  }).join('')+'</div>';
 }
 module.exports=charts;
