@@ -19,5 +19,15 @@ assert(point.bestDay.includes('11-18'));assert(point.worstDay.includes('11-17'))
 const svg=hub.match(/<svg class="weekly-chart"[\s\S]*?<\/svg>/)[0];
 for(const t of ['11.16-11.20','-1,525.54','-15.28%','-72.74%'])assert(svg.includes(t));
 console.log('Final week, four backfilled sells, two charts, balances and overview verified.');
+assert(html.includes('id="trade-analysis"'));
+for(const text of ['先确认风控问题','95.76%','96.45%','164.27','38.40%','不代填个人KISS'])assert(html.includes(text),text);
+for(const doc of [html,hub]){
+ assert(doc.includes('<b class="is-loss">-1,525.54</b>'));
+ assert(doc.includes('<b class="is-loss">-15.28%</b>'));
+}
+assert(html.includes('<b class="is-loss">-663.49</b>'));
+assert(html.includes('<b class="is-loss">-862.05</b>'));
+assert(html.includes('.is-profit{color:#bc382b}'));
+assert(html.includes('.is-loss{color:#127759}'));
 assert.deepEqual(s.fridaySettlement,{gross:8088,net:8063.95,costs:24.05,costBasis:'总资产衔接所得总费用，非逐笔费税明细'});
 for(const f of [folder+'/index.html','weekly-trading-review/index.html','index.html']){const h=read(f);for(const t of ['周五盘中初稿','卖单待补','待收盘核算','本周初稿'])assert(!h.includes(t),f+' '+t)}
