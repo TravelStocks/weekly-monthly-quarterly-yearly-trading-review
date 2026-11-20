@@ -20,7 +20,7 @@ const svg=hub.match(/<svg class="weekly-chart"[\s\S]*?<\/svg>/)[0];
 for(const t of ['11.16-11.20','-1,525.54','-15.28%','-72.74%'])assert(svg.includes(t));
 console.log('Final week, four backfilled sells, two charts, balances and overview verified.');
 assert(html.includes('id="trade-analysis"'));
-for(const text of ['先确认风控问题','95.76%','96.45%','164.27','38.40%','不代填个人KISS'])assert(html.includes(text),text);
+for(const text of ['周亏损已经超过5%，还近满仓开新仓','95.76%','96.45%','164.27','38.40%','id="second-review"','14:56:47','8.58','整周亏损达到5%'])assert(html.includes(text),text);
 for(const doc of [html,hub]){
  assert(doc.includes('<b class="is-loss">-1,525.54</b>'));
  assert(doc.includes('<b class="is-loss">-15.28%</b>'));
