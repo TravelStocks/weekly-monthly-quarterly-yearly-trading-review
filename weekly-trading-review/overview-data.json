@@ -1,12 +1,18 @@
 {
-  "periodCount": 26,
-  "archiveCount": 26,
+  "periodCount": 27,
+  "archiveCount": 27,
   "reflectionOnly": [],
-  "incompleteReports": [],
-  "latest": "11.09-11.13",
-  "totalChange": -18953.67,
-  "latestDrawdown": -67.82157013715681,
-  "maxDrawdown": -68.15385076506729,
+  "incompleteReports": [
+    {
+      "folder": "2026-11-16_2026-11-20",
+      "date": "2026-11-20",
+      "reason": "盘中初稿：周五已清仓，逐笔卖单、收盘账户和个人反思待补。"
+    }
+  ],
+  "latest": "11.16-11.20",
+  "totalChange": -20479.21,
+  "latestDrawdown": -72.73822764542595,
+  "maxDrawdown": -72.73822764542595,
   "weeks": [
     {
       "label": "04.20-04.24",
@@ -414,6 +420,26 @@
       "conditional": false,
       "weekPct": -3.252431935364153,
       "drawdown": -67.82157013715681
+    },
+    {
+      "label": "11.16-11.20",
+      "href": "../2026-11-16_2026-11-20/",
+      "pnl": -1525.54,
+      "equity": 8458.78,
+      "equityLabel": "8,458.78",
+      "provisional": true,
+      "coveredThrough": "2026-11-20",
+      "equityStatus": "11-20盘中截图，非收盘",
+      "equityNote": "无额外出入金假设；前四日按交割与实际收盘估值，周五按本人确认清仓及总资产截图。可用金额差1元、当日盈亏口径差24.05元待核。",
+      "avgPosition": null,
+      "bestDay": "周三 11-18 0.00（已收盘日）",
+      "worstDay": "周二 11-17 -658.49（已收盘日）",
+      "estimatedWeekPct": -15.279358033396365,
+      "rateBasis": "截至11-20区间收益",
+      "source": "../2026-11-16_2026-11-20/data/summary.json",
+      "conditional": false,
+      "weekPct": -15.279358033396365,
+      "drawdown": -72.73822764542595
     }
   ]
 }

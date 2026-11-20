@@ -1,6 +1,7 @@
 const fs=require('node:fs'), path=require('node:path'), assert=require('node:assert/strict');
 const root=path.resolve(__dirname,'..'),folder='2026-11-09_2026-11-13',dir=path.join(root,folder),prior='2026-11-02_2026-11-06';
 const {trades,source}=require(path.join(dir,'data/trades-partial.json')),quotes=require(path.join(dir,'data/closing-quotes.json'));
+const friday=require(path.join(dir,'data/friday-trades.json')),allTrades=[...trades,...friday.trades];
 const opening=require(path.join(root,prior,'data/summary.json')).account;
 assert.equal(opening.endingPosition,0);
 const cents=n=>Math.round(n*100), money=n=>n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}),signed=n=>(n>0?'+':'')+money(n),pct=n=>n.toFixed(2)+'%';
@@ -23,15 +24,16 @@ assert.equal(thu.cash,4414.13);assert.equal(snapshot.equity,snapshot.cash+snapsh
 assert.deepEqual(Object.keys(snapshot.clearedPnl).sort(),[...lots.keys()].sort());
 for(const [code,pnl] of Object.entries(snapshot.clearedPnl)){
   const l=lots.get(code);
-  closed.push({code,name:l.name,date,qty:l.qty,cost:l.cost/100,pnl,proceeds:(l.cost+cents(pnl))/100,source:'清仓截图盈亏；净回款按成本加盈亏推算'});
+  const fill=friday.trades.find(t=>t.code===code);assert(fill);assert.equal(fill.qty,l.qty);assert.equal(cents(fill.net)-l.cost,cents(pnl));
+  closed.push({code,name:l.name,date,qty:l.qty,cost:l.cost/100,pnl,proceeds:fill.net,source:'周五逐笔交割核实'});
 }
 assert.equal(closed.filter(t=>t.date===date).reduce((s,t)=>s+cents(t.pnl),0),cents(snapshot.displayedPositionPnl));
 assert.equal(cash+closed.filter(t=>t.date===date).reduce((s,t)=>s+cents(t.proceeds),0),cents(snapshot.cash));
-days.push({date,count:null,cash:snapshot.cash,holdings:[],marketValue:0,equity:snapshot.equity,pnl:(cents(snapshot.equity)-previous)/100,returnPct:(snapshot.equity/thu.equity-1)*100,position:0});
+days.push({date,count:friday.trades.length,cash:snapshot.cash,holdings:[],marketValue:0,equity:snapshot.equity,pnl:(cents(snapshot.equity)-previous)/100,returnPct:(snapshot.equity/thu.equity-1)*100,position:0});
 const end=days.at(-1),pnl=(cents(end.equity)-cents(opening.endingEquity))/100,closedPnl=closed.reduce((s,t)=>s+cents(t.pnl),0)/100;
 assert.equal(cents(pnl),cents(closedPnl));assert.equal(cents(pnl),days.reduce((s,t)=>s+cents(t.pnl),0));
 const account={opening:{equity:opening.endingEquity},days,pnl,returnPct:pnl/opening.endingEquity*100,endingEquity:end.equity,averagePosition:days.reduce((s,d)=>s+d.position,0)/days.length,coveredThrough:end.date,weeklyReturnPct:pnl/opening.endingEquity*100,endingPosition:0,equityStatus:"期末资产截图",basis:"周五期末资产截图与周四交割收盘估值对照，假设无额外出入金。"};
-const summary={date:trades[0].date,status:'account-complete-fills-partial',reason:'全周账户已核算；周五清仓已确认，逐笔卖价、时间及笔数未提供。',tradeCount:null,itemizedTradeCount:trades.length,closed,closedPnl,account};
+const summary={date:trades[0].date,status:'complete',reason:'全周16笔交割已核实，周五四笔卖单已补，账户结果未变。',tradeCount:allTrades.length,itemizedTradeCount:allTrades.length,closed,closedPnl,account};
 const write=(f,s)=>fs.writeFileSync(path.join(root,f),s),read=f=>fs.readFileSync(path.join(root,f),'utf8');
 write(folder+'/data/summary.json',JSON.stringify(summary,null,2)+'\n');
 const table=(hs,rows)=>'<div class="table-wrap"><table><thead><tr>'+hs.map(x=>'<th>'+x+'</th>').join('')+'</tr></thead><tbody>'+rows.map(r=>'<tr>'+r.map(v=>'<td>'+v+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>';
@@ -55,9 +57,9 @@ const chapters=[
  <li><strong>周五：</strong>全天空仓。理想节奏是周四就把仓位收回来，而不是等到周五再清仓。</li></ol>
  <p><strong>下周只精进两种模式：</strong>主升二阶段龙头的分歧回流、龙头二波的首次突破。盘前写超预期、符合预期、不及预期三个剧本。事后设想的周收益+10%至+15%，以及“上周五排到，周一就可能多赚”的推演，都不是实际收益，也不当成下周目标。</p>`],
  ['daily-account','每日账户与仓位', '<p>期初现金及权益均为'+money(opening.endingEquity)+'元，持仓为零。按发生金额滚动现金、持仓数量乘当日收盘价估值，假设无出入金或漏单。周五截图的“当日盈亏”为0；本表按相邻日末权益计算，9,984.32－10,195.13＝-210.81元（-2.07%）。</p>'+table(['日期','笔数','现金','持仓市值','权益（估）','日收益（估）','日收益率','日末仓位'],days.map((d,i)=>[d.date.slice(5)+' 周'+'一二三四五'[i],d.count??'清仓4只，笔数待补',money(d.cash),money(d.marketValue),money(d.equity),color(d.pnl),signed(d.returnPct)+'%',pct(d.position)]))],
- ['ticket-pnl','闭环交易与损益','<p>前两轮按交割发生金额，周五四轮按清仓截图的盈亏列示，周五净回款为成本加盈亏倒算，并非逐笔成交额。闽发周二卖清后，周三买回的100股是新仓，不与上一轮合并。</p>'+table(['标的','卖清日','闭环数量','含费成本','净回款','含费损益'],closed.map(t=>[t.name,t.date,t.qty,money(t.cost),money(t.proceeds),color(t.pnl)]))],
+ ['ticket-pnl','闭环交易与损益','<p>六轮均已按交割发生金额核实。周五四笔卖单与此前清仓截图一致，账户结果不变。闽发周二卖清后，周三买回的100股是新仓，不与上一轮合并。</p>'+table(['标的','卖清日','闭环数量','含费成本','净回款','含费损益'],closed.map(t=>[t.name,t.date,t.qty,money(t.cost),money(t.proceeds),color(t.pnl)]))],
  ['holdings','周五期末持仓','<p>现金及总资产均为9,984.32元，股票市值为0，期末空仓。周四现金4,414.13元，加上清仓净回款5,570.19元，与截图余额一致。</p><p>四只清仓标的合计亏损570.83元是各自整轮结果，不是周五单日亏损。加上此前两轮盈利235.18元，全周合计亏损335.65元。</p>'],
- ['trade-records','逐笔交割（截至周四）',table(['日期','时间','证券','买卖','数量','成交价','成交额','含费发生金额','资金余额'],trades.map(t=>[t.date.slice(5),t.time,t.name+' '+t.code,t.side,t.qty,t.price.toFixed(3),money(t.amount),signed(t.net),money(t.cash)]))+'<p>'+source+'</p>'],
+ ['trade-records','全周逐笔交割 · 16笔',table(['日期','时间','证券','买卖','数量','成交价','成交额','含费发生金额','资金余额'],allTrades.map(t=>[t.date.slice(5),t.time,t.name+' '+t.code,t.side,t.qty,t.price.toFixed(3),money(t.amount),signed(t.net),money(t.cash)]))+'<p>'+source+' '+friday.source+'</p>'],
  ['charts','五分钟K线与买卖点',require('./nov13-five-minute.cjs')(snapshot)],
  ['reflection','周五操作与反思',`<p><strong>今天做对的，是清仓之后没有再买。</strong>在我看来，这是旧周期集中出清的大分歧日。新华传媒的负反馈传到了其他老票。盘中虽然看过襄阳轴承，但看不到企稳迹象，最后没有买。空仓是我的判断，不是没找到股票才被动空下来。</p>`+
  table(['周五清仓','我的卖点复盘'],[
@@ -78,13 +80,13 @@ const chapters=[
   ['符合预期：北纬平稳开出，有修复，但尚未表现出领涨。','先等第一次有承接的上攻。若北纬先动、前排随后转强，再比较回落后的强弱；若别人先拉、北纬才跟，它是跟随者。','竞价不抢。看清“北纬先动、板块跟上”再评估；先后分不清，或跟随只维持一瞬，就空仓。'],
   ['不及预期：北纬竞价走弱，或原有强度临近开盘消失。','开盘反抽时，题材是否仍然分散？只有北纬自己拉一下，或它被其他强票带起，都不能验证它是新周期龙头。','原计划不触发，不抄底、不换后排；继续空仓。']
  ])+'<p><strong>盘后复核：</strong>分别记下北纬第一次主动上攻、同题材前排开始响应、第一次分歧后的表现。只有第一个时点，最多说明个股强；三个时点都有证据，才保留“可能开启新周期”的判断。</p>'],
- ['pending','待补材料','<p>周五个人复盘和本周二次反思均已补。周五卖单的准确时间、价格、笔数和费用仍待逐笔交割核实；当前四只清仓标的不等于四笔卖单。</p><p>归因已确认：日海智能计入切换；浙文影业属于原抱团仓加仓，其整轮损益不计入切换。周五逐笔卖单由本人后补。</p><p><a href="data/closing-quotes.json">前四日收盘价及来源</a> · <a href="data/summary.json">逐日核算</a></p>']
+ ['pending','材料状态','<p>周五四笔卖单、操作复盘和二次反思均已补齐。归因保留：日海智能计入切换；浙文影业属于原抱团仓加仓，其整轮损益不计入切换。账户数字不因补单而改变。</p><p><a href="data/friday-trades.json">周五补充成交</a> · <a href="data/closing-quotes.json">收盘价及来源</a> · <a href="data/summary.json">逐日核算</a></p>']
 ];
 const css=read(prior+'/index.html').match(/<style>([\s\S]*?)<\/style>/)[1];
 write(folder+'/index.html','<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+period+' 周度交割复盘</title><style>'+css+keyCss+'.is-profit{color:#bc382b}.is-loss{color:#127759}.numbers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.numbers span{padding:8px;border-bottom:1px solid var(--line)}.numbers b{display:block;font-variant-numeric:tabular-nums}@media(max-width:650px){.numbers{grid-template-columns:1fr 1fr}}</style></head><body><div class="shell"><aside class="side"><h2>周度交割复盘</h2><a href="../weekly-trading-review/">返回周度归档</a><nav><a href="#priority-rules">三件要改的事</a>'+chapters.map(([id,title])=>'<a href="#'+id+'">'+title+'</a>').join('')+'</nav></aside><main class="page"><h1 class="week-title">'+period+' 周度交割复盘</h1>'+keySection+'<header class="hero"><div><span class="eyebrow">TRADING REVIEW · 2026</span><h2>本周账户</h2><p>'+headline+'</p><span class="status">'+status+'</span></div><div class="numbers">'+tiles+'</div></header>'+chapters.map(([id,title,body])=>'<section class="panel" id="'+id+'"><h2>'+title+'</h2>'+body+'</section>').join('')+'<footer><a href="../'+prior+'/">上一期：11.02–11.06</a></footer></main></div></body></html>');
 require('./update-weekly-hub-chart.js');
 const hubPath='weekly-trading-review/index.html',card='<a class="week-card latest-link" href="../'+folder+'/"><div class="week-head"><h3>'+period+'</h3><span class="chip">'+status+'</span></div><div class="mini-grid">'+tiles+'</div><p>'+headline+'资金曲线已按周五期末资产更新。</p></a>';
-let hub=read(hubPath).replace(/<a class="week-card latest-link" href="\.\.\/2026-11-09_2026-11-13\/">[\s\S]*?<\/a>/,'').replace('class="week-card latest-link" href="../'+prior+'/','class="week-card" href="../'+prior+'/').replace('<div class="archive">','<div class="archive">'+card);
+let hub=read(hubPath).replace(/<a class="week-card(?: latest-link)?" href="\.\.\/2026-11-09_2026-11-13\/">[\s\S]*?<\/a>/,'').replace('class="week-card latest-link" href="../'+prior+'/','class="week-card" href="../'+prior+'/').replace('<div class="archive">','<div class="archive">'+card);
 hub=hub.replace(/<section class="panel">\s*<span class="label">Latest Review<\/span>[\s\S]*?<\/section>/,'<section class="panel"><span class="label">Latest Review</span><h2>最新周：'+period+'</h2><p>'+headline+'全周收益'+signed(pnl)+'元，期末空仓。</p><a href="../'+folder+'/#daily-account">查看每日账户与仓位</a></section>').replace('../'+prior+'/">进入最新周复盘','../'+folder+'/">进入最新周复盘').replace(/最新一期2026\.[^<]+/,'最新一期2026.'+period+'：'+headline+status+'。').replace(/(<span>最新资料状态<\/span>)<strong[^>]*>[^<]*<\/strong><small>[^<]*<\/small>/,'$1<strong>全周账户已核算</strong><small>周五清仓</small>');
 write(hubPath,hub);
 write('index.html',read('index.html').replace('./'+prior+'/">最新周复盘','./'+folder+'/">最新周复盘').replace(/最新一期11\.(02|09)至11\.(06|13)：[^<]+/,'最新一期11.09至11.13：'+headline+status+'。').replace('周报 <b>25 篇','周报 <b>26 篇').replace('最新 <b>11.02-11.06','最新 <b>11.09-11.13').replace('状态 <b>前四日交割已补','状态 <b>全周账户已核算'));

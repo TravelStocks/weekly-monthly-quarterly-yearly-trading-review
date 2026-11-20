@@ -1,9 +1,9 @@
 {
   "date": "2026-11-09",
-  "status": "account-complete-fills-partial",
-  "reason": "全周账户已核算；周五清仓已确认，逐笔卖价、时间及笔数未提供。",
-  "tradeCount": null,
-  "itemizedTradeCount": 12,
+  "status": "complete",
+  "reason": "全周16笔交割已核实，周五四笔卖单已补，账户结果未变。",
+  "tradeCount": 16,
+  "itemizedTradeCount": 16,
   "closed": [
     {
       "code": "002578",
@@ -31,7 +31,7 @@
       "cost": 2188.02,
       "pnl": -50.11,
       "proceeds": 2137.91,
-      "source": "清仓截图盈亏；净回款按成本加盈亏推算"
+      "source": "周五逐笔交割核实"
     },
     {
       "code": "000530",
@@ -41,7 +41,7 @@
       "cost": 1090,
       "pnl": -86.5,
       "proceeds": 1003.5,
-      "source": "清仓截图盈亏；净回款按成本加盈亏推算"
+      "source": "周五逐笔交割核实"
     },
     {
       "code": "002313",
@@ -51,7 +51,7 @@
       "cost": 2246,
       "pnl": -355.95,
       "proceeds": 1890.05,
-      "source": "清仓截图盈亏；净回款按成本加盈亏推算"
+      "source": "周五逐笔交割核实"
     },
     {
       "code": "002578",
@@ -61,7 +61,7 @@
       "cost": 617,
       "pnl": -78.27,
       "proceeds": 538.73,
-      "source": "清仓截图盈亏；净回款按成本加盈亏推算"
+      "source": "周五逐笔交割核实"
     }
   ],
   "closedPnl": -335.65,
@@ -200,7 +200,7 @@
       },
       {
         "date": "2026-11-13",
-        "count": null,
+        "count": 4,
         "cash": 9984.32,
         "holdings": [],
         "marketValue": 0,

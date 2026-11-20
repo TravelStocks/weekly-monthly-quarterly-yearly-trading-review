@@ -47,18 +47,19 @@ for(const folder of recentFolders){
   if(summary.status==='reflection-only'){reflectionOnly.push({folder,date:summary.date,reason:summary.reason});continue;}
   if(partialWeek){
     incompleteReports.push({folder,date:summary.date,reason:summary.reason});
-    if(!a?.days?.length || ![a.pnl,a.returnPct,a.endingEquity,a.averagePosition].every(Number.isFinite))continue;
+    if(!a?.days?.length || ![a.pnl,a.returnPct,a.endingEquity].every(Number.isFinite))continue;
     assert.equal(a.coveredThrough,a.days.at(-1).date);
   }
   const legacy=a.weekPnl!=null,conditional=a.status==='conditional-estimate';
   const pnl=legacy?a.weekPnl:a.pnl,rate=legacy?a.weekRate:partialWeek?a.returnPct:(a.weeklyReturnPct??a.dailyRateSum);
-  assert([pnl,rate,a.endingEquity,a.averagePosition].every(Number.isFinite),`Unsupported account summary: ${folder}`);
+  assert([pnl,rate,a.endingEquity].every(Number.isFinite)&& (Number.isFinite(a.averagePosition)||(partialWeek&&a.averagePosition===null)),`Unsupported account summary: ${folder}`);
   const days=a.days;assert(days?.length,`Missing daily account: ${folder}`);
-  const best=days.reduce((x,y)=>y.pnl>x.pnl?y:x),worst=days.reduce((x,y)=>y.pnl<x.pnl?y:x);
+  const comparableDays=days.filter(d=>d.finalized!==false);
+  const best=comparableDays.reduce((x,y)=>y.pnl>x.pnl?y:x),worst=comparableDays.reduce((x,y)=>y.pnl<x.pnl?y:x);
   weeks.push({label:folder.slice(5,10).replace('-','.')+'-'+folder.slice(16).replace('-','.')+(days.length>5?'（合并）':''),href:`../${folder}/`,
     pnl,equity:a.endingEquity,equityLabel:a.endingEquity.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}),
-    ...(partialWeek?{provisional:true,coveredThrough:a.coveredThrough}:{}),equityStatus:partialWeek?'截至'+a.coveredThrough.slice(5)+'估算':conditional?'条件估算：周五不变仓':legacy?'费用前估算':(a.equityStatus||'交割收盘估算'),equityNote:a.basis||summary.reason||'',
-    avgPosition:a.averagePosition,bestDay:dayLabel(best),worstDay:dayLabel(worst),estimatedWeekPct:rate,
+    ...(partialWeek?{provisional:true,coveredThrough:a.coveredThrough}:{}),equityStatus:partialWeek?(a.equityStatus||'截至'+a.coveredThrough.slice(5)+'估算'):conditional?'条件估算：周五不变仓':legacy?'费用前估算':(a.equityStatus||'交割收盘估算'),equityNote:a.basis||summary.reason||'',
+    avgPosition:a.averagePosition,bestDay:dayLabel(best)+(partialWeek?'（已收盘日）':''),worstDay:dayLabel(worst)+(partialWeek?'（已收盘日）':''),estimatedWeekPct:rate,
     rateBasis:partialWeek?'截至'+a.coveredThrough.slice(5)+'区间收益':legacy||a.weeklyReturnPct!=null?'期初期末口径':'日收益率相加',source:`../${folder}/data/summary.json`,conditional});
 }
 assert.equal(new Set(weeks.map(w=>w.href)).size,weeks.length,'Duplicate curve period');

@@ -1,0 +1,115 @@
+{
+  "date": "2026-11-20",
+  "status": "partial-trades",
+  "reason": "盘中初稿：周五已清仓，逐笔卖单、收盘账户和个人反思待补。",
+  "tradeCount": null,
+  "itemizedTradeCount": 3,
+  "closed": [
+    {
+      "code": "002148",
+      "name": "北纬科技",
+      "qty": 1100,
+      "cost": 9630,
+      "net": 8966.51,
+      "pnl": -663.49,
+      "source": "买卖交割已核实"
+    },
+    {
+      "code": "002685",
+      "name": "华东重机",
+      "qty": 1100,
+      "cost": 8926,
+      "net": 8063.95,
+      "pnl": -862.05,
+      "source": "本人确认已卖清；截图盈亏与资产衔接，非逐笔成交"
+    }
+  ],
+  "closedPnl": -1525.54,
+  "partialAccount": {
+    "opening": {
+      "equity": 9984.32
+    },
+    "days": [
+      {
+        "date": "2026-11-16",
+        "count": 1,
+        "cash": 354.32,
+        "held": {
+          "code": "002148",
+          "name": "北纬科技",
+          "qty": 1100,
+          "close": 8.75
+        },
+        "marketValue": 9625,
+        "equity": 9979.32,
+        "pnl": -5,
+        "returnPct": -0.050078523124263974,
+        "position": 96.44945747806463,
+        "finalized": true
+      },
+      {
+        "date": "2026-11-17",
+        "count": 1,
+        "cash": 9320.83,
+        "held": null,
+        "marketValue": 0,
+        "equity": 9320.83,
+        "pnl": -658.49,
+        "returnPct": -6.598545792699307,
+        "position": 0,
+        "finalized": true
+      },
+      {
+        "date": "2026-11-18",
+        "count": 0,
+        "cash": 9320.83,
+        "held": null,
+        "marketValue": 0,
+        "equity": 9320.83,
+        "pnl": 0,
+        "returnPct": 0,
+        "position": 0,
+        "finalized": true
+      },
+      {
+        "date": "2026-11-19",
+        "count": 1,
+        "cash": 394.83,
+        "held": {
+          "code": "002685",
+          "name": "华东重机",
+          "qty": 1100,
+          "close": 7.67
+        },
+        "marketValue": 8437,
+        "equity": 8831.83,
+        "pnl": -489,
+        "returnPct": -5.2463139012298265,
+        "position": 95.529465580746,
+        "finalized": true
+      },
+      {
+        "date": "2026-11-20",
+        "count": null,
+        "cash": null,
+        "held": null,
+        "marketValue": 0,
+        "equity": 8458.78,
+        "pnl": -373.05,
+        "returnPct": -4.2239264116270325,
+        "position": 0,
+        "finalized": false,
+        "basis": "本人确认清仓；总资产快照，不是收盘"
+      }
+    ],
+    "pnl": -1525.54,
+    "returnPct": -15.279358033396365,
+    "weeklyReturnPct": -15.279358033396365,
+    "endingEquity": 8458.78,
+    "endingPosition": 0,
+    "averagePosition": null,
+    "coveredThrough": "2026-11-20",
+    "equityStatus": "11-20盘中截图，非收盘",
+    "basis": "无额外出入金假设；前四日按交割与实际收盘估值，周五按本人确认清仓及总资产截图。可用金额差1元、当日盈亏口径差24.05元待核。"
+  }
+}

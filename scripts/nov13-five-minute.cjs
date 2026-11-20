@@ -1,6 +1,6 @@
 const fs=require('node:fs'), path=require('node:path'), assert=require('node:assert/strict');
 const dir=path.join(__dirname,'../2026-11-09_2026-11-13/data');
-const {trades}=require(path.join(dir,'trades-partial.json'));
+const trades=[...require(path.join(dir,'trades-partial.json')).trades,...require(path.join(dir,'friday-trades.json')).trades];
 const codes=[...new Set(trades.map(t=>t.code))];
 const dates=['09','10','11','12','13'].map(d=>'2026-11-'+d);
 const file=c=>path.join(dir,c+'-5m.json');
@@ -20,7 +20,7 @@ async function collect(){
  }
 }
 function charts(snapshot){
- return '<p>红涨绿跌；圆点为实际买入，方点为实际卖出。盘中成交按时间归入对应五分钟区间，纵向位置为交割价。竞价成交单列；周五清仓没有逐笔时间与卖价，暂不画点。</p><div class="chart-list">'+codes.map(code=>{
+ return '<p>红涨绿跌；圆点为实际买入，方点为实际卖出。盘中成交按时间归入对应五分钟区间，纵向位置为交割价。竞价成交单列；周五四笔卖单已补入对应买卖点。</p><div class="chart-list">'+codes.map(code=>{
   const {source,bars}=JSON.parse(fs.readFileSync(file(code)));validate(bars);
   const ts=trades.filter(t=>t.code===code),name=ts[0].name;
   const prices=bars.flatMap(b=>[b.low,b.high]).concat(ts.map(t=>t.price)),lo=Math.min(...prices),hi=Math.max(...prices);
@@ -35,7 +35,7 @@ function charts(snapshot){
    const pos=t.side==='买入'?'<circle fill="#ad2919" cx="'+x(i)+'" cy="'+y(t.price)+'" r="4"':'<rect fill="#2354a4" x="'+(x(i)-4)+'" y="'+(y(t.price)-4)+'" width="8" height="8"';
    return pos+' class="fill-marker" stroke="white"><title>'+describe(t)+'</title></'+(t.side==='买入'?'circle':'rect')+'>';
   }).join('');
-  return '<article class="chart-card"><h3>'+name+' '+code+'</h3><div class="chart-scroll"><svg viewBox="0 0 920 280" role="img" aria-label="'+name+'五分钟K线与成交点">'+grid+labels+candles+markers+'</svg></div><p><a href="'+source.replaceAll('&','&amp;')+'">新浪五分钟行情</a> · <a href="data/'+code+'-5m.json">本周240根原始行情</a></p><ul>'+ts.map(t=>'<li>'+describe(t)+(t.time<'09:30:00'?'（集合竞价，不并入盘中K线）':'')+'</li>').join('')+'</ul>'+(Object.hasOwn(snapshot.clearedPnl,code)?'<p>11-13 已卖清；逐笔卖点待补。</p>':'')+'</article>';
+  return '<article class="chart-card"><h3>'+name+' '+code+'</h3><div class="chart-scroll"><svg viewBox="0 0 920 280" role="img" aria-label="'+name+'五分钟K线与成交点">'+grid+labels+candles+markers+'</svg></div><p><a href="'+source.replaceAll('&','&amp;')+'">新浪五分钟行情</a> · <a href="data/'+code+'-5m.json">本周240根原始行情</a></p><ul>'+ts.map(t=>'<li>'+describe(t)+(t.time<'09:30:00'?'（集合竞价，不并入盘中K线）':'')+'</li>').join('')+'</ul>'+(Object.hasOwn(snapshot.clearedPnl,code)?'<p>11-13 已卖清；时间和成交价已核实。</p>':'')+'</article>';
  }).join('')+'</div>';
 }
 module.exports=charts;
