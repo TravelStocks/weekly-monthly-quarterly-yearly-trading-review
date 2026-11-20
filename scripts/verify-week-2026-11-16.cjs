@@ -20,6 +20,8 @@ const svg=hub.match(/<svg class="weekly-chart"[\s\S]*?<\/svg>/)[0];
 for(const t of ['11.16-11.20','-1,525.54','-15.28%','-72.74%'])assert(svg.includes(t));
 console.log('Final week, four backfilled sells, two charts, balances and overview verified.');
 assert(html.includes('id="trade-analysis"'));
+for(const text of ['急于扳回亏损','启动时题材最强','不及预期','如果这周没有亏损'])assert(html.includes(text),text);
+assert(!html.includes('不推断急于回本等未表达的心理动机'));
 for(const text of ['周亏损已经超过5%，还近满仓开新仓','95.76%','96.45%','164.27','38.40%','id="second-review"','14:56:47','8.58','整周亏损达到5%'])assert(html.includes(text),text);
 for(const doc of [html,hub]){
  assert(doc.includes('<b class="is-loss">-1,525.54</b>'));
