@@ -35,7 +35,7 @@ const tiles=metric.map(([k,v],i)=>'<span>'+k+'<b class="'+(i<2?tone(pnl):'')+'">
 const analysis=require('./nov20-trade-analysis.cjs')({table,color});
 const headline='周一买入北纬科技，周二卖清；周三空仓；周四买华东重机，周五09:39:10清仓。本人补充确认：买前有强题材与唯一性龙头信号，卖出因不及预期；周四急于扳回亏损，导致纪律与仓位失控。最重要错误仍是周亏超5%后仍近满仓开新仓；整周亏损达到5%即停止本周开新仓。';
 const sections=[
- ['preflight','下周盘前必问自己的三个问题',analysis.preflight],
+ ['preflight','下周盘前三问',analysis.preflight],
  ['focus','本周最重要的错误',analysis.confirmed],
  ['second-review','二次反思：弱天时、左侧买点与仓位',require('./nov20-second-review.cjs')({table,color})],
  ['trade-analysis','两笔交易：买点、卖点与仓位',analysis.details],
