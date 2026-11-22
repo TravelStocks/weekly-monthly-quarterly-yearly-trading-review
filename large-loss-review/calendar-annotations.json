@@ -1594,5 +1594,185 @@
         "source": "large-loss-review/index.html#woge-bingshan-mode"
       }
     ]
+  },
+  "2026-11-12": {
+    "summary": "日海智能切换错误来自周四开仓；周五清仓且没有再买是本人认可的处理，不把卖出本身判错。",
+    "assessment": "已有明确反思",
+    "errors": [
+      {
+        "category": "switch_mode",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "002313",
+            "name": "日海智能"
+          }
+        ],
+        "evidence": "周四我判断抱团开始瓦解，却新开日海智能做切换，同时加仓原有的浙文影业抱团仓",
+        "source": "2026-11-09_2026-11-13/index.html#second-review"
+      }
+    ]
+  },
+  "2026-11-13": {
+    "summary": "日海智能切换错误来自周四开仓；周五清仓且没有再买是本人认可的处理，不把卖出本身判错。",
+    "assessment": "已有明确反思",
+    "errors": [
+      {
+        "category": "switch_mode",
+        "scope": "本轮回看",
+        "stocks": [
+          {
+            "code": "002313",
+            "name": "日海智能"
+          }
+        ],
+        "evidence": "周四我判断抱团开始瓦解，却新开日海智能做切换，同时加仓原有的浙文影业抱团仓",
+        "source": "2026-11-09_2026-11-13/index.html#second-review"
+      }
+    ]
+  },
+  "2026-11-16": {
+    "summary": "本人确认买前有龙头信号，按龙头接力复盘。问题在弱环境下的左侧买点与过重仓位；华东重机另叠加周亏触线后急于回本。退出原因与执行时点分开核对。",
+    "assessment": "已有明确反思",
+    "errors": [
+      {
+        "category": "entry",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "002148",
+            "name": "北纬科技"
+          }
+        ],
+        "evidence": "在环境不支持时，用左侧节点和过重仓位去赌龙头承接",
+        "source": "2026-11-16_2026-11-20/index.html#second-review"
+      },
+      {
+        "category": "size",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "002148",
+            "name": "北纬科技"
+          }
+        ],
+        "evidence": "在环境不支持时，用左侧节点和过重仓位去赌龙头承接",
+        "source": "2026-11-16_2026-11-20/index.html#second-review"
+      }
+    ]
+  },
+  "2026-11-17": {
+    "summary": "本人确认买前有龙头信号，按龙头接力复盘。问题在弱环境下的左侧买点与过重仓位；华东重机另叠加周亏触线后急于回本。退出原因与执行时点分开核对。",
+    "assessment": "已有明确反思",
+    "errors": [
+      {
+        "category": "entry",
+        "scope": "本轮回看",
+        "stocks": [
+          {
+            "code": "002148",
+            "name": "北纬科技"
+          }
+        ],
+        "evidence": "在环境不支持时，用左侧节点和过重仓位去赌龙头承接",
+        "source": "2026-11-16_2026-11-20/index.html#second-review"
+      },
+      {
+        "category": "size",
+        "scope": "本轮回看",
+        "stocks": [
+          {
+            "code": "002148",
+            "name": "北纬科技"
+          }
+        ],
+        "evidence": "在环境不支持时，用左侧节点和过重仓位去赌龙头承接",
+        "source": "2026-11-16_2026-11-20/index.html#second-review"
+      }
+    ]
+  },
+  "2026-11-19": {
+    "summary": "本人确认买前有龙头信号，按龙头接力复盘。问题在弱环境下的左侧买点与过重仓位；华东重机另叠加周亏触线后急于回本。退出原因与执行时点分开核对。",
+    "assessment": "已有明确反思",
+    "errors": [
+      {
+        "category": "entry",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "002685",
+            "name": "华东重机"
+          }
+        ],
+        "evidence": "在环境不支持时，用左侧节点和过重仓位去赌龙头承接",
+        "source": "2026-11-16_2026-11-20/index.html#second-review"
+      },
+      {
+        "category": "size",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "002685",
+            "name": "华东重机"
+          }
+        ],
+        "evidence": "在环境不支持时，用左侧节点和过重仓位去赌龙头承接",
+        "source": "2026-11-16_2026-11-20/index.html#second-review"
+      },
+      {
+        "category": "recoup",
+        "scope": "当日操作",
+        "stocks": [
+          {
+            "code": "002685",
+            "name": "华东重机"
+          }
+        ],
+        "evidence": "周亏触线后急于回本",
+        "source": "2026-11-16_2026-11-20/index.html#second-review"
+      }
+    ]
+  },
+  "2026-11-20": {
+    "summary": "本人确认买前有龙头信号，按龙头接力复盘。问题在弱环境下的左侧买点与过重仓位；华东重机另叠加周亏触线后急于回本。退出原因与执行时点分开核对。",
+    "assessment": "已有明确反思",
+    "errors": [
+      {
+        "category": "entry",
+        "scope": "本轮回看",
+        "stocks": [
+          {
+            "code": "002685",
+            "name": "华东重机"
+          }
+        ],
+        "evidence": "在环境不支持时，用左侧节点和过重仓位去赌龙头承接",
+        "source": "2026-11-16_2026-11-20/index.html#second-review"
+      },
+      {
+        "category": "size",
+        "scope": "本轮回看",
+        "stocks": [
+          {
+            "code": "002685",
+            "name": "华东重机"
+          }
+        ],
+        "evidence": "在环境不支持时，用左侧节点和过重仓位去赌龙头承接",
+        "source": "2026-11-16_2026-11-20/index.html#second-review"
+      },
+      {
+        "category": "recoup",
+        "scope": "本轮回看",
+        "stocks": [
+          {
+            "code": "002685",
+            "name": "华东重机"
+          }
+        ],
+        "evidence": "周亏触线后急于回本",
+        "source": "2026-11-16_2026-11-20/index.html#second-review"
+      }
+    ]
   }
 }

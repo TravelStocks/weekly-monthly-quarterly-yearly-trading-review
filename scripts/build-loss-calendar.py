@@ -6,6 +6,7 @@ Rebuild from sanitized inputs: python scripts/build-loss-calendar.py
 from pathlib import Path
 from collections import defaultdict
 from decimal import Decimal
+from datetime import date as today_date
 import argparse
 import csv
 import io
@@ -54,6 +55,21 @@ def import_trades(path):
 
 def build():
     imported = read('large-loss-review/calendar-trades.json')
+    # Later weeks have verified screenshots instead of a replacement broker export.
+    supplement_sources = [
+        '2026-11-02_2026-11-06/data/trades-partial.json',
+        '2026-11-09_2026-11-13/data/trades-partial.json',
+        '2026-11-09_2026-11-13/data/friday-trades.json',
+        '2026-11-16_2026-11-20/data/input.json',
+    ]
+    base_end = imported['end']
+    for source in supplement_sources:
+        for t in read(source)['trades']:
+            if t['date'] <= base_end: continue
+            imported['rows'].append(dict(date=t['date'], time=t['time'], code=t['code'], name=t['name'],
+                side='buy' if t['side']=='买入' else 'sell', qty=t['qty'], sourceRow=len(imported['rows'])+2))
+    imported['end'] = max(t['date'] for t in imported['rows'])
+    imported['source'] += '；后续已核实周报成交'
     rates, notes, pages = {}, defaultdict(list), {}
     conflicts = []
     def add_rate(date, rate, amount, source, kind='recorded', basis='原站每日账户记录', calculation=None):
@@ -151,10 +167,11 @@ def build():
         ('2026-11-02_2026-11-06/data/summary.json', 'account',
          '2026-11-02_2026-11-06/index.html#trade-records'),
     ]
+    calculated_sources += [(f'{week}/data/summary.json', 'account', f'{week}/index.html#daily-account') for week in ['2026-11-09_2026-11-13','2026-11-16_2026-11-20']]
     for path, key, source in calculated_sources:
         payload = read(path)
         account = payload[key] if key else payload
-        assert account['status'] in ['statement-close-estimate', 'partial-statement-close-estimate']
+        assert account.get('status', payload.get('status')) in ['statement-close-estimate', 'partial-statement-close-estimate', 'complete']
         previous = Decimal(str(account['opening']['equity']))
         for day in account['days']:
             if day['date'] > imported['end']:
@@ -167,8 +184,9 @@ def build():
             assert abs(float(pnl / previous * 100) - day['returnPct']) < 1e-9
             calculation = dict(previousEquity=float(previous), equity=day['equity'],
                 cash=day['cash'], marketValue=day['marketValue'], source=path)
+            rates.pop(day['date'], None)  # Structured reconciled equities outrank rounded HTML.
             add_rate(day['date'], day['returnPct'], day['pnl'], source, 'estimated',
-                '实际交割（含费）与收盘持仓估算；假设无遗漏持仓或额外出入金，非券商确认', calculation)
+                account.get('basis', '实际交割（含费）与收盘持仓估算；假设无遗漏持仓或额外出入金，非券商确认'), calculation)
             previous = equity
     spring_source = 'large-loss-review/spring-holding-estimates.json'
     for valuation in read(spring_source)['days']:
@@ -211,11 +229,12 @@ def build():
         days.append(dict(date=date,income=rates.get(date),trades=list(grouped.values()),
             tradeCount=len(by_date[date]),notes=day_notes,relatedEpisodes=related,
             summary=a.get('summary',''),assessment=a.get('assessment','待归因'),errors=errors))
-    payload=dict(updated='2026-11-06',threshold=-2,start=imported['start'],end=imported['end'],
+    payload=dict(updated=today_date.today().isoformat(),reflectionUpdated=read('large-loss-review/data.json').get('reflectionUpdated'),threshold=-2,start=imported['start'],end=imported['end'],
         tradeSource=imported['source'],tradeCount=len(imported['rows']),days=days,
-        audit=dict(incomeSource=income['source'],conflicts=conflicts,
+        audit=dict(incomeSource=income['source'],conflicts=conflicts, supplementalTradeSources=supplement_sources,
             calculatedIncomeSources=[s[0] for s in calculated_sources],
             excludedEstimates=[dict(date='2026-10-30',reason='旧持仓不变情景已停用；现已按实际卖出襄阳、买入大业及大业收盘价重新估算，衔接11月期初权益。')]))
+    payload['audit']['missingIncomeDates'] = [d['date'] for d in days if d['tradeCount'] and not d['income']]
     write(OUT/'calendar-data.json',payload)
     flagged=[d for d in days if d['income'] and d['income']['rate'] < -2]
     print('days',len(days),'rates',len(rates),'recorded',sum(r['kind']=='recorded' for r in rates.values()),'flagged',len(flagged))

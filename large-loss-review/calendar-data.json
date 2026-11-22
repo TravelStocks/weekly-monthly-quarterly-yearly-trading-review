@@ -1,10 +1,11 @@
 {
-  "updated": "2026-11-06",
+  "updated": "2026-11-21",
+  "reflectionUpdated": "2026-11-06",
   "threshold": -2,
   "start": "2026-03-11",
-  "end": "2026-11-04",
-  "tradeSource": "table.xls",
-  "tradeCount": 720,
+  "end": "2026-11-20",
+  "tradeSource": "table.xls；后续已核实周报成交",
+  "tradeCount": 744,
   "days": [
     {
       "date": "2026-03-11",
@@ -14006,7 +14007,7 @@
         "amount": -106.57,
         "source": "2026-10-26_2026-10-30/index.html#account",
         "kind": "estimated",
-        "basis": "实际交割（含费）与收盘持仓估算；假设无遗漏持仓或额外出入金，非券商确认",
+        "basis": "按已提供完整可见持仓、实际发生金额（含费）及不复权15:00五分钟收盘报价还原。已补10/30实际成交：襄阳卖出600股，大业买入200股；期末现金7896.36元，大业200股按19.52元收盘估值。假设无遗漏持仓或非交易现金变动。非券商确认收益。",
         "calculation": {
           "previousEquity": 10413.75,
           "equity": 10307.18,
@@ -14101,7 +14102,7 @@
         "amount": 83.81,
         "source": "2026-10-26_2026-10-30/index.html#account",
         "kind": "estimated",
-        "basis": "实际交割（含费）与收盘持仓估算；假设无遗漏持仓或额外出入金，非券商确认",
+        "basis": "按已提供完整可见持仓、实际发生金额（含费）及不复权15:00五分钟收盘报价还原。已补10/30实际成交：襄阳卖出600股，大业买入200股；期末现金7896.36元，大业200股按19.52元收盘估值。假设无遗漏持仓或非交易现金变动。非券商确认收益。",
         "calculation": {
           "previousEquity": 10307.18,
           "equity": 10390.99,
@@ -14157,7 +14158,7 @@
         "amount": 475,
         "source": "2026-10-26_2026-10-30/index.html#account",
         "kind": "estimated",
-        "basis": "实际交割（含费）与收盘持仓估算；假设无遗漏持仓或额外出入金，非券商确认",
+        "basis": "按已提供完整可见持仓、实际发生金额（含费）及不复权15:00五分钟收盘报价还原。已补10/30实际成交：襄阳卖出600股，大业买入200股；期末现金7896.36元，大业200股按19.52元收盘估值。假设无遗漏持仓或非交易现金变动。非券商确认收益。",
         "calculation": {
           "previousEquity": 10390.99,
           "equity": 10865.99,
@@ -14192,7 +14193,7 @@
         "amount": 668.19,
         "source": "2026-10-26_2026-10-30/index.html#account",
         "kind": "estimated",
-        "basis": "实际交割（含费）与收盘持仓估算；假设无遗漏持仓或额外出入金，非券商确认",
+        "basis": "按已提供完整可见持仓、实际发生金额（含费）及不复权15:00五分钟收盘报价还原。已补10/30实际成交：襄阳卖出600股，大业买入200股；期末现金7896.36元，大业200股按19.52元收盘估值。假设无遗漏持仓或非交易现金变动。非券商确认收益。",
         "calculation": {
           "previousEquity": 10865.99,
           "equity": 11534.18,
@@ -14237,7 +14238,7 @@
         "amount": 266.18,
         "source": "2026-10-26_2026-10-30/index.html#account",
         "kind": "estimated",
-        "basis": "实际交割（含费）与收盘持仓估算；假设无遗漏持仓或额外出入金，非券商确认",
+        "basis": "按已提供完整可见持仓、实际发生金额（含费）及不复权15:00五分钟收盘报价还原。已补10/30实际成交：襄阳卖出600股，大业买入200股；期末现金7896.36元，大业200股按19.52元收盘估值。假设无遗漏持仓或非交易现金变动。非券商确认收益。",
         "calculation": {
           "previousEquity": 11534.18,
           "equity": 11800.36,
@@ -14314,7 +14315,7 @@
         "amount": -813.83,
         "source": "2026-11-02_2026-11-06/index.html#trade-records",
         "kind": "estimated",
-        "basis": "实际交割（含费）与收盘持仓估算；假设无遗漏持仓或额外出入金，非券商确认",
+        "basis": "按10/30实际成交及大业收盘价19.52元还原期初权益11,800.36元；逐日使用实际发生金额与不复权收盘价估值，假设无遗漏持仓或非交易出入金。11/5卖出文投后全部清仓；周五无成交、空仓，按无额外出入金延续前日现金。",
         "calculation": {
           "previousEquity": 11800.36,
           "equity": 10986.53,
@@ -14417,7 +14418,7 @@
         "amount": -346.59,
         "source": "2026-11-02_2026-11-06/index.html#trade-records",
         "kind": "estimated",
-        "basis": "实际交割（含费）与收盘持仓估算；假设无遗漏持仓或额外出入金，非券商确认",
+        "basis": "按10/30实际成交及大业收盘价19.52元还原期初权益11,800.36元；逐日使用实际发生金额与不复权收盘价估值，假设无遗漏持仓或非交易出入金。11/5卖出文投后全部清仓；周五无成交、空仓，按无额外出入金延续前日现金。",
         "calculation": {
           "previousEquity": 10986.53,
           "equity": 10639.94,
@@ -14481,7 +14482,7 @@
         "amount": -202.02,
         "source": "2026-11-02_2026-11-06/index.html#trade-records",
         "kind": "estimated",
-        "basis": "实际交割（含费）与收盘持仓估算；假设无遗漏持仓或额外出入金，非券商确认",
+        "basis": "按10/30实际成交及大业收盘价19.52元还原期初权益11,800.36元；逐日使用实际发生金额与不复权收盘价估值，假设无遗漏持仓或非交易出入金。11/5卖出文投后全部清仓；周五无成交、空仓，按无额外出入金延续前日现金。",
         "calculation": {
           "previousEquity": 10639.94,
           "equity": 10437.92,
@@ -14538,21 +14539,679 @@
           "source": "large-loss-review/index.html#pk-reclassification"
         }
       ]
+    },
+    {
+      "date": "2026-11-05",
+      "income": {
+        "rate": -1.130014409001027,
+        "amount": -117.95,
+        "source": "2026-11-02_2026-11-06/index.html#trade-records",
+        "kind": "estimated",
+        "basis": "按10/30实际成交及大业收盘价19.52元还原期初权益11,800.36元；逐日使用实际发生金额与不复权收盘价估值，假设无遗漏持仓或非交易出入金。11/5卖出文投后全部清仓；周五无成交、空仓，按无额外出入金延续前日现金。",
+        "calculation": {
+          "previousEquity": 10437.92,
+          "equity": 10319.97,
+          "cash": 10319.97,
+          "marketValue": 0,
+          "source": "2026-11-02_2026-11-06/data/summary.json"
+        }
+      },
+      "trades": [
+        {
+          "code": "600715",
+          "name": "文投控股",
+          "side": "sell",
+          "qty": 800,
+          "count": 1,
+          "sourceRows": [
+            722
+          ]
+        }
+      ],
+      "tradeCount": 1,
+      "notes": [],
+      "relatedEpisodes": [],
+      "summary": "",
+      "assessment": "待归因",
+      "errors": []
+    },
+    {
+      "date": "2026-11-06",
+      "income": {
+        "rate": 0,
+        "amount": 0,
+        "source": "2026-11-02_2026-11-06/index.html#trade-records",
+        "kind": "estimated",
+        "basis": "按10/30实际成交及大业收盘价19.52元还原期初权益11,800.36元；逐日使用实际发生金额与不复权收盘价估值，假设无遗漏持仓或非交易出入金。11/5卖出文投后全部清仓；周五无成交、空仓，按无额外出入金延续前日现金。",
+        "calculation": {
+          "previousEquity": 10319.97,
+          "equity": 10319.97,
+          "cash": 10319.97,
+          "marketValue": 0,
+          "source": "2026-11-02_2026-11-06/data/summary.json"
+        }
+      },
+      "trades": [],
+      "tradeCount": 0,
+      "notes": [],
+      "relatedEpisodes": [],
+      "summary": "",
+      "assessment": "待归因",
+      "errors": []
+    },
+    {
+      "date": "2026-11-09",
+      "income": {
+        "rate": -0.04844975324540535,
+        "amount": -5,
+        "source": "2026-11-09_2026-11-13/index.html#daily-account",
+        "kind": "estimated",
+        "basis": "周五期末资产截图与周四交割收盘估值对照，假设无额外出入金。",
+        "calculation": {
+          "previousEquity": 10319.97,
+          "equity": 10314.97,
+          "cash": 396.97,
+          "marketValue": 9918,
+          "source": "2026-11-09_2026-11-13/data/summary.json"
+        }
+      },
+      "trades": [
+        {
+          "code": "002578",
+          "name": "闽发铝业",
+          "side": "buy",
+          "qty": 1800,
+          "count": 1,
+          "sourceRows": [
+            723
+          ]
+        }
+      ],
+      "tradeCount": 1,
+      "notes": [],
+      "relatedEpisodes": [],
+      "summary": "",
+      "assessment": "待归因",
+      "errors": []
+    },
+    {
+      "date": "2026-11-10",
+      "income": {
+        "rate": 2.1708255089447626,
+        "amount": 223.92,
+        "source": "2026-11-09_2026-11-13/index.html#daily-account",
+        "kind": "estimated",
+        "basis": "周五期末资产截图与周四交割收盘估值对照，假设无额外出入金。",
+        "calculation": {
+          "previousEquity": 10314.97,
+          "equity": 10538.89,
+          "cash": 10538.89,
+          "marketValue": 0,
+          "source": "2026-11-09_2026-11-13/data/summary.json"
+        }
+      },
+      "trades": [
+        {
+          "code": "002578",
+          "name": "闽发铝业",
+          "side": "sell",
+          "qty": 1800,
+          "count": 3,
+          "sourceRows": [
+            724,
+            725,
+            726
+          ]
+        }
+      ],
+      "tradeCount": 3,
+      "notes": [],
+      "relatedEpisodes": [],
+      "summary": "",
+      "assessment": "待归因",
+      "errors": []
+    },
+    {
+      "date": "2026-11-11",
+      "income": {
+        "rate": 0.5501528149548962,
+        "amount": 57.98,
+        "source": "2026-11-09_2026-11-13/index.html#daily-account",
+        "kind": "estimated",
+        "basis": "周五期末资产截图与周四交割收盘估值对照，假设无额外出入金。",
+        "calculation": {
+          "previousEquity": 10538.89,
+          "equity": 10596.87,
+          "cash": 6334.87,
+          "marketValue": 4262,
+          "source": "2026-11-09_2026-11-13/data/summary.json"
+        }
+      },
+      "trades": [
+        {
+          "code": "601599",
+          "name": "浙文影业",
+          "side": "buy",
+          "qty": 200,
+          "count": 1,
+          "sourceRows": [
+            727
+          ]
+        },
+        {
+          "code": "000530",
+          "name": "冰山冷热",
+          "side": "buy",
+          "qty": 100,
+          "count": 1,
+          "sourceRows": [
+            728
+          ]
+        },
+        {
+          "code": "600825",
+          "name": "新华传媒",
+          "side": "buy",
+          "qty": 100,
+          "count": 1,
+          "sourceRows": [
+            729
+          ]
+        },
+        {
+          "code": "002578",
+          "name": "闽发铝业",
+          "side": "buy",
+          "qty": 100,
+          "count": 1,
+          "sourceRows": [
+            730
+          ]
+        }
+      ],
+      "tradeCount": 4,
+      "notes": [],
+      "relatedEpisodes": [],
+      "summary": "",
+      "assessment": "待归因",
+      "errors": []
+    },
+    {
+      "date": "2026-11-12",
+      "income": {
+        "rate": -3.791119453197034,
+        "amount": -401.74,
+        "source": "2026-11-09_2026-11-13/index.html#daily-account",
+        "kind": "estimated",
+        "basis": "周五期末资产截图与周四交割收盘估值对照，假设无额外出入金。",
+        "calculation": {
+          "previousEquity": 10596.87,
+          "equity": 10195.13,
+          "cash": 4414.13,
+          "marketValue": 5781,
+          "source": "2026-11-09_2026-11-13/data/summary.json"
+        }
+      },
+      "trades": [
+        {
+          "code": "002313",
+          "name": "日海智能",
+          "side": "buy",
+          "qty": 200,
+          "count": 2,
+          "sourceRows": [
+            731,
+            732
+          ]
+        },
+        {
+          "code": "601599",
+          "name": "浙文影业",
+          "side": "buy",
+          "qty": 200,
+          "count": 1,
+          "sourceRows": [
+            733
+          ]
+        },
+        {
+          "code": "600825",
+          "name": "新华传媒",
+          "side": "sell",
+          "qty": 100,
+          "count": 1,
+          "sourceRows": [
+            734
+          ]
+        }
+      ],
+      "tradeCount": 4,
+      "notes": [],
+      "relatedEpisodes": [],
+      "summary": "日海智能切换错误来自周四开仓；周五清仓且没有再买是本人认可的处理，不把卖出本身判错。",
+      "assessment": "已有明确反思",
+      "errors": [
+        {
+          "category": "switch_mode",
+          "scope": "当日操作",
+          "stocks": [
+            {
+              "code": "002313",
+              "name": "日海智能"
+            }
+          ],
+          "evidence": "周四我判断抱团开始瓦解，却新开日海智能做切换，同时加仓原有的浙文影业抱团仓",
+          "source": "2026-11-09_2026-11-13/index.html#second-review"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-13",
+      "income": {
+        "rate": -2.0677519560809876,
+        "amount": -210.81,
+        "source": "2026-11-09_2026-11-13/index.html#daily-account",
+        "kind": "estimated",
+        "basis": "周五期末资产截图与周四交割收盘估值对照，假设无额外出入金。",
+        "calculation": {
+          "previousEquity": 10195.13,
+          "equity": 9984.32,
+          "cash": 9984.32,
+          "marketValue": 0,
+          "source": "2026-11-09_2026-11-13/data/summary.json"
+        }
+      },
+      "trades": [
+        {
+          "code": "002313",
+          "name": "日海智能",
+          "side": "sell",
+          "qty": 200,
+          "count": 1,
+          "sourceRows": [
+            735
+          ]
+        },
+        {
+          "code": "601599",
+          "name": "浙文影业",
+          "side": "sell",
+          "qty": 400,
+          "count": 1,
+          "sourceRows": [
+            736
+          ]
+        },
+        {
+          "code": "002578",
+          "name": "闽发铝业",
+          "side": "sell",
+          "qty": 100,
+          "count": 1,
+          "sourceRows": [
+            737
+          ]
+        },
+        {
+          "code": "000530",
+          "name": "冰山冷热",
+          "side": "sell",
+          "qty": 100,
+          "count": 1,
+          "sourceRows": [
+            738
+          ]
+        }
+      ],
+      "tradeCount": 4,
+      "notes": [],
+      "relatedEpisodes": [],
+      "summary": "日海智能切换错误来自周四开仓；周五清仓且没有再买是本人认可的处理，不把卖出本身判错。",
+      "assessment": "已有明确反思",
+      "errors": [
+        {
+          "category": "switch_mode",
+          "scope": "本轮回看",
+          "stocks": [
+            {
+              "code": "002313",
+              "name": "日海智能"
+            }
+          ],
+          "evidence": "周四我判断抱团开始瓦解，却新开日海智能做切换，同时加仓原有的浙文影业抱团仓",
+          "source": "2026-11-09_2026-11-13/index.html#second-review"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-16",
+      "income": {
+        "rate": -0.050078523124263974,
+        "amount": -5,
+        "source": "2026-11-16_2026-11-20/index.html#daily-account",
+        "kind": "estimated",
+        "basis": "本人确认周终稿，无额外出入金且清仓后无资产变动。周五四笔卖出8088元、净回款8063.95元；费用24.05元由资产衔接得出。可用金额差1元保留原截图口径。",
+        "calculation": {
+          "previousEquity": 9984.32,
+          "equity": 9979.32,
+          "cash": 354.32,
+          "marketValue": 9625,
+          "source": "2026-11-16_2026-11-20/data/summary.json"
+        }
+      },
+      "trades": [
+        {
+          "code": "002148",
+          "name": "北纬科技",
+          "side": "buy",
+          "qty": 1100,
+          "count": 1,
+          "sourceRows": [
+            739
+          ]
+        }
+      ],
+      "tradeCount": 1,
+      "notes": [],
+      "relatedEpisodes": [],
+      "summary": "本人确认买前有龙头信号，按龙头接力复盘。问题在弱环境下的左侧买点与过重仓位；华东重机另叠加周亏触线后急于回本。退出原因与执行时点分开核对。",
+      "assessment": "已有明确反思",
+      "errors": [
+        {
+          "category": "entry",
+          "scope": "当日操作",
+          "stocks": [
+            {
+              "code": "002148",
+              "name": "北纬科技"
+            }
+          ],
+          "evidence": "在环境不支持时，用左侧节点和过重仓位去赌龙头承接",
+          "source": "2026-11-16_2026-11-20/index.html#second-review"
+        },
+        {
+          "category": "size",
+          "scope": "当日操作",
+          "stocks": [
+            {
+              "code": "002148",
+              "name": "北纬科技"
+            }
+          ],
+          "evidence": "在环境不支持时，用左侧节点和过重仓位去赌龙头承接",
+          "source": "2026-11-16_2026-11-20/index.html#second-review"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-17",
+      "income": {
+        "rate": -6.598545792699307,
+        "amount": -658.49,
+        "source": "2026-11-16_2026-11-20/index.html#daily-account",
+        "kind": "estimated",
+        "basis": "本人确认周终稿，无额外出入金且清仓后无资产变动。周五四笔卖出8088元、净回款8063.95元；费用24.05元由资产衔接得出。可用金额差1元保留原截图口径。",
+        "calculation": {
+          "previousEquity": 9979.32,
+          "equity": 9320.83,
+          "cash": 9320.83,
+          "marketValue": 0,
+          "source": "2026-11-16_2026-11-20/data/summary.json"
+        }
+      },
+      "trades": [
+        {
+          "code": "002148",
+          "name": "北纬科技",
+          "side": "sell",
+          "qty": 1100,
+          "count": 1,
+          "sourceRows": [
+            740
+          ]
+        }
+      ],
+      "tradeCount": 1,
+      "notes": [],
+      "relatedEpisodes": [],
+      "summary": "本人确认买前有龙头信号，按龙头接力复盘。问题在弱环境下的左侧买点与过重仓位；华东重机另叠加周亏触线后急于回本。退出原因与执行时点分开核对。",
+      "assessment": "已有明确反思",
+      "errors": [
+        {
+          "category": "entry",
+          "scope": "本轮回看",
+          "stocks": [
+            {
+              "code": "002148",
+              "name": "北纬科技"
+            }
+          ],
+          "evidence": "在环境不支持时，用左侧节点和过重仓位去赌龙头承接",
+          "source": "2026-11-16_2026-11-20/index.html#second-review"
+        },
+        {
+          "category": "size",
+          "scope": "本轮回看",
+          "stocks": [
+            {
+              "code": "002148",
+              "name": "北纬科技"
+            }
+          ],
+          "evidence": "在环境不支持时，用左侧节点和过重仓位去赌龙头承接",
+          "source": "2026-11-16_2026-11-20/index.html#second-review"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-18",
+      "income": {
+        "rate": 0,
+        "amount": 0,
+        "source": "2026-11-16_2026-11-20/index.html#daily-account",
+        "kind": "estimated",
+        "basis": "本人确认周终稿，无额外出入金且清仓后无资产变动。周五四笔卖出8088元、净回款8063.95元；费用24.05元由资产衔接得出。可用金额差1元保留原截图口径。",
+        "calculation": {
+          "previousEquity": 9320.83,
+          "equity": 9320.83,
+          "cash": 9320.83,
+          "marketValue": 0,
+          "source": "2026-11-16_2026-11-20/data/summary.json"
+        }
+      },
+      "trades": [],
+      "tradeCount": 0,
+      "notes": [],
+      "relatedEpisodes": [],
+      "summary": "",
+      "assessment": "待归因",
+      "errors": []
+    },
+    {
+      "date": "2026-11-19",
+      "income": {
+        "rate": -5.2463139012298265,
+        "amount": -489,
+        "source": "2026-11-16_2026-11-20/index.html#daily-account",
+        "kind": "estimated",
+        "basis": "本人确认周终稿，无额外出入金且清仓后无资产变动。周五四笔卖出8088元、净回款8063.95元；费用24.05元由资产衔接得出。可用金额差1元保留原截图口径。",
+        "calculation": {
+          "previousEquity": 9320.83,
+          "equity": 8831.83,
+          "cash": 394.83,
+          "marketValue": 8437,
+          "source": "2026-11-16_2026-11-20/data/summary.json"
+        }
+      },
+      "trades": [
+        {
+          "code": "002685",
+          "name": "华东重机",
+          "side": "buy",
+          "qty": 1100,
+          "count": 1,
+          "sourceRows": [
+            741
+          ]
+        }
+      ],
+      "tradeCount": 1,
+      "notes": [],
+      "relatedEpisodes": [],
+      "summary": "本人确认买前有龙头信号，按龙头接力复盘。问题在弱环境下的左侧买点与过重仓位；华东重机另叠加周亏触线后急于回本。退出原因与执行时点分开核对。",
+      "assessment": "已有明确反思",
+      "errors": [
+        {
+          "category": "entry",
+          "scope": "当日操作",
+          "stocks": [
+            {
+              "code": "002685",
+              "name": "华东重机"
+            }
+          ],
+          "evidence": "在环境不支持时，用左侧节点和过重仓位去赌龙头承接",
+          "source": "2026-11-16_2026-11-20/index.html#second-review"
+        },
+        {
+          "category": "size",
+          "scope": "当日操作",
+          "stocks": [
+            {
+              "code": "002685",
+              "name": "华东重机"
+            }
+          ],
+          "evidence": "在环境不支持时，用左侧节点和过重仓位去赌龙头承接",
+          "source": "2026-11-16_2026-11-20/index.html#second-review"
+        },
+        {
+          "category": "recoup",
+          "scope": "当日操作",
+          "stocks": [
+            {
+              "code": "002685",
+              "name": "华东重机"
+            }
+          ],
+          "evidence": "周亏触线后急于回本",
+          "source": "2026-11-16_2026-11-20/index.html#second-review"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-20",
+      "income": {
+        "rate": -4.2239264116270325,
+        "amount": -373.05,
+        "source": "2026-11-16_2026-11-20/index.html#daily-account",
+        "kind": "estimated",
+        "basis": "本人确认周终稿，无额外出入金且清仓后无资产变动。周五四笔卖出8088元、净回款8063.95元；费用24.05元由资产衔接得出。可用金额差1元保留原截图口径。",
+        "calculation": {
+          "previousEquity": 8831.83,
+          "equity": 8458.78,
+          "cash": 8458.78,
+          "marketValue": 0,
+          "source": "2026-11-16_2026-11-20/data/summary.json"
+        }
+      },
+      "trades": [
+        {
+          "code": "002685",
+          "name": "华东重机",
+          "side": "sell",
+          "qty": 1100,
+          "count": 4,
+          "sourceRows": [
+            742,
+            743,
+            744,
+            745
+          ]
+        }
+      ],
+      "tradeCount": 4,
+      "notes": [],
+      "relatedEpisodes": [],
+      "summary": "本人确认买前有龙头信号，按龙头接力复盘。问题在弱环境下的左侧买点与过重仓位；华东重机另叠加周亏触线后急于回本。退出原因与执行时点分开核对。",
+      "assessment": "已有明确反思",
+      "errors": [
+        {
+          "category": "entry",
+          "scope": "本轮回看",
+          "stocks": [
+            {
+              "code": "002685",
+              "name": "华东重机"
+            }
+          ],
+          "evidence": "在环境不支持时，用左侧节点和过重仓位去赌龙头承接",
+          "source": "2026-11-16_2026-11-20/index.html#second-review"
+        },
+        {
+          "category": "size",
+          "scope": "本轮回看",
+          "stocks": [
+            {
+              "code": "002685",
+              "name": "华东重机"
+            }
+          ],
+          "evidence": "在环境不支持时，用左侧节点和过重仓位去赌龙头承接",
+          "source": "2026-11-16_2026-11-20/index.html#second-review"
+        },
+        {
+          "category": "recoup",
+          "scope": "本轮回看",
+          "stocks": [
+            {
+              "code": "002685",
+              "name": "华东重机"
+            }
+          ],
+          "evidence": "周亏触线后急于回本",
+          "source": "2026-11-16_2026-11-20/index.html#second-review"
+        }
+      ]
     }
   ],
   "audit": {
     "incomeSource": "每日收益明细_20260713-20260930.xlsx",
     "conflicts": [],
+    "supplementalTradeSources": [
+      "2026-11-02_2026-11-06/data/trades-partial.json",
+      "2026-11-09_2026-11-13/data/trades-partial.json",
+      "2026-11-09_2026-11-13/data/friday-trades.json",
+      "2026-11-16_2026-11-20/data/input.json"
+    ],
     "calculatedIncomeSources": [
       "2026-10-26_2026-10-30/data/account-estimate.json",
-      "2026-11-02_2026-11-06/data/summary.json"
+      "2026-11-02_2026-11-06/data/summary.json",
+      "2026-11-09_2026-11-13/data/summary.json",
+      "2026-11-16_2026-11-20/data/summary.json"
     ],
     "excludedEstimates": [
       {
         "date": "2026-10-30",
         "reason": "旧持仓不变情景已停用；现已按实际卖出襄阳、买入大业及大业收盘价重新估算，衔接11月期初权益。"
       }
+    ],
+    "missingIncomeDates": [
+      "2026-03-11",
+      "2026-03-12",
+      "2026-03-13",
+      "2026-03-16",
+      "2026-03-17",
+      "2026-03-18",
+      "2026-03-19",
+      "2026-03-20",
+      "2026-03-23",
+      "2026-03-24",
+      "2026-03-25",
+      "2026-03-26",
+      "2026-03-27",
+      "2026-03-30",
+      "2026-03-31"
     ]
-  },
-  "reflectionUpdated": "2026-11-06"
+  }
 }

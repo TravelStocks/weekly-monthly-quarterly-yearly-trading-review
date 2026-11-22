@@ -114,7 +114,7 @@
   window.addEventListener('hashchange',route);route();
   async function init() {
     try {
-      const response=await fetch('./calendar-data.json?v=20261106-mode-trades');if(!response.ok)throw new Error('HTTP '+response.status);
+      const response=await fetch('./calendar-data.json', {cache:'no-cache'});if(!response.ok)throw new Error('HTTP '+response.status);
       archive=await response.json();dates=new Map(archive.days.map(d=>[d.date,d]));
       archive.days.forEach(d=>d.relatedEpisodes.forEach(r=>names.set(r.code,r.name)));
       months=[];let current=archive.start.slice(0,7),end=archive.end.slice(0,7);
@@ -128,7 +128,7 @@
       el('calendar-loss-picker').addEventListener('change',e=>{if(e.target.value)selectDate(e.target.value,true);});
       el('calendar-estimates').addEventListener('change',render);
       for(const id of ['calendar-grid','calendar-loss-list','calendar-month-errors'])el(id).addEventListener('click',e=>{const button=e.target.closest('[data-date]');if(button)selectDate(button.dataset.date,true,id==='calendar-month-errors');});
-      el('calendar-source-note').textContent=`交割来源：${archive.tradeSource}，${archive.start} 至 ${archive.end}，共 ${archive.tradeCount} 笔，仅提取日期、标的、方向和数量。日收益沿用网站已有账户记录；每日明细源表：${archive.audit.incomeSource}。更新：${archive.updated}。`;
+      el('calendar-source-note').textContent=`交割来源：${archive.tradeSource}，${archive.start} 至 ${archive.end}，共 ${archive.tradeCount} 笔，仅提取日期、标的、方向和数量。日收益沿用网站已有账户记录；每日明细源表：${archive.audit.incomeSource}。核对更新：${archive.updated}。尚缺日收益的成交日：${(archive.audit.missingIncomeDates||[]).join("、")||"无"}。数据截止日之后尚未纳入，不能据此判定空仓或零收益。`;
       el('calendar-loading').hidden=true;el('calendar-content').hidden=false;render();route();
     } catch(error) {el('calendar-loading').textContent='日历未能加载，请刷新重试。';console.error(error);}
   }

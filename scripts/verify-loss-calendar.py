@@ -15,11 +15,15 @@ def read(path):
 categories=set(re.findall(r'^  ([a-z_]+):', (ROOT/'large-loss-review/app.js').read_text(encoding='utf-8'), re.M))
 data = read('large-loss-review/calendar-data.json')
 trades = read('large-loss-review/calendar-trades.json')['rows']
+for source_path in data['audit']['supplementalTradeSources']:
+    for t in read(source_path)['trades']:
+        if t['date'] <= '2026-11-04': continue
+        trades.append(dict(date=t['date'],time=t['time'],code=t['code'],name=t['name'],side='buy' if t['side']=='买入' else 'sell',qty=t['qty'],sourceRow=len(trades)+2))
 days = {d['date']: d for d in data['days']}
-assert len(days) == len(data['days']) == 160
+assert len(days) == len(data['days']) == 172
 assert data['threshold'] == -2
-assert len(trades) == data['tradeCount'] == sum(d['tradeCount'] for d in days.values()) == 720
-assert {t['sourceRow'] for t in trades} == set(range(2, 722))
+assert len(trades) == data['tradeCount'] == sum(d['tradeCount'] for d in days.values()) == 744
+assert {t['sourceRow'] for t in trades} == set(range(2, 746))
 assert all(set(t) == {'date','time','code','name','side','qty','sourceRow'} for t in trades)
 by_row = {t['sourceRow']: t for t in trades}
 seen = Counter()
@@ -50,9 +54,9 @@ if attachment.exists():
 
 recorded = [d for d in days.values() if d['income'] and d['income']['kind']=='recorded']
 estimated = [d for d in days.values() if d['income'] and d['income']['kind']=='estimated']
-assert len(recorded)==97 and len(estimated)==48
+assert len(recorded)==97 and len(estimated)==60
 assert len([d for d in recorded if d['income']['rate'] < -2])==30
-assert len([d for d in estimated if d['income']['rate'] < -2])==15
+assert len([d for d in estimated if d['income']['rate'] < -2])==20
 assert sum(d['tradeCount']>0 and not d['income'] for d in days.values())==15
 spring = read('large-loss-review/spring-holding-estimates.json')['days']
 assert Counter(v['date'][:7] for v in spring) == {'2026-04':21,'2026-05':18}
@@ -91,7 +95,8 @@ for date,amount in [('2026-11-02',-813.83),('2026-11-03',-346.59),('2026-11-04',
     assert actual['source']=='2026-11-02_2026-11-06/index.html#trade-records'
 assert days['2026-11-02']['income']['calculation']['previousEquity']==11800.36
 assert days['2026-11-04']['income']['rate'] > -2  # stock loss does not imply a >2% account loss
-assert '2026-11-05' not in days and '2026-11-06' not in days  # no invented later-day income
+assert days['2026-11-05']['tradeCount']==1 and days['2026-11-05']['income']['amount']==-117.95
+assert days['2026-11-06']['tradeCount']==0 and days['2026-11-06']['income']['amount']==0
 assert sum(t['qty'] for t in days['2026-11-04']['trades'] if t['code']=='600715' and t['side']=='buy')==800
 
 # Latest user attribution applies to entry day and its next-day carry-over only.
@@ -190,4 +195,14 @@ for filename in ['calendar-data.json','calendar-trades.json','calendar-annotatio
 html=BeautifulSoup((ROOT/'large-loss-review/index.html').read_text(encoding='utf-8'),'html.parser')
 ids=[n['id'] for n in html.select('[id]')]
 assert len(ids)==len(set(ids))
-print('PASS: 720 source rows reconciled, 30 recorded + 15 estimated loss days; spring holdings, November account bridge, provenance, missing data, attribution, privacy, HTML IDs')
+print('PASS: 744 source rows reconciled, 30 recorded + 20 estimated loss days; spring holdings, November account bridge, provenance, missing data, attribution, privacy, HTML IDs')
+
+assert data['audit']['missingIncomeDates'] == [d['date'] for d in data['days'] if d['tradeCount'] and not d['income']]
+assert all(d.startswith('2026-03') for d in data['audit']['missingIncomeDates'])
+assert data['reflectionUpdated'] == read('large-loss-review/data.json')['reflectionUpdated']
+
+assert data['end']=='2026-11-20'
+assert days['2026-11-20']['tradeCount']==4
+assert days['2026-11-18']['tradeCount']==0 and days['2026-11-18']['income']['amount']==0
+assert [e['category'] for e in days['2026-11-19']['errors']]==['entry','size','recoup']
+assert sum(days['2026-11-'+d]['income']['amount'] for d in ['16','17','18','19','20']) == -1525.54
