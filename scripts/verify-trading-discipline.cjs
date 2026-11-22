@@ -1,0 +1,13 @@
+const fs = require('node:fs');
+const assert = require('node:assert/strict');
+const file = process.argv[2];
+assert(file, 'Provide a weekly HTML path');
+const html = fs.readFileSync(file, 'utf8');
+const list = html.match(/<ol class="primary-mode-priority">([\s\S]*?)<\/ol>/)?.[1];
+assert(list, 'Missing ranked primary-mode list');
+assert.deepEqual([...list.matchAll(/<b>(.*?)<\/b>/g)].map(m => m[1]), ['80%', '12%', '6%', '2%']);
+assert.deepEqual([...list.matchAll(/<strong>(.*?)<\/strong>/g)].map(m => m[1]), ['题材第一波主升二阶段连板龙', '龙头二波', '抱团龙', '补涨三板龙']);
+assert.match(html, /不是单笔仓位比例或开仓指令/);
+assert.match(html, /周亏按周初权益计算，达到5%，本周全部新增开仓预算为0/);
+assert(html.indexOf('data-preflight-motto') < html.indexOf('data-trading-discipline'));
+console.log('PASS: priority order, weights, non-allocation boundary and risk-first gate');
