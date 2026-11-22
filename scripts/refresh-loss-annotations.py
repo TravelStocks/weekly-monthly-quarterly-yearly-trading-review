@@ -5,14 +5,17 @@ from bs4 import BeautifulSoup
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'large-loss-review'
+SOURCE_CACHE = {}
 
 def read(name):
     return json.loads((OUT / name).read_text(encoding='utf-8'))
 
 def validate(text, source):
     path, _, anchor = source.partition('#')
-    raw = (ROOT / path).read_text(encoding='utf-8')
-    soup = BeautifulSoup(raw, 'html.parser')
+    if path not in SOURCE_CACHE:
+        raw = (ROOT / path).read_text(encoding='utf-8')
+        SOURCE_CACHE[path] = (raw, BeautifulSoup(raw, 'html.parser'))
+    raw, soup = SOURCE_CACHE[path]
     assert not anchor or soup.find(id=anchor), source
     assert text in raw or text in soup.get_text(' ', strip=True), (text, source)
 
@@ -41,12 +44,11 @@ def refresh():
             day.update(notes[day['date']])
         for error in day['errors']:
             validate(error['evidence'], error['source'])
-        for episode in day['relatedEpisodes']:
-            note = annotations.get(episode['id'])
-            if note:
-                for key in ['assessment', 'summary', 'errors']:
-                    episode[key] = note[key]
-    data['reflectionUpdated'] = calendar['reflectionUpdated'] = '2026-11-06'
+        day['relatedEpisodes'] = [
+            {key: record[key] for key in ['id','name','code','start','end','summary','errors','assessment']}
+            for record in data['records'] if record['start'] <= day['date'] <= record['end']]
+    data['reflectionUpdated'] = calendar['reflectionUpdated'] = '2026-11-22'
+    calendar['updated'] = '2026-11-22'
     save('data.json', data)
     save('calendar-data.json', calendar)
     print('Refreshed classifications; account returns, trade records and loss thresholds unchanged.')

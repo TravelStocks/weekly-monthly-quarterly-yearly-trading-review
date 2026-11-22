@@ -192,14 +192,19 @@ def build(outcome='loss'):
                 trades = [dict(date=iso(t['date']), time=t['time'], code=t['code'], name=t['name'],
                     side='buy' if '买入' in t['side'] else 'sell', qty=t['qty'], gross=t['gross'],
                     cash=abs(t['net']), source=path) for t in raw]
-        structured = f.parent / 'data/trades-partial.json'
-        if not trades and structured.exists():
+        page_batches = [trades]
+        for filename in ['trades-partial.json', 'friday-trades.json', 'input.json']:
+            structured = f.parent / 'data' / filename
+            if not structured.exists():
+                continue
             raw = json.loads(structured.read_text(encoding='utf-8-sig'))
-            trades = [dict(date=iso(t['date']), time=t['time'], code=t['code'], name=t['name'],
+            rows = raw.get('trades', []) + raw.get('reference', [])
+            page_batches.append([dict(date=iso(t['date']), time=t['time'], code=t['code'], name=t['name'],
                 side='buy' if '买入' in t['side'] else 'sell', qty=t['qty'], gross=t['amount'],
-                cash=abs(t['net']), source=path) for t in raw['trades'] + raw.get('reference', [])]
-        batches.append(trades)
-        scan.append(dict(source=path, trades=len(trades), kind='公开成交明细' if trades else '心得归档，无成交数据'))
+                cash=abs(t['net']) if t.get('net') is not None else None, source=path) for t in rows])
+        batches.extend(page_batches)
+        count = len(deduplicate(page_batches))
+        scan.append(dict(source=path, trades=count, kind='公开成交明细' if count else '心得归档，无成交数据'))
     supplement = 'large-loss-review/supplemental-trades.json'
     extra = [dict(row, source=supplement) for row in read_json(supplement)['rows']]
     batches.append(extra)
@@ -215,6 +220,30 @@ def build(outcome='loss'):
                 matches[0]['sources'] = sorted(set(matches[0]['sources'] + t['sources']))
                 trades.remove(t)
     rounds, active, unknown = close_rounds(trades)
+    # A reconciled round total can supply fees without inventing per-fill fees.
+    for file in sorted(ROOT.glob('20*/data/summary.json')):
+        summary = json.loads(file.read_text(encoding='utf-8-sig'))
+        if not isinstance(summary, dict) or summary.get('status') != 'complete':
+            continue
+        period = file.parent.parent.name.split('_')
+        if len(period) != 2:
+            continue
+        for item in summary.get('closed', []):
+            matches = [r for r in rounds if r['code'] == item['code'] and period[0] <= r['end'] <= period[1]]
+            if len(matches) != 1 or not matches[0]['basis'].startswith('费用前'):
+                continue
+            r = matches[0]
+            fills = [t for t in trades if t['code'] == r['code'] and r['start'] <= t['date'] <= r['end']]
+            buys = [t for t in fills if t['side'] == 'buy']
+            net = item.get('net', item.get('proceeds'))
+            if net is None or not all(t['cash'] is not None for t in buys):
+                continue
+            assert sum(t['qty'] for t in buys) == item['qty']
+            assert sum(t['qty'] for t in fills if t['side'] == 'sell') == item['qty']
+            assert abs(sum(t['cash'] for t in buys) - item['cost']) < .005
+            assert abs(net - item['cost'] - item['pnl']) < .005
+            r.update(cost=item['cost'], pnl=item['pnl'], basis='含费闭环（周终稿汇总费用，未分摊逐笔）')
+            r['sources'].append(file.relative_to(ROOT).as_posix())
     unknown = [t for t in unknown if t['date'] > '2026-04-24']
     # The monthly archive has explicitly reconciled FIFO rounds and personal
     # classifications. It replaces overlapping Aug/Sep reconstructions entirely.
@@ -255,10 +284,14 @@ def build(outcome='loss'):
         if not isinstance(summary, dict):
             continue
         account = summary.get('partialAccount') or summary.get('account')
-        if not isinstance(account, dict) or account.get('status') not in ['statement-close-estimate', 'partial-statement-close-estimate']:
+        if not isinstance(account, dict):
             continue
         source = file.parent.parent.relative_to(ROOT).as_posix() + '/index.html'
-        snapshots.extend((d, source) for d in account['days'] if isinstance(d.get('holdings'), list))
+        if account.get('status') in ['statement-close-estimate', 'partial-statement-close-estimate']:
+            snapshots.extend((d, source) for d in account['days'] if isinstance(d.get('holdings'), list))
+        elif summary.get('status') == 'complete':
+            snapshots.extend(({**d, 'holdings': [d['held']] if d['held'] else []}, source)
+                             for d in account.get('days', []) if d.get('finalized') and 'held' in d)
     if snapshots:
         day, source = max(snapshots, key=lambda item: item[0]['date'])
         for holding in day['holdings']:
@@ -364,7 +397,7 @@ def build(outcome='loss'):
             assert any(error['evidence'] in q['text'] for q in r['quotes']), (r['id'],error)
     candidates.sort(key=lambda r:r['rate'], reverse=profit)
     out.mkdir(exist_ok=True)
-    payload=dict(updated='2026-11-06',reflectionUpdated='2026-11-06',threshold=threshold,records=candidates,
+    payload=dict(updated=max(t['date'] for t in trades),reflectionUpdated='2026-11-22',threshold=threshold,records=candidates,
         audit=dict(scannedPages=scan, uniqueTrades=len(trades),unknownCostSales=[
             {k:t[k] for k in ['date','code','name','source']} for t in unknown],
             monthlySource=monthly_path, tradesThrough=max(t['date'] for t in trades),

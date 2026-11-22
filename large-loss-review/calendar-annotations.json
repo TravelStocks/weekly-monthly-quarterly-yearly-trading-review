@@ -1632,11 +1632,11 @@
     ]
   },
   "2026-11-16": {
-    "summary": "本人确认买前有龙头信号，按龙头接力复盘。问题在弱环境下的左侧买点与过重仓位；华东重机另叠加周亏触线后急于回本。退出原因与执行时点分开核对。",
-    "assessment": "已有明确反思",
+    "summary": "弱天时下的左侧重仓龙头试错。当日左侧重仓买入北纬科技，账户未达大亏日阈值。北纬科技整轮只计1次共同主因。",
+    "assessment": "本人最新反思归类",
     "errors": [
       {
-        "category": "entry",
+        "category": "weak_left_heavy",
         "scope": "当日操作",
         "stocks": [
           {
@@ -1644,59 +1644,35 @@
             "name": "北纬科技"
           }
         ],
-        "evidence": "在环境不支持时，用左侧节点和过重仓位去赌龙头承接",
-        "source": "2026-11-16_2026-11-20/index.html#second-review"
-      },
-      {
-        "category": "size",
-        "scope": "当日操作",
-        "stocks": [
-          {
-            "code": "002148",
-            "name": "北纬科技"
-          }
-        ],
-        "evidence": "在环境不支持时，用左侧节点和过重仓位去赌龙头承接",
-        "source": "2026-11-16_2026-11-20/index.html#second-review"
+        "evidence": "弱天时下的左侧重仓龙头试错",
+        "source": "large-loss-review/index.html#weak-left-heavy-review"
       }
     ]
   },
   "2026-11-17": {
-    "summary": "本人确认买前有龙头信号，按龙头接力复盘。问题在弱环境下的左侧买点与过重仓位；华东重机另叠加周亏触线后急于回本。退出原因与执行时点分开核对。",
-    "assessment": "已有明确反思",
+    "summary": "弱天时下的左侧重仓龙头试错。前日入场风险在当日兑现；实际14:56:47卖清，不将退出本身另判错。北纬科技整轮只计1次共同主因。",
+    "assessment": "本人最新反思归类",
     "errors": [
       {
-        "category": "entry",
-        "scope": "本轮回看",
+        "category": "weak_left_heavy",
+        "scope": "持仓延续",
         "stocks": [
           {
             "code": "002148",
             "name": "北纬科技"
           }
         ],
-        "evidence": "在环境不支持时，用左侧节点和过重仓位去赌龙头承接",
-        "source": "2026-11-16_2026-11-20/index.html#second-review"
-      },
-      {
-        "category": "size",
-        "scope": "本轮回看",
-        "stocks": [
-          {
-            "code": "002148",
-            "name": "北纬科技"
-          }
-        ],
-        "evidence": "在环境不支持时，用左侧节点和过重仓位去赌龙头承接",
-        "source": "2026-11-16_2026-11-20/index.html#second-review"
+        "evidence": "弱天时下的左侧重仓龙头试错",
+        "source": "large-loss-review/index.html#weak-left-heavy-review"
       }
     ]
   },
   "2026-11-19": {
-    "summary": "本人确认买前有龙头信号，按龙头接力复盘。问题在弱环境下的左侧买点与过重仓位；华东重机另叠加周亏触线后急于回本。退出原因与执行时点分开核对。",
-    "assessment": "已有明确反思",
+    "summary": "弱天时下的左侧重仓龙头试错。当日开仓；另叠加周亏触线后仍开新仓和急于回本。同轮在19日、20日各呈现一个大亏日，但排行榜只计华东重机1轮，不把卖出本身判错。",
+    "assessment": "本人最新反思归类",
     "errors": [
       {
-        "category": "entry",
+        "category": "weak_left_heavy",
         "scope": "当日操作",
         "stocks": [
           {
@@ -1704,11 +1680,11 @@
             "name": "华东重机"
           }
         ],
-        "evidence": "在环境不支持时，用左侧节点和过重仓位去赌龙头承接",
-        "source": "2026-11-16_2026-11-20/index.html#second-review"
+        "evidence": "弱天时下的左侧重仓龙头试错",
+        "source": "large-loss-review/index.html#weak-left-heavy-review"
       },
       {
-        "category": "size",
+        "category": "weekly_loss_stop",
         "scope": "当日操作",
         "stocks": [
           {
@@ -1716,8 +1692,8 @@
             "name": "华东重机"
           }
         ],
-        "evidence": "在环境不支持时，用左侧节点和过重仓位去赌龙头承接",
-        "source": "2026-11-16_2026-11-20/index.html#second-review"
+        "evidence": "周亏达到5%后仍开新仓",
+        "source": "large-loss-review/index.html#weak-left-heavy-review"
       },
       {
         "category": "recoup",
@@ -1728,50 +1704,50 @@
             "name": "华东重机"
           }
         ],
-        "evidence": "周亏触线后急于回本",
-        "source": "2026-11-16_2026-11-20/index.html#second-review"
+        "evidence": "想要快速扳平亏损",
+        "source": "large-loss-review/index.html#weak-left-heavy-review"
       }
     ]
   },
   "2026-11-20": {
-    "summary": "本人确认买前有龙头信号，按龙头接力复盘。问题在弱环境下的左侧买点与过重仓位；华东重机另叠加周亏触线后急于回本。退出原因与执行时点分开核对。",
-    "assessment": "已有明确反思",
+    "summary": "弱天时下的左侧重仓龙头试错。前日开仓风险延续至当日退出；另叠加周亏触线后仍开新仓和急于回本。同轮在19日、20日各呈现一个大亏日，但排行榜只计华东重机1轮，不把卖出本身判错。",
+    "assessment": "本人最新反思归类",
     "errors": [
       {
-        "category": "entry",
-        "scope": "本轮回看",
+        "category": "weak_left_heavy",
+        "scope": "持仓延续",
         "stocks": [
           {
             "code": "002685",
             "name": "华东重机"
           }
         ],
-        "evidence": "在环境不支持时，用左侧节点和过重仓位去赌龙头承接",
-        "source": "2026-11-16_2026-11-20/index.html#second-review"
+        "evidence": "弱天时下的左侧重仓龙头试错",
+        "source": "large-loss-review/index.html#weak-left-heavy-review"
       },
       {
-        "category": "size",
-        "scope": "本轮回看",
+        "category": "weekly_loss_stop",
+        "scope": "持仓延续",
         "stocks": [
           {
             "code": "002685",
             "name": "华东重机"
           }
         ],
-        "evidence": "在环境不支持时，用左侧节点和过重仓位去赌龙头承接",
-        "source": "2026-11-16_2026-11-20/index.html#second-review"
+        "evidence": "周亏达到5%后仍开新仓",
+        "source": "large-loss-review/index.html#weak-left-heavy-review"
       },
       {
         "category": "recoup",
-        "scope": "本轮回看",
+        "scope": "持仓延续",
         "stocks": [
           {
             "code": "002685",
             "name": "华东重机"
           }
         ],
-        "evidence": "周亏触线后急于回本",
-        "source": "2026-11-16_2026-11-20/index.html#second-review"
+        "evidence": "想要快速扳平亏损",
+        "source": "large-loss-review/index.html#weak-left-heavy-review"
       }
     ]
   }

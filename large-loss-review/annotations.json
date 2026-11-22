@@ -1,4 +1,84 @@
 {
+  "002148-2026-11-17-closed": {
+    "assessment": "本人最新反思归类",
+    "summary": "共同主因：弱天时下的左侧重仓龙头试错。11月16日买入、17日退出是一轮；买前题材与唯一性龙头信号不抵消环境、左右侧和仓位问题。17日实际尾盘卖出，不把退出另判为新错误。",
+    "errors": [
+      {
+        "category": "weak_left_heavy",
+        "evidence": "弱天时下的左侧重仓龙头试错"
+      }
+    ],
+    "quotes": [
+      {
+        "text": "这三天大亏的原因其实是一样的：弱天时下的左侧重仓龙头试错。",
+        "source": "large-loss-review/index.html#weak-left-heavy-review"
+      }
+    ]
+  },
+  "002685-2026-11-20-closed": {
+    "assessment": "本人最新反思归类",
+    "summary": "共同主因：弱天时下的左侧重仓龙头试错。11月19日买入、20日分四笔退出只算一轮；另叠加周亏达到5%后仍开新仓、想快速扳回亏损。20日属于风险延续和退出，不再额外计一轮买入错误。汇总费用按周终稿衔接，不分摊逐笔。",
+    "errors": [
+      {
+        "category": "weak_left_heavy",
+        "evidence": "弱天时下的左侧重仓龙头试错"
+      },
+      {
+        "category": "weekly_loss_stop",
+        "evidence": "周亏达到5%后仍开新仓"
+      },
+      {
+        "category": "recoup",
+        "evidence": "想要快速扳平亏损"
+      }
+    ],
+    "quotes": [
+      {
+        "text": "这三天大亏的原因其实是一样的：弱天时下的左侧重仓龙头试错。",
+        "source": "large-loss-review/index.html#weak-left-heavy-review"
+      },
+      {
+        "text": "周亏达到5%后仍开新仓",
+        "source": "large-loss-review/index.html#weak-left-heavy-review"
+      },
+      {
+        "text": "想要快速扳平亏损",
+        "source": "large-loss-review/index.html#weak-left-heavy-review"
+      }
+    ]
+  },
+  "002313-2026-11-13-closed": {
+    "assessment": "已有明确反思",
+    "summary": "周四新开日海智能属于切换，不与浙文影业原抱团仓加仓混同。周五清仓无新增是本人认可的处理，不把卖出再算一次错误。",
+    "errors": [
+      {
+        "category": "switch_mode",
+        "evidence": "周四我判断抱团开始瓦解，却新开日海智能做切换"
+      }
+    ],
+    "quotes": [
+      {
+        "text": "周四我判断抱团开始瓦解，却新开日海智能做切换，同时加仓原有的浙文影业抱团仓",
+        "source": "2026-11-09_2026-11-13/index.html#second-review"
+      }
+    ]
+  },
+  "600715-2026-11-05-closed": {
+    "assessment": "本人最新反思归类",
+    "summary": "11月4日两笔买入、5日全部卖出，已补成含费闭环。主因沿用本人确认：同身位PK未决、龙头唯一性尚未确立就抢先手。原11月4日浮亏不再与闭环重复统计。",
+    "errors": [
+      {
+        "category": "pk",
+        "evidence": "同身位中还有其他个股正在PK龙头唯一性，没有决出胜负之前，一字或者换手都不能随便进去。让市场决定谁是胜者，而不是主观臆断。"
+      }
+    ],
+    "quotes": [
+      {
+        "text": "同身位中还有其他个股正在PK龙头唯一性，没有决出胜负之前，一字或者换手都不能随便进去。让市场决定谁是胜者，而不是主观臆断。",
+        "source": "large-loss-review/index.html#pk-reclassification"
+      }
+    ]
+  },
   "001258-2026-07-29-closed": {
     "assessment": "本人最新反思归类",
     "summary": "按本人最新反思，主因归为监管反核节奏错误：只有监管首日上板确认后的参与窗口，次日必须退出，不在次日新开仓。本人认为首日盈亏比高但胜率低，错过窗口再参与可能连续两天大亏。7月28日分11笔买入1,100股，29日全部卖出，计同一轮；卖出本身不另判为新错误。",

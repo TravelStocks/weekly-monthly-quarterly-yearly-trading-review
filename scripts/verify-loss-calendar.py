@@ -131,7 +131,7 @@ for month,count in [('2026-06',2),('2026-08',2),('2026-09',1),('2026-10',1)]:
 # Calendar links now include November closed episodes and the dated WENTOU snapshot.
 assert any(r['id']=='603131-2026-11-03-closed' for r in days['2026-11-02']['relatedEpisodes'])
 assert any(r['id']=='603278-2026-11-02-closed' for r in days['2026-11-02']['relatedEpisodes'])
-assert any(r['id']=='600715-2026-11-04-floating' for r in days['2026-11-04']['relatedEpisodes'])
+assert any(r['id']=='600715-2026-11-05-closed' for r in days['2026-11-04']['relatedEpisodes'])
 assert not any(r['id']=='000678-2026-10-29-floating' for d in days.values() for r in d['relatedEpisodes'])
 for date in ['2026-11-02','2026-11-03']:
     errors=[e for e in days[date]['errors'] if any(s['code']=='603131' for s in e['stocks'])]
@@ -204,5 +204,11 @@ assert data['reflectionUpdated'] == read('large-loss-review/data.json')['reflect
 assert data['end']=='2026-11-20'
 assert days['2026-11-20']['tradeCount']==4
 assert days['2026-11-18']['tradeCount']==0 and days['2026-11-18']['income']['amount']==0
-assert [e['category'] for e in days['2026-11-19']['errors']]==['entry','size','recoup']
+assert [e['category'] for e in days['2026-11-19']['errors']]==['weak_left_heavy','weekly_loss_stop','recoup']
+assert [e['category'] for e in days['2026-11-17']['errors']]==['weak_left_heavy']
+assert sum(d['income'] is not None and d['income']['rate'] < -2 and
+           any(e['category']=='weak_left_heavy' for e in d['errors']) for d in days.values())==3
+assert len(days['2026-11-17']['relatedEpisodes'])==1
+assert len(days['2026-11-20']['relatedEpisodes'])==1
+assert all(e['scope']=='持仓延续' for e in days['2026-11-20']['errors'])
 assert sum(days['2026-11-'+d]['income']['amount'] for d in ['16','17','18','19','20']) == -1525.54

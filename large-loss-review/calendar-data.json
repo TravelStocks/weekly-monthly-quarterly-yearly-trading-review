@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-21",
-  "reflectionUpdated": "2026-11-06",
+  "updated": "2026-11-22",
+  "reflectionUpdated": "2026-11-22",
   "threshold": -2,
   "start": "2026-03-11",
   "end": "2026-11-20",
@@ -14508,16 +14508,16 @@
       "notes": [],
       "relatedEpisodes": [
         {
-          "id": "600715-2026-11-04-floating",
+          "id": "600715-2026-11-05-closed",
           "name": "文投控股",
           "code": "600715",
           "start": "2026-11-04",
-          "end": "2026-11-04",
-          "summary": "11月4日两笔买入文投800股，未等同题材同身位PK决出胜负就抢先手。按当天收盘价2.47元及含费成本核算浮亏；这只是11月4日历史快照，周五已确认空仓，但缺退出记录，不当作当前持仓或已实现亏损。",
+          "end": "2026-11-05",
+          "summary": "11月4日两笔买入、5日全部卖出，已补成含费闭环。主因沿用本人确认：同身位PK未决、龙头唯一性尚未确立就抢先手。原11月4日浮亏不再与闭环重复统计。",
           "errors": [
             {
               "category": "pk",
-              "evidence": "同题材同身位PK尚未完成就抢换手板"
+              "evidence": "同身位中还有其他个股正在PK龙头唯一性，没有决出胜负之前，一字或者换手都不能随便进去。让市场决定谁是胜者，而不是主观臆断。"
             }
           ],
           "assessment": "本人最新反思归类"
@@ -14570,7 +14570,23 @@
       ],
       "tradeCount": 1,
       "notes": [],
-      "relatedEpisodes": [],
+      "relatedEpisodes": [
+        {
+          "id": "600715-2026-11-05-closed",
+          "name": "文投控股",
+          "code": "600715",
+          "start": "2026-11-04",
+          "end": "2026-11-05",
+          "summary": "11月4日两笔买入、5日全部卖出，已补成含费闭环。主因沿用本人确认：同身位PK未决、龙头唯一性尚未确立就抢先手。原11月4日浮亏不再与闭环重复统计。",
+          "errors": [
+            {
+              "category": "pk",
+              "evidence": "同身位中还有其他个股正在PK龙头唯一性，没有决出胜负之前，一字或者换手都不能随便进去。让市场决定谁是胜者，而不是主观臆断。"
+            }
+          ],
+          "assessment": "本人最新反思归类"
+        }
+      ],
       "summary": "",
       "assessment": "待归因",
       "errors": []
@@ -14731,7 +14747,38 @@
       ],
       "tradeCount": 4,
       "notes": [],
-      "relatedEpisodes": [],
+      "relatedEpisodes": [
+        {
+          "id": "002578-2026-11-13-closed",
+          "name": "闽发铝业",
+          "code": "002578",
+          "start": "2026-11-11",
+          "end": "2026-11-13",
+          "summary": "尚无足够的个股错误归因，保留已有记录供回看。",
+          "errors": [],
+          "assessment": "待归因"
+        },
+        {
+          "id": "000530-2026-11-13-closed",
+          "name": "冰山冷热",
+          "code": "000530",
+          "start": "2026-11-11",
+          "end": "2026-11-13",
+          "summary": "尚无足够的个股错误归因，保留已有记录供回看。",
+          "errors": [],
+          "assessment": "待归因"
+        },
+        {
+          "id": "601599-2026-11-13-closed",
+          "name": "浙文影业",
+          "code": "601599",
+          "start": "2026-11-11",
+          "end": "2026-11-13",
+          "summary": "尚无足够的个股错误归因，保留已有记录供回看。",
+          "errors": [],
+          "assessment": "待归因"
+        }
+      ],
       "summary": "",
       "assessment": "待归因",
       "errors": []
@@ -14787,7 +14834,53 @@
       ],
       "tradeCount": 4,
       "notes": [],
-      "relatedEpisodes": [],
+      "relatedEpisodes": [
+        {
+          "id": "002313-2026-11-13-closed",
+          "name": "日海智能",
+          "code": "002313",
+          "start": "2026-11-12",
+          "end": "2026-11-13",
+          "summary": "周四新开日海智能属于切换，不与浙文影业原抱团仓加仓混同。周五清仓无新增是本人认可的处理，不把卖出再算一次错误。",
+          "errors": [
+            {
+              "category": "switch_mode",
+              "evidence": "周四我判断抱团开始瓦解，却新开日海智能做切换"
+            }
+          ],
+          "assessment": "已有明确反思"
+        },
+        {
+          "id": "002578-2026-11-13-closed",
+          "name": "闽发铝业",
+          "code": "002578",
+          "start": "2026-11-11",
+          "end": "2026-11-13",
+          "summary": "尚无足够的个股错误归因，保留已有记录供回看。",
+          "errors": [],
+          "assessment": "待归因"
+        },
+        {
+          "id": "000530-2026-11-13-closed",
+          "name": "冰山冷热",
+          "code": "000530",
+          "start": "2026-11-11",
+          "end": "2026-11-13",
+          "summary": "尚无足够的个股错误归因，保留已有记录供回看。",
+          "errors": [],
+          "assessment": "待归因"
+        },
+        {
+          "id": "601599-2026-11-13-closed",
+          "name": "浙文影业",
+          "code": "601599",
+          "start": "2026-11-11",
+          "end": "2026-11-13",
+          "summary": "尚无足够的个股错误归因，保留已有记录供回看。",
+          "errors": [],
+          "assessment": "待归因"
+        }
+      ],
       "summary": "日海智能切换错误来自周四开仓；周五清仓且没有再买是本人认可的处理，不把卖出本身判错。",
       "assessment": "已有明确反思",
       "errors": [
@@ -14865,7 +14958,53 @@
       ],
       "tradeCount": 4,
       "notes": [],
-      "relatedEpisodes": [],
+      "relatedEpisodes": [
+        {
+          "id": "002313-2026-11-13-closed",
+          "name": "日海智能",
+          "code": "002313",
+          "start": "2026-11-12",
+          "end": "2026-11-13",
+          "summary": "周四新开日海智能属于切换，不与浙文影业原抱团仓加仓混同。周五清仓无新增是本人认可的处理，不把卖出再算一次错误。",
+          "errors": [
+            {
+              "category": "switch_mode",
+              "evidence": "周四我判断抱团开始瓦解，却新开日海智能做切换"
+            }
+          ],
+          "assessment": "已有明确反思"
+        },
+        {
+          "id": "002578-2026-11-13-closed",
+          "name": "闽发铝业",
+          "code": "002578",
+          "start": "2026-11-11",
+          "end": "2026-11-13",
+          "summary": "尚无足够的个股错误归因，保留已有记录供回看。",
+          "errors": [],
+          "assessment": "待归因"
+        },
+        {
+          "id": "000530-2026-11-13-closed",
+          "name": "冰山冷热",
+          "code": "000530",
+          "start": "2026-11-11",
+          "end": "2026-11-13",
+          "summary": "尚无足够的个股错误归因，保留已有记录供回看。",
+          "errors": [],
+          "assessment": "待归因"
+        },
+        {
+          "id": "601599-2026-11-13-closed",
+          "name": "浙文影业",
+          "code": "601599",
+          "start": "2026-11-11",
+          "end": "2026-11-13",
+          "summary": "尚无足够的个股错误归因，保留已有记录供回看。",
+          "errors": [],
+          "assessment": "待归因"
+        }
+      ],
       "summary": "日海智能切换错误来自周四开仓；周五清仓且没有再买是本人认可的处理，不把卖出本身判错。",
       "assessment": "已有明确反思",
       "errors": [
@@ -14913,12 +15052,28 @@
       ],
       "tradeCount": 1,
       "notes": [],
-      "relatedEpisodes": [],
-      "summary": "本人确认买前有龙头信号，按龙头接力复盘。问题在弱环境下的左侧买点与过重仓位；华东重机另叠加周亏触线后急于回本。退出原因与执行时点分开核对。",
-      "assessment": "已有明确反思",
+      "relatedEpisodes": [
+        {
+          "id": "002148-2026-11-17-closed",
+          "name": "北纬科技",
+          "code": "002148",
+          "start": "2026-11-16",
+          "end": "2026-11-17",
+          "summary": "共同主因：弱天时下的左侧重仓龙头试错。11月16日买入、17日退出是一轮；买前题材与唯一性龙头信号不抵消环境、左右侧和仓位问题。17日实际尾盘卖出，不把退出另判为新错误。",
+          "errors": [
+            {
+              "category": "weak_left_heavy",
+              "evidence": "弱天时下的左侧重仓龙头试错"
+            }
+          ],
+          "assessment": "本人最新反思归类"
+        }
+      ],
+      "summary": "弱天时下的左侧重仓龙头试错。当日左侧重仓买入北纬科技，账户未达大亏日阈值。北纬科技整轮只计1次共同主因。",
+      "assessment": "本人最新反思归类",
       "errors": [
         {
-          "category": "entry",
+          "category": "weak_left_heavy",
           "scope": "当日操作",
           "stocks": [
             {
@@ -14926,20 +15081,8 @@
               "name": "北纬科技"
             }
           ],
-          "evidence": "在环境不支持时，用左侧节点和过重仓位去赌龙头承接",
-          "source": "2026-11-16_2026-11-20/index.html#second-review"
-        },
-        {
-          "category": "size",
-          "scope": "当日操作",
-          "stocks": [
-            {
-              "code": "002148",
-              "name": "北纬科技"
-            }
-          ],
-          "evidence": "在环境不支持时，用左侧节点和过重仓位去赌龙头承接",
-          "source": "2026-11-16_2026-11-20/index.html#second-review"
+          "evidence": "弱天时下的左侧重仓龙头试错",
+          "source": "large-loss-review/index.html#weak-left-heavy-review"
         }
       ]
     },
@@ -14973,33 +15116,37 @@
       ],
       "tradeCount": 1,
       "notes": [],
-      "relatedEpisodes": [],
-      "summary": "本人确认买前有龙头信号，按龙头接力复盘。问题在弱环境下的左侧买点与过重仓位；华东重机另叠加周亏触线后急于回本。退出原因与执行时点分开核对。",
-      "assessment": "已有明确反思",
+      "relatedEpisodes": [
+        {
+          "id": "002148-2026-11-17-closed",
+          "name": "北纬科技",
+          "code": "002148",
+          "start": "2026-11-16",
+          "end": "2026-11-17",
+          "summary": "共同主因：弱天时下的左侧重仓龙头试错。11月16日买入、17日退出是一轮；买前题材与唯一性龙头信号不抵消环境、左右侧和仓位问题。17日实际尾盘卖出，不把退出另判为新错误。",
+          "errors": [
+            {
+              "category": "weak_left_heavy",
+              "evidence": "弱天时下的左侧重仓龙头试错"
+            }
+          ],
+          "assessment": "本人最新反思归类"
+        }
+      ],
+      "summary": "弱天时下的左侧重仓龙头试错。前日入场风险在当日兑现；实际14:56:47卖清，不将退出本身另判错。北纬科技整轮只计1次共同主因。",
+      "assessment": "本人最新反思归类",
       "errors": [
         {
-          "category": "entry",
-          "scope": "本轮回看",
+          "category": "weak_left_heavy",
+          "scope": "持仓延续",
           "stocks": [
             {
               "code": "002148",
               "name": "北纬科技"
             }
           ],
-          "evidence": "在环境不支持时，用左侧节点和过重仓位去赌龙头承接",
-          "source": "2026-11-16_2026-11-20/index.html#second-review"
-        },
-        {
-          "category": "size",
-          "scope": "本轮回看",
-          "stocks": [
-            {
-              "code": "002148",
-              "name": "北纬科技"
-            }
-          ],
-          "evidence": "在环境不支持时，用左侧节点和过重仓位去赌龙头承接",
-          "source": "2026-11-16_2026-11-20/index.html#second-review"
+          "evidence": "弱天时下的左侧重仓龙头试错",
+          "source": "large-loss-review/index.html#weak-left-heavy-review"
         }
       ]
     },
@@ -15057,12 +15204,36 @@
       ],
       "tradeCount": 1,
       "notes": [],
-      "relatedEpisodes": [],
-      "summary": "本人确认买前有龙头信号，按龙头接力复盘。问题在弱环境下的左侧买点与过重仓位；华东重机另叠加周亏触线后急于回本。退出原因与执行时点分开核对。",
-      "assessment": "已有明确反思",
+      "relatedEpisodes": [
+        {
+          "id": "002685-2026-11-20-closed",
+          "name": "华东重机",
+          "code": "002685",
+          "start": "2026-11-19",
+          "end": "2026-11-20",
+          "summary": "共同主因：弱天时下的左侧重仓龙头试错。11月19日买入、20日分四笔退出只算一轮；另叠加周亏达到5%后仍开新仓、想快速扳回亏损。20日属于风险延续和退出，不再额外计一轮买入错误。汇总费用按周终稿衔接，不分摊逐笔。",
+          "errors": [
+            {
+              "category": "weak_left_heavy",
+              "evidence": "弱天时下的左侧重仓龙头试错"
+            },
+            {
+              "category": "weekly_loss_stop",
+              "evidence": "周亏达到5%后仍开新仓"
+            },
+            {
+              "category": "recoup",
+              "evidence": "想要快速扳平亏损"
+            }
+          ],
+          "assessment": "本人最新反思归类"
+        }
+      ],
+      "summary": "弱天时下的左侧重仓龙头试错。当日开仓；另叠加周亏触线后仍开新仓和急于回本。同轮在19日、20日各呈现一个大亏日，但排行榜只计华东重机1轮，不把卖出本身判错。",
+      "assessment": "本人最新反思归类",
       "errors": [
         {
-          "category": "entry",
+          "category": "weak_left_heavy",
           "scope": "当日操作",
           "stocks": [
             {
@@ -15070,11 +15241,11 @@
               "name": "华东重机"
             }
           ],
-          "evidence": "在环境不支持时，用左侧节点和过重仓位去赌龙头承接",
-          "source": "2026-11-16_2026-11-20/index.html#second-review"
+          "evidence": "弱天时下的左侧重仓龙头试错",
+          "source": "large-loss-review/index.html#weak-left-heavy-review"
         },
         {
-          "category": "size",
+          "category": "weekly_loss_stop",
           "scope": "当日操作",
           "stocks": [
             {
@@ -15082,8 +15253,8 @@
               "name": "华东重机"
             }
           ],
-          "evidence": "在环境不支持时，用左侧节点和过重仓位去赌龙头承接",
-          "source": "2026-11-16_2026-11-20/index.html#second-review"
+          "evidence": "周亏达到5%后仍开新仓",
+          "source": "large-loss-review/index.html#weak-left-heavy-review"
         },
         {
           "category": "recoup",
@@ -15094,8 +15265,8 @@
               "name": "华东重机"
             }
           ],
-          "evidence": "周亏触线后急于回本",
-          "source": "2026-11-16_2026-11-20/index.html#second-review"
+          "evidence": "想要快速扳平亏损",
+          "source": "large-loss-review/index.html#weak-left-heavy-review"
         }
       ]
     },
@@ -15132,45 +15303,69 @@
       ],
       "tradeCount": 4,
       "notes": [],
-      "relatedEpisodes": [],
-      "summary": "本人确认买前有龙头信号，按龙头接力复盘。问题在弱环境下的左侧买点与过重仓位；华东重机另叠加周亏触线后急于回本。退出原因与执行时点分开核对。",
-      "assessment": "已有明确反思",
+      "relatedEpisodes": [
+        {
+          "id": "002685-2026-11-20-closed",
+          "name": "华东重机",
+          "code": "002685",
+          "start": "2026-11-19",
+          "end": "2026-11-20",
+          "summary": "共同主因：弱天时下的左侧重仓龙头试错。11月19日买入、20日分四笔退出只算一轮；另叠加周亏达到5%后仍开新仓、想快速扳回亏损。20日属于风险延续和退出，不再额外计一轮买入错误。汇总费用按周终稿衔接，不分摊逐笔。",
+          "errors": [
+            {
+              "category": "weak_left_heavy",
+              "evidence": "弱天时下的左侧重仓龙头试错"
+            },
+            {
+              "category": "weekly_loss_stop",
+              "evidence": "周亏达到5%后仍开新仓"
+            },
+            {
+              "category": "recoup",
+              "evidence": "想要快速扳平亏损"
+            }
+          ],
+          "assessment": "本人最新反思归类"
+        }
+      ],
+      "summary": "弱天时下的左侧重仓龙头试错。前日开仓风险延续至当日退出；另叠加周亏触线后仍开新仓和急于回本。同轮在19日、20日各呈现一个大亏日，但排行榜只计华东重机1轮，不把卖出本身判错。",
+      "assessment": "本人最新反思归类",
       "errors": [
         {
-          "category": "entry",
-          "scope": "本轮回看",
+          "category": "weak_left_heavy",
+          "scope": "持仓延续",
           "stocks": [
             {
               "code": "002685",
               "name": "华东重机"
             }
           ],
-          "evidence": "在环境不支持时，用左侧节点和过重仓位去赌龙头承接",
-          "source": "2026-11-16_2026-11-20/index.html#second-review"
+          "evidence": "弱天时下的左侧重仓龙头试错",
+          "source": "large-loss-review/index.html#weak-left-heavy-review"
         },
         {
-          "category": "size",
-          "scope": "本轮回看",
+          "category": "weekly_loss_stop",
+          "scope": "持仓延续",
           "stocks": [
             {
               "code": "002685",
               "name": "华东重机"
             }
           ],
-          "evidence": "在环境不支持时，用左侧节点和过重仓位去赌龙头承接",
-          "source": "2026-11-16_2026-11-20/index.html#second-review"
+          "evidence": "周亏达到5%后仍开新仓",
+          "source": "large-loss-review/index.html#weak-left-heavy-review"
         },
         {
           "category": "recoup",
-          "scope": "本轮回看",
+          "scope": "持仓延续",
           "stocks": [
             {
               "code": "002685",
               "name": "华东重机"
             }
           ],
-          "evidence": "周亏触线后急于回本",
-          "source": "2026-11-16_2026-11-20/index.html#second-review"
+          "evidence": "想要快速扳平亏损",
+          "source": "large-loss-review/index.html#weak-left-heavy-review"
         }
       ]
     }

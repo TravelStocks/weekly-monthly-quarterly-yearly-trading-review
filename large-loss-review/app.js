@@ -1,5 +1,7 @@
 'use strict';
 const CATEGORIES = {
+  weak_left_heavy: {name:'弱天时下的左侧重仓龙头试错', rule:'先看天时与题材持续性，不凭龙头身份在弱环境左侧重仓；弱天时空仓优先，符合条件也只讨论小仓右侧确认。'},
+  weekly_loss_stop: {name:'周亏达到5%后仍开新仓', rule:'按周初权益计算整周亏损，任一时点达到5%，本周停止开新仓、预算0；后续回升、换票、看好龙头和想回本都不能解除。'},
   wrong_side: {name:'操作失误，买卖按错', rule:'本人认定为偶发性下单方向失误。'},
   trend_nonleader: {name:'趋势行情下参与非龙头连板', rule:'趋势行情下，连板只做已确认的唯一龙头。非龙头连板加速时放弃参与。慢趋势更合我的节奏，可以空仓，也可以小仓位参与，趋势交易合计最多两成。'},
   trend_mode: {name:'趋势模式不熟悉', rule:'科技处于下降趋势时，我容易踏错反弹节奏。趋势模式最多用账户两成仓位。大仓位只留给熟悉的龙头模式。'},
@@ -10,7 +12,7 @@ const CATEGORIES = {
   catch_up_height: {name:'补涨龙高度错误（仅三板参与）', rule:'本人纪律：补涨龙只能在三板做；先确认补涨龙地位与题材支撑，三板也不自动构成买点。更高位置不再新开仓，避免高度有限、题材走弱时连续承受大亏。'},
   mid_after_leader: {name:'同题材龙头刚结束的中位非补涨', rule:'同题材龙头刚结束时，放弃既非龙头、也不具备补涨或切换条件的中位股。'},
   theme_support: {name:'题材走弱、梯队负反馈仍做龙头', rule:'先看题材与梯队是否仍有支撑；分歧延续、集体负反馈时降低预期，按既定退出条件处理，不因仍是龙头而继续做。'},
-  switch_mode: {name:'切换模式错误', rule:'尽量避免不熟悉的低位接力切换；如参与，最多小仓位试错，不用大仓位押注尚未掌握的模式。'},
+  switch_mode: {name:'切换模式错误', rule:'切换已列入本人禁忌清单，不新开仓；不再以旧版半成仓试错放行。历史归因保留原时点。'},
   board_confirm: {name:'低卡高未定，未等上板确认', rule:'领先身位下方仅低一板且有多只有辨识度个股时，先等领先身位上板确认龙头卡位；高开不能代替上板确认，不半路抢入。'},
   pk: {name:'同身位PK未决，抢先手押注', rule:'同题材、同身位尚未决出龙头唯一性时，一字板和换手板都不能替代确认；让市场决定胜者，先定龙，再参与。'},
   cycle: {name:'阶段 / 题材判断错位', rule:'先判断题材所处阶段及持续性，再选择龙头、补涨、二波或切换模式。'},
@@ -82,7 +84,7 @@ function openHash() {
 }
 async function init() {
   try {
-    const response=await fetch('./data.json?v=20261106-mode-trades');
+    const response=await fetch('./data.json?v=20261122-loss-sync',{cache:'no-cache'});
     if(!response.ok)throw new Error('HTTP '+response.status);
     DATA=await response.json();
     Object.entries(CATEGORIES).forEach(([id,c])=>$('category').insertAdjacentHTML('beforeend',`<option value="${id}">${c.name}</option>`));
@@ -94,7 +96,7 @@ async function init() {
     $('error-ranks').addEventListener('click',e=>{const b=e.target.closest('[data-category]');if(b){$('category').value=b.dataset.category;render();$('records').scrollIntoView();$('category').focus({preventScroll:true});}});
     $('stock-ranks').addEventListener('click',e=>{const b=e.target.closest('[data-stock]');if(b){$('search').value=b.dataset.stock;$('category').value='all';render();$('records').scrollIntoView();}});
     const closed=DATA.records.filter(r=>r.status==='closed'), floating=DATA.records.filter(r=>r.status==='floating');
-    $('coverage').textContent=`已扫描 ${DATA.audit.scannedPages.length} 份周/月档案，成交覆盖至 ${DATA.audit.tradesThrough}；共有 ${closed.length} 轮可核算亏损、${floating.length} 条历史浮亏快照（含ETF）。当前包含上海沪工、大业股份的11月已平仓记录，文投11月4日浮亏作为历史快照单独展示。没有成本或退出记录的部分不补造收益；分类采用有原文依据的最新反思。`;
+    $('coverage').textContent=`已扫描 ${DATA.audit.scannedPages.length} 份周/月档案，成交覆盖至 ${DATA.audit.tradesThrough}；共有 ${closed.length} 轮可核算亏损、${floating.length} 条历史浮亏快照（含ETF）。已补齐文投控股11月5日退出、11月13日四轮闭环及北纬科技、华东重机；文投途中浮亏不再重复计入。华东费用采用已核周终稿汇总，不虚构逐笔分摊。没有成本或退出记录不补造收益；缺少明确归因仍标待归因。`;
     $('audit-details').innerHTML=`<h3>已扫描档案</h3><ul>${DATA.audit.scannedPages.map(p=>`<li><a href="${escape(link(p.source))}">${escape(p.source.replace('/index.html',''))}</a> · ${escape(p.kind)}</li>`).join('')}</ul><h3>未配齐成本的历史卖出</h3><p class="subtle">以下卖出不凭现金流计算亏损率。4月独立报告已核算的轮次另行使用其已补成本。</p><ul>${DATA.audit.unknownCostSales.map(t=>`<li>${t.date} · ${escape(t.name)} ${t.code} · <a href="${escape(link(t.source))}">来源</a></li>`).join('')||'<li>无</li>'}</ul>`;
     $('updated').textContent=DATA.reflectionUpdated||DATA.updated;$('load-state').hidden=true;$('content').hidden=false;render();openHash();
     window.addEventListener('hashchange',openHash);

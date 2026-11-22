@@ -40,9 +40,11 @@ assert by_id['002242-2026-10-19-closed']['cost']==3459
 assert not any(r['code']=='000678' and r['status']=='floating' for r in records)
 assert all(r['end']!='2026-10-30' for r in records if r['status']=='floating')
 # The latest settled trades and historical snapshot share the calendar cutoff.
-assert data['audit']['tradesThrough']=='2026-11-04'
-assert data['audit']['snapshotThrough']=='2026-11-04'
-for id,cost,pnl in [('603278-2026-11-02-closed',3928.04,-425.83),('603131-2026-11-03-closed',3872.04,-758.63),('600715-2026-11-04-floating',2178.02,-202.02)]:
+assert data['audit']['tradesThrough']=='2026-11-20'
+assert data['audit']['snapshotThrough']=='2026-11-20'
+assert '600715-2026-11-04-floating' not in by_id
+for id,cost,pnl in [('603278-2026-11-02-closed',3928.04,-425.83),('603131-2026-11-03-closed',3872.04,-758.63),('600715-2026-11-05-closed',2178.02,-319.97),
+                    ('002148-2026-11-17-closed',9630,-663.49),('002685-2026-11-20-closed',8926,-862.05),('002313-2026-11-13-closed',2246,-355.95)]:
     assert by_id[id]['cost']==cost and by_id[id]['pnl']==pnl
     assert by_id[id]['errors']
 assert [e['category'] for e in by_id['603131-2026-11-03-closed']['errors']]==['catch_up_height']
@@ -80,7 +82,16 @@ huaxi = by_id['000936-2026-08-17-closed']
 assert (huaxi['start'], huaxi['cost'], huaxi['pnl']) == ('2026-08-14', 5605, -340.64)
 assert [e['category'] for e in huaxi['errors']] == ['switch_mode']
 assert [e['category'] for e in by_id['002579-2026-06-04-closed']['errors']] == ['switch_mode']
-assert sum(any(e['category']=='switch_mode' for e in r['errors']) for r in records)==8
+assert sum(any(e['category']=='switch_mode' for e in r['errors']) for r in records)==9
+assert sum(any(e['category']=='weak_left_heavy' for e in r['errors']) for r in records)==2
+assert sum(any(e['category']=='weekly_loss_stop' for e in r['errors']) for r in records)==1
+assert [e['category'] for e in by_id['002148-2026-11-17-closed']['errors']]==['weak_left_heavy']
+assert [e['category'] for e in by_id['002685-2026-11-20-closed']['errors']]==['weak_left_heavy','weekly_loss_stop','recoup']
+assert '汇总费用' in by_id['002685-2026-11-20-closed']['basis']
+for code,cost,pnl in [('601599',2188.02,-50.11),('000530',1090,-86.5),('002578',617,-78.27)]:
+    actual=by_id[f'{code}-2026-11-13-closed']
+    assert actual['cost']==cost and actual['pnl']==pnl
+    assert actual['assessment']=='待归因' and not actual['errors']
 
 assert {e['category'] for e in by_id['002403-2026-09-09-closed']['errors']}=={'theme_support'}
 assert {e['category'] for e in by_id['601700-2026-08-10-closed']['errors']}=={'theme_support'}
